@@ -3,7 +3,7 @@ package pe.edu.pucp.softbod.model;
 public class ProductoDTO {
     private Integer productoId;
     private Unidad_Medida unidad_medida;
-    private Categoria categoria;
+    private CategoriaDTO categoria;
     private String nombre;
     private Double precio_unitario;
     private Double stock;
@@ -17,7 +17,9 @@ public class ProductoDTO {
         stockMinimo = null;
     }
 
-    public ProductoDTO(Integer productoId, Unidad_Medida unidad_Medida, Categoria categoria, String nombre, Double precio_unitario, Double stock, Double stockMinimo) {
+    public ProductoDTO(Integer productoId, Unidad_Medida unidad_Medida, 
+            CategoriaDTO categoria, String nombre, Double precio_unitario,
+            Double stock, Double stockMinimo) {
         this.productoId = productoId;
         this.unidad_medida = unidad_Medida;
         this.categoria = categoria;
@@ -43,11 +45,11 @@ public class ProductoDTO {
         this.unidad_medida = unidad_medida;
     }
 
-    public Categoria getCategoria() {
+    public CategoriaDTO getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(CategoriaDTO categoria) {
         this.categoria = categoria;
     }
 
