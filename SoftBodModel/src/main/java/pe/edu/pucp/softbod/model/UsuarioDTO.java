@@ -1,6 +1,7 @@
 package pe.edu.pucp.softbod.model;
 
 public class UsuarioDTO {
+    private int usuario_id;
     private String usuario;
     private Tipo_Usuario tipo_usuario;
     private String correo;
@@ -72,5 +73,19 @@ public class UsuarioDTO {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    /**
+     * @return the usuario_id
+     */
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    /**
+     * @param usuario_id the usuario_id to set
+     */
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
     }
 }
