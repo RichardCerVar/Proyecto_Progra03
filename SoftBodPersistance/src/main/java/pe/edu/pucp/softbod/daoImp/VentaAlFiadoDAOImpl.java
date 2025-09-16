@@ -2,7 +2,7 @@ package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
-import pe.edu.pucp.sofbod.dao.VentaAlFiadoDAO;
+import pe.edu.pucp.softbod.dao.VentaAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 
 public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO {

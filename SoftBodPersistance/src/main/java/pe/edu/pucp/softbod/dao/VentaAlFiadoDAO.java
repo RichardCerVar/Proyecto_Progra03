@@ -1,4 +1,4 @@
-package pe.edu.pucp.sofbod.dao;
+package pe.edu.pucp.softbod.dao;
 
 import java.util.ArrayList;
 

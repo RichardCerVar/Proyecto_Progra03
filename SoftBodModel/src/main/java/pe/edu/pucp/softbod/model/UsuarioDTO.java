@@ -1,7 +1,7 @@
 package pe.edu.pucp.softbod.model;
 
 public class UsuarioDTO {
-    private String usuario_operario;
+    private String usuario;
     private Tipo_Usuario tipo_usuario;
     private String correo;
     private String contrasenha;
@@ -9,7 +9,7 @@ public class UsuarioDTO {
     private String telefono;
     
     public UsuarioDTO() {
-        usuario_operario = null;
+        usuario = null;
         tipo_usuario = null;
         correo = null;
         contrasenha = null;
@@ -17,8 +17,8 @@ public class UsuarioDTO {
         telefono = null;
     }
 
-    public UsuarioDTO(String usuario_operario, Tipo_Usuario tipo_usuario, String correo, String contrasenha, String nombre, String telefono) {
-        this.usuario_operario = usuario_operario;
+    public UsuarioDTO(String usuario, Tipo_Usuario tipo_usuario, String correo, String contrasenha, String nombre, String telefono) {
+        this.usuario = usuario;
         this.tipo_usuario = tipo_usuario;
         this.correo = correo;
         this.contrasenha = contrasenha;
@@ -26,12 +26,12 @@ public class UsuarioDTO {
         this.telefono = telefono;
     }
 
-    public String getUsuario_operario() {
-        return usuario_operario;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setUsuario_operario(String usuario_operario) {
-        this.usuario_operario = usuario_operario;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public Tipo_Usuario getTipo_usuario() {
