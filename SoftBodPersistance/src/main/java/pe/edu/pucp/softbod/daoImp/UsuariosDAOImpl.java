@@ -10,14 +10,13 @@ import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
     private UsuarioDTO usuario;
-    //private Tipo_Usuario tipo_usuario;
 
     public UsuariosDAOImpl() {
         super("BOD_USUARIO");
         this.usuario = null;
         this.retornarLlavePrimaria = true;
     }
-    //CAMBIAR EL NOMBRE DE LA PRIMARY KEY
+    
     @Override
     protected void configurarListaDeColumnas() {
         this.listaColumnas.add(new Columna("USUARIO_ID", true, true));
