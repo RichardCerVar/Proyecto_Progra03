@@ -1,152 +1,123 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
 package pe.edu.pucp.sofbod.dao;
 
 import java.util.ArrayList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import pe.edu.pucp.softbod.dao.UsuariosDAO;
+import pe.edu.pucp.softbod.daoImp.UsuariosDAOImpl;
+import pe.edu.pucp.softbod.model.Tipo_Usuario;
+import pe.edu.pucp.softbod.model.UsuarioDTO;
 
-/**
- *
- * @author Cervera Vargas
- */
 public class UsuariosDAOTest {
     
+    private UsuariosDAO usuarioDAO;
+    
     public UsuariosDAOTest() {
-    }
-
-    @org.junit.jupiter.api.BeforeAll
-    public static void setUpClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterAll
-    public static void tearDownClass() throws Exception {
-    }
-
-    @org.junit.jupiter.api.BeforeEach
-    public void setUp() throws Exception {
-    }
-
-    @org.junit.jupiter.api.AfterEach
-    public void tearDown() throws Exception {
+        this.usuarioDAO = new UsuariosDAOImpl(); 
     }
     
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    /**
-     * Test of insertar method, of class UsuariosDAO.
-     */
-    @org.junit.jupiter.api.Test
+    @Test
     public void testInsertar() {
         System.out.println("insertar");
-        Object usuario = null;
-        UsuariosDAO instance = new UsuariosDAOImpl();
-        Integer expResult = null;
-        Integer result = instance.insertar(usuario);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
+        insertarUsuarios(listaUsuarioId );
+        eliminarTodo();
     }
-
-    /**
-     * Test of obtenerPorId method, of class UsuariosDAO.
-     */
-    @org.junit.jupiter.api.Test
+    
+    private void insertarUsuarios(ArrayList<Integer> listaUsuarioId ) {
+        UsuarioDTO usuario = new UsuarioDTO();
+        
+        usuario.setUsuario("cachin246");
+        usuario.setTipo_usuario(Tipo_Usuario.OPERARIO);
+        usuario.setNombre("Carlos Alcantara");
+        usuario.setCorreo("carlos.24@hotmail.com");
+        usuario.setContrasenha("Cachin24");
+        usuario.setTelefono("999888777");
+        Integer resultado = this.usuarioDAO.insertar(usuario);
+        assertTrue(resultado != 0);
+        listaUsuarioId.add(resultado);
+    
+        usuario.setUsuario("ricardo126");
+        usuario.setTipo_usuario(Tipo_Usuario.ADMINISTRADOR);
+        usuario.setNombre("Ricardo Moran");
+        usuario.setCorreo("ricardo.12@hotmail.com");
+        usuario.setContrasenha("ricardo12");
+        usuario.setTelefono("666555444");
+        resultado = this.usuarioDAO.insertar(usuario);
+        assertTrue(resultado != 0);
+        listaUsuarioId.add(resultado);   
+   
+    }
+    
+    @Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId");
-        Integer usuarioId = null;
-        UsuariosDAO instance = new UsuariosDAOImpl();
-        Object expResult = null;
-        Object result = instance.obtenerPorId(usuarioId);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
+        insertarUsuarios(listaUsuarioId);
+        
+        UsuarioDTO usuario = this.usuarioDAO.obtenerPorId(listaUsuarioId.get(0));
+        assertEquals(usuario.getUsuario_id(), listaUsuarioId.get(0));
+        
+        usuario = this.usuarioDAO.obtenerPorId(listaUsuarioId.get(1));
+        assertEquals(usuario.getUsuario_id(), listaUsuarioId.get(1));
+        
+        eliminarTodo();
     }
-
-    /**
-     * Test of listarTodos method, of class UsuariosDAO.
-     */
-    @org.junit.jupiter.api.Test
+    
+    @Test
     public void testListarTodos() {
         System.out.println("listarTodos");
-        UsuariosDAO instance = new UsuariosDAOImpl();
-        ArrayList<Object> expResult = null;
-        ArrayList<Object> result = instance.listarTodos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
+        insertarUsuarios(listaUsuarioId );
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
+        assertEquals(listaUsuarioId .size(), listaUsuarios.size());
+        for (Integer i = 0; i < listaUsuarioId.size(); i++) {
+            assertEquals(listaUsuarioId.get(i), listaUsuarios.get(i).getUsuario_id());
+        }
+        eliminarTodo();
     }
-
-    /**
-     * Test of modificar method, of class UsuariosDAO.
-     */
-    @org.junit.jupiter.api.Test
+    
+    @Test
     public void testModificar() {
         System.out.println("modificar");
-        Object usuario = null;
-        UsuariosDAO instance = new UsuariosDAOImpl();
-        Integer expResult = null;
-        Integer result = instance.modificar(usuario);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
+        insertarUsuarios(listaUsuarioId );
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
+        assertEquals(listaUsuarioId.size(), listaUsuarios.size());
+        for (Integer i = 0; i < listaUsuarioId .size(); i++) {
+            listaUsuarios.get(i).setNombre("NuevoNombre" + i.toString());
+            listaUsuarios.get(i).setCorreo("NuevoCorreo" + i.toString());
+            this.usuarioDAO.modificar(listaUsuarios.get(i));
+        }
+        
+        ArrayList<UsuarioDTO> listaUsuariosModificados = this.usuarioDAO.listarTodos();
+        assertEquals( listaUsuarios.size(), listaUsuariosModificados.size());
+        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+            assertEquals(listaUsuarios.get(i).getNombre(), listaUsuariosModificados.get(i).getNombre());
+            assertEquals(listaUsuarios.get(i).getCorreo(), listaUsuariosModificados.get(i).getCorreo());
+        }
+        
+        eliminarTodo();
     }
-
-    /**
-     * Test of eliminar method, of class UsuariosDAO.
-     */
-    @org.junit.jupiter.api.Test
+    
+    @Test
     public void testEliminar() {
         System.out.println("eliminar");
-        Object usuario = null;
-        UsuariosDAO instance = new UsuariosDAOImpl();
-        Integer expResult = null;
-        Integer result = instance.eliminar(usuario);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
+        insertarUsuarios(listaUsuarioId );
+        eliminarTodo();
     }
-
-    public class UsuariosDAOImpl implements UsuariosDAO {
-
-        public Integer insertar(Object usuario) {
-            return null;
-        }
-
-        public Object obtenerPorId(Integer usuarioId) {
-            return null;
-        }
-
-        public ArrayList<Object> listarTodos() {
-            return null;
-        }
-
-        public Integer modificar(Object usuario) {
-            return null;
-        }
-
-        public Integer eliminar(Object usuario) {
-            return null;
+    
+    private void eliminarTodo(){
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
+        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+            Integer resultado = this.usuarioDAO.eliminar(listaUsuarios.get(i));
+            assertNotEquals(0, resultado);
+            UsuarioDTO usuario = this.usuarioDAO.obtenerPorId(listaUsuarios.get(i).getUsuario_id());
+            assertNull(usuario);
         }
     }
     

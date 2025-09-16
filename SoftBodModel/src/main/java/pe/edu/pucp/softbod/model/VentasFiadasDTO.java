@@ -21,7 +21,6 @@ public class VentasFiadasDTO extends VentasDTO{
         this.clienteId = clienteId;
     }
     
-
     public Integer getVentaFiadaId() {
         return ventaFiadaId;
     }
@@ -30,19 +29,12 @@ public class VentasFiadasDTO extends VentasDTO{
         this.ventaFiadaId = ventaFiadaId;
     }
 
-    /**
-     * @return the clienteId
-     */
     public Integer getClienteId() {
         return clienteId;
     }
 
-    /**
-     * @param clienteId the clienteId to set
-     */
     public void setClienteId(Integer clienteId) {
         this.clienteId = clienteId;
     }
-
 
 }

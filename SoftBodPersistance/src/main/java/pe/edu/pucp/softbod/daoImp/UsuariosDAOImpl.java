@@ -22,7 +22,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
     protected void configurarListaDeColumnas() {
         this.listaColumnas.add(new Columna("USUARIO_ID", true, true));
         this.listaColumnas.add(new Columna("USUARIO", false, false));
-        this.listaColumnas.add(new Columna("TIPO_USUARIO", false, false));
+        this.listaColumnas.add(new Columna("TIPO_USUARIOS", false, false));
         this.listaColumnas.add(new Columna("CORREO", false, false));
         this.listaColumnas.add(new Columna("CONTRASENHA", false, false));
         this.listaColumnas.add(new Columna("NOMBRE", false, false));
@@ -67,7 +67,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
         UsuarioDTO usuario = null;
         try {
             this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIO, CORREO, CONTRASENHA, "
+            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, "
                     + "NOMBRE, TELEFONO FROM BOD_USUARIO WHERE USUARIO_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, usuarioId);
@@ -76,7 +76,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
                 usuario = new UsuarioDTO();
                 usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
                 usuario.setUsuario(this.resultSet.getString("USUARIO"));
-                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIO")));
+                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
                 usuario.setCorreo(this.resultSet.getString("CORREO"));
                 usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
                 usuario.setNombre(this.resultSet.getString("NOMBRE"));
@@ -101,7 +101,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
         ArrayList<UsuarioDTO> listaUsuarios = new ArrayList<>();
         try {
             this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT USUARIO_ID, TIPO_USUARIO, CORREO, CONTRASENHA, "
+            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, "
                     + "NOMBRE, TELEFONO FROM BOD_USUARIO";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
@@ -109,7 +109,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
                 UsuarioDTO usuario = new UsuarioDTO();
                 usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
                 usuario.setUsuario(this.resultSet.getString("USUARIO"));
-                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIO")));
+                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
                 usuario.setCorreo(this.resultSet.getString("CORREO"));
                 usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
                 usuario.setNombre(this.resultSet.getString("NOMBRE"));
@@ -141,4 +141,6 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.usuario = usuario;
         return super.eliminar();
     }
+    
+    
 }

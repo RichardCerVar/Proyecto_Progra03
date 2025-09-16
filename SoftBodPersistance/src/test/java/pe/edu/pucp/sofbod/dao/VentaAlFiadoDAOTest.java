@@ -1,80 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
- */
-package pe.edu.pucp.sofbod.dao;
-
-import java.util.ArrayList;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
-/**
- *
- * @author Cervera Vargas
- */
-public class VentaAlFiadoDAOTest {
-    
-    public VentaAlFiadoDAOTest() {
-    }
-    
-    @BeforeAll
-    public static void setUpClass() {
-    }
-    
-    @AfterAll
-    public static void tearDownClass() {
-    }
-    
-    @BeforeEach
-    public void setUp() {
-    }
-    
-    @AfterEach
-    public void tearDown() {
-    }
-
-    /**
-     * Test of insertar method, of class VentaAlFiadoDAO.
-     */
-    @Test
-    public void testInsertar() {
-        System.out.println("insertar");
-        Object ventaAlFiado = null;
-        VentaAlFiadoDAO instance = new VentaAlFiadoDAOImpl();
-        Integer expResult = null;
-        Integer result = instance.insertar(ventaAlFiado);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of listarTodos method, of class VentaAlFiadoDAO.
-     */
-    @Test
-    public void testListarTodos() {
-        System.out.println("listarTodos");
-        VentaAlFiadoDAO instance = new VentaAlFiadoDAOImpl();
-        ArrayList<Object> expResult = null;
-        ArrayList<Object> result = instance.listarTodos();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    public class VentaAlFiadoDAOImpl implements VentaAlFiadoDAO {
-
-        public Integer insertar(Object ventaAlFiado) {
-            return null;
-        }
-
-        public ArrayList<Object> listarTodos() {
-            return null;
-        }
-    }
-    
-}
+//package pe.edu.pucp.sofbod.dao;
+//
+//import java.util.ArrayList;
+//import org.junit.jupiter.api.Test;
+//import static org.junit.jupiter.api.Assertions.*;
+//import pe.edu.pucp.softbod.dao.VentaAlFiadoDAO;
+//import pe.edu.pucp.softbod.daoImp.VentaAlFiadoDAOImpl;
+//import pe.edu.pucp.softbod.model.VentasFiadasDTO;
+//
+//
+//public class VentaAlFiadoDAOTest {
+//    
+//    private VentaAlFiadoDAO ventaAlFiadoDAO;    
+//    
+//    public VentaAlFiadoDAOTest() {
+//        this.ventaAlFiadoDAO = new VentaAlFiadoDAOImpl();        
+//    }
+//
+//    @Test
+//    public void testListarTodos() {
+//        System.out.println("listarTodos");
+//        ArrayList<Integer> listaVentasFiadasId = new ArrayList<>();
+//        insertarVentas(listaVentasFiadasId );
+//        
+//        ArrayList<VentasFiadasDTO> listaUsuarios = this.ventaAlFiadoDAO.listarTodos();
+//        assertEquals(listaVentasFiadasId .size(), listaUsuarios.size());
+//        for (Integer i = 0; i < listaVentasFiadasId .size(); i++) {
+//            assertEquals(listaVentasFiadasId .get(i), listaUsuarios.get(i).getUsuario_id());
+//        }
+//        eliminarTodo();
+//    }
+//    
+//    private void eliminarTodo(){                
+//        ArrayList<VentasFiadasDTO> listaUsuarios = this.ventaAlFiadoDAO.listarTodos();
+//        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+//            Integer resultado = this.ventaAlFiadoDAO.eliminar(listaUsuarios.get(i));
+//            assertNotEquals(0, resultado);
+//            VentasFiadasDTO usuario = this.ventaAlFiadoDAO.obtenerPorId(listaUsuarios.get(i).getUsuario_id());
+//            assertNull(usuario);
+//        }
+//    }
+//    
+//}

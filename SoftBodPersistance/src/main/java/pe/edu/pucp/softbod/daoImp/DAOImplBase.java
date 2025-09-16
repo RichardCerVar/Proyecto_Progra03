@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.daoImp.util.Tipo_Operacion;
+import pe.edu.pucp.softbod.db.DBManager;
 
 public abstract class DAOImplBase {
     protected String nombre_tabla;
