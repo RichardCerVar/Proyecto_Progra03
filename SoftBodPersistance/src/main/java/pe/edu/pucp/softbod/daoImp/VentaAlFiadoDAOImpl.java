@@ -4,10 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.VentaAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.model.VentasFiadasDTO;
 
 public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO {
     
-    private VentaAlFiadoDTO ventaAlFiado;
+    private VentasFiadasDTO ventaAlFiado;
     
     public VentaAlFiadoDAOImpl() {
         super("BOD_VENTAS_FIADAS");
@@ -16,8 +17,9 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
      
     @Override
     protected void configurarListaDeColumnas() {
-        this.listaColumnas.add(new Columna("VENTA_FIADO_ID", false, false));
+        this.listaColumnas.add(new Columna("VENTA_FIADO_ID", true, true));
         this.listaColumnas.add(new Columna("CLIENTE_ID", false, false));
+        this.listaColumnas.add(new Columna("VENTA_ID", false, false));
     }
     
     @Override
@@ -27,21 +29,21 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
     }
     
     @Override
-    public Integer insertar(VentaAlFiadoDTO ventaAlFiado) {
+    public Integer insertar(VentasFiadasDTO ventaAlFiado) {
         this.ventaAlFiado = ventaAlFiado;
         return super.insertar();
     }
 
     @Override
-    public ArrayList<VentaAlFiadoDTO> listarTodos() {
-        ArrayList<VentaAlFiadoDTO> listaVentasAlFiado = new ArrayList<>();
+    public ArrayList<VentasFiadasDTO> listarTodos() {
+        ArrayList<VentasFiadasDTO> listaVentasAlFiado = new ArrayList<>();
         try {
             this.conexion = DBManager.getInstance().getConnection();
             String sql = "SELECT VENTA_FIADO_ID, CLIENTE_ID FROM BOD_VENTAS_FIADAS";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
-                VentaAlFiadoDTO ventaAlFiado = new VentaAlFiadoDTO();
+                VentasFiadasDTO ventaAlFiado = new VentasFiadasDTO();
                 ventaAlFiado.setVentaAlFiadoId(this.resultSet.getInt("VENTA_FIADO_ID"));
                 ventaAlFiado.setClienteId(this.resultSet.getString("CLIENTE_ID"));
                 listaVentasAlFiado.add(ventaAlFiado);

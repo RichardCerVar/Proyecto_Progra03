@@ -3,22 +3,46 @@ package pe.edu.pucp.softbod.model;
 import java.util.Date;
 
 public class VentasFiadasDTO extends VentasDTO{
-    private String clienteId;
+    private Integer ventaFiadaId;
+    private Integer ventaId;
+    private Integer clienteId;
 
     public VentasFiadasDTO() {
         super();
+        ventaFiadaId = null;
+        clienteId = null;
     }
 
-    public VentasFiadasDTO(String clienteId, Integer ventaId, Double total, Tipo_de_pago metodo_pago, Date fecha, String usuario) {
+    public VentasFiadasDTO(Integer ventaFiadaId, Integer clienteId, Integer ventaId, Double total,
+                Tipo_de_pago metodo_pago, Date fecha, String usuario) {
         super(ventaId, total, metodo_pago, fecha, usuario);
+        this.ventaFiadaId = ventaFiadaId;
+        this.ventaId = ventaId;
         this.clienteId = clienteId;
     }
+    
 
-    public String getClienteId() {
+    public Integer getVentaFiadaId() {
+        return ventaFiadaId;
+    }
+
+    public void setVentaFiadaId(Integer ventaFiadaId) {
+        this.ventaFiadaId = ventaFiadaId;
+    }
+
+    /**
+     * @return the clienteId
+     */
+    public Integer getClienteId() {
         return clienteId;
     }
 
-    public void setClienteId(String clienteId) {
+    /**
+     * @param clienteId the clienteId to set
+     */
+    public void setClienteId(Integer clienteId) {
         this.clienteId = clienteId;
     }
+
+
 }

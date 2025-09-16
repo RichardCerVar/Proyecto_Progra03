@@ -9,6 +9,14 @@ public class UsuarioDTO {
     private String nombre;
     private String telefono;
     
+    public int getUsuario_id() {
+        return usuario_id;
+    }
+
+    public void setUsuario_id(int usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
     public UsuarioDTO() {
         usuario = null;
         tipo_usuario = null;
@@ -75,17 +83,4 @@ public class UsuarioDTO {
         this.telefono = telefono;
     }
 
-    /**
-     * @return the usuario_id
-     */
-    public int getUsuario_id() {
-        return usuario_id;
-    }
-
-    /**
-     * @param usuario_id the usuario_id to set
-     */
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
-    }
 }

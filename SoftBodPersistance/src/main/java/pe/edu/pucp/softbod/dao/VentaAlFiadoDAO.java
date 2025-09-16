@@ -1,9 +1,10 @@
 package pe.edu.pucp.softbod.dao;
 
 import java.util.ArrayList;
+import pe.edu.pucp.softbod.model.VentasFiadasDTO;
 
 public interface VentaAlFiadoDAO {
-    public Integer insertar(VentaAlFiadoDTO ventaAlFiado);
+    public Integer insertar(VentasFiadasDTO ventaAlFiado);
     
-    public ArrayList<VentaAlFiadoDTO> listarTodos();
+    public ArrayList<VentasFiadasDTO> listarTodos();
 }

@@ -20,6 +20,7 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
     //CAMBIAR EL NOMBRE DE LA PRIMARY KEY
     @Override
     protected void configurarListaDeColumnas() {
+        this.listaColumnas.add(new Columna("USUARIO_ID", true, true));
         this.listaColumnas.add(new Columna("USUARIO", false, false));
         this.listaColumnas.add(new Columna("TIPO_USUARIO", false, false));
         this.listaColumnas.add(new Columna("CORREO", false, false));
@@ -30,7 +31,6 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
     
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
-        // En getTipo_Usuario() 1 == operario y 0 == administrador
         this.statement.setString(1, this.usuario.getUsuario());
         this.statement.setString(2, this.usuario.getTipo_usuario().name());
         this.statement.setString(3, this.usuario.getCorreo());
@@ -40,18 +40,19 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
     }
     
     @Override
-    protected void incluirValorDeParametrosParaModificacion() throws SQLException {        
+    protected void incluirValorDeParametrosParaModificacion() throws SQLException {
         this.statement.setString(1, this.usuario.getUsuario());
         this.statement.setString(2, this.usuario.getTipo_usuario().name());
         this.statement.setString(3, this.usuario.getCorreo());
         this.statement.setString(4, this.usuario.getContrasenha());
         this.statement.setString(5, this.usuario.getNombre());
-        this.statement.setString(6, this.usuario.getTelefono());    
+        this.statement.setString(6, this.usuario.getTelefono());
+        this.statement.setInt(7, this.usuario.getUsuario_id());
     }
     
     @Override
     protected void incluirValorDeParametrosParaEliminacion() throws SQLException{
-        this.statement.setString(1, this.usuario.getUsuario());
+        this.statement.setInt(1, this.usuario.getUsuario_id());
     }
 
     
@@ -66,13 +67,14 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
         UsuarioDTO usuario = null;
         try {
             this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT USUARIO, TIPO_USUARIO, CORREO, CONTRASENHA, "
+            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIO, CORREO, CONTRASENHA, "
                     + "NOMBRE, TELEFONO FROM BOD_USUARIO WHERE USUARIO_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, usuarioId);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 usuario = new UsuarioDTO();
+                usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
                 usuario.setUsuario(this.resultSet.getString("USUARIO"));
                 usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIO")));
                 usuario.setCorreo(this.resultSet.getString("CORREO"));
@@ -105,7 +107,8 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
                 UsuarioDTO usuario = new UsuarioDTO();
-                usuario.setUsuario(this.resultSet.getString("USUARIO_ID"));
+                usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
+                usuario.setUsuario(this.resultSet.getString("USUARIO"));
                 usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIO")));
                 usuario.setCorreo(this.resultSet.getString("CORREO"));
                 usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
