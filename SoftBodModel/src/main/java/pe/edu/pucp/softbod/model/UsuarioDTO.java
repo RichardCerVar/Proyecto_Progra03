@@ -1,7 +1,7 @@
 package pe.edu.pucp.softbod.model;
 
 public class UsuarioDTO {
-    private int usuario_id;
+    private Integer usuarioId;
     private String usuario;
     private Tipo_Usuario tipo_usuario;
     private String correo;
@@ -9,15 +9,16 @@ public class UsuarioDTO {
     private String nombre;
     private String telefono;
     
-    public int getUsuario_id() {
-        return usuario_id;
+    public Integer getUsuario_id() {
+        return usuarioId;
     }
 
-    public void setUsuario_id(int usuario_id) {
-        this.usuario_id = usuario_id;
+    public void setUsuario_id(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 
-    public UsuarioDTO() {
+    public UsuarioDTO(){
+        usuarioId = null;
         usuario = null;
         tipo_usuario = null;
         correo = null;
@@ -26,7 +27,9 @@ public class UsuarioDTO {
         telefono = null;
     }
 
-    public UsuarioDTO(String usuario, Tipo_Usuario tipo_usuario, String correo, String contrasenha, String nombre, String telefono) {
+    public UsuarioDTO(Integer usuarioId,String usuario, Tipo_Usuario tipo_usuario, 
+                String correo, String contrasenha, String nombre, String telefono) {
+        this.usuarioId = usuarioId;
         this.usuario = usuario;
         this.tipo_usuario = tipo_usuario;
         this.correo = correo;
