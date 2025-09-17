@@ -155,7 +155,6 @@ public class DevolucionDAOTest {
     private void eliminarTodo(){
         ArrayList<DevolucionDTO> listaDevoluciones = this.devolucionDAO.listarTodos();
         for(Integer i=0; i<listaDevoluciones.size(); i++){
-            System.out.println("Eliminado la devolucion con id : "+listaDevoluciones.get(i).getDevolucionId());
             Integer resultado = this.devolucionDAO.eliminar(listaDevoluciones.get(i));
             assertNotEquals(0,resultado);
             DevolucionDTO devolucion = this.devolucionDAO.obtenerPorId(listaDevoluciones.get(i).getDevolucionId());
