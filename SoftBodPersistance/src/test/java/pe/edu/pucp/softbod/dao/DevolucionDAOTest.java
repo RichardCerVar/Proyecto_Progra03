@@ -34,7 +34,7 @@
 //        DevolucionDTO devolucion = new DevolucionDTO();
 //        devolucion.setTotal(50.00);
 //        devolucion.setFecha(new Date(System.currentTimeMillis()));
-//        devolucion.setUsuario(305);
+//        devolucion.setUsuario(320);
 //        Integer resultado = this.devolucionDAO.insertar(devolucion);
 //        listaDevolucionesId.add(resultado);
 //        System.out.println("Insertando la devolucion con id " + resultado);
@@ -42,7 +42,7 @@
 //        devolucion = new DevolucionDTO();
 //        devolucion.setTotal(80.00);
 //        devolucion.setFecha(new Date(System.currentTimeMillis()));
-//        devolucion.setUsuario(306);
+//        devolucion.setUsuario(321);
 //        resultado = this.devolucionDAO.insertar(devolucion);
 //        listaDevolucionesId.add(resultado);
 //        System.out.println("Insertando la devolucion con id " + resultado);
@@ -114,7 +114,7 @@
 //        for(Integer i=0; i<listaDevolucion.size(); i++){
 //            listaDevolucion.get(i).setTotal(99.99);
 //            listaDevolucion.get(i).setFecha(Date.valueOf(LocalDate.of(2025,Month.MAY,15)));
-//            listaDevolucion.get(i).setUsuario(306);
+//            listaDevolucion.get(i).setUsuario(324);
 //            this.devolucionDAO.modificar(listaDevolucion.get(i));
 //        }
 //        

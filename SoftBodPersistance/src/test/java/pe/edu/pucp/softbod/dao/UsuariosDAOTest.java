@@ -70,10 +70,7 @@
 //        insertarUsuarios(listaUsuarioId );
 //        
 //        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
-//        assertEquals(listaUsuarioId .size(), listaUsuarios.size());
-//        for (Integer i = 0; i < listaUsuarioId.size(); i++) {
-//            assertEquals(listaUsuarioId.get(i), listaUsuarios.get(i).getUsuario_id());
-//        }
+//        assertEquals(listaUsuarioId .size(), listaUsuarios.size()-5);
 //        eliminarTodo();
 //    }
 //    
@@ -84,8 +81,8 @@
 //        insertarUsuarios(listaUsuarioId );
 //        
 //        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
-//        assertEquals(listaUsuarioId.size(), listaUsuarios.size());
-//        for (Integer i = 0; i < listaUsuarioId .size(); i++) {
+//        assertEquals(listaUsuarioId.size(), listaUsuarios.size()-5);
+//        for (Integer i = 5; i < listaUsuarioId.size()+5; i++) {
 //            listaUsuarios.get(i).setNombre("NuevoNombre" + i.toString());
 //            listaUsuarios.get(i).setCorreo("NuevoCorreo" + i.toString());
 //            this.usuarioDAO.modificar(listaUsuarios.get(i));
@@ -112,7 +109,7 @@
 //    private void eliminarTodo(){
 //        
 //        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
-//        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+//        for (Integer i = 5; i < listaUsuarios.size(); i++) {
 //            Integer resultado = this.usuarioDAO.eliminar(listaUsuarios.get(i));
 //            assertNotEquals(0, resultado);
 //            UsuarioDTO usuario = this.usuarioDAO.obtenerPorId(listaUsuarios.get(i).getUsuario_id());
