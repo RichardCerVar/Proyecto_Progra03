@@ -29,6 +29,7 @@ public class VentasDAOTest {
     }
     
     private void insertarVentas(ArrayList<Integer> listaVentaId){
+        //cambiar ids usuario
         VentasDTO venta= new VentasDTO();
         venta.setTotal(103.0);
         venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
@@ -103,6 +104,7 @@ public class VentasDAOTest {
         for (Integer i = 0; i < listaVentaId.size(); i++) {
             listaVentas.get(i).setMetodo_pago(Tipo_de_pago.EFECTIVO);
             listaVentas.get(i).setTotal(1000.0);
+            //cambiar id aqui
             listaVentas.get(i).setUsuario_Id(271);
             this.ventasDAO.modificar(listaVentas.get(i));
         }
