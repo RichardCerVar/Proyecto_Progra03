@@ -70,12 +70,12 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 linea = new DetalleDevolucionDTO();
-                this.linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
-                this.linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                this.linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-                this.linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-                this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                this.linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+                linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+                linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+                linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
             }
         } catch (SQLException ex) {
             System.err.println("Error al intentar obtenerPorId - " + ex);
@@ -102,12 +102,12 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
                 DetalleDevolucionDTO linea = new DetalleDevolucionDTO();
-                this.linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
-                this.linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                this.linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-                this.linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-                this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                this.linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+                linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+                linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+                linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
                 listaUsuarios.add(linea);
             }
         } catch (SQLException ex) {
