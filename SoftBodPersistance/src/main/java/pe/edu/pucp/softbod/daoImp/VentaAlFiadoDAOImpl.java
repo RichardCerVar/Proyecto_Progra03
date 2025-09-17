@@ -35,7 +35,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
                 VentasFiadasDTO ventaAlFiado = new VentasFiadasDTO();
                 ventaAlFiado.setVentaFiadaId(this.resultSet.getInt("VENTA_FIADO_ID"));
                 ventaAlFiado.setClienteId(this.resultSet.getInt("CLIENTE_ID"));
-                ventaAlFiado.setVentaId(this.resultSet.getInt("VENTA_ID"));
+                ventaAlFiado.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
                 listaVentasAlFiado.add(ventaAlFiado);
             }
         } catch (SQLException ex) {

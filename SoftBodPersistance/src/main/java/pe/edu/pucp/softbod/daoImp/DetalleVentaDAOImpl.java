@@ -26,24 +26,24 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
-        this.statement.setInt(1, this.detalleVenta.getVentaId());
-        this.statement.setInt(2, this.detalleVenta.getProductoId());
+        this.statement.setInt(1, this.detalleVenta.getVenta_Id());
+        this.statement.setInt(2, this.detalleVenta.getProducto_Id());
         this.statement.setDouble(3, this.detalleVenta.getSubtotal());
         this.statement.setDouble(4, this.detalleVenta.getCantidad());
     }
     
     @Override
     protected void incluirValorDeParametrosParaModificacion() throws SQLException { 
-        this.statement.setInt(1, this.detalleVenta.getVentaId());
-        this.statement.setInt(2, this.detalleVenta.getProductoId());
+        this.statement.setInt(1, this.detalleVenta.getVenta_Id());
+        this.statement.setInt(2, this.detalleVenta.getProducto_Id());
         this.statement.setDouble(3, this.detalleVenta.getSubtotal());
         this.statement.setDouble(4, this.detalleVenta.getCantidad());
     }
     
     @Override
     protected void incluirValorDeParametrosParaEliminacion() throws SQLException{
-        this.statement.setInt(1, this.detalleVenta.getProductoId());
-        this.statement.setInt(2, this.detalleVenta.getVentaId());
+        this.statement.setInt(1, this.detalleVenta.getProducto_Id());
+        this.statement.setInt(2, this.detalleVenta.getVenta_Id());
     }
     
     
@@ -65,8 +65,8 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 detalleVenta = new DetalleVentaDTO();
-                detalleVenta.setVentaId(this.resultSet.getInt("VENTA_ID"));
-                detalleVenta.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
                 detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
                 detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
             }
@@ -94,8 +94,8 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
                 DetalleVentaDTO detalleVenta = new DetalleVentaDTO();
-                detalleVenta.setVentaId(this.resultSet.getInt("VENTA_ID"));
-                detalleVenta.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
                 detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
                 detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
                 listaDetalleVentas.add(detalleVenta);
