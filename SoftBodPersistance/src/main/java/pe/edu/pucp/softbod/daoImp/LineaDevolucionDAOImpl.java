@@ -20,8 +20,8 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
     @Override
     protected void configurarListaDeColumnas() {
         this.listaColumnas.add(new Columna("DETALLE_ID",true,true));
-        this.listaColumnas.add(new Columna("DEVOLUCION_id",false,false));
-        this.listaColumnas.add(new Columna("PRODUCTO_id",false,false));
+        this.listaColumnas.add(new Columna("DEVOLUCION_ID",false,false));
+        this.listaColumnas.add(new Columna("PRODUCTO_ID",false,false));
         this.listaColumnas.add(new Columna("CANTIDAD",false,false));
         this.listaColumnas.add(new Columna("SUBTOTAL",false,false));
         this.listaColumnas.add(new Columna("RAZON_DEVOLUCION_ID",false,false));
@@ -30,10 +30,10 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setInt(1, this.linea.getDevolucionId());
-        this.statement.setInt(2, this.linea.getProductoId());
+//        this.statement.setInt(2, this.linea.getProductoId());
         this.statement.setDouble(3, this.linea.getCantidad());
         this.statement.setDouble(4, this.linea.getSubtotal());
-        this.statement.setInt(5, this.linea.getRazonId());
+//        this.statement.setInt(5, this.linea.getRazonId());
     }
     
     @Override

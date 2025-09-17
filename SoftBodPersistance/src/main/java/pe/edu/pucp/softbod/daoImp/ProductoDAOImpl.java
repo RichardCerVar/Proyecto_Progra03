@@ -31,7 +31,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
-        this.statement.setInt(1, this.producto.getCategoriaId());
+//        this.statement.setInt(1, this.producto.getCategoriaId());
         this.statement.setString(2, this.producto.getNombre());
         this.statement.setDouble(3, this.producto.getPrecio_unitario());
         this.statement.setString(4, this.producto.getUnidad_medida().name());  // enum -> String

@@ -23,20 +23,22 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         this.listaColumnas.add(new Columna("DEVOLUCION_ID",true,true));
         this.listaColumnas.add(new Columna("TOTAL",false,false));
         this.listaColumnas.add(new Columna("FECHA",false,false));
-        this.listaColumnas.add(new Columna("USUARIO_INT",false,false));
+        this.listaColumnas.add(new Columna("USUARIO_ID",false,false));
     }
     
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setDouble(1,this.devolucion.getTotal());
         this.statement.setDate(2,this.devolucion.getFecha());
+        this.statement.setInt(3,this.devolucion.getUsuarioId());
     }
     
     @Override
     protected void incluirValorDeParametrosParaModificacion() throws SQLException {
         this.statement.setDouble(1,this.devolucion.getTotal());
         this.statement.setDate(2, this.devolucion.getFecha());
-        this.statement.setInt(3, this.devolucion.getDevolucionId()); 
+        this.statement.setInt(3,this.devolucion.getUsuarioId());
+        this.statement.setInt(4, this.devolucion.getDevolucionId()); 
     }
 
     @Override
@@ -57,7 +59,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         try {
             this.conexion = DBManager.getInstance().getConnection();
             String sql = "SELECT DEVOLUCION_ID, TOTAL, FECHA, USUARIO_ID"
-                    + "FROM BOD_DEVOLUCION WHERE DEVOLUCION_ID = ?";
+                    + " FROM BOD_DEVOLUCION WHERE DEVOLUCION_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, devolucionId);
             this.resultSet = this.statement.executeQuery();
@@ -66,7 +68,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
                 devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
                 devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
                 devolucion.setFecha(this.resultSet.getDate("FECHA"));
-                devolucion.setUsuario(this.resultSet.getString("USUARIO_ID"));
+                devolucion.setUsuario(this.resultSet.getInt("USUARIO_ID"));
             }
         } catch (SQLException ex) {
             System.err.println("Error al intentar obtenerPorId - " + ex);
@@ -88,7 +90,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         try {
             this.conexion = DBManager.getInstance().getConnection();
             String sql = "SELECT DEVOLUCION_ID, TOTAL, FECHA, USUARIO_ID"
-                            + "FROM BOD_DEVOLUCION";
+                            + " FROM BOD_DEVOLUCION";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
@@ -96,7 +98,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
                 devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
                 devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
                 devolucion.setFecha(this.resultSet.getDate("FECHA"));
-                devolucion.setUsuario(this.resultSet.getString("USUARIO_ID"));
+                devolucion.setUsuario(this.resultSet.getInt("USUARIO_ID"));
                 listaDevoluciones.add(devolucion);
             }
         } catch (SQLException ex) {
