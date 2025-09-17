@@ -3,7 +3,6 @@ package pe.edu.pucp.softbod.dao;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.dao.UsuariosDAO;
 import pe.edu.pucp.softbod.daoImp.UsuariosDAOImpl;
 import pe.edu.pucp.softbod.model.Tipo_Usuario;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
@@ -16,7 +15,7 @@ public class UsuariosDAOTest {
         this.usuarioDAO = new UsuariosDAOImpl(); 
     }
     
-    //@Test
+    @Test
     public void testInsertar() {
         System.out.println("insertar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -49,7 +48,7 @@ public class UsuariosDAOTest {
    
     }
     
-    //@Test
+    @Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -64,7 +63,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    //@Test
+    @Test
     public void testListarTodos() {
         System.out.println("listarTodos");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -78,7 +77,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    //@Test
+    @Test
     public void testModificar() {
         System.out.println("modificar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -102,7 +101,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    //@Test
+    @Test
     public void testEliminar() {
         System.out.println("eliminar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();

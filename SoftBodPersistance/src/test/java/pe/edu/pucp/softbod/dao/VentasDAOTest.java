@@ -28,7 +28,7 @@ public class VentasDAOTest {
         eliminarTodo();
     }
     
-    private void insertarVentas(ArrayList<Integer> listaVentaId){
+    public void insertarVentas(ArrayList<Integer> listaVentaId){
         VentasDTO venta= new VentasDTO();
         venta.setTotal(103.0);
         venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
@@ -128,7 +128,7 @@ public class VentasDAOTest {
     
     
 
-    private void eliminarTodo(){ 
+    public void eliminarTodo(){ 
         ArrayList<VentasDTO> listaVentas = this.ventasDAO.listarTodos();
         for (Integer i = 0; i < listaVentas.size(); i++) {
             Integer resultado = this.ventasDAO.eliminar(listaVentas.get(i));
@@ -138,7 +138,5 @@ public class VentasDAOTest {
         }
         
     }
-    
-    
     
 }
