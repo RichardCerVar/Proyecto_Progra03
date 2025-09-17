@@ -61,6 +61,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
             String sql = "SELECT VENTA_ID, PRODUCTO_ID, SUBTOTAL, CANTIDAD FROM BOD_DETALLE_VENTA WHERE VENTA_ID = ? AND PRODUCTO_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, ventaId);
+            this.statement.setInt(2, productoId);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 detalleVenta = new DetalleVentaDTO();
