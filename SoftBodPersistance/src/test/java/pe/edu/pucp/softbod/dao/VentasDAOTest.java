@@ -22,7 +22,7 @@ public class VentasDAOTest {
 
     @Test
     public void testInsertar() {
-        System.out.println("insertar");
+        System.out.println("insertar-VentasDAOTest");
         ArrayList<Integer> listaVentaId = new ArrayList<>();
         insertarVentas(listaVentaId);        
         eliminarTodo();
@@ -60,7 +60,7 @@ public class VentasDAOTest {
 
     @Test
     public void testObtenerPorId() {
-        System.out.println("obtenerPorId");
+        System.out.println("obtenerPorId-VentasDAOTest");
         ArrayList<Integer> listaVentaId = new ArrayList<>();
         insertarVentas(listaVentaId);
         
@@ -79,7 +79,7 @@ public class VentasDAOTest {
 
     @Test
     public void testListarTodos() {
-        System.out.println("listarTodos");
+        System.out.println("listarTodos-VentasDAOTest");
         ArrayList<Integer> listaVentaId = new ArrayList<>();
         insertarVentas(listaVentaId);
         
@@ -95,7 +95,7 @@ public class VentasDAOTest {
 
     @Test
     public void testModificar() {
-        System.out.println("modificar");
+        System.out.println("modificar-VentasDAOTest");
         ArrayList<Integer> listaVentaId = new ArrayList<>();
         insertarVentas(listaVentaId);
         
@@ -122,7 +122,7 @@ public class VentasDAOTest {
 
     @Test
     public void testEliminar() {
-        System.out.println("eliminar");
+        System.out.println("eliminar-VentasDAOTest");
         ArrayList<Integer> listaVentaId = new ArrayList<>();
         insertarVentas(listaVentaId);
         eliminarTodo();
