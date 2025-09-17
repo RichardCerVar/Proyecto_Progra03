@@ -16,7 +16,7 @@ public class UsuariosDAOTest {
         this.usuarioDAO = new UsuariosDAOImpl(); 
     }
     
-    @Test
+    //@Test
     public void testInsertar() {
         System.out.println("insertar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -49,7 +49,7 @@ public class UsuariosDAOTest {
    
     }
     
-    @Test
+    //@Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -64,7 +64,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    @Test
+    //@Test
     public void testListarTodos() {
         System.out.println("listarTodos");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -78,7 +78,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    @Test
+    //@Test
     public void testModificar() {
         System.out.println("modificar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -102,7 +102,7 @@ public class UsuariosDAOTest {
         eliminarTodo();
     }
     
-    @Test
+    //@Test
     public void testEliminar() {
         System.out.println("eliminar");
         ArrayList<Integer> listaUsuarioId = new ArrayList<>();

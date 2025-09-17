@@ -1,35 +1,33 @@
 package pe.edu.pucp.softbod.model;
 
 public class DetalleVentaDTO {
-    private Integer ventaId;
-    private Integer productoId;
+    private Integer venta_Id;
+    private Integer producto_Id;
     private Double subtotal;
     private Double cantidad;
     
     public DetalleVentaDTO() {}
 
-    public DetalleVentaDTO(Integer ventaId, Integer productoId, Double subtotal, Double cantidad) {
-        this.ventaId = ventaId;
-        this.productoId = productoId;
+    public DetalleVentaDTO(Integer venta_Id, Integer producto_Id, Double subtotal, Double cantidad) {
+        this.venta_Id = venta_Id;
+        this.producto_Id = producto_Id;
         this.subtotal = subtotal;
         this.cantidad = cantidad;
     }
 
-    public Integer getVentaId() {
-        return ventaId;
+    public void setVenta_Id(Integer venta_Id) {
+        this.venta_Id = venta_Id;
     }
 
-    public void setVentaId(Integer ventaId) {
-        this.ventaId = ventaId;
+
+    public Integer getProducto_Id() {
+        return producto_Id;
     }
 
-    public Integer getProductoId() {
-        return productoId;
+    public void setProducto_Id(Integer producto_Id) {
+        this.producto_Id = producto_Id;
     }
-
-    public void setProductoId(Integer productoId) {
-        this.productoId = productoId;
-    }
+    
 
     public Double getSubtotal() {
         return subtotal;
@@ -46,4 +44,11 @@ public class DetalleVentaDTO {
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
     }
+    public Integer getVenta_Id() {
+        return venta_Id;
+    }
+
+
 }
+
+

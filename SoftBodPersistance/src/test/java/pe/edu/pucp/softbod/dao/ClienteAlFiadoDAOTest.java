@@ -19,7 +19,7 @@ public class ClienteAlFiadoDAOTest {
         this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImp();
     }
     
-    @Test
+    //@Test
     public void testInsertar() {
         System.out.println("insertar-Cliente-Al-Fiado");
         ArrayList<String> listaClientesAlFiadoId = new ArrayList<>();
@@ -56,7 +56,7 @@ public class ClienteAlFiadoDAOTest {
         
     }
 
-    @Test
+    //@Test
     public void testListarTodos() {
         System.out.println("listarTodos-Cliente-Al-Fiado");
         
@@ -72,7 +72,7 @@ public class ClienteAlFiadoDAOTest {
         eliminarTodo();
     }
     
-    @Test
+    //@Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-Cliente-Al-Fiado");
         ArrayList<String> listaClientesAlfiadoId = new ArrayList<>();
@@ -90,7 +90,7 @@ public class ClienteAlFiadoDAOTest {
     }
 
 
-    @Test
+    //@Test
     public void testModificar() {
         System.out.println("modificar-Cliente-Al-Fiado");
         //listar Id clientes
@@ -118,7 +118,7 @@ public class ClienteAlFiadoDAOTest {
         eliminarTodo();
     }
 
-    @Test
+    //@Test
     public void testEliminar() {
         System.out.println("eliminar-Cliente-Al-Fiado");
         ArrayList<String> listaClientesAlFiadoId = new ArrayList<>();

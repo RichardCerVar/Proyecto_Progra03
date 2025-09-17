@@ -14,8 +14,8 @@ public class VentasFiadasDTO extends VentasDTO{
     }
 
     public VentasFiadasDTO(Integer ventaFiadaId, Integer clienteId, Integer ventaId, Double total,
-                Tipo_de_pago metodo_pago, Date fecha, String usuario) {
-        super(ventaId, total, metodo_pago, fecha, usuario);
+                Tipo_de_pago metodo_pago, Date fecha,Integer  usuario_id) {
+        super(ventaId, total, metodo_pago, fecha, usuario_id);
         this.ventaFiadaId = ventaFiadaId;
         this.ventaId = ventaId;
         this.clienteId = clienteId;
