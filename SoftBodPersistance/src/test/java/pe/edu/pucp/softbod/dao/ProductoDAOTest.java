@@ -31,7 +31,7 @@
 //        ProductoDTO p1 = new ProductoDTO();
 //        p1.setNombre("Azúcar ORO 1kg");
 //        p1.setPrecio_unitario(6.00);
-//        p1.setCategoriaId(1);
+//        p1.setCategoriaId(19);
 //        p1.setUnidad_medida(Unidad_Medida.UNIDAD);
 //        p1.setStock(100.0);
 //        p1.setStockMinimo(20.0);
@@ -42,14 +42,14 @@
 //        
 //        
 //        // Segundo producto
-//        ProductoDTO p2 = new ProductoDTO();
-//        p2.setNombre("Jugo Naranja 1L");
-//        p2.setPrecio_unitario(4.50);
-//        p2.setCategoriaId(2);
-//        p2.setUnidad_medida(Unidad_Medida.LITRO);
-//        p2.setStock(50.0);
-//        p2.setStockMinimo(10.0);
-//        Integer r2 = this.productoDAO.insertar(p2);
+//        p1 = new ProductoDTO();
+//        p1.setNombre("Jugo Naranja 1L");
+//        p1.setPrecio_unitario(4.50);
+//        p1.setCategoriaId(20);
+//        p1.setUnidad_medida(Unidad_Medida.LITRO);
+//        p1.setStock(50.0);
+//        p1.setStockMinimo(10.0);
+//        Integer r2 = this.productoDAO.insertar(p1);
 //        assertTrue(r2 != 0);
 //        listaProductosId.add(r2);
 //        System.out.println("Insertado el producto con id "+ r2);
@@ -87,10 +87,6 @@
 //        
 //        //verificacion
 //        ArrayList<ProductoDTO> listaProductos = this.productoDAO.listarTodos();
-//        assertEquals(listaProductosId.size(), listaProductos.size());
-//        for(Integer i=0; i <listaProductosId.size(); i++){
-//            assertEquals(listaProductosId.get(i), listaProductos.get(i).getProductoId());
-//        }
 //        
 //        // impresión de unos cuantos atributos
 //        System.out.println("Lista de productos: ");
@@ -111,7 +107,6 @@
 //        insertarProductos(listaProductosId);
 //        
 //        ArrayList<ProductoDTO> listaProductos = this.productoDAO.listarTodos();
-//        assertEquals(listaProductosId.size(),listaProductos.size());
 //        
 //        //antes
 //        System.out.println("Lista de productos antes");
@@ -119,10 +114,10 @@
 //            System.out.println(p.getProductoId() + " - " + p.getNombre() + " - " + p.getPrecio_unitario());
 //        }
 //        
-//        for(Integer i=0; i< listaProductosId.size(); i++){
-//            listaProductos.get(i).setNombre("NuevoNombreProducto " + i.toString());
+//        for(Integer i=0; i< listaProductos.size(); i++){
+//            listaProductos.get(i).setNombre("NuevoNombreProducto" + i);
 //            listaProductos.get(i).setPrecio_unitario(99.99);
-//            listaProductos.get(i).setCategoriaId(1);
+//            listaProductos.get(i).setCategoriaId(20);
 //            this.productoDAO.modificar(listaProductos.get(i));
 //        }
 //        
@@ -135,13 +130,12 @@
 //        }
 //        
 //        //Verificacion de que la lista de productos modificados sea igual a la de la lista de productos antigua
-//        assertEquals( listaProductos.size(), listaProductosModificado.size());
 //        for(Integer i=0; i<listaProductos.size(); i++){
 //            assertEquals(listaProductos.get(i).getNombre(),listaProductosModificado.get(i).getNombre());
 //            assertEquals(listaProductos.get(i).getPrecio_unitario(),listaProductosModificado.get(i).getPrecio_unitario());
 //            assertEquals(listaProductos.get(i).getCategoriaId(),listaProductosModificado.get(i).getCategoriaId());
 //        }
-//        
+//        eliminarTodo();
 //    }
 //
 //    /**

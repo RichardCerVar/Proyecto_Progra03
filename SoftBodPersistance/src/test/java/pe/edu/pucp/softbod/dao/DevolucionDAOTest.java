@@ -22,7 +22,7 @@
 //    /**
 //     * Test of insertar method, of class DevolucionDAO.
 //     */
-//    //@Test
+//    @Test
 //    public void testInsertar() {
 //        System.out.println("----Insertar----");
 //        ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -34,7 +34,7 @@
 //        DevolucionDTO devolucion = new DevolucionDTO();
 //        devolucion.setTotal(50.00);
 //        devolucion.setFecha(new Date(System.currentTimeMillis()));
-//        devolucion.setUsuario(249);
+//        devolucion.setUsuario(305);
 //        Integer resultado = this.devolucionDAO.insertar(devolucion);
 //        listaDevolucionesId.add(resultado);
 //        System.out.println("Insertando la devolucion con id " + resultado);
@@ -42,7 +42,7 @@
 //        devolucion = new DevolucionDTO();
 //        devolucion.setTotal(80.00);
 //        devolucion.setFecha(new Date(System.currentTimeMillis()));
-//        devolucion.setUsuario(250);
+//        devolucion.setUsuario(306);
 //        resultado = this.devolucionDAO.insertar(devolucion);
 //        listaDevolucionesId.add(resultado);
 //        System.out.println("Insertando la devolucion con id " + resultado);
@@ -51,7 +51,7 @@
 //    /**
 //     * Test of obtenerPorId method, of class DevolucionDAO.
 //     */
-//    //@Test
+//    @Test
 //    public void testObtenerPorId() {
 //        System.out.println("----Obtener por Id----");
 //        ArrayList<Integer> listaDevolucionesId = new ArrayList<>();
@@ -71,7 +71,7 @@
 //    /**
 //     * Test of listarTodos method, of class DevolucionDAO.
 //     */
-//    //@Test
+//    @Test
 //    public void testListarTodos() {
 //        System.out.println("----Listar todos----");
 //        ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -96,7 +96,7 @@
 //    /**
 //     * Test of modificar method, of class DevolucionDAO.
 //     */
-//    //@Test
+//    @Test
 //    public void testModificar() {
 //        System.out.println("----Modificar----");
 //        ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -114,7 +114,7 @@
 //        for(Integer i=0; i<listaDevolucion.size(); i++){
 //            listaDevolucion.get(i).setTotal(99.99);
 //            listaDevolucion.get(i).setFecha(Date.valueOf(LocalDate.of(2025,Month.MAY,15)));
-//            listaDevolucion.get(i).setUsuario(250);
+//            listaDevolucion.get(i).setUsuario(306);
 //            this.devolucionDAO.modificar(listaDevolucion.get(i));
 //        }
 //        
@@ -141,7 +141,7 @@
 //    /**
 //     * Test of eliminar method, of class DevolucionDAO.
 //     */
-//    //@Test
+//    @Test
 //    public void testEliminar() {
 //        System.out.println("----Eliminar----");
 //        ArrayList<Integer> listaDevolucionesId= new ArrayList<>();

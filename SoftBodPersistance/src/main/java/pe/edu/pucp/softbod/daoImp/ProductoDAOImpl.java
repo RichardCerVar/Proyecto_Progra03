@@ -31,7 +31,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
-//        this.statement.setInt(1, this.producto.getCategoriaId());
+        this.statement.setInt(1, this.producto.getCategoriaId());
         this.statement.setString(2, this.producto.getNombre());
         this.statement.setDouble(3, this.producto.getPrecio_unitario());
         this.statement.setString(4, this.producto.getUnidad_medida().name());  // enum -> String
@@ -67,19 +67,19 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         try {
             this.conexion = DBManager.getInstance().getConnection();
             String sql = "SELECT PRODUCTO_ID, CATEGORIA_ID, NOMBRE, PRECIO_UNITARIO, UNIDAD_MEDIDA, "
-                    + "STOCK, STOCK_MINIMO FROM BOD_USUARIO WHERE PRODUCTO_ID = ?";
+                    + "STOCK, STOCK_MINIMO FROM BOD_PRODUCTO WHERE PRODUCTO_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, productoId);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 producto = new ProductoDTO();
-                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
                 producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
                 producto.setNombre(this.resultSet.getString("NOMBRE"));
                 producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
                 producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
                 producto.setStock(this.resultSet.getDouble("STOCK"));
                 producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
+                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
             }
         } catch (SQLException ex) {
             System.err.println("Error al intentar obtenerPorId - " + ex);
@@ -101,18 +101,18 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         try {
             this.conexion = DBManager.getInstance().getConnection();
             String sql = "SELECT PRODUCTO_ID, CATEGORIA_ID, NOMBRE, PRECIO_UNITARIO, UNIDAD_MEDIDA, "
-                    + "STOCK, STOCK_MINIMO FROM BOD_USUARIO";
+                    + "STOCK, STOCK_MINIMO FROM BOD_PRODUCTO";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 ProductoDTO producto = new ProductoDTO();
-                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
                 producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
                 producto.setNombre(this.resultSet.getString("NOMBRE"));
                 producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
                 producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
                 producto.setStock(this.resultSet.getDouble("STOCK"));
                 producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
+                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
                 listaProductos.add(producto);
             }
         } catch (SQLException ex) {
