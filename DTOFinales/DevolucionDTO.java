@@ -1,0 +1,56 @@
+package pe.edu.pucp.softbod.model;
+
+import java.sql.Date;
+
+public class DevolucionDTO {
+    private Integer devolucionId;
+    private Double total;
+    private Date fecha;
+    private String usuario;
+    
+    public DevolucionDTO() {
+        devolucionId = null;
+        total = null;
+        fecha = null;
+        usuario = null;
+    }
+
+    public DevolucionDTO(Integer devolucionId, Double total, Date fecha, String usuario) {
+        this.devolucionId = devolucionId;
+        this.total = total;
+        this.fecha = fecha;
+        this.usuario = usuario;
+    }
+
+    public Integer getDevolucionId() {
+        return devolucionId;
+    }
+
+    public void setDevolucionId(Integer devolucionId) {
+        this.devolucionId = devolucionId;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+}
