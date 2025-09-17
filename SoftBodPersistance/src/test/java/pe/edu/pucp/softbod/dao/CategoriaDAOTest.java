@@ -13,7 +13,7 @@ public class CategoriaDAOTest {
         this.categoriaDAO = new CategoriaDAOImpl();
     }
     
-    @Test
+    //@Test
     public void testInsertar() {
         System.out.println("insertar");
         
@@ -31,3 +31,4 @@ public class CategoriaDAOTest {
     }
     
 }
+

@@ -7,7 +7,7 @@ import pe.edu.pucp.softbod.model.DetalleVentaDTO;
 public interface DetalleVentaDAO {
     public Integer insertar(DetalleVentaDTO detalle);
 
-    public DetalleVentaDTO obtenerPorId(Integer ventaId, Integer productoId);
+    public DetalleVentaDTO obtenerPorId(Integer venta_Id, Integer producto_Id);
     
     public ArrayList<DetalleVentaDTO> listarTodos();
 

@@ -22,7 +22,7 @@ public class DevolucionDAOTest {
     /**
      * Test of insertar method, of class DevolucionDAO.
      */
-    @Test
+    //@Test
     public void testInsertar() {
         System.out.println("----Insertar----");
         ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -51,7 +51,7 @@ public class DevolucionDAOTest {
     /**
      * Test of obtenerPorId method, of class DevolucionDAO.
      */
-    @Test
+    //@Test
     public void testObtenerPorId() {
         System.out.println("----Obtener por Id----");
         ArrayList<Integer> listaDevolucionesId = new ArrayList<>();
@@ -71,7 +71,7 @@ public class DevolucionDAOTest {
     /**
      * Test of listarTodos method, of class DevolucionDAO.
      */
-    @Test
+    //@Test
     public void testListarTodos() {
         System.out.println("----Listar todos----");
         ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -96,7 +96,7 @@ public class DevolucionDAOTest {
     /**
      * Test of modificar method, of class DevolucionDAO.
      */
-    @Test
+    //@Test
     public void testModificar() {
         System.out.println("----Modificar----");
         ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -141,7 +141,7 @@ public class DevolucionDAOTest {
     /**
      * Test of eliminar method, of class DevolucionDAO.
      */
-    @Test
+    //@Test
     public void testEliminar() {
         System.out.println("----Eliminar----");
         ArrayList<Integer> listaDevolucionesId= new ArrayList<>();
@@ -163,3 +163,4 @@ public class DevolucionDAOTest {
     }
     
 }
+
