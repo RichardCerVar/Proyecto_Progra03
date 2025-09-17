@@ -1,5 +1,5 @@
-package pe.edu.pucp.softbod.dao;
-
+//package pe.edu.pucp.softbod.dao;
+//
 //import java.util.ArrayList;
 //import org.junit.jupiter.api.Test;
 //import static org.junit.jupiter.api.Assertions.*;
@@ -38,5 +38,5 @@ package pe.edu.pucp.softbod.dao;
 //            assertNull(usuario);
 //        }
 //    }
-    
+//    
 //}

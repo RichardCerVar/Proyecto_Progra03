@@ -20,8 +20,8 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
     @Override
     protected void configurarListaDeColumnas() {
         this.listaColumnas.add(new Columna("DETALLE_ID",true,true));
-        this.listaColumnas.add(new Columna("DEVOLUCION_id",false,false));
-        this.listaColumnas.add(new Columna("PRODUCTO_id",false,false));
+        this.listaColumnas.add(new Columna("DEVOLUCION_ID",false,false));
+        this.listaColumnas.add(new Columna("PRODUCTO_ID",false,false));
         this.listaColumnas.add(new Columna("CANTIDAD",false,false));
         this.listaColumnas.add(new Columna("SUBTOTAL",false,false));
         this.listaColumnas.add(new Columna("RAZON_DEVOLUCION_ID",false,false));
@@ -30,10 +30,10 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setInt(1, this.linea.getDevolucionId());
-        this.statement.setInt(2, this.linea.getProductoId());
+//        this.statement.setInt(2, this.linea.getProductoId());
         this.statement.setDouble(3, this.linea.getCantidad());
         this.statement.setDouble(4, this.linea.getSubtotal());
-        this.statement.setInt(5, this.linea.getRazonId());
+//        this.statement.setInt(5, this.linea.getRazonId());
     }
     
     @Override
@@ -70,12 +70,12 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 linea = new DetalleDevolucionDTO();
-                this.linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
-                this.linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                this.linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-                this.linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-                this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                this.linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+                linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+                linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+                linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
             }
         } catch (SQLException ex) {
             System.err.println("Error al intentar obtenerPorId - " + ex);
@@ -102,12 +102,12 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
                 DetalleDevolucionDTO linea = new DetalleDevolucionDTO();
-                this.linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
-                this.linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                this.linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-                this.linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-                this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                this.linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+                linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+                linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+                linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+                linea.setRazonId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
                 listaUsuarios.add(linea);
             }
         } catch (SQLException ex) {

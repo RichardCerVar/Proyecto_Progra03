@@ -6,20 +6,20 @@ public class DevolucionDTO {
     private Integer devolucionId;
     private Double total;
     private Date fecha;
-    private String usuario;
+    private Integer usuarioId;
     
     public DevolucionDTO() {
         devolucionId = null;
         total = null;
         fecha = null;
-        usuario = null;
+        usuarioId = null;
     }
 
-    public DevolucionDTO(Integer devolucionId, Double total, Date fecha, String usuario) {
+    public DevolucionDTO(Integer devolucionId, Double total, Date fecha, Integer usuarioId) {
         this.devolucionId = devolucionId;
         this.total = total;
         this.fecha = fecha;
-        this.usuario = usuario;
+        this.usuarioId = usuarioId;
     }
 
     public Integer getDevolucionId() {
@@ -46,11 +46,11 @@ public class DevolucionDTO {
         this.fecha = fecha;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public Integer getUsuarioId() {
+        return usuarioId;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Integer usuarioId) {
+        this.usuarioId = usuarioId;
     }
 }
