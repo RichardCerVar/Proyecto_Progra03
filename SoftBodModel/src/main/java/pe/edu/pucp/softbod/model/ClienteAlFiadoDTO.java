@@ -1,6 +1,6 @@
 package pe.edu.pucp.softbod.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class ClienteAlFiadoDTO {
     private Integer clienteId;
@@ -17,20 +17,13 @@ public class ClienteAlFiadoDTO {
         fecha_de_pago = null;
     }
 
-    public ClienteAlFiadoDTO(int clienteId,String alias, String nombre, String telefono, Date fecha_de_pago) {
+    public ClienteAlFiadoDTO(Integer clienteId,String alias, String nombre, 
+                                String telefono, Date fecha_de_pago) {
         this.clienteId = clienteId;
         this.alias = alias;
         this.nombre = nombre;
         this.telefono = telefono;
         this.fecha_de_pago = fecha_de_pago;
-    }
-
-    public Integer getClienteId() {
-        return clienteId;
-    }
-
-    public void setClienteId(Integer clienteId) {
-        this.clienteId = clienteId;
     }
 
     public String getAlias() {
@@ -65,4 +58,11 @@ public class ClienteAlFiadoDTO {
         this.fecha_de_pago = fecha_de_pago;
     }
 
+    public Integer getClienteId() {
+        return clienteId;
+    }
+
+    public void setClienteId(Integer clienteId) {
+        this.clienteId = clienteId;
+    }
 }
