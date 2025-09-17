@@ -27,7 +27,7 @@ public class UsuariosDAOTest {
     private void insertarUsuarios(ArrayList<Integer> listaUsuarioId ) {
         UsuarioDTO usuario = new UsuarioDTO();
         
-        usuario.setUsuario("cachin246");
+        usuario.setUsuario("cachin30");
         usuario.setTipo_usuario(Tipo_Usuario.OPERARIO);
         usuario.setNombre("Carlos Alcantara");
         usuario.setCorreo("carlos.24@hotmail.com");
@@ -37,7 +37,7 @@ public class UsuariosDAOTest {
         assertTrue(resultado != 0);
         listaUsuarioId.add(resultado);
     
-        usuario.setUsuario("ricardo126");
+        usuario.setUsuario("ricardo30");
         usuario.setTipo_usuario(Tipo_Usuario.ADMINISTRADOR);
         usuario.setNombre("Ricardo Moran");
         usuario.setCorreo("ricardo.12@hotmail.com");
