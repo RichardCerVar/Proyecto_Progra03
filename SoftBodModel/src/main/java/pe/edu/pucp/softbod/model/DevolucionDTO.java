@@ -1,6 +1,6 @@
 package pe.edu.pucp.softbod.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class DevolucionDTO {
     private Integer devolucionId;

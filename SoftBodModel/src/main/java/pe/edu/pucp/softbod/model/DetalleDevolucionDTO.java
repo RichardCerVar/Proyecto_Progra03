@@ -1,25 +1,38 @@
 package pe.edu.pucp.softbod.model;
 
 public class DetalleDevolucionDTO {
+    private Integer detalleId;
     private Integer devolucionId;
     private Integer productoId;
     private Double subtotal;
     private Double cantidad;
-    private Razon_Devolucion razon;
+    private Integer razonId;
     
     public DetalleDevolucionDTO() {
+        detalleId = null;
         devolucionId = null;
         productoId = null;
         subtotal = null;
         cantidad = null;
+        razonId = null;
     }
 
-    public DetalleDevolucionDTO(Integer devolucionId, Integer productoId, Double subtotal, Double cantidad, Razon_Devolucion razon) {
+    public DetalleDevolucionDTO(Integer detalleId, Integer devolucionId, 
+            Integer productoId, Double subtotal, Double cantidad, Integer razonId) {
+        this.detalleId = detalleId;
         this.devolucionId = devolucionId;
         this.productoId = productoId;
         this.subtotal = subtotal;
         this.cantidad = cantidad;
-        this.razon = razon;
+        this.razonId = razonId;
+    }
+    
+    public Integer getDetalleId() {
+        return detalleId;
+    }
+
+    public void setDetalleId(Integer detalleId) {
+        this.detalleId = detalleId;
     }
 
     public Integer getDevolucionId() {
@@ -54,11 +67,12 @@ public class DetalleDevolucionDTO {
         this.cantidad = cantidad;
     }
 
-    public Razon_Devolucion getRazon() {
-        return razon;
+    public Integer getRazonId() {
+        return razonId;
     }
 
-    public void setRazon(Razon_Devolucion razon) {
-        this.razon = razon;
+    public void setRazonId(Integer razonId) {
+        this.razonId = razonId;
     }
+
 }
