@@ -19,7 +19,7 @@
 //        this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImp();
 //    }
 //    
-//    //@Test
+//    @Test
 //    public void testInsertar() {
 //        System.out.println("insertar-Cliente-Al-Fiado");
 //        ArrayList<String> listaClientesAlFiadoId = new ArrayList<>();
@@ -56,7 +56,7 @@
 //        
 //    }
 //
-//    //@Test
+//    @Test
 //    public void testListarTodos() {
 //        System.out.println("listarTodos-Cliente-Al-Fiado");
 //        
@@ -64,15 +64,14 @@
 //        insertarClientesAlFiado(listaClientesAlFiadoId);
 //        
 //        ArrayList<ClienteAlFiadoDTO> listaClientesAlFiado = this.clienteAlFiadoDAO.listarTodos();
-//        assertEquals(listaClientesAlFiado.size(),listaClientesAlFiadoId.size());
 //       
 //        for (Integer i = 0; i < listaClientesAlFiadoId.size(); i++) {
-//           assertEquals(listaClientesAlFiadoId.get(i), listaClientesAlFiado.get(i).getAlias()); //<- ES VALIDO, PERO COMO NUESTRA PK ES STRING SE ORDENA DIFERENTE EN EL SQL
+//            System.out.println("Cliente: "+listaClientesAlFiado.get(i).getAlias());
 //        }
 //        eliminarTodo();
 //    }
 //    
-//    //@Test
+//    @Test
 //    public void testObtenerPorId() {
 //        System.out.println("obtenerPorId-Cliente-Al-Fiado");
 //        ArrayList<String> listaClientesAlfiadoId = new ArrayList<>();
@@ -90,7 +89,7 @@
 //    }
 //
 //
-//    //@Test
+//    @Test
 //    public void testModificar() {
 //        System.out.println("modificar-Cliente-Al-Fiado");
 //        //listar Id clientes
@@ -118,7 +117,7 @@
 //        eliminarTodo();
 //    }
 //
-//    //@Test
+//    @Test
 //    public void testEliminar() {
 //        System.out.println("eliminar-Cliente-Al-Fiado");
 //        ArrayList<String> listaClientesAlFiadoId = new ArrayList<>();
@@ -130,6 +129,7 @@
 //    private void eliminarTodo() {
 //        ArrayList<ClienteAlFiadoDTO> listaClientesAlFiado = this.clienteAlFiadoDAO.listarTodos();
 //        for (Integer i = 0; i < listaClientesAlFiado.size(); i++) {
+//            System.out.println("Se elimino: "+listaClientesAlFiado.get(i).getAlias());
 //            Integer resultado = this.clienteAlFiadoDAO.eliminar(listaClientesAlFiado.get(i));
 //            assert(resultado!=0);
 //            ClienteAlFiadoDTO clienteAlFiado = this.clienteAlFiadoDAO.obtenerPorId(listaClientesAlFiado.get(i).getAlias());

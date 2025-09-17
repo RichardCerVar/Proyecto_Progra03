@@ -13,21 +13,21 @@
 //        this.categoriaDAO = new CategoriaDAOImpl();
 //    }
 //    
-//    //@Test
+//    @Test
 //    public void testInsertar() {
 //        System.out.println("insertar");
 //        
 //        CategoriaDTO categoria = new CategoriaDTO();
 //        
-//        categoria.setDescripcion("BEBIDAS");
+//        categoria.setDescripcion("LICORES");
 //        Integer resultado = this.categoriaDAO.insertar(categoria);
 //        assertTrue(resultado != 0);
-//        categoria = new CategoriaDTO();
 //        
+//        System.out.println(resultado);
+//        categoria = new CategoriaDTO();
 //        categoria.setCategoriaId(resultado);
 //        resultado = this.categoriaDAO.eliminar(categoria);
-//        assertTrue(resultado == 0);
-//       
+//        assertTrue(resultado != 0);
 //    }
 //    
 //}

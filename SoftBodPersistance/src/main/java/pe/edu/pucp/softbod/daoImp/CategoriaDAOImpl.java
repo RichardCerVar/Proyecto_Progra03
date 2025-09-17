@@ -12,6 +12,7 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     public CategoriaDAOImpl() {
         super("BOD_CATEGORIA");
         this.categoria = null;
+        this.retornarLlavePrimaria = true;
     }
     
     @Override

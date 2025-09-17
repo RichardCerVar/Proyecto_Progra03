@@ -19,7 +19,7 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
     
     @Override
     protected void configurarListaDeColumnas() {
-        this.listaColumnas.add(new Columna("DETALLE_ID",true,true));
+        this.listaColumnas.add(new Columna("DETALLE_DEVOLUCION_ID",true,true));
         this.listaColumnas.add(new Columna("DEVOLUCION_ID",false,false));
         this.listaColumnas.add(new Columna("PRODUCTO_ID",false,false));
         this.listaColumnas.add(new Columna("CANTIDAD",false,false));
@@ -63,14 +63,14 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
         DetalleDevolucionDTO linea = null;
         try {
             this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT DETALLE_ID, DEVOLUCION_ID, PRODUCTO_ID, CANTIDAD, SUBTOTAL, "
+            String sql = "SELECT DETALLE_DEVOLUCION_ID, DEVOLUCION_ID, PRODUCTO_ID, CANTIDAD, SUBTOTAL, "
                     + "RAZON_DEVOLUCION_ID FROM BOD_DETALLE_DEVOLUCION WHERE USUARIO_ID = ?";
             this.statement = this.conexion.prepareCall(sql);
             this.statement.setInt(1, lineaId);
             this.resultSet = this.statement.executeQuery();
             if (this.resultSet.next()) {
                 linea = new DetalleDevolucionDTO();
-                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_DEVOLUCION_ID"));
                 linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
                 linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
                 linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
@@ -96,13 +96,13 @@ public class LineaDevolucionDAOImpl extends DAOImplBase implements LineaDevoluci
         ArrayList<DetalleDevolucionDTO> listaUsuarios = new ArrayList<>();
         try {
             this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT DETALLE_ID, DEVOLUCION_ID, PRODUCTO_ID, CANTIDAD, SUBTOTAL, "
+            String sql = "SELECT DETALLE_DEVOLUCION_ID, DEVOLUCION_ID, PRODUCTO_ID, CANTIDAD, SUBTOTAL, "
                     + "RAZON_DEVOLUCION_ID FROM BOD_DETALLE_DEVOLUCION";
             this.statement = this.conexion.prepareCall(sql);
             this.resultSet = this.statement.executeQuery();
             while (this.resultSet.next()) {
                 DetalleDevolucionDTO linea = new DetalleDevolucionDTO();
-                linea.setDetalleId(this.resultSet.getInt("DETALLE_ID"));
+                linea.setDetalleId(this.resultSet.getInt("DETALLE_DEVOLUCION_ID"));
                 linea.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
                 linea.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
                 linea.setCantidad(this.resultSet.getDouble("CANTIDAD"));
