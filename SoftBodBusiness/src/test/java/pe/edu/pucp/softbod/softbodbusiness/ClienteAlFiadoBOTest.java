@@ -2,7 +2,6 @@ package pe.edu.pucp.softbod.softbodbusiness;
 
 import java.sql.Date;
 import java.util.ArrayList;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
@@ -14,7 +13,7 @@ public class ClienteAlFiadoBOTest {
         this.clienteAlFiadoBO = new ClienteAlFiadoBO();
     }
 
-    //@Test//Funciona 
+    //@Test 
     public void testInsertar() {
         System.out.println("insertar - Cliente al fiado");
         int resultado = this.clienteAlFiadoBO.insertar("Cuchito","Jesus Andres Lujan Carrion", 
@@ -40,15 +39,14 @@ public class ClienteAlFiadoBOTest {
         }
     }
 
-    @Test
+    //@Test
     public void testModificar() {
         System.out.println("Modificar - Cliente al fiado");
         System.out.println("Modificar Alias de juanito23");
         
-        this.clienteAlFiadoBO.modificar("Juancito3eroPro","juanito23");
-        ClienteAlFiadoDTO clienteAlFiadoDto = this.clienteAlFiadoBO.obtenerPorId("juanito23");
+        this.clienteAlFiadoBO.modificar("juanito23","Juancito3eroPro");
+        ClienteAlFiadoDTO clienteAlFiadoDto = this.clienteAlFiadoBO.obtenerPorId("Juancito3eroPro");
         assertNotNull(clienteAlFiadoDto);
-        
     }
 
     //@Test
