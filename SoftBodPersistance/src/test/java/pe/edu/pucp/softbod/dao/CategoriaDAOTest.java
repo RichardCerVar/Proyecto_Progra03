@@ -18,7 +18,6 @@
 //        System.out.println("insertar-CategoriaDAOTest");
 //        
 //        CategoriaDTO categoria = new CategoriaDTO();
-//        
 //        categoria.setDescripcion("LICORES");
 //        Integer resultado = this.categoriaDAO.insertar(categoria);
 //        assertTrue(resultado != 0);
@@ -31,4 +30,4 @@
 //    }
 //    
 //}
-
+//

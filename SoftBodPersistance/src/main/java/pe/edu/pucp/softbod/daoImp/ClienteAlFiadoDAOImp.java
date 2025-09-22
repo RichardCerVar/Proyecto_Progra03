@@ -104,5 +104,4 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.clienteAlFiado = clienteAlFiado;
         return super.eliminar();
     }
-
 }

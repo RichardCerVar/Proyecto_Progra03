@@ -1,10 +1,8 @@
 package pe.edu.pucp.softbod.daoImp;
-
+//revisar
 import java.sql.SQLException;
-import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.DetalleVentaDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.db.DBManager;
 import pe.edu.pucp.softbod.model.DetalleVentaDTO;
 
 public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
@@ -32,21 +30,44 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
         this.statement.setDouble(4, this.detalleVenta.getCantidad());
     }
     
-    @Override
-    protected void incluirValorDeParametrosParaModificacion() throws SQLException { 
-        this.statement.setInt(1, this.detalleVenta.getVenta_Id());
-        this.statement.setInt(2, this.detalleVenta.getProducto_Id());
-        this.statement.setDouble(3, this.detalleVenta.getSubtotal());
-        this.statement.setDouble(4, this.detalleVenta.getCantidad());
-    }
-    
+//    @Override
+//    protected void incluirValorDeParametrosParaModificacion() throws SQLException { 
+//        this.statement.setInt(1, this.detalleVenta.getVenta_Id());
+//        this.statement.setInt(2, this.detalleVenta.getProducto_Id());
+//        this.statement.setDouble(3, this.detalleVenta.getSubtotal());
+//        this.statement.setDouble(4, this.detalleVenta.getCantidad());
+//    }
+//    
     @Override
     protected void incluirValorDeParametrosParaEliminacion() throws SQLException{
         this.statement.setInt(1, this.detalleVenta.getProducto_Id());
         this.statement.setInt(2, this.detalleVenta.getVenta_Id());
     }
     
+//    @Override
+//    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+//        this.statement.setInt(1, this.detalleVenta.getVenta_Id());
+//    }
     
+//    @Override
+//    protected void instanciarObjetoDelResultSet() throws SQLException {
+//        this.detalleVenta = new DetalleVentaDTO();
+//        this.detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+//        this.detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
+//        this.detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+//        this.detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+//    }
+    
+//    @Override
+//    protected void limpiarObjetoDelResultSet() {
+//        this.detalleVenta = null;
+//    }
+    
+//    @Override
+//    protected void agregarObjetoALaLista(List lista) throws SQLException{
+//        this.instanciarObjetoDelResultSet();
+//        lista.add(this.detalleVenta);
+//    }
     
     @Override
     public Integer insertar(DetalleVentaDTO detalleVenta) {
@@ -54,71 +75,71 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
         return super.insertar();
     }
 
-    @Override
-    public DetalleVentaDTO obtenerPorId(Integer ventaId, Integer productoId) {
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT VENTA_ID, PRODUCTO_ID, SUBTOTAL, CANTIDAD FROM BOD_DETALLE_VENTA WHERE VENTA_ID = ? AND PRODUCTO_ID = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setInt(1, ventaId);
-            this.statement.setInt(2, productoId);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                detalleVenta = new DetalleVentaDTO();
-                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
-                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
-                detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return detalleVenta;
-    }
+//    @Override
+//    public DetalleVentaDTO obtenerPorId(Integer ventaId, Integer productoId) {
+//        try {
+//            this.conexion = DBManager.getInstance().getConnection();
+//            String sql = "SELECT VENTA_ID, PRODUCTO_ID, SUBTOTAL, CANTIDAD FROM BOD_DETALLE_VENTA WHERE VENTA_ID = ? AND PRODUCTO_ID = ?";
+//            this.statement = this.conexion.prepareCall(sql);
+//            this.statement.setInt(1, ventaId);
+//            this.statement.setInt(2, productoId);
+//            this.resultSet = this.statement.executeQuery();
+//            if (this.resultSet.next()) {
+//                detalleVenta = new DetalleVentaDTO();
+//                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+//                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
+//                detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+//                detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+//            }
+//        } catch (SQLException ex) {
+//            System.err.println("Error al intentar obtenerPorId - " + ex);
+//        } finally {
+//            try {
+//                if (this.conexion != null) {
+//                    this.conexion.close();
+//                }
+//            } catch (SQLException ex) {
+//                System.err.println("Error al cerrar la conexión - " + ex);
+//            }
+//        }
+//        return detalleVenta;
+//    }
 
-    @Override
-    public ArrayList<DetalleVentaDTO> listarTodos() {
-        ArrayList<DetalleVentaDTO> listaDetalleVentas = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT VENTA_ID, PRODUCTO_ID, SUBTOTAL, CANTIDAD FROM BOD_DETALLE_VENTA";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            while (this.resultSet.next()) {
-                DetalleVentaDTO detalleVenta = new DetalleVentaDTO();
-                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
-                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
-                detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-                detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
-                listaDetalleVentas.add(detalleVenta);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar listarTodos - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaDetalleVentas;
-    }
+//    @Override
+//    public ArrayList<DetalleVentaDTO> listarTodos() {
+//        ArrayList<DetalleVentaDTO> listaDetalleVentas = new ArrayList<>();
+//        try {
+//            this.conexion = DBManager.getInstance().getConnection();
+//            String sql = "SELECT VENTA_ID, PRODUCTO_ID, SUBTOTAL, CANTIDAD FROM BOD_DETALLE_VENTA";
+//            this.statement = this.conexion.prepareCall(sql);
+//            this.resultSet = this.statement.executeQuery();
+//            while (this.resultSet.next()) {
+//                DetalleVentaDTO detalleVenta = new DetalleVentaDTO();
+//                detalleVenta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+//                detalleVenta.setProducto_Id(this.resultSet.getInt("PRODUCTO_ID"));
+//                detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+//                detalleVenta.setCantidad(this.resultSet.getDouble("CANTIDAD"));
+//                listaDetalleVentas.add(detalleVenta);
+//            }
+//        } catch (SQLException ex) {
+//            System.err.println("Error al intentar listarTodos - " + ex);
+//        } finally {
+//            try {
+//                if (this.conexion != null) {
+//                    this.conexion.close();
+//                }
+//            } catch (SQLException ex) {
+//                System.err.println("Error al cerrar la conexión - " + ex);
+//            }
+//        }
+//        return listaDetalleVentas;
+//    }
 
-    @Override
-    public Integer actualizar(DetalleVentaDTO detalleVenta) {
-        this.detalleVenta=detalleVenta;
-        return super.modificar();
-    }
+//    @Override
+//    public Integer actualizar(DetalleVentaDTO detalleVenta) {
+//        this.detalleVenta=detalleVenta;
+//        return super.modificar();
+//    }
 
     @Override
     public Integer eliminar(DetalleVentaDTO detalleVenta) {

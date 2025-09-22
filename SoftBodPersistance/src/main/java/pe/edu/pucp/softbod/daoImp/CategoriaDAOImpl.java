@@ -44,3 +44,4 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     }
     
 }
+
