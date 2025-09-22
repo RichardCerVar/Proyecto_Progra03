@@ -1,6 +1,5 @@
 package pe.edu.pucp.softbod.dao;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.sql.Date;
 import org.junit.jupiter.api.Test;

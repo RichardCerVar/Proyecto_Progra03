@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.ClienteAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.db.DBManager;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
 public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoDAO{

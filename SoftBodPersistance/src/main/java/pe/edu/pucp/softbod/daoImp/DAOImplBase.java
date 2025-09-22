@@ -58,7 +58,6 @@ public abstract class DAOImplBase {
     }
     
     protected void colocarSQLEnStatement(String sql) throws SQLException {
-        System.out.println(sql);
         this.statement = this.conexion.prepareCall(sql);
     }
     
