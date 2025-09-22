@@ -5,11 +5,13 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.daoImp.util.Tipo_Operacion;
 import pe.edu.pucp.softbod.db.DBManager;
 
 public abstract class DAOImplBase {
+    
     protected String nombre_tabla;
     protected ArrayList<Columna> listaColumnas;
     protected Boolean retornarLlavePrimaria;
@@ -30,6 +32,44 @@ public abstract class DAOImplBase {
 
     protected abstract void configurarListaDeColumnas();
     
+    protected void abrirConexion(){
+        this.conexion = DBManager.getInstance().getConnection();
+    }
+    
+    protected void cerrarConexion() throws SQLException {
+        if (this.conexion != null) {
+            this.conexion.close();
+        }
+    }
+    
+    protected void iniciarTransaccion() throws SQLException {
+        this.abrirConexion();
+        this.conexion.setAutoCommit(false);
+    }
+    
+    protected void comitarTransaccion() throws SQLException {
+        this.conexion.commit();
+    }
+    
+    protected void rollbackTransaccion() throws SQLException {
+        if (this.conexion != null) {
+            this.conexion.rollback();
+        }
+    }
+    
+    protected void colocarSQLEnStatement(String sql) throws SQLException {
+        System.out.println(sql);
+        this.statement = this.conexion.prepareCall(sql);
+    }
+    
+    protected Integer ejecutarDMLEnBD() throws SQLException {
+        return this.statement.executeUpdate();
+    }
+
+    protected void ejecutarSelectEnDB() throws SQLException {
+        this.resultSet = this.statement.executeQuery();
+    }
+    
     protected Integer insertar(){
         return this.ejecuta_DML(Tipo_Operacion.INSERTAR);
     }
@@ -38,15 +78,14 @@ public abstract class DAOImplBase {
         return this.ejecuta_DML(Tipo_Operacion.MODIFICAR);
     }
     
-    protected Integer eliminar(){
+    protected Integer eliminar(){   
         return this.ejecuta_DML(Tipo_Operacion.ELIMINAR);
     }
 
     private Integer ejecuta_DML(Tipo_Operacion tipo_operacion) {
         Integer resultado = 0;
         try {
-            this.conexion = DBManager.getInstance().getConnection();
-            this.conexion.setAutoCommit(false);
+            this.iniciarTransaccion();
             String sql = null;
             switch (tipo_operacion) {
                 case Tipo_Operacion.INSERTAR:
@@ -59,8 +98,7 @@ public abstract class DAOImplBase {
                     sql = this.generarSQLParaEliminacion();
                     break;
             }
-
-            this.statement = this.conexion.prepareCall(sql);
+            this.colocarSQLEnStatement(sql);
             switch (tipo_operacion) {
                 case Tipo_Operacion.INSERTAR:
                     this.incluirValorDeParametrosParaInsercion();
@@ -72,26 +110,21 @@ public abstract class DAOImplBase {
                     this.incluirValorDeParametrosParaEliminacion();
                     break;
             }
-            //resultado = this.statement.executeUpdate();
-            resultado = this.statement.executeUpdate();
+            resultado = this.ejecutarDMLEnBD();
             if (this.retornarLlavePrimaria && tipo_operacion == Tipo_Operacion.INSERTAR) {
                 resultado = this.retornarUltimoAutoGenerado();
             }
-            this.conexion.commit();
+            this.comitarTransaccion();
         } catch (SQLException ex) {
             System.err.println("Error al intentar insertar - " + ex);
             try {
-                if (this.conexion != null) {
-                    this.conexion.rollback();
-                }
+                this.rollbackTransaccion();
             } catch (SQLException ex1) {
                 System.err.println("Error al hacer rollback - " + ex1);
             }
         } finally {
             try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
+                this.cerrarConexion();
             } catch (SQLException ex) {
                 System.err.println("Error al cerrar la conexión - " + ex);
             }
@@ -237,5 +270,77 @@ public abstract class DAOImplBase {
         }
         return resultado;
     }
+    // Se ha colocado el parametro por el caso especial de la tabla BOD_CLIENTE_AL FIADO
+    // Si bien esta tabla maneja una pk numerica, se eligio como pk logica al alias del cliente por
+    // el contexto del negocio. Ademas, debido a que al manejo generico por ID numerica que maneja 
+    // el metodo generarSQLParaObtenerPorId, se ha creado el metodo generaSQLclienteAlFiado
+    // que devuelve el sql para el caso mencionado y solo se activara con el parametro 
+    // enviado como true en el metodo obtenerPorId
+    public void obtenerPorId(Boolean esTablaCliente) {
+        try {
+            this.abrirConexion();
+            String sql = (esTablaCliente == true )? 
+                    this.generaSQLclienteAlFido():this.generarSQLParaObtenerPorId();
+            this.colocarSQLEnStatement(sql);
+            this.incluirValorDeParametrosParaObtenerPorId();
+            this.ejecutarSelectEnDB();
+            if (this.resultSet.next()) {
+                this.instanciarObjetoDelResultSet();
+            } else {
+                this.limpiarObjetoDelResultSet();
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al intentar obtenerPorId - " + ex);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar la conexión - " + ex);
+            }
+        }        
+    }
+    
+    private String generaSQLclienteAlFido(){
+        return "SELECT CLIENTE_ID, ALIAS, NOMBRE, TELEFONO, FECHA_DE_PAGO "
+                + "FROM BOD_CLIENTE_AL_FIADO WHERE ALIAS=?";
+    }
 
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        throw new UnsupportedOperationException("El método no ha sido sobreescrito."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    protected void limpiarObjetoDelResultSet() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public List listarTodos() {
+        List lista = new ArrayList<>();
+        try {
+            this.abrirConexion();
+            String sql = this.generarSQLParaListarTodos();
+            this.colocarSQLEnStatement(sql);
+            this.ejecutarSelectEnDB();
+            while (this.resultSet.next()) {
+                this.agregarObjetoALaLista(lista);
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al intentar listarTodos - " + ex);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar la conexión - " + ex);
+            }
+        }
+        return lista;
+    }
+
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
 }

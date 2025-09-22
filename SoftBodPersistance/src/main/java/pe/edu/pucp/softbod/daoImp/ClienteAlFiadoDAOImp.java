@@ -1,8 +1,8 @@
 package pe.edu.pucp.softbod.daoImp;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.ClienteAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.db.DBManager;
@@ -49,7 +49,32 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.statement.setInt(1, this.clienteAlFiado.getClienteId());
     }
     
+    @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setString(1, this.clienteAlFiado.getAlias());
+    }
 
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.clienteAlFiado = new ClienteAlFiadoDTO();
+        this.clienteAlFiado.setClienteId(this.resultSet.getInt("CLIENTE_ID"));
+        this.clienteAlFiado.setAlias(this.resultSet.getString("ALIAS"));
+        this.clienteAlFiado.setNombre(this.resultSet.getString("NOMBRE"));
+        this.clienteAlFiado.setTelefono(this.resultSet.getString("TELEFONO"));
+        this.clienteAlFiado.setFecha_de_pago(this.resultSet.getDate("FECHA_DE_PAGO"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.clienteAlFiado = null;
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.clienteAlFiado);
+    }
+    
     @Override
     public Integer insertar(ClienteAlFiadoDTO clienteAlFiado) {
         this.clienteAlFiado = clienteAlFiado;
@@ -58,67 +83,15 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
 
     @Override
     public ClienteAlFiadoDTO obtenerPorId(String aliasClienteAlFiado) {
-        ClienteAlFiadoDTO clienteAlFiado = null;
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT CLIENTE_ID, ALIAS, NOMBRE, TELEFONO,FECHA_DE_PAGO FROM "
-                    + "BOD_CLIENTE_AL_FIADO WHERE ALIAS = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setString(1, aliasClienteAlFiado);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                clienteAlFiado = new ClienteAlFiadoDTO(
-                this.resultSet.getInt("CLIENTE_ID"),
-                this.resultSet.getString("ALIAS"), 
-                this.resultSet.getString("NOMBRE"),
-                this.resultSet.getString("TELEFONO"),
-                this.resultSet.getDate("FECHA_DE_PAGO"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return clienteAlFiado;
+        this.clienteAlFiado = new ClienteAlFiadoDTO();
+        this.clienteAlFiado.setAlias(aliasClienteAlFiado);
+        super.obtenerPorId(true);
+        return this.clienteAlFiado; 
     }
 
     @Override
     public ArrayList<ClienteAlFiadoDTO> listarTodos() {
-        ArrayList<ClienteAlFiadoDTO> listaClientesAlFiado = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT CLIENTE_ID, ALIAS, NOMBRE, TELEFONO,FECHA_DE_PAGO FROM "
-                            + "BOD_CLIENTE_AL_FIADO";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            while (this.resultSet.next()) {
-                ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO(
-                this.resultSet.getInt("CLIENTE_ID"),
-                this.resultSet.getString("ALIAS"), 
-                this.resultSet.getString("NOMBRE"),
-                this.resultSet.getString("TELEFONO"),
-                this.resultSet.getDate("FECHA_DE_PAGO"));
-                
-                listaClientesAlFiado.add(clienteAlFiado);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar listarTodos - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaClientesAlFiado;
+        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos();
     }
 
     @Override
