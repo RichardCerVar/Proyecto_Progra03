@@ -1,8 +1,8 @@
 //package pe.edu.pucp.softbod.dao;
 //
 //import java.util.ArrayList;
-//import org.junit.jupiter.api.Test;
 //import static org.junit.jupiter.api.Assertions.*;
+//import org.junit.jupiter.api.Test;
 //import pe.edu.pucp.softbod.daoImp.UsuariosDAOImpl;
 //import pe.edu.pucp.softbod.model.Tipo_Usuario;
 //import pe.edu.pucp.softbod.model.UsuarioDTO;
@@ -15,7 +15,7 @@
 //        this.usuarioDAO = new UsuariosDAOImpl(); 
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testInsertar() {
 //        System.out.println("insertar-UsuariosDAOTest");
 //        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -48,7 +48,7 @@
 //   
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testObtenerPorId() {
 //        System.out.println("obtenerPorId-UsuariosDAOTest");
 //        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -63,7 +63,7 @@
 //        eliminarTodo();
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testListarTodos() {
 //        System.out.println("listarTodos-UsuariosDAOTest");
 //        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -82,8 +82,8 @@
 //        
 //        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
 //        assertEquals(listaUsuarioId.size(), listaUsuarios.size()-5);
-//        for (Integer i = 5; i < listaUsuarioId.size()+5; i++) {
-//            listaUsuarios.get(i).setNombre("NuevoNombre" + i.toString());
+//        for (Integer i = 5; i < listaUsuarios.size(); i++) {
+//            listaUsuarios.get(i).setUsuario("NuevoUsuario" + i.toString());
 //            listaUsuarios.get(i).setCorreo("NuevoCorreo" + i.toString());
 //            this.usuarioDAO.modificar(listaUsuarios.get(i));
 //        }
@@ -91,14 +91,14 @@
 //        ArrayList<UsuarioDTO> listaUsuariosModificados = this.usuarioDAO.listarTodos();
 //        assertEquals( listaUsuarios.size(), listaUsuariosModificados.size());
 //        for (Integer i = 0; i < listaUsuarios.size(); i++) {
-//            assertEquals(listaUsuarios.get(i).getNombre(), listaUsuariosModificados.get(i).getNombre());
+//            assertEquals(listaUsuarios.get(i).getUsuario(), listaUsuariosModificados.get(i).getUsuario());
 //            assertEquals(listaUsuarios.get(i).getCorreo(), listaUsuariosModificados.get(i).getCorreo());
 //        }
 //        
 //        eliminarTodo();
 //    }
 //    
-//    @Test
+//    //@Test
 //    public void testEliminar() {
 //        System.out.println("eliminar-UsuariosDAOTest");
 //        ArrayList<Integer> listaUsuarioId = new ArrayList<>();
@@ -107,7 +107,6 @@
 //    }
 //    
 //    private void eliminarTodo(){
-//        
 //        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarTodos();
 //        for (Integer i = 5; i < listaUsuarios.size(); i++) {
 //            Integer resultado = this.usuarioDAO.eliminar(listaUsuarios.get(i));

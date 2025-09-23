@@ -2,9 +2,9 @@ package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.UsuariosDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.db.DBManager;
 import pe.edu.pucp.softbod.model.Tipo_Usuario;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
@@ -54,6 +54,33 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.statement.setInt(1, this.usuario.getUsuario_id());
     }
 
+    @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setInt(1, this.usuario.getUsuario_id());
+    }
+    
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.usuario = new UsuarioDTO();
+        this.usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
+        this.usuario.setUsuario(this.resultSet.getString("USUARIO"));
+        this.usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
+        this.usuario.setCorreo(this.resultSet.getString("CORREO"));
+        this.usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
+        this.usuario.setNombre(this.resultSet.getString("NOMBRE"));
+        this.usuario.setTelefono(this.resultSet.getString("TELEFONO"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.usuario = null;
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.usuario);
+    }
     
     @Override
     public Integer insertar(UsuarioDTO usuario) {
@@ -63,70 +90,15 @@ public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
 
     @Override
     public UsuarioDTO obtenerPorId(Integer usuarioId) {
-        UsuarioDTO usuario = null;
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, "
-                    + "NOMBRE, TELEFONO FROM BOD_USUARIO WHERE USUARIO_ID = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setInt(1, usuarioId);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                usuario = new UsuarioDTO();
-                usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
-                usuario.setUsuario(this.resultSet.getString("USUARIO"));
-                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
-                usuario.setCorreo(this.resultSet.getString("CORREO"));
-                usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
-                usuario.setNombre(this.resultSet.getString("NOMBRE"));
-                usuario.setTelefono(this.resultSet.getString("TELEFONO"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return usuario;
+        this.usuario = new UsuarioDTO();
+        this.usuario.setUsuario_id(usuarioId);
+        super.obtenerPorId(false);
+        return this.usuario;
     }
 
     @Override
     public ArrayList<UsuarioDTO> listarTodos() {
-        ArrayList<UsuarioDTO> listaUsuarios = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, "
-                    + "NOMBRE, TELEFONO FROM BOD_USUARIO";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            while (this.resultSet.next()) {
-                UsuarioDTO usuario = new UsuarioDTO();
-                usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
-                usuario.setUsuario(this.resultSet.getString("USUARIO"));
-                usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
-                usuario.setCorreo(this.resultSet.getString("CORREO"));
-                usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
-                usuario.setNombre(this.resultSet.getString("NOMBRE"));
-                usuario.setTelefono(this.resultSet.getString("TELEFONO"));
-                listaUsuarios.add(usuario);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar listarTodos - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaUsuarios;
+        return (ArrayList<UsuarioDTO>) super.listarTodos();
     }
 
     @Override

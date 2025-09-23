@@ -9,7 +9,7 @@
 //import pe.edu.pucp.softbod.daoImp.VentasDAOImpl;
 //import pe.edu.pucp.softbod.model.Tipo_de_pago;
 //import pe.edu.pucp.softbod.model.VentasDTO;
-//import java.util.Date;
+//import java.sql.Date;
 //
 //public class VentasDAOTest {
 //    
@@ -33,7 +33,7 @@
 //        VentasDTO venta= new VentasDTO();
 //        venta.setTotal(103.0);
 //        venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
-//        venta.setFecha(new Date());
+//        venta.setFecha(Date.valueOf("2025-09-12"));
 //        venta.setUsuario_Id(320);
 //        Integer resultado=this.ventasDAO.insertar(venta);
 //        assertTrue(resultado != 0);
@@ -42,7 +42,7 @@
 //        
 //        venta.setTotal(123.02);
 //        venta.setMetodo_pago(Tipo_de_pago.TRANSFERENCIA);
-//        venta.setFecha(new Date());
+//        venta.setFecha(Date.valueOf("2025-09-12"));
 //        venta.setUsuario_Id(321);
 //        resultado=this.ventasDAO.insertar(venta);
 //        assertTrue(resultado != 0);
@@ -50,7 +50,7 @@
 //        
 //        venta.setTotal(4133.32);
 //        venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
-//        venta.setFecha(new Date());
+//        venta.setFecha(Date.valueOf("2025-09-12"));
 //        venta.setUsuario_Id(322);
 //        resultado=this.ventasDAO.insertar(venta);
 //        assertTrue(resultado != 0);

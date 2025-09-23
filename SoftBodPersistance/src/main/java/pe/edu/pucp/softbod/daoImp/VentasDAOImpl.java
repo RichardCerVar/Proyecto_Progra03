@@ -3,9 +3,9 @@ package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.VentasDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.db.DBManager;
 import pe.edu.pucp.softbod.model.Tipo_de_pago;
 import pe.edu.pucp.softbod.model.VentasDTO;
 
@@ -33,7 +33,7 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setDouble(1,this.venta.getTotal());
         this.statement.setString(2,this.venta.getMetodo_pago().name());
-        this.statement.setDate(3, new java.sql.Date(this.venta.getFecha().getTime()));
+        this.statement.setDate(3, this.venta.getFecha());
         this.statement.setInt(4,this.venta.getUsuario_Id());
     }
     
@@ -41,7 +41,7 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
     protected void incluirValorDeParametrosParaModificacion() throws SQLException { 
         this.statement.setDouble(1,this.venta.getTotal());
         this.statement.setString(2,this.venta.getMetodo_pago().name());
-        this.statement.setDate(3, new java.sql.Date(this.venta.getFecha().getTime()));
+        this.statement.setDate(3, this.venta.getFecha());
         this.statement.setInt(4,this.venta.getUsuario_Id());
         this.statement.setInt(5,this.venta.getVenta_Id());
     }
@@ -51,7 +51,32 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
         this.statement.setInt(1, this.venta.getVenta_Id());
     }
 
-
+    @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setInt(1, this.venta.getVenta_Id());
+    }
+    
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.venta = new VentasDTO();
+        this.venta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
+        this.venta.setTotal(this.resultSet.getDouble("TOTAL"));
+        this.venta.setMetodo_pago(Tipo_de_pago.valueOf(this.resultSet.getString("METODO_PAGO")));
+        this.venta.setFecha(this.resultSet.getDate("FECHA"));
+        this.venta.setUsuario_Id(this.resultSet.getInt("USUARIO_ID"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.venta = null;
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.venta);
+    }
+    
     @Override
     public Integer insertar(VentasDTO venta) {
         this.venta=venta;
@@ -60,64 +85,15 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
 
     @Override
     public VentasDTO obtenerPorId(Integer venta_Id) {
-        VentasDTO venta = null;
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT VENTA_ID, TOTAL, METODO_PAGO, FECHA, USUARIO_ID FROM BOD_VENTAS WHERE VENTA_ID = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setInt(1, venta_Id);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                venta = new VentasDTO();
-                venta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
-                venta.setTotal(this.resultSet.getDouble("TOTAL"));
-                venta.setMetodo_pago(Tipo_de_pago.valueOf(this.resultSet.getString("METODO_PAGO")));
-                venta.setFecha(this.resultSet.getDate("FECHA"));
-                venta.setUsuario_Id(this.resultSet.getInt("USUARIO_ID"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return venta;
+        this.venta = new VentasDTO();
+        this.venta.setVenta_Id(venta_Id);
+        super.obtenerPorId(false);
+        return this.venta;
     }
 
     @Override
     public ArrayList<VentasDTO> listarTodos() {
-        ArrayList<VentasDTO> listaVentas = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT VENTA_ID, TOTAL, METODO_PAGO, FECHA, USUARIO_ID FROM BOD_VENTAS";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            while (this.resultSet.next()) {
-                VentasDTO venta = new VentasDTO();
-                venta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
-                venta.setTotal(this.resultSet.getDouble("TOTAL"));
-                venta.setMetodo_pago(Tipo_de_pago.valueOf(this.resultSet.getString("METODO_PAGO")));
-                venta.setFecha(this.resultSet.getDate("FECHA"));
-                venta.setUsuario_Id(this.resultSet.getInt("USUARIO_ID"));
-                listaVentas.add(venta);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar listarTodos - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaVentas;
+        return (ArrayList<VentasDTO>) super.listarTodos();
     }
 
     @Override
