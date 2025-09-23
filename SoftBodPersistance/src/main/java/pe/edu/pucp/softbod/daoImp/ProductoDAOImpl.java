@@ -3,10 +3,10 @@ package pe.edu.pucp.softbod.daoImp;
 import pe.edu.pucp.softbod.model.ProductoDTO;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.Unidad_Medida;
-import pe.edu.pucp.softbod.db.DBManager;
 
 public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
@@ -55,6 +55,34 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         this.statement.setInt(1, this.producto.getProductoId()); 
     }
     
+    @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setInt(1, this.producto.getProductoId());
+    }
+    
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.producto = new ProductoDTO();
+        this.producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+        this.producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
+        this.producto.setNombre(this.resultSet.getString("NOMBRE"));
+        this.producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
+        this.producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
+        this.producto.setStock(this.resultSet.getDouble("STOCK"));
+        this.producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.producto = null;
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.producto);
+    }
+    
      @Override
     public Integer insertar(ProductoDTO producto){
         this.producto = producto;
@@ -63,70 +91,15 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     
     @Override
     public ProductoDTO obtenerPorId(Integer productoId) {
-        ProductoDTO producto = null;
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT PRODUCTO_ID, CATEGORIA_ID, NOMBRE, PRECIO_UNITARIO, UNIDAD_MEDIDA, "
-                    + "STOCK, STOCK_MINIMO FROM BOD_PRODUCTO WHERE PRODUCTO_ID = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setInt(1, productoId);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                producto = new ProductoDTO();
-                producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
-                producto.setNombre(this.resultSet.getString("NOMBRE"));
-                producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
-                producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
-                producto.setStock(this.resultSet.getDouble("STOCK"));
-                producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
-                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return producto;
+        this.producto = new ProductoDTO();
+        this.producto.setProductoId(productoId);
+        super.obtenerPorId(false);
+        return this.producto;
     }
     
     @Override
     public ArrayList<ProductoDTO> listarTodos() {
-        ArrayList<ProductoDTO> listaProductos = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT PRODUCTO_ID, CATEGORIA_ID, NOMBRE, PRECIO_UNITARIO, UNIDAD_MEDIDA, "
-                    + "STOCK, STOCK_MINIMO FROM BOD_PRODUCTO";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                ProductoDTO producto = new ProductoDTO();
-                producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
-                producto.setNombre(this.resultSet.getString("NOMBRE"));
-                producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
-                producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
-                producto.setStock(this.resultSet.getDouble("STOCK"));
-                producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
-                producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-                listaProductos.add(producto);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaProductos;
+        return (ArrayList<ProductoDTO>) super.listarTodos();
     }
 
     @Override
@@ -140,6 +113,5 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         this.producto = producto;
         return super.eliminar();
     }
-
     
 }

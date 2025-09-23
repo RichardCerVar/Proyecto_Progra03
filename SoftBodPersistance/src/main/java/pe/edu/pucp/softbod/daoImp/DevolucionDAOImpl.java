@@ -2,10 +2,10 @@ package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.DevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
-import pe.edu.pucp.softbod.db.DBManager;
 
 
 public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
@@ -45,6 +45,31 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
         this.statement.setInt(1,this.devolucion.getDevolucionId());
     }
+
+    @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setInt(1, this.devolucion.getDevolucionId());
+    }
+    
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.devolucion = new DevolucionDTO();
+        this.devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+        this.devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
+        this.devolucion.setFecha(this.resultSet.getDate("FECHA"));
+        this.devolucion.setUsuario(this.resultSet.getInt("USUARIO_ID"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.devolucion = null;
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.devolucion);
+    }
     
     @Override
     public Integer insertar(DevolucionDTO devolucion) {
@@ -52,69 +77,18 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         return super.insertar();
     }
     
-    
     @Override
     public DevolucionDTO obtenerPorId(Integer devolucionId) {
-        DevolucionDTO devolucion = null;
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT DEVOLUCION_ID, TOTAL, FECHA, USUARIO_ID"
-                    + " FROM BOD_DEVOLUCION WHERE DEVOLUCION_ID = ?";
-            this.statement = this.conexion.prepareCall(sql);
-            this.statement.setInt(1, devolucionId);
-            this.resultSet = this.statement.executeQuery();
-            if (this.resultSet.next()) {
-                devolucion = new DevolucionDTO();
-                devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
-                devolucion.setFecha(this.resultSet.getDate("FECHA"));
-                devolucion.setUsuario(this.resultSet.getInt("USUARIO_ID"));
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar obtenerPorId - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return devolucion;
+        this.devolucion = new DevolucionDTO();
+        this.devolucion.setDevolucionId(devolucionId);
+        super.obtenerPorId(false);
+        return this.devolucion;
     }
 
     @Override
     public ArrayList<DevolucionDTO> listarTodos() {
-        ArrayList<DevolucionDTO> listaDevoluciones = new ArrayList<>();
-        try {
-            this.conexion = DBManager.getInstance().getConnection();
-            String sql = "SELECT DEVOLUCION_ID, TOTAL, FECHA, USUARIO_ID"
-                            + " FROM BOD_DEVOLUCION";
-            this.statement = this.conexion.prepareCall(sql);
-            this.resultSet = this.statement.executeQuery();
-            while (this.resultSet.next()) {
-                DevolucionDTO devolucion = new DevolucionDTO();
-                devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-                devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
-                devolucion.setFecha(this.resultSet.getDate("FECHA"));
-                devolucion.setUsuario(this.resultSet.getInt("USUARIO_ID"));
-                listaDevoluciones.add(devolucion);
-            }
-        } catch (SQLException ex) {
-            System.err.println("Error al intentar listarTodos - " + ex);
-        } finally {
-            try {
-                if (this.conexion != null) {
-                    this.conexion.close();
-                }
-            } catch (SQLException ex) {
-                System.err.println("Error al cerrar la conexión - " + ex);
-            }
-        }
-        return listaDevoluciones;
+        return (ArrayList<DevolucionDTO>) super.listarTodos();
     }
-
    
     @Override
     public Integer modificar(DevolucionDTO devolucion) {
