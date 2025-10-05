@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.UsuariosDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
@@ -26,49 +25,48 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.listaColumnas.add(new Columna("CONTRASENHA", false, false));
         this.listaColumnas.add(new Columna("NOMBRE", false, false));
         this.listaColumnas.add(new Columna("TELEFONO", false, false));
+        this.listaColumnas.add(new Columna("ACTIVO", false, false));
     }
     
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setString(1, this.usuario.getUsuario());
-        this.statement.setString(2, this.usuario.getTipo_usuario().name());
+        this.statement.setString(2, this.usuario.getTipoUsuarios().name());
         this.statement.setString(3, this.usuario.getCorreo());
         this.statement.setString(4, this.usuario.getContrasenha());
         this.statement.setString(5, this.usuario.getNombre());
         this.statement.setString(6, this.usuario.getTelefono());
+        this.statement.setBoolean(7, this.usuario.getActivo());
     }
     
     @Override
     protected void incluirValorDeParametrosParaModificacion() throws SQLException {
         this.statement.setString(1, this.usuario.getUsuario());
-        this.statement.setString(2, this.usuario.getTipo_usuario().name());
+        this.statement.setString(2, this.usuario.getTipoUsuarios().name());
         this.statement.setString(3, this.usuario.getCorreo());
         this.statement.setString(4, this.usuario.getContrasenha());
         this.statement.setString(5, this.usuario.getNombre());
         this.statement.setString(6, this.usuario.getTelefono());
-        this.statement.setInt(7, this.usuario.getUsuario_id());
-    }
-    
-    @Override
-    protected void incluirValorDeParametrosParaEliminacion() throws SQLException{
-        this.statement.setInt(1, this.usuario.getUsuario_id());
+        this.statement.setBoolean(7, this.usuario.getActivo());
+        this.statement.setInt(8, this.usuario.getUsuarioId());
     }
 
     @Override
     protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
-        this.statement.setInt(1, this.usuario.getUsuario_id());
+        this.statement.setInt(1, this.usuario.getUsuarioId());
     }
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.usuario = new UsuarioDTO();
-        this.usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
-        this.usuario.setUsuario(this.resultSet.getString("USUARIO"));
-        this.usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
-        this.usuario.setCorreo(this.resultSet.getString("CORREO"));
-        this.usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
-        this.usuario.setNombre(this.resultSet.getString("NOMBRE"));
-        this.usuario.setTelefono(this.resultSet.getString("TELEFONO"));
+        //instanciar resulset
+//        this.usuario = new UsuarioDTO();
+//        this.usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
+//        this.usuario.setUsuario(this.resultSet.getString("USUARIO"));
+//        this.usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
+//        this.usuario.setCorreo(this.resultSet.getString("CORREO"));
+//        this.usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
+//        this.usuario.setNombre(this.resultSet.getString("NOMBRE"));
+//        this.usuario.setTelefono(this.resultSet.getString("TELEFONO"));
     }
     
     @Override
@@ -91,8 +89,8 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
     @Override
     public UsuarioDTO obtenerPorId(Integer usuarioId) {
         this.usuario = new UsuarioDTO();
-        this.usuario.setUsuario_id(usuarioId);
-        super.obtenerPorId(false);
+        this.usuario.setUsuarioId(usuarioId);
+        super.obtenerPorId();
         return this.usuario;
     }
 
@@ -106,12 +104,5 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.usuario = usuario;
         return super.modificar();
     }
-
-    @Override
-    public Integer eliminar(UsuarioDTO usuario) {
-        this.usuario = usuario;
-        return super.eliminar();
-    }
-    
     
 }

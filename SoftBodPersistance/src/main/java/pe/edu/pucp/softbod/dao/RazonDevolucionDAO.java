@@ -7,6 +7,6 @@ public interface RazonDevolucionDAO {
     public Integer insertar(RazonDevolucionDTO razonDevolucion);
     public Integer eliminar(RazonDevolucionDTO razonDevolucion);
     public Integer modificar(RazonDevolucionDTO razonDevolucion);
-    public RazonDevolucionDTO obtenerPorId(Integer usuarioId);
+    public RazonDevolucionDTO obtenerPorId(Integer razonId);
     public ArrayList<RazonDevolucionDTO> listarTodos();
 }

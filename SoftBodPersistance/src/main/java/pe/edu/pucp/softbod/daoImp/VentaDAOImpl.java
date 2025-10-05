@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.VentasDAO;
-import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.VentaDTO;
 
@@ -13,13 +12,11 @@ import pe.edu.pucp.softbod.model.VentaDTO;
 public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     
     private VentaDTO venta;    
-    private final CargarTablas cargaTablas;
     
     public VentaDAOImpl(){
         super("BOD_VENTAS");
         this.venta=null;
         this.retornarLlavePrimaria = true;
-        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -84,5 +81,4 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     public ArrayList<VentaDTO> listarTodos() {
         return (ArrayList<VentaDTO>) super.listarTodos();
     }
-    
 }
