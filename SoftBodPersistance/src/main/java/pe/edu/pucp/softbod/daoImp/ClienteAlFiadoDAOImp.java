@@ -45,7 +45,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
     
     @Override
     protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
-        this.statement.setString(1, this.clienteAlFiado.getAlias());
+        this.statement.setInt(1, this.clienteAlFiado.getClienteId());
     }
 
     @Override
@@ -82,9 +82,9 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
     }
     
     @Override
-    public ClienteAlFiadoDTO obtenerPorId(String aliasClienteAlFiado) {
+    public ClienteAlFiadoDTO obtenerPorId(Integer clienteId) {
         this.clienteAlFiado = new ClienteAlFiadoDTO();
-        this.clienteAlFiado.setAlias(aliasClienteAlFiado);
+        this.clienteAlFiado.setClienteId(clienteId);
         super.obtenerPorId();
         return this.clienteAlFiado; 
     }
