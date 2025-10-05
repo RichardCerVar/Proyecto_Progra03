@@ -269,17 +269,11 @@ public abstract class DAOImplBase {
         }
         return resultado;
     }
-    // Se ha colocado el parametro por el caso especial de la tabla BOD_CLIENTE_AL FIADO
-    // Si bien esta tabla maneja una pk numerica, se eligio como pk logica al alias del cliente por
-    // el contexto del negocio. Ademas, debido a que al manejo generico por ID numerica que maneja 
-    // el metodo generarSQLParaObtenerPorId, se ha creado el metodo generaSQLclienteAlFiado
-    // que devuelve el sql para el caso mencionado y solo se activara con el parametro 
-    // enviado como true en el metodo obtenerPorId
-    public void obtenerPorId(Boolean esTablaCliente) {
+    
+    public void obtenerPorId() {
         try {
             this.abrirConexion();
-            String sql = (esTablaCliente == true )? 
-                    this.generaSQLclienteAlFido():this.generarSQLParaObtenerPorId();
+            String sql = this.generarSQLParaObtenerPorId();
             this.colocarSQLEnStatement(sql);
             this.incluirValorDeParametrosParaObtenerPorId();
             this.ejecutarSelectEnDB();
@@ -297,11 +291,6 @@ public abstract class DAOImplBase {
                 System.err.println("Error al cerrar la conexión - " + ex);
             }
         }        
-    }
-    
-    private String generaSQLclienteAlFido(){
-        return "SELECT CLIENTE_ID, ALIAS, NOMBRE, TELEFONO, FECHA_DE_PAGO "
-                + "FROM BOD_CLIENTE_AL_FIADO WHERE ALIAS=?";
     }
 
     protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
