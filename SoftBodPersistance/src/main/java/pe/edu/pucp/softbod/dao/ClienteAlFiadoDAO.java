@@ -7,11 +7,15 @@ public interface ClienteAlFiadoDAO {
     
     public Integer insertar(ClienteAlFiadoDTO clienteAlFiado);
         
-    public ClienteAlFiadoDTO obtenerPorId(String aliasClienteAlFiado);
+    public Integer modificar(ClienteAlFiadoDTO clienteAlFiado);
     
     public ArrayList<ClienteAlFiadoDTO> listarTodos();  
     
-    public Integer modificar(ClienteAlFiadoDTO clienteAlFiado);
+    public ClienteAlFiadoDTO obtenerPorId(String aliasClienteAlFiado);
     
-    public Integer eliminar(ClienteAlFiadoDTO clienteAlFiado);
+    //public listarActivos();
+
+    //obtenerPorALias(String alias);
+    
+    ////public Integer eliminar(ClienteAlFiadoDTO clienteAlFiado);
 }

@@ -31,7 +31,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.statement.setString(1, this.clienteAlFiado.getAlias());
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
-        this.statement.setDate(4,this.clienteAlFiado.getFecha_de_pago());
+        this.statement.setDate(4,this.clienteAlFiado.getFechaDePago());
     }
 
     @Override
@@ -39,13 +39,8 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.statement.setString(1, this.clienteAlFiado.getAlias());
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
-        this.statement.setDate(4, this.clienteAlFiado.getFecha_de_pago());
+        this.statement.setDate(4, this.clienteAlFiado.getFechaDePago());
         this.statement.setInt(5, this.clienteAlFiado.getClienteId());
-    }
-
-    @Override
-    protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
-        this.statement.setInt(1, this.clienteAlFiado.getClienteId());
     }
     
     @Override
@@ -60,7 +55,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.clienteAlFiado.setAlias(this.resultSet.getString("ALIAS"));
         this.clienteAlFiado.setNombre(this.resultSet.getString("NOMBRE"));
         this.clienteAlFiado.setTelefono(this.resultSet.getString("TELEFONO"));
-        this.clienteAlFiado.setFecha_de_pago(this.resultSet.getDate("FECHA_DE_PAGO"));
+        this.clienteAlFiado.setFechaDePago(this.resultSet.getDate("FECHA_DE_PAGO"));
     }
     
     @Override
@@ -81,10 +76,16 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
     }
 
     @Override
+    public Integer modificar(ClienteAlFiadoDTO clienteAlFiado) {
+        this.clienteAlFiado = clienteAlFiado;
+        return super.modificar();
+    }
+    
+    @Override
     public ClienteAlFiadoDTO obtenerPorId(String aliasClienteAlFiado) {
         this.clienteAlFiado = new ClienteAlFiadoDTO();
         this.clienteAlFiado.setAlias(aliasClienteAlFiado);
-        super.obtenerPorId(true);
+        super.obtenerPorId();
         return this.clienteAlFiado; 
     }
 
@@ -93,15 +94,4 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos();
     }
 
-    @Override
-    public Integer modificar(ClienteAlFiadoDTO clienteAlFiado) {
-        this.clienteAlFiado = clienteAlFiado;
-        return super.modificar();
-    }
-
-    @Override
-    public Integer eliminar(ClienteAlFiadoDTO clienteAlFiado) {
-        this.clienteAlFiado = clienteAlFiado;
-        return super.eliminar();
-    }
 }

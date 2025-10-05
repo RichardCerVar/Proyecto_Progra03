@@ -1,6 +1,8 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import pe.edu.pucp.softbod.dao.CategoriaDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.CategoriaDTO;
@@ -32,6 +34,11 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     }
     
     @Override
+    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
+        this.statement.setInt(1, this.categoria.getCategoriaId());
+    }
+    
+    @Override
     public Integer insertar(CategoriaDTO categoria) {
         this.categoria = categoria;
         return super.insertar();
@@ -41,6 +48,37 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     public Integer eliminar(CategoriaDTO categoria) {
         this.categoria = categoria;
         return super.eliminar();
+    }
+    
+    @Override
+    protected void agregarObjetoALaLista(List lista) throws SQLException{
+        this.instanciarObjetoDelResultSet();
+        lista.add(this.categoria);
+    }
+    
+    @Override
+    protected void instanciarObjetoDelResultSet() throws SQLException {
+        this.categoria = new CategoriaDTO();
+        this.categoria.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
+        this.categoria.setDescripcion(this.resultSet.getString("DESCRIPCION"));
+    }
+    
+    @Override
+    protected void limpiarObjetoDelResultSet() {
+        this.categoria = null;
+    }
+    
+    @Override
+    public ArrayList<CategoriaDTO> listarTodos() {
+        return (ArrayList<CategoriaDTO>) super.listarTodos();
+    }
+
+    @Override
+    public CategoriaDTO obtenerPorId(Integer categoriaId) {
+        this.categoria = new CategoriaDTO();
+        this.categoria.setCategoriaId(categoriaId);
+        super.obtenerPorId();
+        return this.categoria;
     }
     
 }
