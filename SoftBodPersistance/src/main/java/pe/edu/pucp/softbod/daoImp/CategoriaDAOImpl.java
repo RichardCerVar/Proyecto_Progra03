@@ -3,6 +3,7 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.CategoriaDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.CategoriaDTO;
@@ -70,7 +71,10 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     
     @Override
     public ArrayList<CategoriaDTO> listarTodos() {
-        return (ArrayList<CategoriaDTO>) super.listarTodos();
+        String sql = "{CALL TA_PROG3.sp_listar_categoria()}";
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return (ArrayList<CategoriaDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
     }
 
     @Override
