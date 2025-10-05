@@ -41,7 +41,7 @@ public class CargarTablas {
 	linea.setCantidad(resultSet.getInt("CANTIDAD"));
         linea.setSubtotal(resultSet.getDouble("SUBTOTAL"));
 		
-        DevolucionDTO devolucion = cargarDevolucion(resultSet);
+        DevolucionDTO devolucion = this.cargarDevolucion(resultSet);
         linea.setDevolucion(devolucion);
 		
 	ProductoDTO producto = new ProductoDTO();
@@ -82,6 +82,7 @@ public class CargarTablas {
         usuario.setUsuarioId(resultSet.getInt("USUARIO_ID"));
         historial.setUsuario(usuario);
 		
+        
 	return historial;
     }
     
