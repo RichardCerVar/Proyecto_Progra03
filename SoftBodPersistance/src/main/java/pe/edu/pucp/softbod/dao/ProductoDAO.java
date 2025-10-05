@@ -8,5 +8,4 @@ public interface ProductoDAO {
     public ProductoDTO obtenerPorId(Integer productoId);
     public ArrayList<ProductoDTO> listarTodos();
     public Integer modificar(ProductoDTO producto);
-    public Integer eliminar(ProductoDTO producto);
 }

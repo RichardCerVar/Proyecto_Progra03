@@ -4,5 +4,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.softbod.model.VentaFiadaDTO;
 
 public interface VentaFiadaDAO {
+    public Integer insertar(VentaFiadaDTO ventaFiada);
+    public VentaFiadaDTO obtenerPorId (Integer ventaFiada_Id);
     public ArrayList<VentaFiadaDTO> listarTodos();
 }

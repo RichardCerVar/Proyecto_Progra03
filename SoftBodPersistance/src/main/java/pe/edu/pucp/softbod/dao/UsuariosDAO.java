@@ -5,12 +5,7 @@ import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public interface UsuariosDAO {
     public Integer insertar(UsuarioDTO usuario);
-    
     public UsuarioDTO obtenerPorId(Integer usuarioId);
-    
     public ArrayList<UsuarioDTO> listarTodos();
-    
     public Integer modificar(UsuarioDTO usuario);
-    
-    public Integer eliminar(UsuarioDTO usuario);
 }

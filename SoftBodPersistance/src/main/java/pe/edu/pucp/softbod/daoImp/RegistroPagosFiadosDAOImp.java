@@ -1,11 +1,11 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
-import pe.edu.pucp.softbod.dao.RegistroPagosFiadosDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
+import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 
-public class RegistroPagosFiadosDAOImp extends DAOImplBase implements RegistroPagosFiadosDAO{
+public class RegistroPagosFiadosDAOImp extends DAOImplBase implements RegistroPagoFiadoDAO{
     
     private RegistroPagoFiadoDTO registroPagosFiados;
 
