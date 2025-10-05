@@ -63,7 +63,7 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
         this.linea.setCantidad(this.resultSet.getInt("CANTIDAD"));
         this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
         RazonDevolucionDTO razon = new RazonDevolucionDTO();
-        razon.setRazonDevolucionId(this.statement.getInt("RAZON_DEVOLUCION_ID"));
+        razon.setRazonDevolucionId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
         this.linea.setRazonDevolucion(razon);
     }
     
