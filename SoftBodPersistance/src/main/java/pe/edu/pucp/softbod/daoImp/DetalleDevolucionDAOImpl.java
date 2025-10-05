@@ -4,7 +4,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
-import pe.edu.pucp.softbod.db.DBManager;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.dao.DetalleDevolucionDAO;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
