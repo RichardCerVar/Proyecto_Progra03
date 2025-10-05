@@ -1,6 +1,6 @@
 package pe.edu.pucp.softbod.model;
 
-class VentaFiadaDTO {
+public class VentaFiadaDTO {
     private Integer ventaFiadaId;
     private VentaDTO venta;
     private ClienteAlFiadoDTO cliente;
