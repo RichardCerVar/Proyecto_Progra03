@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package pe.edu.pucp.softbod.daoImp;
 
-/**
- *
- * @author Giovani
- */
-public class HistorialOperacionesDAOImp {
+import pe.edu.pucp.softbod.dao.HistorialOperacionesDAO;
+
+
+public class HistorialOperacionesDAOImp extends DAOImplBase implements HistorialOperacionesDAO {
+
+    public HistorialOperacionesDAOImp(String nombre_tabla) {
+        super(nombre_tabla);
+    }
+
+    @Override
+    protected void configurarListaDeColumnas() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
