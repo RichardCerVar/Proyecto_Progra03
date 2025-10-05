@@ -8,10 +8,10 @@ import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
-public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {
+public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
     private UsuarioDTO usuario;
 
-    public UsuariosDAOImpl() {
+    public UsuarioDAOImpl() {
         super("BOD_USUARIO");
         this.usuario = null;
         this.retornarLlavePrimaria = true;

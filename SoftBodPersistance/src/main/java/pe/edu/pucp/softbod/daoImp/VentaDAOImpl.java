@@ -10,11 +10,11 @@ import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 import pe.edu.pucp.softbod.model.VentaDTO;
 
 
-public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
+public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     
     private VentaDTO venta;    
     
-    public VentasDAOImpl(){
+    public VentaDAOImpl(){
         super("BOD_VENTAS");
         this.venta=null;
         this.retornarLlavePrimaria = true;

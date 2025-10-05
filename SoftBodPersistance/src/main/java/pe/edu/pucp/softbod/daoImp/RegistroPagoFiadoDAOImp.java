@@ -5,11 +5,11 @@ import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 
-public class RegistroPagosFiadosDAOImp extends DAOImplBase implements RegistroPagoFiadoDAO{
+public class RegistroPagoFiadoDAOImp extends DAOImplBase implements RegistroPagoFiadoDAO{
     
     private RegistroPagoFiadoDTO registroPagosFiados;
 
-    public RegistroPagosFiadosDAOImp() {
+    public RegistroPagoFiadoDAOImp() {
         super("BOD_REGISTRO_PAGOS_FIADOS");
         this.registroPagosFiados = null;
         this.retornarLlavePrimaria = true;
