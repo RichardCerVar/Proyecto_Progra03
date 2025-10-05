@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.daoImp.util.Tipo_Operacion;
 import pe.edu.pucp.softbod.db.DBManager;
@@ -132,8 +133,6 @@ public abstract class DAOImplBase {
     }
 
     protected String generarSQLParaInsercion() {
-        //La sentencia que se generará es similiar a
-        //INSERT INTO INV_ALMACENES (NOMBRE, ALMACEN_CENTRAL) VALUES (?,?)
         String sql = "INSERT INTO ";
         sql = sql.concat(this.nombre_tabla);
         sql = sql.concat("(");
@@ -157,8 +156,6 @@ public abstract class DAOImplBase {
     }
 
     protected String generarSQLParaModificacion() {
-        //sentencia SQL a generar es similar a 
-        //UPDATE INV_ALMACENES SET NOMBRE=?, ALMACEN_CENTRAL=? WHERE ALMACEN_ID=?
         String sql = "UPDATE ";
         sql = sql.concat(this.nombre_tabla);
         sql = sql.concat(" SET ");
@@ -306,14 +303,28 @@ public abstract class DAOImplBase {
     }
     
     public List listarTodos() {
+        String sql = null;
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return this.listarTodos(sql, incluirValorDeParametros, parametros);
+    }
+    
+    public List listarTodos(String sql,
+            Consumer incluirValorDeParametros,
+            Object parametros) {
         List lista = new ArrayList<>();
         try {
             this.abrirConexion();
-            String sql = this.generarSQLParaListarTodos();
+            if (sql == null) {
+                sql = this.generarSQLParaListarTodos();
+            }
             this.colocarSQLEnStatement(sql);
+            if (incluirValorDeParametros != null) {
+                incluirValorDeParametros.accept(parametros);
+            }
             this.ejecutarSelectEnDB();
             while (this.resultSet.next()) {
-                this.agregarObjetoALaLista(lista);
+                agregarObjetoALaLista(lista);
             }
         } catch (SQLException ex) {
             System.err.println("Error al intentar listarTodos - " + ex);
@@ -329,6 +340,49 @@ public abstract class DAOImplBase {
 
     protected void agregarObjetoALaLista(List lista) throws SQLException{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public void ejecutarProcedimientoAlmacenado(String sql,
+            Boolean conTransaccion) {
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        this.ejecutarProcedimientoAlmacenado(sql, incluirValorDeParametros, parametros, conTransaccion);
+    }
+    
+    public void ejecutarProcedimientoAlmacenado(String sql,
+            Consumer incluirValorDeParametros,
+            Object parametros,
+            Boolean conTransaccion) {
+        try {
+            if (conTransaccion) {
+                this.iniciarTransaccion();
+            } else {
+                this.abrirConexion();
+            }
+            this.colocarSQLEnStatement(sql);
+            if (incluirValorDeParametros != null) {
+                incluirValorDeParametros.accept(parametros);
+            }
+            this.ejecutarDMLEnBD();
+            if (conTransaccion) {
+                this.comitarTransaccion();
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al intentar ejecutar procedimiento almacenado: " + ex);
+            try {
+                if (conTransaccion) {
+                    this.rollbackTransaccion();
+                }
+            } catch (SQLException ex1) {
+                System.err.println("Error al hacer rollback - " + ex);
+            }
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar la conexión - " + ex);
+            }
+        }
     }
     
 }
