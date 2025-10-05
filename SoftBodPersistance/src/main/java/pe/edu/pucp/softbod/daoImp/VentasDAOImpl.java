@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.VentasDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.Tipo_de_pago;
-import pe.edu.pucp.softbod.model.VentasDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
+import pe.edu.pucp.softbod.model.VentaDTO;
 
 
 public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
     
-    private VentasDTO venta;    
+    private VentaDTO venta;    
     
     public VentasDAOImpl(){
         super("BOD_VENTAS");
@@ -58,7 +58,7 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.venta = new VentasDTO();
+        this.venta = new VentaDTO();
         this.venta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
         this.venta.setTotal(this.resultSet.getDouble("TOTAL"));
         this.venta.setMetodo_pago(Tipo_de_pago.valueOf(this.resultSet.getString("METODO_PAGO")));
@@ -78,32 +78,32 @@ public class VentasDAOImpl extends DAOImplBase implements VentasDAO{
     }
     
     @Override
-    public Integer insertar(VentasDTO venta) {
+    public Integer insertar(VentaDTO venta) {
         this.venta=venta;
         return super.insertar();
     }
 
     @Override
-    public VentasDTO obtenerPorId(Integer venta_Id) {
-        this.venta = new VentasDTO();
+    public VentaDTO obtenerPorId(Integer venta_Id) {
+        this.venta = new VentaDTO();
         this.venta.setVenta_Id(venta_Id);
         super.obtenerPorId(false);
         return this.venta;
     }
 
     @Override
-    public ArrayList<VentasDTO> listarTodos() {
-        return (ArrayList<VentasDTO>) super.listarTodos();
+    public ArrayList<VentaDTO> listarTodos() {
+        return (ArrayList<VentaDTO>) super.listarTodos();
     }
 
     @Override
-    public Integer modificar(VentasDTO venta) {
+    public Integer modificar(VentaDTO venta) {
         this.venta=venta;
         return super.modificar();
     }
 
     @Override
-    public Integer eliminar(VentasDTO venta) {
+    public Integer eliminar(VentaDTO venta) {
         this.venta=venta;
         return super.eliminar();
     }

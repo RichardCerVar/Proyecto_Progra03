@@ -1,78 +1,33 @@
 package pe.edu.pucp.softbod.model;
 
 public class DetalleDevolucionDTO {
-    private Integer detalleId;
-    private Integer devolucionId;
-    private Integer productoId;
+    private DevolucionDTO devolucion;
+    private ProductoDTO producto;
     private Double subtotal;
-    private Double cantidad;
-    private Integer razonId;
-    
-    public DetalleDevolucionDTO() {
-        detalleId = null;
-        devolucionId = null;
-        productoId = null;
-        subtotal = null;
-        cantidad = null;
-        razonId = null;
-    }
+    private Integer cantidad;
+    private RazonDevolucionDTO razonDevolucion;
 
-    public DetalleDevolucionDTO(Integer detalleId, Integer devolucionId, 
-            Integer productoId, Double subtotal, Double cantidad, Integer razonId) {
-        this.detalleId = detalleId;
-        this.devolucionId = devolucionId;
-        this.productoId = productoId;
+    public DetalleDevolucionDTO() {}
+
+    public DetalleDevolucionDTO(DevolucionDTO devolucion, ProductoDTO producto, Double subtotal, 
+                                Integer cantidad, RazonDevolucionDTO razonDevolucion) {
+        this.devolucion = devolucion;
+        this.producto = producto;
         this.subtotal = subtotal;
         this.cantidad = cantidad;
-        this.razonId = razonId;
-    }
-    
-    public Integer getDetalleId() {
-        return detalleId;
+        this.razonDevolucion = razonDevolucion;
     }
 
-    public void setDetalleId(Integer detalleId) {
-        this.detalleId = detalleId;
+    public DevolucionDTO getDevolucion() { return devolucion; }
+    public void setDevolucion(DevolucionDTO devolucion) { this.devolucion = devolucion; }
+    public ProductoDTO getProducto() { return producto; }
+    public void setProducto(ProductoDTO producto) { this.producto = producto; }
+    public Double getSubtotal() { return subtotal; }
+    public void setSubtotal(Double subtotal) { this.subtotal = subtotal; }
+    public Integer getCantidad() { return cantidad; }
+    public void setCantidad(Integer cantidad) { this.cantidad = cantidad; }
+    public RazonDevolucionDTO getRazonDevolucion() { return razonDevolucion; }
+    public void setRazonDevolucion(RazonDevolucionDTO razonDevolucion) { 
+        this.razonDevolucion = razonDevolucion; 
     }
-
-    public Integer getDevolucionId() {
-        return devolucionId;
-    }
-
-    public void setDevolucionId(Integer devolucionId) {
-        this.devolucionId = devolucionId;
-    }
-
-    public Integer getProductoId() {
-        return productoId;
-    }
-
-    public void setProductoId(Integer productoId) {
-        this.productoId = productoId;
-    }
-
-    public Double getSubtotal() {
-        return subtotal;
-    }
-
-    public void setSubtotal(Double subtotal) {
-        this.subtotal = subtotal;
-    }
-
-    public Double getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Double cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Integer getRazonId() {
-        return razonId;
-    }
-
-    public void setRazonId(Integer razonId) {
-        this.razonId = razonId;
-    }
-
 }

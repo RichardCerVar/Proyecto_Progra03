@@ -1,16 +1,16 @@
 package pe.edu.pucp.softbod.dao;
 
-import pe.edu.pucp.softbod.model.RegistroPagosFiadosDTO;
+import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 
 public interface RegistroPagosFiadosDAO {
     
-    public Integer insertar(RegistroPagosFiadosDTO registroPagoFiado);
+    public Integer insertar(RegistroPagoFiadoDTO registroPagoFiado);
         
-//    public RegistroPagosFiadosDTO obtenerPorId(Integer pagoId);
+//    public RegistroPagoFiadoDTO obtenerPorId(Integer pagoId);
 //    
 //    public ArrayList<RegistroPagosFiadosDTO> listarTodos();  
 //    
-//    public Integer modificar(RegistroPagosFiadosDTO registroPagoFiado);
+//    public Integer modificar(RegistroPagoFiadoDTO registroPagoFiado);
 //    
-//    public Integer eliminar(RegistroPagosFiadosDTO registroPagoFiado);
+//    public Integer eliminar(RegistroPagoFiadoDTO registroPagoFiado);
 }

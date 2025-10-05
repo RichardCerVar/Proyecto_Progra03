@@ -3,11 +3,11 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import pe.edu.pucp.softbod.dao.RegistroPagosFiadosDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.RegistroPagosFiadosDTO;
+import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 
 public class RegistroPagosFiadosDAOImp extends DAOImplBase implements RegistroPagosFiadosDAO{
     
-    private RegistroPagosFiadosDTO registroPagosFiados;
+    private RegistroPagoFiadoDTO registroPagosFiados;
 
     public RegistroPagosFiadosDAOImp() {
         super("BOD_REGISTRO_PAGOS_FIADOS");
@@ -35,7 +35,7 @@ public class RegistroPagosFiadosDAOImp extends DAOImplBase implements RegistroPa
     }
 
     @Override
-    public Integer insertar(RegistroPagosFiadosDTO registroPagoFiado) {
+    public Integer insertar(RegistroPagoFiadoDTO registroPagoFiado) {
         this.registroPagosFiados = registroPagoFiado;
         return super.insertar();
     }

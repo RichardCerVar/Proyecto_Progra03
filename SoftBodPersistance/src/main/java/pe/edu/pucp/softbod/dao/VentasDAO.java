@@ -1,17 +1,17 @@
 package pe.edu.pucp.softbod.dao;
 
 import java.util.ArrayList;
-import pe.edu.pucp.softbod.model.VentasDTO;
+import pe.edu.pucp.softbod.model.VentaDTO;
 
 public interface VentasDAO {
-    public Integer insertar(VentasDTO venta);
+    public Integer insertar(VentaDTO venta);
     
-    public VentasDTO obtenerPorId (Integer venta_Id);
+    public VentaDTO obtenerPorId (Integer venta_Id);
     
-    public ArrayList<VentasDTO> listarTodos();
+    public ArrayList<VentaDTO> listarTodos();
     
-    public Integer modificar(VentasDTO venta);
+    public Integer modificar(VentaDTO venta);
             
-    public Integer eliminar(VentasDTO venta); 
+    public Integer eliminar(VentaDTO venta); 
     
 }

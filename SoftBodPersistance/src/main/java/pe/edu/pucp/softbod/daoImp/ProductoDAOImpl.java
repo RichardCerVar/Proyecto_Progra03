@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.Unidad_Medida;
+import pe.edu.pucp.softbod.model.util.Unidad_Medida;
 
 public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 

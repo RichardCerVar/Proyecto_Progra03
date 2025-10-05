@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.UsuariosDAO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.Tipo_Usuario;
+import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public class UsuariosDAOImpl extends DAOImplBase implements UsuariosDAO  {

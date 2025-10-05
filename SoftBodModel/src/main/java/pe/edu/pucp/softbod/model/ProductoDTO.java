@@ -1,88 +1,48 @@
 package pe.edu.pucp.softbod.model;
 
+import pe.edu.pucp.softbod.model.util.Unidad_Medida;
+
 public class ProductoDTO {
     private Integer productoId;
-    private Unidad_Medida unidad_medida;
-    private Integer categoriaId;
+    private CategoriaDTO categoria;
     private String nombre;
-    private Double precio_unitario;
-    private Double stock;
-    private Double stockMinimo;
+    private Double precioUnitario;
+    private Unidad_Medida unidadMedida;
+    private Integer stock;
+    private Integer stockMinimo;
+    private Boolean activo;
 
-    public ProductoDTO() {
-        productoId = null;
-        nombre = null;
-        precio_unitario = null;
-        stock = null;
-        stockMinimo = null;
-        categoriaId = null;
-    }
+    public ProductoDTO() {}
 
-    public ProductoDTO(Integer productoId, Unidad_Medida unidad_Medida, 
-            Integer categoriaId, String nombre, Double precio_unitario,
-            Double stock, Double stockMinimo) {
+    public ProductoDTO(Integer productoId, CategoriaDTO categoria, String nombre, 
+                       Double precioUnitario, Unidad_Medida unidadMedida, 
+                       Integer stock, Integer stockMinimo, Boolean activo) {
         this.productoId = productoId;
-        this.unidad_medida = unidad_Medida;
-        this.categoriaId = categoriaId;
+        this.categoria = categoria;
         this.nombre = nombre;
-        this.precio_unitario = precio_unitario;
+        this.precioUnitario = precioUnitario;
+        this.unidadMedida = unidadMedida;
         this.stock = stock;
         this.stockMinimo = stockMinimo;
+        this.activo = activo;
     }
 
-    public Integer getProductoId() {
-        return productoId;
+    public Integer getProductoId() { return productoId; }
+    public void setProductoId(Integer productoId) { this.productoId = productoId; }
+    public CategoriaDTO getCategoria() { return categoria; }
+    public void setCategoria(CategoriaDTO categoria) { this.categoria = categoria; }
+    public String getNombre() { return nombre; }
+    public void setNombre(String nombre) { this.nombre = nombre; }
+    public Double getPrecioUnitario() { return precioUnitario; }
+    public void setPrecioUnitario(Double precioUnitario) { 
+        this.precioUnitario = precioUnitario; 
     }
-
-    public void setProductoId(Integer productoId) {
-        this.productoId = productoId;
-    }
-
-    public Unidad_Medida getUnidad_medida() {
-        return unidad_medida;
-    }
-
-    public void setUnidad_medida(Unidad_Medida unidad_medida) {
-        this.unidad_medida = unidad_medida;
-    }
-
-    public Integer getCategoriaId() {
-        return categoriaId;
-    }
-
-    public void setCategoriaId(Integer categoriaId) {
-        this.categoriaId = categoriaId;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Double getPrecio_unitario() {
-        return precio_unitario;
-    }
-
-    public void setPrecio_unitario(Double precio_unitario) {
-        this.precio_unitario = precio_unitario;
-    }
-
-    public Double getStock() {
-        return stock;
-    }
-
-    public void setStock(Double stock) {
-        this.stock = stock;
-    }
-
-    public Double getStockMinimo() {
-        return stockMinimo;
-    }
-
-    public void setStockMinimo(Double stockMinimo) {
-        this.stockMinimo = stockMinimo;
-    }
+    public Unidad_Medida getUnidadMedida() { return unidadMedida; }
+    public void setUnidadMedida(Unidad_Medida unidadMedida) { this.unidadMedida = unidadMedida; }
+    public Integer getStock() { return stock; }
+    public void setStock(Integer stock) { this.stock = stock; }
+    public Integer getStockMinimo() { return stockMinimo; }
+    public void setStockMinimo(Integer stockMinimo) { this.stockMinimo = stockMinimo; }
+    public Boolean getActivo() { return activo; }
+    public void setActivo(Boolean activo) { this.activo = activo; }
 }
