@@ -3,21 +3,25 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.HistorialOperacionesDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
-import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
 
 public class HistorialOperacionesDAOImp extends DAOImplBase implements HistorialOperacionesDAO {
 
    private HistorialOperacionesDTO historial;
+   
+   private final CargarTablas cargarTablas;
     
     public HistorialOperacionesDAOImp() {
         super("BOD_HISTORIAL_OPERACIONES");
         this.historial=null;
         this.retornarLlavePrimaria=true;
+        this.cargarTablas = null;
     }
 
     @Override
@@ -45,14 +49,7 @@ public class HistorialOperacionesDAOImp extends DAOImplBase implements Historial
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.historial = new HistorialOperacionesDTO();
-        this.historial.setOperacionId(this.resultSet.getInt("OPERACION_ID"));
-        this.historial.setTablaAfectada((this.resultSet.getString("TABLA_AFECTADA")));
-        this.historial.setFechaHora(this.resultSet.getDate("FECHA_HORA"));
-        this.historial.setOperacion(Tipo_Operacion.valueOf(this.resultSet.getString("OPERACION")));
-        UsuarioDTO usuario = new UsuarioDTO();
-        usuario.setUsuarioId(this.resultSet.getInt("USUARIO_ID"));
-        this.historial.setUsuario(usuario);
+        this.historial = this.cargarTablas.cargarHistorialOperaciones(resultSet);
     }
     
     @Override
@@ -82,7 +79,9 @@ public class HistorialOperacionesDAOImp extends DAOImplBase implements Historial
 
     @Override
     public ArrayList<HistorialOperacionesDTO> listarTodos() {
-        return (ArrayList<HistorialOperacionesDTO>) super.listarTodos();
+        String sql = "{CALL TA_PROG3.sp_listar_historialOperaciones()}";
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return (ArrayList<HistorialOperacionesDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
     }
-    
 }

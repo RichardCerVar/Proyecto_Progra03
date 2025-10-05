@@ -3,18 +3,23 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.ClienteAlFiadoDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
 public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoDAO{
     
     private ClienteAlFiadoDTO clienteAlFiado;
+    
+    private final CargarTablas cargarTablas;
 
     public ClienteAlFiadoDAOImp() {
         super("BOD_CLIENTE_AL_FIADO");
         this.clienteAlFiado = null;
         this.retornarLlavePrimaria = true;
+        this.cargarTablas = null;
     }
 
     @Override
@@ -50,12 +55,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
 
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.clienteAlFiado = new ClienteAlFiadoDTO();
-        this.clienteAlFiado.setClienteId(this.resultSet.getInt("CLIENTE_ID"));
-        this.clienteAlFiado.setAlias(this.resultSet.getString("ALIAS"));
-        this.clienteAlFiado.setNombre(this.resultSet.getString("NOMBRE"));
-        this.clienteAlFiado.setTelefono(this.resultSet.getString("TELEFONO"));
-        this.clienteAlFiado.setFechaDePago(this.resultSet.getDate("FECHA_DE_PAGO"));
+        this.clienteAlFiado = this.cargarTablas.cargarClienteAlFiado(resultSet);
     }
     
     @Override
@@ -88,10 +88,13 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         super.obtenerPorId();
         return this.clienteAlFiado; 
     }
-
+    
     @Override
     public ArrayList<ClienteAlFiadoDTO> listarTodos() {
-        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos();
+        String sql = "{CALL TA_PROG3.sp_listar_clienteAlFiado()}";
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
     }
 
 }

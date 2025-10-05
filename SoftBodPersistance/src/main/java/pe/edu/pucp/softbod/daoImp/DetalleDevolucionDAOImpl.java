@@ -3,9 +3,11 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.dao.DetalleDevolucionDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
 import pe.edu.pucp.softbod.model.ProductoDTO;
 import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
@@ -13,11 +15,14 @@ import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevolucionDAO {
 
     private DetalleDevolucionDTO linea;
+    
+    private final CargarTablas cargarTablas;
 
     public DetalleDevolucionDAOImpl() {
         super("BOD_DETALLE_DEVOLUCION");
         this.linea = null;
         this.retornarLlavePrimaria = true;
+        this.cargarTablas = null;
     }
     
     @Override
@@ -53,16 +58,13 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.linea = new DetalleDevolucionDTO();
         
-        DevolucionDTO devolucion = new DevolucionDTO();
-        devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
+        DevolucionDTO devolucion = this.cargarTablas.cargarDevolucion(resultSet);
         this.linea.setDevolucion(devolucion);
-        ProductoDTO producto = new ProductoDTO();
-        producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
+        ProductoDTO producto = this.cargarTablas.cargarProducto(resultSet);
         this.linea.setProducto(producto);
         this.linea.setCantidad(this.resultSet.getInt("CANTIDAD"));
         this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-        RazonDevolucionDTO razon = new RazonDevolucionDTO();
-        razon.setRazonDevolucionId(this.resultSet.getInt("RAZON_DEVOLUCION_ID"));
+        RazonDevolucionDTO razon = this.cargarTablas.RazonDevolucion(resultSet);
         this.linea.setRazonDevolucion(razon);
     }
     
@@ -73,7 +75,9 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
     
     @Override
     public ArrayList<DetalleDevolucionDTO> listarTodos() {
-        return (ArrayList<DetalleDevolucionDTO>) super.listarTodos();
+        String sql = "{CALL TA_PROG3.sp_listar_detalleDevolucion()}";
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return (ArrayList<DetalleDevolucionDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
     }
-    
 }

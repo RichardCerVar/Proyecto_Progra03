@@ -3,20 +3,25 @@ package pe.edu.pucp.softbod.daoImp;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.DevolucionDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 
 public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
 
     private DevolucionDTO devolucion;
     
+    private final CargarTablas cargarTablas;
+    
     public DevolucionDAOImpl() {
         super("BOD_DEVOLUCION");
         this.devolucion=null;
         this.retornarLlavePrimaria=true;
+        this.cargarTablas = null;
     }
 
     @Override
@@ -41,13 +46,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.devolucion = new DevolucionDTO();
-        this.devolucion.setDevolucionId(this.resultSet.getInt("DEVOLUCION_ID"));
-        this.devolucion.setTotal(this.resultSet.getDouble("TOTAL"));
-        this.devolucion.setFecha(this.resultSet.getDate("FECHA"));
-        UsuarioDTO usuario = new UsuarioDTO();
-        usuario.setUsuarioId(this.resultSet.getInt("USUARIO_ID"));
-        this.devolucion.setUsuario(usuario);
+        this.devolucion = this.cargarTablas.cargarDevolucion(resultSet);
     }
     
     @Override
@@ -74,10 +73,13 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         super.obtenerPorId();
         return this.devolucion;
     }
-
+    
     @Override
     public ArrayList<DevolucionDTO> listarTodos() {
-        return (ArrayList<DevolucionDTO>) super.listarTodos();
+        String sql = "{CALL TA_PROG3.sp_listar_devolucion()}";
+        Consumer incluirValorDeParametros = null;
+        Object parametros = null;
+        return (ArrayList<DevolucionDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
     }
-
+    
 }

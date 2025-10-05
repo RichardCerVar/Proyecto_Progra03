@@ -5,17 +5,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.CategoriaDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.CategoriaDTO;
 
 public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     
     private CategoriaDTO categoria;
+    
+    private final CargarTablas cargarTablas;
 
     public CategoriaDAOImpl() {
         super("BOD_CATEGORIA");
         this.categoria = null;
         this.retornarLlavePrimaria = true;
+        this.cargarTablas = null;
     }
     
     @Override
@@ -59,9 +63,7 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.categoria = new CategoriaDTO();
-        this.categoria.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
-        this.categoria.setDescripcion(this.resultSet.getString("DESCRIPCION"));
+        this.categoria = this.cargarTablas.cargarCategoria(resultSet);
     }
     
     @Override
