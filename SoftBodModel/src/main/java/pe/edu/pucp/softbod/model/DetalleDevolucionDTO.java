@@ -7,7 +7,13 @@ public class DetalleDevolucionDTO {
     private Integer cantidad;
     private RazonDevolucionDTO razonDevolucion;
 
-    public DetalleDevolucionDTO() {}
+    public DetalleDevolucionDTO() {
+        this.devolucion = null;
+        this.producto = null;
+        this.subtotal = null;
+        this.cantidad = null;
+        this.razonDevolucion = null;
+    }
 
     public DetalleDevolucionDTO(DevolucionDTO devolucion, ProductoDTO producto, Double subtotal, 
                                 Integer cantidad, RazonDevolucionDTO razonDevolucion) {

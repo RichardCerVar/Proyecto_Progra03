@@ -10,7 +10,13 @@ public class HistorialOperacionesDTO {
     private Date fechaHora;
     private UsuarioDTO usuario;
 
-    public HistorialOperacionesDTO() {}
+    public HistorialOperacionesDTO() {
+        this.operacionId = null;
+        this.tablaAfectada = null;
+        this.operacion = null;
+        this.fechaHora = null;
+        this.usuario = null;
+    }
 
     public HistorialOperacionesDTO(Integer operacionId, String tablaAfectada, 
                                    Tipo_Operacion operacion, Date fechaHora, 

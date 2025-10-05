@@ -12,7 +12,15 @@ public class ProductoDTO {
     private Integer stockMinimo;
     private Boolean activo;
 
-    public ProductoDTO() {}
+    public ProductoDTO() {
+        this.categoria = null;
+        this.nombre = null;
+        this.precioUnitario = null;
+        this.unidadMedida = null;
+        this.stock = null;
+        this.stockMinimo = null;
+        this.activo = null;
+    }
 
     public ProductoDTO(Integer productoId, CategoriaDTO categoria, String nombre, 
                        Double precioUnitario, Unidad_Medida unidadMedida, 

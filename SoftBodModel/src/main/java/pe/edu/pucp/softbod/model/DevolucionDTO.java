@@ -11,6 +11,10 @@ public class DevolucionDTO {
     private ArrayList<DetalleDevolucionDTO> detalles;
 
     public DevolucionDTO() {
+        this.devolucionId = null;
+        this.total = null;
+        this.fecha = null;
+        this.usuario = null;
         this.detalles = new ArrayList<>();
     }
 

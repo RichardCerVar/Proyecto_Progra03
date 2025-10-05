@@ -4,7 +4,10 @@ public class CategoriaDTO {
     private Integer categoriaId;
     private String descripcion;
 
-    public CategoriaDTO() {}
+    public CategoriaDTO() {
+        this.categoriaId = null;
+        this.descripcion = null;
+    }
 
     public CategoriaDTO(Integer categoriaId, String descripcion) {
         this.categoriaId = categoriaId;

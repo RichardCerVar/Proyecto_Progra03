@@ -11,7 +11,14 @@ public class RegistroPagoFiadoDTO {
     private Tipo_de_pago metodoPago;
     private Double monto;
 
-    public RegistroPagoFiadoDTO() {}
+    public RegistroPagoFiadoDTO() {
+        this.pagoId = null;
+        this.usuario = null;
+        this.cliente = null;
+        this.fecha = null;
+        this.metodoPago = null;
+        this.monto = null;
+    }
 
     public RegistroPagoFiadoDTO(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente, 
                                   Date fecha, Tipo_de_pago metodoPago, Double monto) {

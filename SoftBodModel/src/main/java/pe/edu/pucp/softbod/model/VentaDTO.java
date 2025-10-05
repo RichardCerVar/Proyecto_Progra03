@@ -13,6 +13,11 @@ public class VentaDTO {
     private ArrayList<DetalleVentaDTO> detalles;
 
     public VentaDTO() {
+        this.ventaId = null;
+        this.total = null;
+        this.metodoPago = null;
+        this.fecha = null;
+        this.usuario = null;
         this.detalles = new ArrayList<>();
     }
 

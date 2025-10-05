@@ -6,7 +6,12 @@ public class DetalleVentaDTO {
     private Double subtotal;
     private Integer cantidad;
 
-    public DetalleVentaDTO() {}
+    public DetalleVentaDTO() {
+        this.venta = null;
+        this.producto = null;
+        this.subtotal = null;
+        this.cantidad = null;
+    }
 
     public DetalleVentaDTO(VentaDTO venta, ProductoDTO producto, Double subtotal, Integer cantidad) {
         this.venta = venta;

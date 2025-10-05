@@ -12,7 +12,16 @@ public class UsuarioDTO {
     private String telefono;
     private Boolean activo;
 
-    public UsuarioDTO() {}
+    public UsuarioDTO() {
+        this.usuarioId = null;
+        this.usuario = null;
+        this.tipoUsuarios = null;
+        this.correo = null;
+        this.contrasenha = null;
+        this.nombre = null;
+        this.telefono = null;
+        this.activo = null;
+    }
 
     public UsuarioDTO(Integer usuarioId, String usuario, Tipo_Usuario tipoUsuarios, 
                       String correo, String contrasenha, String nombre, String telefono, 

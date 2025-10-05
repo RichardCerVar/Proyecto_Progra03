@@ -4,7 +4,10 @@ public class RazonDevolucionDTO {
     private Integer razonDevolucionId;
     private String descripcion;
 
-    public RazonDevolucionDTO() {}
+    public RazonDevolucionDTO() {
+        this.razonDevolucionId = null;
+        this.descripcion = null;
+    }
 
     public RazonDevolucionDTO(Integer razonDevolucionId, String descripcion) {
         this.razonDevolucionId = razonDevolucionId;

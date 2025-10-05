@@ -5,7 +5,11 @@ class VentaFiadaDTO {
     private VentaDTO venta;
     private ClienteAlFiadoDTO cliente;
 
-    public VentaFiadaDTO() {}
+    public VentaFiadaDTO() {
+        this.ventaFiadaId = null;
+        this.venta = null;
+        this.cliente = null;
+    }
 
     public VentaFiadaDTO(Integer ventaFiadaId, VentaDTO venta, ClienteAlFiadoDTO cliente) {
         this.ventaFiadaId = ventaFiadaId;

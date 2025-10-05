@@ -16,6 +16,12 @@ public class ClienteAlFiadoDTO {
     public ClienteAlFiadoDTO() {
         this.ventasFiadas = new ArrayList<>();
         this.pagos = new ArrayList<>();
+        this.clienteId = null;
+        this.alias = null;
+        this.nombre = null;
+        this.telefono = null;
+        this.fechaDePago = null;
+        this.activo = null;
     }
 
     public ClienteAlFiadoDTO(Integer clienteId, String alias, String nombre, String telefono, 
