@@ -8,9 +8,6 @@ import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.dao.DetalleDevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
-import pe.edu.pucp.softbod.model.DevolucionDTO;
-import pe.edu.pucp.softbod.model.ProductoDTO;
-import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 
 public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevolucionDAO {
 
@@ -22,7 +19,7 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
         super("BOD_DETALLE_DEVOLUCION");
         this.linea = null;
         this.retornarLlavePrimaria = true;
-        this.cargarTablas = null;
+        this.cargarTablas = new CargarTablas();
     }
     
     @Override
@@ -56,16 +53,7 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.linea = new DetalleDevolucionDTO();
-        
-        DevolucionDTO devolucion = this.cargarTablas.cargarDevolucion(resultSet);
-        this.linea.setDevolucion(devolucion);
-        ProductoDTO producto = this.cargarTablas.cargarProducto(resultSet);
-        this.linea.setProducto(producto);
-        this.linea.setCantidad(this.resultSet.getInt("CANTIDAD"));
-        this.linea.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
-        RazonDevolucionDTO razon = this.cargarTablas.RazonDevolucion(resultSet);
-        this.linea.setRazonDevolucion(razon);
+        this.linea = this.cargarTablas.cargarDetalleDevolucion(resultSet);
     }
     
     @Override

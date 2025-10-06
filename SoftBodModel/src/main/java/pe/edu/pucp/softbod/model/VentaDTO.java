@@ -1,7 +1,6 @@
 package pe.edu.pucp.softbod.model;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
 public class VentaDTO {
@@ -10,7 +9,6 @@ public class VentaDTO {
     private Tipo_de_pago metodoPago;
     private Date fecha;
     private UsuarioDTO usuario;
-    private ArrayList<DetalleVentaDTO> detalles;
 
     public VentaDTO() {
         this.ventaId = null;
@@ -18,7 +16,6 @@ public class VentaDTO {
         this.metodoPago = null;
         this.fecha = null;
         this.usuario = null;
-        this.detalles = new ArrayList<>();
     }
 
     public VentaDTO(Integer ventaId, Double total, Tipo_de_pago metodoPago, 
@@ -28,7 +25,6 @@ public class VentaDTO {
         this.metodoPago = metodoPago;
         this.fecha = fecha;
         this.usuario = usuario;
-        this.detalles = new ArrayList<>();
     }
 
     public Integer getVentaId() { return ventaId; }
@@ -41,6 +37,4 @@ public class VentaDTO {
     public void setFecha(Date fecha) { this.fecha = fecha; }
     public UsuarioDTO getUsuario() { return usuario; }
     public void setUsuario(UsuarioDTO usuario) { this.usuario = usuario; }
-    public ArrayList<DetalleVentaDTO> getDetalles() { return detalles; }
-    public void setDetalles(ArrayList<DetalleVentaDTO> detalles) { this.detalles = detalles; }
 }

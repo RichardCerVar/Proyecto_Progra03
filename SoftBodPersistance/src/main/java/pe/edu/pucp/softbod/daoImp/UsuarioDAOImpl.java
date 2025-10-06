@@ -4,16 +4,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.UsuariosDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
     private UsuarioDTO usuario;
+    private final CargarTablas cargaTablas;
 
     public UsuarioDAOImpl() {
         super("BOD_USUARIO");
         this.usuario = null;
         this.retornarLlavePrimaria = true;
+        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -58,15 +61,7 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //instanciar resulset
-//        this.usuario = new UsuarioDTO();
-//        this.usuario.setUsuario_id(this.resultSet.getInt("USUARIO_ID"));
-//        this.usuario.setUsuario(this.resultSet.getString("USUARIO"));
-//        this.usuario.setTipo_usuario(Tipo_Usuario.valueOf(this.resultSet.getString("TIPO_USUARIOS")));
-//        this.usuario.setCorreo(this.resultSet.getString("CORREO"));
-//        this.usuario.setContrasenha(this.resultSet.getString("CONTRASENHA"));
-//        this.usuario.setNombre(this.resultSet.getString("NOMBRE"));
-//        this.usuario.setTelefono(this.resultSet.getString("TELEFONO"));
+        this.usuario = this.cargaTablas.cargarUsuario(resultSet);
     }
     
     @Override

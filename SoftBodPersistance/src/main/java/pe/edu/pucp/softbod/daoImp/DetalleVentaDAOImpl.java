@@ -21,7 +21,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
         super("BOD_DETALLE_VENTA");
         this.detalleVenta=null;
         this.retornarLlavePrimaria = true;
-        this.cargarTabla = null;
+        this.cargarTabla = new CargarTablas();
     }
 
     @Override
@@ -55,14 +55,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.detalleVenta = new DetalleVentaDTO();
-        
-        VentaDTO venta = this.cargarTabla.cargarVentas();
-        this.detalleVenta.setVenta(venta);
-        ProductoDTO producto = this.cargarTabla.cargarProducto();
-        this.detalleVenta.setProducto(producto);
-        this.detalleVenta.setCantidad(this.resultSet.getInt("CANTIDAD"));
-        this.detalleVenta.setSubtotal(this.resultSet.getDouble("SUBTOTAL"));
+        this.detalleVenta = this.cargarTabla.cargarDetalleVenta(resultSet);
     }
     
     @Override

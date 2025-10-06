@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.DevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
 
 
@@ -21,7 +20,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         super("BOD_DEVOLUCION");
         this.devolucion=null;
         this.retornarLlavePrimaria=true;
-        this.cargarTablas = null;
+        this.cargarTablas = new CargarTablas();
     }
 
     @Override

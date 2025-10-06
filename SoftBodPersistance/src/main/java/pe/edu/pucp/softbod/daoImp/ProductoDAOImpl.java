@@ -5,16 +5,19 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 
 public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
     private ProductoDTO producto;
+    private final CargarTablas cargaTablas;
     
     public ProductoDAOImpl() {
         super("BOD_PRODUCTO");
         this.producto=null;
         this.retornarLlavePrimaria=true;
+        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -59,15 +62,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //RESULSET
-//        this.producto = new ProductoDTO();
-//        this.producto.setProductoId(this.resultSet.getInt("PRODUCTO_ID"));
-//        this.producto.setCategoriaId(this.resultSet.getInt("CATEGORIA_ID"));
-//        this.producto.setNombre(this.resultSet.getString("NOMBRE"));
-//        this.producto.setPrecio_unitario(this.resultSet.getDouble("PRECIO_UNITARIO"));
-//        this.producto.setUnidad_medida(Unidad_Medida.valueOf(this.resultSet.getString("UNIDAD_MEDIDA")));
-//        this.producto.setStock(this.resultSet.getDouble("STOCK"));
-//        this.producto.setStockMinimo(this.resultSet.getDouble("STOCK_MINIMO"));
+        this.producto = this.cargaTablas.cargarProductoDTO(resultSet);
     }
     
     @Override

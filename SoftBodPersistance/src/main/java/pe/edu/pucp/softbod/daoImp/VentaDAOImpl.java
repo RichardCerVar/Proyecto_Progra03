@@ -5,18 +5,21 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.VentasDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.VentaDTO;
 
 
 public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     
-    private VentaDTO venta;    
+    private VentaDTO venta;   
+    private final CargarTablas cargaTablas;
     
     public VentaDAOImpl(){
         super("BOD_VENTAS");
         this.venta=null;
         this.retornarLlavePrimaria = true;
+        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -43,13 +46,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //instanciar resulsett
-//        this.venta = new VentaDTO();
-//        this.venta.setVenta_Id(this.resultSet.getInt("VENTA_ID"));
-//        this.venta.setTotal(this.resultSet.getDouble("TOTAL"));
-//        this.venta.setMetodo_pago(Tipo_de_pago.valueOf(this.resultSet.getString("METODO_PAGO")));
-//        this.venta.setFecha(this.resultSet.getDate("FECHA"));
-//        this.venta.setUsuario_Id(this.resultSet.getInt("USUARIO_ID"));
+        this.venta = this.cargaTablas.cargarVentaDTO(resultSet);
     }
     
     @Override

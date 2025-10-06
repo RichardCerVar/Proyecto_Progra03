@@ -19,7 +19,7 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
         super("BOD_CATEGORIA");
         this.categoria = null;
         this.retornarLlavePrimaria = true;
-        this.cargarTablas = null;
+        this.cargarTablas = new CargarTablas();
     }
     
     @Override

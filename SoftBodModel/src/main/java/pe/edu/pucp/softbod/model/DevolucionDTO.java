@@ -8,14 +8,12 @@ public class DevolucionDTO {
     private Double total;
     private Date fecha;
     private UsuarioDTO usuario;
-    private ArrayList<DetalleDevolucionDTO> detalles;
 
     public DevolucionDTO() {
         this.devolucionId = null;
         this.total = null;
         this.fecha = null;
         this.usuario = null;
-        this.detalles = new ArrayList<>();
     }
 
     public DevolucionDTO(Integer devolucionId, Double total, Date fecha, UsuarioDTO usuario) {
@@ -23,7 +21,6 @@ public class DevolucionDTO {
         this.total = total;
         this.fecha = fecha;
         this.usuario = usuario;
-        this.detalles = new ArrayList<>();
     }
 
     public Integer getDevolucionId() { return devolucionId; }
@@ -34,6 +31,4 @@ public class DevolucionDTO {
     public void setFecha(Date fecha) { this.fecha = fecha; }
     public UsuarioDTO getUsuario() { return usuario; }
     public void setUsuario(UsuarioDTO usuario) { this.usuario = usuario; }
-    public ArrayList<DetalleDevolucionDTO> getDetalles() { return detalles; }
-    public void setDetalles(ArrayList<DetalleDevolucionDTO> detalles) { this.detalles = detalles; }
 }

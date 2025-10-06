@@ -1,7 +1,6 @@
 package pe.edu.pucp.softbod.model;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 public class ClienteAlFiadoDTO {
     private Integer clienteId;
@@ -10,12 +9,8 @@ public class ClienteAlFiadoDTO {
     private String telefono;
     private Date fechaDePago;
     private Boolean activo;
-    private ArrayList<VentaFiadaDTO> ventasFiadas;
-    private ArrayList<RegistroPagoFiadoDTO> pagos;
 
     public ClienteAlFiadoDTO() {
-        this.ventasFiadas = new ArrayList<>();
-        this.pagos = new ArrayList<>();
         this.clienteId = null;
         this.alias = null;
         this.nombre = null;
@@ -32,8 +27,6 @@ public class ClienteAlFiadoDTO {
         this.telefono = telefono;
         this.fechaDePago = fechaDePago;
         this.activo = activo;
-        this.ventasFiadas = new ArrayList<>();
-        this.pagos = new ArrayList<>();
     }
 
     public Integer getClienteId() { return clienteId; }
@@ -48,8 +41,4 @@ public class ClienteAlFiadoDTO {
     public void setFechaDePago(Date fechaDePago) { this.fechaDePago = fechaDePago; }
     public Boolean getActivo() { return activo; }
     public void setActivo(Boolean activo) { this.activo = activo; }
-    public ArrayList<VentaFiadaDTO> getVentasFiadas() { return ventasFiadas; }
-    public void setVentasFiadas(ArrayList<VentaFiadaDTO> ventasFiadas) { this.ventasFiadas = ventasFiadas; }
-    public ArrayList<RegistroPagoFiadoDTO> getPagos() { return pagos; }
-    public void setPagos(ArrayList<RegistroPagoFiadoDTO> pagos) { this.pagos = pagos; }
 }

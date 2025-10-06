@@ -6,15 +6,18 @@ import java.util.List;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.VentaFiadaDTO;
 import pe.edu.pucp.softbod.dao.VentaFiadaDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 
 public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
     
     private VentaFiadaDTO ventaAlFiado; 
+    private final CargarTablas cargaTablas;
     
     public VentaAlFiadoDAOImpl() {
         super("BOD_VENTAS_FIADAS");
         this.ventaAlFiado = null;
         this.retornarLlavePrimaria = true;
+        this.cargaTablas = new CargarTablas();
     }
      
     @Override
@@ -37,8 +40,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //instanciar resulsett
-
+        this.ventaAlFiado = this.cargaTablas.cargarVentaFiadaDTO(resultSet);
     }
     
     @Override

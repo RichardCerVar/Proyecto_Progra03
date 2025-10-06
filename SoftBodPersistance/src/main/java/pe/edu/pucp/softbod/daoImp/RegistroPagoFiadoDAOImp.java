@@ -6,15 +6,18 @@ import java.util.List;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 
 public class RegistroPagoFiadoDAOImp extends DAOImplBase implements RegistroPagoFiadoDAO{
     
     private RegistroPagoFiadoDTO registroPagosFiados;
-
+    private final CargarTablas cargaTablas;
+    
     public RegistroPagoFiadoDAOImp() {
         super("BOD_REGISTRO_PAGOS_FIADOS");
         this.registroPagosFiados = null;
         this.retornarLlavePrimaria = true;
+        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -43,7 +46,7 @@ public class RegistroPagoFiadoDAOImp extends DAOImplBase implements RegistroPago
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //instanciar resulset
+        this.registroPagosFiados = this.cargaTablas.cargarRegistroPagoFiadoDTO(resultSet);
     }
     
     @Override

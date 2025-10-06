@@ -4,17 +4,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.dao.RazonDevolucionDAO;
+import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 
 public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucionDAO{
 
     private RazonDevolucionDTO razonDevolucion;
-
+    private final CargarTablas cargaTablas;
+    
     public RazonDevolucionDAOImp() {
         super("BOD_RAZON_DEVOLUCION");
         this.razonDevolucion = null;
         this.retornarLlavePrimaria = true;
+        this.cargaTablas = new CargarTablas();
     }
     
     @Override
@@ -45,7 +48,7 @@ public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucio
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        //instanciar resulset
+        this.razonDevolucion = this.cargaTablas.cargaRazonDevolucionDTO(resultSet);
     }
     
     @Override

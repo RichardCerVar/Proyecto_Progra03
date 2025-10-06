@@ -7,7 +7,6 @@ import java.util.function.Consumer;
 import pe.edu.pucp.softbod.dao.HistorialOperacionesDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 
 

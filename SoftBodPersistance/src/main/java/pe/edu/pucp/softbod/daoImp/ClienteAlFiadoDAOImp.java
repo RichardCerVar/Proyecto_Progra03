@@ -19,7 +19,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         super("BOD_CLIENTE_AL_FIADO");
         this.clienteAlFiado = null;
         this.retornarLlavePrimaria = true;
-        this.cargarTablas = null;
+        this.cargarTablas = new CargarTablas();
     }
 
     @Override

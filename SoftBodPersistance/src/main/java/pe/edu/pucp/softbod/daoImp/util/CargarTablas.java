@@ -1,15 +1,11 @@
 package pe.edu.pucp.softbod.daoImp.util;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import pe.edu.pucp.softbod.model.CategoriaDTO;
-import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
-import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
-import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
-import pe.edu.pucp.softbod.model.ProductoDTO;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
-import pe.edu.pucp.softbod.model.DevolucionDTO;
-import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.*;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
+import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
+import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
+import pe.edu.pucp.softbod.model.util.Unidad_Medida;
 
 
 public class CargarTablas {
@@ -31,6 +27,7 @@ public class CargarTablas {
         clienteAlFiado.setNombre(resultSet.getString("NOMBRE"));
         clienteAlFiado.setTelefono(resultSet.getString("TELEFONO"));
         clienteAlFiado.setFechaDePago(resultSet.getDate("FECHA_DE_PAGO"));
+        clienteAlFiado.setActivo(resultSet.getBoolean("ACTIVO"));
 		
 	return clienteAlFiado;
     }
@@ -44,12 +41,10 @@ public class CargarTablas {
         DevolucionDTO devolucion = this.cargarDevolucion(resultSet);
         linea.setDevolucion(devolucion);
 		
-	ProductoDTO producto = new ProductoDTO();
-        producto.setProductoId(resultSet.getInt("PRODUCTO_ID"));
+	ProductoDTO producto = this.cargarProductoDTO(resultSet);
         linea.setProducto(producto);
         
-	RazonDevolucionDTO razon = new RazonDevolucionDTO();
-        razon.setRazonDevolucionId(resultSet.getInt("RAZON_DEVOLUCION_ID"));
+	RazonDevolucionDTO razon = this.cargaRazonDevolucionDTO(resultSet);
         linea.setRazonDevolucion(razon);
 		
 	return linea;
@@ -62,10 +57,9 @@ public class CargarTablas {
         devolucion.setTotal(resultSet.getDouble("TOTAL"));
         devolucion.setFecha(resultSet.getDate("FECHA"));
 		
-        UsuarioDTO usuario = new UsuarioDTO();
-        usuario.setUsuarioId(resultSet.getInt("USUARIO_ID"));
+        UsuarioDTO usuario = this.cargarUsuario(resultSet);
         devolucion.setUsuario(usuario);
-		
+        
         return devolucion;
     }
 	
@@ -78,12 +72,104 @@ public class CargarTablas {
         historial.setFechaHora(resultSet.getDate("FECHA_HORA"));
         historial.setOperacion(Tipo_Operacion.valueOf(resultSet.getString("OPERACION")));
 		
-        UsuarioDTO usuario = new UsuarioDTO();
-        usuario.setUsuarioId(resultSet.getInt("USUARIO_ID"));
+        UsuarioDTO usuario = this.cargarUsuario(resultSet);
         historial.setUsuario(usuario);
 		
-        
 	return historial;
+    }
+    
+    public DetalleVentaDTO cargarDetalleVenta(ResultSet resulSet) throws SQLException{
+        DetalleVentaDTO detalleVenta = new DetalleVentaDTO();
+        detalleVenta.setCantidad(resulSet.getInt("CANTIDAD"));
+        detalleVenta.setSubtotal(resulSet.getDouble("SUBTOTAL"));
+        
+        ProductoDTO prod = this.cargarProductoDTO(resulSet);
+        detalleVenta.setProducto(prod);
+        
+        VentaDTO venta = this.cargarVentaDTO(resulSet);
+        detalleVenta.setVenta(venta);
+        
+        return detalleVenta;
+    }
+    
+    public ProductoDTO cargarProductoDTO(ResultSet resulSet) throws SQLException{
+        ProductoDTO prod = new ProductoDTO();
+        prod.setProductoId(resulSet.getInt("PRODUCTO_ID"));
+        prod.setNombre(resulSet.getString("NOMBRE"));
+        prod.setPrecioUnitario(resulSet.getDouble("PRECIO_UNITARIO"));
+        prod.setUnidadMedida(Unidad_Medida.valueOf(resulSet.getString("UNIDAD_MEDIDA")));
+        prod.setStock(resulSet.getInt("STOCK"));
+        prod.setStockMinimo(resulSet.getInt("STOCK_MINIMO"));
+        prod.setActivo(resulSet.getBoolean("ACTIVO"));
+        
+        CategoriaDTO cate = this.cargarCategoria(resulSet);
+        prod.setCategoria(cate);
+        
+        return prod;
+    }
+    
+    public RazonDevolucionDTO cargaRazonDevolucionDTO(ResultSet resulSet) throws SQLException{
+        RazonDevolucionDTO razonDev = new RazonDevolucionDTO();
+        razonDev.setRazonDevolucionId(resulSet.getInt("RAZON_DEVOLUCION_ID"));
+        razonDev.setDescripcion(resulSet.getString("DESCRIPCION"));
+        
+        return razonDev;
+    }
+   
+    public RegistroPagoFiadoDTO cargarRegistroPagoFiadoDTO(ResultSet resulSet) throws SQLException{
+        RegistroPagoFiadoDTO registroPago = new RegistroPagoFiadoDTO();
+        registroPago.setPagoId(resulSet.getInt("PAGO_ID"));
+        registroPago.setFecha(resulSet.getDate("FECHA"));
+        registroPago.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
+        registroPago.setMonto(resulSet.getDouble("MONTO"));
+        
+        UsuarioDTO user = this.cargarUsuario(resulSet);
+        registroPago.setUsuario(user);
+        
+        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
+        registroPago.setCliente(cliente);
+        
+        return registroPago;
+    }
+    
+    public VentaFiadaDTO cargarVentaFiadaDTO(ResultSet resulSet) throws SQLException{
+        VentaFiadaDTO ventaFiada = new VentaFiadaDTO();
+        ventaFiada.setVentaFiadaId(resulSet.getInt("VENTA_FIADA_ID"));
+
+        VentaDTO venta = this.cargarVentaDTO(resulSet);
+        ventaFiada.setVenta(venta);
+        
+        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
+        ventaFiada.setCliente(cliente);
+        
+        return ventaFiada;
+    }
+
+    public VentaDTO cargarVentaDTO(ResultSet resulSet) throws SQLException{
+        VentaDTO venta = new VentaDTO();
+        venta.setVentaId(resulSet.getInt("VENTA_ID"));
+        venta.setTotal(resulSet.getDouble("TOTAL"));
+        venta.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
+        venta.setFecha(resulSet.getDate("FECHA"));
+
+        UsuarioDTO user = this.cargarUsuario(resulSet);
+        venta.setUsuario(user);
+        
+        return venta;
+    }
+    
+    public UsuarioDTO cargarUsuario(ResultSet resulSet) throws SQLException{
+        UsuarioDTO usuario = new UsuarioDTO();
+        usuario.setUsuarioId(resulSet.getInt("USUARIO_ID"));
+        usuario.setUsuario(resulSet.getString("USUARIO"));
+        usuario.setTipoUsuarios(Tipo_Usuario.valueOf(resulSet.getString("TIPO_USUARIOS")));
+        usuario.setCorreo(resulSet.getString("CORREO"));
+        usuario.setContrasenha(resulSet.getString("CONTRASENHA"));
+        usuario.setNombre(resulSet.getString("NOMBRE"));
+        usuario.setTelefono(resulSet.getString("TELEFONO"));
+        usuario.setActivo(resulSet.getBoolean("ACTIVO"));
+        
+        return usuario;
     }
     
 }
