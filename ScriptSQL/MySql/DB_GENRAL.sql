@@ -371,6 +371,95 @@ LOCK TABLES `BOD_VENTAS_FIADAS` WRITE;
 INSERT INTO `BOD_VENTAS_FIADAS` VALUES (1,47,264),(2,48,264);
 /*!40000 ALTER TABLE `BOD_VENTAS_FIADAS` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'TA_PROG3'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `sp_listarVentasGenerico` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `sp_listarVentasGenerico`(
+    IN p_venta_id INT
+)
+BEGIN
+    SELECT 
+        v.VENTA_ID,
+        v.TOTAL,
+        v.METODO_PAGO,
+        v.FECHA,
+        u.USUARIO_ID,
+        u.USUARIO,
+        u.TIPO_USUARIOS,
+        u.CORREO,
+        u.CONTRASENHA,
+        u.NOMBRE,
+        u.TELEFONO,
+        u.ACTIVO
+    FROM BOD_VENTAS v
+    INNER JOIN BOD_USUARIO u ON v.USUARIO_ID = u.USUARIO_ID
+    WHERE p_venta_id IS NULL OR v.VENTA_ID = p_venta_id
+    ORDER BY v.VENTA_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_VENTAS_AL_FIADO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_VENTAS_AL_FIADO`(
+    IN p_alias_cliente VARCHAR(40),
+    IN p_venta_fiada_id INT
+)
+BEGIN
+    SELECT
+        vf.VENTA_FIADA_ID,
+        v.VENTA_ID,
+        v.TOTAL,
+        v.METODO_PAGO,
+        v.FECHA,
+        u.USUARIO_ID,
+        u.USUARIO,
+        u.TIPO_USUARIOS,
+        u.CORREO,
+        u.NOMBRE_COMPLETO,
+        u.TELEFONO_USUARIO,
+        u.ACTIVO_USUARIO,
+        c.CLIENTE_ID,
+        c.ALIAS,
+        c.NOMBRE,
+        c.TELEFONO,
+        c.FECHA_DE_PAGO,
+        c.ACTIVO
+    FROM BOD_VENTAS_FIADAS vf
+    INNER JOIN BOD_VENTAS v ON vf.VENTA_ID = v.VENTA_ID
+    INNER JOIN BOD_CLIENTE_AL_FIADO c ON vf.CLIENTE_ID = c.CLIENTE_ID
+    INNER JOIN BOD_USUARIO u ON v.USUARIO_ID = u.USUARIO_ID
+    WHERE 
+        (p_alias_cliente IS NULL OR c.ALIAS LIKE CONCAT('%', p_alias_cliente, '%'))
+        AND (p_venta_fiada_id IS NULL OR vf.VENTA_FIADA_ID = p_venta_fiada_id)
+    ORDER BY v.FECHA DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -382,4 +471,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-06 13:06:45
+-- Dump completed on 2025-10-06 13:37:28
