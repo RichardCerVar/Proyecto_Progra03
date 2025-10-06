@@ -76,12 +76,14 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
         ArrayList<VentaDTO> lista = this.listarTodosGenerico(venta_Id);
         if(!lista.isEmpty()){
             this.venta = lista.getFirst();
+        }else{
+            this.venta = null;
         }
         return this.venta;
     }
     
     private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId){
-        String sql = "{CALL sp_listarVentasGenerico(?)}";
+        String sql = "{CALL SP_LISTAR_VENTAS(?)}";
         Object parametros = new VentaParametrosBusquedaBuilder()
                             .conVentaId(ventaId)
                             .BuildVentaParametrosBusqueda();

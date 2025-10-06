@@ -1,6 +1,8 @@
 package pe.edu.pucp.softbod.dao;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import pe.edu.pucp.softbod.daoImp.VentaAlFiadoDAOImpl;
 import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
@@ -47,7 +49,7 @@ public class VentaFiadaDAOTest {
         System.out.println("Activo: " + ventaFiada.getCliente().getActivo());
     }
 
-    //@Test
+//    @Test
     public void testInsertar() {
         System.out.println("insertar-VentaFiadaDAOTest");
         System.out.println("---------------------");
@@ -56,7 +58,7 @@ public class VentaFiadaDAOTest {
         usuario.setUsuarioId(308); 
 
         VentaDTO venta = new VentaDTO();
-        venta.setTotal(200.50);
+        venta.setTotal(120.50);
         venta.setMetodoPago(Tipo_de_pago.EFECTIVO);
         venta.setFecha(new Date(19,8,12));
         venta.setUsuario(usuario);
@@ -64,7 +66,7 @@ public class VentaFiadaDAOTest {
         venta.setVentaId(idVenta);
         
         ClienteAlFiadoDTO cliAlFiado = new ClienteAlFiadoDTO();
-        cliAlFiado.setClienteId(264);
+        cliAlFiado.setClienteId(265);
         
         VentaFiadaDTO ventaFiada = new VentaFiadaDTO();
         ventaFiada.setVenta(venta);
@@ -76,19 +78,37 @@ public class VentaFiadaDAOTest {
     }
 
    
-    //@Test
+//    @Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-VentaFiadaDAOTest");
-        System.out.println("--------------------------");
+        System.out.println("------------------------------");
 
-//        VentaDTO venta = this.ventaDAO.obtenerPorId(1);
-//        assertNotNull(venta);
-//        imprimeVenta(venta);
+        VentaFiadaDTO ventaFiada = this.ventaFiadaDao.obtenerPorId(4);
+        assertNotNull(ventaFiada);
+        imprimeVentaFiada(ventaFiada);
     }
 
-    @Test
+//    @Test
     public void testListarTodos() {
-        
+        System.out.println("listarTodos-VentaFiadaDAOTest");
+        System.out.println("------------------------------");
+
+        ArrayList<VentaFiadaDTO> listaVentaFiada = this.ventaFiadaDao.listarTodos();
+        assert(!listaVentaFiada.isEmpty());
+        for (Integer i = 0;  i< listaVentaFiada.size(); i++) {
+            imprimeVentaFiada(listaVentaFiada.get(i));
+        }
+    }
+    
+//    @Test
+    public void testListarTodosPorAliasCliente() {
+        System.out.println("listarTodos-VentaFiadaDAOTest");
+        System.out.println("------------------------------");
+
+        ArrayList<VentaFiadaDTO> listaVentaFiadaCliente = this.ventaFiadaDao.listarTodosPorAliasCliente("Alexito Pro (Actualizado)");
+        for (Integer i = 0;  i< listaVentaFiadaCliente.size(); i++) {
+            imprimeVentaFiada(listaVentaFiadaCliente.get(i));
+        }
     }
 
 }

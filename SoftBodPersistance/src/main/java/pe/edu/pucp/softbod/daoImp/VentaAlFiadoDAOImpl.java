@@ -1,12 +1,17 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.VentaFiadaDTO;
 import pe.edu.pucp.softbod.dao.VentaFiadaDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
+import pe.edu.pucp.softbod.daoImp.util.VentaFiadaParametrosBusquedaBuilder;
+import pe.edu.pucp.softbod.daoImp.util.VentaFiadaParametrosBusqueda;
 
 public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
     
@@ -53,12 +58,45 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
         this.instanciarObjetoDelResultSet();
         lista.add(this.ventaAlFiado);
     }
-
+    
+    private ArrayList<VentaFiadaDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId){
+        String sql = "{ CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?) }";
+        Object parametros = new VentaFiadaParametrosBusquedaBuilder()
+                            .conAliasCliente(aliasCliente)
+                            .conVentaFiadaId(ventaFiadaId)
+                            .buildVentaFiadaParametrosBusqueda();
+        
+        return (ArrayList<VentaFiadaDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListarVentasFiadas, parametros);
+    }
+    
+    
     @Override
     public ArrayList<VentaFiadaDTO> listarTodos() {
-        return (ArrayList<VentaFiadaDTO>) super.listarTodos();
+        Integer ventaFiadaId = null;
+        String aliasCliente = null;
+        return (ArrayList<VentaFiadaDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId);
     }
 
+    private void incluirValorDeParametrosParaListarVentasFiadas(Object parametros){
+        VentaFiadaParametrosBusqueda ventaFiadaParam = (VentaFiadaParametrosBusqueda) parametros;
+        
+        try {
+            if(ventaFiadaParam.getAliasCliente()!=null){
+                this.statement.setString(1,ventaFiadaParam.getAliasCliente());
+            }else{
+                this.statement.setNull(1,Types.VARCHAR);
+            }
+            
+            if(ventaFiadaParam.getVentaFiadaId()!=null){
+                this.statement.setInt(2,ventaFiadaParam.getVentaFiadaId());
+            }else{
+                this.statement.setNull(2, Types.INTEGER);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VentaAlFiadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
     @Override
     public Integer insertar(VentaFiadaDTO ventaFiada) {
         this.ventaAlFiado = ventaFiada;
@@ -67,10 +105,20 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
 
     @Override
     public VentaFiadaDTO obtenerPorId(Integer ventaFiada_Id) {
-        this.ventaAlFiado = new VentaFiadaDTO();
-        this.ventaAlFiado.setVentaFiadaId(ventaFiada_Id);
-        super.obtenerPorId();
+        ArrayList<VentaFiadaDTO> lista;
+        String aliasCliente = null;
+        lista = this.listarTodosConFiltros(aliasCliente, ventaFiada_Id);
+        if(!lista.isEmpty()){
+            this.ventaAlFiado = lista.getFirst();
+        }else{
+            this.ventaAlFiado = null;
+        }
         return this.ventaAlFiado;
     }
-    
+
+    @Override
+    public ArrayList<VentaFiadaDTO> listarTodosPorAliasCliente(String aliasCliente) {
+        Integer ventaFiadaId = null;
+        return (ArrayList<VentaFiadaDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId);
+    }
 }
