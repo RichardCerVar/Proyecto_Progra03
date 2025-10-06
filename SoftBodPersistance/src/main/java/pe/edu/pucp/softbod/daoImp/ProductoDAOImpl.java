@@ -40,7 +40,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         this.statement.setString(4, this.producto.getUnidadMedida().name());  // enum -> String
         this.statement.setDouble(5, this.producto.getStock());
         this.statement.setDouble(6, this.producto.getStockMinimo());
-        this.statement.setBoolean(6, this.producto.getActivo());
+        this.statement.setBoolean(7, this.producto.getActivo());
     }
 
     @Override

@@ -34,6 +34,7 @@ public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucio
     @Override
     protected void incluirValorDeParametrosParaModificacion() throws SQLException {
         this.statement.setString(1, this.razonDevolucion.getDescripcion());
+        this.statement.setInt(2,this.razonDevolucion.getRazonDevolucionId());
     }
     
     @Override

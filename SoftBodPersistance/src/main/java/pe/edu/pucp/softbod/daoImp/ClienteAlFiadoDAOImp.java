@@ -29,6 +29,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.listaColumnas.add(new Columna("NOMBRE",false,false));
         this.listaColumnas.add(new Columna("TELEFONO",false,false));
         this.listaColumnas.add(new Columna("FECHA_DE_PAGO",false,false));
+        this.listaColumnas.add(new Columna("ACTIVO",false,false));
     }
 
     @Override
@@ -37,6 +38,7 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
         this.statement.setDate(4,this.clienteAlFiado.getFechaDePago());
+        this.statement.setBoolean(5,this.clienteAlFiado.getActivo());
     }
 
     @Override
@@ -45,7 +47,8 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
         this.statement.setDate(4, this.clienteAlFiado.getFechaDePago());
-        this.statement.setInt(5, this.clienteAlFiado.getClienteId());
+        this.statement.setBoolean(5, this.clienteAlFiado.getActivo());
+        this.statement.setInt(6, this.clienteAlFiado.getClienteId());
     }
     
     @Override
@@ -91,10 +94,11 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
     
     @Override
     public ArrayList<ClienteAlFiadoDTO> listarTodos() {
-        String sql = "{CALL TA_PROG3.sp_listar_clienteAlFiado()}";
-        Consumer incluirValorDeParametros = null;
-        Object parametros = null;
-        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+//        String sql = "{CALL TA_PROG3.sp_listar_clienteAlFiado()}";
+//        Consumer incluirValorDeParametros = null;
+//        Object parametros = null;
+//        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos();
     }
 
 }

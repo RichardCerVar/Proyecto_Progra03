@@ -73,10 +73,11 @@ public class CategoriaDAOImpl extends DAOImplBase implements CategoriaDAO {
     
     @Override
     public ArrayList<CategoriaDTO> listarTodos() {
-        String sql = "{CALL TA_PROG3.sp_listar_categoria()}";
-        Consumer incluirValorDeParametros = null;
-        Object parametros = null;
-        return (ArrayList<CategoriaDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+//        String sql = "{CALL TA_PROG3.sp_listar_categoria()}";
+//        Consumer incluirValorDeParametros = null;
+//        Object parametros = null;
+//        return (ArrayList<CategoriaDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+        return (ArrayList<CategoriaDTO>) super.listarTodos();
     }
 
     @Override
