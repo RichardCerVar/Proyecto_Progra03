@@ -47,7 +47,7 @@ public class VentasDAOTest {
         System.out.println("id: "+ venta.getVentaId());
     }
 
-    //@Test
+    @Test
     public void testListarTodos() {
         System.out.println("listarTodos-VentasDAOTest");
         System.out.println("----------------------");
