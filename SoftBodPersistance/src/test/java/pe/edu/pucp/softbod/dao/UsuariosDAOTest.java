@@ -33,7 +33,7 @@ public class UsuariosDAOTest {
         assert(resultado!=0);
     }
 
-    //@Test
+    @Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-UsuariosDAOTest");
         System.out.println("----------------------------");

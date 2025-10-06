@@ -26,9 +26,9 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.listaColumnas.add(new Columna("TIPO_USUARIOS", false, false));
         this.listaColumnas.add(new Columna("CORREO", false, false));
         this.listaColumnas.add(new Columna("CONTRASENHA", false, false));
-        this.listaColumnas.add(new Columna("NOMBRE", false, false));
-        this.listaColumnas.add(new Columna("TELEFONO", false, false));
-        this.listaColumnas.add(new Columna("ACTIVO", false, false));
+        this.listaColumnas.add(new Columna("NOMBRE_COMPLETO", false, false));
+        this.listaColumnas.add(new Columna("TELEFONO_USUARIO", false, false));
+        this.listaColumnas.add(new Columna("ACTIVO_USUARIO", false, false));
     }
     
     @Override

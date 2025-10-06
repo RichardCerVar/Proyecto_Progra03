@@ -165,9 +165,9 @@ public class CargarTablas {
         usuario.setTipoUsuarios(Tipo_Usuario.valueOf(resulSet.getString("TIPO_USUARIOS")));
         usuario.setCorreo(resulSet.getString("CORREO"));
         usuario.setContrasenha(resulSet.getString("CONTRASENHA"));
-        usuario.setNombre(resulSet.getString("NOMBRE"));
-        usuario.setTelefono(resulSet.getString("TELEFONO"));
-        usuario.setActivo(resulSet.getBoolean("ACTIVO"));
+        usuario.setNombre(resulSet.getString("NOMBRE_COMPLETO"));
+        usuario.setTelefono(resulSet.getString("TELEFONO_USUARIO"));
+        usuario.setActivo(resulSet.getBoolean("ACTIVO_USUARIO"));
         
         return usuario;
     }
