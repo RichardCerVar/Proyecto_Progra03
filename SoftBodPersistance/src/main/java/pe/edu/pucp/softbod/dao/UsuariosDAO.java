@@ -8,4 +8,5 @@ public interface UsuariosDAO {
     public UsuarioDTO obtenerPorId(Integer usuarioId);
     public ArrayList<UsuarioDTO> listarTodos();
     public Integer modificar(UsuarioDTO usuario);
+    public Integer eliminarLogicoUsuario(UsuarioDTO usuario);
 }

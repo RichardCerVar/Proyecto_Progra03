@@ -136,21 +136,26 @@ public class CargarTablas {
         VentaFiadaDTO ventaFiada = new VentaFiadaDTO();
         ventaFiada.setVentaFiadaId(resulSet.getInt("VENTA_FIADA_ID"));
 
-        VentaDTO venta = this.cargarVentaDTO(resulSet);
+        VentaDTO venta = this.cargarVentaDTOsinUsuario(resulSet);
         ventaFiada.setVenta(venta);
         
-        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
-        ventaFiada.setCliente(cliente);
+//        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
+//        ventaFiada.setCliente(cliente);
         
         return ventaFiada;
     }
 
-    public VentaDTO cargarVentaDTO(ResultSet resulSet) throws SQLException{
+    public VentaDTO cargarVentaDTOsinUsuario(ResultSet resulSet) throws SQLException{
         VentaDTO venta = new VentaDTO();
         venta.setVentaId(resulSet.getInt("VENTA_ID"));
         venta.setTotal(resulSet.getDouble("TOTAL"));
         venta.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
         venta.setFecha(resulSet.getDate("FECHA"));
+        return venta;
+    }
+    
+    public VentaDTO cargarVentaDTO(ResultSet resulSet) throws SQLException{
+        VentaDTO venta = cargarVentaDTOsinUsuario(resulSet);
 
         UsuarioDTO user = this.cargarUsuario(resulSet);
         venta.setUsuario(user);

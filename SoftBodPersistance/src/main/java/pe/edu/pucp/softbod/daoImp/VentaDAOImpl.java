@@ -1,4 +1,3 @@
-
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
@@ -51,7 +50,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.venta = this.cargaTablas.cargarVentaDTO(resultSet);
+        this.venta = this.cargaTablas.cargarVentaDTOsinUsuario(resultSet);
     }
     
     @Override

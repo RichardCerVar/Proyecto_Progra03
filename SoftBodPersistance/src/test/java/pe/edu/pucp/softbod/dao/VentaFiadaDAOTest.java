@@ -21,7 +21,6 @@ public class VentaFiadaDAOTest {
     private void imprimeVentaFiada(VentaFiadaDTO ventaFiada) {
         System.out.println("=== VENTA FIADA ===");
         System.out.println("ID Venta Fiada: " + ventaFiada.getVentaFiadaId());
-
         // Información de la Venta
         System.out.println("\n--- DATOS DE LA VENTA ---");
         System.out.println("Venta ID: " + ventaFiada.getVenta().getVentaId());
@@ -29,24 +28,6 @@ public class VentaFiadaDAOTest {
         System.out.println("Metodo Pago: " + ventaFiada.getVenta().getMetodoPago());
         System.out.println("Fecha: " + ventaFiada.getVenta().getFecha());
 
-        // Información del Usuario que registró la venta
-        System.out.println("\n--- USUARIO QUE REGISTRO LA VENTA ---");
-        System.out.println("Usuario ID: " + ventaFiada.getVenta().getUsuario().getUsuarioId());
-        System.out.println("Usuario: " + ventaFiada.getVenta().getUsuario().getUsuario());
-        System.out.println("Nombre: " + ventaFiada.getVenta().getUsuario().getNombre());
-        System.out.println("Tipo: " + ventaFiada.getVenta().getUsuario().getTipoUsuarios());
-        System.out.println("Correo: " + ventaFiada.getVenta().getUsuario().getCorreo());
-        System.out.println("Telefono: " + ventaFiada.getVenta().getUsuario().getTelefono());
-        System.out.println("Activo: " + ventaFiada.getVenta().getUsuario().getActivo());
-
-        // Información del Cliente
-        System.out.println("\n--- DATOS DEL CLIENTE ---");
-        System.out.println("Cliente ID: " + ventaFiada.getCliente().getClienteId());
-        System.out.println("Alias: " + ventaFiada.getCliente().getAlias());
-        System.out.println("Nombre: " + ventaFiada.getCliente().getNombre());
-        System.out.println("Telefono: " + ventaFiada.getCliente().getTelefono());
-        System.out.println("Fecha de Pago: " + ventaFiada.getCliente().getFechaDePago());
-        System.out.println("Activo: " + ventaFiada.getCliente().getActivo());
     }
 
 //    @Test
@@ -105,7 +86,7 @@ public class VentaFiadaDAOTest {
         System.out.println("listarTodos-VentaFiadaDAOTest");
         System.out.println("------------------------------");
 
-        ArrayList<VentaFiadaDTO> listaVentaFiadaCliente = this.ventaFiadaDao.listarTodosPorAliasCliente("Alexito Pro (Actualizado)");
+        ArrayList<VentaFiadaDTO> listaVentaFiadaCliente = this.ventaFiadaDao.listarTodosPorAliasCliente("Cj");
         for (Integer i = 0;  i< listaVentaFiadaCliente.size(); i++) {
             imprimeVentaFiada(listaVentaFiadaCliente.get(i));
         }

@@ -44,10 +44,14 @@ public class VentasDAOTest {
         
         VentaDTO venta = this.ventasDAO.obtenerPorId(42);
         assertNotNull(venta);
-        System.out.println("id: "+ venta.getVentaId());
+        System.out.println("--- Datos de Venta ---");
+        System.out.println("ID Venta: " + venta.getVentaId());
+        System.out.println("Total: " + venta.getTotal());
+        System.out.println("Método Pago: " + venta.getMetodoPago());
+        System.out.println("Fecha: " + venta.getFecha());
     }
 
-    //@Test
+//    @Test
     public void testListarTodos() {
         System.out.println("listarTodos-VentasDAOTest");
         System.out.println("----------------------");
@@ -58,23 +62,12 @@ public class VentasDAOTest {
         for (Integer i = 0; i < listaVentas.size(); i++) {
             VentaDTO venta = listaVentas.get(i);
             UsuarioDTO usuario = venta.getUsuario();
-
-            System.out.println("========== VENTA #" + (i + 1) + " ==========");
             System.out.println("--- Datos de Venta ---");
             System.out.println("ID Venta: " + venta.getVentaId());
             System.out.println("Total: " + venta.getTotal());
             System.out.println("Método Pago: " + venta.getMetodoPago());
             System.out.println("Fecha: " + venta.getFecha());
 
-            System.out.println("\n--- Datos de Usuario ---");
-            System.out.println("ID Usuario: " + usuario.getUsuarioId());
-            System.out.println("Usuario: " + usuario.getUsuario());
-            System.out.println("Tipo Usuario: " + usuario.getTipoUsuarios());
-            System.out.println("Correo: " + usuario.getCorreo());
-            System.out.println("Nombre: " + usuario.getNombre());
-            System.out.println("Teléfono: " + usuario.getTelefono());
-            System.out.println("Activo: " + usuario.getActivo());
-            System.out.println("================================\n");
         }
     }
     

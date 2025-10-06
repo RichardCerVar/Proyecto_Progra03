@@ -99,5 +99,12 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.usuario = usuario;
         return super.modificar();
     }
+
+    @Override
+    public Integer eliminarLogicoUsuario(UsuarioDTO usuario) {
+        this.usuario = usuario;
+        this.usuario.setActivo(false);
+        return super.modificar();
+    }
     
 }
