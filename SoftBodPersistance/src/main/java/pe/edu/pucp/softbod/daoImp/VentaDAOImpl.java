@@ -97,9 +97,8 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
     private void incluirValorDeParametrosParaListarVentas(Object parametros) {
         VentaParametrosBusqueda ventaParametros = (VentaParametrosBusqueda) parametros;
         try {
-            if(ventaParametros.getVentaId() == null){
-                this.statement.setNull(1, Types.INTEGER);
-            }else{
+            this.statement.setNull(1, Types.INTEGER);
+            if(ventaParametros.getVentaId() != null){
                 this.statement.setInt(1, ventaParametros.getVentaId());
             }
         } catch (SQLException ex) {
