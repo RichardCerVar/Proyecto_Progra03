@@ -2,11 +2,16 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.VentasDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.VentaParametrosBusqueda;
+import pe.edu.pucp.softbod.daoImp.util.VentaParametrosBusquedaBuilder;
 import pe.edu.pucp.softbod.model.VentaDTO;
 
 
@@ -68,14 +73,38 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
 
     @Override
     public VentaDTO obtenerPorId(Integer venta_Id) {
-        this.venta = new VentaDTO();
-        this.venta.setVentaId(venta_Id);
-        super.obtenerPorId();
+        ArrayList<VentaDTO> lista = this.listarTodosGenerico(venta_Id);
+        if(!lista.isEmpty()){
+            this.venta = lista.getFirst();
+        }
         return this.venta;
+    }
+    
+    private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId){
+        String sql = "{CALL sp_listarVentasGenerico(?)}";
+        Object parametros = new VentaParametrosBusquedaBuilder()
+                            .conVentaId(ventaId)
+                            .BuildVentaParametrosBusqueda();
+        return (ArrayList<VentaDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListarVentas, parametros);
     }
 
     @Override
     public ArrayList<VentaDTO> listarTodos() {
-        return (ArrayList<VentaDTO>) super.listarTodos();
+        Integer ventaId = null;
+        return this.listarTodosGenerico(ventaId);
     }
+
+    private void incluirValorDeParametrosParaListarVentas(Object parametros) {
+        VentaParametrosBusqueda ventaParametros = (VentaParametrosBusqueda) parametros;
+        try {
+            if(ventaParametros.getVentaId() == null){
+                this.statement.setNull(1, Types.INTEGER);
+            }else{
+                this.statement.setInt(1, ventaParametros.getVentaId());
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(VentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+   
 }

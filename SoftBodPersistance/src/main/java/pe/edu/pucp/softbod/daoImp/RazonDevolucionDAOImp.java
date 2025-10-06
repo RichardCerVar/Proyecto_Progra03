@@ -32,12 +32,6 @@ public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucio
     }
     
     @Override
-    protected void incluirValorDeParametrosParaModificacion() throws SQLException {
-        this.statement.setString(1, this.razonDevolucion.getDescripcion());
-        this.statement.setInt(2,this.razonDevolucion.getRazonDevolucionId());
-    }
-    
-    @Override
     protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
         this.statement.setInt(1,this.razonDevolucion.getRazonDevolucionId());
     }
@@ -73,12 +67,6 @@ public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucio
     public Integer eliminar(RazonDevolucionDTO razonDevolucion) {
         this.razonDevolucion = razonDevolucion;
         return super.eliminar();
-    }
-
-    @Override
-    public Integer modificar(RazonDevolucionDTO razonDevolucion) {
-        this.razonDevolucion = razonDevolucion;
-        return super.modificar();
     }
 
     @Override

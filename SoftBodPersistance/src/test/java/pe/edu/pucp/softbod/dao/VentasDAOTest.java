@@ -1,144 +1,81 @@
-//package pe.edu.pucp.softbod.dao;
-//
-//import java.util.ArrayList;
-//import static org.junit.jupiter.api.Assertions.assertEquals;
-//import static org.junit.jupiter.api.Assertions.assertNotEquals;
-//import static org.junit.jupiter.api.Assertions.assertNull;
-//import static org.junit.jupiter.api.Assertions.assertTrue;
-//import org.junit.jupiter.api.Test;
-//import pe.edu.pucp.softbod.daoImp.VentasDAOImpl;
-//import pe.edu.pucp.softbod.model.Tipo_de_pago;
-//import pe.edu.pucp.softbod.model.VentasDTO;
-//import java.sql.Date;
-//
-//public class VentasDAOTest {
-//    
-//    private VentasDAO ventasDAO;
-//    
-//    public VentasDAOTest(){
-//        this.ventasDAO= new VentasDAOImpl();
-//    }
-//
-//
+package pe.edu.pucp.softbod.dao;
+
+import java.sql.Date;
+import java.util.ArrayList;
+import org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import org.junit.jupiter.api.Test;
+import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
+import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.VentaDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
+
+public class VentasDAOTest {
+    
+    private final VentasDAO ventasDAO;
+    
+    public VentasDAOTest(){
+        this.ventasDAO= new VentaDAOImpl();
+    }
+
+
 //    @Test
-//    public void testInsertar() {
-//        System.out.println("insertar-VentasDAOTest");
-//        ArrayList<Integer> listaVentaId = new ArrayList<>();
-//        insertarVentas(listaVentaId);        
-//        eliminarTodo();
-//    }
-//    
-//    public void insertarVentas(ArrayList<Integer> listaVentaId){
-//        //cambiar ids usuario
-//        VentasDTO venta= new VentasDTO();
-//        venta.setTotal(103.0);
-//        venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
-//        venta.setFecha(Date.valueOf("2025-09-12"));
-//        venta.setUsuario_Id(320);
-//        Integer resultado=this.ventasDAO.insertar(venta);
-//        assertTrue(resultado != 0);
-//        listaVentaId.add(resultado);
-//        
-//        
-//        venta.setTotal(123.02);
-//        venta.setMetodo_pago(Tipo_de_pago.TRANSFERENCIA);
-//        venta.setFecha(Date.valueOf("2025-09-12"));
-//        venta.setUsuario_Id(321);
-//        resultado=this.ventasDAO.insertar(venta);
-//        assertTrue(resultado != 0);
-//        listaVentaId.add(resultado);
-//        
-//        venta.setTotal(4133.32);
-//        venta.setMetodo_pago(Tipo_de_pago.EFECTIVO);
-//        venta.setFecha(Date.valueOf("2025-09-12"));
-//        venta.setUsuario_Id(322);
-//        resultado=this.ventasDAO.insertar(venta);
-//        assertTrue(resultado != 0);
-//        listaVentaId.add(resultado);
-//        
-//    }
-//
+    public void testInsertar() {
+        System.out.println("insertar-VentasDAOTest");
+        System.out.println("----------------------");
+        
+        VentaDTO venta = new VentaDTO();
+        venta.setFecha(new Date(19,11,12));
+        venta.setMetodoPago(Tipo_de_pago.TRANSFERENCIA);
+        venta.setTotal(40.23);
+
+        UsuarioDTO user = new UsuarioDTO();
+        user.setUsuarioId(308);
+        venta.setUsuario(user);
+        
+        Integer res = this.ventasDAO.insertar(venta);
+        assert(res!=0);
+    }
+
 //    @Test
-//    public void testObtenerPorId() {
-//        System.out.println("obtenerPorId-VentasDAOTest");
-//        ArrayList<Integer> listaVentaId = new ArrayList<>();
-//        insertarVentas(listaVentaId);
-//        
-//        VentasDTO venta=this.ventasDAO.obtenerPorId(listaVentaId.get(0));
-//        assertEquals(venta.getVenta_Id(),listaVentaId.get(0));
-//        
-//        venta=this.ventasDAO.obtenerPorId(listaVentaId.get(1));
-//        assertEquals(venta.getVenta_Id(),listaVentaId.get(1));
-//        
-//        venta=this.ventasDAO.obtenerPorId(listaVentaId.get(2));
-//        assertEquals(venta.getVenta_Id(),listaVentaId.get(2));
-//        
-//        eliminarTodo();
-//    }
-//
-//
-//    @Test
-//    public void testListarTodos() {
-//        System.out.println("listarTodos-VentasDAOTest");
-//        ArrayList<Integer> listaVentaId = new ArrayList<>();
-//        insertarVentas(listaVentaId);
-//        
-//        ArrayList<VentasDTO> listaVentas=this.ventasDAO.listarTodos();
-//        assertEquals(listaVentaId.size(),listaVentas.size());
-//        for (Integer i = 0; i < listaVentaId.size(); i++) {
-//            assertEquals(listaVentaId.get(i), listaVentas.get(i).getVenta_Id());
-//        }
-//        
-//        eliminarTodo();
-//    }
-//
-//
-//    @Test
-//    public void testModificar() {
-//        System.out.println("modificar-VentasDAOTest");
-//        ArrayList<Integer> listaVentaId = new ArrayList<>();
-//        insertarVentas(listaVentaId);
-//        
-//        ArrayList<VentasDTO> listaVentas=this.ventasDAO.listarTodos();
-//        assertEquals(listaVentaId.size(),listaVentas.size());
-//        for (Integer i = 0; i < listaVentaId.size(); i++) {
-//            listaVentas.get(i).setMetodo_pago(Tipo_de_pago.EFECTIVO);
-//            listaVentas.get(i).setTotal(1000.0);
-//            //cambiar id aqui
-//            listaVentas.get(i).setUsuario_Id(323);
-//            this.ventasDAO.modificar(listaVentas.get(i));
-//        }
-//        
-//        ArrayList<VentasDTO> listaVentasModificados=this.ventasDAO.listarTodos();
-//        assertEquals(listaVentas.size(),listaVentasModificados.size());
-//        for (Integer i = 0; i < listaVentas.size(); i++) {
-//             assertEquals(listaVentas.get(i).getUsuario_Id(),listaVentasModificados.get(i).getUsuario_Id());
-//             assertEquals(listaVentas.get(i).getTotal(),listaVentasModificados.get(i).getTotal());
-//             assertEquals(listaVentas.get(i).getMetodo_pago(),listaVentasModificados.get(i).getMetodo_pago());
-//        }
-//        eliminarTodo();
-//    }
-//
-//
-//    @Test
-//    public void testEliminar() {
-//        System.out.println("eliminar-VentasDAOTest");
-//        ArrayList<Integer> listaVentaId = new ArrayList<>();
-//        insertarVentas(listaVentaId);
-//        eliminarTodo();
-//    }
-//    
-//    
-//
-//    public void eliminarTodo(){ 
-//        ArrayList<VentasDTO> listaVentas = this.ventasDAO.listarTodos();
-//        for (Integer i = 0; i < listaVentas.size(); i++) {
-//            Integer resultado = this.ventasDAO.eliminar(listaVentas.get(i));
-//            assertNotEquals(0, resultado);
-//            VentasDTO venta = this.ventasDAO.obtenerPorId(listaVentas.get(i).getVenta_Id());
-//            assertNull(venta);
-//        }
-//        
-//    }
-//    
-//}
+    public void testObtenerPorId() {
+        System.out.println("obtenerPorId-VentasDAOTest");
+        System.out.println("----------------------");
+        
+        VentaDTO venta = this.ventasDAO.obtenerPorId(42);
+        assertNotNull(venta);
+        System.out.println("id: "+ venta.getVentaId());
+    }
+
+    //@Test
+    public void testListarTodos() {
+        System.out.println("listarTodos-VentasDAOTest");
+        System.out.println("----------------------");
+        
+        ArrayList<VentaDTO> listaVentas = this.ventasDAO.listarTodos();
+        System.out.println(listaVentas.size());
+        assert(!listaVentas.isEmpty());
+        for (Integer i = 0; i < listaVentas.size(); i++) {
+            VentaDTO venta = listaVentas.get(i);
+            UsuarioDTO usuario = venta.getUsuario();
+
+            System.out.println("========== VENTA #" + (i + 1) + " ==========");
+            System.out.println("--- Datos de Venta ---");
+            System.out.println("ID Venta: " + venta.getVentaId());
+            System.out.println("Total: " + venta.getTotal());
+            System.out.println("Método Pago: " + venta.getMetodoPago());
+            System.out.println("Fecha: " + venta.getFecha());
+
+            System.out.println("\n--- Datos de Usuario ---");
+            System.out.println("ID Usuario: " + usuario.getUsuarioId());
+            System.out.println("Usuario: " + usuario.getUsuario());
+            System.out.println("Tipo Usuario: " + usuario.getTipoUsuarios());
+            System.out.println("Correo: " + usuario.getCorreo());
+            System.out.println("Nombre: " + usuario.getNombre());
+            System.out.println("Teléfono: " + usuario.getTelefono());
+            System.out.println("Activo: " + usuario.getActivo());
+            System.out.println("================================\n");
+        }
+    }
+    
+}

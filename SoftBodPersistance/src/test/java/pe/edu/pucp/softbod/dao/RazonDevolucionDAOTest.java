@@ -79,23 +79,5 @@ public class RazonDevolucionDAOTest {
             System.out.println("-----------------------------------");
         }
     }
-    
-    //@Test
-    public void testModificar(){
-        System.out.println("modificar-RazonDevolucionDAOTest");
-        System.out.println("--------------------------------");
 
-        RazonDevolucionDTO razonDev = this.razonDevolucionDAO.obtenerPorId(133);
-        assertNotNull(razonDev);
-        System.out.println("RAZON DEVOLUCION Antes: ");
-        imprimeRazonDevolucion(razonDev);
-
-        razonDev.setDescripcion("Producto vencido - Actualizado");
-
-        Integer resultado = this.razonDevolucionDAO.modificar(razonDev);
-        assert(resultado!=0);
-        System.out.println("RAZON DEVOLUCION Despues: ");
-        imprimeRazonDevolucion(razonDev);
-        
-    }
 }
