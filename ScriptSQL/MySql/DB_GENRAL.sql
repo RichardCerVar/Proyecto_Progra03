@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.43, for Win64 (x86_64)
 --
--- Host: db-ta-prog3.czckeyy6ic4v.us-east-1.rds.amazonaws.com    Database: TA_PROG3
+-- Host: ta-prog3.czckeyy6ic4v.us-east-1.rds.amazonaws.com    Database: TA_PROG3
 -- ------------------------------------------------------
 -- Server version	8.4.4
 
@@ -44,7 +44,6 @@ CREATE TABLE `BOD_CATEGORIA` (
 
 LOCK TABLES `BOD_CATEGORIA` WRITE;
 /*!40000 ALTER TABLE `BOD_CATEGORIA` DISABLE KEYS */;
-INSERT INTO `BOD_CATEGORIA` VALUES (18,'Abarrotes'),(23,'BEBIDAS');
 /*!40000 ALTER TABLE `BOD_CATEGORIA` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,7 +73,6 @@ CREATE TABLE `BOD_CLIENTE_AL_FIADO` (
 
 LOCK TABLES `BOD_CLIENTE_AL_FIADO` WRITE;
 /*!40000 ALTER TABLE `BOD_CLIENTE_AL_FIADO` DISABLE KEYS */;
-INSERT INTO `BOD_CLIENTE_AL_FIADO` VALUES (264,'Alexito Pro (Actualizado)','Juan Carlos Pérez García','912345678','1916-04-22',1,0.00),(265,'Cj','JACKSON','12345','2022-02-04',1,0.00);
 /*!40000 ALTER TABLE `BOD_CLIENTE_AL_FIADO` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +221,6 @@ CREATE TABLE `BOD_PRODUCTO` (
 
 LOCK TABLES `BOD_PRODUCTO` WRITE;
 /*!40000 ALTER TABLE `BOD_PRODUCTO` DISABLE KEYS */;
-INSERT INTO `BOD_PRODUCTO` VALUES (17,18,'Arroz Costeño',5.50,'KILOGRAMO',100,20,1);
 /*!40000 ALTER TABLE `BOD_PRODUCTO` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,7 +245,6 @@ CREATE TABLE `BOD_RAZON_DEVOLUCION` (
 
 LOCK TABLES `BOD_RAZON_DEVOLUCION` WRITE;
 /*!40000 ALTER TABLE `BOD_RAZON_DEVOLUCION` DISABLE KEYS */;
-INSERT INTO `BOD_RAZON_DEVOLUCION` VALUES (134,'Producto Vencido');
 /*!40000 ALTER TABLE `BOD_RAZON_DEVOLUCION` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,7 +306,6 @@ CREATE TABLE `BOD_USUARIO` (
 
 LOCK TABLES `BOD_USUARIO` WRITE;
 /*!40000 ALTER TABLE `BOD_USUARIO` DISABLE KEYS */;
-INSERT INTO `BOD_USUARIO` VALUES (308,'CHICHICO REFORMED','OPERARIO','Holacomoestas@outlook.com','jjdajsdjasd123','Jose Carlos','955882323',1),(309,'Chichico EL PRIMERO','OPERARIO','dasdjasd@gmai.com','jjdajsdjasd123','Jose Carlos','987654321',1);
 /*!40000 ALTER TABLE `BOD_USUARIO` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,7 +334,6 @@ CREATE TABLE `BOD_VENTAS` (
 
 LOCK TABLES `BOD_VENTAS` WRITE;
 /*!40000 ALTER TABLE `BOD_VENTAS` DISABLE KEYS */;
-INSERT INTO `BOD_VENTAS` VALUES (42,40.23,'TRANSFERENCIA','1919-12-12',308),(43,40.23,'TRANSFERENCIA','1919-12-12',308),(44,40.23,'TRANSFERENCIA','1919-12-12',308),(45,150.50,'EFECTIVO','1919-09-12',308),(46,150.50,'EFECTIVO','1919-09-12',308),(47,150.50,'EFECTIVO','1919-09-12',308),(48,200.50,'EFECTIVO','1919-09-12',308),(49,300.50,'EFECTIVO','1919-09-12',308),(50,120.50,'EFECTIVO','1919-09-12',308);
 /*!40000 ALTER TABLE `BOD_VENTAS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -369,7 +363,6 @@ CREATE TABLE `BOD_VENTAS_FIADAS` (
 
 LOCK TABLES `BOD_VENTAS_FIADAS` WRITE;
 /*!40000 ALTER TABLE `BOD_VENTAS_FIADAS` DISABLE KEYS */;
-INSERT INTO `BOD_VENTAS_FIADAS` VALUES (1,47,264),(2,48,264),(3,49,264),(4,50,265);
 /*!40000 ALTER TABLE `BOD_VENTAS_FIADAS` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -659,6 +652,38 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_REGISTRO_DE_PAGOS_FIADOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_REGISTRO_DE_PAGOS_FIADOS`(
+    IN p_alias_cliente VARCHAR(40),
+    IN p_fecha DATE
+)
+BEGIN
+    SELECT
+        r.PAGO_ID,
+        r.FECHA,
+        r.METODO_PAGO,
+        r.MONTO
+    FROM BOD_REGISTRO_PAGOS_FIADOS r
+    INNER JOIN BOD_CLIENTE_AL_FIADO c ON r.CLIENTE_ID = c.CLIENTE_ID
+    WHERE 
+        (p_alias_cliente IS NULL OR c.ALIAS LIKE CONCAT('%', p_alias_cliente, '%'))
+        AND r.FECHA = p_fecha
+    ORDER BY r.FECHA DESC, r.PAGO_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_USUARIOS` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -707,7 +732,8 @@ DELIMITER ;
 /*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
 CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_VENTAS`(
-    IN p_venta_id INT
+    IN p_venta_id INT,
+    IN p_fecha DATE
 )
 BEGIN
     SELECT 
@@ -716,7 +742,9 @@ BEGIN
         v.METODO_PAGO,
         v.FECHA
     FROM BOD_VENTAS v
-    WHERE p_venta_id IS NULL OR v.VENTA_ID = p_venta_id
+    WHERE 
+        (p_venta_id IS NULL OR v.VENTA_ID = p_venta_id)
+        AND (p_fecha IS NULL OR DATE(v.FECHA) = p_fecha)
     ORDER BY v.VENTA_ID;
 END ;;
 DELIMITER ;
@@ -736,7 +764,8 @@ DELIMITER ;
 DELIMITER ;;
 CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_VENTAS_AL_FIADO`(
     IN p_alias_cliente VARCHAR(40),
-    IN p_venta_fiada_id INT
+    IN p_venta_fiada_id INT,
+    IN p_fecha DATE
 )
 BEGIN
     SELECT
@@ -751,7 +780,8 @@ BEGIN
     WHERE 
         (p_alias_cliente IS NULL OR c.ALIAS LIKE CONCAT('%', p_alias_cliente, '%'))
         AND (p_venta_fiada_id IS NULL OR vf.VENTA_FIADA_ID = p_venta_fiada_id)
-    ORDER BY v.FECHA DESC;
+        AND (p_fecha IS NULL OR DATE(v.FECHA) = p_fecha)
+    ORDER BY v.FECHA DESC, vf.VENTA_FIADA_ID;
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -769,4 +799,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-07  0:36:04
+-- Dump completed on 2025-10-07  3:29:36
