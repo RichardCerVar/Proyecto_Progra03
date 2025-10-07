@@ -174,7 +174,8 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         String nameUser = null;
         String emailUser = null;
         Boolean activos = false;
-        return (ArrayList<UsuarioDTO>) listarUsuariosConFiltro(nameUser, emailUser, activos);}
+        return (ArrayList<UsuarioDTO>) listarUsuariosConFiltro(nameUser, emailUser, activos);
+    }
 
     @Override
     public UsuarioDTO obtenerPorCorreo(String emailUser) {
