@@ -153,57 +153,78 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
     @Override
     public ArrayList<ProductoDTO> listarTodosActivos() {
-        
+        Boolean activo = true;
+        String categoria = null;
+        String nombreProducto = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProducto);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosInactivos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = false;
+        String categoria = null;
+        String nombreProducto = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProducto);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombre(String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = null;
+        String categoria = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombreParcialActivo(String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = true;
+        String categoria = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombreParcialInactivo(String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = false;
+        String categoria = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorCategoria(String nameCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = null;
+        String nombreProd = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosActivosPorCategoria(String nameCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = true;
+        String nombreProd = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosInactivosPorCategoria(String nameCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = false;
+        String nombreProd = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoria(String nameCategoria, String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaActivo(String nameCategoria, String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = true;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
     @Override
     public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaInactivo(String nameCategoria, String nombreProd) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Boolean activo = false;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
 }
