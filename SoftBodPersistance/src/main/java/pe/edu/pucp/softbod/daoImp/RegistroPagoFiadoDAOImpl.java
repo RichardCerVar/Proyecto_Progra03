@@ -1,12 +1,18 @@
 package pe.edu.pucp.softbod.daoImp;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
+import pe.edu.pucp.softbod.daoImp.util.RegistroPagoFiadoParametrosBusqueda;
+import pe.edu.pucp.softbod.daoImp.util.RegistroPagoFiadoParametrosBusquedaBuilder;
 
 public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPagoFiadoDAO{
     
@@ -40,11 +46,6 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
     }
     
     @Override
-    protected void incluirValorDeParametrosParaObtenerPorId() throws SQLException {
-        this.statement.setInt(1, this.registroPagosFiados.getPagoId());
-    }
-    
-    @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.registroPagosFiados = this.cargaTablas.cargarRegistroPagoFiadoDTO(resultSet);
     }
@@ -67,16 +68,58 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
     }
 
     @Override
-    public RegistroPagoFiadoDTO obtenerPorId(Integer pagoId) {
-        this.registroPagosFiados = new RegistroPagoFiadoDTO();
-        this.registroPagosFiados.setPagoId(pagoId);
-        super.obtenerPorId();
-        return this.registroPagosFiados;
+    public ArrayList<RegistroPagoFiadoDTO> listarTodos() {
+        String aliasCliente = null;
+        Date fechaMaxima = null;
+        return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaMaxima);
+    }
+
+    public ArrayList<RegistroPagoFiadoDTO> listarPagosFiadosConFiltro(String aliasCliente, Date fechaMaxima) {
+        String sql = "{ CALL SP_LISTAR_REGISTRO_DE_PAGOS_FIADOS(?, ?) }";
+
+        Object parametros = new RegistroPagoFiadoParametrosBusquedaBuilder()
+                            .conAliasCliente(aliasCliente)
+                            .conFechaMaxima(fechaMaxima)
+                            .buildRegistroPagoFiadoParametrosBusqueda();
+
+        return (ArrayList<RegistroPagoFiadoDTO>) super.listarTodos(sql,
+                this::incluirValorDeParametrosParaBuscarPagosFiados,parametros);
+    }
+
+    private void incluirValorDeParametrosParaBuscarPagosFiados(Object parametros) {
+        RegistroPagoFiadoParametrosBusqueda filtros = (RegistroPagoFiadoParametrosBusqueda) parametros;
+
+        try {
+            // 1️⃣ Alias del cliente
+            if (filtros.getAliasCliente() != null) {
+                this.statement.setString(1, filtros.getAliasCliente());
+            } else {
+                this.statement.setNull(1, Types.VARCHAR);
+            }
+
+            // 2️⃣ Fecha máxima
+            if (filtros.getFechaMaxima() != null) {
+                this.statement.setDate(2, filtros.getFechaMaxima());
+            } else {
+                this.statement.setNull(2, Types.DATE);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroPagoFiadoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
-    public ArrayList<RegistroPagoFiadoDTO> listarTodos() {
-        return (ArrayList<RegistroPagoFiadoDTO>) super.listarTodos();
+    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasCliente(String aliasCliente) {
+        Date fechaMaxima = null;
+        return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaMaxima);
     }
 
+    @Override
+    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, Date fechaFin) {
+        return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaFin);
+    }
+
+
+    
 }

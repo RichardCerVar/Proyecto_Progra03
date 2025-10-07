@@ -184,8 +184,6 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         ArrayList<UsuarioDTO> lista = this.listarUsuariosConFiltro(nombreUser, emailUser, activos);
         if(!lista.isEmpty()){
             this.usuario = lista.getFirst();
-        }else{
-            this.usuario = null;
         }
         return this.usuario;
     }

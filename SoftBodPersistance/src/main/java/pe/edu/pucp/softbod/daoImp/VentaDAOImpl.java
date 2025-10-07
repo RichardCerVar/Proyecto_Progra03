@@ -1,5 +1,6 @@
 package pe.edu.pucp.softbod.daoImp;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -72,36 +73,53 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
 
     @Override
     public VentaDTO obtenerPorId(Integer venta_Id) {
-        this.venta = new VentaDTO();
-        this.venta.setVentaId(venta_Id);
-        super.obtenerPorId();
+        Date fecha = null;
+        ArrayList<VentaDTO> lista = this.listarTodosGenerico(venta_Id,fecha);
+        if (!lista.isEmpty()){
+            this.venta = lista.getFirst();
+        }
         return this.venta;
     }
     
-    private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId){
-        String sql = "{CALL SP_LISTAR_VENTAS(?)}";
+    private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId,Date fecha){
+        String sql = "{CALL SP_LISTAR_VENTAS(?,?)}";
         Object parametros = new VentaParametrosBusquedaBuilder()
                             .conVentaId(ventaId)
-                            .BuildVentaParametrosBusqueda();
+                            .conFecha(fecha)
+                            .buildVentaParametrosBusqueda();
         return (ArrayList<VentaDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListarVentas, parametros);
     }
 
     @Override
     public ArrayList<VentaDTO> listarTodos() {
         Integer ventaId = null;
-        return this.listarTodosGenerico(ventaId);
+        Date fecha = null;
+        return this.listarTodosGenerico(ventaId,fecha);
     }
 
     private void incluirValorDeParametrosParaListarVentas(Object parametros) {
         VentaParametrosBusqueda ventaParametros = (VentaParametrosBusqueda) parametros;
         try {
-            this.statement.setNull(1, Types.INTEGER);
             if(ventaParametros.getVentaId() != null){
                 this.statement.setInt(1, ventaParametros.getVentaId());
+            }else{
+                this.statement.setNull(1, Types.INTEGER);
             }
+            if(ventaParametros.getFecha()!= null){
+                this.statement.setDate(2, ventaParametros.getFecha());
+            }else{
+                this.statement.setNull(2, Types.DATE);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(VentaDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public ArrayList<VentaDTO> listarTodosPorFecha(Date fecha) {
+        Integer ventaId = null;
+        return this.listarTodosGenerico(ventaId,fecha);
     }
    
 }
