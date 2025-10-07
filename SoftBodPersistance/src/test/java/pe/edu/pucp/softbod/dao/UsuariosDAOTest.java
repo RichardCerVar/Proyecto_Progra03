@@ -40,16 +40,33 @@ public class UsuariosDAOTest {
         
         UsuarioDTO usuario = this.usuarioDAO.obtenerPorId(308);
         assertNotNull(usuario);
-        System.out.println("id: " + usuario.getUsuarioId() );
-        System.out.println("nombreUsuario: " + usuario.getUsuario() );
-        System.out.println("Tipo usuario: " + usuario.getTipoUsuarios());
-        System.out.println("Correo: " + usuario.getCorreo());
-        System.out.println("Contraseha: " + usuario.getContrasenha());
-        System.out.println("Nombre: " + usuario.getNombre());
-        System.out.println("Telefono: " + usuario.getTelefono());
+        imprimeUser(usuario);
     }
     
-    @Test
+//    @Test
+    public void testListarPorNombreParcial() {
+        System.out.println("listarPorNombreParcial-UsuariosDAOTest");
+        System.out.println("----------------------------");
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarPorNombreParcial("Reformed");
+        assert(!listaUsuarios.isEmpty());
+        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+            imprimeUser(listaUsuarios.get(i));
+            System.out.println("--------------------------");
+        }
+    }
+    
+//    @Test
+    public void testObtenerPorCorreo() {
+        System.out.println("obtenerPorCorreo-UsuariosDAOTest");
+        System.out.println("----------------------------");
+        
+        UsuarioDTO usuario = this.usuarioDAO.obtenerPorCorreo("Holacomoestas@outlook.com");
+        assertNotNull(usuario);
+        imprimeUser(usuario);
+    }
+    
+//    @Test
     public void testListarTodos() {
         System.out.println("listarTodos-UsuariosDAOTest");
         System.out.println("--------------------------");
@@ -61,6 +78,42 @@ public class UsuariosDAOTest {
             System.out.println("--------------------------");
         }
         
+    }
+    
+//    @Test
+    public void testListarActivos() {
+        System.out.println("listarActivos-UsuariosDAOTest");
+        System.out.println("--------------------------");
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarActivos();
+        assert(!listaUsuarios.isEmpty());
+        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+            imprimeUser(listaUsuarios.get(i));
+            System.out.println("--------------------------");
+        }
+    }
+    
+//    @Test
+    public void testListarInactivos() {
+        System.out.println("listarInactivos-UsuariosDAOTest");
+        System.out.println("--------------------------");
+        
+        ArrayList<UsuarioDTO> listaUsuarios = this.usuarioDAO.listarInactivos();
+        assert(!listaUsuarios.isEmpty());
+        for (Integer i = 0; i < listaUsuarios.size(); i++) {
+            imprimeUser(listaUsuarios.get(i));
+            System.out.println("--------------------------");
+        }
+        
+    }
+    
+//    @Test
+    public void testEliminarLogico() {
+        System.out.println("eliminarLogico-UsuariosDAOTest");
+        System.out.println("--------------------------");
+        UsuarioDTO user = this.usuarioDAO.obtenerPorCorreo("gmai");
+        Integer res = this.usuarioDAO.eliminarLogicoUsuario(user);
+        assert(res!=0);
     }
     
     public void imprimeUser(UsuarioDTO usuario){

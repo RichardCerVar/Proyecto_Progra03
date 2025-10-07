@@ -113,16 +113,11 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
     }
 
     @Override   
-    public UsuarioDTO obtenerPorNombre(String nombreUser) {
+    public ArrayList<UsuarioDTO> listarPorNombreParcial(String nombreUser) {
         String emailUser = null;
         Boolean activos = null;
-        ArrayList<UsuarioDTO> lista = this.listarUsuariosConFiltro(nombreUser, emailUser, activos);
-        if(!lista.isEmpty()){
-            this.usuario = lista.getFirst();
-        }else{
-            this.usuario = null;
-        }
-        return this.usuario;
+        
+        return (ArrayList<UsuarioDTO>) this.listarUsuariosConFiltro(nombreUser, emailUser, activos);
     }
 
     @Override
