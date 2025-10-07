@@ -1,11 +1,13 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.UsuariosDAO;
-import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
-import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.*;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 
 public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
@@ -105,6 +107,65 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         this.usuario = usuario;
         this.usuario.setActivo(false);
         return super.modificar();
+    }
+
+    @Override
+    public UsuarioDTO obtenerPorNombre(String nombreUser) {
+        return null;
+    }
+
+    @Override
+    public ArrayList<UsuarioDTO> listarActivos() {
+
+        return null;
+
+    }
+    
+    private ArrayList<UsuarioDTO> listarUsuariosConFiltro(String nameUser, 
+        String emailUser,Boolean activos){
+        
+        String sql = " {CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?, ?, ?) }";
+        Object parametros = new UsuarioParametrosBusquedaBuilder()
+                            .conUsuarioId(usuarioId)
+                            .conNombreUsuario(nameUser)
+                            .conCorreo(emailUser)
+                            .conActivo(activos)
+                            .buildUsuarioParametrosBusqueda();
+        return (ArrayList<UsuarioDTO>)super.listarTodos(sql, this::incluirValorDeParametrosParaBuscarUsuarios, parametros);
+    }
+
+    private void incluirValorDeParametrosParaBuscarUsuarios(Object parametros) {
+        UsuarioParametrosBusqueda parametrosUser = (UsuarioParametrosBusqueda) parametros;
+
+        try {
+            if(parametrosUser.getUsuarioId() != null){
+                this.statement.setInt(1, parametrosUser.getUsuarioId());
+            }else{
+                this.statement.setNull(1, Types.INTEGER);
+            }
+            //------//
+            if (parametrosUser.getNombreUsuario() != null) {
+                this.statement.setString(2, parametrosUser.getNombreUsuario());
+            } else {
+                this.statement.setNull(2, Types.VARCHAR);
+            }
+            //------//
+            if (parametrosUser.getCorreo() != null) {
+                this.statement.setString(3, parametrosUser.getCorreo());
+            } else {
+                this.statement.setNull(3, Types.VARCHAR);
+            }
+            //------//
+            if (parametrosUser.getActivo() != null) {
+                this.statement.setBoolean(4, parametrosUser.getActivo());
+            } else {
+                this.statement.setNull(4, Types.BOOLEAN);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
 }

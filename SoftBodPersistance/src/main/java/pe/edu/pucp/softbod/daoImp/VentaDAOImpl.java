@@ -72,12 +72,9 @@ public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
 
     @Override
     public VentaDTO obtenerPorId(Integer venta_Id) {
-        ArrayList<VentaDTO> lista = this.listarTodosGenerico(venta_Id);
-        if(!lista.isEmpty()){
-            this.venta = lista.getFirst();
-        }else{
-            this.venta = null;
-        }
+        this.venta = new VentaDTO();
+        this.venta.setVentaId(venta_Id);
+        super.obtenerPorId();
         return this.venta;
     }
     

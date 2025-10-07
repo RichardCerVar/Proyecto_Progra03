@@ -59,12 +59,12 @@ public class VentaFiadaDAOTest {
     }
 
    
-//    @Test
+    @Test   
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-VentaFiadaDAOTest");
         System.out.println("------------------------------");
 
-        VentaFiadaDTO ventaFiada = this.ventaFiadaDao.obtenerPorId(4);
+        VentaFiadaDTO ventaFiada = this.ventaFiadaDao.obtenerPorId(3);
         assertNotNull(ventaFiada);
         imprimeVentaFiada(ventaFiada);
     }
