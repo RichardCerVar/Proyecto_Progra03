@@ -7,6 +7,7 @@ import java.util.List;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.ProductoParametrosBusquedaBuilder;
 
 public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
 
@@ -100,5 +101,20 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         this.producto = producto;
         return super.modificar();
     }
+    
+    private ArrayList<ProductoDTO> listarProductosConFiltro(Boolean activo,
+            String categoria, String nombreProducto) {
+        String sql = "{ CALL SP_LISTAR_PRODUCTOS(?, ?, ?) }";
+
+        Object parametros = new ProductoParametrosBusquedaBuilder()
+                            .conActivo(activo)
+                            .conCategoria(categoria)
+                            .conNombreProducto(nombreProducto)
+                            .buildProductoParametrosBusqueda();
+
+        return (ArrayList<ProductoDTO>)
+    }
+
+    
     
 }

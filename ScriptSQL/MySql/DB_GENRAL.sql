@@ -35,7 +35,7 @@ CREATE TABLE `BOD_CATEGORIA` (
   `DESCRIPCION` varchar(60) NOT NULL,
   PRIMARY KEY (`CATEGORIA_ID`),
   UNIQUE KEY `DESCRIPCION_UNIQUE` (`DESCRIPCION`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `BOD_CATEGORIA` (
 
 LOCK TABLES `BOD_CATEGORIA` WRITE;
 /*!40000 ALTER TABLE `BOD_CATEGORIA` DISABLE KEYS */;
-INSERT INTO `BOD_CATEGORIA` VALUES (18,'Abarrotes');
+INSERT INTO `BOD_CATEGORIA` VALUES (18,'Abarrotes'),(23,'BEBIDAS');
 /*!40000 ALTER TABLE `BOD_CATEGORIA` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -154,7 +154,7 @@ CREATE TABLE `BOD_DEVOLUCION` (
   PRIMARY KEY (`DEVOLUCION_ID`),
   KEY `fk_BOD_DEVOLUCION_BOD_USUARIO1_idx` (`USUARIO_ID`),
   CONSTRAINT `fk_BOD_DEVOLUCION_BOD_USUARIO1` FOREIGN KEY (`USUARIO_ID`) REFERENCES `BOD_USUARIO` (`USUARIO_ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -301,7 +301,7 @@ CREATE TABLE `BOD_USUARIO` (
   `ACTIVO_USUARIO` tinyint NOT NULL,
   PRIMARY KEY (`USUARIO_ID`),
   UNIQUE KEY `USUARIO_OPERARIO_UNIQUE` (`USUARIO`)
-) ENGINE=InnoDB AUTO_INCREMENT=309 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=310 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +310,7 @@ CREATE TABLE `BOD_USUARIO` (
 
 LOCK TABLES `BOD_USUARIO` WRITE;
 /*!40000 ALTER TABLE `BOD_USUARIO` DISABLE KEYS */;
-INSERT INTO `BOD_USUARIO` VALUES (308,'CHICHICO REFORMED','OPERARIO','Holacomoestas@outlook.com','jjdajsdjasd123','Jose Carlos','955882323',1);
+INSERT INTO `BOD_USUARIO` VALUES (308,'CHICHICO REFORMED','OPERARIO','Holacomoestas@outlook.com','jjdajsdjasd123','Jose Carlos','955882323',1),(309,'Chichico EL PRIMERO','OPERARIO','dasdjasd@gmai.com','jjdajsdjasd123','Jose Carlos','987654321',1);
 /*!40000 ALTER TABLE `BOD_USUARIO` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,6 +372,366 @@ LOCK TABLES `BOD_VENTAS_FIADAS` WRITE;
 INSERT INTO `BOD_VENTAS_FIADAS` VALUES (1,47,264),(2,48,264),(3,49,264),(4,50,265);
 /*!40000 ALTER TABLE `BOD_VENTAS_FIADAS` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'TA_PROG3'
+--
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_CLIENTE_AL_FIADO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_CLIENTE_AL_FIADO`(
+    IN p_texto VARCHAR(30)
+)
+BEGIN
+    SELECT 
+        CLIENTE_ID,
+        ALIAS,
+        NOMBRE,
+        TELEFONO,
+        FECHA_DE_PAGO,
+        ACTIVO
+    FROM BOD_CLIENTE_AL_FIADO
+    WHERE (p_texto IS NULL OR ALIAS LIKE CONCAT('%', p_texto, '%'))
+    ORDER BY CLIENTE_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_DETALLE_DEVOLUCION` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_DETALLE_DEVOLUCION`(
+    IN p_id_devolucion INT,
+    IN p_id_producto INT,
+    IN p_razon_devolucion VARCHAR(30),
+    IN p_fecha DATE
+)
+BEGIN
+    SELECT 
+        -- BOD_DETALLE_DEVOLUCION
+        dd.CANTIDAD,
+        dd.SUBTOTAL,
+        -- BOD_PRODUCTO
+        p.PRODUCTO_ID,
+        p.NOMBRE,
+        p.PRECIO_UNITARIO,
+        p.UNIDAD_MEDIDA,
+        p.STOCK,
+        p.STOCK_MINIMO,
+        -- BOD_RAZON_DEVOLUCION
+        r.RAZON_DEVOLUCION_ID,
+        r.DESCRIPCION,
+        -- BOD_DEVOLUCION
+        d.DEVOLUCION_ID,
+        d.TOTAL,
+        d.FECHA
+    FROM BOD_DETALLE_DEVOLUCION dd
+    JOIN BOD_PRODUCTO p ON dd.PRODUCTO_ID = p.PRODUCTO_ID
+    JOIN BOD_RAZON_DEVOLUCION r ON dd.RAZON_DEVOLUCION_ID = r.RAZON_DEVOLUCION_ID
+    JOIN BOD_DEVOLUCION d ON dd.DEVOLUCION_ID = d.DEVOLUCION_ID
+    WHERE (p_id_devolucion IS NULL OR dd.DEVOLUCION_ID = p_id_devolucion)
+      AND (p_id_producto IS NULL OR dd.PRODUCTO_ID = p_id_producto)
+      AND (p_razon_devolucion IS NULL OR r.DESCRIPCION = p_razon_devolucion)
+      AND (p_fecha IS NULL OR DATE(d.FECHA) = p_fecha)
+      AND (p.ACTIVO = 1);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_DETALLE_VENTA` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_DETALLE_VENTA`(
+    IN p_id_venta INT,
+    IN p_id_producto INT,
+    IN p_fecha DATE
+)
+BEGIN
+    SELECT 
+        -- Detalle Venta
+        dv.CANTIDAD,
+        dv.SUBTOTAL,
+        -- Datos de la venta
+        v.VENTA_ID,
+        v.TOTAL,
+        v.METODO_PAGO,
+        v.FECHA,
+        -- Datos del producto
+        p.PRODUCTO_ID,
+        p.NOMBRE,
+        p.PRECIO_UNITARIO,
+        p.UNIDAD_MEDIDA,
+        p.STOCK,
+        p.STOCK_MINIMO,
+        p.ACTIVO
+    FROM BOD_DETALLE_VENTA dv
+    JOIN BOD_VENTAS v ON dv.VENTA_ID = v.VENTA_ID
+    JOIN BOD_PRODUCTO p ON dv.PRODUCTO_ID = p.PRODUCTO_ID
+    WHERE (p_id_venta IS NULL OR dv.VENTA_ID = p_id_venta)
+      AND (p_id_producto IS NULL OR dv.PRODUCTO_ID = p_id_producto)
+      AND (p_fecha IS NULL OR DATE(v.FECHA) = p_fecha)
+      AND (p.ACTIVO = 1)
+    ORDER BY dv.VENTA_ID, dv.PRODUCTO_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_DEVOLUCION` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_DEVOLUCION`(
+    IN p_id_devolucion INT,
+    IN p_id_usuario INT,
+    IN p_fecha_devolucion DATE
+)
+BEGIN
+    SELECT 
+        d.DEVOLUCION_ID,
+        d.TOTAL,
+        d.FECHA,
+        u.USUARIO_ID,
+        u.USUARIO,
+        u.TIPO_USUARIOS,
+        u.CORREO,
+        u.CONTRASENHA,
+        u.NOMBRE_COMPLETO,
+        u.TELEFONO_USUARIO,
+        u.ACTIVO_USUARIO
+    FROM BOD_DEVOLUCION d
+    JOIN BOD_USUARIO u ON d.USUARIO_ID = u.USUARIO_ID
+    WHERE (p_id_devolucion IS NULL OR d.DEVOLUCION_ID = p_id_devolucion)
+      AND (p_id_usuario IS NULL OR u.USUARIO_ID = p_id_usuario)
+      AND (p_fecha_devolucion IS NULL OR DATE(d.FECHA) = p_fecha_devolucion);
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_HISTORIAL_OPERACIONES` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_HISTORIAL_OPERACIONES`(
+    IN p_id_operacion INT,
+    IN p_nombre_tabla VARCHAR(60),
+    IN p_operacion VARCHAR(20),
+    IN p_fecha_operacion DATE,
+    IN p_id_usuario INT,
+    IN p_nombre_usuario VARCHAR(30),
+    IN p_tipo_usuario VARCHAR(20),
+    IN p_estado_usuario TINYINT
+)
+BEGIN
+    SELECT 
+        h.OPERACION_ID,
+        h.TABLA_AFECTADA,
+        h.FECHA_HORA,
+        h.OPERACION,
+        u.USUARIO_ID,
+        u.USUARIO,
+        u.TIPO_USUARIOS,
+        u.CORREO,
+        u.CONTRASENHA,
+        u.NOMBRE_COMPLETO,
+        u.TELEFONO_USUARIO,
+        u.ACTIVO_USUARIO
+    FROM BOD_HISTORIAL_OPERACIONES h
+    JOIN BOD_USUARIO u ON h.USUARIO_ID = u.USUARIO_ID
+    WHERE (p_id_operacion IS NULL OR h.OPERACION_ID = p_id_operacion)
+      AND (p_nombre_tabla IS NULL OR h.TABLA_AFECTADA = p_nombre_tabla)
+      AND (p_operacion IS NULL OR h.OPERACION = p_operacion)
+      AND (p_fecha_operacion IS NULL OR DATE(h.FECHA_HORA) = p_fecha_operacion)
+      AND (p_id_usuario IS NULL OR u.USUARIO_ID = p_id_usuario)
+      AND (p_nombre_usuario IS NULL OR u.USUARIO = p_nombre_usuario)
+      AND (p_tipo_usuario IS NULL OR u.TIPO_USUARIOS = p_tipo_usuario)
+      AND (p_estado_usuario IS NULL OR u.ACTIVO_USUARIO = p_estado_usuario)
+    ORDER BY h.FECHA_HORA DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_PRODUCTOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_PRODUCTOS`(
+    IN p_activo TINYINT,             -- 1 = activos, 0 = inactivos, NULL = todos
+    IN p_categoria VARCHAR(60),      -- nombre parcial de la categoría, NULL = todas
+    IN p_nombre_producto VARCHAR(45) -- nombre parcial del producto, NULL = todos
+)
+BEGIN
+    SELECT 
+        p.PRODUCTO_ID,
+        p.NOMBRE,
+        p.PRECIO_UNITARIO,
+        p.UNIDAD_MEDIDA,
+        p.STOCK,
+        p.STOCK_MINIMO,
+        p.ACTIVO
+    FROM BOD_PRODUCTO p
+    WHERE 
+        (p_activo IS NULL OR p.ACTIVO = p_activo)
+        AND (p_categoria IS NULL OR p.CATEGORIA_ID IN (
+                SELECT c.CATEGORIA_ID
+                FROM BOD_CATEGORIA c
+                WHERE c.DESCRIPCION LIKE CONCAT('%', p_categoria, '%')
+            ))
+        AND (p_nombre_producto IS NULL OR p.NOMBRE LIKE CONCAT('%', p_nombre_producto, '%'))
+    ORDER BY p.PRODUCTO_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_USUARIOS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_USUARIOS`(
+    IN p_nombre_usuario VARCHAR(30),
+    IN p_correo VARCHAR(45),
+    IN p_activo TINYINT
+)
+BEGIN
+    SELECT 
+        USUARIO_ID,
+        USUARIO,
+        TIPO_USUARIOS,
+        CORREO,
+        CONTRASENHA,
+        NOMBRE_COMPLETO,
+        TELEFONO_USUARIO,
+        ACTIVO_USUARIO
+    FROM BOD_USUARIO
+    WHERE 
+        (p_nombre_usuario IS NULL OR USUARIO LIKE CONCAT('%', p_nombre_usuario, '%'))
+        AND (p_correo IS NULL OR CORREO LIKE CONCAT('%', p_correo, '%'))
+        AND (p_activo IS NULL OR ACTIVO_USUARIO = p_activo)
+    ORDER BY USUARIO_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_VENTAS` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_VENTAS`(
+    IN p_venta_id INT
+)
+BEGIN
+    SELECT 
+        v.VENTA_ID,
+        v.TOTAL,
+        v.METODO_PAGO,
+        v.FECHA
+    FROM BOD_VENTAS v
+    WHERE p_venta_id IS NULL OR v.VENTA_ID = p_venta_id
+    ORDER BY v.VENTA_ID;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 DROP PROCEDURE IF EXISTS `SP_LISTAR_VENTAS_AL_FIADO` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`admin`@`%` PROCEDURE `SP_LISTAR_VENTAS_AL_FIADO`(
+    IN p_alias_cliente VARCHAR(40),
+    IN p_venta_fiada_id INT
+)
+BEGIN
+    SELECT
+        vf.VENTA_FIADA_ID,
+        v.VENTA_ID,
+        v.TOTAL,
+        v.METODO_PAGO,
+        v.FECHA
+    FROM BOD_VENTAS_FIADAS vf
+    INNER JOIN BOD_VENTAS v ON vf.VENTA_ID = v.VENTA_ID
+    INNER JOIN BOD_CLIENTE_AL_FIADO c ON vf.CLIENTE_ID = c.CLIENTE_ID
+    WHERE 
+        (p_alias_cliente IS NULL OR c.ALIAS LIKE CONCAT('%', p_alias_cliente, '%'))
+        AND (p_venta_fiada_id IS NULL OR vf.VENTA_FIADA_ID = p_venta_fiada_id)
+    ORDER BY v.FECHA DESC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -383,4 +743,4 @@ SET @@SESSION.SQL_LOG_BIN = @MYSQLDUMP_TEMP_LOG_BIN;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-10-06 19:21:49
+-- Dump completed on 2025-10-06 23:16:33
