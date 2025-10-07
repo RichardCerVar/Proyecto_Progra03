@@ -7,11 +7,11 @@ import pe.edu.pucp.softbod.daoImp.UsuarioDAOImpl;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 
-public class UsuariosDAOTest {
+public class UsuarioDAOTest {
     
-    private final UsuariosDAO usuarioDAO;
+    private final UsuarioDAO usuarioDAO;
     
-    public UsuariosDAOTest() {
+    public UsuarioDAOTest() {
         this.usuarioDAO = new UsuarioDAOImpl(); 
     }
     

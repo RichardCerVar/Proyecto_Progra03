@@ -11,7 +11,7 @@ import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
 public class VentaFiadaDAOTest {
     private final VentaFiadaDAO ventaFiadaDao;
-    private final VentasDAO ventaDao;
+    private final VentaDAO ventaDao;
     
     public VentaFiadaDAOTest() {
         this.ventaFiadaDao = new VentaAlFiadoDAOImpl();

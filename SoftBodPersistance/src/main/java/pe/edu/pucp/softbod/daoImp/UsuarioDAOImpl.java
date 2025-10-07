@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pe.edu.pucp.softbod.dao.UsuariosDAO;
 import pe.edu.pucp.softbod.daoImp.util.*;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.dao.UsuarioDAO;
 
-public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
+public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO  {
     private UsuarioDTO usuario;
     private final CargarTablas cargaTablas;
 

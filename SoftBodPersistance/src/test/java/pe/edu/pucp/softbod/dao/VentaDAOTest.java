@@ -10,11 +10,11 @@ import pe.edu.pucp.softbod.model.UsuarioDTO;
 import pe.edu.pucp.softbod.model.VentaDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
-public class VentasDAOTest {
+public class VentaDAOTest {
     
-    private final VentasDAO ventasDAO;
+    private final VentaDAO ventasDAO;
     
-    public VentasDAOTest(){
+    public VentaDAOTest(){
         this.ventasDAO= new VentaDAOImpl();
     }
 

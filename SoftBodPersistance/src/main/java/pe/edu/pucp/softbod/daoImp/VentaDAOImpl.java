@@ -7,15 +7,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import pe.edu.pucp.softbod.dao.VentasDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.daoImp.util.VentaParametrosBusqueda;
 import pe.edu.pucp.softbod.daoImp.util.VentaParametrosBusquedaBuilder;
 import pe.edu.pucp.softbod.model.VentaDTO;
+import pe.edu.pucp.softbod.dao.VentaDAO;
 
 
-public class VentaDAOImpl extends DAOImplBase implements VentasDAO{
+public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
     
     private VentaDTO venta;   
     private final CargarTablas cargaTablas;
