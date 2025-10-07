@@ -1,11 +1,16 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.ClienteAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
+import pe.edu.pucp.softbod.daoImp.util.ClienteAlFiadoParametros;
+import pe.edu.pucp.softbod.daoImp.util.ClienteAlFiadoParametrosBuilder;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
@@ -94,11 +99,37 @@ public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoD
     
     @Override
     public ArrayList<ClienteAlFiadoDTO> listarTodos() {
-//        String sql = "{CALL TA_PROG3.sp_listar_clienteAlFiado()}";
-//        Consumer incluirValorDeParametros = null;
-//        Object parametros = null;
-//        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
-        return (ArrayList<ClienteAlFiadoDTO>) super.listarTodos();
+        String cadena = null;
+        return this.listarClienteAlFiadoFiltros(cadena);
     }
+    
+    @Override
+    public ArrayList<ClienteAlFiadoDTO> listarTodosLike(String cadena){
+        return this.listarClienteAlFiadoFiltros(cadena);
+    }
+    
+    private ArrayList<ClienteAlFiadoDTO> listarClienteAlFiadoFiltros (String cadena){
+        String sql = "{CALL TA_PROG3.sp_listar_cliente_al_fiado(?)}";
+        Object parametros = new ClienteAlFiadoParametrosBuilder()
+                            .conCedena(cadena)
+                            .BuildClienteAlFiadoParametros();
+        return (ArrayList <ClienteAlFiadoDTO>) 
+                super.listarTodos(sql, this::incluirValorDeParametrosClienteAlFiado,
+                                    parametros);
+    }
+    
+    private void incluirValorDeParametrosClienteAlFiado (Object parametros){
+        ClienteAlFiadoParametros detDevParametros = (ClienteAlFiadoParametros) parametros;
+        try {
+            
+            if (detDevParametros.getCadena()!= null)
+                this.statement.setString(1, detDevParametros.getCadena());
+            else
+                this.statement.setNull(1,Types.VARCHAR);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalleDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }  
 
 }

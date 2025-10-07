@@ -1,5 +1,6 @@
 package pe.edu.pucp.softbod.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
 
@@ -11,10 +12,12 @@ public interface DevolucionDAO {
     
     public ArrayList<DevolucionDTO> listarTodos();
     
-    //listarPorFecha(Date Inicio, Date fin);
+    public ArrayList<DevolucionDTO> listarPorFecha(Date fecha);
     
-    //listarPorUsuario(int usuarioId);
+    public ArrayList<DevolucionDTO> listarPorUsuario(Integer usuarioId);
     
-    /////public Integer eliminar(DevolucionDTO devolucion);
+    public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, 
+                                    Date fecha);
+    
 }
 

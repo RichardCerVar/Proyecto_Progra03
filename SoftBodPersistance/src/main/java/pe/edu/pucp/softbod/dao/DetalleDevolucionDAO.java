@@ -9,7 +9,13 @@ public interface DetalleDevolucionDAO {
     
     public ArrayList<DetalleDevolucionDTO> listarTodos();
     
-    //listarPorDevolucion(int devolucionId);
+    public ArrayList<DetalleDevolucionDTO> listarPorProducto(Integer productoId);
+    
+    public ArrayList<DetalleDevolucionDTO> listarPorDevolucion(Integer devolucionId);
+    
+    public ArrayList<DetalleDevolucionDTO> listarPorRazonDevolucion(String razonDevolucion);
+    
+    public DetalleDevolucionDTO obtenerPorId(Integer productoId,Integer devolucionId);
     
 }
 

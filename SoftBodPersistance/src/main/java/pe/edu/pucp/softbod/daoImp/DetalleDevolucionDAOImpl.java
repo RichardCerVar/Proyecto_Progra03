@@ -1,13 +1,19 @@
 package pe.edu.pucp.softbod.daoImp;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.dao.DetalleDevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
+import pe.edu.pucp.softbod.daoImp.util.DetalleDevolucionParametros;
+import pe.edu.pucp.softbod.daoImp.util.DetalleDevolucionParametrosBuilder;
 
 public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevolucionDAO {
 
@@ -63,9 +69,92 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
     
     @Override
     public ArrayList<DetalleDevolucionDTO> listarTodos() {
-        String sql = "{CALL TA_PROG3.sp_listar_detalleDevolucion()}";
-        Consumer incluirValorDeParametros = null;
-        Object parametros = null;
-        return (ArrayList<DetalleDevolucionDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+        Integer devolucionId = null, productoId = null;
+        String razonDevolucion = null;
+        Date fecha = null;
+        return this.listarDetalledevolucionFiltros(devolucionId, productoId, 
+                                                    razonDevolucion, fecha);
     }
+    
+    @Override
+    public ArrayList<DetalleDevolucionDTO> listarPorProducto(Integer productoId) {
+        Integer devolucionId = null;
+        String razonDevolucion = null;
+        Date fecha = null;
+        return this.listarDetalledevolucionFiltros(devolucionId, productoId, 
+                                                    razonDevolucion, fecha);
+    }
+
+    @Override
+    public ArrayList<DetalleDevolucionDTO> listarPorDevolucion(Integer devolucionId) {
+        Integer productoId = null;
+        String razonDevolucion = null;
+        Date fecha = null;
+        return this.listarDetalledevolucionFiltros(devolucionId, productoId, 
+                                                    razonDevolucion, fecha);
+    }
+
+    @Override
+    public ArrayList<DetalleDevolucionDTO> listarPorRazonDevolucion(String razonDevolucion) {
+        Integer productoId = null, devolucionId = null;
+        Date fecha = null;
+        return this.listarDetalledevolucionFiltros(devolucionId, productoId, 
+                                                    razonDevolucion, fecha);
+    }
+    
+    @Override
+    public DetalleDevolucionDTO obtenerPorId(Integer productoId, Integer devolucionId){
+        String razonDevolucion = null;
+        Date fecha = null;
+        ArrayList<DetalleDevolucionDTO> lista;
+        lista = this.listarDetalledevolucionFiltros(devolucionId, productoId, 
+                                                    razonDevolucion, fecha);
+        if (!lista.isEmpty()){
+            this.linea = lista.getFirst();
+        }
+        return this.linea;
+    }
+    
+    private ArrayList<DetalleDevolucionDTO> listarDetalledevolucionFiltros 
+        (Integer devolucionId, Integer productoId, String razonDevolucion,
+        Date fecha){
+        String sql = "{CALL TA_PROG3.sp_listar_detalleDevolucion(?,?,?,?)}";
+        Object parametros = new DetalleDevolucionParametrosBuilder()
+                            .conDevolucionId(devolucionId)
+                            .conProductoId(productoId)
+                            .conRazonDevolucion(razonDevolucion)
+                            .conFecha(fecha)
+                            .BuildDetalleDevolucionParametros();
+        return (ArrayList <DetalleDevolucionDTO>) 
+                super.listarTodos(sql, this::incluirValorDeParametrosDeDetalleDevolucion,
+                                    parametros);
+    } //CAMBIAR EL RESULT SET A PARA NO CARGAR USUARIO, NI CATEGORIA
+    
+    private void incluirValorDeParametrosDeDetalleDevolucion (Object parametros){
+        DetalleDevolucionParametros detDevParametros = (DetalleDevolucionParametros) parametros;
+        try {
+            if (detDevParametros.getDevolucionId() != null)
+                this.statement.setInt(1, detDevParametros.getDevolucionId());
+            else
+                this.statement.setNull(1,Types.INTEGER);
+            
+            if (detDevParametros.getProductoId()!= null)
+                this.statement.setInt(2, detDevParametros.getProductoId());
+            else
+                this.statement.setNull(2,Types.INTEGER);
+            
+            if (detDevParametros.getRazonDevolucion()!= null)
+                this.statement.setString(3, detDevParametros.getRazonDevolucion());
+            else
+                this.statement.setNull(3,Types.VARCHAR);
+            
+            if (detDevParametros.getFecha()!= null)
+                this.statement.setDate(4, detDevParametros.getFecha());
+            else
+                this.statement.setNull(4,Types.DATE);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalleDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    
 }

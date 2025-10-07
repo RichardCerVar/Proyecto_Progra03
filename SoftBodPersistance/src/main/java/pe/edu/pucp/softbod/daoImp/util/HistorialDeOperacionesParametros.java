@@ -10,7 +10,7 @@ public class HistorialDeOperacionesParametros {
     private Integer usuarioId;
     private String usuario;
     private String tipoUsuario;
-    private String nombreUsuario;
+    private Boolean estado;
     
     public HistorialDeOperacionesParametros (){
         this.operacionId = null;
@@ -20,7 +20,7 @@ public class HistorialDeOperacionesParametros {
         this.usuarioId = null;
         this.usuario = null;
         this.tipoUsuario = null;
-        this.nombreUsuario = null;
+        this.estado = null;
     }
 
     public Integer getOperacionId() { return operacionId; }
@@ -57,11 +57,8 @@ public class HistorialDeOperacionesParametros {
 
     public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario;}
 
-    public String getNombreUsuario() { return nombreUsuario; }
+    public Boolean getEstado() { return estado; }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-    
+    public void setEstado(Boolean estado) { this.estado = estado; }
     
 }

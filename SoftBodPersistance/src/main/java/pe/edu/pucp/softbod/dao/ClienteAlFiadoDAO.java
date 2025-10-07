@@ -11,6 +11,8 @@ public interface ClienteAlFiadoDAO {
     
     public ArrayList<ClienteAlFiadoDTO> listarTodos();  
     
+    public ArrayList<ClienteAlFiadoDTO> listarTodosLike(String cadena); 
+    
     public ClienteAlFiadoDTO obtenerPorId(Integer clienteId);
     
     //public listarActivos();

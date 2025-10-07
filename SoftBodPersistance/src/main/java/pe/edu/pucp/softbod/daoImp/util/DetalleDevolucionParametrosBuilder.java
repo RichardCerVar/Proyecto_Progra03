@@ -1,16 +1,18 @@
 package pe.edu.pucp.softbod.daoImp.util;
 
+import java.sql.Date;
+
 public class DetalleDevolucionParametrosBuilder {
     private Integer devolucionId;
     private Integer productoId;
     private String razonDevolucion;
-    private Boolean estado;
+    private Date fecha;
     
     public DetalleDevolucionParametrosBuilder (){
         this.devolucionId = null;
         this.productoId = null;
         this.razonDevolucion = null;
-        this.estado = null;
+        this.fecha = null;
     }
      
     public DetalleDevolucionParametrosBuilder conDevolucionId (Integer devolucionId){
@@ -23,8 +25,8 @@ public class DetalleDevolucionParametrosBuilder {
         return this;
     }
     
-    public DetalleDevolucionParametrosBuilder conEstado (Boolean estado){
-        this.estado = estado;
+    public DetalleDevolucionParametrosBuilder conFecha (Date fecha){
+        this.fecha = fecha;
         return this;
     }
     
@@ -33,7 +35,7 @@ public class DetalleDevolucionParametrosBuilder {
         parametros.setDevolucionId(devolucionId);
         parametros.setProductoId(productoId);
         parametros.setRazonDevolucion(razonDevolucion);
-        parametros.setEstado(estado);
+        parametros.setFecha(fecha);
         return parametros;
     }
     
@@ -60,7 +62,7 @@ public class DetalleDevolucionParametrosBuilder {
         this.razonDevolucion = razonDevolucion;
     }
 
-    public Boolean getEstado() { return estado; }
+    public Date getFecha() { return fecha; }
 
-    public void setEstado(Boolean estado) { this.estado = estado; }
+    public void setFecha(Date fecha) { this.fecha = fecha; }
 }

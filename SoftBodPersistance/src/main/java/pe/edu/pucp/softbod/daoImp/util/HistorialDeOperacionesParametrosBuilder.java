@@ -10,7 +10,7 @@ public class HistorialDeOperacionesParametrosBuilder {
     private Integer usuarioId;
     private String usuario;
     private String tipoUsuario;
-    private String nombreUsuario;
+    private Boolean estado;
     
     public HistorialDeOperacionesParametrosBuilder (){
         this.operacionId = null;
@@ -20,7 +20,7 @@ public class HistorialDeOperacionesParametrosBuilder {
         this.usuarioId = null;
         this.usuario = null;
         this.tipoUsuario = null;
-        this.nombreUsuario = null;
+        this.estado = null;
     }
     
     public HistorialDeOperacionesParametrosBuilder conOperacionId (Integer operacionId){
@@ -51,8 +51,8 @@ public class HistorialDeOperacionesParametrosBuilder {
         this.tipoUsuario = tipoUsuario;
         return this;
     }
-    public HistorialDeOperacionesParametrosBuilder conNombreUsuario (String nombreUsuario){
-        this.nombreUsuario = nombreUsuario;
+    public HistorialDeOperacionesParametrosBuilder conEstado (Boolean estado){
+        this.estado = estado;
         return this;
     }
     
@@ -65,7 +65,7 @@ public class HistorialDeOperacionesParametrosBuilder {
         parametros.setUsuarioId(usuarioId);
         parametros.setUsuario(usuario);
         parametros.setTipoUsuario(tipoUsuario);
-        parametros.setNombreUsuario(nombreUsuario);
+        parametros.setEstado(estado);
         return parametros;
     }
 
@@ -103,9 +103,7 @@ public class HistorialDeOperacionesParametrosBuilder {
 
     public void setTipoUsuario(String tipoUsuario) { this.tipoUsuario = tipoUsuario;}
 
-    public String getNombreUsuario() { return nombreUsuario; }
+    public Boolean getEstado() { return estado; }
 
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
+    public void setEstado(Boolean estado) { this.estado = estado; }
 }

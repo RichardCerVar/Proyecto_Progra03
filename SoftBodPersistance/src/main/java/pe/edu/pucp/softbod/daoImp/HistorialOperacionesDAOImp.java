@@ -1,12 +1,18 @@
 package pe.edu.pucp.softbod.daoImp;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.HistorialOperacionesDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.HistorialDeOperacionesParametros;
+import pe.edu.pucp.softbod.daoImp.util.HistorialDeOperacionesParametrosBuilder;
 import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 
 
@@ -70,17 +76,176 @@ public class HistorialOperacionesDAOImp extends DAOImplBase implements Historial
     
     @Override
     public HistorialOperacionesDTO obtenerPorId(Integer operacionId) {
-        this.historial = new HistorialOperacionesDTO();
-        this.historial.setOperacionId(operacionId);
-        super.obtenerPorId();
+        Integer usuarioId = null;
+        String nombreTabla = null, tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        ArrayList<HistorialOperacionesDTO> lista = this.listarHistorialFiltros
+                (operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+        
+        if (!lista.isEmpty()){
+            this.historial = lista.getFirst();
+        }
         return this.historial;
+    }
+    
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarTodos() { 
+        Integer operacionId = null, usuarioId = null;
+        String nombreTabla = null, tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+    }
+    
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarPorUsuario(Integer usuarioId) {
+        Integer operacionId = null;
+        String nombreTabla = null, tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
     }
 
     @Override
-    public ArrayList<HistorialOperacionesDTO> listarTodos() {
-        String sql = "{CALL TA_PROG3.sp_listar_historialOperaciones()}";
-        Consumer incluirValorDeParametros = null;
-        Object parametros = null;
-        return (ArrayList<HistorialOperacionesDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+    public ArrayList<HistorialOperacionesDTO> listarPorTabla(String nombreTabla) {
+        Integer operacionId = null, usuarioId = null;
+        String tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
     }
+
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarPorOperacion(String tipoOperacion) {
+        Integer operacionId = null, usuarioId = null;
+        String nombreTabla = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+    }
+
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarPorUsuarioYTabla(Integer usuarioId,
+                                                String nombreTabla) {
+        Integer operacionId = null;
+        String tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+    }
+
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarPorTablaYOperacion(String nombreTabla,
+                                                String tipoOperacion) {
+        Integer operacionId = null, usuarioId = null;
+        String usuario = null, tipoUsuario = null;
+        Date fechaOperacion = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+    }
+
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarPorTabla(Date fechaOperacion) {
+        Integer operacionId = null, usuarioId = null;
+        String nombreTabla = null, tipoOperacion = null, usuario = null, 
+               tipoUsuario = null;
+        Boolean estado= null;
+        return this.listarHistorialFiltros(operacionId, nombreTabla,
+                tipoOperacion, fechaOperacion, usuarioId, 
+                usuario, tipoUsuario, estado);
+    }
+    
+    // quitar del resultset el campo contraseña
+    @Override
+    public ArrayList<HistorialOperacionesDTO> listarHistorialFiltros
+        (Integer operacionId, String nombreTabla, String tipoOperacion, 
+         Date fechaOperacion, Integer usuarioId, String usuario, 
+         String tipoUsuario, Boolean estado){
+        String sql = "{CALL TA_PROG3.sp_listar_historialOperaciones(?,?,?,?,?,?,?,?)}";
+        Object parametros = new HistorialDeOperacionesParametrosBuilder()
+                            .conOperacionId(operacionId)
+                            .conNombreTabla(nombreTabla)
+                            .conTipoOperacion(tipoOperacion)
+                            .conFecha(fechaOperacion)
+                            .conUsuarioId(usuarioId)
+                            .conUsuario(usuario)
+                            .conTipoUsuario(tipoUsuario)
+                            .conEstado(estado)
+                            .BuildHistorialDeOperacionesParametros();
+        return (ArrayList <HistorialOperacionesDTO>) 
+                super.listarTodos(sql, this::incluirValorDeParametrosDeDetalleDevolucion,
+                                    parametros);
+    }
+        
+    private void incluirValorDeParametrosDeDetalleDevolucion (Object parametros){
+        HistorialDeOperacionesParametros historialParametros = (HistorialDeOperacionesParametros) parametros;
+        try {
+            if (historialParametros.getOperacionId()!= null)
+                this.statement.setInt(1, historialParametros.getOperacionId());
+            else
+                this.statement.setNull(1,Types.INTEGER);
+            
+            if (historialParametros.getNombreTabla()!= null)
+                this.statement.setString(2, historialParametros.getNombreTabla());
+            else
+                this.statement.setNull(2,Types.VARCHAR);
+            
+            if (historialParametros.getTipoOperacion()!= null)
+                this.statement.setString(3, historialParametros.getTipoOperacion());
+            else
+                this.statement.setNull(3,Types.VARCHAR);
+            
+            if (historialParametros.getFecha()!= null)
+                this.statement.setDate(4, historialParametros.getFecha());
+            else
+                this.statement.setNull(4,Types.DATE);
+            
+            if (historialParametros.getUsuarioId()!= null)
+                this.statement.setInt(5, historialParametros.getUsuarioId());
+            else
+                this.statement.setNull(5,Types.INTEGER);
+            
+            if (historialParametros.getUsuario()!= null)
+                this.statement.setString(6, historialParametros.getUsuario());
+            else
+                this.statement.setNull(6,Types.VARCHAR);
+            
+            if (historialParametros.getTipoUsuario()!= null)
+                this.statement.setString(7, historialParametros.getTipoUsuario());
+            else
+                this.statement.setNull(7,Types.VARCHAR);
+            
+            if (historialParametros.getEstado()!= null)
+                this.statement.setBoolean(7, historialParametros.getEstado());
+            else
+                this.statement.setNull(7,Types.TINYINT);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalleDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    
+      
 }

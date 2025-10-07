@@ -1,14 +1,16 @@
 package pe.edu.pucp.softbod.daoImp.util;
 
+import java.sql.Date;
+
 public class DetalleVentaParametrosBuilder {
     private Integer ventaId;
     private Integer productoId;
-    private Boolean estadoProducto;
+    private Date fechaVenta;
     
     public DetalleVentaParametrosBuilder (){
         this.ventaId = null;
         this.productoId = null;
-        this.estadoProducto = null;
+        this.fechaVenta = null;
     }
     
     public DetalleVentaParametrosBuilder conVentaId (Integer ventaId){
@@ -21,8 +23,8 @@ public class DetalleVentaParametrosBuilder {
         return this;
     }
     
-    public DetalleVentaParametrosBuilder conEstadoProducto (Boolean estadoProducto){
-        this.estadoProducto = estadoProducto;
+    public DetalleVentaParametrosBuilder conFecha (Date fechaVenta){
+        this.fechaVenta = fechaVenta;
         return this;
     }
     
@@ -30,7 +32,7 @@ public class DetalleVentaParametrosBuilder {
         DetalleVentaParametros parametros = new DetalleVentaParametros();
         parametros.setVentaId(ventaId);
         parametros.setProductoId(productoId);
-        parametros.setEstadoProducto(estadoProducto);
+        parametros.setFechaVenta(fechaVenta);
         return parametros;
     }
 
@@ -41,10 +43,9 @@ public class DetalleVentaParametrosBuilder {
     public Integer getProductoId() { return productoId; }
 
     public void setProductoId(Integer productoId) { this.productoId = productoId;}
+    
+    public Date getFechaVenta() { return fechaVenta; }
 
-    public Boolean getEstadoProducto() { return estadoProducto; }
-
-    public void setEstadoProducto(Boolean estadoProducto) {
-        this.estadoProducto = estadoProducto;
-    }
+    public void setFechaVenta(Date fechaVenta) { this.fechaVenta = fechaVenta; }
+    
 }

@@ -1,12 +1,18 @@
 package pe.edu.pucp.softbod.daoImp;
 //revisar
+import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.DetalleVentaDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.DetalleVentaParametros;
+import pe.edu.pucp.softbod.daoImp.util.DetalleVentaParametrosBuilder;
 import pe.edu.pucp.softbod.model.DetalleVentaDTO;
 import pe.edu.pucp.softbod.model.ProductoDTO;
 import pe.edu.pucp.softbod.model.VentaDTO;
@@ -65,9 +71,70 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     
     @Override
     public ArrayList<DetalleVentaDTO> listarTodos() {
-        String sql = "{CALL TA_PROG3.sp_listar_detalleVenta()}";
-        Consumer incluirValorDeParametros = null;
-        Object parametros = null;
-        return (ArrayList<DetalleVentaDTO>) super.listarTodos(sql,incluirValorDeParametros,parametros);
+        Integer ventaId = null, productoId = null;
+        Date fechaVenta = null;
+        return this.listarDetalleVentaFiltros(ventaId, productoId ,fechaVenta);
     }
+    
+    @Override
+    public ArrayList<DetalleVentaDTO> listarPorVenta(Integer ventaId) {
+        Integer productoId = null;
+        Date fechaVenta = null;
+        return this.listarDetalleVentaFiltros(ventaId, productoId ,fechaVenta);
+    }
+
+    @Override
+    public ArrayList<DetalleVentaDTO> listarPorProducto(Integer productoId) {
+        Integer ventaId = null;
+        Date fechaVenta = null;
+        return this.listarDetalleVentaFiltros(ventaId, productoId ,fechaVenta);
+    }
+
+    @Override
+    public DetalleVentaDTO obtenerPorId(Integer productoId, Integer ventaId) {
+        Date fechaVenta = null;
+        ArrayList<DetalleVentaDTO> lista = this.listarDetalleVentaFiltros
+                                        (ventaId, productoId ,fechaVenta);
+        if (!lista.isEmpty()){
+            this.detalleVenta = lista.getFirst();
+        }
+        
+        return this.detalleVenta;
+    }
+    
+    private ArrayList<DetalleVentaDTO> listarDetalleVentaFiltros 
+        (Integer ventaId, Integer productoId,Date fecha){
+        String sql = "{CALL TA_PROG3.sp_listar_detalleVenta(?,?,?)}";
+        Object parametros = new DetalleVentaParametrosBuilder()
+                            .conVentaId(ventaId)
+                            .conProductoId(productoId)
+                            .conFecha(fecha)
+                            .BuildDetalleVentaParametros();
+        return (ArrayList <DetalleVentaDTO>) 
+                super.listarTodos(sql, this::incluirValorDeParametrosDeDetalleDevolucion,
+                                    parametros);
+    } //CAMBIAR EL RESULT SET A PARA NO CARGAR USUARIO, NI CATEGORIA
+    
+    private void incluirValorDeParametrosDeDetalleDevolucion (Object parametros){
+        DetalleVentaParametros detVenParametros = (DetalleVentaParametros) parametros;
+        try {
+            if (detVenParametros.getVentaId()!= null)
+                this.statement.setInt(1, detVenParametros.getVentaId());
+            else
+                this.statement.setNull(1,Types.INTEGER);
+            
+            if (detVenParametros.getProductoId()!= null)
+                this.statement.setInt(2, detVenParametros.getProductoId());
+            else
+                this.statement.setNull(2,Types.INTEGER);
+            
+            if (detVenParametros.getFechaVenta()!= null)
+                this.statement.setDate(3, detVenParametros.getFechaVenta());
+            else
+                this.statement.setNull(3,Types.DATE);
+        } catch (SQLException ex) {
+            Logger.getLogger(DetalleDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+
 }
