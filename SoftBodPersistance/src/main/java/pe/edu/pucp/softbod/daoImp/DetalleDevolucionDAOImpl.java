@@ -128,7 +128,7 @@ public class DetalleDevolucionDAOImpl extends DAOImplBase implements DetalleDevo
         return (ArrayList <DetalleDevolucionDTO>) 
                 super.listarTodos(sql, this::incluirValorDeParametrosDeDetalleDevolucion,
                                     parametros);
-    } //CAMBIAR EL RESULT SET A PARA NO CARGAR USUARIO, NI CATEGORIA
+    } 
     
     private void incluirValorDeParametrosDeDetalleDevolucion (Object parametros){
         DetalleDevolucionParametros detDevParametros = (DetalleDevolucionParametros) parametros;

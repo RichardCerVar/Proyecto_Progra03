@@ -85,7 +85,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     }
     
     @Override
-    public ArrayList<DevolucionDTO> listarTodos() { //CAMBIAR EL RESULT SET A CARGAR-USUARIOID
+    public ArrayList<DevolucionDTO> listarTodos() { 
         Integer devolucionId = null, usuarioId = null;
         Date fecha = null;
         return this.listarDevolucionFiltros(devolucionId, usuarioId, fecha);

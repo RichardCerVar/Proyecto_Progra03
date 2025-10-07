@@ -38,10 +38,10 @@ public class CargarTablas {
 	linea.setCantidad(resultSet.getInt("CANTIDAD"));
         linea.setSubtotal(resultSet.getDouble("SUBTOTAL"));
 		
-        DevolucionDTO devolucion = this.cargarDevolucion(resultSet);
+        DevolucionDTO devolucion = this.cargarDevolucionSinUsuario(resultSet);
         linea.setDevolucion(devolucion);
 		
-	ProductoDTO producto = this.cargarProductoDTO(resultSet);
+	ProductoDTO producto = this.cargarProductoSinCategoria(resultSet);
         linea.setProducto(producto);
         
 	RazonDevolucionDTO razon = this.cargaRazonDevolucionDTO(resultSet);
@@ -50,6 +50,16 @@ public class CargarTablas {
 	return linea;
     }
 	
+    public DevolucionDTO cargarDevolucionSinUsuario(ResultSet resultSet) throws SQLException {
+		
+        DevolucionDTO devolucion = new DevolucionDTO();
+        devolucion.setDevolucionId(resultSet.getInt("DEVOLUCION_ID"));
+        devolucion.setTotal(resultSet.getDouble("TOTAL"));
+        devolucion.setFecha(resultSet.getDate("FECHA"));
+        
+        return devolucion;
+    }
+    
     public DevolucionDTO cargarDevolucion(ResultSet resultSet) throws SQLException {
 		
         DevolucionDTO devolucion = new DevolucionDTO();
@@ -83,13 +93,25 @@ public class CargarTablas {
         detalleVenta.setCantidad(resulSet.getInt("CANTIDAD"));
         detalleVenta.setSubtotal(resulSet.getDouble("SUBTOTAL"));
         
-        ProductoDTO prod = this.cargarProductoDTO(resulSet);
+        ProductoDTO prod = this.cargarProductoSinCategoria(resulSet);
         detalleVenta.setProducto(prod);
         
-        VentaDTO venta = this.cargarVentaDTO(resulSet);
+        VentaDTO venta = this.cargarVentaDTOsinUsuario(resulSet);
         detalleVenta.setVenta(venta);
         
         return detalleVenta;
+    }
+    
+    public ProductoDTO cargarProductoSinCategoria (ResultSet resulSet) throws SQLException{
+        ProductoDTO prod = new ProductoDTO();
+        prod.setProductoId(resulSet.getInt("PRODUCTO_ID"));
+        prod.setNombre(resulSet.getString("NOMBRE"));
+        prod.setPrecioUnitario(resulSet.getDouble("PRECIO_UNITARIO"));
+        prod.setUnidadMedida(Unidad_Medida.valueOf(resulSet.getString("UNIDAD_MEDIDA")));
+        prod.setStock(resulSet.getInt("STOCK"));
+        prod.setStockMinimo(resulSet.getInt("STOCK_MINIMO"));
+        prod.setActivo(resulSet.getBoolean("ACTIVO"));
+        return prod;
     }
     
     public ProductoDTO cargarProductoDTO(ResultSet resulSet) throws SQLException{
