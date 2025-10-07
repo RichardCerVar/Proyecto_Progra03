@@ -116,7 +116,7 @@ public class RazonDevolucionDAOImpl extends DAOImplBase implements RazonDevoluci
                 this.statement.setNull(1, Types.VARCHAR);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RazonDevolucionDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RazonDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
