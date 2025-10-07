@@ -9,16 +9,16 @@ import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
 import pe.edu.pucp.softbod.model.*;
 import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
-public class VentaFiadaDAOTest {
-    private final VentaFiadaDAO ventaFiadaDao;
+public class VentaAlFiadoDAOTest {
+    private final VentaAlFiadoDAO ventaFiadaDao;
     private final VentaDAO ventaDao;
     
-    public VentaFiadaDAOTest() {
+    public VentaAlFiadoDAOTest() {
         this.ventaFiadaDao = new VentaAlFiadoDAOImpl();
         this.ventaDao = new VentaDAOImpl();
     }
     
-    private void imprimeVentaFiada(VentaFiadaDTO ventaFiada) {
+    private void imprimeVentaFiada(VentaAlFiadoDTO ventaFiada) {
         System.out.println("=== VENTA FIADA ===");
         System.out.println("ID Venta Fiada: " + ventaFiada.getVentaFiadaId());
         // Información de la Venta
@@ -49,7 +49,7 @@ public class VentaFiadaDAOTest {
         ClienteAlFiadoDTO cliAlFiado = new ClienteAlFiadoDTO();
         cliAlFiado.setClienteId(265);
         
-        VentaFiadaDTO ventaFiada = new VentaFiadaDTO();
+        VentaAlFiadoDTO ventaFiada = new VentaAlFiadoDTO();
         ventaFiada.setVenta(venta);
         ventaFiada.setCliente(cliAlFiado);
         
@@ -64,7 +64,7 @@ public class VentaFiadaDAOTest {
         System.out.println("obtenerPorId-VentaFiadaDAOTest");
         System.out.println("------------------------------");
 
-        VentaFiadaDTO ventaFiada = this.ventaFiadaDao.obtenerPorId(3);
+        VentaAlFiadoDTO ventaFiada = this.ventaFiadaDao.obtenerPorId(3);
         assertNotNull(ventaFiada);
         imprimeVentaFiada(ventaFiada);
     }
@@ -74,7 +74,7 @@ public class VentaFiadaDAOTest {
         System.out.println("listarTodos-VentaFiadaDAOTest");
         System.out.println("------------------------------");
 
-        ArrayList<VentaFiadaDTO> listaVentaFiada = this.ventaFiadaDao.listarTodos();
+        ArrayList<VentaAlFiadoDTO> listaVentaFiada = this.ventaFiadaDao.listarTodos();
         assert(!listaVentaFiada.isEmpty());
         for (Integer i = 0;  i< listaVentaFiada.size(); i++) {
             imprimeVentaFiada(listaVentaFiada.get(i));
@@ -86,7 +86,7 @@ public class VentaFiadaDAOTest {
         System.out.println("listarTodos-VentaFiadaDAOTest");
         System.out.println("------------------------------");
 
-        ArrayList<VentaFiadaDTO> listaVentaFiadaCliente = this.ventaFiadaDao.listarTodosPorAliasCliente("Cj");
+        ArrayList<VentaAlFiadoDTO> listaVentaFiadaCliente = this.ventaFiadaDao.listarTodosPorAliasCliente("Cj");
         for (Integer i = 0;  i< listaVentaFiadaCliente.size(); i++) {
             imprimeVentaFiada(listaVentaFiadaCliente.get(i));
         }

@@ -148,8 +148,8 @@ public class CargarTablas {
         return registroPago;
     }
     
-    public VentaFiadaDTO cargarVentaFiadaDTO(ResultSet resulSet) throws SQLException{
-        VentaFiadaDTO ventaFiada = new VentaFiadaDTO();
+    public VentaAlFiadoDTO cargarVentaFiadaDTO(ResultSet resulSet) throws SQLException{
+        VentaAlFiadoDTO ventaFiada = new VentaAlFiadoDTO();
         ventaFiada.setVentaFiadaId(resulSet.getInt("VENTA_FIADA_ID"));
 
         VentaDTO venta = this.cargarVentaDTOsinUsuario(resulSet);

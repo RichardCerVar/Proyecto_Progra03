@@ -8,15 +8,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
-import pe.edu.pucp.softbod.model.VentaFiadaDTO;
-import pe.edu.pucp.softbod.dao.VentaFiadaDAO;
+import pe.edu.pucp.softbod.model.VentaAlFiadoDTO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.VentaFiadaParametrosBusquedaBuilder;
 import pe.edu.pucp.softbod.daoImp.util.VentaFiadaParametrosBusqueda;
+import pe.edu.pucp.softbod.dao.VentaAlFiadoDAO;
 
-public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
+public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO {
     
-    private VentaFiadaDTO ventaAlFiado; 
+    private VentaAlFiadoDTO ventaAlFiado; 
     private final CargarTablas cargaTablas;
     
     public VentaAlFiadoDAOImpl() {
@@ -60,23 +60,23 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
         lista.add(this.ventaAlFiado);
     }
     
-    private ArrayList<VentaFiadaDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId,Date fecha){
+    private ArrayList<VentaAlFiadoDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId,Date fecha){
         String sql = "{ CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?) }";
         Object parametros = new VentaFiadaParametrosBusquedaBuilder()
                             .conAliasCliente(aliasCliente)
                             .conVentaFiadaId(ventaFiadaId)
                             .conFecha(fecha)
                             .buildVentaFiadaParametrosBusqueda();
-        return (ArrayList<VentaFiadaDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListarVentasFiadas, parametros);
+        return (ArrayList<VentaAlFiadoDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaListarVentasFiadas, parametros);
     }
     
     
     @Override
-    public ArrayList<VentaFiadaDTO> listarTodos() {
+    public ArrayList<VentaAlFiadoDTO> listarTodos() {
         Integer ventaFiadaId = null;
         String aliasCliente = null;
         Date fecha = null;
-        return (ArrayList<VentaFiadaDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
+        return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }
 
     private void incluirValorDeParametrosParaListarVentasFiadas(Object parametros){
@@ -106,14 +106,14 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
     }
    
     @Override
-    public Integer insertar(VentaFiadaDTO ventaFiada) {
+    public Integer insertar(VentaAlFiadoDTO ventaFiada) {
         this.ventaAlFiado = ventaFiada;
         return super.insertar();
     }
 
     @Override
-    public VentaFiadaDTO obtenerPorId(Integer ventaFiada_Id) {
-        ArrayList<VentaFiadaDTO> lista;
+    public VentaAlFiadoDTO obtenerPorId(Integer ventaFiada_Id) {
+        ArrayList<VentaAlFiadoDTO> lista;
         String aliasCliente = null;
         Date fecha = null;
         lista = this.listarTodosConFiltros(aliasCliente, ventaFiada_Id,fecha);
@@ -124,15 +124,15 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaFiadaDAO {
     }
 
     @Override
-    public ArrayList<VentaFiadaDTO> listarTodosPorAliasCliente(String aliasCliente) {
+    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasCliente(String aliasCliente) {
         Integer ventaFiadaId = null;
         Date fecha = null;
-        return (ArrayList<VentaFiadaDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
+        return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }
 
     @Override
-    public ArrayList<VentaFiadaDTO> listarTodosPorAliasClienteFecha(String aliasCliente, Date fecha) {
+    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente, Date fecha) {
         Integer ventaFiadaId = null;
-        return (ArrayList<VentaFiadaDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
+        return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }
 }

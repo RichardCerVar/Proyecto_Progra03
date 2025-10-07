@@ -1,17 +1,17 @@
 package pe.edu.pucp.softbod.model;
 
-public class VentaFiadaDTO {
+public class VentaAlFiadoDTO {
     private Integer ventaFiadaId;
     private VentaDTO venta;
     private ClienteAlFiadoDTO cliente;
 
-    public VentaFiadaDTO() {
+    public VentaAlFiadoDTO() {
         this.ventaFiadaId = null;
         this.venta = null;
         this.cliente = null;
     }
 
-    public VentaFiadaDTO(Integer ventaFiadaId, VentaDTO venta, ClienteAlFiadoDTO cliente) {
+    public VentaAlFiadoDTO(Integer ventaFiadaId, VentaDTO venta, ClienteAlFiadoDTO cliente) {
         this.ventaFiadaId = ventaFiadaId;
         this.venta = venta;
         this.cliente = cliente;
