@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.sql.Date;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.daoImp.ClienteAlFiadoDAOImp;
+import pe.edu.pucp.softbod.daoImp.ClienteAlFiadoDAOImpl;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
 public class ClienteAlFiadoDAOTest { 
@@ -12,7 +12,7 @@ public class ClienteAlFiadoDAOTest {
     private ClienteAlFiadoDAO clienteAlFiadoDAO;
     
     public ClienteAlFiadoDAOTest() {
-        this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImp();
+        this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImpl();
     }
     
     private void imprimeClienteAlFiado(ClienteAlFiadoDTO cliente) {

@@ -8,12 +8,12 @@ import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
 import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 
-public class RegistroPagoFiadoDAOImp extends DAOImplBase implements RegistroPagoFiadoDAO{
+public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPagoFiadoDAO{
     
     private RegistroPagoFiadoDTO registroPagosFiados;
     private final CargarTablas cargaTablas;
     
-    public RegistroPagoFiadoDAOImp() {
+    public RegistroPagoFiadoDAOImpl() {
         super("BOD_REGISTRO_PAGOS_FIADOS");
         this.registroPagosFiados = null;
         this.retornarLlavePrimaria = true;

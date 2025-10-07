@@ -3,7 +3,7 @@ package pe.edu.pucp.softbod.dao;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.daoImp.RazonDevolucionDAOImp;
+import pe.edu.pucp.softbod.daoImp.RazonDevolucionDAOImpl;
 import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 
 public class RazonDevolucionDAOTest {
@@ -11,7 +11,7 @@ public class RazonDevolucionDAOTest {
     private final RazonDevolucionDAO razonDevolucionDAO;
     
     public RazonDevolucionDAOTest() {
-        razonDevolucionDAO = new RazonDevolucionDAOImp();
+        razonDevolucionDAO = new RazonDevolucionDAOImpl();
     }
     
     private void imprimeRazonDevolucion(RazonDevolucionDTO razonDev) {

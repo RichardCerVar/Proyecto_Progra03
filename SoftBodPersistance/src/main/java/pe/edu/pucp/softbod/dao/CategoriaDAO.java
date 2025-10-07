@@ -11,5 +11,5 @@ public interface CategoriaDAO{
     
     public ArrayList<CategoriaDTO> listarTodos();
     
-    public CategoriaDTO obtenerPorId(Integer productoId);
+    public CategoriaDTO obtenerPorId(Integer categoriaId);
 }

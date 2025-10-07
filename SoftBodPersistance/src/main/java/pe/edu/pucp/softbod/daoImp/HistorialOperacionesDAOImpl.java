@@ -16,13 +16,13 @@ import pe.edu.pucp.softbod.daoImp.util.HistorialDeOperacionesParametrosBuilder;
 import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 
 
-public class HistorialOperacionesDAOImp extends DAOImplBase implements HistorialOperacionesDAO {
+public class HistorialOperacionesDAOImpl extends DAOImplBase implements HistorialOperacionesDAO {
 
    private HistorialOperacionesDTO historial;
    
    private final CargarTablas cargarTablas;
     
-    public HistorialOperacionesDAOImp() {
+    public HistorialOperacionesDAOImpl() {
         super("BOD_HISTORIAL_OPERACIONES");
         this.historial=null;
         this.retornarLlavePrimaria=true;
@@ -166,7 +166,7 @@ public class HistorialOperacionesDAOImp extends DAOImplBase implements Historial
     }
 
     @Override
-    public ArrayList<HistorialOperacionesDTO> listarPorTabla(Date fechaOperacion) {
+    public ArrayList<HistorialOperacionesDTO> listarPorFecha(Date fechaOperacion) {
         Integer operacionId = null, usuarioId = null;
         String nombreTabla = null, tipoOperacion = null, usuario = null, 
                tipoUsuario = null;

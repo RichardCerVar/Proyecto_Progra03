@@ -14,13 +14,13 @@ import pe.edu.pucp.softbod.daoImp.util.ClienteAlFiadoParametrosBuilder;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 
-public class ClienteAlFiadoDAOImp extends DAOImplBase implements ClienteAlFiadoDAO{
+public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiadoDAO{
     
     private ClienteAlFiadoDTO clienteAlFiado;
     
     private final CargarTablas cargarTablas;
 
-    public ClienteAlFiadoDAOImp() {
+    public ClienteAlFiadoDAOImpl() {
         super("BOD_CLIENTE_AL_FIADO");
         this.clienteAlFiado = null;
         this.retornarLlavePrimaria = true;

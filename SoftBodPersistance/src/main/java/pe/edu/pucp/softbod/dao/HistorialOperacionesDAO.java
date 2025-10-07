@@ -24,7 +24,7 @@ public interface HistorialOperacionesDAO {
     public ArrayList<HistorialOperacionesDTO> listarPorTablaYOperacion(String nombreTabla,
                                               String tipoOperacion);
     
-    public ArrayList<HistorialOperacionesDTO> listarPorTabla(Date fecha);
+    public ArrayList<HistorialOperacionesDTO> listarPorFecha(Date fecha);
     
     public ArrayList<HistorialOperacionesDTO> listarHistorialFiltros (Integer operacionId, 
             String nombreTabla, String tipoOperacion, 

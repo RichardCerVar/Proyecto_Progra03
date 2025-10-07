@@ -14,12 +14,12 @@ import pe.edu.pucp.softbod.daoImp.util.RazonDevolucionParametrosBusqueda;
 import pe.edu.pucp.softbod.daoImp.util.RazonDevolucionParametrosBusquedaBuilder;
 import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 
-public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucionDAO{
+public class RazonDevolucionDAOImpl extends DAOImplBase implements RazonDevolucionDAO{
 
     private RazonDevolucionDTO razonDevolucion;
     private final CargarTablas cargaTablas;
     
-    public RazonDevolucionDAOImp() {
+    public RazonDevolucionDAOImpl() {
         super("BOD_RAZON_DEVOLUCION");
         this.razonDevolucion = null;
         this.retornarLlavePrimaria = true;
