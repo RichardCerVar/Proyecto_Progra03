@@ -24,7 +24,7 @@ public class ProductoBO {
     public ProductoDTO obtenerPorId(Integer productoId) {
         return this.productoDAO.obtenerPorId(productoId);
     }
-
+    
     public ArrayList<ProductoDTO> listarTodos() {
         return this.productoDAO.listarTodos();
     }

@@ -67,7 +67,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.producto = this.cargaTablas.cargarProductoDTO(resultSet);
+        this.producto = this.cargaTablas.cargarProductoSinCategoria(resultSet);
     }
     
     @Override

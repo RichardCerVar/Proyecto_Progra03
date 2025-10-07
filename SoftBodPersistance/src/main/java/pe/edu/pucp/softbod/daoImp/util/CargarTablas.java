@@ -111,6 +111,9 @@ public class CargarTablas {
         prod.setStock(resulSet.getInt("STOCK"));
         prod.setStockMinimo(resulSet.getInt("STOCK_MINIMO"));
         prod.setActivo(resulSet.getBoolean("ACTIVO"));
+        CategoriaDTO cat = new CategoriaDTO();
+        cat.setCategoriaId(resulSet.getInt("CATEGORIA_ID"));
+        prod.setCategoria(cat);
         return prod;
     }
     
