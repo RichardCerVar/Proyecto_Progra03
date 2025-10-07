@@ -1,0 +1,7 @@
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll.config
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.pdb
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.AssemblyReference.cache
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb

@@ -1,0 +1,139 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|d:\\documentos\\github\\proyecto_progra03\\softbod\\softbodwa\\softbod.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\softbod.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "SoftBod.Master.cs",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\SoftBod.Master.cs",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master.cs",
+              "RelativeToolTip": "SoftBodWA\\SoftBod.Master.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-06T04:41:19.945Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Usuarios.aspx",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Usuarios.aspx",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx",
+              "RelativeToolTip": "SoftBodWA\\Usuarios.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:39:49.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Reportes.aspx",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Reportes.aspx",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
+              "RelativeToolTip": "SoftBodWA\\Reportes.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:39:35.752Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Clientes.aspx",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx",
+              "RelativeToolTip": "SoftBodWA\\Clientes.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:39:20.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Productos.aspx",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
+              "RelativeToolTip": "SoftBodWA\\Productos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:39:02.472Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Inicio.aspx",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Inicio.aspx",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx",
+              "RelativeToolTip": "SoftBodWA\\Inicio.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:38:39.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SoftBod.Master",
+              "DocumentMoniker": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master",
+              "RelativeDocumentMoniker": "SoftBodWA\\SoftBod.Master",
+              "ToolTip": "D:\\Documentos\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master",
+              "RelativeToolTip": "SoftBodWA\\SoftBod.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-10-06T04:37:30.255Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
