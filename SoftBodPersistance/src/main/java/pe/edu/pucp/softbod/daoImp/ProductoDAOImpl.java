@@ -2,11 +2,15 @@ package pe.edu.pucp.softbod.daoImp;
 
 import pe.edu.pucp.softbod.model.ProductoDTO;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.ProductoParametrosBusqueda;
 import pe.edu.pucp.softbod.daoImp.util.ProductoParametrosBusquedaBuilder;
 
 public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
@@ -93,7 +97,10 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     
     @Override
     public ArrayList<ProductoDTO> listarTodos() {
-        return (ArrayList<ProductoDTO>) super.listarTodos();
+        Boolean activo = null;
+        String categoria = null;
+        String nombreProducto = null;
+        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProducto);
     }
 
     @Override
@@ -112,9 +119,91 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
                             .conNombreProducto(nombreProducto)
                             .buildProductoParametrosBusqueda();
 
-        return (ArrayList<ProductoDTO>)
+        return (ArrayList<ProductoDTO>) super.listarTodos(sql, this::incluirValorDeParametrosParaBuscarProductos, parametros);
+    }
+    
+    private void incluirValorDeParametrosParaBuscarProductos(Object parametros) {
+        ProductoParametrosBusqueda parametrosProd = (ProductoParametrosBusqueda) parametros;
+        try {
+            // ---- 1. ACTIVO ----
+            if (parametrosProd.getActivo() != null) {
+                this.statement.setBoolean(1, parametrosProd.getActivo());
+            } else {
+                this.statement.setNull(1, Types.BOOLEAN);
+            }
+
+            // ---- 2. CATEGORÍA ----
+            if (parametrosProd.getCategoria() != null) {
+                this.statement.setString(2, parametrosProd.getCategoria());
+            } else {
+                this.statement.setNull(2, Types.VARCHAR);
+            }
+
+            // ---- 3. NOMBRE PRODUCTO ----
+            if (parametrosProd.getNombreProducto() != null) {
+                this.statement.setString(3, parametrosProd.getNombreProducto());
+            } else {
+                this.statement.setNull(3, Types.VARCHAR);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    
-    
+    @Override
+    public ArrayList<ProductoDTO> listarTodosActivos() {
+        
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosInactivos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombre(String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombreParcialActivo(String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombreParcialInactivo(String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorCategoria(String nameCategoria) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosActivosPorCategoria(String nameCategoria) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosInactivosPorCategoria(String nameCategoria) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoria(String nameCategoria, String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaActivo(String nameCategoria, String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaInactivo(String nameCategoria, String nombreProd) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }
