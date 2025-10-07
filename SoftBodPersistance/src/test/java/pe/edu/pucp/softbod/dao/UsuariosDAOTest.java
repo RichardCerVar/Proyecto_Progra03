@@ -15,13 +15,13 @@ public class UsuariosDAOTest {
         this.usuarioDAO = new UsuarioDAOImpl(); 
     }
     
-    //@Test
+//    @Test
     public void testInsertar() {
         System.out.println("insertar-UsuariosDAOTest");
         System.out.println("------------------------");
         
         UsuarioDTO user = new UsuarioDTO();
-        user.setUsuario("Chichico");
+        user.setUsuario("Chichico EL PRIMERO");
         user.setTipoUsuarios(Tipo_Usuario.OPERARIO);
         user.setActivo(Boolean.TRUE);
         user.setContrasenha("jjdajsdjasd123");
@@ -33,7 +33,7 @@ public class UsuariosDAOTest {
         assert(resultado!=0);
     }
 
-    //@Test
+//    @Test
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-UsuariosDAOTest");
         System.out.println("----------------------------");
@@ -49,7 +49,7 @@ public class UsuariosDAOTest {
         System.out.println("Telefono: " + usuario.getTelefono());
     }
     
-    //@Test
+    @Test
     public void testListarTodos() {
         System.out.println("listarTodos-UsuariosDAOTest");
         System.out.println("--------------------------");

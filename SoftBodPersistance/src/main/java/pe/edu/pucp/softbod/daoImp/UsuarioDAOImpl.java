@@ -93,7 +93,10 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
 
     @Override
     public ArrayList<UsuarioDTO> listarTodos() {
-        return (ArrayList<UsuarioDTO>) super.listarTodos();
+        String nameUser = null;
+        String emailUser = null;
+        Boolean activos = null;
+        return (ArrayList<UsuarioDTO>) listarUsuariosConFiltro(nameUser, emailUser, activos);
     }
 
     @Override
@@ -109,16 +112,25 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         return super.modificar();
     }
 
-    @Override
+    @Override   
     public UsuarioDTO obtenerPorNombre(String nombreUser) {
-        return null;
+        String emailUser = null;
+        Boolean activos = null;
+        ArrayList<UsuarioDTO> lista = this.listarUsuariosConFiltro(nombreUser, emailUser, activos);
+        if(!lista.isEmpty()){
+            this.usuario = lista.getFirst();
+        }else{
+            this.usuario = null;
+        }
+        return this.usuario;
     }
 
     @Override
     public ArrayList<UsuarioDTO> listarActivos() {
-
-        return null;
-
+        String nameUser = null;
+        String emailUser = null;
+        Boolean activos = true;
+        return (ArrayList<UsuarioDTO>) listarUsuariosConFiltro(nameUser, emailUser, activos);
     }
     
     private ArrayList<UsuarioDTO> listarUsuariosConFiltro(String nameUser,
@@ -162,4 +174,23 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuariosDAO  {
         }
     }
 
+    @Override
+    public ArrayList<UsuarioDTO> listarInactivos() {
+        String nameUser = null;
+        String emailUser = null;
+        Boolean activos = false;
+        return (ArrayList<UsuarioDTO>) listarUsuariosConFiltro(nameUser, emailUser, activos);}
+
+    @Override
+    public UsuarioDTO obtenerPorCorreo(String emailUser) {
+        String nombreUser = null;
+        Boolean activos = null;
+        ArrayList<UsuarioDTO> lista = this.listarUsuariosConFiltro(nombreUser, emailUser, activos);
+        if(!lista.isEmpty()){
+            this.usuario = lista.getFirst();
+        }else{
+            this.usuario = null;
+        }
+        return this.usuario;
+    }
 }

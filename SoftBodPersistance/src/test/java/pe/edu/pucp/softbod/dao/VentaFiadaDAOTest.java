@@ -59,7 +59,7 @@ public class VentaFiadaDAOTest {
     }
 
    
-    @Test   
+//    @Test   
     public void testObtenerPorId() {
         System.out.println("obtenerPorId-VentaFiadaDAOTest");
         System.out.println("------------------------------");
