@@ -187,4 +187,40 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO  {
         }
         return this.usuario;
     }
+
+    @Override
+    public UsuarioDTO obtenerCuenta(String correo, String contrasenha) {
+        String sql = "SELECT USUARIO_ID, USUARIO, TIPO_USUARIOS, CORREO, "
+                    + "CONTRASENHA, NOMBRE_COMPLETO, TELEFONO_USUARIO, ACTIVO_USUARIO "
+                    + "FROM BOD_USUARIO WHERE CORREO=? AND CONTRASENHA= ?";
+        this.usuario = new UsuarioDTO();
+        this.usuario.setCorreo(correo);
+        this.usuario.setContrasenha(contrasenha);
+        try {
+            this.abrirConexion();
+            this.colocarSQLEnStatement(sql);
+            this.incluirValorDeParametrosParaObtenerPorCuenta();
+            this.ejecutarSelectEnDB();
+            if (this.resultSet.next()) {
+                this.instanciarObjetoDelResultSet();
+            } else {
+                this.limpiarObjetoDelResultSet();
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error al intentar obtenerPorId - " + ex);
+        } finally {
+            try {
+                this.cerrarConexion();
+            } catch (SQLException ex) {
+                System.err.println("Error al cerrar la conexión - " + ex);
+            }
+        }  
+        return this.usuario;
+    }
+
+    private void incluirValorDeParametrosParaObtenerPorCuenta() throws SQLException {
+        this.statement.setString(1, this.usuario.getCorreo());
+        this.statement.setString(2, this.usuario.getContrasenha());
+        
+    }
 }

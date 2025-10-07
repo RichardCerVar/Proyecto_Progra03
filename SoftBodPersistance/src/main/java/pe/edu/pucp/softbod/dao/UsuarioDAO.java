@@ -6,6 +6,7 @@ import pe.edu.pucp.softbod.model.UsuarioDTO;
 public interface UsuarioDAO {
     public Integer insertar(UsuarioDTO usuario);
     public UsuarioDTO obtenerPorId(Integer usuarioId);
+    public UsuarioDTO obtenerCuenta(String correo, String contrasenha);
     public ArrayList<UsuarioDTO> listarPorNombreParcial(String nombreUser);
     public UsuarioDTO obtenerPorCorreo(String emailUser);
     public ArrayList<UsuarioDTO> listarTodos();
