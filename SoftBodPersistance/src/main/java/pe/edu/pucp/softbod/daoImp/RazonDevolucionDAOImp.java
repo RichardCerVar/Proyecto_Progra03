@@ -1,11 +1,17 @@
 package pe.edu.pucp.softbod.daoImp;
 
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.RazonDevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.util.CargarTablas;
 import pe.edu.pucp.softbod.daoImp.util.Columna;
+import pe.edu.pucp.softbod.daoImp.util.RazonDevolucionParametrosBusqueda;
+import pe.edu.pucp.softbod.daoImp.util.RazonDevolucionParametrosBusquedaBuilder;
 import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
 
 public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucionDAO{
@@ -79,7 +85,39 @@ public class RazonDevolucionDAOImp extends DAOImplBase implements RazonDevolucio
 
     @Override
     public ArrayList<RazonDevolucionDTO> listarTodos() {
-        return (ArrayList<RazonDevolucionDTO>) super.listarTodos();
+        String descripcion = null;
+        return (ArrayList<RazonDevolucionDTO>) listarRazonesSP(descripcion);
+    }
+
+    @Override
+    public ArrayList<RazonDevolucionDTO> listarTodosPorNombreParcial(String nombreRazon) {
+        return (ArrayList<RazonDevolucionDTO>) listarRazonesSP(nombreRazon);
     }
     
+    private ArrayList<RazonDevolucionDTO> listarRazonesSP(String descripcion) {
+        String sql = "{ CALL SP_LISTAR_RAZONES_DEVOLUCION(?) }";
+
+        Object parametros = new RazonDevolucionParametrosBusquedaBuilder()
+                            .conDescripcion(descripcion)
+                            .buildRazonDevolucionParametrosBusqueda();
+        
+        return (ArrayList<RazonDevolucionDTO>) super.listarTodos(sql,
+                this::incluirValorDeParametrosParaBuscarRazon,
+                parametros);
+    }
+
+    private void incluirValorDeParametrosParaBuscarRazon(Object parametros) {
+        RazonDevolucionParametrosBusqueda filtros = (RazonDevolucionParametrosBusqueda) parametros;
+
+        try {
+            if (filtros.getDescripcion() != null) {
+                this.statement.setString(1, filtros.getDescripcion());
+            } else {
+                this.statement.setNull(1, Types.VARCHAR);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RazonDevolucionDAOImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

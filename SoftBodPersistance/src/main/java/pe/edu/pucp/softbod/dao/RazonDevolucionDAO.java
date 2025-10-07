@@ -8,4 +8,5 @@ public interface RazonDevolucionDAO {
     public Integer eliminar(RazonDevolucionDTO razonDevolucion);
     public RazonDevolucionDTO obtenerPorId(Integer razonId);
     public ArrayList<RazonDevolucionDTO> listarTodos();
+    public ArrayList<RazonDevolucionDTO> listarTodosPorNombreParcial(String nombre);
 }
