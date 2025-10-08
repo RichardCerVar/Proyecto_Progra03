@@ -61,7 +61,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
     }
     
     private ArrayList<VentaAlFiadoDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId,Date fecha){
-        String sql = "{ CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?) }";
+        String sql = "{ CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?, ?) }";
         Object parametros = new VentaFiadaParametrosBusquedaBuilder()
                             .conAliasCliente(aliasCliente)
                             .conVentaFiadaId(ventaFiadaId)

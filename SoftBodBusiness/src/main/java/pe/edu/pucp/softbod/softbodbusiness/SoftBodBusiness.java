@@ -12,21 +12,28 @@ public class SoftBodBusiness {
     
     private static ProductoBO productoBO;
     private static Integer productoIdInsertado = null;
+    
     private static RazonDevolucionBO razonDevolucionBO;
     private static Integer razonDevolucionIdInsertado = null;
+    
     private static UsuarioBO usuarioBO;
     private static Integer usuarioIdInsertado = null;
+    
     private static VentaBO ventaBO;
     private static DetalleVentaBO detalleVentaBO;
     private static Integer ventaIdInsertado = null;
     
+    private static ClienteAlFiadoBO clienteAlFiadoBO;
+    private static VentaAlFiadoBO ventaAlFiadoBO;
+    private static Integer ventaFiadaIdInsertado = null;
+    
     public static void main(String[] args) {
-        productoBO = new ProductoBO();
         
 //        System.out.println("╔════════════════════════════════════════════════════════════════╗");
 //        System.out.println("║        PRUEBAS COMPLETAS DEL ProductoBO - BACKEND ║");
 //        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
+        productoBO = new ProductoBO();
 //        // CRUD básico
 //        probarInsertar();
 //        probarModificar();
@@ -56,7 +63,7 @@ public class SoftBodBusiness {
 //        System.out.println("║ PRUEBAS COMPLETAS DEL RazonDevolucionBO - BACKEND ║");
 //        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
-//        razonDevolucionBO = new RazonDevolucionBO();
+        razonDevolucionBO = new RazonDevolucionBO();
 //        // Pruebas RazonDevolucion
 //        probarRazonDevolucionInsertar();
 //        probarRazonDevolucionEliminar();
@@ -69,7 +76,7 @@ public class SoftBodBusiness {
 //        System.out.println("║ PRUEBAS COMPLETAS DEL UsuarioBO - BACKEND         ║");
 //        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
-//        usuarioBO = new UsuarioBO();
+        usuarioBO = new UsuarioBO();
 //        // Pruebas Usuario
 //        probarUsuarioInsertar();
 //        probarUsuarioModificar();
@@ -82,19 +89,32 @@ public class SoftBodBusiness {
 //        probarUsuarioListarInactivos();
 //        probarUsuarioListarPorNombreParcial();
         
-        imprimirSeparador();
-        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-        System.out.println("║ PRUEBAS COMPLETAS DE VentaBO - BACKEND            ║");
-        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+//        imprimirSeparador();
+//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+//        System.out.println("║ PRUEBAS COMPLETAS DE VentaBO - BACKEND            ║");
+//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 
         ventaBO = new VentaBO();
         detalleVentaBO = new DetalleVentaBO();
         //PRUEBAS VENTA
-        probarVentaInsertar();
-        probarVentaObtenerPorId();
-        probarVentaListarTodos();
-        probarVentaListarTodosPorFecha();
+//        probarVentaInsertar();
+//        probarVentaObtenerPorId();
+//        probarVentaListarTodos();
+//        probarVentaListarTodosPorFecha();
         
+//        imprimirSeparador();
+//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+//        System.out.println("║ Registro De VentaAlFiadoBO - BACKEND               ║");
+//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+//
+        clienteAlFiadoBO = new ClienteAlFiadoBO();
+        ventaAlFiadoBO = new VentaAlFiadoBO();
+//        // PRUEBAS VENTA AL FIADO
+//        probarVentaAlFiadoInsertar();
+//        probarVentaAlFiadoObtenerPorId();
+//        probarVentaAlFiadoListarTodos();
+//        probarVentaAlFiadoListarPorAliasCliente();
+//        probarVentaAlFiadoListarPorAliasClienteFecha();
         
         System.out.println("\n╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║           PRUEBAS FINALIZADAS EXITOSAMENTE        ║");
@@ -1190,361 +1210,438 @@ public class SoftBodBusiness {
         System.out.println("  Teléfono: " + u.getTelefono());
         System.out.println("  Activo: " + u.getActivo());
     }
-    
+
+    // ==================== MÉTODOS DE PRUEBA VENTA ====================
+
     private static void probarVentaInsertar() {
-        imprimirEncabezado("PRUEBA: VentaBO - insertar(VentaDTO)");
-
+        imprimirEncabezado("PRUEBA 1: insertar(VentaDTO) y DetalleVenta");
+        
         try {
-            // Crear usuario para la venta (usar usuario existente ID=6 - op_caja1)
-            UsuarioDTO usuarioVenta = usuarioBO.obtenerPorId(6);
+            // 1. Obtener datos de referencia (Usuario y Productos)
+            // Se asume la existencia de obtenerUsuarioBase y obtenerProductoBase
+            UsuarioDTO usuario = usuarioBO.obtenerPorId(1); // Usuario con ID 1 (ej: ADMINISTRADOR)
+            ProductoDTO prod1 = productoBO.obtenerPorId(1); // Producto 1 (ej: Bebida)
+            ProductoDTO prod2 = productoBO.obtenerPorId(3); // Producto 3 (ej: Agua Mineral)
+            
+            if (usuario == null || prod1 == null || prod2 == null) {
+                System.out.println("✗ Error de Setup: No se pudieron obtener los datos base (Usuario/Productos).");
+                return;
+            }
 
-            // Crear venta
+            // 2. Crear Venta DTO con MONTO CERO (sin insertar aún)
             VentaDTO nuevaVenta = new VentaDTO();
-            nuevaVenta.setTotal(125.50);
-            nuevaVenta.setMetodoPago(Tipo_de_pago.EFECTIVO);
-            nuevaVenta.setFecha(Date.valueOf("2025-10-07"));
-            nuevaVenta.setUsuario(usuarioVenta);
+            nuevaVenta.setTotal(0.0); // Monto cero inicial
+            nuevaVenta.setMetodoPago(Tipo_de_pago.TRANSFERENCIA);
+            nuevaVenta.setFecha(new Date(System.currentTimeMillis())); // Fecha actual
+            nuevaVenta.setUsuario(usuario);
 
-            System.out.println("Insertando venta...");
-            System.out.println("  Total: S/ " + nuevaVenta.getTotal());
-            System.out.println("  Método de pago: " + nuevaVenta.getMetodoPago());
-            System.out.println("  Fecha: " + nuevaVenta.getFecha());
-            System.out.println("  Usuario: " + usuarioVenta.getUsuario() + " - " + usuarioVenta.getNombre());
+            // 3. Crear y poblar el ArrayList de Detalles, calculando el total
+            ArrayList<DetalleVentaDTO> detalles = new ArrayList<>();
+            double totalVenta = 0.0;
+            
+            // Detalle 1: 5 unidades de Producto 1
+            Integer cantidad1 = 5;
+            Double subtotal1 = cantidad1 * prod1.getPrecioUnitario(); 
+            DetalleVentaDTO det1 = new DetalleVentaDTO();
+            det1.setProducto(prod1);
+            det1.setCantidad(cantidad1);
+            det1.setSubtotal(subtotal1);
+            detalles.add(det1);
+            totalVenta += subtotal1;
 
-            ventaIdInsertado = ventaBO.insertar(nuevaVenta);
+            // Detalle 2: 2 unidades de Producto 3
+            Integer cantidad2 = 2;
+            Double subtotal2 = cantidad2 * prod2.getPrecioUnitario();
+            DetalleVentaDTO det2 = new DetalleVentaDTO();
+            det2.setProducto(prod2);
+            det2.setCantidad(cantidad2);
+            det2.setSubtotal(subtotal2);
+            detalles.add(det2);
+            totalVenta += subtotal2;
 
-            if (ventaIdInsertado != null && ventaIdInsertado > 0) {
-                System.out.println("\n✓ Venta insertada exitosamente");
-                System.out.println("  ID de venta generado: " + ventaIdInsertado);
+            // 4. Settear el total final calculado en la Venta
+            nuevaVenta.setTotal(totalVenta);
 
-                // Ahora insertar detalles de venta
-                System.out.println("\n  Insertando detalles de la venta...");
-                boolean detallesInsertados = insertarDetallesVenta(ventaIdInsertado);
+            // 5. Insertar la Venta principal (para obtener el ID)
+            Integer idVentaGenerada = ventaBO.insertar(nuevaVenta);
 
-                if (detallesInsertados) {
-                    System.out.println("  ✓ Detalles de venta insertados correctamente");
-
-                    // Mostrar detalles insertados
-                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(ventaIdInsertado);
-                    System.out.println("\n  Detalles de la venta (Total items: " + detalles.size() + "):");
-                    System.out.println("  " + "─".repeat(60));
-
-                    for (DetalleVentaDTO det : detalles) {
-                        System.out.println("    • " + det.getProducto().getNombre());
-                        System.out.println("      Cantidad: " + det.getCantidad() + 
-                                         " | Precio Unit: S/ " + det.getProducto().getPrecioUnitario() +
-                                         " | Subtotal: S/ " + det.getSubtotal());
-                    }
-                    System.out.println("  " + "─".repeat(60));
+            // 6. Insertar los Detalles
+            if (idVentaGenerada != null && idVentaGenerada > 0) {
+                ventaIdInsertado = idVentaGenerada; // Guardar para pruebas posteriores
+                nuevaVenta.setVentaId(idVentaGenerada); // Actualizar el DTO de Venta
+                
+                // Iterar e insertar cada detalle con el ID de la Venta
+                for (DetalleVentaDTO detalle : detalles) {
+                    detalle.setVenta(nuevaVenta); // Asignar la Venta (con ID) al detalle
+                    detalleVentaBO.insertar(detalle);
                 }
+                
+                System.out.println("✓ Venta y sus " + detalles.size() + " detalles insertados exitosamente.");
+                System.out.println("  ID de Venta generado: " + ventaIdInsertado);
+                System.out.println("  Fecha:  " + nuevaVenta.getFecha());
+                System.out.println("  Metodo de Pago:  " + nuevaVenta.getMetodoPago().name());
+                System.out.println("  Monto Total: S/ " + String.format("%.2f", nuevaVenta.getTotal()));
             } else {
-                System.out.println("✗ Error al insertar venta");
+                System.out.println("✗ Error al insertar la Venta (ID no generado).");
             }
         } catch (Exception e) {
-            System.out.println("✗ Excepción al insertar: " + e.getMessage());
+            System.out.println("✗ Excepción al insertar Venta: " + e.getMessage());
         }
-
+        
         imprimirSeparador();
     }
-
-    private static boolean insertarDetallesVenta(Integer ventaId) {
-        try {
-            // Crear ventaDTO con el ID
-            VentaDTO venta = new VentaDTO();
-            venta.setVentaId(ventaId);
-
-            // Detalle 1: Agua Mineral (Producto ID=3)
-            ProductoDTO producto1 = new ProductoDTO();
-            producto1.setProductoId(3);
-            producto1.setNombre("Agua Mineral 1L");
-            producto1.setPrecioUnitario(1.50);
-
-            DetalleVentaDTO detalle1 = new DetalleVentaDTO();
-            detalle1.setVenta(venta);
-            detalle1.setProducto(producto1);
-            detalle1.setCantidad(10);
-            detalle1.setSubtotal(15.00);
-
-            // Detalle 2: Gaseosa Cola (Producto ID=4)
-            ProductoDTO producto2 = new ProductoDTO();
-            producto2.setProductoId(4);
-            producto2.setNombre("Gaseosa Cola 2L");
-            producto2.setPrecioUnitario(3.80);
-
-            DetalleVentaDTO detalle2 = new DetalleVentaDTO();
-            detalle2.setVenta(venta);
-            detalle2.setProducto(producto2);
-            detalle2.setCantidad(5);
-            detalle2.setSubtotal(19.00);
-
-            // Detalle 3: Papas Fritas (Producto ID=5)
-            ProductoDTO producto3 = new ProductoDTO();
-            producto3.setProductoId(5);
-            producto3.setNombre("Papas Fritas Grandes");
-            producto3.setPrecioUnitario(2.50);
-
-            DetalleVentaDTO detalle3 = new DetalleVentaDTO();
-            detalle3.setVenta(venta);
-            detalle3.setProducto(producto3);
-            detalle3.setCantidad(20);
-            detalle3.setSubtotal(50.00);
-
-            // Insertar detalles
-            Integer resultado1 = detalleVentaBO.insertar(detalle1);
-            Integer resultado2 = detalleVentaBO.insertar(detalle2);
-            Integer resultado3 = detalleVentaBO.insertar(detalle3);
-
-            return (resultado1 > 0 && resultado2 > 0 && resultado3 > 0);
-
-        } catch (Exception e) {
-            System.out.println("  ✗ Error al insertar detalles: " + e.getMessage());
-            return false;
-        }
-    }
-
+    
     private static void probarVentaObtenerPorId() {
-        imprimirEncabezado("PRUEBA: VentaBO - obtenerPorId(Integer)");
-
-        try {
-            // Obtener venta ID=1 (existe en la BD)
-            Integer ventaId = 1;
-            System.out.println("Buscando venta con ID=" + ventaId + "...\n");
-
-            VentaDTO venta = ventaBO.obtenerPorId(ventaId);
-
-            if (venta != null && venta.getVentaId() != null) {
-                System.out.println("✓ Venta encontrada:");
-                imprimirVenta(venta);
-
-                // Obtener y mostrar detalles de la venta
-                ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(ventaId);
-
-                if (detalles != null && !detalles.isEmpty()) {
-                    System.out.println("\n  Detalles de la venta (Total items: " + detalles.size() + "):");
-                    System.out.println("  " + "─".repeat(70));
-
-                    double totalCalculado = 0;
-                    for (DetalleVentaDTO det : detalles) {
-                        System.out.println("    • " + det.getProducto().getNombre());
-                        System.out.println("      Cantidad: " + det.getCantidad() + 
-                                         " | Precio: S/ " + det.getProducto().getPrecioUnitario() +
-                                         " | Subtotal: S/ " + det.getSubtotal());
-                        totalCalculado += det.getSubtotal();
-                    }
-                    System.out.println("  " + "─".repeat(70));
-                    System.out.println("  Total calculado de detalles: S/ " + totalCalculado);
-                    System.out.println("  Total registrado en venta: S/ " + venta.getTotal());
-
-                    if (Math.abs(totalCalculado - venta.getTotal()) < 0.01) {
-                        System.out.println("  ✓ Los totales coinciden correctamente");
-                    } else {
-                        System.out.println("  ⚠ Advertencia: Los totales no coinciden");
-                    }
-                }
-            } else {
-                System.out.println("✗ No se encontró la venta con ID=" + ventaId);
-            }
-
-            // Probar con ID inexistente
-            Integer ventaIdInexistente = 99999;
-            System.out.println("\n\n═══ Prueba con ID inexistente (" + ventaIdInexistente + ") ═══\n");
-
-            VentaDTO ventaInexistente = ventaBO.obtenerPorId(ventaIdInexistente);
-
-            if (ventaInexistente == null || ventaInexistente.getVentaId() == null) {
-                System.out.println("✓ Correcto: No se encontró venta con ID inexistente");
-            } else {
-                System.out.println("✗ Error: Se encontró una venta que no debería existir");
-            }
-
-        } catch (Exception e) {
-            System.out.println("✗ Excepción al obtener por ID: " + e.getMessage());
+        imprimirEncabezado("PRUEBA 2: obtenerPorId(Integer) y listarPorVenta(Integer)");
+        
+        if (ventaIdInsertado == null) {
+            System.out.println("AVISO: No se ejecutó la prueba. Ejecute probarVentaInsertar primero.");
+            imprimirSeparador();
+            return;
         }
-
+        
+        try {
+            VentaDTO ventaEncontrada = ventaBO.obtenerPorId(ventaIdInsertado);
+            
+            if (ventaEncontrada != null) {
+                // Obtener detalles asociados a la venta
+                ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(ventaIdInsertado);
+                
+                System.out.println("✓ Venta ID " + ventaIdInsertado + " encontrada exitosamente.");
+                imprimirVentaConDetalles(ventaEncontrada, detalles);
+            } else {
+                System.out.println("✗ No se encontró la Venta con ID=" + ventaIdInsertado);
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al obtener Venta por ID: " + e.getMessage());
+        }
+        
         imprimirSeparador();
     }
 
     private static void probarVentaListarTodos() {
-        imprimirEncabezado("PRUEBA: VentaBO - listarTodos()");
-
+        imprimirEncabezado("PRUEBA 3: listarTodos() y listarPorVenta(Integer)");
+        
         try {
             ArrayList<VentaDTO> ventas = ventaBO.listarTodos();
-
-            System.out.println("✓ Total de ventas encontradas: " + ventas.size());
-
+            
+            System.out.println("✓ Total de Ventas encontradas: " + ventas.size());
+            
             if (!ventas.isEmpty()) {
-                // Calcular estadísticas
-                double totalEfectivo = 0, totalTransferencia = 0;
-                int contadorEfectivo = 0, contadorTransferencia = 0;
-                double montoTotal = 0;
-
-                for (VentaDTO v : ventas) {
-                    montoTotal += v.getTotal();
-                    if (v.getMetodoPago() == Tipo_de_pago.EFECTIVO) {
-                        totalEfectivo += v.getTotal();
-                        contadorEfectivo++;
-                    } else if (v.getMetodoPago() == Tipo_de_pago.TRANSFERENCIA) {
-                        totalTransferencia += v.getTotal();
-                        contadorTransferencia++;
-                    }
+                System.out.println("\n--- Resumen de las últimas 3 Ventas ---");
+                int limite = Math.min(3, ventas.size());
+                
+                // Se listan las últimas 'limite' ventas (asumiendo que listarTodos retorna de alguna forma ordenada)
+                for (int i = 0; i < limite; i++) {
+                    VentaDTO venta = ventas.get(i);
+                    // Obtener detalles de la venta listada
+                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(venta.getVentaId());
+                    System.out.println("\nVenta #" + (i + 1) + ":");
+                    imprimirVentaConDetalles(venta, detalles);
                 }
-
-                System.out.println("\n═══ ESTADÍSTICAS GENERALES ═══");
-                System.out.println("  Total ventas: " + ventas.size());
-                System.out.println("  Monto total: S/ " + String.format("%.2f", montoTotal));
-                System.out.println("\n  Ventas en EFECTIVO:");
-                System.out.println("    Cantidad: " + contadorEfectivo);
-                System.out.println("    Monto: S/ " + String.format("%.2f", totalEfectivo));
-                System.out.println("\n  Ventas por TRANSFERENCIA:");
-                System.out.println("    Cantidad: " + contadorTransferencia);
-                System.out.println("    Monto: S/ " + String.format("%.2f", totalTransferencia));
-
-                System.out.println("\n\n═══ Primeras 5 ventas ═══");
-                System.out.println("─".repeat(70));
-
-                int contador = 0;
-                for (VentaDTO v : ventas) {
-                    if (contador >= 5) break;
-                    System.out.println("\n  Venta #" + (contador + 1) + ":");
-                    System.out.println("    ID: " + v.getVentaId() + " | Fecha: " + v.getFecha());
-                    System.out.println("    Total: S/ " + v.getTotal() + " | Método: " + v.getMetodoPago());
-
-                    // Mostrar cantidad de items
-                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(v.getVentaId());
-                    if (detalles != null) {
-                        System.out.println("    Items: " + detalles.size() + " producto(s)");
-                    }
-                    contador++;
-                }
-                System.out.println("\n" + "─".repeat(70));
-
-            } else {
-                System.out.println("\n⚠ No hay ventas en el sistema");
             }
         } catch (Exception e) {
-            System.out.println("✗ Excepción al listar todos: " + e.getMessage());
+            System.out.println("✗ Excepción al listar todas las Ventas: " + e.getMessage());
         }
-
+        
         imprimirSeparador();
     }
-
+    
     private static void probarVentaListarTodosPorFecha() {
-        imprimirEncabezado("PRUEBA: VentaBO - listarTodosPorFecha(Date)");
-
+        imprimirEncabezado("PRUEBA 4: listarTodosPorFecha(Date) y listarPorVenta(Integer)");
+        
         try {
-            // Prueba 1: Buscar ventas del 2025-10-07
-            Date fecha1 = Date.valueOf("2025-10-07");
-            System.out.println("═══ Búsqueda 1: Ventas del " + fecha1 + " ═══\n");
+            // Usar la fecha de la venta insertada para asegurar resultados
+            Date fechaPrueba = new Date(System.currentTimeMillis()); 
 
-            ArrayList<VentaDTO> ventas1 = ventaBO.listarTodosPorFecha(fecha1);
-
-            System.out.println("✓ Total de ventas encontradas: " + ventas1.size());
-
-            if (!ventas1.isEmpty()) {
-                double totalDia = 0;
-                System.out.println("\nVentas del día:");
-                System.out.println("─".repeat(70));
-
-                for (VentaDTO v : ventas1) {
-                    System.out.println("\n  • Venta ID: " + v.getVentaId());
-                    System.out.println("    Total: S/ " + v.getTotal() + " | Método: " + v.getMetodoPago());
-                    totalDia += v.getTotal();
-
-                    // Mostrar productos vendidos
-                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(v.getVentaId());
-                    if (detalles != null && !detalles.isEmpty()) {
-                        System.out.println("    Productos: " + detalles.size() + " item(s)");
-                        for (DetalleVentaDTO det : detalles) {
-                            System.out.println("      - " + det.getProducto().getNombre() + 
-                                             " (Cant: " + det.getCantidad() + ")");
-                        }
-                    }
+            ArrayList<VentaDTO> ventasPorFecha = ventaBO.listarTodosPorFecha(fechaPrueba);
+            
+            System.out.println("✓ Total de Ventas encontradas para la fecha " + fechaPrueba.toString() + ": " + ventasPorFecha.size());
+            
+            if (!ventasPorFecha.isEmpty()) {
+                System.out.println("\n--- Ventas del día " + fechaPrueba.toString() + " ---");
+                for (VentaDTO venta : ventasPorFecha) {
+                    // Obtener detalles de la venta listada
+                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(venta.getVentaId());
+                    imprimirVentaConDetalles(venta, detalles);
                 }
-                System.out.println("\n" + "─".repeat(70));
-                System.out.println("Total vendido en el día: S/ " + String.format("%.2f", totalDia));
-            }
-
-            // Prueba 2: Buscar ventas del 2025-10-01
-            Date fecha2 = Date.valueOf("2025-10-01");
-            System.out.println("\n\n═══ Búsqueda 2: Ventas del " + fecha2 + " ═══\n");
-
-            ArrayList<VentaDTO> ventas2 = ventaBO.listarTodosPorFecha(fecha2);
-
-            System.out.println("✓ Total de ventas encontradas: " + ventas2.size());
-
-            if (!ventas2.isEmpty()) {
-                double totalDia2 = 0;
-                int totalItems = 0;
-
-                for (VentaDTO v : ventas2) {
-                    totalDia2 += v.getTotal();
-                    ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(v.getVentaId());
-                    if (detalles != null) {
-                        totalItems += detalles.size();
-                    }
-                }
-
-                System.out.println("  Ventas: " + ventas2.size());
-                System.out.println("  Items vendidos: " + totalItems);
-                System.out.println("  Total del día: S/ " + String.format("%.2f", totalDia2));
-
-                System.out.println("\n  Resumen de ventas:");
-                for (VentaDTO v : ventas2) {
-                    System.out.println("    • Venta " + v.getVentaId() + ": S/ " + v.getTotal() + 
-                                     " (" + v.getMetodoPago() + ")");
-                }
-            }
-
-            // Prueba 3: Buscar ventas en fecha sin registros
-            Date fecha3 = Date.valueOf("2025-01-01");
-            System.out.println("\n\n═══ Búsqueda 3: Ventas del " + fecha3 + " (sin ventas) ═══\n");
-
-            ArrayList<VentaDTO> ventas3 = ventaBO.listarTodosPorFecha(fecha3);
-
-            System.out.println("✓ Total de ventas encontradas: " + ventas3.size());
-
-            if (ventas3.isEmpty()) {
-                System.out.println("✓ Correcto: No hay ventas registradas en esa fecha");
             } else {
-                System.out.println("  Se encontraron " + ventas3.size() + " venta(s) en esa fecha");
+                System.out.println("No se encontraron ventas para la fecha " + fechaPrueba.toString() + ".");
             }
-
-            // Prueba 4: Comparar dos fechas diferentes
-            Date fecha4a = Date.valueOf("2025-09-28");
-            Date fecha4b = Date.valueOf("2025-10-06");
-
-            System.out.println("\n\n═══ Búsqueda 4: Comparación entre dos fechas ═══\n");
-
-            ArrayList<VentaDTO> ventas4a = ventaBO.listarTodosPorFecha(fecha4a);
-            ArrayList<VentaDTO> ventas4b = ventaBO.listarTodosPorFecha(fecha4b);
-
-            double total4a = ventas4a.stream().mapToDouble(VentaDTO::getTotal).sum();
-            double total4b = ventas4b.stream().mapToDouble(VentaDTO::getTotal).sum();
-
-            System.out.println("Fecha: " + fecha4a);
-            System.out.println("  Ventas: " + ventas4a.size() + " | Total: S/ " + String.format("%.2f", total4a));
-
-            System.out.println("\nFecha: " + fecha4b);
-            System.out.println("  Ventas: " + ventas4b.size() + " | Total: S/ " + String.format("%.2f", total4b));
-
-            System.out.println("\nDiferencia:");
-            System.out.println("  Ventas: " + (ventas4b.size() - ventas4a.size()));
-            System.out.println("  Monto: S/ " + String.format("%.2f", (total4b - total4a)));
-
+            
         } catch (Exception e) {
             System.out.println("✗ Excepción al listar por fecha: " + e.getMessage());
         }
+        
+        imprimirSeparador();
+    }
+    
+    // ==================== MÉTODOS AUXILIARES DE SOFTBODBUSSINESS ====================
+ 
+    private static void imprimirVentaConDetalles(VentaDTO venta, ArrayList<DetalleVentaDTO> detalles) {
+        System.out.println("  [VENTA ID: " + venta.getVentaId() + "]");
+        System.out.println("    Fecha: " + venta.getFecha());
+        System.out.println("    Método de Pago: " + venta.getMetodoPago());
+        System.out.println("    Total: S/ " + String.format("%.2f", venta.getTotal()));
+        if (venta.getUsuario() != null) {
+            System.out.println("    Usuario (ID " + venta.getUsuario().getUsuarioId() + "): " + venta.getUsuario().getNombre() );
+        }
+        
+        if (detalles != null && !detalles.isEmpty()) {
+            System.out.println("    --- Detalles (" + detalles.size() + ") ---");
+            for (int i = 0; i < detalles.size(); i++) {
+                DetalleVentaDTO d = detalles.get(i);
+                System.out.println("      " + (i+1) + ". Producto: " + d.getProducto().getNombre());
+                System.out.println("         Cantidad: " + d.getCantidad() + " | Precio Unit.: S/ " + String.format("%.2f", d.getProducto().getPrecioUnitario()));
+                System.out.println("         Subtotal: S/ " + String.format("%.2f", d.getSubtotal()));
+            }
+        } else {
+            System.out.println("    --- Detalles: Sin detalles asociados. ---");
+        }
+    }
+    
+    private static void probarVentaAlFiadoInsertar() {
+        imprimirEncabezado("PRUEBA 5: insertar(VentaAlFiadoDTO) y DetalleVenta");
+        
+        try {
+            // 1. Obtener datos de referencia
+            UsuarioDTO usuario = usuarioBO.obtenerPorId(1); // Asumiendo Usuario con ID 1
+            ClienteAlFiadoDTO cliente = clienteAlFiadoBO.obtenerPorId(1); // Cliente de prueba
+            ProductoDTO prod1 = productoBO.obtenerPorId(1);
+            ProductoDTO prod2 = productoBO.obtenerPorId(2); 
+            
+            if (usuario == null || cliente == null || prod1 == null || prod2 == null) {
+                System.out.println("✗ Error de Setup: No se pudieron obtener los datos base (Usuario/Cliente/Productos).");
+                return;
+            }
 
+            // 2. Crear Venta DTO con MONTO CERO (Base de la Venta Fiada)
+            VentaDTO nuevaVenta = new VentaDTO();
+            nuevaVenta.setTotal(0.0); // Monto cero inicial
+            nuevaVenta.setMetodoPago(Tipo_de_pago.TRANSFERENCIA); // Se usa TRANSFERENCIA ya que Tipo_de_pago.java no tiene VENTA_FIADA
+            nuevaVenta.setFecha(new Date(System.currentTimeMillis())); 
+            nuevaVenta.setUsuario(usuario);
+
+            // 3. Crear detalles y calcular el total
+            ArrayList<DetalleVentaDTO> detalles = new ArrayList<>();
+            double totalVenta = 0.0;
+            
+            // Detalle 1: 3 unidades de Producto 1
+            Integer cantidad1 = 3;
+            Double subtotal1 = cantidad1 * prod1.getPrecioUnitario(); 
+            DetalleVentaDTO det1 = new DetalleVentaDTO();
+            det1.setProducto(prod1);
+            det1.setCantidad(cantidad1);
+            det1.setSubtotal(subtotal1);
+            detalles.add(det1);
+            totalVenta += subtotal1;
+
+            // Detalle 2: 1 unidad de Producto 3
+            Integer cantidad2 = 1;
+            Double subtotal2 = cantidad2 * prod2.getPrecioUnitario();
+            DetalleVentaDTO det2 = new DetalleVentaDTO();
+            det2.setProducto(prod2);
+            det2.setCantidad(cantidad2);
+            det2.setSubtotal(subtotal2);
+            detalles.add(det2);
+            totalVenta += subtotal2;
+
+            // 4. Settear el total final calculado en la Venta
+            nuevaVenta.setTotal(totalVenta);
+
+            // 5. Insertar la Venta principal (VentaBO.insertar)
+            Integer idVentaGenerada = ventaBO.insertar(nuevaVenta);
+
+            // 6. Crear y Insertar la Venta Al Fiado (VentaAlFiadoBO.insertar)
+            if (idVentaGenerada != null && idVentaGenerada > 0) {
+                nuevaVenta.setVentaId(idVentaGenerada); 
+                
+                VentaAlFiadoDTO nuevaVentaFiada = new VentaAlFiadoDTO();
+                nuevaVentaFiada.setVenta(nuevaVenta);
+                nuevaVentaFiada.setCliente(cliente);
+
+                Integer idVentaFiadaGenerada = ventaAlFiadoBO.insertar(nuevaVentaFiada);
+
+                if (idVentaFiadaGenerada != null && idVentaFiadaGenerada > 0) {
+                    ventaFiadaIdInsertado = idVentaFiadaGenerada; // Guardar para pruebas
+                    nuevaVentaFiada.setVentaFiadaId(idVentaFiadaGenerada);
+
+                    // 7. Iterar e insertar cada detalle
+                    for (DetalleVentaDTO detalle : detalles) {
+                        detalle.setVenta(nuevaVenta); // Asignar la Venta (con ID) al detalle
+                        detalleVentaBO.insertar(detalle);
+                    }
+                    
+                    System.out.println("✓ Venta Al Fiado y sus " + detalles.size() + " detalles insertados exitosamente.");
+                    System.out.println("  ID de Venta Al Fiado generado: " + ventaFiadaIdInsertado);
+                    System.out.println("  Cliente: " + cliente.getAlias() + " | Monto Total: S/ " + String.format("%.2f", totalVenta));
+                } else {
+                    System.out.println("✗ Error al insertar la Venta Al Fiado (ID no generado).");
+                }
+
+            } else {
+                System.out.println("✗ Error al insertar la Venta base (ID no generado).");
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al insertar Venta Al Fiado: " + e.getMessage());
+        }
+        
         imprimirSeparador();
     }
 
-    // ==================== MÉTODOS AUXILIARES VENTA ====================
+    private static void probarVentaAlFiadoObtenerPorId() {
+        imprimirEncabezado("PRUEBA 6: obtenerPorId(Integer) y listarPorVenta(Integer)");
+        
+        if (ventaFiadaIdInsertado == null) {
+            System.out.println("AVISO: No se ejecutó la prueba. Ejecute probarVentaAlFiadoInsertar primero.");
+            imprimirSeparador();
+            return;
+        }
+        
+        try {
+            VentaAlFiadoDTO ventaFiadaEncontrada = ventaAlFiadoBO.obtenerPorId(ventaFiadaIdInsertado);
+            
+            if (ventaFiadaEncontrada != null && ventaFiadaEncontrada.getVenta() != null) {
+                Integer ventaId = ventaFiadaEncontrada.getVenta().getVentaId();
+                
+                // Obtener detalles asociados a la venta base
+                ArrayList<DetalleVentaDTO> detalles = detalleVentaBO.listarPorVenta(ventaId);
+                
+                System.out.println("✓ Venta Al Fiado ID " + ventaFiadaIdInsertado + " encontrada exitosamente.");
+                imprimirVentaAlFiadoConDetalles(ventaFiadaEncontrada, detalles);
+            } else {
+                System.out.println("✗ No se encontró la Venta Al Fiado con ID=" + ventaFiadaIdInsertado + " o su Venta base está incompleta.");
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al obtener Venta Al Fiado por ID: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
 
-    private static void imprimirVenta(VentaDTO v) {
-        System.out.println("  ID: " + v.getVentaId());
-        System.out.println("  Fecha: " + v.getFecha());
-        System.out.println("  Total: S/ " + v.getTotal());
-        System.out.println("  Método de pago: " + v.getMetodoPago());
+    private static void probarVentaAlFiadoListarTodos() {
+        imprimirEncabezado("PRUEBA 7: listarTodos() y listarPorVenta(Integer)");
+        
+        try {
+            ArrayList<VentaAlFiadoDTO> ventasFiadas = ventaAlFiadoBO.listarTodos();
+            
+            System.out.println("✓ Total de Ventas Al Fiado encontradas: " + ventasFiadas.size());
+            
+            if (!ventasFiadas.isEmpty()) {
+                System.out.println("\n--- Resumen de las últimas 3 Ventas Al Fiado ---");
+                int limite = Math.min(3, ventasFiadas.size());
+                
+                for (int i = 0; i < limite; i++) {
+                    VentaAlFiadoDTO ventaFiada = ventasFiadas.get(i);
+                    
+                    // Cargar detalles de la Venta base
+                    ArrayList<DetalleVentaDTO> detalles = new ArrayList<>();
+                    if(ventaFiada.getVenta() != null){
+                        // USO REQUERIDO: Se llama a DetalleVentaBO para listar los detalles.
+                        detalles = detalleVentaBO.listarPorVenta(ventaFiada.getVenta().getVentaId());
+                    }
+                    
+                    System.out.println("\nVenta Al Fiado #" + (i + 1) + ":");
+                    imprimirVentaAlFiadoConDetalles(ventaFiada, detalles);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar todas las Ventas Al Fiado: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+
+    private static void probarVentaAlFiadoListarPorAliasCliente() {
+        imprimirEncabezado("PRUEBA 8: listarTodosPorAliasCliente(String) y listarPorVenta(Integer)");
+        
+        try {
+            ClienteAlFiadoDTO clientePrueba = clienteAlFiadoBO.obtenerPorId(1);
+            String aliasPrueba = clientePrueba != null ? clientePrueba.getAlias() : "ClienteGenerico";
+            
+            ArrayList<VentaAlFiadoDTO> ventasFiadas = ventaAlFiadoBO.listarTodosPorAliasCliente(aliasPrueba);
+            
+            System.out.println("✓ Total de Ventas Al Fiado encontradas para el alias '" + aliasPrueba + "': " + ventasFiadas.size());
+            
+            if (!ventasFiadas.isEmpty()) {
+                System.out.println("\n--- Resumen de Ventas Al Fiado para el alias '" + aliasPrueba + "' ---");
+                for (VentaAlFiadoDTO ventaFiada : ventasFiadas) {
+                    // Cargar detalles de la Venta base
+                    ArrayList<DetalleVentaDTO> detalles = new ArrayList<>();
+                    if(ventaFiada.getVenta() != null){
+                        detalles = detalleVentaBO.listarPorVenta(ventaFiada.getVenta().getVentaId());
+                    }
+                    imprimirVentaAlFiadoConDetalles(ventaFiada, detalles);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar Ventas Al Fiado por Alias: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+
+    private static void probarVentaAlFiadoListarPorAliasClienteFecha() {
+        imprimirEncabezado("PRUEBA 9: listarTodosPorAliasClienteFecha(String, Date) y listarPorVenta(Integer)");
+        
+        try {
+            // Usar la fecha y el alias de la venta insertada para asegurar resultados
+            Date fechaPrueba = new Date(System.currentTimeMillis()); 
+            ClienteAlFiadoDTO clientePrueba = clienteAlFiadoBO.obtenerPorId(1);
+            String aliasPrueba = clientePrueba != null ? clientePrueba.getAlias() : "ClienteGenerico";
+            
+            ArrayList<VentaAlFiadoDTO> ventasFiadas = ventaAlFiadoBO.listarTodosPorAliasClienteFecha(aliasPrueba, fechaPrueba);
+            
+            System.out.println("✓ Total de Ventas Al Fiado encontradas para alias '" + aliasPrueba + "' y fecha " + fechaPrueba.toString() + ": " + ventasFiadas.size());
+            
+            if (!ventasFiadas.isEmpty()) {
+                System.out.println("\n--- Resumen de Ventas Al Fiado del día y alias especificado ---");
+                for (VentaAlFiadoDTO ventaFiada : ventasFiadas) {
+                    // Cargar detalles de la Venta base
+                    ArrayList<DetalleVentaDTO> detalles = new ArrayList<>();
+                    if(ventaFiada.getVenta() != null){
+                        detalles = detalleVentaBO.listarPorVenta(ventaFiada.getVenta().getVentaId());
+                    }
+                    imprimirVentaAlFiadoConDetalles(ventaFiada, detalles);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar Ventas Al Fiado por Alias y Fecha: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+    
+    private static void imprimirVentaAlFiadoConDetalles(VentaAlFiadoDTO ventaFiada, ArrayList<DetalleVentaDTO> detalles) {
+        VentaDTO venta = ventaFiada.getVenta();
+        ClienteAlFiadoDTO cliente = ventaFiada.getCliente();
+
+        System.out.println("  [VENTA AL FIADO ID: " + ventaFiada.getVentaFiadaId() + " / VENTA BASE ID: " + (venta != null ? venta.getVentaId() : "N/A") + "]");
+        if (cliente != null) {
+            System.out.println("    CLIENTE (ID " + cliente.getClienteId() + "): " + cliente.getAlias() + " (" + cliente.getNombre() + ")");
+            System.out.println("    Fecha de Pago (Compromiso): " + (cliente.getFechaDePago() != null ? cliente.getFechaDePago().toString() : "N/A"));
+        } else {
+            System.out.println("    CLIENTE: N/A");
+        }
+        
+        if (venta != null) {
+            System.out.println("    Fecha de Venta: " + venta.getFecha());
+            System.out.println("    Total: S/ " + String.format("%.2f", venta.getTotal()));
+            if (venta.getUsuario() != null) {
+                System.out.println("    Usuario Vendedor (ID " + venta.getUsuario().getUsuarioId() + "): " + venta.getUsuario().getNombre());
+            }
+        }
+        
+        if (detalles != null && !detalles.isEmpty()) {
+            System.out.println("    --- Detalles (" + detalles.size() + ") ---");
+            for (int i = 0; i < detalles.size(); i++) {
+                DetalleVentaDTO d = detalles.get(i);
+                System.out.println("      " + (i+1) + ". Producto: " + d.getProducto().getNombre());
+                System.out.println("         Cantidad: " + d.getCantidad() + " | Subtotal: S/ " + String.format("%.2f", d.getSubtotal()));
+            }
+        } else {
+            System.out.println("    --- Detalles: Sin detalles asociados. ---");
+        }
     }
     
 }

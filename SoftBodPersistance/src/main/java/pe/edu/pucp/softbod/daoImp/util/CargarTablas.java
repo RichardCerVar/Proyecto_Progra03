@@ -15,7 +15,6 @@ public class CargarTablas {
         CategoriaDTO categoria = new CategoriaDTO();
         categoria.setCategoriaId(resultSet.getInt("CATEGORIA_ID"));
         categoria.setDescripcion(resultSet.getString("DESCRIPCION"));
-		
 	return categoria;
     }
 	
@@ -158,8 +157,8 @@ public class CargarTablas {
         VentaDTO venta = this.cargarVentaDTOsinUsuario(resulSet);
         ventaFiada.setVenta(venta);
         
-//        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
-//        ventaFiada.setCliente(cliente);
+        ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);
+        ventaFiada.setCliente(cliente);
         
         return ventaFiada;
     }
