@@ -3,10 +3,11 @@ package pe.edu.pucp.softbod.softbodbusiness;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.*;
 import pe.edu.pucp.softbod.model.*;
-import pe.edu.pucp.softbod.model.util.Unidad_Medida;
-import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
+import pe.edu.pucp.softbod.model.util.*;
 import java.sql.Date;
-import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
+import java.time.LocalDate;
+import pe.edu.pucp.softbod.dao.*;
+import pe.edu.pucp.softbod.daoImp.*;
 
 public class SoftBodBusiness {
     
@@ -29,7 +30,18 @@ public class SoftBodBusiness {
     
     private static RegistroPagoFiadoBO registroPagoFiadoBO;
     private static Integer registroPagoFiadoIdInsertado = null;
-    private static Integer clienteIdPagoPrueba = 2;
+    private static final Integer clienteIdPagoPrueba = 2;
+    
+    private static final String SEPARADOR = "=".repeat(80);
+    private static final String SUBSEPARADOR = "-".repeat(80);
+    
+    private static CategoriaBO categoriaBO;
+    private static ClienteAlFiadoBO clienteBO;
+    
+    private static DevolucionBO devolucionBO;
+    private static DetalleDevolucionBO detalleDevBO;
+    private static HistorialDeOperacionBO historialBO;
+    
     
     public static void main(String[] args) {
         
@@ -130,6 +142,26 @@ public class SoftBodBusiness {
         probarRegistroPagoFiadoListarTodos();
         probarRegistroPagoFiadoListarPorAliasCliente();
         probarRegistroPagoFiadoListarPorAliasClienteConFecha();
+        
+        
+        System.out.println(SEPARADOR);
+        System.out.println("INICIANDO PRUEBAS DE DAOs RICHARD - SOFTBOD");
+        System.out.println(SEPARADOR);
+        
+        // Ejecutar pruebas de cada DAO
+        categoriaBO = new CategoriaBO();
+        probarCategoriaBO();
+        clienteBO = new ClienteAlFiadoBO();
+        probarClienteAlFiadoBO();
+        devolucionBO = new DevolucionBO();
+        probarDevolucionBO();
+        detalleDevBO = new DetalleDevolucionBO();
+        probarDetalleDevolucionBO();
+        historialBO = new HistorialDeOperacionBO();
+        probarHistorialOperacionesBO();
+        
+        
+        
 
         System.out.println("\n╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║           PRUEBAS FINALIZADAS EXITOSAMENTE        ║");
@@ -1799,6 +1831,373 @@ public class SoftBodBusiness {
         // Mostrar el usuario vendedor (ID) solo en el caso de inserción para verificación
         if (registro.getUsuario() != null) {
              System.out.println("    Usuario Vendedor (ID, para verificación): " + registro.getUsuario().getUsuarioId());
+        }
+    }
+    
+    // ========== PRUEBAS DE CATEGORIA DAO ==========
+    private static void probarCategoriaBO() {
+        imprimirEncabezado("PRUEBAS DE CATEGORIA BO");
+        
+        
+        try {
+            // 1. INSERTAR CATEGORÍA
+            System.out.println("\n1. INSERTANDO CATEGORÍA...");
+            CategoriaDTO nuevaCategoria = new CategoriaDTO();
+            nuevaCategoria.setDescripcion("Bebidas eNergizantes");
+            
+            Integer categoriaId = categoriaBO.insertar(nuevaCategoria);
+            if (categoriaId != null && categoriaId > 0) {
+                System.out.println("✓ Categoría insertada exitosamente. ID: " + categoriaId);
+            } else {
+                System.out.println("✗ Error al insertar categoría");
+            }
+            
+            // 2. LISTAR TODAS LAS CATEGORÍAS
+            System.out.println("\n2. LISTANDO TODAS LAS CATEGORÍAS...");
+            ArrayList<CategoriaDTO> categorias = categoriaBO.litarTodos();
+            if (categorias != null && !categorias.isEmpty()) {
+                System.out.println("✓ Categorías encontradas: " + categorias.size());
+                for (CategoriaDTO cat : categorias) {
+                    System.out.println("   - ID: " + cat.getCategoriaId() + 
+                                     " | Descripción: " + cat.getDescripcion());
+                }
+            } else {
+                System.out.println("✗ No se encontraron categorías");
+            }
+            
+            // 3. OBTENER POR ID
+            if (categoriaId != null) {
+                System.out.println("\n3. OBTENIENDO CATEGORÍA POR ID: " + categoriaId);
+                CategoriaDTO categoria = categoriaBO.obtenerPorId(categoriaId);
+                if (categoria != null && categoria.getCategoriaId() != null) {
+                    System.out.println("✓ Categoría encontrada:");
+                    System.out.println("   - ID: " + categoria.getCategoriaId());
+                    System.out.println("   - Descripción: " + categoria.getDescripcion());
+                } else {
+                    System.out.println("✗ Categoría no encontrada");
+                }
+            }
+            
+            // 4. ELIMINAR CATEGORÍA
+            if (categoriaId != null) {
+                System.out.println("\n4. ELIMINANDO CATEGORÍA ID: " + categoriaId);
+                CategoriaDTO categoriaEliminar = new CategoriaDTO();
+                categoriaEliminar.setCategoriaId(categoriaId);
+                Integer resultado = categoriaBO.eliminar(categoriaEliminar);
+                if (resultado != null && resultado > 0) {
+                    System.out.println("✓ Categoría eliminada exitosamente");
+                } else {
+                    System.out.println("✗ Error al eliminar categoría");
+                }
+            }
+            
+        } catch (Exception e) {
+            System.out.println("✗ ERROR: " + e.getMessage());
+        }
+    }
+    
+    // ========== PRUEBAS DE CLIENTE AL FIADO DAO ==========
+    private static void probarClienteAlFiadoBO() {
+        imprimirEncabezado("PRUEBAS DE CLIENTE AL FIADO BO");
+        
+        try {
+            // 1. INSERTAR CLIENTE
+            System.out.println("\n1. INSERTANDO CLIENTE AL FIADO...");
+            ClienteAlFiadoDTO nuevoCliente = new ClienteAlFiadoDTO();
+            nuevoCliente.setAlias("CARLOS123");
+            nuevoCliente.setNombre("Carlos Pérez García");
+            nuevoCliente.setTelefono("987654321");
+            nuevoCliente.setFechaDePago(Date.valueOf(LocalDate.now().plusDays(15)));
+            nuevoCliente.setActivo(true);
+            
+            Integer clienteId = clienteBO.insertar(nuevoCliente);
+            if (clienteId != null && clienteId > 0) {
+                System.out.println("✓ Cliente insertado exitosamente. ID: " + clienteId);
+            } else {
+                System.out.println("✗ Error al insertar cliente");
+            }
+            
+            // 2. LISTAR TODOS LOS CLIENTES
+            System.out.println("\n2. LISTANDO TODOS LOS CLIENTES...");
+            ArrayList<ClienteAlFiadoDTO> clientes = clienteBO.litarTodos();
+            if (clientes != null && !clientes.isEmpty()) {
+                System.out.println("✓ Clientes encontrados: " + clientes.size());
+                for (ClienteAlFiadoDTO cli : clientes) {
+                    System.out.println("   - ID: " + cli.getClienteId() + 
+                                     " | Alias: " + cli.getAlias() +
+                                     " | Nombre: " + cli.getNombre() +
+                                     " | Activo: " + cli.getActivo());
+                }
+            } else {
+                System.out.println("✗ No se encontraron clientes");
+            }
+            
+            // 3. OBTENER POR ID
+            if (clienteId != null) {
+                System.out.println("\n3. OBTENIENDO CLIENTE POR ID: " + clienteId);
+                ClienteAlFiadoDTO cliente = clienteBO.obtenerPorId(clienteId);
+                if (cliente != null && cliente.getClienteId() != null) {
+                    System.out.println("✓ Cliente encontrado:");
+                    System.out.println("   - ID: " + cliente.getClienteId());
+                    System.out.println("   - Alias: " + cliente.getAlias());
+                    System.out.println("   - Nombre: " + cliente.getNombre());
+                    System.out.println("   - Teléfono: " + cliente.getTelefono());
+                    System.out.println("   - Fecha de Pago: " + cliente.getFechaDePago());
+                    System.out.println("   - Activo: " + cliente.getActivo());
+                } else {
+                    System.out.println("✗ Cliente no encontrado");
+                }
+            }
+            
+            // 4. MODIFICAR CLIENTE
+            if (clienteId != null) {
+                System.out.println("\n4. MODIFICANDO CLIENTE ID: " + clienteId);
+                ClienteAlFiadoDTO clienteModificar = new ClienteAlFiadoDTO();
+                clienteModificar.setClienteId(clienteId);
+                clienteModificar.setAlias("CArLO_MOD");
+                clienteModificar.setNombre("Carlos Pérez Modificado");
+                clienteModificar.setTelefono("999888777");
+                clienteModificar.setFechaDePago(Date.valueOf(LocalDate.now().plusDays(30)));
+                clienteModificar.setActivo(false);
+                
+                Integer resultado = clienteBO.modificar(clienteModificar);
+                if (resultado != null && resultado > 0) {
+                    System.out.println("✓ Cliente modificado exitosamente");
+                    
+                    // Verificar modificación
+                    ClienteAlFiadoDTO clienteVerif = clienteBO.obtenerPorId(clienteId);
+                    System.out.println("   Datos actualizados:");
+                    System.out.println("   - Alias: " + clienteVerif.getAlias());
+                    System.out.println("   - Nombre: " + clienteVerif.getNombre());
+                } else {
+                    System.out.println("✗ Error al modificar cliente");
+                }
+            }
+            
+            // 5. LISTAR CON LIKE
+            System.out.println("\n5. BUSCANDO CLIENTES CON LIKE 'C'...");
+            ArrayList<ClienteAlFiadoDTO> clientesFiltrados = clienteBO.litarTodosLike("C");
+            if (clientesFiltrados != null && !clientesFiltrados.isEmpty()) {
+                System.out.println("✓ Clientes encontrados: " + clientesFiltrados.size());
+                for (ClienteAlFiadoDTO cli : clientesFiltrados) {
+                    System.out.println("   - " + cli.getAlias() + " - " + cli.getNombre());
+                }
+            } else {
+                System.out.println("✗ No se encontraron clientes con el filtro");
+            }
+            
+        } catch (Exception e) {
+            System.out.println("✗ ERROR: " + e.getMessage());
+        }
+    }
+    
+    // ========== PRUEBAS DE DEVOLUCION DAO ==========
+    private static void probarDevolucionBO() {
+        imprimirEncabezado("PRUEBAS DE DEVOLUCION BO");
+        
+        
+        try {
+            // Nota: Estas pruebas asumen que existe un usuario con ID 2
+            // Ajusta según tu base de datos
+            
+            // 1. INSERTAR DEVOLUCIÓN
+            System.out.println("\n1. INSERTANDO DEVOLUCIÓN...");
+            DevolucionDTO nuevaDevolucion = new DevolucionDTO();
+            nuevaDevolucion.setTotal(30.00);
+            nuevaDevolucion.setFecha(Date.valueOf(LocalDate.now()));
+            
+            UsuarioDTO usuario = new UsuarioDTO();
+            usuario.setUsuarioId(2); // Asume que existe usuario con ID 2
+            nuevaDevolucion.setUsuario(usuario);
+            
+            Integer devolucionId = devolucionBO.insertar(nuevaDevolucion);
+            if (devolucionId != null && devolucionId > 0) {
+                System.out.println("✓ Devolución insertada exitosamente. ID: " + devolucionId);
+            } else {
+                System.out.println("✗ Error al insertar devolución");
+            }
+            
+            // 2. LISTAR TODAS LAS DEVOLUCIONES
+            System.out.println("\n2. LISTANDO TODAS LAS DEVOLUCIONES...");
+            ArrayList<DevolucionDTO> devoluciones = devolucionBO.litarTodos();
+            if (devoluciones != null && !devoluciones.isEmpty()) {
+                System.out.println("✓ Devoluciones encontradas: " + devoluciones.size());
+                for (DevolucionDTO dev : devoluciones) {
+                    System.out.println("   - ID: " + dev.getDevolucionId() + 
+                                     " | Total: S/. " + dev.getTotal() +
+                                     " | Fecha: " + dev.getFecha());
+                }
+            } else {
+                System.out.println("✗ No se encontraron devoluciones");
+            }
+            
+            // 3. OBTENER POR ID
+            if (devolucionId != null) {
+                System.out.println("\n3. OBTENIENDO DEVOLUCIÓN POR ID: " + devolucionId);
+                DevolucionDTO devolucion = devolucionBO.obtenerPorId(devolucionId);
+                if (devolucion != null && devolucion.getDevolucionId() != null) {
+                    System.out.println("✓ Devolución encontrada:");
+                    System.out.println("   - ID: " + devolucion.getDevolucionId());
+                    System.out.println("   - Total: S/. " + devolucion.getTotal());
+                    System.out.println("   - Fecha: " + devolucion.getFecha());
+                } else {
+                    System.out.println("✗ Devolución no encontrada");
+                }
+            }
+            
+            // 4. LISTAR POR FECHA
+            System.out.println("\n4. LISTANDO DEVOLUCIONES POR FECHA DE HOY...");
+            ArrayList<DevolucionDTO> devFecha = devolucionBO.listarPorFecha(
+                Date.valueOf(LocalDate.now())
+            );
+            System.out.println("✓ Devoluciones de hoy: " + (devFecha != null ? devFecha.size() : 0));
+            
+            // 5. LISTAR POR USUARIO
+            System.out.println("\n5. LISTANDO DEVOLUCIONES POR USUARIO ID: 2");
+            ArrayList<DevolucionDTO> devUsuario = devolucionBO.listarPorUsuario(2);
+            System.out.println("✓ Devoluciones del usuario: " + (devUsuario != null ? devUsuario.size() : 0));
+            
+            // 6. LISTAR POR USUARIO Y FECHA
+            System.out.println("\n5. LISTANDO DEVOLUCIONES POR FECHA DE HOY Y USUARIO ID: 7 ");
+            ArrayList<DevolucionDTO> devUsuFech = devolucionBO.listarPorUsuarioYFecha(
+                    7,Date.valueOf(LocalDate.now()));
+            System.out.println("✓ Devoluciones del usuario: " + (devUsuFech != null ? devUsuFech.size() : 0));
+            
+        } catch (Exception e) {
+            System.out.println("✗ ERROR: " + e.getMessage());
+        }
+    }
+    
+    // ========== PRUEBAS DE DETALLE DEVOLUCION DAO ==========
+        private static void probarDetalleDevolucionBO() {
+        imprimirEncabezado("PRUEBAS DE DETALLE DEVOLUCION BO");
+        
+        
+        try {
+            // Nota: Estas pruebas asumen que existen devolucion, producto y razón
+            
+            // 1. INSERTAR DETALLE
+            System.out.println("\n1. INSERTANDO DETALLE DE DEVOLUCIÓN...");
+            DetalleDevolucionDTO nuevoDetalle = new DetalleDevolucionDTO();
+            
+            DevolucionDTO devolucion = new DevolucionDTO();
+            devolucion.setDevolucionId(2); // Asume que existe
+            nuevoDetalle.setDevolucion(devolucion);
+            
+            ProductoDTO producto = new ProductoDTO();
+            producto.setProductoId(3); // Asume que existe
+            nuevoDetalle.setProducto(producto);
+            
+            nuevoDetalle.setCantidad(2);
+            nuevoDetalle.setSubtotal(80.00);
+            
+            RazonDevolucionDTO razon = new RazonDevolucionDTO();
+            razon.setRazonDevolucionId(1); // Asume que existe
+            nuevoDetalle.setRazonDevolucion(razon);
+            
+            Integer resultado = detalleDevBO.insertar(nuevoDetalle);
+            if (resultado == 0) resultado = devolucion.getDevolucionId();
+            System.out.println("Resultado: " + resultado);
+            if (resultado != null && resultado > 0) {
+                System.out.println("✓ Detalle insertado exitosamente");
+            } else {
+                System.out.println("✗ Error al insertar detalle");
+            }
+            
+            // 2. LISTAR TODOS
+            System.out.println("\n2. LISTANDO TODOS LOS DETALLES...");
+            ArrayList<DetalleDevolucionDTO> detalles = detalleDevBO.litarTodos();
+            if (detalles != null && !detalles.isEmpty()) {
+                System.out.println("✓ Detalles encontrados: " + detalles.size());
+                for (DetalleDevolucionDTO det : detalles) {
+                    System.out.println("   - Devolución: " + det.getDevolucion().getDevolucionId() + 
+                                     " | Cantidad: " + det.getCantidad() +
+                                     " | Subtotal: S/. " + det.getSubtotal());
+                }
+            } else {
+                System.out.println("✗ No se encontraron detalles");
+            }
+            
+            // 3. LISTAR POR DEVOLUCION
+            System.out.println("\n3. LISTANDO DETALLES POR DEVOLUCIÓN ID: 2");
+            ArrayList<DetalleDevolucionDTO> detDev = detalleDevBO.listarPorDevolucion(2);
+            System.out.println("✓ Detalles encontrados: " + (detDev != null ? detDev.size() : 0));
+            
+            // 4. LISTAR POR PRODUCTO
+            System.out.println("\n4. LISTANDO DETALLES POR PRODUCTO ID: 1");
+            ArrayList<DetalleDevolucionDTO> detProd = detalleDevBO.listarPorProducto(1);
+            System.out.println("✓ Detalles encontrados: " + (detProd != null ? detProd.size() : 0));
+            
+            // 5. LISTAR POR RAZON DEVOLUCION
+            System.out.println("\n4. LISTANDO DETALLES POR RAZON DEVOLUCION ID: 2");
+            ArrayList<DetalleDevolucionDTO> detRaz = detalleDevBO.
+                             listarPorRazonDevolucion("Fecha de caducidad vencida");
+            System.out.println("✓ Detalles encontrados: " + (detRaz != null ? detRaz.size() : 0));
+            
+            // 6. OBTENER POR ID
+            System.out.println("Resultado Antes del Obtener Id: " + resultado);
+            if (resultado != null && resultado > 0) {
+                System.out.println("\n3. OBTENIENDO DEVOLUCIÓN POR ID: " + resultado
+                        + " PRODUCTO ID " + 1);
+                DetalleDevolucionDTO dev = detalleDevBO.obtenerPorId(resultado,1);
+                if (dev != null && dev.getDevolucion().getDevolucionId()!= null) {
+                    System.out.println("✓ Detalle Devolución encontrada:");
+                    System.out.println("   - Cantidad: " + dev.getCantidad());
+                    System.out.println("   - SubTotal: S/. " + dev.getSubtotal());
+                    System.out.println("   - Fecha: " + dev.getDevolucion().getFecha());
+                } else {
+                    System.out.println("✗ Devolución no encontrada");
+                }
+            }
+            
+        } catch (Exception e) {
+            System.out.println("✗ ERROR: " + e.getMessage());
+        }
+    }
+        
+        // ========== PRUEBAS DE HISTORIAL OPERACIONES DAO ==========
+    private static void probarHistorialOperacionesBO() {
+        imprimirEncabezado("PRUEBAS DE HISTORIAL OPERACIONES BO");
+        
+        try {
+            // 1. LISTAR TODOS
+            System.out.println("\n1. LISTANDO TODO EL HISTORIAL...");
+            ArrayList<HistorialOperacionesDTO> historial = historialBO.listarTodos();
+            if (historial != null && !historial.isEmpty()) {
+                System.out.println("✓ Registros encontrados: " + historial.size());
+                int contador = 0;
+                for (HistorialOperacionesDTO hist : historial) {
+                    if (contador < 5) { // Mostrar solo los primeros 5
+                        System.out.println("   - ID: " + hist.getOperacionId() + 
+                                         " | Tabla: " + hist.getTablaAfectada() +
+                                         " | Operación: " + hist.getOperacion() +
+                                         " | Fecha: " + hist.getFechaHora());
+                        contador++;
+                    }
+                }
+                if (historial.size() > 5) {
+                    System.out.println("   ... y " + (historial.size() - 5) + " registros más");
+                }
+            } else {
+                System.out.println("✗ No se encontraron registros en el historial");
+            }
+            
+            // 2. LISTAR POR TABLA
+            System.out.println("\n2. LISTANDO OPERACIONES DE TABLA 'BOD_CATEGORIA'");
+            ArrayList<HistorialOperacionesDTO> porTabla = 
+                historialBO.listarPorTabla("BOD_CATEGORIA");
+            System.out.println("✓ Registros encontrados: " + 
+                (porTabla != null ? porTabla.size() : 0));
+            
+            // 3. LISTAR POR FECHA
+            System.out.println("\n3. LISTANDO OPERACIONES DE HOY");
+            ArrayList<HistorialOperacionesDTO> porFecha = 
+                historialBO.listarPorFecha(Date.valueOf(LocalDate.now()));
+            System.out.println("✓ Registros de hoy: " + 
+                (porFecha != null ? porFecha.size() : 0));
+            
+        } catch (Exception e) {
+            System.out.println("✗ ERROR: " + e.getMessage());
         }
     }
     
