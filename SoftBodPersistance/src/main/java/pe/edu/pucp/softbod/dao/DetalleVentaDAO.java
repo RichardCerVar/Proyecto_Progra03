@@ -14,6 +14,6 @@ public interface DetalleVentaDAO {
     
     public ArrayList<DetalleVentaDTO> listarPorProducto(Integer productoId);
     
-    public DetalleVentaDTO obtenerPorId(Integer productoId,Integer ventaId);
+    public DetalleVentaDTO obtenerPorId(Integer ventaId,Integer productoId);
     
 }

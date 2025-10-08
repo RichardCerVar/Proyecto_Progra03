@@ -26,7 +26,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         super("BOD_HISTORIAL_OPERACIONES");
         this.historial=null;
         this.retornarLlavePrimaria=true;
-        this.cargarTablas = null;
+        this.cargarTablas = new CargarTablas();
     }
 
     @Override
@@ -237,9 +237,9 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
                 this.statement.setNull(7,Types.VARCHAR);
             
             if (historialParametros.getEstado()!= null)
-                this.statement.setBoolean(7, historialParametros.getEstado());
+                this.statement.setBoolean(8, historialParametros.getEstado());
             else
-                this.statement.setNull(7,Types.TINYINT);
+                this.statement.setNull(8,Types.TINYINT);
             
         } catch (SQLException ex) {
             Logger.getLogger(DetalleDevolucionDAOImpl.class.getName()).log(Level.SEVERE, null, ex);

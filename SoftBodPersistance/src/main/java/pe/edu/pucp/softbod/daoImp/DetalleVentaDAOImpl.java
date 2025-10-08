@@ -91,7 +91,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     }
 
     @Override
-    public DetalleVentaDTO obtenerPorId(Integer productoId, Integer ventaId) {
+    public DetalleVentaDTO obtenerPorId(Integer ventaId, Integer productoId) {
         Date fechaVenta = null;
         ArrayList<DetalleVentaDTO> lista = this.listarDetalleVentaFiltros
                                         (ventaId, productoId ,fechaVenta);
