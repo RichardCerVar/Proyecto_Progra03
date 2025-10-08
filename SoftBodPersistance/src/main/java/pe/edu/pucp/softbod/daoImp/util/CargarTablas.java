@@ -27,6 +27,7 @@ public class CargarTablas {
         clienteAlFiado.setTelefono(resultSet.getString("TELEFONO"));
         clienteAlFiado.setFechaDePago(resultSet.getDate("FECHA_DE_PAGO"));
         clienteAlFiado.setActivo(resultSet.getBoolean("ACTIVO"));
+        clienteAlFiado.setMontoDeuda(resultSet.getDouble("MONTO_DEUDA"));
 		
 	return clienteAlFiado;
     }

@@ -50,7 +50,7 @@ public class SoftBodBusiness {
         System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
         productoBO = new ProductoBO();
-//        // CRUD básico
+        // CRUD básico
         probarInsertar();
         probarModificar();
         probarObtenerPorId();
@@ -78,7 +78,7 @@ public class SoftBodBusiness {
         System.out.println("╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║ PRUEBAS COMPLETAS DEL RazonDevolucionBO - BACKEND ║");
         System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
-//        
+////        
         razonDevolucionBO = new RazonDevolucionBO();
         // Pruebas RazonDevolucion
         probarRazonDevolucionInsertar();
@@ -131,7 +131,7 @@ public class SoftBodBusiness {
         probarVentaAlFiadoListarTodos();
         probarVentaAlFiadoListarPorAliasCliente();
         probarVentaAlFiadoListarPorAliasClienteFecha();
-        
+//        
         imprimirSeparador();
         System.out.println("╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║ Registro De RegistroDePagosalFiadoBO - BACKEND    ║");
@@ -1926,7 +1926,8 @@ public class SoftBodBusiness {
                     System.out.println("   - ID: " + cli.getClienteId() + 
                                      " | Alias: " + cli.getAlias() +
                                      " | Nombre: " + cli.getNombre() +
-                                     " | Activo: " + cli.getActivo());
+                                     " | Activo: " + cli.getActivo()+
+                                     " | Deuda Total: " + cli.getMontoDeuda());
                 }
             } else {
                 System.out.println("✗ No se encontraron clientes");
@@ -1944,6 +1945,7 @@ public class SoftBodBusiness {
                     System.out.println("   - Teléfono: " + cliente.getTelefono());
                     System.out.println("   - Fecha de Pago: " + cliente.getFechaDePago());
                     System.out.println("   - Activo: " + cliente.getActivo());
+                    System.out.println("   - Deuda Total: " + cliente.getMontoDeuda());
                 } else {
                     System.out.println("✗ Cliente no encontrado");
                 }

@@ -9,6 +9,7 @@ public class ClienteAlFiadoDTO {
     private String telefono;
     private Date fechaDePago;
     private Boolean activo;
+    private Double montoDeuda;
 
     public ClienteAlFiadoDTO() {
         this.clienteId = null;
@@ -17,16 +18,18 @@ public class ClienteAlFiadoDTO {
         this.telefono = null;
         this.fechaDePago = null;
         this.activo = null;
+        this.montoDeuda = null;
     }
 
     public ClienteAlFiadoDTO(Integer clienteId, String alias, String nombre, String telefono, 
-                             Date fechaDePago, Boolean activo) {
+                             Date fechaDePago, Boolean activo, Double montoDeuda) {
         this.clienteId = clienteId;
         this.alias = alias;
         this.nombre = nombre;
         this.telefono = telefono;
         this.fechaDePago = fechaDePago;
         this.activo = activo;
+        this.montoDeuda = montoDeuda;
     }
 
     public Integer getClienteId() { return clienteId; }
@@ -41,4 +44,6 @@ public class ClienteAlFiadoDTO {
     public void setFechaDePago(Date fechaDePago) { this.fechaDePago = fechaDePago; }
     public Boolean getActivo() { return activo; }
     public void setActivo(Boolean activo) { this.activo = activo; }
+    public Double getMontoDeuda() {return montoDeuda; }
+    public void setMontoDeuda(Double montoDeuda) {this.montoDeuda = montoDeuda;}
 }
