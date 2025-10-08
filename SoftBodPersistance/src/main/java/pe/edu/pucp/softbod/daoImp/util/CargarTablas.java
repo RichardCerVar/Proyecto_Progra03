@@ -146,6 +146,8 @@ public class CargarTablas {
         registroPago.setFecha(resulSet.getDate("FECHA"));
         registroPago.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
         registroPago.setMonto(resulSet.getDouble("MONTO"));
+        ClienteAlFiadoDTO clienteFiado = this.cargarClienteAlFiado(resulSet);
+        registroPago.setCliente(clienteFiado);
         
         return registroPago;
     }

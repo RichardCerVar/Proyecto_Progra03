@@ -27,95 +27,110 @@ public class SoftBodBusiness {
     private static VentaAlFiadoBO ventaAlFiadoBO;
     private static Integer ventaFiadaIdInsertado = null;
     
+    private static RegistroPagoFiadoBO registroPagoFiadoBO;
+    private static Integer registroPagoFiadoIdInsertado = null;
+    private static Integer clienteIdPagoPrueba = 2;
+    
     public static void main(String[] args) {
         
-//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-//        System.out.println("║        PRUEBAS COMPLETAS DEL ProductoBO - BACKEND ║");
-//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║        PRUEBAS COMPLETAS DEL ProductoBO - BACKEND ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
         productoBO = new ProductoBO();
 //        // CRUD básico
-//        probarInsertar();
-//        probarModificar();
-//        probarObtenerPorId();
-//        
-//        // Listar todos
-//        probarListarTodos();
-//        probarListarTodosActivos();
-//        probarListarTodosInactivos();
-//        
-//        // Búsquedas por nombre
-//        probarListarTodosPorNombre();
-//        probarListarTodosPorNombreParcialActivo();
-//        probarListarTodosPorNombreParcialInactivo();
-//        
-//        // Búsquedas por categoría
-//        probarListarTodosPorCategoria();
-//        probarListarTodosActivosPorCategoria();
-//        probarListarTodosInactivosPorCategoria();
-//        
-//        // Búsquedas combinadas (categoría + nombre)
-//        probarListarTodosPorNombreParcialYcategoria();
-//        probarListarTodosPorNombreParcialYcategoriaActivo();
-//        probarListarTodosPorNombreParcialYcategoriaInactivo();
-//        imprimirSeparador();
-//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-//        System.out.println("║ PRUEBAS COMPLETAS DEL RazonDevolucionBO - BACKEND ║");
-//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+        probarInsertar();
+        probarModificar();
+        probarObtenerPorId();
+        
+        // Listar todos
+        probarListarTodos();
+        probarListarTodosActivos();
+        probarListarTodosInactivos();
+        
+        // Búsquedas por nombre
+        probarListarTodosPorNombre();
+        probarListarTodosPorNombreParcialActivo();
+        probarListarTodosPorNombreParcialInactivo();
+        
+        // Búsquedas por categoría
+        probarListarTodosPorCategoria();
+        probarListarTodosActivosPorCategoria();
+        probarListarTodosInactivosPorCategoria();
+        
+        // Búsquedas combinadas (categoría + nombre)
+        probarListarTodosPorNombreParcialYcategoria();
+        probarListarTodosPorNombreParcialYcategoriaActivo();
+        probarListarTodosPorNombreParcialYcategoriaInactivo();
+        imprimirSeparador();
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ PRUEBAS COMPLETAS DEL RazonDevolucionBO - BACKEND ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 //        
         razonDevolucionBO = new RazonDevolucionBO();
-//        // Pruebas RazonDevolucion
-//        probarRazonDevolucionInsertar();
-//        probarRazonDevolucionEliminar();
-//        probarRazonDevolucionObtenerPorId();
-//        probarRazonDevolucionListarTodos();
-//        probarRazonDevolucionListarTodosPorNombreParcial();
+        // Pruebas RazonDevolucion
+        probarRazonDevolucionInsertar();
+        probarRazonDevolucionEliminar();
+        probarRazonDevolucionObtenerPorId();
+        probarRazonDevolucionListarTodos();
+        probarRazonDevolucionListarTodosPorNombreParcial();
         
-//        imprimirSeparador();
-//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-//        System.out.println("║ PRUEBAS COMPLETAS DEL UsuarioBO - BACKEND         ║");
-//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
-//        
+        imprimirSeparador();
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ PRUEBAS COMPLETAS DEL UsuarioBO - BACKEND         ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+        
         usuarioBO = new UsuarioBO();
-//        // Pruebas Usuario
-//        probarUsuarioInsertar();
-//        probarUsuarioModificar();
-//        probarUsuarioEliminarLogico();
-//        probarUsuarioObtenerPorId();
-//        probarUsuarioObtenerCuenta();
-//        probarUsuarioObtenerPorCorreo();
-//        probarUsuarioListarTodos();
-//        probarUsuarioListarActivos();
-//        probarUsuarioListarInactivos();
-//        probarUsuarioListarPorNombreParcial();
+        // Pruebas Usuario
+        probarUsuarioInsertar();
+        probarUsuarioModificar();
+        probarUsuarioEliminarLogico();
+        probarUsuarioObtenerPorId();
+        probarUsuarioObtenerCuenta();
+        probarUsuarioObtenerPorCorreo();
+        probarUsuarioListarTodos();
+        probarUsuarioListarActivos();
+        probarUsuarioListarInactivos();
+        probarUsuarioListarPorNombreParcial();
         
-//        imprimirSeparador();
-//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-//        System.out.println("║ PRUEBAS COMPLETAS DE VentaBO - BACKEND            ║");
-//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+        imprimirSeparador();
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ PRUEBAS COMPLETAS DE VentaBO - BACKEND            ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
 
         ventaBO = new VentaBO();
         detalleVentaBO = new DetalleVentaBO();
         //PRUEBAS VENTA
-//        probarVentaInsertar();
-//        probarVentaObtenerPorId();
-//        probarVentaListarTodos();
-//        probarVentaListarTodosPorFecha();
+        probarVentaInsertar();
+        probarVentaObtenerPorId();
+        probarVentaListarTodos();
+        probarVentaListarTodosPorFecha();
         
-//        imprimirSeparador();
-//        System.out.println("╔════════════════════════════════════════════════════════════════╗");
-//        System.out.println("║ Registro De VentaAlFiadoBO - BACKEND               ║");
-//        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
-//
+        imprimirSeparador();
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ Registro De VentaAlFiadoBO - BACKEND               ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+
         clienteAlFiadoBO = new ClienteAlFiadoBO();
         ventaAlFiadoBO = new VentaAlFiadoBO();
-//        // PRUEBAS VENTA AL FIADO
-//        probarVentaAlFiadoInsertar();
-//        probarVentaAlFiadoObtenerPorId();
-//        probarVentaAlFiadoListarTodos();
-//        probarVentaAlFiadoListarPorAliasCliente();
-//        probarVentaAlFiadoListarPorAliasClienteFecha();
+        // PRUEBAS VENTA AL FIADO
+        probarVentaAlFiadoInsertar();
+        probarVentaAlFiadoObtenerPorId();
+        probarVentaAlFiadoListarTodos();
+        probarVentaAlFiadoListarPorAliasCliente();
+        probarVentaAlFiadoListarPorAliasClienteFecha();
         
+        imprimirSeparador();
+        System.out.println("╔════════════════════════════════════════════════════════════════╗");
+        System.out.println("║ Registro De RegistroDePagosalFiadoBO - BACKEND    ║");
+        System.out.println("╚════════════════════════════════════════════════════════════════╝\n");
+        // NUEVAS PRUEBAS RegistroPagoFiadoBO
+        registroPagoFiadoBO = new RegistroPagoFiadoBO();
+        probarRegistroPagoFiadoInsertar();
+        probarRegistroPagoFiadoListarTodos();
+        probarRegistroPagoFiadoListarPorAliasCliente();
+        probarRegistroPagoFiadoListarPorAliasClienteConFecha();
+
         System.out.println("\n╔════════════════════════════════════════════════════════════════╗");
         System.out.println("║           PRUEBAS FINALIZADAS EXITOSAMENTE        ║");
         System.out.println("╚════════════════════════════════════════════════════════════════╝");
@@ -1641,6 +1656,149 @@ public class SoftBodBusiness {
             }
         } else {
             System.out.println("    --- Detalles: Sin detalles asociados. ---");
+        }
+    }
+    
+    // ==================== MÉTODOS DE PRUEBA REGISTRO PAGO FIADO (NUEVOS) ====================
+
+    private static void probarRegistroPagoFiadoInsertar() {
+        imprimirEncabezado("PRUEBA 10: insertar(RegistroPagoFiadoDTO)");
+        
+        try {
+            // 1. Obtener datos de referencia
+            UsuarioDTO usuario = usuarioBO.obtenerPorId(1); // Usuario que registra el pago
+            ClienteAlFiadoDTO cliente = clienteAlFiadoBO.obtenerPorId(clienteIdPagoPrueba); // Cliente que realiza el pago
+            
+            if (usuario == null || cliente == null) {
+                System.out.println("✗ Error de Setup: No se pudieron obtener los datos base (Usuario/Cliente).");
+                return;
+            }
+
+            // 2. Crear RegistroPagoFiado DTO
+            RegistroPagoFiadoDTO nuevoRegistro = new RegistroPagoFiadoDTO();
+            nuevoRegistro.setUsuario(usuario);
+            nuevoRegistro.setCliente(cliente);
+            nuevoRegistro.setFecha(new Date(System.currentTimeMillis())); 
+            nuevoRegistro.setMetodoPago(Tipo_de_pago.EFECTIVO); 
+            nuevoRegistro.setMonto(45.50); // Monto pagado
+
+            // 3. Insertar el Registro de Pago
+            Integer idPagoGenerado = registroPagoFiadoBO.insertar(nuevoRegistro);
+
+            if (idPagoGenerado != null && idPagoGenerado > 0) {
+                registroPagoFiadoIdInsertado = idPagoGenerado; // Guardar para pruebas posteriores
+                nuevoRegistro.setPagoId(idPagoGenerado);
+                
+                System.out.println("✓ Registro de Pago Al Fiado insertado exitosamente.");
+                System.out.println("  ID de Pago generado: " + registroPagoFiadoIdInsertado);
+                imprimirRegistroPagoFiado(nuevoRegistro);
+            } else {
+                System.out.println("✗ Error al insertar el Registro de Pago Al Fiado (ID no generado).");
+            }
+
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al insertar Registro de Pago Al Fiado: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+    
+    private static void probarRegistroPagoFiadoListarTodos() {
+        imprimirEncabezado("PRUEBA 11: listarTodos()");
+        
+        try {
+            ArrayList<RegistroPagoFiadoDTO> registros = registroPagoFiadoBO.listarTodos();
+            
+            System.out.println("✓ Total de Registros de Pago Al Fiado encontrados: " + registros.size());
+            
+            if (!registros.isEmpty()) {
+                System.out.println("\n--- Resumen de los últimos 3 Registros de Pago ---");
+                int limite = Math.min(3, registros.size());
+                
+                for (int i = 0; i < limite; i++) {
+                    RegistroPagoFiadoDTO registro = registros.get(i);
+                    System.out.println("\nRegistro #" + (i + 1) + ":");
+                    imprimirRegistroPagoFiado(registro);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar todos los Registros de Pago Al Fiado: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+    
+    private static void probarRegistroPagoFiadoListarPorAliasCliente() {
+        imprimirEncabezado("PRUEBA 12: listarTodosPorAliasCliente(String)");
+        
+        try {
+            // Usar el alias del cliente insertado en la prueba 10 (clienteIdPagoPrueba = 2)
+            ClienteAlFiadoDTO clientePrueba = clienteAlFiadoBO.obtenerPorId(clienteIdPagoPrueba);
+            String aliasPrueba = clientePrueba != null ? clientePrueba.getAlias() : "CLIENTE_PAGO_TEST";
+            
+            ArrayList<RegistroPagoFiadoDTO> registros = registroPagoFiadoBO.listarTodosPorAliasCliente(aliasPrueba);
+            
+            System.out.println("✓ Total de Registros de Pago encontrados para el alias '" + aliasPrueba + "': " + registros.size());
+            
+            if (!registros.isEmpty()) {
+                System.out.println("\n--- Resumen de Pagos para el alias '" + aliasPrueba + "' ---");
+                for (RegistroPagoFiadoDTO registro : registros) {
+                    imprimirRegistroPagoFiado(registro);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar Registros de Pago por Alias: " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+    
+    private static void probarRegistroPagoFiadoListarPorAliasClienteConFecha() {
+        imprimirEncabezado("PRUEBA 13: listarTodosPorAliasClienteConFecha(String, Date)");
+        
+        try {
+            // Usar el alias del cliente insertado en la prueba 10
+            ClienteAlFiadoDTO clientePrueba = clienteAlFiadoBO.obtenerPorId(clienteIdPagoPrueba);
+            String aliasPrueba = clientePrueba != null ? clientePrueba.getAlias() : "CLIENTE_PAGO_TEST";
+            
+            // Usar la fecha actual como fecha fin (para incluir los registros insertados hoy)
+            Date fechaFinPrueba = new Date(System.currentTimeMillis()); 
+            
+            ArrayList<RegistroPagoFiadoDTO> registros = registroPagoFiadoBO.listarTodosPorAliasClienteConFechaFin(aliasPrueba, fechaFinPrueba);
+            
+            System.out.println("✓ Total de Registros de Pago encontrados para alias '" + aliasPrueba + "' en la fecha " + fechaFinPrueba.toString() + ": " + registros.size());
+            
+            if (!registros.isEmpty()) {
+                System.out.println("\n--- Resumen de Pagos del alias especificado con fecha  ---");
+                for (RegistroPagoFiadoDTO registro : registros) {
+                    imprimirRegistroPagoFiado(registro);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("✗ Excepción al listar Registros de Pago por Alias y Fecha : " + e.getMessage());
+        }
+        
+        imprimirSeparador();
+    }
+    
+    // ==================== MÉTODOS AUXILIARES NUEVOS (Registro Pago Fiado) ====================
+
+    private static void imprimirRegistroPagoFiado(RegistroPagoFiadoDTO registro) {
+        ClienteAlFiadoDTO cliente = registro.getCliente();
+        
+        System.out.println("  [PAGO ID: " + registro.getPagoId() + "]");
+        if (cliente != null) {
+            System.out.println("    CLIENTE (ID " + cliente.getClienteId() + "): " + cliente.getAlias() + " (" + cliente.getNombre() + ")");
+        } else {
+            System.out.println("    CLIENTE: N/A");
+        }
+        System.out.println("    Fecha de Pago: " + registro.getFecha());
+        System.out.println("    Método de Pago: " + registro.getMetodoPago());
+        System.out.println("    Monto Pagado: S/ " + String.format("%.2f", registro.getMonto()));
+        
+        // Mostrar el usuario vendedor (ID) solo en el caso de inserción para verificación
+        if (registro.getUsuario() != null) {
+             System.out.println("    Usuario Vendedor (ID, para verificación): " + registro.getUsuario().getUsuarioId());
         }
     }
     
