@@ -188,7 +188,7 @@ public class CargarTablas {
         return venta;
     }
     
-    public UsuarioDTO cargarUsuario(ResultSet resulSet) throws SQLException{
+        public UsuarioDTO cargarUsuario(ResultSet resulSet) throws SQLException{
         UsuarioDTO usuario = new UsuarioDTO();
         usuario.setUsuarioId(resulSet.getInt("USUARIO_ID"));
         usuario.setUsuario(resulSet.getString("USUARIO"));

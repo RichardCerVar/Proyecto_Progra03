@@ -40,11 +40,10 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
     
     @Override //ocurre algo si lo implemento en orden distinto?
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
-        this.statement.setDouble(1,this.historial.getOperacionId());
-        this.statement.setDate(2,this.historial.getFechaHora());
-        this.statement.setString(3,this.historial.getTablaAfectada());
-        this.statement.setString(4,this.historial.getOperacion().name());
-        this.statement.setInt(5,this.historial.getUsuario().getUsuarioId());
+        this.statement.setString(1,this.historial.getTablaAfectada());
+        this.statement.setString(2,this.historial.getOperacion().name());
+        this.statement.setDate(3,this.historial.getFechaHora());
+        this.statement.setInt(4,this.historial.getUsuario().getUsuarioId());
     }
 
     @Override

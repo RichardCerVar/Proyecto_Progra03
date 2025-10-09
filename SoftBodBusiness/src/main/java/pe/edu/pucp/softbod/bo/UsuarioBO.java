@@ -2,13 +2,14 @@ package pe.edu.pucp.softbod.bo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
 import pe.edu.pucp.softbod.dao.UsuarioDAO;
 import pe.edu.pucp.softbod.daoImp.UsuarioDAOImpl;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
-public class UsuarioBO {
+public class UsuarioBO extends OperacionBOBase{
     
     private final UsuarioDAO usuarioDAO;
     private final HistorialDeOperacionBO historialBO;
@@ -211,24 +212,6 @@ public class UsuarioBO {
         } catch (Exception e) {
             System.err.println("Error al validar correo para modificar: " + e.getMessage());
             return Boolean.FALSE;
-        }
-    }
- 
-    private void registrarEnHistorial(UsuarioDTO usuario, String tablaAfectada, Tipo_Operacion operacion) {
-        try {
-            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
-            historial.setUsuario(usuario);
-            historial.setTablaAfectada(tablaAfectada);
-            historial.setOperacion(operacion);
-            historial.setFechaHora(new Date(System.currentTimeMillis()));
-            
-            Integer resultado = this.historialBO.insertar(historial);
-            
-            if (resultado == null || resultado <= 0) {
-                System.err.println("Advertencia: No se pudo registrar en el historial");
-            }
-        } catch (Exception e) {
-            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
         }
     }
 }

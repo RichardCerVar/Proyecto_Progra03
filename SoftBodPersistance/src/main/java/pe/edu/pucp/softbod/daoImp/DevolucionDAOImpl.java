@@ -77,7 +77,6 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
         Date fecha = null;
         ArrayList<DevolucionDTO> lista = this.listarDevolucionFiltros(devolucionId,
                                         usuarioId, fecha);
-        super.obtenerPorId();
         if (!lista.isEmpty()){
             this.devolucion = lista.getFirst();
         }

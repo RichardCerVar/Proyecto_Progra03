@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pe.edu.pucp.softbod.dao.ProductoDAO;
@@ -68,6 +69,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.producto = this.cargaTablas.cargarProductoSinCategoria(resultSet);
+        this.producto.getCategoria().setDescripcion(this.resultSet.getString("DESCRIPCION"));
     }
     
     @Override
@@ -90,9 +92,21 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     @Override
     public ProductoDTO obtenerPorId(Integer productoId) {
         this.producto = new ProductoDTO();
-        this.producto.setProductoId(productoId);
-        super.obtenerPorId();
-        return this.producto;
+        ArrayList<ProductoDTO> lista = listarTodos();
+        int inicio = 0;
+        int fin = lista.size() - 1;
+        for (; inicio <= fin; ) {
+            int medio = (inicio + fin) / 2;
+            if (Objects.equals(lista.get(medio).getProductoId(), productoId)) {
+                return lista.get(medio);
+            }
+            if (lista.get(medio).getProductoId() < productoId) {
+                inicio = medio + 1;
+            } else {
+                fin = medio - 1;
+            }
+        }
+        return null; 
     }
     
     @Override
