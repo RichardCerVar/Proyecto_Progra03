@@ -63,7 +63,7 @@ public class LoginBO {
             }
             
             UsuarioDTO usuario = usuarioDAO.obtenerPorCorreo(correo.trim());
-            return Boolean.valueOf(usuario != null && usuario.getActivo());
+            return usuario != null && usuario.getActivo();
             
         } catch (Exception e) {
             System.err.println("Error al verificar usuario activo: " + e.getMessage());
@@ -145,7 +145,7 @@ public class LoginBO {
             return Boolean.FALSE;
         }
     }
-
+    
     public void cerrarSesion(UsuarioDTO usuario) {
         try {
             if (usuario == null || usuario.getUsuarioId() == null) {
@@ -159,7 +159,7 @@ public class LoginBO {
             System.err.println("Error al cerrar sesión: " + e.getMessage());
         }
     }
-
+    
     public Boolean validarFormatoContrasenha(String contrasenha) {
         try {
             if (contrasenha == null || contrasenha.trim().isEmpty()) {
@@ -203,16 +203,15 @@ public class LoginBO {
         try {
             HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
             historial.setUsuario(usuario);
-            historial.setTablaAfectada("BO_USUARIO");
+            historial.setTablaAfectada("BOD_USUARIOS");
             
             // Mapear acción a tipo de operación
-            Tipo_Operacion operacion;
-            operacion = switch (accion) {
+            Tipo_Operacion operacion = switch (accion) {
                 case "LOGIN_EXITOSO" -> Tipo_Operacion.CONSULTAR;
                 case "LOGOUT" -> Tipo_Operacion.CONSULTAR;
                 case "CAMBIO_CONTRASENHA" -> Tipo_Operacion.MODIFICACION;
                 default -> Tipo_Operacion.CONSULTAR;
-            }; 
+            };
             
             historial.setOperacion(operacion);
             historial.setFechaHora(new Date(System.currentTimeMillis()));

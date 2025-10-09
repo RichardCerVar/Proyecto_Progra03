@@ -2,6 +2,7 @@ package pe.edu.pucp.softbod.bo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
 import pe.edu.pucp.softbod.dao.VentaDAO;
 import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
 import pe.edu.pucp.softbod.model.DetalleVentaDTO;
@@ -10,7 +11,7 @@ import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
-public class VentaBO {
+public class VentaBO extends OperacionBOBase{
     
     private final VentaDAO ventaDAO;
     private final DetalleVentaBO detalleVentaBO;
@@ -222,24 +223,4 @@ public class VentaBO {
         }
     }
     
-    private void registrarEnHistorial(UsuarioDTO usuario, 
-                                      String tablaAfectada, 
-                                      Tipo_Operacion operacion) {
-        try {
-            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
-            historial.setUsuario(usuario);
-            historial.setTablaAfectada(tablaAfectada);
-            historial.setOperacion(operacion);
-            historial.setFechaHora(new Date(System.currentTimeMillis()));
-            
-            Integer resultado = this.historialBO.insertar(historial);
-            
-            if (resultado == null || resultado <= 0) {
-                System.err.println("Advertencia: No se pudo registrar en el historial");
-            }
-        } catch (Exception e) {
-            // No lanzamos la excepción para no afectar el flujo principal
-            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
-        }
-    }
 }

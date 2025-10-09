@@ -1,29 +1,121 @@
 package pe.edu.pucp.softbod.bo;
 
+import java.sql.Date;
 import java.util.ArrayList;
-import java.util.regex.Pattern;
 import pe.edu.pucp.softbod.dao.UsuarioDAO;
 import pe.edu.pucp.softbod.daoImp.UsuarioDAOImpl;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
 public class UsuarioBO {
     
     private final UsuarioDAO usuarioDAO;
+    private final HistorialDeOperacionBO historialBO;
+    private final LoginBO loginBO; // Para reutilizar validación de contraseña
     
     public UsuarioBO() {
         this.usuarioDAO = new UsuarioDAOImpl();
+        this.historialBO = new HistorialDeOperacionBO();
+        this.loginBO = new LoginBO();
     }
     
     public Integer insertar(UsuarioDTO usuario) {
-        return this.usuarioDAO.insertar(usuario);
+        try {
+            // 1. Validar datos de entrada
+            if (usuario == null) {
+                System.err.println("Error: Usuario no puede ser null");
+                return null;
+            }
+            
+            // 2. Validar que la contraseña cumpla con el formato requerido
+            if (usuario.getContrasenha() == null || 
+                !loginBO.validarFormatoContrasenha(usuario.getContrasenha())) {
+                System.err.println("Error: La contraseña no cumple con el formato requerido");
+                return null;
+            }
+            
+            // 3. Validar que el correo sea único
+            if (!validarCorreoUnico(usuario.getCorreo())) {
+                System.err.println("Error: El correo ya está registrado");
+                return null;
+            }
+            
+            // 4. Validar que el nombre de usuario sea único
+            if (!validarUsuarioUnico(usuario.getUsuario())) {
+                System.err.println("Error: El nombre de usuario ya está registrado");
+                return null;
+            }
+            
+            // 5. Insertar usuario
+            Integer resultado = this.usuarioDAO.insertar(usuario);
+            
+            if (resultado != null && resultado > 0) {
+                usuario.setUsuarioId(resultado);
+                
+                // 6. Registrar en historial
+                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.INSERCION);
+                
+                System.out.println("✓ Usuario insertado exitosamente. ID: " + resultado);
+            }
+            
+            return resultado;
+            
+        } catch (Exception e) {
+            System.err.println("Error al insertar usuario: " + e.getMessage());
+            return null;
+        }
     }
     
     public Integer modificar(UsuarioDTO usuario) {
-        return this.usuarioDAO.modificar(usuario);
+        try {
+            if (usuario == null || usuario.getUsuarioId() == null) {
+                System.err.println("Error: Usuario inválido");
+                return null;
+            }
+            
+            // Validar correo único si se está modificando
+            if (usuario.getCorreo() != null && 
+                !validarCorreoUnicoParaModificar(usuario.getUsuarioId(), usuario.getCorreo())) {
+                System.err.println("Error: El correo ya está registrado en otro usuario");
+                return null;
+            }
+            
+            Integer resultado = this.usuarioDAO.modificar(usuario);
+            
+            if (resultado != null && resultado > 0) {
+                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.MODIFICACION);
+                System.out.println("✓ Usuario modificado exitosamente");
+            }
+            
+            return resultado;
+            
+        } catch (Exception e) {
+            System.err.println("Error al modificar usuario: " + e.getMessage());
+            return null;
+        }
     }
-    
+
     public Integer eliminarLogicoUsuario(UsuarioDTO usuario) {
-        return this.usuarioDAO.eliminarLogicoUsuario(usuario);
+        try {
+            if (usuario == null || usuario.getUsuarioId() == null) {
+                System.err.println("Error: Usuario inválido");
+                return null;
+            }
+            
+            Integer resultado = this.usuarioDAO.eliminarLogicoUsuario(usuario);
+            
+            if (resultado != null && resultado > 0) {
+                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.ELIMINACION);
+                System.out.println("✓ Usuario eliminado lógicamente");
+            }
+            
+            return resultado;
+            
+        } catch (Exception e) {
+            System.err.println("Error al eliminar usuario: " + e.getMessage());
+            return null;
+        }
     }
     
     public UsuarioDTO obtenerPorId(Integer usuarioId) {
@@ -60,16 +152,10 @@ public class UsuarioBO {
                 return Boolean.FALSE;
             }
             
-            // Buscar usuario con ese correo
             UsuarioDTO usuario = this.usuarioDAO.obtenerPorCorreo(correo.trim());
             
             // Si no se encuentra ningún usuario, el correo es único
-            if (usuario == null || usuario.getUsuarioId() == null) {
-                return Boolean.TRUE;
-            }
-            
-            // Si se encontró un usuario, el correo ya existe
-            return Boolean.FALSE;
+            return usuario == null || usuario.getUsuarioId() == null;
             
         } catch (Exception e) {
             System.err.println("Error al validar correo único: " + e.getMessage());
@@ -83,37 +169,35 @@ public class UsuarioBO {
                 return Boolean.FALSE;
             }
             
-            // Buscar usuarios con ese nombre usando búsqueda parcial
             ArrayList<UsuarioDTO> usuarios = 
                 this.usuarioDAO.listarPorNombreParcial(nombreUsuario.trim());
             
             if (usuarios == null || usuarios.isEmpty()) {
-                return Boolean.TRUE; // No existe, es único
+                return Boolean.TRUE;
             }
             
             // Verificar si alguno tiene exactamente el mismo nombre de usuario
             for (UsuarioDTO usuario : usuarios) {
                 if (usuario.getUsuario() != null && 
                     usuario.getUsuario().equalsIgnoreCase(nombreUsuario.trim())) {
-                    return Boolean.FALSE; // Ya existe
+                    return Boolean.FALSE;
                 }
             }
             
-            return Boolean.TRUE; // No se encontró coincidencia exacta
+            return Boolean.TRUE;
             
         } catch (Exception e) {
             System.err.println("Error al validar usuario único: " + e.getMessage());
             return Boolean.FALSE;
         }
     }
-    
+
     public Boolean validarCorreoUnicoParaModificar(Integer usuarioId, String nuevoCorreo) {
         try {
             if (usuarioId == null || nuevoCorreo == null || nuevoCorreo.trim().isEmpty()) {
                 return Boolean.FALSE;
             }
             
-            // Buscar usuario con ese correo
             UsuarioDTO usuario = this.usuarioDAO.obtenerPorCorreo(nuevoCorreo.trim());
             
             // Si no se encuentra ningún usuario, el correo es único
@@ -122,89 +206,29 @@ public class UsuarioBO {
             }
             
             // Si el usuario encontrado es el mismo que se está modificando, es válido
-            if (usuario.getUsuarioId().equals(usuarioId)) {
-                return Boolean.TRUE;
-            }
-            
-            // Si es otro usuario diferente, el correo ya existe
-            return Boolean.FALSE;
+            return usuario.getUsuarioId().equals(usuarioId);
             
         } catch (Exception e) {
             System.err.println("Error al validar correo para modificar: " + e.getMessage());
             return Boolean.FALSE;
         }
     }
-    
-    public UsuarioDTO autenticarUsuario(String correo, String contrasenha) {
+ 
+    private void registrarEnHistorial(UsuarioDTO usuario, String tablaAfectada, Tipo_Operacion operacion) {
         try {
-            // 1. Validar parámetros de entrada
-            if (correo == null || correo.trim().isEmpty() || 
-                contrasenha == null || contrasenha.trim().isEmpty()) {
-                System.err.println("Error: Credenciales inválidas");
-                return null;
+            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
+            historial.setUsuario(usuario);
+            historial.setTablaAfectada(tablaAfectada);
+            historial.setOperacion(operacion);
+            historial.setFechaHora(new Date(System.currentTimeMillis()));
+            
+            Integer resultado = this.historialBO.insertar(historial);
+            
+            if (resultado == null || resultado <= 0) {
+                System.err.println("Advertencia: No se pudo registrar en el historial");
             }
-            
-            // 2. Obtener usuario con las credenciales proporcionadas
-            UsuarioDTO usuario = this.usuarioDAO.obtenerCuenta(correo.trim(), contrasenha);
-            
-            // 3. Verificar si se encontró el usuario
-            if (usuario == null || usuario.getUsuarioId() == null) {
-                System.err.println("Error: Credenciales incorrectas");
-                return null;
-            }
-            
-            // 4. Verificar que el usuario esté activo
-            if (!usuario.getActivo()) {
-                System.err.println("Error: Usuario inactivo. Contacte al administrador");
-                return null;
-            }
-            
-            // 5. Autenticación exitosa
-            System.out.println("Autenticación exitosa para usuario: " + usuario.getUsuario());
-            return usuario;
-            
         } catch (Exception e) {
-            System.err.println("Error al autenticar usuario: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public Boolean validarFormatoContrasenha(String contrasenha) {
-        try {
-            if (contrasenha == null || contrasenha.trim().isEmpty()) {
-                System.err.println("Error: La contraseña no puede estar vacía");
-                return Boolean.FALSE;
-            }
-            
-            // Validar longitud mínima
-            if (contrasenha.length() < 6) {
-                System.err.println("Error: La contraseña debe tener al menos 6 caracteres");
-                return Boolean.FALSE;
-            }
-            
-            // Validar que tenga al menos una letra mayúscula
-            if (!Pattern.compile("[A-Z]").matcher(contrasenha).find()) {
-                System.err.println("Error: La contraseña debe tener al menos una letra mayúscula");
-                return Boolean.FALSE;
-            }
-            
-            // Validar que tenga al menos una letra minúscula
-            if (!Pattern.compile("[a-z]").matcher(contrasenha).find()) {
-                System.err.println("Error: La contraseña debe tener al menos una letra minúscula");
-                return Boolean.FALSE;
-            }
-            
-            // Validar que tenga al menos un número
-            if (!Pattern.compile("[0-9]").matcher(contrasenha).find()) {
-                System.err.println("Error: La contraseña debe tener al menos un número");
-                return Boolean.FALSE;
-            }
-            
-            return Boolean.TRUE;
-            
-        } catch (Exception e) {
-            System.err.println("Error al validar formato de contraseña: " + e.getMessage());
-            return Boolean.FALSE;
+            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
         }
     }
 }

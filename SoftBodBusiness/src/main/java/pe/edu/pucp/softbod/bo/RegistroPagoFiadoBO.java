@@ -2,6 +2,7 @@ package pe.edu.pucp.softbod.bo;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
 import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.RegistroPagoFiadoDAOImpl;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
@@ -10,7 +11,7 @@ import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
 import pe.edu.pucp.softbod.model.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
-public class RegistroPagoFiadoBO {
+public class RegistroPagoFiadoBO extends OperacionBOBase{
     
     private final RegistroPagoFiadoDAO registroPagoFiadoDAO;
     private final ClienteAlFiadoBO clienteAlFiadoBO;
@@ -168,26 +169,5 @@ public class RegistroPagoFiadoBO {
             return 0.0;
         }
     }
-
-    private void registrarEnHistorial(UsuarioDTO usuario, 
-                                      String tablaAfectada, 
-                                      Tipo_Operacion operacion) {
-        try {
-            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
-            historial.setUsuario(usuario);
-            historial.setTablaAfectada(tablaAfectada);
-            historial.setOperacion(operacion);
-            historial.setFechaHora(new Date(System.currentTimeMillis()));
-            
-            Integer resultado = this.historialBO.insertar(historial);
-            
-            if (resultado == null || resultado <= 0) {
-                System.err.println("Advertencia: No se pudo registrar en el historial");
-            } else {
-                System.out.println("  ✓ Operación registrada en historial (ID: " + resultado + ")");
-            }
-        } catch (Exception e) {
-            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
-        }
-    }
+    
 }
