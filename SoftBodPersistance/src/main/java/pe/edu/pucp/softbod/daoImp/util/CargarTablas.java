@@ -18,6 +18,7 @@ public class CargarTablas {
 	return categoria;
     }
 	
+    
     public ClienteAlFiadoDTO cargarClienteAlFiado(ResultSet resultSet) throws SQLException {
 		
         ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO();
@@ -28,7 +29,6 @@ public class CargarTablas {
         clienteAlFiado.setFechaDePago(resultSet.getDate("FECHA_DE_PAGO"));
         clienteAlFiado.setActivo(resultSet.getBoolean("ACTIVO"));
         clienteAlFiado.setMontoDeuda(resultSet.getDouble("MONTO_DEUDA"));
-		
 	return clienteAlFiado;
     }
 	
@@ -147,8 +147,12 @@ public class CargarTablas {
         registroPago.setFecha(resulSet.getDate("FECHA"));
         registroPago.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
         registroPago.setMonto(resulSet.getDouble("MONTO"));
+        
         ClienteAlFiadoDTO clienteFiado = this.cargarClienteAlFiado(resulSet);
         registroPago.setCliente(clienteFiado);
+        
+        UsuarioDTO user = this.cargarUsuario(resulSet);
+        registroPago.setUsuario(user);
         
         return registroPago;
     }
@@ -157,7 +161,7 @@ public class CargarTablas {
         VentaAlFiadoDTO ventaFiada = new VentaAlFiadoDTO();
         ventaFiada.setVentaFiadaId(resulSet.getInt("VENTA_FIADA_ID"));
 
-        VentaDTO venta = this.cargarVentaDTOsinUsuario(resulSet);
+        VentaDTO venta = this.cargarVentaDTO(resulSet);
         ventaFiada.setVenta(venta);
         
         ClienteAlFiadoDTO cliente = this.cargarClienteAlFiado(resulSet);

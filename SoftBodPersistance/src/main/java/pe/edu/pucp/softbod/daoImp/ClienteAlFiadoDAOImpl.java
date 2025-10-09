@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,8 +93,13 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
     @Override
     public ClienteAlFiadoDTO obtenerPorId(Integer clienteId) {
         this.clienteAlFiado = new ClienteAlFiadoDTO();
-        this.clienteAlFiado.setClienteId(clienteId);
-        super.obtenerPorId();
+        ArrayList<ClienteAlFiadoDTO> lista = listarTodos();
+        for (ClienteAlFiadoDTO cli : lista) {
+            if(Objects.equals(cli.getClienteId(), clienteId)){
+                this.clienteAlFiado = cli;
+                break;
+            }
+        }
         return this.clienteAlFiado; 
     }
     

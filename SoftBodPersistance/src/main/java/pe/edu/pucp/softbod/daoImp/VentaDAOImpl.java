@@ -51,7 +51,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
     
     @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
-        this.venta = this.cargaTablas.cargarVentaDTOsinUsuario(resultSet);
+        this.venta = this.cargaTablas.cargarVentaDTO(resultSet);
     }
     
     @Override
