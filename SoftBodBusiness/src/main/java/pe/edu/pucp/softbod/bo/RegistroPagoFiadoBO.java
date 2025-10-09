@@ -6,16 +6,23 @@ import pe.edu.pucp.softbod.dao.RegistroPagoFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.RegistroPagoFiadoDAOImpl;
 import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
 import pe.edu.pucp.softbod.model.RegistroPagoFiadoDTO;
+import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
 public class RegistroPagoFiadoBO {
     
     private final RegistroPagoFiadoDAO registroPagoFiadoDAO;
     private final ClienteAlFiadoBO clienteAlFiadoBO;
+    private final HistorialDeOperacionBO historialBO;
     
     public RegistroPagoFiadoBO(){
         this.registroPagoFiadoDAO = new RegistroPagoFiadoDAOImpl();
         this.clienteAlFiadoBO = new ClienteAlFiadoBO();
+        this.historialBO = new HistorialDeOperacionBO();
     }
+    
+    // ==================== MÉTODOS DAO EXISTENTES ====================
     
     public Integer insertar(RegistroPagoFiadoDTO registroPagoFiado){
         return this.registroPagoFiadoDAO.insertar(registroPagoFiado);
@@ -42,13 +49,19 @@ public class RegistroPagoFiadoBO {
                 return null;
             }
             
-            // 2. Validar que el monto sea válido
+            // 2. Validar que tenga usuario asignado
+            if (pago.getUsuario() == null || pago.getUsuario().getUsuarioId() == null) {
+                System.err.println("Error: El pago debe tener un usuario asignado");
+                return null;
+            }
+            
+            // 3. Validar que el monto sea válido
             if (!validarMontoPago(pago.getMonto(), pago.getCliente().getClienteId())) {
                 System.err.println("Error: Monto de pago inválido");
                 return null;
             }
             
-            // 3. Insertar el registro de pago
+            // 4. Insertar el registro de pago
             Integer pagoId = this.registroPagoFiadoDAO.insertar(pago);
             
             if (pagoId == null || pagoId <= 0) {
@@ -56,7 +69,13 @@ public class RegistroPagoFiadoBO {
                 return null;
             }
             
-            // 4. Retornar el ID del pago registrado
+            // 5. Registrar en el historial de operaciones
+            registrarEnHistorial(pago.getUsuario(), "BOD_REGISTRO_PAGOS_FIADOS", Tipo_Operacion.INSERCION);
+            
+            // 6. Retornar el ID del pago registrado
+            System.out.println("✓ Pago registrado exitosamente. ID: " + pagoId);
+            System.out.println("  Cliente: " + pago.getCliente().getAlias());
+            System.out.println("  Monto pagado: S/ " + String.format("%.2f", pago.getMonto()));
             return pagoId;
             
         } catch (Exception e) {
@@ -102,7 +121,7 @@ public class RegistroPagoFiadoBO {
             return Boolean.FALSE;
         }
     }
- 
+
     public Double calcularTotalPagosRealizados(Integer clienteId, Date inicio, Date fin) {
         try {
             if (clienteId == null || inicio == null || fin == null) {
@@ -121,6 +140,7 @@ public class RegistroPagoFiadoBO {
             if (cliente == null || cliente.getAlias() == null) {
                 return 0.0;
             }
+            
             // Obtener todos los pagos del cliente
             ArrayList<RegistroPagoFiadoDTO> pagosCliente = 
                 this.registroPagoFiadoDAO.listarTodosPorAliasCliente(cliente.getAlias());
@@ -148,5 +168,26 @@ public class RegistroPagoFiadoBO {
             return 0.0;
         }
     }
-}
 
+    private void registrarEnHistorial(UsuarioDTO usuario, 
+                                      String tablaAfectada, 
+                                      Tipo_Operacion operacion) {
+        try {
+            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
+            historial.setUsuario(usuario);
+            historial.setTablaAfectada(tablaAfectada);
+            historial.setOperacion(operacion);
+            historial.setFechaHora(new Date(System.currentTimeMillis()));
+            
+            Integer resultado = this.historialBO.insertar(historial);
+            
+            if (resultado == null || resultado <= 0) {
+                System.err.println("Advertencia: No se pudo registrar en el historial");
+            } else {
+                System.out.println("  ✓ Operación registrada en historial (ID: " + resultado + ")");
+            }
+        } catch (Exception e) {
+            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
+        }
+    }
+}

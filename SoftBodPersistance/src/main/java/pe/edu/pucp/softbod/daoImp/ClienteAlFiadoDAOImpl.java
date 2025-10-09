@@ -94,13 +94,20 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
     public ClienteAlFiadoDTO obtenerPorId(Integer clienteId) {
         this.clienteAlFiado = new ClienteAlFiadoDTO();
         ArrayList<ClienteAlFiadoDTO> lista = listarTodos();
-        for (ClienteAlFiadoDTO cli : lista) {
-            if(Objects.equals(cli.getClienteId(), clienteId)){
-                this.clienteAlFiado = cli;
-                break;
+        int inicio = 0;
+        int fin = lista.size() - 1;
+        for (; inicio <= fin; ) {
+            int medio = (inicio + fin) / 2;
+            if (Objects.equals(lista.get(medio).getClienteId(), clienteId)) {
+                return lista.get(medio);
+            }
+            if (lista.get(medio).getClienteId() < clienteId) {
+                inicio = medio + 1;
+            } else {
+                fin = medio - 1;
             }
         }
-        return this.clienteAlFiado; 
+        return null; 
     }
     
     @Override

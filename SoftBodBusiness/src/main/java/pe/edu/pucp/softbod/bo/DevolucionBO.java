@@ -7,18 +7,22 @@ import pe.edu.pucp.softbod.daoImp.DevolucionDAOImpl;
 import pe.edu.pucp.softbod.model.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.DevolucionDTO;
 import pe.edu.pucp.softbod.model.VentaDTO;
+import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
 public class DevolucionBO {
-    
     
     private final DevolucionDAO devolucionDAO;
     private final DetalleDevolucionBO detalleDevolucionBO;
     private final VentaBO ventaBO;
+    private final HistorialDeOperacionBO historialBO;
     
     public DevolucionBO (){
         this.devolucionDAO = new DevolucionDAOImpl();
         this.detalleDevolucionBO = new DetalleDevolucionBO();
         this.ventaBO = new VentaBO();
+        this.historialBO = new HistorialDeOperacionBO();
     }
     
     public Integer insertar(DevolucionDTO devolucion){
@@ -53,6 +57,12 @@ public class DevolucionBO {
                 return null;
             }
             
+            // Validar que tenga usuario asignado
+            if (devolucion.getUsuario() == null || devolucion.getUsuario().getUsuarioId() == null) {
+                System.err.println("Error: La devolución debe tener un usuario asignado");
+                return null;
+            }
+            
             // 2. Calcular y setear el total de la devolución
             Double totalCalculado = calcularTotalDevolucion(detalles);
             devolucion.setTotal(totalCalculado);
@@ -80,7 +90,11 @@ public class DevolucionBO {
                 }
             }
             
-            // 6. Retornar el ID de la devolución exitosamente registrada
+            // 6. Registrar en el historial de operaciones
+            registrarEnHistorial(devolucion.getUsuario(), "BOD_DEVOLUCIONES", Tipo_Operacion.INSERCION);
+            
+            // 7. Retornar el ID de la devolución exitosamente registrada
+            System.out.println("✓ Devolución registrada exitosamente. ID: " + devolucionId);
             return devolucionId;
             
         } catch (Exception e) {
@@ -176,5 +190,24 @@ public class DevolucionBO {
             return Boolean.FALSE;
         }
     }
-    
+
+    private void registrarEnHistorial(UsuarioDTO usuario, 
+                                      String tablaAfectada, 
+                                      Tipo_Operacion operacion) {
+        try {
+            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
+            historial.setUsuario(usuario);
+            historial.setTablaAfectada(tablaAfectada);
+            historial.setOperacion(operacion);
+            historial.setFechaHora(new Date(System.currentTimeMillis()));
+            
+            Integer resultado = this.historialBO.insertar(historial);
+            
+            if (resultado == null || resultado <= 0) {
+                System.err.println("Advertencia: No se pudo registrar en el historial");
+            }
+        } catch (Exception e) {
+            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
+        }
+    }
 }

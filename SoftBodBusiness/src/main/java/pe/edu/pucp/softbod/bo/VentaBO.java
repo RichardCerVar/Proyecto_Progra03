@@ -6,17 +6,22 @@ import pe.edu.pucp.softbod.dao.VentaDAO;
 import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
 import pe.edu.pucp.softbod.model.DetalleVentaDTO;
 import pe.edu.pucp.softbod.model.VentaDTO;
+import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 
 public class VentaBO {
     
     private final VentaDAO ventaDAO;
     private final DetalleVentaBO detalleVentaBO;
     private final ProductoBO productoBO;
+    private final HistorialDeOperacionBO historialBO;
     
     public VentaBO(){
         this.ventaDAO = new VentaDAOImpl();
         this.detalleVentaBO = new DetalleVentaBO();
         this.productoBO = new ProductoBO();
+        this.historialBO = new HistorialDeOperacionBO();
     }
     
     public Integer insertar(VentaDTO venta){
@@ -42,14 +47,23 @@ public class VentaBO {
                 System.err.println("Error: Datos de venta inválidos");
                 return null;
             }
+            
+            // Validar que tenga usuario asignado
+            if (venta.getUsuario() == null || venta.getUsuario().getUsuarioId() == null) {
+                System.err.println("Error: La venta debe tener un usuario asignado");
+                return null;
+            }
+            
             // 2. Validar stock para TODOS los productos antes de insertar
             if (!validarStockParaVenta(detalles)) {
                 System.err.println("Error: Stock insuficiente para uno o más productos");
                 return null;
             }
+            
             // 3. Calcular y setear el total de la venta
             Double totalCalculado = calcularTotalVenta(detalles);
             venta.setTotal(totalCalculado);
+            
             // 4. Insertar la venta principal
             Integer ventaId = this.ventaDAO.insertar(venta);
             
@@ -57,8 +71,10 @@ public class VentaBO {
                 System.err.println("Error: No se pudo insertar la venta");
                 return null;
             }
+            
             // 5. Actualizar el ID en el DTO de venta
             venta.setVentaId(ventaId);
+            
             // 6. Insertar cada detalle de venta
             for (DetalleVentaDTO detalle : detalles) {
                 detalle.setVenta(venta);
@@ -70,7 +86,12 @@ public class VentaBO {
                     return null;
                 }
             }
-            // 7. Retornar el ID de la venta exitosamente registrada
+            
+            // 7. Registrar en el historial de operaciones
+            registrarEnHistorial(venta.getUsuario(), "BOD_VENTAS", Tipo_Operacion.INSERCION);
+            
+            // 8. Retornar el ID de la venta exitosamente registrada
+            System.out.println("✓ Venta registrada exitosamente. ID: " + ventaId);
             return ventaId;
             
         } catch (Exception e) {
@@ -78,7 +99,7 @@ public class VentaBO {
             return null;
         }
     }
-
+    
     public Boolean validarStockParaVenta(ArrayList<DetalleVentaDTO> detalles) {
         try {
             if (detalles == null || detalles.isEmpty()) {
@@ -92,6 +113,7 @@ public class VentaBO {
                     detalle.getCantidad() <= 0) {
                     return Boolean.FALSE;
                 }
+                
                 // Verificar stock disponible usando el método del ProductoBO
                 Boolean tieneStock = this.productoBO.verificarStockDisponible(
                     detalle.getProducto().getProductoId(), 
@@ -112,7 +134,7 @@ public class VentaBO {
             return Boolean.FALSE;
         }
     }
- 
+
     public Double calcularTotalVenta(ArrayList<DetalleVentaDTO> detalles) {
         try {
             if (detalles == null || detalles.isEmpty()) {
@@ -134,7 +156,7 @@ public class VentaBO {
             return 0.0;
         }
     }
-    
+
     public Double calcularVentasTotalesPorFecha(Date fecha) {
         try {
             if (fecha == null) {
@@ -197,6 +219,27 @@ public class VentaBO {
         } catch (Exception e) {
             System.err.println("Error al calcular ventas por rango de fechas: " + e.getMessage());
             return 0.0;
+        }
+    }
+    
+    private void registrarEnHistorial(UsuarioDTO usuario, 
+                                      String tablaAfectada, 
+                                      Tipo_Operacion operacion) {
+        try {
+            HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
+            historial.setUsuario(usuario);
+            historial.setTablaAfectada(tablaAfectada);
+            historial.setOperacion(operacion);
+            historial.setFechaHora(new Date(System.currentTimeMillis()));
+            
+            Integer resultado = this.historialBO.insertar(historial);
+            
+            if (resultado == null || resultado <= 0) {
+                System.err.println("Advertencia: No se pudo registrar en el historial");
+            }
+        } catch (Exception e) {
+            // No lanzamos la excepción para no afectar el flujo principal
+            System.err.println("Advertencia: Error al registrar en historial: " + e.getMessage());
         }
     }
 }
