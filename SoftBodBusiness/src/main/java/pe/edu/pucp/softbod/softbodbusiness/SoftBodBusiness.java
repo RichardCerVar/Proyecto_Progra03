@@ -1061,7 +1061,8 @@ public class SoftBodBusiness {
             String correo2 = "noexiste@bodega.com";
             System.out.println("\n\n═══ Búsqueda 2: Correo inexistente ═══");
             System.out.println("Correo: " + correo2);
-
+            
+            usuarioBO = new UsuarioBO();
             UsuarioDTO usuario2 = usuarioBO.obtenerPorCorreo(correo2);
 
             if (usuario2 == null || usuario2.getUsuarioId() == null) {
