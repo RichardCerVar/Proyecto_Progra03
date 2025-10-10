@@ -1,11 +1,12 @@
 package pe.edu.pucp.softbod.dao;
 
+import pe.edu.pucp.softbod.dao.gestclientes.ClienteAlFiadoDAO;
 import java.util.ArrayList;
 import java.sql.Date;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.daoImp.ClienteAlFiadoDAOImpl;
-import pe.edu.pucp.softbod.model.ClienteAlFiadoDTO;
+import pe.edu.pucp.softbod.daoImp.gestclientes.ClienteAlFiadoDAOImpl;
+import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
 
 public class ClienteAlFiadoDAOTest { 
     

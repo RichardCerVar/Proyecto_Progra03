@@ -1,10 +1,11 @@
 package pe.edu.pucp.softbod.dao;
 
+import pe.edu.pucp.softbod.dao.rrhh.UsuarioDAO;
 import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
-import pe.edu.pucp.softbod.daoImp.UsuarioDAOImpl;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.daoImp.rrhh.UsuarioDAOImpl;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 
 public class UsuarioDAOTest {

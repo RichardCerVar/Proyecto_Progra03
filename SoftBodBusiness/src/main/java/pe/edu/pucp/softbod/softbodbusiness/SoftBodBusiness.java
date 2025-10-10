@@ -1,12 +1,33 @@
 package pe.edu.pucp.softbod.softbodbusiness;
 
+import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
+import pe.edu.pucp.softbod.bo.rrhh.UsuarioBO;
+import pe.edu.pucp.softbod.bo.gestclientes.RegistroPagoFiadoBO;
+import pe.edu.pucp.softbod.bo.gestclientes.ClienteAlFiadoBO;
+import pe.edu.pucp.softbod.bo.ventas.VentaAlFiadoBO;
+import pe.edu.pucp.softbod.bo.ventas.VentaBO;
+import pe.edu.pucp.softbod.bo.ventas.DetalleVentaBO;
+import pe.edu.pucp.softbod.bo.devolucion.RazonDevolucionBO;
+import pe.edu.pucp.softbod.bo.devolucion.DevolucionBO;
+import pe.edu.pucp.softbod.bo.devolucion.DetalleDevolucionBO;
+import pe.edu.pucp.softbod.bo.almacen.CategoriaBO;
+import pe.edu.pucp.softbod.bo.almacen.ProductoBO;
+import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
+import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
+import pe.edu.pucp.softbod.model.gestclientes.RegistroPagoFiadoDTO;
+import pe.edu.pucp.softbod.model.ventas.VentaAlFiadoDTO;
+import pe.edu.pucp.softbod.model.ventas.VentaDTO;
+import pe.edu.pucp.softbod.model.ventas.DetalleVentaDTO;
+import pe.edu.pucp.softbod.model.devolucion.RazonDevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.DevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
+import pe.edu.pucp.softbod.model.almacen.CategoriaDTO;
+import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
 import java.util.ArrayList;
-import pe.edu.pucp.softbod.bo.*;
-import pe.edu.pucp.softbod.model.*;
 import pe.edu.pucp.softbod.model.util.*;
 import java.sql.Date;
 import java.time.LocalDate;
-import pe.edu.pucp.softbod.dao.*;
 import pe.edu.pucp.softbod.daoImp.*;
 
 public class SoftBodBusiness {
