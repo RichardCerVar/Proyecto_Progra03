@@ -2,10 +2,10 @@
 package pe.edu.pucp.softbod.bo.util;
 
 import java.sql.Date;
-import pe.edu.pucp.softbod.model.HistorialOperacionesDTO;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
+import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
-import pe.edu.pucp.softbod.bo.HistorialDeOperacionBO;
+import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 
 public abstract class OperacionBOBase {
     protected void registrarEnHistorial(UsuarioDTO usuario, 

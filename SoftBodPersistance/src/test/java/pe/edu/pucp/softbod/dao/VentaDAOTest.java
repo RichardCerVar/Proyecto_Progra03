@@ -1,13 +1,14 @@
 package pe.edu.pucp.softbod.dao;
 
+import pe.edu.pucp.softbod.dao.ventas.VentaDAO;
 import java.sql.Date;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.Test;
-import pe.edu.pucp.softbod.daoImp.VentaDAOImpl;
-import pe.edu.pucp.softbod.model.UsuarioDTO;
-import pe.edu.pucp.softbod.model.VentaDTO;
+import pe.edu.pucp.softbod.daoImp.ventas.VentaDAOImpl;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
+import pe.edu.pucp.softbod.model.ventas.VentaDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
 public class VentaDAOTest {

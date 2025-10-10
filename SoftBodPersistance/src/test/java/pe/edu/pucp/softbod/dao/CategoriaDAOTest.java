@@ -1,10 +1,11 @@
 package pe.edu.pucp.softbod.dao;
 
+import pe.edu.pucp.softbod.dao.almacen.CategoriaDAO;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.daoImp.CategoriaDAOImpl;
-import pe.edu.pucp.softbod.model.CategoriaDTO;
+import pe.edu.pucp.softbod.daoImp.almacen.CategoriaDAOImpl;
+import pe.edu.pucp.softbod.model.almacen.CategoriaDTO;
 
 public class CategoriaDAOTest {
     

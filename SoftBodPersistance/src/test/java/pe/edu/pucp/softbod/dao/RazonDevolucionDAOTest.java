@@ -1,10 +1,11 @@
 package pe.edu.pucp.softbod.dao;
 
+import pe.edu.pucp.softbod.dao.devolucion.RazonDevolucionDAO;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import pe.edu.pucp.softbod.daoImp.RazonDevolucionDAOImpl;
-import pe.edu.pucp.softbod.model.RazonDevolucionDTO;
+import pe.edu.pucp.softbod.daoImp.devolucion.RazonDevolucionDAOImpl;
+import pe.edu.pucp.softbod.model.devolucion.RazonDevolucionDTO;
 
 public class RazonDevolucionDAOTest {
     
