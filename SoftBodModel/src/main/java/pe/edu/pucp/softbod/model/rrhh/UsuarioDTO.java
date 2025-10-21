@@ -23,10 +23,8 @@ public class UsuarioDTO {
         this.activo = null;
     }
 
-    public UsuarioDTO(Integer usuarioId, String usuario, Tipo_Usuario tipoUsuarios, 
-                      String correo, String contrasenha, String nombre, String telefono, 
-                      Boolean activo) {
-        this.usuarioId = usuarioId;
+    public UsuarioDTO(String usuario, Tipo_Usuario tipoUsuarios, String correo, 
+                      String contrasenha, String nombre, String telefono, Boolean activo) {
         this.usuario = usuario;
         this.tipoUsuarios = tipoUsuarios;
         this.correo = correo;
