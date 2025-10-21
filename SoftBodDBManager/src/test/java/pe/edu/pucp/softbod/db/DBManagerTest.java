@@ -1,5 +1,4 @@
-package pe.edu.pucp.softinv.db;
-
+package pe.edu.pucp.softbod.db;
 
 import pe.edu.pucp.softbod.db.DBManager;
 import java.sql.Connection;

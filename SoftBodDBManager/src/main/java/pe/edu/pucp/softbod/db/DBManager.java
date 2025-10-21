@@ -6,8 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import pe.edu.pucp.softbod.db.util.MotorDeBaseDeDatos;
-
+import pe.edu.pucp.softbod.db.util.*;
 
 public  abstract class DBManager {
 
@@ -50,10 +49,9 @@ public  abstract class DBManager {
     public Connection getConnection() {
         try {
             Class.forName(this.driver);
-            //System.out.println(this.usuario);
-            //System.out.println(this.contraseña);
-            //System.out.println(Cifrado.descifrarMD5(this.contraseña));
-            this.conexion = DriverManager.getConnection(getURL(), this.usuario, this.contraseña);
+            
+            this.conexion = DriverManager.getConnection(getURL(), this.usuario, 
+                    Cifrado.descifrarMD5(this.contraseña));
         } catch (ClassNotFoundException | SQLException ex) {
             System.err.println("Error al generar la conexión - " + ex);
         }
