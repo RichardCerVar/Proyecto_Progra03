@@ -6,7 +6,7 @@
         <!-- Botones de acciones -->
         <div class="row mb-4">
             <div class="col-6">
-                <a href="Ventas/RegistrarVenta.aspx" class="card text-center text-white bg-primary text-decoration-none border-0">
+                <a href="RegistrarVenta.aspx" class="card text-center text-white bg-primary text-decoration-none border-0">
                     <div class="card-body">
                         <i class="bi bi-cart-plus fs-3"></i>
                         <h6 class="mt-2 mb-0">Registrar Venta</h6>
@@ -14,12 +14,14 @@
                 </a>
             </div>
             <div class="col-6">
+                <a href="RegistrarDevolucion.aspx" class="text-decoration-none" >
                 <div class="card text-center text-white" style="background-color:#e4572e;">
                     <div class="card-body">
                         <i class="bi bi-arrow-counterclockwise fs-3"></i>
                         <h6 class="mt-2 mb-0">Registrar Devolución</h6>
                     </div>
                 </div>
+                </a>
             </div>
         </div>
 
