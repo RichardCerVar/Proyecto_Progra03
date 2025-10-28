@@ -14,6 +14,13 @@ namespace SoftBodWA
 
         }
 
+        
+        protected void btnAgregarProducto_Click(object sender, EventArgs e)
+        {
+            string script = "window.onload = function() { showModalAgregarNuevoProducto() }; ";
+            ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
+        }
+
         protected void btnGuardarProducto_Click(object sender, EventArgs e)
         {
             try
@@ -26,25 +33,26 @@ namespace SoftBodWA
                 int stockMinimo = 0;
 
                 if (!string.IsNullOrEmpty(txtStockInicial.Text))
-                {
                     stockInicial = int.Parse(txtStockInicial.Text);
-                }
 
                 if (!string.IsNullOrEmpty(txtStockMinimo.Text))
-                {
                     stockMinimo = int.Parse(txtStockMinimo.Text);
-                }
-                // TODO: Llamar al servicio o lógica de negocio para guardar el producto
+
+                // TODO: Guardar producto...
 
                 LimpiarCamposModal();
-                Response.Write("<script>alert('Producto agregado exitosamente');</script>");
+
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                    "alert('Producto agregado exitosamente'); " +
+                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarProducto')); " +
+                    "if(modal) modal.hide();", true);
             }
             catch (Exception ex)
             {
-                // Manejo de error
-                Response.Write($"<script>alert('Error al agregar producto: {ex.Message}');</script>");
+                // También con ScriptManager para que sí se vea el error
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "error",
+                    $"alert('Error al agregar producto: {ex.Message}');", true);
             }
-
 
 
         }
@@ -61,6 +69,7 @@ namespace SoftBodWA
 
         protected void btnBuscarNombreProducto_Click(object sender, EventArgs e)
         {
+
         }
     }
 }

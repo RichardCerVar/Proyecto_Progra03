@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SoftBodWA
@@ -63,7 +65,44 @@ namespace SoftBodWA
 
         protected void btnCrearOperario_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string nombre = txtNombreCompleto.Text.Trim();
+                string usuario = txtUsuario.Text.Trim();
+                string correo = txtEmail.Text.Trim();
+                string telefono = txtTelefono.Text.Trim();
+                string contraseñaTemporal = txtContraseñaTemporal.Text.Trim();
 
+                // lógica real para guardar el nuevo operario
+
+                LimpiarCamposModal();
+
+                
+
+                // ✅ Mostrar mensaje y cerrar el modal correctamente (UpdatePanel compatible)
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaOperario",
+                    "alert('Operario creado exitosamente'); " +
+                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarOperario')); " +
+                    "if(modal) modal.hide();", true);
+
+                CargarOperarios();
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorOperario",
+                     $"alert('Error al crear operario: {ex.Message}');", true);
+            }
         }
+
+        private void LimpiarCamposModal()
+        {
+            txtNombreCompleto.Text = "";
+            txtUsuario.Text = "";
+            txtEmail.Text = "";
+            txtTelefono.Text = "";
+            txtContraseñaTemporal.Text = "";
+        }
+
     }
 }

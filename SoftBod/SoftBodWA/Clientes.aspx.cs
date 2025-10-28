@@ -114,7 +114,11 @@ namespace SoftBodWA
 
                 // Cerrar modal y mostrar mensaje de éxito
                 ScriptManager.RegisterStartupScript(this, GetType(), "success",
-                    "alert('Cliente agregado exitosamente.');", true);
+                    "alert('Cliente agregado exitosamente.');"+
+                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
+                    "if(modal) modal.hide();",true);
+
+                
             }
             catch (Exception ex)
             {

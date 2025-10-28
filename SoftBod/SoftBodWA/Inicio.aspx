@@ -6,12 +6,12 @@
         <!-- Botones de acciones -->
         <div class="row mb-4">
             <div class="col-6">
-                <div class="card text-center text-white bg-primary">
+                <a href="Ventas/RegistrarVenta.aspx" class="card text-center text-white bg-primary text-decoration-none border-0">
                     <div class="card-body">
                         <i class="bi bi-cart-plus fs-3"></i>
                         <h6 class="mt-2 mb-0">Registrar Venta</h6>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-6">
                 <div class="card text-center text-white" style="background-color:#e4572e;">

@@ -64,9 +64,9 @@
                 </asp:DropDownList>
             </div>
             <div class="col-md-3 text-end">
-                <button class="btn btn-primary" type="button" onclick="showModalAgregarNuevoProducto()">
-                    <i class="fa-solid fa-plus me-2"></i>Agregar Producto
-                </button>
+
+                <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Producto" CssClass="btn btn-primary fw-bold shadow" OnClick="btnAgregarProducto_Click" />
+                
             </div>
         </div>
 
