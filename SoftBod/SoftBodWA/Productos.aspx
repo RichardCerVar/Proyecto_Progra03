@@ -1,6 +1,10 @@
 ﻿<%@ Page Title="Gestión de Productos" Language="C#" MasterPageFile="~/SoftBod.Master" AutoEventWireup="true" CodeBehind="Productos.aspx.cs" Inherits="SoftBodWA.Productos" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cphScripts" runat="server">
+    <script src="Scripts/SoftBodScripts/AgregarNuevoProducto.js"></script>
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <!-- Encabezado principal -->
     <div class="container mt-4 mb-5">
@@ -46,18 +50,21 @@
         <!-- Buscador -->
         <div class="row mb-4 align-items-center">
             <div class="col-md-6 mb-2">
-                <input type="text" class="form-control" placeholder="Buscar productos por nombre...">
+               <div class="input-group">
+                    <asp:TextBox ID="txtBuscarProducto" CssClass="form-control" placeholder="Buscar productos por nombre..." runat="server"></asp:TextBox>
+                    <asp:Button ID="btnBuscarNombreProducto" CssClass="btn btn-primary" runat="server" Text="Buscar" OnClick="btnBuscarNombreProducto_Click"/>
+                </div>
             </div>
             <div class="col-md-3 mb-2">
-                <select class="form-select">
-                    <option>Todas las categorías</option>
-                    <option>Granos</option>
-                    <option>Lácteos</option>
-                    <option>Aceites</option>
-                </select>
+                <asp:DropDownList ID="ddlCategoriaFiltro" CssClass="form-select" runat="server">
+                    <asp:ListItem Text="Todas las categorías" Value="0" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="Granos" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Lácteos" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Aceites" Value="3"></asp:ListItem>
+                </asp:DropDownList>
             </div>
             <div class="col-md-3 text-end">
-                <button class="btn btn-primary">
+                <button class="btn btn-primary" type="button" onclick="showModalAgregarNuevoProducto()">
                     <i class="fa-solid fa-plus me-2"></i>Agregar Producto
                 </button>
             </div>
@@ -120,6 +127,70 @@
                         <input class="form-check-input" type="checkbox" checked>
                         <label class="form-check-label small text-muted">Activo</label>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal Agregar Producto -->
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="modalAgregarProductoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="modalAgregarProductoLabel">Agregar Nuevo Producto</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <!-- Nombre del Producto -->
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre del Producto"></asp:Label>
+                                <asp:TextBox ID="txtNombreProducto" CssClass="form-control" placeholder="Ej: Arroz Diana 500g" runat="server"></asp:TextBox>
+                            </div>
+
+                            <!-- Categoría -->
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Categoría"></asp:Label>
+                                <asp:DropDownList ID="ddlCategoria" CssClass="form-select" runat="server">
+                                    <asp:ListItem Text="Seleccionar categoría" Value="0" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Text="Granos" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Lácteos" Value="2"></asp:ListItem>
+                                    <asp:ListItem Text="Aceites" Value="3"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
+
+                            <!-- O crear nueva categoría -->
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="O crear nueva categoría"></asp:Label>
+                                <asp:TextBox ID="txtNuevaCategoria" CssClass="form-control" placeholder="Nueva categoría" runat="server"></asp:TextBox>
+                            </div>
+
+                            <!-- Precio y Stock Inicial -->
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Precio"></asp:Label>
+                                    <asp:TextBox ID="txtPrecio" CssClass="form-control" placeholder="0.00" runat="server"></asp:TextBox>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Stock Inicial"></asp:Label>
+                                    <asp:TextBox ID="txtStockInicial" CssClass="form-control" placeholder="0" runat="server"></asp:TextBox>
+                                </div>
+                            </div>
+
+                            <!-- Stock Mínimo -->
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Stock Mínimo"></asp:Label>
+                                <asp:TextBox ID="txtStockMinimo" CssClass="form-control" placeholder="5" runat="server"></asp:TextBox>
+                            </div>
+
+                            <!-- Botón Agregar -->
+                            <asp:LinkButton ID="btnGuardarProducto" runat="server" CssClass="btn btn-dark w-100 py-2 fw-semibold" Text="Agregar Producto" OnClick="btnGuardarProducto_Click" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
             </div>
         </div>

@@ -79,6 +79,11 @@
     </style>
 </head>
 <body>
+
+    <asp:ContentPlaceHolder ID="cphScripts" runat="server">
+
+    </asp:ContentPlaceHolder>
+
     <form id="form1" runat="server">
         <!-- HEADER SUPERIOR -->
         <header>
