@@ -119,6 +119,7 @@
     <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarCliente.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarNuevoProducto.js" />
+    <Content Include="Scripts\SoftBodScripts\AgregarOperario.js" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

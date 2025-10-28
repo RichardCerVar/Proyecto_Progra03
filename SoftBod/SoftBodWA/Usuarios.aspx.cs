@@ -53,5 +53,17 @@ namespace SoftBodWA
             public string Telefono { get; set; }
             public bool Activo { get; set; }
         }
+
+
+        protected void btnAgregarOperario_Click(object sender, EventArgs e)
+        {
+            string script = "window.onload = function() { showModalAgregarOperario() }; ";
+            ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
+        }
+
+        protected void btnCrearOperario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
