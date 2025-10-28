@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace SoftBodWA
@@ -71,5 +72,71 @@ namespace SoftBodWA
             public decimal Deuda { get; set; }
             public DateTime FechaLimite { get; set; }
         }
+
+        protected void btnAgregar_Click(object sender, EventArgs e)
+        {
+            string script = "window.onload = function() { showModalAgregarCliente() }; ";
+            ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
+        }
+        protected void btnGuardarCliente_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Obtener datos del formulario
+                string nombreCompleto = txtNombreCompleto.Text.Trim();
+                string alias = txtAlias.Text.Trim();
+                string telefono = txtTelefono.Text.Trim();
+                string fechaLimiteStr = txtFechaLimite.Text;
+
+                // Validaciones básicas
+                if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias))
+                {
+                    // Mostrar mensaje de error
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alert",
+                        "alert('Por favor complete los campos obligatorios.');", true);
+                    return;
+                }
+
+                DateTime fechaLimite = DateTime.MinValue;
+                if (!string.IsNullOrEmpty(fechaLimiteStr))
+                {
+                    fechaLimite = DateTime.Parse(fechaLimiteStr);
+                }
+
+                // TODO: Aquí va la lógica para guardar el cliente
+
+                // Limpiar campos
+                LimpiarCamposModal();
+
+                // Recargar datos
+                CargarClientes();
+                ActualizarResumen();
+
+                // Cerrar modal y mostrar mensaje de éxito
+                ScriptManager.RegisterStartupScript(this, GetType(), "success",
+                    "alert('Cliente agregado exitosamente.');", true);
+            }
+            catch (Exception ex)
+            {
+                // Manejo de errores
+                ScriptManager.RegisterStartupScript(this, GetType(), "error",
+                    $"alert('Error al agregar cliente: {ex.Message}');", true);
+            }
+        }
+
+        private void ActualizarResumen()
+        {
+            // TODO: Calcular totales
+
+        }
+
+        private void LimpiarCamposModal()
+        {
+            txtNombreCompleto.Text = "";
+            txtAlias.Text = "";
+            txtTelefono.Text = "";
+            txtFechaLimite.Text = "";
+        }
+    
     }
 }
