@@ -27,7 +27,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     
     public DetalleVentaDAOImpl() {
         super("BOD_DETALLE_VENTA");
-        this.detalleVenta=null;
+        this.detalleVenta = null;
         this.retornarLlavePrimaria = true;
         this.cargarTabla = new CargarTablas();
     }

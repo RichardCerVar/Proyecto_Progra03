@@ -13,7 +13,7 @@ public class DetalleVentaBO {
         this.detalleVentaDAO = new DetalleVentaDAOImpl();
     }
     
-    public Integer insertar(DetalleVentaDTO detalleVenta){
+    public Integer insertar(DetalleVentaDTO detalleVenta){//el front lo envia con producto(basta que el objeto tenga solo id), subtotal, cantidad
         return this.detalleVentaDAO.insertar(detalleVenta);
     }
     
