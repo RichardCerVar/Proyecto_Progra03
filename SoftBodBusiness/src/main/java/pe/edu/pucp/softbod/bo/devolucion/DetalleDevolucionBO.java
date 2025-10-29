@@ -21,7 +21,7 @@ public class DetalleDevolucionBO {
         return this.detalleDevolucionDAO.obtenerPorId(productoId, devolucionId);
     }
     
-    public ArrayList<DetalleDevolucionDTO> litarTodos (){
+    public ArrayList<DetalleDevolucionDTO> listarTodos (){
         return this.detalleDevolucionDAO.listarTodos();
     }
     

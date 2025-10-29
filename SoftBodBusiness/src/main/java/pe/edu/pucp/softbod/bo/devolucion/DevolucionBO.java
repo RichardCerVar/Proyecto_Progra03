@@ -37,7 +37,7 @@ public class DevolucionBO extends OperacionBOBase{
         return this.devolucionDAO.obtenerPorId(devolucionId);
     }
     
-    public ArrayList<DevolucionDTO> litarTodos (){
+    public ArrayList<DevolucionDTO> listarTodos (){
         return this.devolucionDAO.listarTodos();
     }
     

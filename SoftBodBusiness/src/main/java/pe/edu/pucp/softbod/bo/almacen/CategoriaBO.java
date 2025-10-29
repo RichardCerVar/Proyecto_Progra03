@@ -30,7 +30,7 @@ public class CategoriaBO {
         return this.categoriaDAO.obtenerPorId(categoriaId);
     }
     
-    public ArrayList<CategoriaDTO> litarTodos (){
+    public ArrayList<CategoriaDTO> listarTodos (){
         return this.categoriaDAO.listarTodos();
     }
     
