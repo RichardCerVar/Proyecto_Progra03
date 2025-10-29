@@ -21,9 +21,8 @@ public class ClienteAlFiadoDTO {
         this.montoDeuda = null;
     }
 
-    public ClienteAlFiadoDTO(Integer clienteId, String alias, String nombre, String telefono, 
+    public ClienteAlFiadoDTO(String alias, String nombre, String telefono, 
                              Date fechaDePago, Boolean activo, Double montoDeuda) {
-        this.clienteId = clienteId;
         this.alias = alias;
         this.nombre = nombre;
         this.telefono = telefono;

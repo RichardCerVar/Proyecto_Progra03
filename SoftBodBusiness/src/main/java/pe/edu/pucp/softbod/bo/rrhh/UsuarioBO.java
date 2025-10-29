@@ -9,6 +9,7 @@ import pe.edu.pucp.softbod.daoImp.rrhh.UsuarioDAOImpl;
 import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
+import pe.edu.pucp.softbod.model.util.Tipo_Usuario;
 
 public class UsuarioBO extends OperacionBOBase{
     
@@ -22,41 +23,49 @@ public class UsuarioBO extends OperacionBOBase{
         this.loginBO = new LoginBO();
     }
     
-    public Integer insertar(UsuarioDTO usuario) {
+    public Integer insertar(String usuario, String correo, String tipoUsuarios,
+            String contrasenha, String nombre, String telefono, Boolean activo) {
+        Tipo_Usuario tipUser;
+        if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
+            tipUser = Tipo_Usuario.ADMINISTRADOR;
+        else tipUser = Tipo_Usuario.OPERARIO;
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+                       contrasenha,  nombre, telefono, activo);
+        
         try {
-            // 1. Validar datos de entrada
-            if (usuario == null) {
-                System.err.println("Error: Usuario no puede ser null");
-                return null;
-            }
+//            // 1. Validar datos de entrada 
+//            if (usuarioDTO == null) {
+//                System.err.println("Error: Usuario no puede ser null");
+//                return null;
+//            } NUNCA ES NULA
             
             // 2. Validar que la contraseña cumpla con el formato requerido
-            if (usuario.getContrasenha() == null || 
-                !loginBO.validarFormatoContrasenha(usuario.getContrasenha())) {
+            if (usuarioDTO.getContrasenha() == null || 
+                !loginBO.validarFormatoContrasenha(usuarioDTO.getContrasenha())) {
                 System.err.println("Error: La contraseña no cumple con el formato requerido");
                 return null;
             }
             
             // 3. Validar que el correo sea único
-            if (!validarCorreoUnico(usuario.getCorreo())) {
+            if (!validarCorreoUnico(usuarioDTO.getCorreo())) {
                 System.err.println("Error: El correo ya está registrado");
                 return null;
             }
             
             // 4. Validar que el nombre de usuario sea único
-            if (!validarUsuarioUnico(usuario.getUsuario())) {
+            if (!validarUsuarioUnico(usuarioDTO.getUsuario())) {
                 System.err.println("Error: El nombre de usuario ya está registrado");
                 return null;
             }
             
             // 5. Insertar usuario
-            Integer resultado = this.usuarioDAO.insertar(usuario);
+            Integer resultado = this.usuarioDAO.insertar(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
-                usuario.setUsuarioId(resultado);
+                usuarioDTO.setUsuarioId(resultado);
                 
                 // 6. Registrar en historial
-                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.INSERCION);
+                registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.INSERCION);
                 
                 System.out.println("✓ Usuario insertado exitosamente. ID: " + resultado);
             }
@@ -69,24 +78,31 @@ public class UsuarioBO extends OperacionBOBase{
         }
     }
     
-    public Integer modificar(UsuarioDTO usuario) {
+    public Integer modificar(String usuario, String tipoUsuarios, String correo, 
+                      String contrasenha, String nombre, String telefono, Boolean activo) {
+        Tipo_Usuario tipUser;
+        if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
+            tipUser = Tipo_Usuario.ADMINISTRADOR;
+        else tipUser = Tipo_Usuario.OPERARIO;
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+                       contrasenha,  nombre, telefono, activo);
         try {
-            if (usuario == null || usuario.getUsuarioId() == null) {
+            if (usuario == null || usuarioDTO.getUsuarioId() == null) {
                 System.err.println("Error: Usuario inválido");
                 return null;
             }
             
             // Validar correo único si se está modificando
-            if (usuario.getCorreo() != null && 
-                !validarCorreoUnicoParaModificar(usuario.getUsuarioId(), usuario.getCorreo())) {
+            if (usuarioDTO.getCorreo() != null && 
+                !validarCorreoUnicoParaModificar(usuarioDTO.getUsuarioId(), usuarioDTO.getCorreo())) {
                 System.err.println("Error: El correo ya está registrado en otro usuario");
                 return null;
             }
             
-            Integer resultado = this.usuarioDAO.modificar(usuario);
+            Integer resultado = this.usuarioDAO.modificar(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
-                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.MODIFICACION);
+                registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.MODIFICACION);
                 System.out.println("✓ Usuario modificado exitosamente");
             }
             
@@ -98,17 +114,25 @@ public class UsuarioBO extends OperacionBOBase{
         }
     }
 
-    public Integer eliminarLogicoUsuario(UsuarioDTO usuario) {
+    public Integer eliminarLogicoUsuario(String usuario, String tipoUsuarios, String correo, 
+                      String contrasenha, String nombre, String telefono, Boolean activo) {
+        Tipo_Usuario tipUser;
+        if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
+            tipUser = Tipo_Usuario.ADMINISTRADOR;
+        else tipUser = Tipo_Usuario.OPERARIO;
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+                       contrasenha,  nombre, telefono, activo);
+        
         try {
-            if (usuario == null || usuario.getUsuarioId() == null) {
+            if (usuario == null || usuarioDTO.getUsuarioId() == null) {
                 System.err.println("Error: Usuario inválido");
                 return null;
             }
             
-            Integer resultado = this.usuarioDAO.eliminarLogicoUsuario(usuario);
+            Integer resultado = this.usuarioDAO.eliminarLogicoUsuario(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
-                registrarEnHistorial(usuario, "BOD_USUARIOS", Tipo_Operacion.ELIMINACION);
+                registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.ELIMINACION);
                 System.out.println("✓ Usuario eliminado lógicamente");
             }
             

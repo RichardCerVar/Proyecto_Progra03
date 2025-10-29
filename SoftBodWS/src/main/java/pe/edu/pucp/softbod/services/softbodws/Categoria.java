@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/WebService.java to edit this template
- */
 package pe.edu.pucp.softbod.services.softbodws;
 
 import jakarta.jws.WebService;
@@ -20,26 +16,26 @@ public class Categoria {
         this.categoriaBO = new CategoriaBO();
     }
     
-    @WebMethod(operationName = "insertar")
-    public Integer insertar(@WebParam(name = "categoria")CategoriaDTO categoria){
+    @WebMethod(operationName = "insertarCategoria")
+    public Integer insertarCategoria(@WebParam(name = "categoria")CategoriaDTO categoria){
         return this.categoriaBO.insertar(categoria);
     }
     
-    @WebMethod(operationName = "eliminar")
-    public Integer eliminar(CategoriaDTO categoria){
+    @WebMethod(operationName = "eliminarCategoria")
+    public Integer eliminarCategoria(@WebParam(name = "categoria")CategoriaDTO categoria){
         return this.categoriaBO.eliminar(categoria);
     }
     
-    @WebMethod(operationName = "obtenerPorId")
-    public CategoriaDTO obtenerPorId (@WebParam(name = "categoriaId")Integer categoriaId){
+    @WebMethod(operationName = "obtenerCategoriaPorId")
+    public CategoriaDTO obtenerCategoriaPorId (@WebParam(name = "categoriaId")Integer categoriaId){
         return this.categoriaBO.obtenerPorId(categoriaId);
-    
     }
-    @WebMethod(operationName = "listarTodos")
-    public ArrayList<CategoriaDTO> listarTodos (){
+    
+    @WebMethod(operationName = "listarTodasCategorias")
+    public ArrayList<CategoriaDTO> listarTodasCategorias (){
         return this.categoriaBO.listarTodos();
-    
     }
+    
     @WebMethod(operationName = "categoriaContieneProductos")
     public Boolean categoriaContieneProductos(@WebParam(name = "categoriaId")Integer categoriaId) {
         return this.categoriaBO.categoriaContieneProductos(categoriaId);

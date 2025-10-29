@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/WebServices/WebService.java to edit this template
- */
 package pe.edu.pucp.softbod.services.softbodws;
 
 import jakarta.jws.WebService;
@@ -20,33 +16,33 @@ public class DetalleDevolucion {
         this.detalleDevolucionBO = new DetalleDevolucionBO();
     }
     
-    @WebMethod(operationName = "insertar")
-    public Integer insertar(@WebParam(name = "detalleDevolucion")DetalleDevolucionDTO detalleDevolucion){
+    @WebMethod(operationName = "insertarDetalleDevolucion")
+    public Integer insertarDetalleDevolucion(@WebParam(name = "detalleDevolucion")DetalleDevolucionDTO detalleDevolucion){
         return this.detalleDevolucionBO.insertar(detalleDevolucion);
     }
     
-    @WebMethod(operationName = "obtenerPorId")
-    public DetalleDevolucionDTO obtenerPorId (@WebParam(name = "productoId")Integer productoId,@WebParam(name = "devolucionId")Integer devolucionId){
+    @WebMethod(operationName = "obtenerDetalleDevolucionPorId")
+    public DetalleDevolucionDTO obtenerDetalleDevolucionPorId (@WebParam(name = "productoId")Integer productoId,@WebParam(name = "devolucionId")Integer devolucionId){
         return this.detalleDevolucionBO.obtenerPorId(productoId, devolucionId);
     }
     
-    @WebMethod(operationName = "listarTodos")
-    public ArrayList<DetalleDevolucionDTO> listarTodos (){
+    @WebMethod(operationName = "listarTodosDetallesDevolucion")
+    public ArrayList<DetalleDevolucionDTO> listarTodosDetallesDevolucion (){
         return this.detalleDevolucionBO.listarTodos();
     }
     
-    @WebMethod(operationName = "listarPorProducto")
-    public ArrayList<DetalleDevolucionDTO> listarPorProducto(@WebParam(name = "productoId")Integer productoId){
+    @WebMethod(operationName = "listarDetallesDevolucionPorProducto")
+    public ArrayList<DetalleDevolucionDTO> listarDetallesDevolucionPorProducto(@WebParam(name = "productoId")Integer productoId){
         return this.detalleDevolucionBO.listarPorProducto(productoId);
     }
     
-    @WebMethod(operationName = "listarPorDevolucion")
-    public ArrayList<DetalleDevolucionDTO> listarPorDevolucion(@WebParam(name = "devolucionId")Integer devolucionId){
+    @WebMethod(operationName = "listarDetallesDevolucionPorDevolucion")
+    public ArrayList<DetalleDevolucionDTO> listarDetallesDevolucionPorDevolucion(@WebParam(name = "devolucionId")Integer devolucionId){
         return this.detalleDevolucionBO.listarPorDevolucion(devolucionId);
     }
     
-    @WebMethod(operationName = "listarPorRazonDevolucion")
-    public ArrayList<DetalleDevolucionDTO> listarPorRazonDevolucion(@WebParam(name = "razonDevolucion")String razonDevolucion){
+    @WebMethod(operationName = "listarDetallesDevolucionPorRazon")
+    public ArrayList<DetalleDevolucionDTO> listarDetallesDevolucionPorRazon(@WebParam(name = "razonDevolucion")String razonDevolucion){
         return this.detalleDevolucionBO.listarPorRazonDevolucion(razonDevolucion);
     }
 }

@@ -1,5 +1,6 @@
 package pe.edu.pucp.softbod.bo.gestclientes;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.gestclientes.ClienteAlFiadoDAO;
 import pe.edu.pucp.softbod.daoImp.gestclientes.ClienteAlFiadoDAOImpl;
@@ -13,11 +14,17 @@ public class ClienteAlFiadoBO {
         this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImpl();
     }
     
-    public Integer insertar(ClienteAlFiadoDTO clienteAlFiado){
+    public Integer insertar(String alias, String nombre, String telefono, 
+                             Date fechaDePago, Boolean activo, Double montoDeuda){
+        ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO( alias, nombre,  
+                        telefono, fechaDePago,  activo,  montoDeuda);
         return this.clienteAlFiadoDAO.insertar(clienteAlFiado);
     }
     
-    public Integer modificar(ClienteAlFiadoDTO clienteAlFiado){
+    public Integer modificar (String alias, String nombre, String telefono, 
+                             Date fechaDePago, Boolean activo, Double montoDeuda){
+        ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO( alias, nombre,  
+                        telefono, fechaDePago,  activo,  montoDeuda);
         return this.clienteAlFiadoDAO.modificar(clienteAlFiado);
     }
     

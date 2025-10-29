@@ -9,8 +9,7 @@ public class RazonDevolucionDTO {
         this.descripcion = null;
     }
 
-    public RazonDevolucionDTO(Integer razonDevolucionId, String descripcion) {
-        this.razonDevolucionId = razonDevolucionId;
+    public RazonDevolucionDTO(String descripcion) {
         this.descripcion = descripcion;
     }
 

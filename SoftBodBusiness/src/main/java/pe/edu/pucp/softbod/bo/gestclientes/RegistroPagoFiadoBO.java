@@ -12,6 +12,7 @@ import pe.edu.pucp.softbod.model.gestclientes.RegistroPagoFiadoDTO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
 import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
+import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
 
 public class RegistroPagoFiadoBO extends OperacionBOBase{
     
@@ -27,7 +28,15 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
     
     // ==================== MÉTODOS DAO EXISTENTES ====================
     
-    public Integer insertar(RegistroPagoFiadoDTO registroPagoFiado){
+    public Integer insertar(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente, 
+                                  Date fecha, String metodoPago, Double monto){
+        Tipo_de_pago metPago;
+        if (metodoPago.equals(Tipo_de_pago.EFECTIVO.name()))
+            metPago = Tipo_de_pago.EFECTIVO;
+        else metPago = Tipo_de_pago.TRANSFERENCIA;
+        
+        RegistroPagoFiadoDTO registroPagoFiado = new RegistroPagoFiadoDTO(pagoId, usuario, cliente, 
+                                   fecha, metPago, monto);
         return this.registroPagoFiadoDAO.insertar(registroPagoFiado);
     }
     

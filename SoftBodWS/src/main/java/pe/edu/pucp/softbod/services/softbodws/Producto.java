@@ -17,93 +17,78 @@ public class Producto {
         productoBO = new ProductoBO();
     }
 
-    @WebMethod(operationName = "insertar")
-    public Integer insertar(@WebParam(name = "producto")ProductoDTO producto) {
+    @WebMethod(operationName = "insertarProducto")
+    public Integer insertarProducto(@WebParam(name = "producto")ProductoDTO producto) {
         return this.productoBO.insertar(producto);
     }
 
-    @WebMethod(operationName = "modificar")
-    public Integer modificar(@WebParam(name = "producto")ProductoDTO producto) {
+    @WebMethod(operationName = "modificarProducto")
+    public Integer modificarProducto(@WebParam(name = "producto")ProductoDTO producto) {
         return this.productoBO.modificar(producto);
     }
 
-    @WebMethod(operationName = "obtenerPorId")
-    public ProductoDTO obtenerPorId(@WebParam(name = "productoId")Integer productoId) {
+    @WebMethod(operationName = "obtenerProductoPorId")
+    public ProductoDTO obtenerProductoPorId(@WebParam(name = "productoId")Integer productoId) {
         return this.productoBO.obtenerPorId(productoId);
     }
     
-    @WebMethod(operationName = "listarTodos")
-    public ArrayList<ProductoDTO> listarTodos() {
+    @WebMethod(operationName = "listarTodosProductos")
+    public ArrayList<ProductoDTO> listarTodosProductos() {
         return this.productoBO.listarTodos();
     }
 
-    @WebMethod(operationName = "listarTodosActivos")
-    public ArrayList<ProductoDTO> listarTodosActivos() {
+    @WebMethod(operationName = "listarTodosProductosActivos")
+    public ArrayList<ProductoDTO> listarTodosProductosActivos() {
         return this.productoBO.listarTodosActivos();
     }
 
-    @WebMethod(operationName = "listarTodosInactivos")
-    public ArrayList<ProductoDTO> listarTodosInactivos() {
+    @WebMethod(operationName = "listarTodosProductosInactivos")
+    public ArrayList<ProductoDTO> listarTodosProductosInactivos() {
         return this.productoBO.listarTodosInactivos();
     }
 
-    @WebMethod(operationName = "listarTodosPorNombre")
-    public ArrayList<ProductoDTO> listarTodosPorNombre(@WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombre")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombre(@WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombre(nombreProd);
     }
 
-    @WebMethod(operationName = "listarTodosPorNombreParcialActivo")
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialActivo(@WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombreParcialActivo")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombreParcialActivo(@WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombreParcialActivo(nombreProd);
     }
 
-    @WebMethod(operationName = "listarTodosPorNombreParcialInactivo")
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialInactivo(@WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombreParcialInactivo")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombreParcialInactivo(@WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombreParcialInactivo(nombreProd);
     }
 
-    @WebMethod(operationName = "listarTodosPorCategoria")
-    public ArrayList<ProductoDTO> listarTodosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
+    @WebMethod(operationName = "listarTodosProductosPorCategoria")
+    public ArrayList<ProductoDTO> listarTodosProductosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
         return this.productoBO.listarTodosPorCategoria(nameCategoria);
     }
 
-    @WebMethod(operationName = "listarTodosActivosPorCategoria")
-    public ArrayList<ProductoDTO> listarTodosActivosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
+    @WebMethod(operationName = "listarTodosProductosActivosPorCategoria")
+    public ArrayList<ProductoDTO> listarTodosProductosActivosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
         return this.productoBO.listarTodosActivosPorCategoria(nameCategoria);
     }
     
-    @WebMethod(operationName = "listarTodosInactivosPorCategoria")
-    public ArrayList<ProductoDTO> listarTodosInactivosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
+    @WebMethod(operationName = "listarTodosProductosInactivosPorCategoria")
+    public ArrayList<ProductoDTO> listarTodosProductosInactivosPorCategoria(@WebParam(name = "nameCategoria")String nameCategoria) {
         return this.productoBO.listarTodosInactivosPorCategoria(nameCategoria);
     }
     
-    @WebMethod(operationName = "listarTodosPorNombreParcialYcategoria")
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoria(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombreParcialYcategoria")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombreParcialYcategoria(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombreParcialYcategoria(nameCategoria, nombreProd);
     }
     
-    @WebMethod(operationName = "listarTodosPorNombreParcialYcategoriaActivo")
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaActivo(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombreParcialYcategoriaActivo")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombreParcialYcategoriaActivo(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombreParcialYcategoriaActivo(nameCategoria, nombreProd);
     }
 
-    @WebMethod(operationName = "listarTodosPorNombreParcialYcategoriaInactivo")
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaInactivo(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
+    @WebMethod(operationName = "listarTodosProductosPorNombreParcialYcategoriaInactivo")
+    public ArrayList<ProductoDTO> listarTodosProductosPorNombreParcialYcategoriaInactivo(@WebParam(name = "nameCategoria")String nameCategoria, @WebParam(name = "nombreProd")String nombreProd) {
         return this.productoBO.listarTodosPorNombreParcialYcategoriaInactivo(nameCategoria, nombreProd);
-    }
-
-    @WebMethod(operationName = "verificarStockDisponible")
-    public Boolean verificarStockDisponible(@WebParam(name = "productoId")Integer productoId, @WebParam(name = "cantidadRequerida")Integer cantidadRequerida) {
-        return this.productoBO.verificarStockDisponible(productoId, cantidadRequerida);
-    }
-    
-    @WebMethod(operationName = "calcularValorTotalInventarioActivo")
-    public Double calcularValorTotalInventarioActivo() {
-        return this.productoBO.calcularValorTotalInventarioActivo();
-    }
-    
-    @WebMethod(operationName = "calcularValorInventarioActivoPorCategoria")
-    public Double calcularValorInventarioActivoPorCategoria(@WebParam(name = "nombreCategoria")String nombreCategoria) {
-        return this.productoBO.calcularValorInventarioActivoPorCategoria(nombreCategoria);
     }
 }

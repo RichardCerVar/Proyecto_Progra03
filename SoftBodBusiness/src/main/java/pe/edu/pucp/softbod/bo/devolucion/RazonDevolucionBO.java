@@ -17,11 +17,14 @@ public class RazonDevolucionBO {
         this.detalleDevolucionBO = new DetalleDevolucionBO();
     }
     
-    public Integer insertar(RazonDevolucionDTO razonDevolucion){
+    public Integer insertar(String descripcion){
+        RazonDevolucionDTO razonDevolucion = new RazonDevolucionDTO(descripcion);
         return this.razonDevolucionDAO.insertar(razonDevolucion);
     }
     
-    public Integer eliminar(RazonDevolucionDTO razonDevolucion){
+    public Integer eliminar(Integer IdRazonDevolucion){
+        RazonDevolucionDTO razonDevolucion = new RazonDevolucionDTO();
+        razonDevolucion.setRazonDevolucionId(IdRazonDevolucion);
         return this.razonDevolucionDAO.eliminar(razonDevolucion);
     }
     
