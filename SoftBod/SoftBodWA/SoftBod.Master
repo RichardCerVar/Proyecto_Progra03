@@ -89,10 +89,19 @@
         <header>
             <div>
                 <h6 class="mb-0 fw-bold">Sistema de Bodega</h6>
-                <small class="text-muted">Bienvenido, Administrador</small>
+                <small class="text-muted" id="lblUsuario" runat="server"></small>
             </div>
-            <div>
-                <a href="#" class="nav-user"><i class="bi bi-person"></i>Mi Cuenta</a>
+            <div class="dropdown">
+                <a href="#" class="nav-user dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person"></i> Mi Cuenta
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                    <li>
+                        <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="dropdown-item text-danger" OnClick="btnCerrarSesion_Click">
+                            <i class="bi bi-box-arrow-left"></i> Cerrar sesión
+                        </asp:LinkButton>
+                    </li>
+                </ul>
             </div>
         </header>
 

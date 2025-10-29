@@ -11,10 +11,23 @@ namespace SoftBodWA
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["RolUsuario"] == null)
+                Response.Redirect("Login.aspx");
 
+            string rol = Session["RolUsuario"].ToString();
+
+            if (rol == "Operario")
+            {
+                chkArroz.Disabled = true;
+                chkAceite.Disabled = true;
+                chkLeche.Disabled = true;
+
+                chkArroz.Attributes["style"] = "cursor:not-allowed;opacity:0.6;";
+                chkAceite.Attributes["style"] = "cursor:not-allowed;opacity:0.6;";
+                chkLeche.Attributes["style"] = "cursor:not-allowed;opacity:0.6;";
+            }
         }
 
-        
         protected void btnAgregarProducto_Click(object sender, EventArgs e)
         {
             string script = "window.onload = function() { showModalAgregarNuevoProducto() }; ";
@@ -65,7 +78,6 @@ namespace SoftBodWA
             txtStockInicial.Text = "";
             txtStockMinimo.Text = "";
         }
-
 
         protected void btnBuscarNombreProducto_Click(object sender, EventArgs e)
         {

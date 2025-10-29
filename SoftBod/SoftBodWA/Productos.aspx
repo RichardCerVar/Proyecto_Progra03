@@ -84,7 +84,7 @@
                     <p class="mb-0 fw-bold">S/. 2.50</p>
                     <small class="text-muted">Stock: 45</small>
                     <div class="form-check form-switch mt-1">
-                        <input class="form-check-input" type="checkbox" checked>
+                        <input class="form-check-input" type="checkbox" id="chkArroz" runat="server" checked />
                         <label class="form-check-label small text-muted">Activo</label>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                     <p class="mb-0 fw-bold text-warning"><i class="fa-solid fa-triangle-exclamation me-1"></i>Stock: 12</p>
                     <p class="mb-0">S/. 3.80</p>
                     <div class="form-check form-switch mt-1">
-                        <input class="form-check-input" type="checkbox" checked>
+                        <input class="form-check-input" type="checkbox" id="chkAceite" runat="server" checked />
                         <label class="form-check-label small text-muted">Activo</label>
                     </div>
                 </div>
@@ -124,14 +124,12 @@
                     <p class="mb-0 fw-bold">S/. 1.85</p>
                     <small class="text-muted">Stock: 25</small>
                     <div class="form-check form-switch mt-1">
-                        <input class="form-check-input" type="checkbox" checked>
+                        <input class="form-check-input" type="checkbox" id="chkLeche" runat="server" checked />
                         <label class="form-check-label small text-muted">Activo</label>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
 
     <!-- Modal Agregar Producto -->
     <asp:ScriptManager runat="server"></asp:ScriptManager>
