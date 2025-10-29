@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.devolucion.DetalleDevolucionBO;
 import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
 
-/**
- *
- * @author sergi
- */
 @WebService(serviceName = "DetalleDevolucion")
 public class DetalleDevolucion {
 

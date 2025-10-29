@@ -13,10 +13,7 @@ import pe.edu.pucp.softbod.bo.devolucion.DevolucionBO;
 import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.devolucion.DevolucionDTO;
 
-/**
- *
- * @author sergi
- */
+
 @WebService(serviceName = "Devolucion")
 public class Devolucion {
     private DevolucionBO devolucionBO;
