@@ -9,8 +9,7 @@ public class CategoriaDTO {
         this.descripcion = null;
     }
 
-    public CategoriaDTO(Integer categoriaId, String descripcion) {
-        this.categoriaId = categoriaId;
+    public CategoriaDTO(String descripcion) {
         this.descripcion = descripcion;
     }
 

@@ -22,10 +22,9 @@ public class ProductoDTO {
         this.activo = null;
     }
 
-    public ProductoDTO(Integer productoId, CategoriaDTO categoria, String nombre, 
+    public ProductoDTO(CategoriaDTO categoria, String nombre, 
                        Double precioUnitario, Unidad_Medida unidadMedida, 
                        Integer stock, Integer stockMinimo, Boolean activo) {
-        this.productoId = productoId;
         this.categoria = categoria;
         this.nombre = nombre;
         this.precioUnitario = precioUnitario;

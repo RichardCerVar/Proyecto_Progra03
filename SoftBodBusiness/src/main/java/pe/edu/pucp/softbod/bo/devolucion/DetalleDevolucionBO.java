@@ -3,7 +3,10 @@ package pe.edu.pucp.softbod.bo.devolucion;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.devolucion.DetalleDevolucionDAO;
 import pe.edu.pucp.softbod.daoImp.devolucion.DetalleDevolucionDAOImpl;
+import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
 import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.DevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.RazonDevolucionDTO;
 
 public class DetalleDevolucionBO {
     
@@ -13,7 +16,10 @@ public class DetalleDevolucionBO {
         this.detalleDevolucionDAO = new DetalleDevolucionDAOImpl();
     }
     
-    public Integer insertar(DetalleDevolucionDTO detalleDevolucion){
+    public Integer insertar(DevolucionDTO devolucion, ProductoDTO producto, Double subtotal, 
+                                Integer cantidad, RazonDevolucionDTO razonDevolucion){
+        DetalleDevolucionDTO detalleDevolucion = new DetalleDevolucionDTO(devolucion, 
+                producto,  subtotal, cantidad,  razonDevolucion);
         return this.detalleDevolucionDAO.insertar(detalleDevolucion);
     }
     

@@ -29,7 +29,8 @@ public class DevolucionBO extends OperacionBOBase{
         this.historialBO = new HistorialDeOperacionBO();
     }
     
-    public Integer insertar(DevolucionDTO devolucion){
+    public Integer insertar(Double total, Date fecha, UsuarioDTO usuario ){
+        DevolucionDTO devolucion = new DevolucionDTO(total, fecha, usuario);
         return this.devolucionDAO.insertar(devolucion);
     }
     
@@ -82,17 +83,17 @@ public class DevolucionBO extends OperacionBOBase{
             // 4. Actualizar el ID en el DTO de devolución
             devolucion.setDevolucionId(devolucionId);
             
-            // 5. Insertar cada detalle de devolución
-            for (DetalleDevolucionDTO detalle : detalles) {
-                detalle.setDevolucion(devolucion);
-                
-                Integer resultadoDetalle = this.detalleDevolucionBO.insertar(detalle);
-                
-                if (resultadoDetalle == null || resultadoDetalle < 0) {
-                    System.err.println("Error: No se pudo insertar detalle de devolución");
-                    return null;
-                }
-            }
+//            // 5. Insertar cada detalle de devolución
+//            for (DetalleDevolucionDTO detalle : detalles) {
+//                detalle.setDevolucion(devolucion);
+//                
+//                Integer resultadoDetalle = this.detalleDevolucionBO.insertar(devolucion, null, totalCalculado, devolucionId, null);
+//                
+//                if (resultadoDetalle == null || resultadoDetalle < 0) {
+//                    System.err.println("Error: No se pudo insertar detalle de devolución");
+//                    return null;
+//                }
+//            }
             
             // 6. Registrar en el historial de operaciones
             registrarEnHistorial(devolucion.getUsuario(), "BOD_DEVOLUCIONES", Tipo_Operacion.INSERCION);

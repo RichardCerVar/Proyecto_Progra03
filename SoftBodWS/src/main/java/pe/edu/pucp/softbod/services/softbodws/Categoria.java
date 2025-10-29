@@ -17,8 +17,8 @@ public class Categoria {
     }
     
     @WebMethod(operationName = "insertarCategoria")
-    public Integer insertarCategoria(@WebParam(name = "categoria")CategoriaDTO categoria){
-        return this.categoriaBO.insertar(categoria);
+    public Integer insertarCategoria(@WebParam(name = "descripcion")String descripcion){
+        return this.categoriaBO.insertar(descripcion);
     }
     
     @WebMethod(operationName = "eliminarCategoria")

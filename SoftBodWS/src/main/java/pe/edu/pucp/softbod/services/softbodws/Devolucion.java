@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.devolucion.DevolucionBO;
 import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
 import pe.edu.pucp.softbod.model.devolucion.DevolucionDTO;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 
 
 @WebService(serviceName = "Devolucion")
@@ -19,8 +20,9 @@ public class Devolucion {
     }
     
     @WebMethod(operationName = "insertarDevolucion")
-    public Integer insertarDevolucion(@WebParam(name = "devolucion")DevolucionDTO devolucion){
-        return this.devolucionBO.insertar(devolucion);
+    public Integer insertarDevolucion(@WebParam(name = "total") Double total,
+            @WebParam(name = "fecha") Date fecha,@WebParam(name = "usuario") UsuarioDTO usuario){
+        return this.devolucionBO.insertar(total, fecha, usuario);
     }
     
     @WebMethod(operationName = "obtenerDevolucionPorId")

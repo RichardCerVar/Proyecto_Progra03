@@ -5,6 +5,7 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.almacen.ProductoBO;
+import pe.edu.pucp.softbod.model.almacen.CategoriaDTO;
 import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
 
 
@@ -18,13 +19,21 @@ public class Producto {
     }
 
     @WebMethod(operationName = "insertarProducto")
-    public Integer insertarProducto(@WebParam(name = "producto")ProductoDTO producto) {
-        return this.productoBO.insertar(producto);
+    public Integer insertarProducto(@WebParam(name = "categoria") CategoriaDTO categoria,
+            @WebParam(name = "nombre") String nombre, @WebParam(name = "precioUnitario") 
+            Double precioUnitario,@WebParam(name = "unidadMedida")  String unidadMedida, 
+            @WebParam(name = "stock")  Integer stock,@WebParam(name = "stockMinimo")  Integer stockMinimo,
+            @WebParam(name = "activo")  Boolean activo) {
+        return this.productoBO.insertar(categoria, nombre, precioUnitario, unidadMedida, stock, stockMinimo, activo);
     }
 
     @WebMethod(operationName = "modificarProducto")
-    public Integer modificarProducto(@WebParam(name = "producto")ProductoDTO producto) {
-        return this.productoBO.modificar(producto);
+    public Integer modificarProducto(@WebParam(name = "categoria") CategoriaDTO categoria,
+            @WebParam(name = "nombre") String nombre, @WebParam(name = "precioUnitario") 
+            Double precioUnitario,@WebParam(name = "unidadMedida")  String unidadMedida, 
+            @WebParam(name = "stock")  Integer stock,@WebParam(name = "stockMinimo")  Integer stockMinimo,
+            @WebParam(name = "activo")  Boolean activo) {
+        return this.productoBO.modificar(categoria, nombre, precioUnitario, unidadMedida, stock, stockMinimo, activo);
     }
 
     @WebMethod(operationName = "obtenerProductoPorId")

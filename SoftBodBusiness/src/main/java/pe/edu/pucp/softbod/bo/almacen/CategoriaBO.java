@@ -18,7 +18,8 @@ public class CategoriaBO {
 
     }
     
-    public Integer insertar(CategoriaDTO categoria){
+    public Integer insertar(String descripcion){
+        CategoriaDTO categoria = new CategoriaDTO(descripcion);
         return this.categoriaDAO.insertar(categoria);
     }
     

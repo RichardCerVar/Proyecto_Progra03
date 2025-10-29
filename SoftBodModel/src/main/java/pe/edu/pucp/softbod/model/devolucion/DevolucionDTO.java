@@ -17,8 +17,7 @@ public class DevolucionDTO {
         this.usuario = null;
     }
 
-    public DevolucionDTO(Integer devolucionId, Double total, Date fecha, UsuarioDTO usuario) {
-        this.devolucionId = devolucionId;
+    public DevolucionDTO(Double total, Date fecha, UsuarioDTO usuario) {
         this.total = total;
         this.fecha = fecha;
         this.usuario = usuario;

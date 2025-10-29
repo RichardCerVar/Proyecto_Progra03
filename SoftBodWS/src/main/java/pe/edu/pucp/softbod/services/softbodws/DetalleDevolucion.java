@@ -5,7 +5,10 @@ import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.devolucion.DetalleDevolucionBO;
+import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
 import pe.edu.pucp.softbod.model.devolucion.DetalleDevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.DevolucionDTO;
+import pe.edu.pucp.softbod.model.devolucion.RazonDevolucionDTO;
 
 @WebService(serviceName = "DetalleDevolucion")
 public class DetalleDevolucion {
@@ -17,8 +20,10 @@ public class DetalleDevolucion {
     }
     
     @WebMethod(operationName = "insertarDetalleDevolucion")
-    public Integer insertarDetalleDevolucion(@WebParam(name = "detalleDevolucion")DetalleDevolucionDTO detalleDevolucion){
-        return this.detalleDevolucionBO.insertar(detalleDevolucion);
+    public Integer insertarDetalleDevolucion(@WebParam(name = "devolucion") DevolucionDTO devolucion,
+            @WebParam(name = "producto") ProductoDTO producto,@WebParam(name = "subtotal")  Double subtotal, 
+            @WebParam(name = "cantidad") Integer cantidad,@WebParam(name = "razonDevolucion")  RazonDevolucionDTO razonDevolucion){
+        return this.detalleDevolucionBO.insertar(devolucion, producto, subtotal, cantidad, razonDevolucion);
     }
     
     @WebMethod(operationName = "obtenerDetalleDevolucionPorId")
