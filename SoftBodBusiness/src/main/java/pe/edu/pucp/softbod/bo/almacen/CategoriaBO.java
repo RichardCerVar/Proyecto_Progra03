@@ -51,7 +51,7 @@ public class CategoriaBO {
             
             // Listar productos de la categoría
             ArrayList<ProductoDTO> productos = 
-                this.productoBO.listarTodosPorCategoria(categoria.getDescripcion());
+                this.productoBO.listarProductosConFiltro(null,categoria.getDescripcion(),null);
             
             // Si tiene productos, retornar true
             if (productos != null && !productos.isEmpty()) {

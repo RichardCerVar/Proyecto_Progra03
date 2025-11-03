@@ -124,7 +124,8 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         return super.modificar();
     }
     
-    private ArrayList<ProductoDTO> listarProductosConFiltro(Boolean activo,
+    @Override
+    public ArrayList<ProductoDTO> listarProductosConFiltro(Boolean activo,
             String categoria, String nombreProducto) {
         String sql = "{ CALL SP_LISTAR_PRODUCTOS(?, ?, ?) }";
 
@@ -164,82 +165,6 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
         } catch (SQLException ex) {
             Logger.getLogger(ProductoDAOImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosActivos() {
-        Boolean activo = true;
-        String categoria = null;
-        String nombreProducto = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProducto);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosInactivos() {
-        Boolean activo = false;
-        String categoria = null;
-        String nombreProducto = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProducto);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombre(String nombreProd) {
-        Boolean activo = null;
-        String categoria = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialActivo(String nombreProd) {
-        Boolean activo = true;
-        String categoria = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialInactivo(String nombreProd) {
-        Boolean activo = false;
-        String categoria = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, categoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorCategoria(String nameCategoria) {
-        Boolean activo = null;
-        String nombreProd = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosActivosPorCategoria(String nameCategoria) {
-        Boolean activo = true;
-        String nombreProd = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosInactivosPorCategoria(String nameCategoria) {
-        Boolean activo = false;
-        String nombreProd = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoria(String nameCategoria, String nombreProd) {
-        Boolean activo = null;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaActivo(String nameCategoria, String nombreProd) {
-        Boolean activo = true;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
-    }
-
-    @Override
-    public ArrayList<ProductoDTO> listarTodosPorNombreParcialYcategoriaInactivo(String nameCategoria, String nombreProd) {
-        Boolean activo = false;
-        return (ArrayList<ProductoDTO>) listarProductosConFiltro(activo, nameCategoria, nombreProd);
     }
 
 }
