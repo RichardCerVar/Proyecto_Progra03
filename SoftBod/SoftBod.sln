@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftBodWA", "SoftBodWA\SoftBodWA.csproj", "{461A2732-E442-4735-BC06-3E1300BA9C99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftBodBusiness", "SoftBodBusiness\SoftBodBusiness.csproj", "{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{461A2732-E442-4735-BC06-3E1300BA9C99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{461A2732-E442-4735-BC06-3E1300BA9C99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{461A2732-E442-4735-BC06-3E1300BA9C99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
