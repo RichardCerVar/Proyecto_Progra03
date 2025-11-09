@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="insertarHistorialOperacion" type="tns:insertarHistorialOperacion" />
+  <xs:element name="insertarHistorialOperacionResponse" type="tns:insertarHistorialOperacionResponse" />
+  <xs:element name="listarHistorialOperacionesConFiltros" type="tns:listarHistorialOperacionesConFiltros" />
+  <xs:element name="listarHistorialOperacionesConFiltrosResponse" type="tns:listarHistorialOperacionesConFiltrosResponse" />
+  <xs:element name="listarHistorialOperacionesPorFecha" type="tns:listarHistorialOperacionesPorFecha" />
+  <xs:element name="listarHistorialOperacionesPorFechaResponse" type="tns:listarHistorialOperacionesPorFechaResponse" />
+  <xs:element name="listarHistorialOperacionesPorTabla" type="tns:listarHistorialOperacionesPorTabla" />
+  <xs:element name="listarHistorialOperacionesPorTablaResponse" type="tns:listarHistorialOperacionesPorTablaResponse" />
+  <xs:element name="listarHistorialOperacionesPorTablaYTipoOperacion" type="tns:listarHistorialOperacionesPorTablaYTipoOperacion" />
+  <xs:element name="listarHistorialOperacionesPorTablaYTipoOperacionResponse" type="tns:listarHistorialOperacionesPorTablaYTipoOperacionResponse" />
+  <xs:element name="listarHistorialOperacionesPorTipoOperacion" type="tns:listarHistorialOperacionesPorTipoOperacion" />
+  <xs:element name="listarHistorialOperacionesPorTipoOperacionResponse" type="tns:listarHistorialOperacionesPorTipoOperacionResponse" />
+  <xs:element name="listarHistorialOperacionesPorUsuario" type="tns:listarHistorialOperacionesPorUsuario" />
+  <xs:element name="listarHistorialOperacionesPorUsuarioResponse" type="tns:listarHistorialOperacionesPorUsuarioResponse" />
+  <xs:element name="listarHistorialOperacionesPorUsuarioYTabla" type="tns:listarHistorialOperacionesPorUsuarioYTabla" />
+  <xs:element name="listarHistorialOperacionesPorUsuarioYTablaResponse" type="tns:listarHistorialOperacionesPorUsuarioYTablaResponse" />
+  <xs:element name="listarTodosHistorialOperaciones" type="tns:listarTodosHistorialOperaciones" />
+  <xs:element name="listarTodosHistorialOperacionesResponse" type="tns:listarTodosHistorialOperacionesResponse" />
+  <xs:element name="obtenerHistorialOperacionPorId" type="tns:obtenerHistorialOperacionPorId" />
+  <xs:element name="obtenerHistorialOperacionPorIdResponse" type="tns:obtenerHistorialOperacionPorIdResponse" />
+  <xs:complexType name="insertarHistorialOperacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="historial" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="historialOperacionesDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaHora" type="tns:date" />
+      <xs:element minOccurs="0" name="operacion" type="tns:tipoOperacion" />
+      <xs:element minOccurs="0" name="operacionId" type="xs:int" />
+      <xs:element minOccurs="0" name="tablaAfectada" type="xs:string" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="date">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="usuarioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarHistorialOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosHistorialOperaciones">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodosHistorialOperacionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorUsuarioYTabla">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorUsuarioYTablaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTabla">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTablaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorFecha">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTipoOperacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="tipoOperacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTipoOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerHistorialOperacionPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="historialId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerHistorialOperacionPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesConFiltros">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="operacionId" type="xs:int" />
+      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoOperacion" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaOperacion" type="tns:date" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuario" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesConFiltrosResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTablaYTipoOperacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoOperacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTablaYTipoOperacionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tipoOperacion">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="INSERCION" />
+      <xs:enumeration value="MODIFICACION" />
+      <xs:enumeration value="ELIMINACION" />
+      <xs:enumeration value="CONSULTAR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPERARIO" />
+      <xs:enumeration value="ADMINISTRADOR" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

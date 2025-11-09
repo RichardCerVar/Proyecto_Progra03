@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="bloquearClienteAlFiadoPorMorosidad" type="tns:bloquearClienteAlFiadoPorMorosidad" />
+  <xs:element name="bloquearClienteAlFiadoPorMorosidadResponse" type="tns:bloquearClienteAlFiadoPorMorosidadResponse" />
+  <xs:element name="desbloquearClienteAlFiado" type="tns:desbloquearClienteAlFiado" />
+  <xs:element name="desbloquearClienteAlFiadoResponse" type="tns:desbloquearClienteAlFiadoResponse" />
+  <xs:element name="insertarClienteAlFiado" type="tns:insertarClienteAlFiado" />
+  <xs:element name="insertarClienteAlFiadoResponse" type="tns:insertarClienteAlFiadoResponse" />
+  <xs:element name="listarTodosClientesAlFiado" type="tns:listarTodosClientesAlFiado" />
+  <xs:element name="listarTodosClientesAlFiadoLike" type="tns:listarTodosClientesAlFiadoLike" />
+  <xs:element name="listarTodosClientesAlFiadoLikeResponse" type="tns:listarTodosClientesAlFiadoLikeResponse" />
+  <xs:element name="listarTodosClientesAlFiadoResponse" type="tns:listarTodosClientesAlFiadoResponse" />
+  <xs:element name="modificarClienteAlFiado" type="tns:modificarClienteAlFiado" />
+  <xs:element name="modificarClienteAlFiadoResponse" type="tns:modificarClienteAlFiadoResponse" />
+  <xs:element name="obtenerClienteAlFiadoPorId" type="tns:obtenerClienteAlFiadoPorId" />
+  <xs:element name="obtenerClienteAlFiadoPorIdResponse" type="tns:obtenerClienteAlFiadoPorIdResponse" />
+  <xs:complexType name="insertarClienteAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="date">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="insertarClienteAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosClientesAlFiadoLike">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cadena" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosClientesAlFiadoLikeResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:clienteAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="clienteAlFiadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosClientesAlFiado">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodosClientesAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:clienteAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarClienteAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="modificarClienteAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloquearClienteAlFiadoPorMorosidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloquearClienteAlFiadoPorMorosidadResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="desbloquearClienteAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="desbloquearClienteAlFiadoResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="obtenerClienteAlFiadoPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerClienteAlFiadoPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:clienteAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

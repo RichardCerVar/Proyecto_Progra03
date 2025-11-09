@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="eliminarRazonDevolucion" type="tns:eliminarRazonDevolucion" />
+  <xs:element name="eliminarRazonDevolucionResponse" type="tns:eliminarRazonDevolucionResponse" />
+  <xs:element name="insertarRazonDevolucion" type="tns:insertarRazonDevolucion" />
+  <xs:element name="insertarRazonDevolucionResponse" type="tns:insertarRazonDevolucionResponse" />
+  <xs:element name="listarRazonesDevolucionPorNombreParcial" type="tns:listarRazonesDevolucionPorNombreParcial" />
+  <xs:element name="listarRazonesDevolucionPorNombreParcialResponse" type="tns:listarRazonesDevolucionPorNombreParcialResponse" />
+  <xs:element name="listarTodasRazonesDevolucion" type="tns:listarTodasRazonesDevolucion" />
+  <xs:element name="listarTodasRazonesDevolucionResponse" type="tns:listarTodasRazonesDevolucionResponse" />
+  <xs:element name="obtenerRazonDevolucionPorId" type="tns:obtenerRazonDevolucionPorId" />
+  <xs:element name="obtenerRazonDevolucionPorIdResponse" type="tns:obtenerRazonDevolucionPorIdResponse" />
+  <xs:complexType name="insertarRazonDevolucion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarRazonDevolucionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarRazonDevolucion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdRazonDevolucion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarRazonDevolucionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerRazonDevolucionPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="razonId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerRazonDevolucionPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:razonDevolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="razonDevolucionDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="razonDevolucionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodasRazonesDevolucion">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodasRazonesDevolucionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:razonDevolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRazonesDevolucionPorNombreParcial">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRazonesDevolucionPorNombreParcialResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:razonDevolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

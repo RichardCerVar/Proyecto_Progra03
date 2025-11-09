@@ -1,0 +1,56 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using SoftBodBusiness.SoftWSClienteAlFiado;
+
+namespace SoftBodBusiness
+{
+    public class ClienteAlFiadoBO
+    {
+        private ClienteAlFiadoClient clienteAlFiadoSOAP;
+
+        public ClienteAlFiadoBO()
+        {
+            clienteAlFiadoSOAP = new ClienteAlFiadoClient();
+        }
+
+        public int insertarClienteAlFiado(string alias, string nombre, string telefono, date fechaDePago,
+                                          bool activo, double montoDeuda)
+        {
+            return clienteAlFiadoSOAP.insertarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+        }
+
+        public int modificarClienteAlFiado(string alias, string nombre, string telefono, date fechaDePago,
+                                           bool activo, double montoDeuda)
+        {
+            return clienteAlFiadoSOAP.modificarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+        }
+
+        public clienteAlFiadoDTO obtenerClienteAlFiadoPorId(int clienteId)
+        {
+            return clienteAlFiadoSOAP.obtenerClienteAlFiadoPorId(clienteId);
+        }
+
+        public List<clienteAlFiadoDTO> listarTodosClientesAlFiado()
+        {
+            return clienteAlFiadoSOAP.listarTodosClientesAlFiado().ToList();
+        }
+
+        public List<clienteAlFiadoDTO> listarTodosClientesAlFiadoLike(string cadena)
+        {
+            return clienteAlFiadoSOAP.listarTodosClientesAlFiadoLike(cadena).ToList();
+        }
+
+        public void bloquearClienteAlFiadoPorMorosidad(int clienteId)
+        {
+            clienteAlFiadoSOAP.bloquearClienteAlFiadoPorMorosidad(clienteId);
+        }
+
+        public void desbloquearClienteAlFiado(int clienteId)
+        {
+            clienteAlFiadoSOAP.desbloquearClienteAlFiado(clienteId);
+        }
+    }
+}

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="insertarRegistroPagoFiado" type="tns:insertarRegistroPagoFiado" />
+  <xs:element name="insertarRegistroPagoFiadoResponse" type="tns:insertarRegistroPagoFiadoResponse" />
+  <xs:element name="listarRegistrosPagoFiadoPorAliasCliente" type="tns:listarRegistrosPagoFiadoPorAliasCliente" />
+  <xs:element name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin" type="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
+  <xs:element name="listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" type="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" />
+  <xs:element name="listarRegistrosPagoFiadoPorAliasClienteResponse" type="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
+  <xs:element name="listarTodosRegistrosPagoFiado" type="tns:listarTodosRegistrosPagoFiado" />
+  <xs:element name="listarTodosRegistrosPagoFiadoResponse" type="tns:listarTodosRegistrosPagoFiadoResponse" />
+  <xs:element name="registrarPagoFiado" type="tns:registrarPagoFiado" />
+  <xs:element name="registrarPagoFiadoResponse" type="tns:registrarPagoFiadoResponse" />
+  <xs:complexType name="insertarRegistroPagoFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pagoId" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
+      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
+      <xs:element minOccurs="0" name="monto" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="clienteAlFiadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="date">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="insertarRegistroPagoFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="aliasCliente" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="tns:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:registroPagoFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registroPagoFiadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
+      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="metodoPago" type="tns:tipoDePago" />
+      <xs:element minOccurs="0" name="monto" type="xs:double" />
+      <xs:element minOccurs="0" name="pagoId" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registrarPagoFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="pago" type="tns:registroPagoFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registrarPagoFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodosRegistrosPagoFiado">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodosRegistrosPagoFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:registroPagoFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRegistrosPagoFiadoPorAliasCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="aliasCliente" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarRegistrosPagoFiadoPorAliasClienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:registroPagoFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPERARIO" />
+      <xs:enumeration value="ADMINISTRADOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoDePago">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EFECTIVO" />
+      <xs:enumeration value="TRANSFERENCIA" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

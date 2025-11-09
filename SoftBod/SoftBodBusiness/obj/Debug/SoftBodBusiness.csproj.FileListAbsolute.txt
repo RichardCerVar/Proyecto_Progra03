@@ -1,0 +1,7 @@
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll.config
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.pdb
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.AssemblyReference.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
+C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb
