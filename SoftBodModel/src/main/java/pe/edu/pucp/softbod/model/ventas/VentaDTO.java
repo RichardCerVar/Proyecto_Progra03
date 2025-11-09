@@ -8,7 +8,7 @@ public class VentaDTO {
     private Integer ventaId;
     private Double total;
     private Tipo_de_pago metodoPago;
-    private Date fecha;
+    private String fecha;
     private UsuarioDTO usuario;
 
     public VentaDTO() {
@@ -20,7 +20,7 @@ public class VentaDTO {
     }
 
     public VentaDTO(Integer ventaId, Double total, Tipo_de_pago metodoPago, 
-                     Date fecha, UsuarioDTO usuario) {
+                     String fecha, UsuarioDTO usuario) {
         this.ventaId = ventaId;
         this.total = total;
         this.metodoPago = metodoPago;
@@ -34,8 +34,8 @@ public class VentaDTO {
     public void setTotal(Double total) { this.total = total; }
     public Tipo_de_pago getMetodoPago() { return metodoPago; }
     public void setMetodoPago(Tipo_de_pago metodoPago) { this.metodoPago = metodoPago; }
-    public Date getFecha() { return fecha; }
-    public void setFecha(Date fecha) { this.fecha = fecha; }
+    public String getFecha() { return fecha; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
     public UsuarioDTO getUsuario() { return usuario; }
     public void setUsuario(UsuarioDTO usuario) { this.usuario = usuario; }
 }

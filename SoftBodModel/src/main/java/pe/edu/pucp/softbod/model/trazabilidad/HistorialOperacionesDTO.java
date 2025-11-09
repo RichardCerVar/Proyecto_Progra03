@@ -8,7 +8,7 @@ public class HistorialOperacionesDTO {
     private Integer operacionId;
     private String tablaAfectada;
     private Tipo_Operacion operacion;
-    private Date fechaHora;
+    private String fechaHora;
     private UsuarioDTO usuario;
 
     public HistorialOperacionesDTO() {
@@ -20,7 +20,7 @@ public class HistorialOperacionesDTO {
     }
 
     public HistorialOperacionesDTO(Integer operacionId, String tablaAfectada, 
-                                   Tipo_Operacion operacion, Date fechaHora, 
+                                   Tipo_Operacion operacion, String fechaHora, 
                                    UsuarioDTO usuario) {
         this.operacionId = operacionId;
         this.tablaAfectada = tablaAfectada;
@@ -35,8 +35,8 @@ public class HistorialOperacionesDTO {
     public void setTablaAfectada(String tablaAfectada) { this.tablaAfectada = tablaAfectada; }
     public Tipo_Operacion getOperacion() { return operacion; }
     public void setOperacion(Tipo_Operacion operacion) { this.operacion = operacion; }
-    public Date getFechaHora() { return fechaHora; }
-    public void setFechaHora(Date fechaHora) { this.fechaHora = fechaHora; }
+    public String getFechaHora() { return fechaHora; }
+    public void setFechaHora(String fechaHora) { this.fechaHora = fechaHora; }
     public UsuarioDTO getUsuario() { return usuario; }
     public void setUsuario(UsuarioDTO usuario) { this.usuario = usuario; }
 }

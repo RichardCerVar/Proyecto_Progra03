@@ -21,6 +21,7 @@ import pe.edu.pucp.softbod.model.util.Unidad_Medida;
 
 public class CargarTablas {
     
+    
     public CategoriaDTO cargarCategoria(ResultSet resultSet) throws SQLException {
 		
         CategoriaDTO categoria = new CategoriaDTO();
