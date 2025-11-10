@@ -1,6 +1,7 @@
 package pe.edu.pucp.softbod.bo.rrhh;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import pe.edu.pucp.softbod.dao.rrhh.UsuarioDAO;
 import pe.edu.pucp.softbod.daoImp.rrhh.UsuarioDAOImpl;
 import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
@@ -215,7 +216,7 @@ public class LoginBO {
             };
             
             historial.setOperacion(operacion);
-            historial.setFechaHora(new Date(System.currentTimeMillis()));
+            historial.setFechaHora(new Timestamp(System.currentTimeMillis()).toString());
             
             Integer resultado = this.historialBO.insertar(historial);
             

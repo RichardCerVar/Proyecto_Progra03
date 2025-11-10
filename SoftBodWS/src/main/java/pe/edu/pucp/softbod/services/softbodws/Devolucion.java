@@ -21,7 +21,7 @@ public class Devolucion {
     
     @WebMethod(operationName = "insertarDevolucion")
     public Integer insertarDevolucion(@WebParam(name = "total") Double total,
-            @WebParam(name = "fecha") Date fecha,@WebParam(name = "usuario") UsuarioDTO usuario){
+            @WebParam(name = "fecha") String fecha,@WebParam(name = "usuario") UsuarioDTO usuario){
         return this.devolucionBO.insertar(total, fecha, usuario);
     }
     
@@ -36,7 +36,7 @@ public class Devolucion {
     }
     
     @WebMethod(operationName = "listarDevolucionesPorFecha")
-    public ArrayList<DevolucionDTO> listarDevolucionesPorFecha(@WebParam(name = "fecha")Date fecha){
+    public ArrayList<DevolucionDTO> listarDevolucionesPorFecha(@WebParam(name = "fecha")String fecha){
         return this.devolucionBO.listarPorFecha(fecha);
     }
     
@@ -46,18 +46,13 @@ public class Devolucion {
     }
     
     @WebMethod(operationName = "listarDevolucionesPorUsuarioYFecha")
-    public ArrayList<DevolucionDTO> listarDevolucionesPorUsuarioYFecha(@WebParam(name = "usuarioId")Integer usuarioId, @WebParam(name = "fecha")Date fecha){
+    public ArrayList<DevolucionDTO> listarDevolucionesPorUsuarioYFecha(@WebParam(name = "usuarioId")Integer usuarioId, @WebParam(name = "fecha")String fecha){
         return this.devolucionBO.listarPorUsuarioYFecha(usuarioId, fecha);
     }
 
     @WebMethod(operationName = "registrarDevolucionCompleta")
     public Integer registrarDevolucionCompleta(@WebParam(name = "devolucion")DevolucionDTO devolucion, @WebParam(name = "detalles")ArrayList<DetalleDevolucionDTO> detalles) {
         return this.devolucionBO.registrarDevolucionCompleta(devolucion, detalles);
-    }
-    
-    @WebMethod(operationName = "validarDevolucionPermitida")
-    public Boolean validarDevolucionPermitida(@WebParam(name = "ventaId")Integer ventaId,@WebParam(name = "diasMaximosDevolucion") Integer diasMaximosDevolucion) {
-        return this.devolucionBO.validarDevolucionPermitida(ventaId, diasMaximosDevolucion);
     }
 
 }

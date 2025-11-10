@@ -29,7 +29,7 @@ public class DevolucionBO extends OperacionBOBase{
         this.historialBO = new HistorialDeOperacionBO();
     }
     
-    public Integer insertar(Double total, Date fecha, UsuarioDTO usuario ){
+    public Integer insertar(Double total, String fecha, UsuarioDTO usuario ){
         DevolucionDTO devolucion = new DevolucionDTO(total, fecha, usuario);
         return this.devolucionDAO.insertar(devolucion);
     }
@@ -42,7 +42,7 @@ public class DevolucionBO extends OperacionBOBase{
         return this.devolucionDAO.listarTodos();
     }
     
-    public ArrayList<DevolucionDTO> listarPorFecha(Date fecha){
+    public ArrayList<DevolucionDTO> listarPorFecha(String fecha){
         return this.devolucionDAO.listarPorFecha(fecha);
     }
     
@@ -50,7 +50,7 @@ public class DevolucionBO extends OperacionBOBase{
         return this.devolucionDAO.listarPorUsuario(usuarioId);
     }
     
-    public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, Date fecha){
+    public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, String fecha){
         return this.devolucionDAO.listarPorUsuarioYFecha(usuarioId, fecha);
     }
 
@@ -107,42 +107,42 @@ public class DevolucionBO extends OperacionBOBase{
             return null;
         }
     }
-
-    public Boolean validarDevolucionPermitida(Integer ventaId, Integer diasMaximosDevolucion) {
-        try {
-            if (ventaId == null || diasMaximosDevolucion == null || diasMaximosDevolucion <= 0) {
-                return Boolean.FALSE;
-            }
-            
-            // Obtener la venta
-            VentaDTO venta = this.ventaBO.obtenerPorId(ventaId);
-            
-            if (venta == null || venta.getFecha() == null) {
-                System.err.println("Error: Venta no encontrada");
-                return Boolean.FALSE;
-            }
-            
-            // Calcular los días transcurridos
-            Date fechaVenta = venta.getFecha();
-            Date fechaActual = new Date(System.currentTimeMillis());
-            
-            long diferenciaMillis = fechaActual.getTime() - fechaVenta.getTime();
-            long diasTranscurridos = diferenciaMillis / (1000 * 60 * 60 * 24);
-            
-            // Verificar si está dentro del plazo
-            if (diasTranscurridos > diasMaximosDevolucion) {
-                System.err.println("Error: Han transcurrido " + diasTranscurridos + 
-                                 " días. Máximo permitido: " + diasMaximosDevolucion);
-                return Boolean.FALSE;
-            }
-            
-            return Boolean.TRUE;
-            
-        } catch (Exception e) {
-            System.err.println("Error al validar devolución permitida: " + e.getMessage());
-            return Boolean.FALSE;
-        }
-    }
+//
+//    public Boolean validarDevolucionPermitida(Integer ventaId, Integer diasMaximosDevolucion) {
+//        try {
+//            if (ventaId == null || diasMaximosDevolucion == null || diasMaximosDevolucion <= 0) {
+//                return Boolean.FALSE;
+//            }
+//            
+//            // Obtener la venta
+//            VentaDTO venta = this.ventaBO.obtenerPorId(ventaId);
+//            
+//            if (venta == null || venta.getFecha() == null) {
+//                System.err.println("Error: Venta no encontrada");
+//                return Boolean.FALSE;
+//            }
+//            
+//            // Calcular los días transcurridos
+//            Date fechaVenta = venta.getFecha();
+//            Date fechaActual = new Date(System.currentTimeMillis());
+//            
+//            long diferenciaMillis = fechaActual.getTime() - fechaVenta.getTime();
+//            long diasTranscurridos = diferenciaMillis / (1000 * 60 * 60 * 24);
+//            
+//            // Verificar si está dentro del plazo
+//            if (diasTranscurridos > diasMaximosDevolucion) {
+//                System.err.println("Error: Han transcurrido " + diasTranscurridos + 
+//                                 " días. Máximo permitido: " + diasMaximosDevolucion);
+//                return Boolean.FALSE;
+//            }
+//            
+//            return Boolean.TRUE;
+//            
+//        } catch (Exception e) {
+//            System.err.println("Error al validar devolución permitida: " + e.getMessage());
+//            return Boolean.FALSE;
+//        }
+//    }
 
     public Double calcularTotalDevolucion(ArrayList<DetalleDevolucionDTO> detalles) {
         try {

@@ -38,7 +38,7 @@ public class Venta {
     }
 
     @WebMethod(operationName = "listarVentasPorFecha")
-    public ArrayList<VentaDTO> listarVentasPorFecha(@WebParam(name = "fecha") Date fecha) {
+    public ArrayList<VentaDTO> listarVentasPorFecha(@WebParam(name = "fecha") String fecha) {
         return this.ventaBO.listarTodosPorFecha(fecha);
     }
 }

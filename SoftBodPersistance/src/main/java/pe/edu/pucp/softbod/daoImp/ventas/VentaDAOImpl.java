@@ -108,7 +108,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
                 this.statement.setNull(1, Types.INTEGER);
             }
             if(ventaParametros.getFecha()!= null){
-                    this.statement.setTimestamp(2, Timestamp.valueOf(ventaParametros.getFecha()));
+                    this.statement.setDate(2, Date.valueOf(ventaParametros.getFecha()));
             }else{
                 this.statement.setNull(2, Types.DATE);
             }

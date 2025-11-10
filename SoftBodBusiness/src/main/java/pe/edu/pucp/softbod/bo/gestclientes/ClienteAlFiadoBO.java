@@ -15,16 +15,16 @@ public class ClienteAlFiadoBO {
     }
     
     public Integer insertar(String alias, String nombre, String telefono, 
-                             Date fechaDePago, Boolean activo, Double montoDeuda){
+                             String fechaDePago){
         ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO( alias, nombre,  
-                        telefono, fechaDePago,  activo,  montoDeuda);
+                        telefono, fechaDePago,Boolean.TRUE,  0.00);
         return this.clienteAlFiadoDAO.insertar(clienteAlFiado);
     }
     
     public Integer modificar (String alias, String nombre, String telefono, 
-                             Date fechaDePago, Boolean activo, Double montoDeuda){
+                             String fechaDePago, Boolean activo){
         ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO( alias, nombre,  
-                        telefono, fechaDePago,  activo,  montoDeuda);
+                        telefono, fechaDePago,  activo,  0.00); //no hay columna de monto en persistencia;
         return this.clienteAlFiadoDAO.modificar(clienteAlFiado);
     }
     

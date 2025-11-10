@@ -19,18 +19,17 @@ public class ClienteAlFiado {
     
     @WebMethod(operationName = "insertarClienteAlFiado")
     public Integer insertarClienteAlFiado(@WebParam(name = "alias") String alias,@WebParam(name = "nombre") String nombre,
-            @WebParam(name = "telefono") String telefono, @WebParam(name = "fechaDePago") Date fechaDePago, 
-            @WebParam(name = "activo") Boolean activo,@WebParam(name = "montoDeuda")  Double montoDeuda){
+            @WebParam(name = "telefono") String telefono, @WebParam(name = "fechaDePago") String fechaDePago){
         
-        return this.clienteAlFiadoBO.insertar(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+        return this.clienteAlFiadoBO.insertar(alias, nombre, telefono, fechaDePago);
     }
     
     @WebMethod(operationName = "modificarClienteAlFiado")
     public Integer modificarClienteAlFiado(@WebParam(name = "alias") String alias,@WebParam(name = "nombre") String nombre,
-            @WebParam(name = "telefono") String telefono, @WebParam(name = "fechaDePago") Date fechaDePago, 
-            @WebParam(name = "activo") Boolean activo,@WebParam(name = "montoDeuda")  Double montoDeuda){
+            @WebParam(name = "telefono") String telefono, @WebParam(name = "fechaDePago") String fechaDePago, 
+            @WebParam(name = "activo") Boolean activo){
         
-        return this.clienteAlFiadoBO.modificar(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+        return this.clienteAlFiadoBO.modificar(alias, nombre, telefono, fechaDePago, activo);
     }
     
     @WebMethod(operationName = "obtenerClienteAlFiadoPorId")

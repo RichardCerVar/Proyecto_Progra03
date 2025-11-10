@@ -46,7 +46,7 @@ public class VentaAlFiado {
 
     @WebMethod(operationName = "listarVentasAlFiadoPorAliasClienteYFecha")
     public ArrayList<VentaAlFiadoDTO> listarVentasAlFiadoPorAliasClienteYFecha(@WebParam(name = "aliasCliente") String aliasCliente,
-                                                                                 @WebParam(name = "fecha") Date fecha) {
+                                                                                 @WebParam(name = "fecha") String fecha) {
         return this.ventaAlFiadoBO.listarTodosPorAliasClienteFecha(aliasCliente, fecha);
     }
 }

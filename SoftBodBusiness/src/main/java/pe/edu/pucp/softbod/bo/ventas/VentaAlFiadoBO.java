@@ -33,7 +33,7 @@ public class VentaAlFiadoBO {
         return this.ventaAlFiadoDAO.listarTodosPorAliasCliente(aliasCliente);
     }
     
-    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente, Date fecha){
+    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente, String fecha){
         return this.ventaAlFiadoDAO.listarTodosPorAliasClienteFecha(aliasCliente, fecha);
     }
     

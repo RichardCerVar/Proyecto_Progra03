@@ -3,6 +3,7 @@ package pe.edu.pucp.softbod.bo.ventas;
 import pe.edu.pucp.softbod.bo.ventas.DetalleVentaBO;
 import pe.edu.pucp.softbod.bo.almacen.ProductoBO;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
@@ -35,7 +36,7 @@ public class VentaBO extends OperacionBOBase{
         return this.ventaDAO.listarTodos();
     }
     
-    public ArrayList<VentaDTO> listarTodosPorFecha(Date fecha){
+    public ArrayList<VentaDTO> listarTodosPorFecha(String fecha){
         return this.ventaDAO.listarTodosPorFecha(fecha);
     }
     
@@ -46,9 +47,9 @@ public class VentaBO extends OperacionBOBase{
         
         //insercion de la venta completa:
         VentaDTO nuevaVenta = new VentaDTO();
-        Date fechaActual = new Date(System.currentTimeMillis());
+        String fechaActual = new Timestamp(System.currentTimeMillis()).toString();
         
-        nuevaVenta.setFecha(Time);
+        nuevaVenta.setFecha(fechaActual);
         nuevaVenta.setMetodoPago(metodoPago);
         nuevaVenta.setUsuario(usuario);
         nuevaVenta.setTotal(calcularMontoTotalVenta(detallesVenta));

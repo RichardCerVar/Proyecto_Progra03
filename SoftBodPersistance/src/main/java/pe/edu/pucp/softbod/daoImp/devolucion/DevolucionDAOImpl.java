@@ -139,7 +139,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
                 this.statement.setNull(2,Types.INTEGER);
             
             if (devolucionParametros.getFecha()!= null)
-                this.statement.setTimestamp(3, Timestamp.valueOf(devolucionParametros.getFecha()));
+                this.statement.setDate(3, Date.valueOf(devolucionParametros.getFecha()));
             else
                 this.statement.setNull(3,Types.DATE);
         } catch (SQLException ex) {

@@ -38,7 +38,7 @@ public class CargarTablas {
         clienteAlFiado.setAlias(resultSet.getString("ALIAS"));
         clienteAlFiado.setNombre(resultSet.getString("NOMBRE"));
         clienteAlFiado.setTelefono(resultSet.getString("TELEFONO"));
-        clienteAlFiado.setFechaDePago(resultSet.getDate("FECHA_DE_PAGO"));
+        clienteAlFiado.setFechaDePago(resultSet.getString("FECHA_DE_PAGO"));
         clienteAlFiado.setActivo(resultSet.getBoolean("ACTIVO"));
         clienteAlFiado.setMontoDeuda(resultSet.getDouble("MONTO_DEUDA"));
 	return clienteAlFiado;
@@ -67,7 +67,7 @@ public class CargarTablas {
         DevolucionDTO devolucion = new DevolucionDTO();
         devolucion.setDevolucionId(resultSet.getInt("DEVOLUCION_ID"));
         devolucion.setTotal(resultSet.getDouble("TOTAL"));
-        devolucion.setFecha(resultSet.getDate("FECHA"));
+        devolucion.setFecha(resultSet.getString("FECHA"));
         
         return devolucion;
     }
@@ -77,7 +77,7 @@ public class CargarTablas {
         DevolucionDTO devolucion = new DevolucionDTO();
         devolucion.setDevolucionId(resultSet.getInt("DEVOLUCION_ID"));
         devolucion.setTotal(resultSet.getDouble("TOTAL"));
-        devolucion.setFecha(resultSet.getDate("FECHA"));
+        devolucion.setFecha(resultSet.getString("FECHA"));
 		
         UsuarioDTO usuario = this.cargarUsuario(resultSet);
         devolucion.setUsuario(usuario);
@@ -187,7 +187,7 @@ public class CargarTablas {
         venta.setVentaId(resulSet.getInt("VENTA_ID"));
         venta.setTotal(resulSet.getDouble("TOTAL"));
         venta.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
-        venta.setFecha(resulSet.getDate("FECHA"));
+        venta.setFecha(resulSet.getString("FECHA"));
         return venta;
     }
     

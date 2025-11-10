@@ -46,7 +46,7 @@ public class DevolucionParametrosBuilder {
 
     public void setUsuarioId(Integer usuarioId) { this.usuarioId = usuarioId; }
 
-    public Date getFecha() { return fecha;}
+    public String getFecha() { return fecha;}
 
-    public void setFecha(Date fecha) { this.fecha = fecha; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
 }
