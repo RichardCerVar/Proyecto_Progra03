@@ -1,6 +1,5 @@
 package pe.edu.pucp.softbod.bo.trazabilidad;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.trazabilidad.HistorialOperacionesDAO;
 import pe.edu.pucp.softbod.daoImp.trazabilidad.HistorialOperacionesDAOImpl;
@@ -49,13 +48,13 @@ public class HistorialDeOperacionBO {
         return this.historialDAO.listarPorTablaYOperacion(nombreTabla, tipoOperacion);
     }
     
-    public ArrayList<HistorialOperacionesDTO> listarPorFecha(Date fecha){
+    public ArrayList<HistorialOperacionesDTO> listarPorFecha(String fecha){
         return this.historialDAO.listarPorFecha(fecha);
     }
     
     public ArrayList<HistorialOperacionesDTO> listarHistorialFiltros (Integer operacionId, 
             String nombreTabla, String tipoOperacion, 
-         Date fechaOperacion, Integer usuarioId, String usuario, 
+         String fechaOperacion, Integer usuarioId, String usuario, 
          String tipoUsuario, Boolean estado){
         return this.historialDAO.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);

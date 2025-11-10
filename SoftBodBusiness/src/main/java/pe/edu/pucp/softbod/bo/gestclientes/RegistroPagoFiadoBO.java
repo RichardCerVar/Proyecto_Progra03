@@ -29,7 +29,7 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
     // ==================== MÉTODOS DAO EXISTENTES ====================
     
     public Integer insertar(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente, 
-                                  Date fecha, String metodoPago, Double monto){
+                                  String fecha, String metodoPago, Double monto){
         Tipo_de_pago metPago;
         if (metodoPago.equals(Tipo_de_pago.EFECTIVO.name()))
             metPago = Tipo_de_pago.EFECTIVO;
@@ -48,7 +48,7 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
         return this.registroPagoFiadoDAO.listarTodosPorAliasCliente(aliasCliente);
     }
     
-    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, Date fechaFin){
+    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, String fechaFin){
         return this.registroPagoFiadoDAO.listarTodosPorAliasClienteConFechaFin(aliasCliente, fechaFin);
     }
 
@@ -134,14 +134,15 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
         }
     }
 
-    public Double calcularTotalPagosRealizados(Integer clienteId, Date inicio, Date fin) {
+    public Double calcularTotalPagosRealizados(Integer clienteId, String inicio, String fin) {
         try {
             if (clienteId == null || inicio == null || fin == null) {
                 return 0.0;
             }
-            
+            Date fecha_inicio = Date.valueOf(inicio);
+            Date fecha_fin = Date.valueOf(fin);
             // Validar que la fecha de inicio no sea posterior a la fecha fin
-            if (inicio.after(fin)) {
+            if (fecha_inicio.after(fecha_fin)) {
                 System.err.println("Error: Fecha de inicio posterior a fecha fin");
                 return 0.0;
             }
@@ -167,7 +168,8 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
             for (RegistroPagoFiadoDTO pago : pagosCliente) {
                 if (pago.getFecha() != null && pago.getMonto() != null) {
                     // Verificar que la fecha esté dentro del rango
-                    if (!pago.getFecha().before(inicio) && !pago.getFecha().after(fin)) {
+                    Date fecha = Date.valueOf(pago.getFecha());
+                    if (!fecha.before(fecha_inicio) && !fecha.after(fecha_fin)) {
                         totalPagos += pago.getMonto();
                     }
                 }

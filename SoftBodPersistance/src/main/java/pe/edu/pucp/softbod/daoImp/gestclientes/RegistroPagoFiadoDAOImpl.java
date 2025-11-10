@@ -4,6 +4,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setInt(1, this.registroPagosFiados.getUsuario().getUsuarioId());
         this.statement.setInt(2, this.registroPagosFiados.getCliente().getClienteId());
-        this.statement.setDate(3, this.registroPagosFiados.getFecha());
+        this.statement.setTimestamp(3, Timestamp.valueOf(this.registroPagosFiados.getFecha()));
         this.statement.setString(4,this.registroPagosFiados.getMetodoPago().name());
         this.statement.setDouble(5,this.registroPagosFiados.getMonto());
     }
@@ -71,11 +72,11 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
     @Override
     public ArrayList<RegistroPagoFiadoDTO> listarTodos() {
         String aliasCliente = null;
-        Date fechaMaxima = null;
+        String fechaMaxima = null;
         return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaMaxima);
     }
 
-    public ArrayList<RegistroPagoFiadoDTO> listarPagosFiadosConFiltro(String aliasCliente, Date fechaMaxima) {
+    public ArrayList<RegistroPagoFiadoDTO> listarPagosFiadosConFiltro(String aliasCliente, String fechaMaxima) {
         String sql = "{ CALL SP_LISTAR_REGISTRO_DE_PAGOS_FIADOS(?, ?) }";
 
         Object parametros = new RegistroPagoFiadoParametrosBusquedaBuilder()
@@ -100,7 +101,7 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
 
             // 2️⃣ Fecha máxima
             if (filtros.getFechaMaxima() != null) {
-                this.statement.setDate(2, filtros.getFechaMaxima());
+                this.statement.setDate(2, Date.valueOf(filtros.getFechaMaxima()));
             } else {
                 this.statement.setNull(2, Types.DATE);
             }
@@ -112,12 +113,12 @@ public class RegistroPagoFiadoDAOImpl extends DAOImplBase implements RegistroPag
 
     @Override
     public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasCliente(String aliasCliente) {
-        Date fechaMaxima = null;
+        String fechaMaxima = null;
         return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaMaxima);
     }
 
     @Override
-    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, Date fechaFin) {
+    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, String fechaFin) {
         return (ArrayList<RegistroPagoFiadoDTO>) this.listarPagosFiadosConFiltro(aliasCliente, fechaFin);
     }
 

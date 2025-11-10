@@ -3,6 +3,7 @@ package pe.edu.pucp.softbod.daoImp.trazabilidad;
 import pe.edu.pucp.softbod.daoImp.devolucion.DetalleDevolucionDAOImpl;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setString(1,this.historial.getTablaAfectada());
         this.statement.setString(2,this.historial.getOperacion().name());
-        this.statement.setDate(3,this.historial.getFechaHora());
+        this.statement.setTimestamp(3,Timestamp.valueOf(this.historial.getFechaHora()));
         this.statement.setInt(4,this.historial.getUsuario().getUsuarioId());
     }
 
@@ -80,7 +81,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer usuarioId = null;
         String nombreTabla = null, tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         ArrayList<HistorialOperacionesDTO> lista = this.listarHistorialFiltros
                 (operacionId, nombreTabla,
@@ -98,7 +99,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer operacionId = null, usuarioId = null;
         String nombreTabla = null, tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -110,7 +111,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer operacionId = null;
         String nombreTabla = null, tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -122,7 +123,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer operacionId = null, usuarioId = null;
         String tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -134,7 +135,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer operacionId = null, usuarioId = null;
         String nombreTabla = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -147,7 +148,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         Integer operacionId = null;
         String tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -159,7 +160,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
                                                 String tipoOperacion) {
         Integer operacionId = null, usuarioId = null;
         String usuario = null, tipoUsuario = null;
-        Date fechaOperacion = null;
+        String fechaOperacion = null;
         Boolean estado= null;
         return this.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, 
@@ -167,7 +168,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
     }
 
     @Override
-    public ArrayList<HistorialOperacionesDTO> listarPorFecha(Date fechaOperacion) {
+    public ArrayList<HistorialOperacionesDTO> listarPorFecha(String fechaOperacion) {
         Integer operacionId = null, usuarioId = null;
         String nombreTabla = null, tipoOperacion = null, usuario = null, 
                tipoUsuario = null;
@@ -181,7 +182,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
     @Override
     public ArrayList<HistorialOperacionesDTO> listarHistorialFiltros
         (Integer operacionId, String nombreTabla, String tipoOperacion, 
-         Date fechaOperacion, Integer usuarioId, String usuario, 
+         String fechaOperacion, Integer usuarioId, String usuario, 
          String tipoUsuario, Boolean estado){
         String sql = "{CALL TA_PROG3.SP_LISTAR_HISTORIAL_OPERACIONES(?,?,?,?,?,?,?,?)}";
         Object parametros = new HistorialDeOperacionesParametrosBuilder()
@@ -195,11 +196,11 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
                             .conEstado(estado)
                             .BuildHistorialDeOperacionesParametros();
         return (ArrayList <HistorialOperacionesDTO>) 
-                super.listarTodos(sql, this::incluirValorDeParametrosDeDetalleDevolucion,
+                super.listarTodos(sql, this::incluirValorDeParametrosDeHistorialOperaciones,
                                     parametros);
     }
         
-    private void incluirValorDeParametrosDeDetalleDevolucion (Object parametros){
+    private void incluirValorDeParametrosDeHistorialOperaciones (Object parametros){
         HistorialDeOperacionesParametros historialParametros = (HistorialDeOperacionesParametros) parametros;
         try {
             if (historialParametros.getOperacionId()!= null)
@@ -218,7 +219,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
                 this.statement.setNull(3,Types.VARCHAR);
             
             if (historialParametros.getFecha()!= null)
-                this.statement.setDate(4, historialParametros.getFecha());
+                this.statement.setDate(4, Date.valueOf(historialParametros.getFecha()));
             else
                 this.statement.setNull(4,Types.DATE);
             

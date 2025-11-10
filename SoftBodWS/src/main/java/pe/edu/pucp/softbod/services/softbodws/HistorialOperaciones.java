@@ -3,7 +3,6 @@ package pe.edu.pucp.softbod.services.softbodws;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
-import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
@@ -60,7 +59,7 @@ public class HistorialOperaciones {
     }
 
     @WebMethod(operationName = "listarHistorialOperacionesPorFecha")
-    public ArrayList<HistorialOperacionesDTO> listarHistorialOperacionesPorFecha(@WebParam(name = "fecha") Date fecha) {
+    public ArrayList<HistorialOperacionesDTO> listarHistorialOperacionesPorFecha(@WebParam(name = "fecha") String fecha) {
         return this.historialBO.listarPorFecha(fecha);
     }
 
@@ -68,7 +67,7 @@ public class HistorialOperaciones {
     public ArrayList<HistorialOperacionesDTO> listarHistorialOperacionesConFiltros(@WebParam(name = "operacionId") Integer operacionId,
                                                                                      @WebParam(name = "nombreTabla") String nombreTabla,
                                                                                      @WebParam(name = "tipoOperacion") String tipoOperacion,
-                                                                                     @WebParam(name = "fechaOperacion") Date fechaOperacion,
+                                                                                     @WebParam(name = "fechaOperacion") String fechaOperacion,
                                                                                      @WebParam(name = "usuarioId") Integer usuarioId,
                                                                                      @WebParam(name = "usuario") String usuario,
                                                                                      @WebParam(name = "tipoUsuario") String tipoUsuario,

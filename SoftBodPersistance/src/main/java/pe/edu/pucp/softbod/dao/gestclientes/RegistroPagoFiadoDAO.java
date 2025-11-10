@@ -8,5 +8,5 @@ public interface RegistroPagoFiadoDAO {
     public Integer insertar(RegistroPagoFiadoDTO registroPagoFiado);
     public ArrayList<RegistroPagoFiadoDTO> listarTodos();  
     public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasCliente(String aliasCliente);
-    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, Date fechaFin);
+    public ArrayList<RegistroPagoFiadoDTO> listarTodosPorAliasClienteConFechaFin(String aliasCliente, String fechaFin);
 }

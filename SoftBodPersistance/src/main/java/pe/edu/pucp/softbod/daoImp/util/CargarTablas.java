@@ -91,7 +91,7 @@ public class CargarTablas {
         HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
         historial.setOperacionId(resultSet.getInt("OPERACION_ID"));
         historial.setTablaAfectada(resultSet.getString("TABLA_AFECTADA"));
-        historial.setFechaHora(resultSet.getDate("FECHA_HORA"));
+        historial.setFechaHora(resultSet.getString("FECHA_HORA"));
         historial.setOperacion(Tipo_Operacion.valueOf(resultSet.getString("OPERACION")));
 		
         UsuarioDTO usuario = this.cargarUsuario(resultSet);
@@ -156,7 +156,7 @@ public class CargarTablas {
     public RegistroPagoFiadoDTO cargarRegistroPagoFiadoDTO(ResultSet resulSet) throws SQLException{
         RegistroPagoFiadoDTO registroPago = new RegistroPagoFiadoDTO();
         registroPago.setPagoId(resulSet.getInt("PAGO_ID"));
-        registroPago.setFecha(resulSet.getDate("FECHA"));
+        registroPago.setFecha(resulSet.getString("FECHA"));
         registroPago.setMetodoPago(Tipo_de_pago.valueOf(resulSet.getString("METODO_PAGO")));
         registroPago.setMonto(resulSet.getDouble("MONTO"));
         

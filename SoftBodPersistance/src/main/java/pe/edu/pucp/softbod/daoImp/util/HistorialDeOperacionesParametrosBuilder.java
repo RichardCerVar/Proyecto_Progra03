@@ -1,12 +1,10 @@
 package pe.edu.pucp.softbod.daoImp.util;
 
-import java.sql.Date;
-
 public class HistorialDeOperacionesParametrosBuilder {
     private Integer operacionId;
     private String nombreTabla;
     private String tipoOperacion;
-    private Date fecha;
+    private String fecha;
     private Integer usuarioId;
     private String usuario;
     private String tipoUsuario;
@@ -35,7 +33,7 @@ public class HistorialDeOperacionesParametrosBuilder {
         this.tipoOperacion = tipoOperacion;
         return this;
     }
-    public HistorialDeOperacionesParametrosBuilder conFecha (Date fecha){
+    public HistorialDeOperacionesParametrosBuilder conFecha (String fecha){
         this.fecha = fecha;
         return this;
     }
@@ -87,9 +85,9 @@ public class HistorialDeOperacionesParametrosBuilder {
         this.tipoOperacion = tipoOperacion;
     }
 
-    public Date getFecha() { return fecha; }
+    public String getFecha() { return fecha; }
 
-    public void setFecha(Date fecha) { this.fecha = fecha; }
+    public void setFecha(String fecha) { this.fecha = fecha; }
 
     public Integer getUsuarioId() { return usuarioId; }
 

@@ -1,10 +1,9 @@
 package pe.edu.pucp.softbod.daoImp.util;
 
-import java.sql.Date;
 
 public class RegistroPagoFiadoParametrosBusquedaBuilder {
     private String aliasCliente;
-    private Date fechaMaxima;
+    private String fechaMaxima;
 
     public RegistroPagoFiadoParametrosBusquedaBuilder() {
         this.aliasCliente = null;
@@ -16,7 +15,7 @@ public class RegistroPagoFiadoParametrosBusquedaBuilder {
         return this;
     }
 
-    public RegistroPagoFiadoParametrosBusquedaBuilder conFechaMaxima(Date fechaMaxima) {
+    public RegistroPagoFiadoParametrosBusquedaBuilder conFechaMaxima(String fechaMaxima) {
         this.fechaMaxima = fechaMaxima;
         return this;
     }
@@ -36,11 +35,11 @@ public class RegistroPagoFiadoParametrosBusquedaBuilder {
         this.aliasCliente = aliasCliente;
     }
 
-    public Date getFechaMaxima() {
+    public String getFechaMaxima() {
         return fechaMaxima;
     }
 
-    public void setFechaMaxima(Date fechaMaxima) {
+    public void setFechaMaxima(String fechaMaxima) {
         this.fechaMaxima = fechaMaxima;
     }
 }

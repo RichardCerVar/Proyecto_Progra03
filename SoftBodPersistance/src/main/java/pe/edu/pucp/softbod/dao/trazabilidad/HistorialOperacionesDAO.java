@@ -24,11 +24,11 @@ public interface HistorialOperacionesDAO {
     public ArrayList<HistorialOperacionesDTO> listarPorTablaYOperacion(String nombreTabla,
                                               String tipoOperacion);
     
-    public ArrayList<HistorialOperacionesDTO> listarPorFecha(Date fecha);
+    public ArrayList<HistorialOperacionesDTO> listarPorFecha(String fecha);
     
     public ArrayList<HistorialOperacionesDTO> listarHistorialFiltros (Integer operacionId, 
             String nombreTabla, String tipoOperacion, 
-         Date fechaOperacion, Integer usuarioId, String usuario, 
+         String fechaOperacion, Integer usuarioId, String usuario, 
          String tipoUsuario, Boolean estado);
     
     //listarPorUsuario(int usuarioId);

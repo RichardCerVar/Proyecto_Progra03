@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class RegistroPagoFiadoParametrosBusqueda {
     private String aliasCliente;
-    private Date fechaMaxima;
+    private String fechaMaxima;
 
     public RegistroPagoFiadoParametrosBusqueda() {
         this.aliasCliente = null;
@@ -19,11 +19,11 @@ public class RegistroPagoFiadoParametrosBusqueda {
         this.aliasCliente = aliasCliente;
     }
 
-    public Date getFechaMaxima() {
+    public String getFechaMaxima() {
         return fechaMaxima;
     }
 
-    public void setFechaMaxima(Date fechaMaxima) {
+    public void setFechaMaxima(String fechaMaxima) {
         this.fechaMaxima = fechaMaxima;
     }
 }
