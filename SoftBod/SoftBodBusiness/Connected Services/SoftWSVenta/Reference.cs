@@ -193,6 +193,9 @@ namespace SoftBodBusiness.SoftWSVenta {
         
         /// <remarks/>
         TRANSFERENCIA,
+        
+        /// <remarks/>
+        FIADO,
     }
     
     /// <remarks/>
