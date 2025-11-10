@@ -29,7 +29,7 @@ public class UsuarioBO extends OperacionBOBase{
         if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
             tipUser = Tipo_Usuario.ADMINISTRADOR;
         else tipUser = Tipo_Usuario.OPERARIO;
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+        UsuarioDTO usuarioDTO = new UsuarioDTO(null, usuario, tipUser, correo, 
                        contrasenha,  nombre, telefono, activo);
         
         try {
@@ -78,13 +78,13 @@ public class UsuarioBO extends OperacionBOBase{
         }
     }
     
-    public Integer modificar(String usuario, String tipoUsuarios, String correo, 
+    public Integer modificar(Integer usuarioId, String usuario, String tipoUsuarios, String correo, 
                       String contrasenha, String nombre, String telefono, Boolean activo) {
         Tipo_Usuario tipUser;
         if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
             tipUser = Tipo_Usuario.ADMINISTRADOR;
         else tipUser = Tipo_Usuario.OPERARIO;
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuarioId, usuario, tipUser, correo, 
                        contrasenha,  nombre, telefono, activo);
         try {
             if (usuario == null || usuarioDTO.getUsuarioId() == null) {
@@ -114,13 +114,13 @@ public class UsuarioBO extends OperacionBOBase{
         }
     }
 
-    public Integer eliminarLogicoUsuario(String usuario, String tipoUsuarios, String correo, 
+    public Integer eliminarLogicoUsuario(Integer usuarioId, String usuario, String tipoUsuarios, String correo, 
                       String contrasenha, String nombre, String telefono, Boolean activo) {
         Tipo_Usuario tipUser;
         if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
             tipUser = Tipo_Usuario.ADMINISTRADOR;
         else tipUser = Tipo_Usuario.OPERARIO;
-        UsuarioDTO usuarioDTO = new UsuarioDTO(usuario, tipUser, correo, 
+        UsuarioDTO usuarioDTO = new UsuarioDTO(usuarioId, usuario, tipUser, correo, 
                        contrasenha,  nombre, telefono, activo);
         
         try {

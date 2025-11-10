@@ -100,7 +100,7 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
         }
     }
 
-    public Boolean validarMontoPago(Double monto, Integer clienteId) {
+    public Boolean validarMontoPago(Double monto, Integer clienteId){
         try {
             // 1. Validar que el monto sea mayor a 0
             if (monto == null || monto <= 0) {

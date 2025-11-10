@@ -26,21 +26,21 @@ public class Usuario {
     }
     
     @WebMethod(operationName = "modificarUsuario")
-    public Integer modificarUsuario(@WebParam(name = "usuario") String usuario,
+    public Integer modificarUsuario(@WebParam(name = "usuarioId") Integer usuarioId,@WebParam(name = "usuario") String usuario,
             @WebParam(name = "correo")  String correo,@WebParam(name = "tipoUsuarios")  String tipoUsuarios,
             @WebParam(name = "contrasenha") String contrasenha,@WebParam(name = "nombre")  String nombre,
             @WebParam(name = "telefono")  String telefono,@WebParam(name = "activo")  Boolean activo) {
         
-        return this.usuarioBO.modificar(usuario, tipoUsuarios, correo, contrasenha, nombre, telefono, activo);
+        return this.usuarioBO.modificar(usuarioId, usuario, tipoUsuarios, correo, contrasenha, nombre, telefono, activo);
     }
     
     @WebMethod(operationName = "eliminarLogicoUsuario")
-    public Integer eliminarLogicoUsuario(@WebParam(name = "usuario") String usuario,
+    public Integer eliminarLogicoUsuario(@WebParam(name = "usuarioId") Integer usuarioId,@WebParam(name = "usuario") String usuario,
             @WebParam(name = "correo")  String correo,@WebParam(name = "tipoUsuarios")  String tipoUsuarios,
             @WebParam(name = "contrasenha") String contrasenha,@WebParam(name = "nombre")  String nombre,
             @WebParam(name = "telefono")  String telefono,@WebParam(name = "activo")  Boolean activo){
         
-        return this.usuarioBO.eliminarLogicoUsuario(usuario, tipoUsuarios, correo, contrasenha, nombre, telefono, activo);
+        return this.usuarioBO.eliminarLogicoUsuario(usuarioId, usuario, tipoUsuarios, correo, contrasenha, nombre, telefono, activo);
     }
     
     @WebMethod(operationName = "obtenerUsuarioPorId")
