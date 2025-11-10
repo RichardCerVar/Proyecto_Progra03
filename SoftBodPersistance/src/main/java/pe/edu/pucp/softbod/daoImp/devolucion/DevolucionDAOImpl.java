@@ -1,8 +1,8 @@
 package pe.edu.pucp.softbod.daoImp.devolucion;
 
-import pe.edu.pucp.softbod.daoImp.devolucion.DetalleDevolucionDAOImpl;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +42,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     @Override
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setDouble(1,this.devolucion.getTotal());
-        this.statement.setDate(2,this.devolucion.getFecha());
+        this.statement.setTimestamp(2,Timestamp.valueOf(this.devolucion.getFecha()));
         this.statement.setInt(3,this.devolucion.getUsuario().getUsuarioId());
     }
 
@@ -76,7 +76,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     @Override
     public DevolucionDTO obtenerPorId(Integer devolucionId) {
         Integer usuarioId = null;
-        Date fecha = null;
+        String fecha = null;
         ArrayList<DevolucionDTO> lista = this.listarDevolucionFiltros(devolucionId,
                                         usuarioId, fecha);
         if (!lista.isEmpty()){
@@ -88,12 +88,12 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     @Override
     public ArrayList<DevolucionDTO> listarTodos() { 
         Integer devolucionId = null, usuarioId = null;
-        Date fecha = null;
+        String fecha = null;
         return this.listarDevolucionFiltros(devolucionId, usuarioId, fecha);
     }
     
     @Override
-    public ArrayList<DevolucionDTO> listarPorFecha(Date fecha) {
+    public ArrayList<DevolucionDTO> listarPorFecha(String fecha) {
         Integer devolucionId = null, usuarioId = null;
         return this.listarDevolucionFiltros(devolucionId, usuarioId, fecha);
     }
@@ -101,19 +101,19 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     @Override
     public ArrayList<DevolucionDTO> listarPorUsuario(Integer usuarioId) {
         Integer devolucionId = null;
-        Date fecha = null;
+        String fecha = null;
         return this.listarDevolucionFiltros(devolucionId, usuarioId, fecha);
     }
 
     @Override
-    public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, Date fecha) {
+    public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, String fecha) {
         Integer devolucionId = null;
         return this.listarDevolucionFiltros(devolucionId, usuarioId, fecha);
     }
     
     private ArrayList<DevolucionDTO> listarDevolucionFiltros
         (Integer devolucionId, Integer usuarioId,
-        Date fecha){
+        String fecha){
         String sql = "{CALL TA_PROG3.SP_LISTAR_DEVOLUCION(?,?,?)}";
         Object parametros = new DevolucionParametrosBuilder()
                             .conDevolucionId(devolucionId)
@@ -139,7 +139,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
                 this.statement.setNull(2,Types.INTEGER);
             
             if (devolucionParametros.getFecha()!= null)
-                this.statement.setDate(3, devolucionParametros.getFecha());
+                this.statement.setTimestamp(3, Timestamp.valueOf(devolucionParametros.getFecha()));
             else
                 this.statement.setNull(3,Types.DATE);
         } catch (SQLException ex) {

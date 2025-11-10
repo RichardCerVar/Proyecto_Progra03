@@ -47,7 +47,8 @@ public class VentaBO extends OperacionBOBase{
         //insercion de la venta completa:
         VentaDTO nuevaVenta = new VentaDTO();
         Date fechaActual = new Date(System.currentTimeMillis());
-        nuevaVenta.setFecha(fechaActual);
+        
+        nuevaVenta.setFecha(Time);
         nuevaVenta.setMetodoPago(metodoPago);
         nuevaVenta.setUsuario(usuario);
         nuevaVenta.setTotal(calcularMontoTotalVenta(detallesVenta));

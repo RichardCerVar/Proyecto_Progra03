@@ -12,12 +12,12 @@ public interface DevolucionDAO {
     
     public ArrayList<DevolucionDTO> listarTodos();
     
-    public ArrayList<DevolucionDTO> listarPorFecha(Date fecha);
+    public ArrayList<DevolucionDTO> listarPorFecha(String fecha);
     
     public ArrayList<DevolucionDTO> listarPorUsuario(Integer usuarioId);
     
     public ArrayList<DevolucionDTO> listarPorUsuarioYFecha(Integer usuarioId, 
-                                    Date fecha);
+                                    String fecha);
     
 }
 

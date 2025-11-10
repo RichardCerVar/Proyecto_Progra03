@@ -8,5 +8,5 @@ public interface VentaDAO {
     public Integer insertar(VentaDTO venta);
     public VentaDTO obtenerPorId (Integer venta_Id);
     public ArrayList<VentaDTO> listarTodos();
-    public ArrayList<VentaDTO> listarTodosPorFecha(Date fecha);
+    public ArrayList<VentaDTO> listarTodosPorFecha(String fecha);
 }

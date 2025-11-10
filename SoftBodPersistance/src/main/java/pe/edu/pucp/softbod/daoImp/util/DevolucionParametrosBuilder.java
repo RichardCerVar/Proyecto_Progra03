@@ -5,7 +5,7 @@ import java.sql.Date;
 public class DevolucionParametrosBuilder {
     private Integer devolucionId;
     private Integer usuarioId;
-    private Date fecha;
+    private String fecha;
     
     public DevolucionParametrosBuilder (){
         this.devolucionId = null;
@@ -23,7 +23,7 @@ public class DevolucionParametrosBuilder {
         return this;
     }
     
-    public DevolucionParametrosBuilder conFecha (Date fecha){
+    public DevolucionParametrosBuilder conFecha (String fecha){
         this.fecha = fecha;
         return this;
     }

@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class VentaParametrosBusqueda {
     private Integer ventaId;
-    private Date fecha;
+    private String fecha;
 
     public VentaParametrosBusqueda() {
         this.ventaId = null;
@@ -19,11 +19,11 @@ public class VentaParametrosBusqueda {
         this.ventaId = ventaId;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }

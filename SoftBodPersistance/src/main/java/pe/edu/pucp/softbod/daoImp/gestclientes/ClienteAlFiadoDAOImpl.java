@@ -1,5 +1,6 @@
 package pe.edu.pucp.softbod.daoImp.gestclientes;
 
+import java.sql.Date;
 import pe.edu.pucp.softbod.daoImp.devolucion.DetalleDevolucionDAOImpl;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -45,7 +46,7 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
         this.statement.setString(1, this.clienteAlFiado.getAlias());
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
-        this.statement.setDate(4,this.clienteAlFiado.getFechaDePago());
+        this.statement.setDate(4,Date.valueOf(this.clienteAlFiado.getFechaDePago()));
         this.statement.setBoolean(5,this.clienteAlFiado.getActivo());
     }
 
@@ -54,7 +55,7 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
         this.statement.setString(1, this.clienteAlFiado.getAlias());
         this.statement.setString(2, this.clienteAlFiado.getNombre());
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
-        this.statement.setDate(4, this.clienteAlFiado.getFechaDePago());
+        this.statement.setDate(4, Date.valueOf(this.clienteAlFiado.getFechaDePago()));
         this.statement.setBoolean(5, this.clienteAlFiado.getActivo());
         this.statement.setInt(6, this.clienteAlFiado.getClienteId());
     }

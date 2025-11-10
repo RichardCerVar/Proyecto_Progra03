@@ -5,7 +5,7 @@ import java.sql.Date;
 public class VentaFiadaParametrosBusqueda {
     private String aliasCliente;
     private Integer ventaFiadaId;
-    private Date fecha;
+    private String fecha;
 
     public VentaFiadaParametrosBusqueda() {
         this.aliasCliente = null;
@@ -29,11 +29,11 @@ public class VentaFiadaParametrosBusqueda {
         this.ventaFiadaId = ventaFiadaId;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }

@@ -2,6 +2,7 @@ package pe.edu.pucp.softbod.daoImp.ventas;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +62,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
         lista.add(this.ventaAlFiado);
     }
     
-    private ArrayList<VentaAlFiadoDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId,Date fecha){
+    private ArrayList<VentaAlFiadoDTO> listarTodosConFiltros(String aliasCliente, Integer ventaFiadaId,String fecha){
         String sql = "{ CALL SP_LISTAR_VENTAS_AL_FIADO(?, ?, ?) }";
         Object parametros = new VentaFiadaParametrosBusquedaBuilder()
                             .conAliasCliente(aliasCliente)
@@ -76,7 +77,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
     public ArrayList<VentaAlFiadoDTO> listarTodos() {
         Integer ventaFiadaId = null;
         String aliasCliente = null;
-        Date fecha = null;
+        String fecha = null;
         return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }
 
@@ -97,7 +98,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
             }
             
             if(ventaFiadaParam.getFecha()!=null){
-                this.statement.setDate(3,ventaFiadaParam.getFecha());
+                this.statement.setTimestamp(3,Timestamp.valueOf(ventaFiadaParam.getFecha()));
             }else{
                 this.statement.setNull(3, Types.DATE);
             }
@@ -116,7 +117,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
     public VentaAlFiadoDTO obtenerPorId(Integer ventaFiada_Id) {
         ArrayList<VentaAlFiadoDTO> lista;
         String aliasCliente = null;
-        Date fecha = null;
+        String fecha = null;
         lista = this.listarTodosConFiltros(aliasCliente, ventaFiada_Id,fecha);
         if(!lista.isEmpty()){
             this.ventaAlFiado = lista.getFirst();
@@ -127,12 +128,12 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
     @Override
     public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasCliente(String aliasCliente) {
         Integer ventaFiadaId = null;
-        Date fecha = null;
+        String fecha = null;
         return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }
 
     @Override
-    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente, Date fecha) {
+    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente, String fecha) {
         Integer ventaFiadaId = null;
         return (ArrayList<VentaAlFiadoDTO>) listarTodosConFiltros(aliasCliente, ventaFiadaId,fecha);
     }

@@ -2,6 +2,7 @@ package pe.edu.pucp.softbod.daoImp.ventas;
 
 import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
     protected void incluirValorDeParametrosParaInsercion() throws SQLException {
         this.statement.setDouble(1,this.venta.getTotal());
         this.statement.setString(2,this.venta.getMetodoPago().name());
-        this.statement.setDate(3, this.venta.getFecha());
+        this.statement.setTimestamp(3,Timestamp.valueOf(this.venta.getFecha()));
         this.statement.setInt(4, this.venta.getUsuario().getUsuarioId());
     }
 
@@ -74,7 +75,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
 
     @Override
     public VentaDTO obtenerPorId(Integer venta_Id) {
-        Date fecha = null;
+        String fecha = null;
         ArrayList<VentaDTO> lista = this.listarTodosGenerico(venta_Id,fecha);
         if (!lista.isEmpty()){
             this.venta = lista.getFirst();
@@ -82,7 +83,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
         return this.venta;
     }
     
-    private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId,Date fecha){
+    private ArrayList<VentaDTO> listarTodosGenerico(Integer ventaId,String fecha){
         String sql = "{CALL SP_LISTAR_VENTAS(?,?)}";
         Object parametros = new VentaParametrosBusquedaBuilder()
                             .conVentaId(ventaId)
@@ -94,7 +95,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
     @Override
     public ArrayList<VentaDTO> listarTodos() {
         Integer ventaId = null;
-        Date fecha = null;
+        String fecha = null;
         return this.listarTodosGenerico(ventaId,fecha);
     }
 
@@ -107,7 +108,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
                 this.statement.setNull(1, Types.INTEGER);
             }
             if(ventaParametros.getFecha()!= null){
-                this.statement.setDate(2, ventaParametros.getFecha());
+                    this.statement.setTimestamp(2, Timestamp.valueOf(ventaParametros.getFecha()));
             }else{
                 this.statement.setNull(2, Types.DATE);
             }
@@ -118,7 +119,7 @@ public class VentaDAOImpl extends DAOImplBase implements VentaDAO{
     }
 
     @Override
-    public ArrayList<VentaDTO> listarTodosPorFecha(Date fecha) {
+    public ArrayList<VentaDTO> listarTodosPorFecha(String fecha) {
         Integer ventaId = null;
         return this.listarTodosGenerico(ventaId,fecha);
     }

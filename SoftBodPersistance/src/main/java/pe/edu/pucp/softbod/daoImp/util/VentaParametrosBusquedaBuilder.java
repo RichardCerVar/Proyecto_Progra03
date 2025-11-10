@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class VentaParametrosBusquedaBuilder {
     private Integer ventaId;
-    private Date fecha;
+    private String fecha;
 
     public VentaParametrosBusquedaBuilder() {
         this.ventaId = null;
@@ -16,7 +16,7 @@ public class VentaParametrosBusquedaBuilder {
         return this;
     }
 
-    public VentaParametrosBusquedaBuilder conFecha(Date fecha) {
+    public VentaParametrosBusquedaBuilder conFecha(String fecha) {
         this.fecha = fecha;
         return this;
     }
@@ -36,11 +36,11 @@ public class VentaParametrosBusquedaBuilder {
         this.ventaId = ventaId;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
 }

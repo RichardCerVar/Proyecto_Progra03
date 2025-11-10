@@ -9,5 +9,5 @@ public interface VentaAlFiadoDAO {
     public VentaAlFiadoDTO obtenerPorId (Integer ventaFiada_Id);
     public ArrayList<VentaAlFiadoDTO> listarTodos();
     public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasCliente(String aliasCliente);
-    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente,Date fecha);
+    public ArrayList<VentaAlFiadoDTO> listarTodosPorAliasClienteFecha(String aliasCliente,String fecha);
 }
