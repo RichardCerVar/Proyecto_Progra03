@@ -18,6 +18,8 @@ public class DetalleDevolucionBO {
     
     public Integer insertar(DevolucionDTO devolucion, ProductoDTO producto, Double subtotal, 
                                 Integer cantidad, RazonDevolucionDTO razonDevolucion){
+        
+        
         DetalleDevolucionDTO detalleDevolucion = new DetalleDevolucionDTO(devolucion, 
                 producto,  subtotal, cantidad,  razonDevolucion);
         return this.detalleDevolucionDAO.insertar(detalleDevolucion);

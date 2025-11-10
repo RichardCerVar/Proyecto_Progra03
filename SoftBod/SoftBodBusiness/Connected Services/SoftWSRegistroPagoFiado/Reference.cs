@@ -579,6 +579,9 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         
         /// <remarks/>
         TRANSFERENCIA,
+        
+        /// <remarks/>
+        FIADO,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]

@@ -106,6 +106,7 @@
     <xs:restriction base="xs:string">
       <xs:enumeration value="EFECTIVO" />
       <xs:enumeration value="TRANSFERENCIA" />
+      <xs:enumeration value="FIADO" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

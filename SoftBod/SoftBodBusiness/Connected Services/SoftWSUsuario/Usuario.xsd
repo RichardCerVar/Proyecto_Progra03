@@ -60,6 +60,7 @@
   </xs:complexType>
   <xs:complexType name="eliminarLogicoUsuario">
     <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
       <xs:element minOccurs="0" name="correo" type="xs:string" />
       <xs:element minOccurs="0" name="tipoUsuarios" type="xs:string" />
@@ -76,6 +77,7 @@
   </xs:complexType>
   <xs:complexType name="modificarUsuario">
     <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
       <xs:element minOccurs="0" name="correo" type="xs:string" />
       <xs:element minOccurs="0" name="tipoUsuarios" type="xs:string" />

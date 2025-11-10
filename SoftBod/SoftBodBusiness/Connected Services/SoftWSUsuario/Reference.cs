@@ -142,36 +142,41 @@ namespace SoftBodBusiness.SoftWSUsuario {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string usuario;
+        public int usuarioId;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string correo;
+        public string usuario;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string tipoUsuarios;
+        public string correo;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string contrasenha;
+        public string tipoUsuarios;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombre;
+        public string contrasenha;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string telefono;
+        public string nombre;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string telefono;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=7)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool activo;
         
         public modificarUsuarioRequest() {
         }
         
-        public modificarUsuarioRequest(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public modificarUsuarioRequest(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+            this.usuarioId = usuarioId;
             this.usuario = usuario;
             this.correo = correo;
             this.tipoUsuarios = tipoUsuarios;
@@ -523,36 +528,41 @@ namespace SoftBodBusiness.SoftWSUsuario {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string usuario;
+        public int usuarioId;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string correo;
+        public string usuario;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string tipoUsuarios;
+        public string correo;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string contrasenha;
+        public string tipoUsuarios;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombre;
+        public string contrasenha;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string telefono;
+        public string nombre;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string telefono;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=7)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public bool activo;
         
         public eliminarLogicoUsuarioRequest() {
         }
         
-        public eliminarLogicoUsuarioRequest(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public eliminarLogicoUsuarioRequest(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+            this.usuarioId = usuarioId;
             this.usuario = usuario;
             this.correo = correo;
             this.tipoUsuarios = tipoUsuarios;
@@ -782,8 +792,9 @@ namespace SoftBodBusiness.SoftWSUsuario {
             return base.Channel.modificarUsuario(request);
         }
         
-        public int modificarUsuario(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public int modificarUsuario(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
             SoftBodBusiness.SoftWSUsuario.modificarUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.modificarUsuarioRequest();
+            inValue.usuarioId = usuarioId;
             inValue.usuario = usuario;
             inValue.correo = correo;
             inValue.tipoUsuarios = tipoUsuarios;
@@ -800,8 +811,9 @@ namespace SoftBodBusiness.SoftWSUsuario {
             return base.Channel.modificarUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.modificarUsuarioResponse> modificarUsuarioAsync(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.modificarUsuarioResponse> modificarUsuarioAsync(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
             SoftBodBusiness.SoftWSUsuario.modificarUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.modificarUsuarioRequest();
+            inValue.usuarioId = usuarioId;
             inValue.usuario = usuario;
             inValue.correo = correo;
             inValue.tipoUsuarios = tipoUsuarios;
@@ -896,8 +908,9 @@ namespace SoftBodBusiness.SoftWSUsuario {
             return base.Channel.eliminarLogicoUsuario(request);
         }
         
-        public int eliminarLogicoUsuario(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public int eliminarLogicoUsuario(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
             SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest();
+            inValue.usuarioId = usuarioId;
             inValue.usuario = usuario;
             inValue.correo = correo;
             inValue.tipoUsuarios = tipoUsuarios;
@@ -914,8 +927,9 @@ namespace SoftBodBusiness.SoftWSUsuario {
             return base.Channel.eliminarLogicoUsuarioAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse> eliminarLogicoUsuarioAsync(string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse> eliminarLogicoUsuarioAsync(int usuarioId, string usuario, string correo, string tipoUsuarios, string contrasenha, string nombre, string telefono, bool activo) {
             SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest();
+            inValue.usuarioId = usuarioId;
             inValue.usuario = usuario;
             inValue.correo = correo;
             inValue.tipoUsuarios = tipoUsuarios;
