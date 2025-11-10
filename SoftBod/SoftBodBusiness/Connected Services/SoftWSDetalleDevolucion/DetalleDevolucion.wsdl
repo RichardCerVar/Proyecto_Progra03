@@ -5,6 +5,12 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/DetalleDevolucion?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
+  <message name="obtenerDetalleDevolucionPorId">
+    <part name="parameters" element="tns:obtenerDetalleDevolucionPorId" />
+  </message>
+  <message name="obtenerDetalleDevolucionPorIdResponse">
+    <part name="parameters" element="tns:obtenerDetalleDevolucionPorIdResponse" />
+  </message>
   <message name="listarDetallesDevolucionPorRazon">
     <part name="parameters" element="tns:listarDetallesDevolucionPorRazon" />
   </message>
@@ -16,12 +22,6 @@
   </message>
   <message name="listarTodosDetallesDevolucionResponse">
     <part name="parameters" element="tns:listarTodosDetallesDevolucionResponse" />
-  </message>
-  <message name="obtenerDetalleDevolucionPorId">
-    <part name="parameters" element="tns:obtenerDetalleDevolucionPorId" />
-  </message>
-  <message name="obtenerDetalleDevolucionPorIdResponse">
-    <part name="parameters" element="tns:obtenerDetalleDevolucionPorIdResponse" />
   </message>
   <message name="insertarDetalleDevolucion">
     <part name="parameters" element="tns:insertarDetalleDevolucion" />
@@ -42,6 +42,10 @@
     <part name="parameters" element="tns:listarDetallesDevolucionPorProductoResponse" />
   </message>
   <portType name="DetalleDevolucion">
+    <operation name="obtenerDetalleDevolucionPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdRequest" message="tns:obtenerDetalleDevolucionPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdResponse" message="tns:obtenerDetalleDevolucionPorIdResponse" />
+    </operation>
     <operation name="listarDetallesDevolucionPorRazon">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonRequest" message="tns:listarDetallesDevolucionPorRazon" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonResponse" message="tns:listarDetallesDevolucionPorRazonResponse" />
@@ -49,10 +53,6 @@
     <operation name="listarTodosDetallesDevolucion">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarTodosDetallesDevolucionRequest" message="tns:listarTodosDetallesDevolucion" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarTodosDetallesDevolucionResponse" message="tns:listarTodosDetallesDevolucionResponse" />
-    </operation>
-    <operation name="obtenerDetalleDevolucionPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdRequest" message="tns:obtenerDetalleDevolucionPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdResponse" message="tns:obtenerDetalleDevolucionPorIdResponse" />
     </operation>
     <operation name="insertarDetalleDevolucion">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDevolucionRequest" message="tns:insertarDetalleDevolucion" />
@@ -69,6 +69,15 @@
   </portType>
   <binding name="DetalleDevolucionPortBinding" type="tns:DetalleDevolucion">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="obtenerDetalleDevolucionPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarDetallesDevolucionPorRazon">
       <soap:operation soapAction="" />
       <input>
@@ -79,15 +88,6 @@
       </output>
     </operation>
     <operation name="listarTodosDetallesDevolucion">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerDetalleDevolucionPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

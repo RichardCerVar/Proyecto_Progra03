@@ -16,7 +16,7 @@ namespace SoftBodBusiness
             devolucionSOAP = new DevolucionClient();
         }
 
-        public int insertarDevolucion(double total, date fecha, usuarioDTO usuario)
+        public int insertarDevolucion(double total, string fecha, usuarioDTO usuario)
         {
             return devolucionSOAP.insertarDevolucion(total, fecha, usuario);
         }
@@ -31,7 +31,7 @@ namespace SoftBodBusiness
             return devolucionSOAP.listarTodasDevoluciones().ToList();
         }
 
-        public List<devolucionDTO> listarDevolucionesPorFecha(date fecha)
+        public List<devolucionDTO> listarDevolucionesPorFecha(string fecha)
         {
             return devolucionSOAP.listarDevolucionesPorFecha(fecha).ToList();
         }
@@ -41,7 +41,7 @@ namespace SoftBodBusiness
             return devolucionSOAP.listarDevolucionesPorUsuario(usuarioId).ToList();
         }
 
-        public List<devolucionDTO> listarDevolucionesPorUsuarioYFecha(int usuarioId, date fecha)
+        public List<devolucionDTO> listarDevolucionesPorUsuarioYFecha(int usuarioId, string fecha)
         {
             return devolucionSOAP.listarDevolucionesPorUsuarioYFecha(usuarioId, fecha).ToList();
         }
@@ -51,9 +51,5 @@ namespace SoftBodBusiness
             return devolucionSOAP.registrarDevolucionCompleta(devolucion, detalles.ToArray());
         }
 
-        public bool validarDevolucionPermitida(int ventaId, int diasMaximosDevolucion)
-        {
-            return devolucionSOAP.validarDevolucionPermitida(ventaId, diasMaximosDevolucion);
-        }
     }
 }

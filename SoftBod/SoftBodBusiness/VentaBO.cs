@@ -20,7 +20,7 @@ namespace SoftBodBusiness
 
         public int insertarVenta(usuarioDTO usuario, tipoDePago metodoPago, detalleVentaDTO[] detallesVenta)
         {
-            return this.ventaSOAP.insertarVenta(0,usuario, metodoPago, detallesVenta);
+            return this.ventaSOAP.insertarVenta(usuario, metodoPago, detallesVenta);
             //el 0 es porque aparece un parametro fantasma arg0 que es el wrapper general de la llamada,
         }
 
@@ -35,7 +35,7 @@ namespace SoftBodBusiness
             return this.ventaSOAP.listarTodosVentas().ToList();
         }
 
-        public List<ventaDTO> listarVentasPorFecha(date fecha)
+        public List<ventaDTO> listarVentasPorFecha(string fecha)
         {
             return this.ventaSOAP.listarVentasPorFecha(fecha).ToList();
         }

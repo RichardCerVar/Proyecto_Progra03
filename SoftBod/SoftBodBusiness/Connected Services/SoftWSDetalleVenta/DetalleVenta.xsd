@@ -43,15 +43,12 @@
   </xs:complexType>
   <xs:complexType name="ventaDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
       <xs:element minOccurs="0" name="metodoPago" type="tns:tipoDePago" />
       <xs:element minOccurs="0" name="total" type="xs:double" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
       <xs:element minOccurs="0" name="ventaId" type="xs:int" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="date">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="usuarioDTO">
     <xs:sequence>
@@ -70,22 +67,22 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarDetallesVentaPorVenta">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ventaId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDetallesVentaPorVentaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleVentaDTO" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarDetallesVentaPorProducto">
     <xs:sequence>
       <xs:element minOccurs="0" name="productoId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarDetallesVentaPorProductoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleVentaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDetallesVentaPorVenta">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ventaId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDetallesVentaPorVentaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:detalleVentaDTO" />
     </xs:sequence>

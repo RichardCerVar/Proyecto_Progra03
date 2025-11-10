@@ -5,6 +5,18 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/RegistroPagoFiado?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
+  <message name="registrarPagoFiado">
+    <part name="parameters" element="tns:registrarPagoFiado" />
+  </message>
+  <message name="registrarPagoFiadoResponse">
+    <part name="parameters" element="tns:registrarPagoFiadoResponse" />
+  </message>
+  <message name="listarTodosRegistrosPagoFiado">
+    <part name="parameters" element="tns:listarTodosRegistrosPagoFiado" />
+  </message>
+  <message name="listarTodosRegistrosPagoFiadoResponse">
+    <part name="parameters" element="tns:listarTodosRegistrosPagoFiadoResponse" />
+  </message>
   <message name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
     <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
   </message>
@@ -17,18 +29,6 @@
   <message name="insertarRegistroPagoFiadoResponse">
     <part name="parameters" element="tns:insertarRegistroPagoFiadoResponse" />
   </message>
-  <message name="listarTodosRegistrosPagoFiado">
-    <part name="parameters" element="tns:listarTodosRegistrosPagoFiado" />
-  </message>
-  <message name="listarTodosRegistrosPagoFiadoResponse">
-    <part name="parameters" element="tns:listarTodosRegistrosPagoFiadoResponse" />
-  </message>
-  <message name="registrarPagoFiado">
-    <part name="parameters" element="tns:registrarPagoFiado" />
-  </message>
-  <message name="registrarPagoFiadoResponse">
-    <part name="parameters" element="tns:registrarPagoFiadoResponse" />
-  </message>
   <message name="listarRegistrosPagoFiadoPorAliasCliente">
     <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasCliente" />
   </message>
@@ -36,6 +36,14 @@
     <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
   </message>
   <portType name="RegistroPagoFiado">
+    <operation name="registrarPagoFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoRequest" message="tns:registrarPagoFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoResponse" message="tns:registrarPagoFiadoResponse" />
+    </operation>
+    <operation name="listarTodosRegistrosPagoFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoRequest" message="tns:listarTodosRegistrosPagoFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoResponse" message="tns:listarTodosRegistrosPagoFiadoResponse" />
+    </operation>
     <operation name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest" message="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" />
@@ -44,14 +52,6 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoRequest" message="tns:insertarRegistroPagoFiado" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoResponse" message="tns:insertarRegistroPagoFiadoResponse" />
     </operation>
-    <operation name="listarTodosRegistrosPagoFiado">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoRequest" message="tns:listarTodosRegistrosPagoFiado" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoResponse" message="tns:listarTodosRegistrosPagoFiadoResponse" />
-    </operation>
-    <operation name="registrarPagoFiado">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoRequest" message="tns:registrarPagoFiado" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoResponse" message="tns:registrarPagoFiadoResponse" />
-    </operation>
     <operation name="listarRegistrosPagoFiadoPorAliasCliente">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteRequest" message="tns:listarRegistrosPagoFiadoPorAliasCliente" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
@@ -59,6 +59,24 @@
   </portType>
   <binding name="RegistroPagoFiadoPortBinding" type="tns:RegistroPagoFiado">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="registrarPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosRegistrosPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
       <soap:operation soapAction="" />
       <input>
@@ -69,24 +87,6 @@
       </output>
     </operation>
     <operation name="insertarRegistroPagoFiado">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarTodosRegistrosPagoFiado">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="registrarPagoFiado">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

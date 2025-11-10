@@ -43,7 +43,7 @@ namespace SoftBodBusiness
             return this.ventaFiadoSOAP.listarVentasAlFiadoPorAliasCliente(aliasCliente).ToList();
         }
 
-        public List<ventaAlFiadoDTO> listarVentasAlFiadoPorAliasClienteYFecha(string aliasCliente, date fecha)
+        public List<ventaAlFiadoDTO> listarVentasAlFiadoPorAliasClienteYFecha(string aliasCliente, string fecha)
         {
             return this.ventaFiadoSOAP
                 .listarVentasAlFiadoPorAliasClienteYFecha(aliasCliente, fecha)

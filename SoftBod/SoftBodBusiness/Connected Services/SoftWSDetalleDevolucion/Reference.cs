@@ -16,6 +16,19 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
     public interface DetalleDevolucion {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
+            "olucionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
+            "olucionPorIdResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse obtenerDetalleDevolucionPorId(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
+            "olucionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
+            "olucionPorIdResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> obtenerDetalleDevolucionPorIdAsync(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDev" +
             "olucionPorRazonRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDev" +
             "olucionPorRazonResponse")]
@@ -40,19 +53,6 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
             "esDevolucionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarTodosDetall" +
             "esDevolucionResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionResponse> listarTodosDetallesDevolucionAsync(SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
-            "olucionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
-            "olucionPorIdResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse obtenerDetalleDevolucionPorId(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
-            "olucionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDev" +
-            "olucionPorIdResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> obtenerDetalleDevolucionPorIdAsync(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDe" +
@@ -222,7 +222,7 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         
         private bool devolucionIdFieldSpecified;
         
-        private date fechaField;
+        private string fechaField;
         
         private double totalField;
         
@@ -256,7 +256,7 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public date fecha {
+        public string fecha {
             get {
                 return this.fechaField;
             }
@@ -318,7 +318,161 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class date : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class usuarioDTO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool activoField;
+        
+        private bool activoFieldSpecified;
+        
+        private string contrasenhaField;
+        
+        private string correoField;
+        
+        private string nombreField;
+        
+        private string telefonoField;
+        
+        private tipoUsuario tipoUsuariosField;
+        
+        private bool tipoUsuariosFieldSpecified;
+        
+        private string usuarioField;
+        
+        private int usuarioIdField;
+        
+        private bool usuarioIdFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                this.activoField = value;
+                this.RaisePropertyChanged("activo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool activoSpecified {
+            get {
+                return this.activoFieldSpecified;
+            }
+            set {
+                this.activoFieldSpecified = value;
+                this.RaisePropertyChanged("activoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string contrasenha {
+            get {
+                return this.contrasenhaField;
+            }
+            set {
+                this.contrasenhaField = value;
+                this.RaisePropertyChanged("contrasenha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string correo {
+            get {
+                return this.correoField;
+            }
+            set {
+                this.correoField = value;
+                this.RaisePropertyChanged("correo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("telefono");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public tipoUsuario tipoUsuarios {
+            get {
+                return this.tipoUsuariosField;
+            }
+            set {
+                this.tipoUsuariosField = value;
+                this.RaisePropertyChanged("tipoUsuarios");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool tipoUsuariosSpecified {
+            get {
+                return this.tipoUsuariosFieldSpecified;
+            }
+            set {
+                this.tipoUsuariosFieldSpecified = value;
+                this.RaisePropertyChanged("tipoUsuariosSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
+        public int usuarioId {
+            get {
+                return this.usuarioIdField;
+            }
+            set {
+                this.usuarioIdField = value;
+                this.RaisePropertyChanged("usuarioId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool usuarioIdSpecified {
+            get {
+                return this.usuarioIdFieldSpecified;
+            }
+            set {
+                this.usuarioIdFieldSpecified = value;
+                this.RaisePropertyChanged("usuarioIdSpecified");
+            }
+        }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
@@ -328,6 +482,19 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
+    public enum tipoUsuario {
+        
+        /// <remarks/>
+        OPERARIO,
+        
+        /// <remarks/>
+        ADMINISTRADOR,
     }
     
     /// <remarks/>
@@ -680,189 +847,45 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         UNIDAD,
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class usuarioDTO : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDetalleDevolucionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerDetalleDevolucionPorIdRequest {
         
-        private bool activoField;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int productoId;
         
-        private bool activoFieldSpecified;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int devolucionId;
         
-        private string contrasenhaField;
-        
-        private string correoField;
-        
-        private string nombreField;
-        
-        private string telefonoField;
-        
-        private tipoUsuario tipoUsuariosField;
-        
-        private bool tipoUsuariosFieldSpecified;
-        
-        private string usuarioField;
-        
-        private int usuarioIdField;
-        
-        private bool usuarioIdFieldSpecified;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public bool activo {
-            get {
-                return this.activoField;
-            }
-            set {
-                this.activoField = value;
-                this.RaisePropertyChanged("activo");
-            }
+        public obtenerDetalleDevolucionPorIdRequest() {
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool activoSpecified {
-            get {
-                return this.activoFieldSpecified;
-            }
-            set {
-                this.activoFieldSpecified = value;
-                this.RaisePropertyChanged("activoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string contrasenha {
-            get {
-                return this.contrasenhaField;
-            }
-            set {
-                this.contrasenhaField = value;
-                this.RaisePropertyChanged("contrasenha");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public string correo {
-            get {
-                return this.correoField;
-            }
-            set {
-                this.correoField = value;
-                this.RaisePropertyChanged("correo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-                this.RaisePropertyChanged("nombre");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public string telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                this.telefonoField = value;
-                this.RaisePropertyChanged("telefono");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public tipoUsuario tipoUsuarios {
-            get {
-                return this.tipoUsuariosField;
-            }
-            set {
-                this.tipoUsuariosField = value;
-                this.RaisePropertyChanged("tipoUsuarios");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool tipoUsuariosSpecified {
-            get {
-                return this.tipoUsuariosFieldSpecified;
-            }
-            set {
-                this.tipoUsuariosFieldSpecified = value;
-                this.RaisePropertyChanged("tipoUsuariosSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string usuario {
-            get {
-                return this.usuarioField;
-            }
-            set {
-                this.usuarioField = value;
-                this.RaisePropertyChanged("usuario");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=7)]
-        public int usuarioId {
-            get {
-                return this.usuarioIdField;
-            }
-            set {
-                this.usuarioIdField = value;
-                this.RaisePropertyChanged("usuarioId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool usuarioIdSpecified {
-            get {
-                return this.usuarioIdFieldSpecified;
-            }
-            set {
-                this.usuarioIdFieldSpecified = value;
-                this.RaisePropertyChanged("usuarioIdSpecified");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
+        public obtenerDetalleDevolucionPorIdRequest(int productoId, int devolucionId) {
+            this.productoId = productoId;
+            this.devolucionId = devolucionId;
         }
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public enum tipoUsuario {
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDetalleDevolucionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerDetalleDevolucionPorIdResponse {
         
-        /// <remarks/>
-        OPERARIO,
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO @return;
         
-        /// <remarks/>
-        ADMINISTRADOR,
+        public obtenerDetalleDevolucionPorIdResponse() {
+        }
+        
+        public obtenerDetalleDevolucionPorIdResponse(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -925,47 +948,6 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         }
         
         public listarTodosDetallesDevolucionResponse(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDetalleDevolucionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerDetalleDevolucionPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int productoId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int devolucionId;
-        
-        public obtenerDetalleDevolucionPorIdRequest() {
-        }
-        
-        public obtenerDetalleDevolucionPorIdRequest(int productoId, int devolucionId) {
-            this.productoId = productoId;
-            this.devolucionId = devolucionId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDetalleDevolucionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerDetalleDevolucionPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO @return;
-        
-        public obtenerDetalleDevolucionPorIdResponse() {
-        }
-        
-        public obtenerDetalleDevolucionPorIdResponse(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO @return) {
             this.@return = @return;
         }
     }
@@ -1126,6 +1108,31 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion.obtenerDetalleDevolucionPorId(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request) {
+            return base.Channel.obtenerDetalleDevolucionPorId(request);
+        }
+        
+        public SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO obtenerDetalleDevolucionPorId(int productoId, int devolucionId) {
+            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest();
+            inValue.productoId = productoId;
+            inValue.devolucionId = devolucionId;
+            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse retVal = ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).obtenerDetalleDevolucionPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion.obtenerDetalleDevolucionPorIdAsync(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request) {
+            return base.Channel.obtenerDetalleDevolucionPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> obtenerDetalleDevolucionPorIdAsync(int productoId, int devolucionId) {
+            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest();
+            inValue.productoId = productoId;
+            inValue.devolucionId = devolucionId;
+            return ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).obtenerDetalleDevolucionPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SoftBodBusiness.SoftWSDetalleDevolucion.listarDetallesDevolucionPorRazonResponse SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion.listarDetallesDevolucionPorRazon(SoftBodBusiness.SoftWSDetalleDevolucion.listarDetallesDevolucionPorRazonRequest request) {
             return base.Channel.listarDetallesDevolucionPorRazon(request);
         }
@@ -1167,31 +1174,6 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionResponse> listarTodosDetallesDevolucionAsync() {
             SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionRequest();
             return ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).listarTodosDetallesDevolucionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion.obtenerDetalleDevolucionPorId(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request) {
-            return base.Channel.obtenerDetalleDevolucionPorId(request);
-        }
-        
-        public SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO obtenerDetalleDevolucionPorId(int productoId, int devolucionId) {
-            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest();
-            inValue.productoId = productoId;
-            inValue.devolucionId = devolucionId;
-            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse retVal = ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).obtenerDetalleDevolucionPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion.obtenerDetalleDevolucionPorIdAsync(SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest request) {
-            return base.Channel.obtenerDetalleDevolucionPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse> obtenerDetalleDevolucionPorIdAsync(int productoId, int devolucionId) {
-            SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdRequest();
-            inValue.productoId = productoId;
-            inValue.devolucionId = devolucionId;
-            return ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).obtenerDetalleDevolucionPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/Venta?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="listarVentasPorFecha">
-    <part name="parameters" element="tns:listarVentasPorFecha" />
-  </message>
-  <message name="listarVentasPorFechaResponse">
-    <part name="parameters" element="tns:listarVentasPorFechaResponse" />
-  </message>
   <message name="listarTodosVentas">
     <part name="parameters" element="tns:listarTodosVentas" />
   </message>
@@ -29,11 +23,13 @@
   <message name="insertarVentaResponse">
     <part name="parameters" element="tns:insertarVentaResponse" />
   </message>
+  <message name="listarVentasPorFecha">
+    <part name="parameters" element="tns:listarVentasPorFecha" />
+  </message>
+  <message name="listarVentasPorFechaResponse">
+    <part name="parameters" element="tns:listarVentasPorFechaResponse" />
+  </message>
   <portType name="Venta">
-    <operation name="listarVentasPorFecha">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest" message="tns:listarVentasPorFecha" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse" message="tns:listarVentasPorFechaResponse" />
-    </operation>
     <operation name="listarTodosVentas">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest" message="tns:listarTodosVentas" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse" message="tns:listarTodosVentasResponse" />
@@ -46,18 +42,13 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaRequest" message="tns:insertarVenta" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaResponse" message="tns:insertarVentaResponse" />
     </operation>
+    <operation name="listarVentasPorFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest" message="tns:listarVentasPorFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse" message="tns:listarVentasPorFechaResponse" />
+    </operation>
   </portType>
   <binding name="VentaPortBinding" type="tns:Venta">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarVentasPorFecha">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="listarTodosVentas">
       <soap:operation soapAction="" />
       <input>
@@ -77,6 +68,15 @@
       </output>
     </operation>
     <operation name="insertarVenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarVentasPorFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

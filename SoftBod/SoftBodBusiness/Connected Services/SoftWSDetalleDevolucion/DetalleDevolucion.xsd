@@ -35,13 +35,10 @@
   <xs:complexType name="devolucionDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="devolucionId" type="xs:int" />
-      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
       <xs:element minOccurs="0" name="total" type="xs:double" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="date">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="usuarioDTO">
     <xs:sequence>

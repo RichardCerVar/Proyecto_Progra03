@@ -19,13 +19,8 @@
       <xs:element minOccurs="0" name="alias" type="xs:string" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="date">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="insertarClienteAlFiadoResponse">
     <xs:sequence>
@@ -47,7 +42,7 @@
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" name="alias" type="xs:string" />
       <xs:element minOccurs="0" name="clienteId" type="xs:int" />
-      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
       <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
@@ -66,9 +61,8 @@
       <xs:element minOccurs="0" name="alias" type="xs:string" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarClienteAlFiadoResponse">

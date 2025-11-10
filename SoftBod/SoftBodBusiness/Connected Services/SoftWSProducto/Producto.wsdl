@@ -5,24 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/Producto?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="obtenerProductoPorId">
-    <part name="parameters" element="tns:obtenerProductoPorId" />
-  </message>
-  <message name="obtenerProductoPorIdResponse">
-    <part name="parameters" element="tns:obtenerProductoPorIdResponse" />
-  </message>
-  <message name="listarTodosProductos">
-    <part name="parameters" element="tns:listarTodosProductos" />
-  </message>
-  <message name="listarTodosProductosResponse">
-    <part name="parameters" element="tns:listarTodosProductosResponse" />
-  </message>
-  <message name="listarTodosConFiltroProductos">
-    <part name="parameters" element="tns:listarTodosConFiltroProductos" />
-  </message>
-  <message name="listarTodosConFiltroProductosResponse">
-    <part name="parameters" element="tns:listarTodosConFiltroProductosResponse" />
-  </message>
   <message name="insertarProducto">
     <part name="parameters" element="tns:insertarProducto" />
   </message>
@@ -35,19 +17,25 @@
   <message name="modificarProductoResponse">
     <part name="parameters" element="tns:modificarProductoResponse" />
   </message>
+  <message name="listarTodosConFiltroProductos">
+    <part name="parameters" element="tns:listarTodosConFiltroProductos" />
+  </message>
+  <message name="listarTodosConFiltroProductosResponse">
+    <part name="parameters" element="tns:listarTodosConFiltroProductosResponse" />
+  </message>
+  <message name="obtenerProductoPorId">
+    <part name="parameters" element="tns:obtenerProductoPorId" />
+  </message>
+  <message name="obtenerProductoPorIdResponse">
+    <part name="parameters" element="tns:obtenerProductoPorIdResponse" />
+  </message>
+  <message name="listarTodosProductos">
+    <part name="parameters" element="tns:listarTodosProductos" />
+  </message>
+  <message name="listarTodosProductosResponse">
+    <part name="parameters" element="tns:listarTodosProductosResponse" />
+  </message>
   <portType name="Producto">
-    <operation name="obtenerProductoPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/obtenerProductoPorIdRequest" message="tns:obtenerProductoPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/obtenerProductoPorIdResponse" message="tns:obtenerProductoPorIdResponse" />
-    </operation>
-    <operation name="listarTodosProductos">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosProductosRequest" message="tns:listarTodosProductos" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosProductosResponse" message="tns:listarTodosProductosResponse" />
-    </operation>
-    <operation name="listarTodosConFiltroProductos">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosConFiltroProductosRequest" message="tns:listarTodosConFiltroProductos" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosConFiltroProductosResponse" message="tns:listarTodosConFiltroProductosResponse" />
-    </operation>
     <operation name="insertarProducto">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/insertarProductoRequest" message="tns:insertarProducto" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/insertarProductoResponse" message="tns:insertarProductoResponse" />
@@ -56,10 +44,22 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/modificarProductoRequest" message="tns:modificarProducto" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/modificarProductoResponse" message="tns:modificarProductoResponse" />
     </operation>
+    <operation name="listarTodosConFiltroProductos">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosConFiltroProductosRequest" message="tns:listarTodosConFiltroProductos" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosConFiltroProductosResponse" message="tns:listarTodosConFiltroProductosResponse" />
+    </operation>
+    <operation name="obtenerProductoPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/obtenerProductoPorIdRequest" message="tns:obtenerProductoPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/obtenerProductoPorIdResponse" message="tns:obtenerProductoPorIdResponse" />
+    </operation>
+    <operation name="listarTodosProductos">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosProductosRequest" message="tns:listarTodosProductos" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Producto/listarTodosProductosResponse" message="tns:listarTodosProductosResponse" />
+    </operation>
   </portType>
   <binding name="ProductoPortBinding" type="tns:Producto">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerProductoPorId">
+    <operation name="insertarProducto">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -68,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodosProductos">
+    <operation name="modificarProducto">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -86,7 +86,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="insertarProducto">
+    <operation name="obtenerProductoPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +95,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="modificarProducto">
+    <operation name="listarTodosProductos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

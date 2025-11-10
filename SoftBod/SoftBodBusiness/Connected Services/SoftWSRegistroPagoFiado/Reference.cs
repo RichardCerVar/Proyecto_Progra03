@@ -16,6 +16,32 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     public interface RegistroPagoFiado {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
+            "oRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
+            "oResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
+            "oRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
+            "oResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
+            "rosPagoFiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
+            "rosPagoFiadoResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse listarTodosRegistrosPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
+            "rosPagoFiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
+            "rosPagoFiadoResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse> listarTodosRegistrosPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteConFechaFinRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteConFechaFinResponse")]
@@ -42,32 +68,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse> insertarRegistroPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
-            "rosPagoFiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
-            "rosPagoFiadoResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse listarTodosRegistrosPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
-            "rosPagoFiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegist" +
-            "rosPagoFiadoResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse> listarTodosRegistrosPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
-            "oRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
-            "oResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
-            "oRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiad" +
-            "oResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteResponse")]
@@ -87,7 +87,291 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class date : object, System.ComponentModel.INotifyPropertyChanged {
+    public partial class registroPagoFiadoDTO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private clienteAlFiadoDTO clienteField;
+        
+        private string fechaField;
+        
+        private tipoDePago metodoPagoField;
+        
+        private bool metodoPagoFieldSpecified;
+        
+        private double montoField;
+        
+        private bool montoFieldSpecified;
+        
+        private int pagoIdField;
+        
+        private bool pagoIdFieldSpecified;
+        
+        private usuarioDTO usuarioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public clienteAlFiadoDTO cliente {
+            get {
+                return this.clienteField;
+            }
+            set {
+                this.clienteField = value;
+                this.RaisePropertyChanged("cliente");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string fecha {
+            get {
+                return this.fechaField;
+            }
+            set {
+                this.fechaField = value;
+                this.RaisePropertyChanged("fecha");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public tipoDePago metodoPago {
+            get {
+                return this.metodoPagoField;
+            }
+            set {
+                this.metodoPagoField = value;
+                this.RaisePropertyChanged("metodoPago");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool metodoPagoSpecified {
+            get {
+                return this.metodoPagoFieldSpecified;
+            }
+            set {
+                this.metodoPagoFieldSpecified = value;
+                this.RaisePropertyChanged("metodoPagoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public double monto {
+            get {
+                return this.montoField;
+            }
+            set {
+                this.montoField = value;
+                this.RaisePropertyChanged("monto");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool montoSpecified {
+            get {
+                return this.montoFieldSpecified;
+            }
+            set {
+                this.montoFieldSpecified = value;
+                this.RaisePropertyChanged("montoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public int pagoId {
+            get {
+                return this.pagoIdField;
+            }
+            set {
+                this.pagoIdField = value;
+                this.RaisePropertyChanged("pagoId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool pagoIdSpecified {
+            get {
+                return this.pagoIdFieldSpecified;
+            }
+            set {
+                this.pagoIdFieldSpecified = value;
+                this.RaisePropertyChanged("pagoIdSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public usuarioDTO usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
+    public partial class clienteAlFiadoDTO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private bool activoField;
+        
+        private bool activoFieldSpecified;
+        
+        private string aliasField;
+        
+        private int clienteIdField;
+        
+        private bool clienteIdFieldSpecified;
+        
+        private string fechaDePagoField;
+        
+        private double montoDeudaField;
+        
+        private bool montoDeudaFieldSpecified;
+        
+        private string nombreField;
+        
+        private string telefonoField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                this.activoField = value;
+                this.RaisePropertyChanged("activo");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool activoSpecified {
+            get {
+                return this.activoFieldSpecified;
+            }
+            set {
+                this.activoFieldSpecified = value;
+                this.RaisePropertyChanged("activoSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public string alias {
+            get {
+                return this.aliasField;
+            }
+            set {
+                this.aliasField = value;
+                this.RaisePropertyChanged("alias");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int clienteId {
+            get {
+                return this.clienteIdField;
+            }
+            set {
+                this.clienteIdField = value;
+                this.RaisePropertyChanged("clienteId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool clienteIdSpecified {
+            get {
+                return this.clienteIdFieldSpecified;
+            }
+            set {
+                this.clienteIdFieldSpecified = value;
+                this.RaisePropertyChanged("clienteIdSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string fechaDePago {
+            get {
+                return this.fechaDePagoField;
+            }
+            set {
+                this.fechaDePagoField = value;
+                this.RaisePropertyChanged("fechaDePago");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public double montoDeuda {
+            get {
+                return this.montoDeudaField;
+            }
+            set {
+                this.montoDeudaField = value;
+                this.RaisePropertyChanged("montoDeuda");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool montoDeudaSpecified {
+            get {
+                return this.montoDeudaFieldSpecified;
+            }
+            set {
+                this.montoDeudaFieldSpecified = value;
+                this.RaisePropertyChanged("montoDeudaSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
+        public string nombre {
+            get {
+                return this.nombreField;
+            }
+            set {
+                this.nombreField = value;
+                this.RaisePropertyChanged("nombre");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
+        public string telefono {
+            get {
+                return this.telefonoField;
+            }
+            set {
+                this.telefonoField = value;
+                this.RaisePropertyChanged("telefono");
+            }
+        }
         
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
@@ -287,308 +571,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class clienteAlFiadoDTO : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private bool activoField;
-        
-        private bool activoFieldSpecified;
-        
-        private string aliasField;
-        
-        private int clienteIdField;
-        
-        private bool clienteIdFieldSpecified;
-        
-        private date fechaDePagoField;
-        
-        private double montoDeudaField;
-        
-        private bool montoDeudaFieldSpecified;
-        
-        private string nombreField;
-        
-        private string telefonoField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public bool activo {
-            get {
-                return this.activoField;
-            }
-            set {
-                this.activoField = value;
-                this.RaisePropertyChanged("activo");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool activoSpecified {
-            get {
-                return this.activoFieldSpecified;
-            }
-            set {
-                this.activoFieldSpecified = value;
-                this.RaisePropertyChanged("activoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public string alias {
-            get {
-                return this.aliasField;
-            }
-            set {
-                this.aliasField = value;
-                this.RaisePropertyChanged("alias");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int clienteId {
-            get {
-                return this.clienteIdField;
-            }
-            set {
-                this.clienteIdField = value;
-                this.RaisePropertyChanged("clienteId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool clienteIdSpecified {
-            get {
-                return this.clienteIdFieldSpecified;
-            }
-            set {
-                this.clienteIdFieldSpecified = value;
-                this.RaisePropertyChanged("clienteIdSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public date fechaDePago {
-            get {
-                return this.fechaDePagoField;
-            }
-            set {
-                this.fechaDePagoField = value;
-                this.RaisePropertyChanged("fechaDePago");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public double montoDeuda {
-            get {
-                return this.montoDeudaField;
-            }
-            set {
-                this.montoDeudaField = value;
-                this.RaisePropertyChanged("montoDeuda");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool montoDeudaSpecified {
-            get {
-                return this.montoDeudaFieldSpecified;
-            }
-            set {
-                this.montoDeudaFieldSpecified = value;
-                this.RaisePropertyChanged("montoDeudaSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-                this.RaisePropertyChanged("nombre");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=6)]
-        public string telefono {
-            get {
-                return this.telefonoField;
-            }
-            set {
-                this.telefonoField = value;
-                this.RaisePropertyChanged("telefono");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class registroPagoFiadoDTO : object, System.ComponentModel.INotifyPropertyChanged {
-        
-        private clienteAlFiadoDTO clienteField;
-        
-        private date fechaField;
-        
-        private tipoDePago metodoPagoField;
-        
-        private bool metodoPagoFieldSpecified;
-        
-        private double montoField;
-        
-        private bool montoFieldSpecified;
-        
-        private int pagoIdField;
-        
-        private bool pagoIdFieldSpecified;
-        
-        private usuarioDTO usuarioField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public clienteAlFiadoDTO cliente {
-            get {
-                return this.clienteField;
-            }
-            set {
-                this.clienteField = value;
-                this.RaisePropertyChanged("cliente");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public date fecha {
-            get {
-                return this.fechaField;
-            }
-            set {
-                this.fechaField = value;
-                this.RaisePropertyChanged("fecha");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public tipoDePago metodoPago {
-            get {
-                return this.metodoPagoField;
-            }
-            set {
-                this.metodoPagoField = value;
-                this.RaisePropertyChanged("metodoPago");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool metodoPagoSpecified {
-            get {
-                return this.metodoPagoFieldSpecified;
-            }
-            set {
-                this.metodoPagoFieldSpecified = value;
-                this.RaisePropertyChanged("metodoPagoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public double monto {
-            get {
-                return this.montoField;
-            }
-            set {
-                this.montoField = value;
-                this.RaisePropertyChanged("monto");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool montoSpecified {
-            get {
-                return this.montoFieldSpecified;
-            }
-            set {
-                this.montoFieldSpecified = value;
-                this.RaisePropertyChanged("montoSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public int pagoId {
-            get {
-                return this.pagoIdField;
-            }
-            set {
-                this.pagoIdField = value;
-                this.RaisePropertyChanged("pagoId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool pagoIdSpecified {
-            get {
-                return this.pagoIdFieldSpecified;
-            }
-            set {
-                this.pagoIdFieldSpecified = value;
-                this.RaisePropertyChanged("pagoIdSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=5)]
-        public usuarioDTO usuario {
-            get {
-                return this.usuarioField;
-            }
-            set {
-                this.usuarioField = value;
-                this.RaisePropertyChanged("usuario");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
-    [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoDePago {
         
@@ -597,6 +579,70 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         
         /// <remarks/>
         TRANSFERENCIA,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarPagoFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class registrarPagoFiadoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago;
+        
+        public registrarPagoFiadoRequest() {
+        }
+        
+        public registrarPagoFiadoRequest(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
+            this.pago = pago;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarPagoFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class registrarPagoFiadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public registrarPagoFiadoResponse() {
+        }
+        
+        public registrarPagoFiadoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosRegistrosPagoFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosRegistrosPagoFiadoRequest {
+        
+        public listarTodosRegistrosPagoFiadoRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosRegistrosPagoFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosRegistrosPagoFiadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return;
+        
+        public listarTodosRegistrosPagoFiadoResponse() {
+        }
+        
+        public listarTodosRegistrosPagoFiadoResponse(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -611,12 +657,12 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.date fechaFin;
+        public string fechaFin;
         
         public listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest() {
         }
         
-        public listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest(string aliasCliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fechaFin) {
+        public listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest(string aliasCliente, string fechaFin) {
             this.aliasCliente = aliasCliente;
             this.fechaFin = fechaFin;
         }
@@ -660,24 +706,19 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.date fecha;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string metodoPago;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public double monto;
         
         public insertarRegistroPagoFiadoRequest() {
         }
         
-        public insertarRegistroPagoFiadoRequest(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fecha, string metodoPago, double monto) {
+        public insertarRegistroPagoFiadoRequest(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, string metodoPago, double monto) {
             this.pagoId = pagoId;
             this.usuario = usuario;
             this.cliente = cliente;
-            this.fecha = fecha;
             this.metodoPago = metodoPago;
             this.monto = monto;
         }
@@ -697,70 +738,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         public insertarRegistroPagoFiadoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosRegistrosPagoFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosRegistrosPagoFiadoRequest {
-        
-        public listarTodosRegistrosPagoFiadoRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosRegistrosPagoFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosRegistrosPagoFiadoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return;
-        
-        public listarTodosRegistrosPagoFiadoResponse() {
-        }
-        
-        public listarTodosRegistrosPagoFiadoResponse(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarPagoFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class registrarPagoFiadoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago;
-        
-        public registrarPagoFiadoRequest() {
-        }
-        
-        public registrarPagoFiadoRequest(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
-            this.pago = pago;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarPagoFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class registrarPagoFiadoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public registrarPagoFiadoResponse() {
-        }
-        
-        public registrarPagoFiadoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -829,61 +806,26 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFin(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest request) {
-            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteConFechaFin(request);
+        SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request) {
+            return base.Channel.registrarPagoFiado(request);
         }
         
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] listarRegistrosPagoFiadoPorAliasClienteConFechaFin(string aliasCliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fechaFin) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest();
-            inValue.aliasCliente = aliasCliente;
-            inValue.fechaFin = fechaFin;
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteConFechaFin(inValue);
+        public int registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest();
+            inValue.pago = pago;
+            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).registrarPagoFiado(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest request) {
-            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request) {
+            return base.Channel.registrarPagoFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse> listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(string aliasCliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fechaFin) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest();
-            inValue.aliasCliente = aliasCliente;
-            inValue.fechaFin = fechaFin;
-            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.insertarRegistroPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request) {
-            return base.Channel.insertarRegistroPagoFiado(request);
-        }
-        
-        public int insertarRegistroPagoFiado(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fecha, string metodoPago, double monto) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest();
-            inValue.pagoId = pagoId;
-            inValue.usuario = usuario;
-            inValue.cliente = cliente;
-            inValue.fecha = fecha;
-            inValue.metodoPago = metodoPago;
-            inValue.monto = monto;
-            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).insertarRegistroPagoFiado(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.insertarRegistroPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request) {
-            return base.Channel.insertarRegistroPagoFiadoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse> insertarRegistroPagoFiadoAsync(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, SoftBodBusiness.SoftWSRegistroPagoFiado.date fecha, string metodoPago, double monto) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest();
-            inValue.pagoId = pagoId;
-            inValue.usuario = usuario;
-            inValue.cliente = cliente;
-            inValue.fecha = fecha;
-            inValue.metodoPago = metodoPago;
-            inValue.monto = monto;
-            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).insertarRegistroPagoFiadoAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest();
+            inValue.pago = pago;
+            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).registrarPagoFiadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -908,26 +850,59 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request) {
-            return base.Channel.registrarPagoFiado(request);
+        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFin(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest request) {
+            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteConFechaFin(request);
         }
         
-        public int registrarPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest();
-            inValue.pago = pago;
-            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).registrarPagoFiado(inValue);
+        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] listarRegistrosPagoFiadoPorAliasClienteConFechaFin(string aliasCliente, string fechaFin) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest();
+            inValue.aliasCliente = aliasCliente;
+            inValue.fechaFin = fechaFin;
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteConFechaFin(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request) {
-            return base.Channel.registrarPagoFiadoAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest request) {
+            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO pago) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest();
-            inValue.pago = pago;
-            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).registrarPagoFiadoAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse> listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(string aliasCliente, string fechaFin) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest();
+            inValue.aliasCliente = aliasCliente;
+            inValue.fechaFin = fechaFin;
+            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteConFechaFinAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.insertarRegistroPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request) {
+            return base.Channel.insertarRegistroPagoFiado(request);
+        }
+        
+        public int insertarRegistroPagoFiado(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, string metodoPago, double monto) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest();
+            inValue.pagoId = pagoId;
+            inValue.usuario = usuario;
+            inValue.cliente = cliente;
+            inValue.metodoPago = metodoPago;
+            inValue.monto = monto;
+            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).insertarRegistroPagoFiado(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.insertarRegistroPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request) {
+            return base.Channel.insertarRegistroPagoFiadoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse> insertarRegistroPagoFiadoAsync(int pagoId, SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO usuario, SoftBodBusiness.SoftWSRegistroPagoFiado.clienteAlFiadoDTO cliente, string metodoPago, double monto) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest();
+            inValue.pagoId = pagoId;
+            inValue.usuario = usuario;
+            inValue.cliente = cliente;
+            inValue.metodoPago = metodoPago;
+            inValue.monto = monto;
+            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).insertarRegistroPagoFiadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

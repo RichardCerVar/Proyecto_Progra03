@@ -15,7 +15,6 @@
       <xs:element minOccurs="0" name="pagoId" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
       <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
-      <xs:element minOccurs="0" name="fecha" type="tns:date" />
       <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
       <xs:element minOccurs="0" name="monto" type="xs:double" />
     </xs:sequence>
@@ -37,14 +36,11 @@
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
       <xs:element minOccurs="0" name="alias" type="xs:string" />
       <xs:element minOccurs="0" name="clienteId" type="xs:int" />
-      <xs:element minOccurs="0" name="fechaDePago" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
       <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
       <xs:element minOccurs="0" name="nombre" type="xs:string" />
       <xs:element minOccurs="0" name="telefono" type="xs:string" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="date">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="insertarRegistroPagoFiadoResponse">
     <xs:sequence>
@@ -54,7 +50,7 @@
   <xs:complexType name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
     <xs:sequence>
       <xs:element minOccurs="0" name="aliasCliente" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaFin" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse">
@@ -65,7 +61,7 @@
   <xs:complexType name="registroPagoFiadoDTO">
     <xs:sequence>
       <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
-      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
       <xs:element minOccurs="0" name="metodoPago" type="tns:tipoDePago" />
       <xs:element minOccurs="0" name="monto" type="xs:double" />
       <xs:element minOccurs="0" name="pagoId" type="xs:int" />

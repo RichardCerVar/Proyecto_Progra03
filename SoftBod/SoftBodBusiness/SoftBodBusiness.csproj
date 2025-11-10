@@ -253,9 +253,6 @@
     <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.registrarDevolucionCompletaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.validarDevolucionPermitidaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.wsdl" />
     <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.xsd">
       <SubType>Designer</SubType>

@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="	http://localhost:8080/SoftBodWS/RazonDevolucion?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address=" http://localhost:8080/SoftBodWS/RazonDevolucion?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="RazonDevolucion.wsdl" MetadataType="Wsdl" ID="a13c0d7c-25a6-4aa0-98cf-d721e289c1d3" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/RazonDevolucion?wsdl" />

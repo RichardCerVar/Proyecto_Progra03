@@ -27,15 +27,12 @@
   </xs:complexType>
   <xs:complexType name="historialOperacionesDTO">
     <xs:sequence>
-      <xs:element minOccurs="0" name="fechaHora" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaHora" type="xs:string" />
       <xs:element minOccurs="0" name="operacion" type="tns:tipoOperacion" />
       <xs:element minOccurs="0" name="operacionId" type="xs:int" />
       <xs:element minOccurs="0" name="tablaAfectada" type="xs:string" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="date">
-    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="usuarioDTO">
     <xs:sequence>
@@ -85,7 +82,7 @@
   </xs:complexType>
   <xs:complexType name="listarHistorialOperacionesPorFecha">
     <xs:sequence>
-      <xs:element minOccurs="0" name="fecha" type="tns:date" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarHistorialOperacionesPorFechaResponse">
@@ -128,7 +125,7 @@
       <xs:element minOccurs="0" name="operacionId" type="xs:int" />
       <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
       <xs:element minOccurs="0" name="tipoOperacion" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaOperacion" type="tns:date" />
+      <xs:element minOccurs="0" name="fechaOperacion" type="xs:string" />
       <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" type="xs:string" />
       <xs:element minOccurs="0" name="tipoUsuario" type="xs:string" />

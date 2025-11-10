@@ -19,7 +19,7 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="	http://localhost:8080/SoftBodWS/Producto?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address=" http://localhost:8080/SoftBodWS/Producto?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
     <MetadataFile FileName="Producto.xsd" MetadataType="Schema" ID="e5661e9d-36a2-4619-965c-31fb012995b5" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/Producto?xsd=1" />

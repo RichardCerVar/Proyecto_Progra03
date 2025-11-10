@@ -16,16 +16,15 @@ namespace SoftBodBusiness
             clienteAlFiadoSOAP = new ClienteAlFiadoClient();
         }
 
-        public int insertarClienteAlFiado(string alias, string nombre, string telefono, date fechaDePago,
-                                          bool activo, double montoDeuda)
+        public int insertarClienteAlFiado(string alias, string nombre, string telefono, string fechaDePago)
         {
-            return clienteAlFiadoSOAP.insertarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+            return clienteAlFiadoSOAP.insertarClienteAlFiado(alias, nombre, telefono, fechaDePago);
         }
 
-        public int modificarClienteAlFiado(string alias, string nombre, string telefono, date fechaDePago,
-                                           bool activo, double montoDeuda)
+        public int modificarClienteAlFiado(string alias, string nombre, string telefono, string fechaDePago,
+                                           bool activo)
         {
-            return clienteAlFiadoSOAP.modificarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo, montoDeuda);
+            return clienteAlFiadoSOAP.modificarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo);
         }
 
         public clienteAlFiadoDTO obtenerClienteAlFiadoPorId(int clienteId)

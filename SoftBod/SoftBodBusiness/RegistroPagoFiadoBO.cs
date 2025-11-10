@@ -17,11 +17,11 @@ namespace SoftBodBusiness
         }
 
         public int insertarRegistroPagoFiado(int pagoId, usuarioDTO usuario,
-            clienteAlFiadoDTO cliente, date fecha, string metodoPago, double monto)
+            clienteAlFiadoDTO cliente, string metodoPago, double monto)
         {
             // WSDL normalmente genera java.sql.Date → System.DateTime → correcto
             return this.registroSOAP.insertarRegistroPagoFiado(
-                pagoId, usuario, cliente, fecha, metodoPago, monto
+                pagoId, usuario, cliente, metodoPago, monto
             );
         }
 
@@ -36,7 +36,7 @@ namespace SoftBodBusiness
         }
 
         public List<registroPagoFiadoDTO> listarRegistrosPagoFiadoPorAliasClienteConFechaFin(
-            string aliasCliente, date fechaFin)
+            string aliasCliente, string fechaFin)
         {
             return this.registroSOAP
                 .listarRegistrosPagoFiadoPorAliasClienteConFechaFin(aliasCliente, fechaFin)

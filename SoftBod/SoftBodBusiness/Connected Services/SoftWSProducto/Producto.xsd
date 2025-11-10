@@ -38,16 +38,6 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerProductoPorId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="productoId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerProductoPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:productoDTO" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarTodosConFiltroProductos">
     <xs:sequence>
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
@@ -58,6 +48,16 @@
   <xs:complexType name="listarTodosConFiltroProductosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:productoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerProductoPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="productoId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerProductoPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:productoDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarProducto">

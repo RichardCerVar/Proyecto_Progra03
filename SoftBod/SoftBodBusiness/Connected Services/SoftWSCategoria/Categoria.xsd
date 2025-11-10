@@ -38,6 +38,16 @@
       <xs:element minOccurs="0" name="return" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="eliminarCategoria">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoria" type="tns:categoriaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarCategoriaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="obtenerCategoriaPorId">
     <xs:sequence>
       <xs:element minOccurs="0" name="categoriaId" type="xs:int" />
@@ -48,12 +58,12 @@
       <xs:element minOccurs="0" name="return" type="tns:categoriaDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarCategoria">
+  <xs:complexType name="insertarCategoria">
     <xs:sequence>
-      <xs:element minOccurs="0" name="categoria" type="tns:categoriaDTO" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarCategoriaResponse">
+  <xs:complexType name="insertarCategoriaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
@@ -66,16 +76,6 @@
   <xs:complexType name="categoriaContieneProductosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="xs:boolean" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarCategoria">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarCategoriaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="nombreCategoriaYaExiste">
