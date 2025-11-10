@@ -24,17 +24,17 @@ namespace SoftBodBusiness
                                                     contrasenha, nombre, telefono, activo);
         }
 
-        public int modificarUsuario(string usuario, string correo, string tipoUsuarios,
+        public int modificarUsuario(int usuarioId, string usuario, string correo, string tipoUsuarios,
                                    string contrasenha, string nombre, string telefono, bool activo)
         {
-            return this.usuarioSOAP.modificarUsuario(usuario, correo, tipoUsuarios,
+            return this.usuarioSOAP.modificarUsuario(usuarioId, usuario, correo, tipoUsuarios,
                                                      contrasenha, nombre, telefono, activo);
         }
 
-        public int eliminarLogicoUsuario(string usuario, string correo, string tipoUsuarios,
+        public int eliminarLogicoUsuario(int usuarioId, string usuario, string correo, string tipoUsuarios,
                                          string contrasenha, string nombre, string telefono, bool activo)
         {
-            return this.usuarioSOAP.eliminarLogicoUsuario(usuario, correo, tipoUsuarios,
+            return this.usuarioSOAP.eliminarLogicoUsuario(usuarioId, usuario, correo, tipoUsuarios,
                                                           contrasenha, nombre, telefono, activo);
         }
 

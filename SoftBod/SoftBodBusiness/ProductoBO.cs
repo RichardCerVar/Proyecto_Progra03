@@ -38,7 +38,7 @@ namespace SoftBodBusiness
             return productoSOAP.listarTodosProductos().ToList();
         }
 
-        public List<productoDTO> listarTodosProductosActivos(bool activo, string categoria, string nombreProducto)
+        public List<productoDTO> listarTodosConFiltroProductos(bool activo, string categoria, string nombreProducto)
         {
             return productoSOAP.listarTodosConFiltroProductos(activo, categoria, nombreProducto).ToList();
         }
