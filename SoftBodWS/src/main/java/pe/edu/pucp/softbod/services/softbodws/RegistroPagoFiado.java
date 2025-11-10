@@ -3,7 +3,6 @@ package pe.edu.pucp.softbod.services.softbodws;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
-import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.gestclientes.RegistroPagoFiadoBO;
 import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
@@ -21,10 +20,10 @@ public class RegistroPagoFiado {
     
     @WebMethod(operationName = "insertarRegistroPagoFiado")
     public Integer insertarRegistroPagoFiado(@WebParam(name = "pagoId") Integer pagoId,@WebParam(name = "usuario") UsuarioDTO usuario,
-            @WebParam(name = "cliente") ClienteAlFiadoDTO cliente, @WebParam(name = "fecha") Date fecha, 
+            @WebParam(name = "cliente") ClienteAlFiadoDTO cliente, 
             @WebParam(name = "metodoPago") String metodoPago,@WebParam(name = "monto") Double monto){
         
-        return this.registroPagoFiadoBO.insertar(pagoId, usuario, cliente, fecha, metodoPago, monto);
+        return this.registroPagoFiadoBO.insertar(pagoId, usuario, cliente, metodoPago, monto);
     }
     
     @WebMethod(operationName = "listarTodosRegistrosPagoFiado")
@@ -39,7 +38,7 @@ public class RegistroPagoFiado {
     
     @WebMethod(operationName = "listarRegistrosPagoFiadoPorAliasClienteConFechaFin")
     public ArrayList<RegistroPagoFiadoDTO> listarRegistrosPagoFiadoPorAliasClienteConFechaFin(
-            @WebParam(name = "aliasCliente") String aliasCliente,@WebParam(name = "fechaFin") Date fechaFin){
+            @WebParam(name = "aliasCliente") String aliasCliente,@WebParam(name = "fechaFin") String fechaFin){
         return this.registroPagoFiadoBO.listarTodosPorAliasClienteConFechaFin(aliasCliente, fechaFin);
     }
     
