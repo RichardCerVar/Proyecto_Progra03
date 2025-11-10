@@ -92,9 +92,9 @@
                 <small class="text-muted" id="lblUsuario" runat="server"></small>
             </div>
             <div class="dropdown">
-                <a href="#" class="nav-user dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="nav-user dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-person"></i> Mi Cuenta
-                </a>
+                </button>
                 <ul class="dropdown-menu dropdown-menu-end shadow-sm">
                     <li>
                         <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="dropdown-item text-danger" OnClick="btnCerrarSesion_Click">
@@ -134,7 +134,5 @@
             </a>
         </nav>
     </form>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
