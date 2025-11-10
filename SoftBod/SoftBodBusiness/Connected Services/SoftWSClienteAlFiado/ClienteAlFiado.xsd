@@ -58,11 +58,7 @@
   </xs:complexType>
   <xs:complexType name="modificarClienteAlFiado">
     <xs:sequence>
-      <xs:element minOccurs="0" name="alias" type="xs:string" />
-      <xs:element minOccurs="0" name="nombre" type="xs:string" />
-      <xs:element minOccurs="0" name="telefono" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="clienteModificado" type="tns:clienteAlFiadoDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="modificarClienteAlFiadoResponse">

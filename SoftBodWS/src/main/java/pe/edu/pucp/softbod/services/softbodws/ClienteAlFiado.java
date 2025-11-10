@@ -25,11 +25,9 @@ public class ClienteAlFiado {
     }
     
     @WebMethod(operationName = "modificarClienteAlFiado")
-    public Integer modificarClienteAlFiado(@WebParam(name = "alias") String alias,@WebParam(name = "nombre") String nombre,
-            @WebParam(name = "telefono") String telefono, @WebParam(name = "fechaDePago") String fechaDePago, 
-            @WebParam(name = "activo") Boolean activo){
+    public Integer modificarClienteAlFiado(@WebParam(name = "clienteModificado") ClienteAlFiadoDTO cliModificado){
         
-        return this.clienteAlFiadoBO.modificar(alias, nombre, telefono, fechaDePago, activo);
+        return this.clienteAlFiadoBO.modificar(cliModificado);
     }
     
     @WebMethod(operationName = "obtenerClienteAlFiadoPorId")

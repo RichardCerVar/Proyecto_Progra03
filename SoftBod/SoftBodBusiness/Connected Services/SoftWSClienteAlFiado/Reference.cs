@@ -442,33 +442,13 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string alias;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombre;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string telefono;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fechaDePago;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool activo;
+        public SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado;
         
         public modificarClienteAlFiadoRequest() {
         }
         
-        public modificarClienteAlFiadoRequest(string alias, string nombre, string telefono, string fechaDePago, bool activo) {
-            this.alias = alias;
-            this.nombre = nombre;
-            this.telefono = telefono;
-            this.fechaDePago = fechaDePago;
-            this.activo = activo;
+        public modificarClienteAlFiadoRequest(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
+            this.clienteModificado = clienteModificado;
         }
     }
     
@@ -675,13 +655,9 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             return base.Channel.modificarClienteAlFiado(request);
         }
         
-        public int modificarClienteAlFiado(string alias, string nombre, string telefono, string fechaDePago, bool activo) {
+        public int modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
             SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
-            inValue.alias = alias;
-            inValue.nombre = nombre;
-            inValue.telefono = telefono;
-            inValue.fechaDePago = fechaDePago;
-            inValue.activo = activo;
+            inValue.clienteModificado = clienteModificado;
             SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiado(inValue);
             return retVal.@return;
         }
@@ -691,13 +667,9 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             return base.Channel.modificarClienteAlFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(string alias, string nombre, string telefono, string fechaDePago, bool activo) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
             SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
-            inValue.alias = alias;
-            inValue.nombre = nombre;
-            inValue.telefono = telefono;
-            inValue.fechaDePago = fechaDePago;
-            inValue.activo = activo;
+            inValue.clienteModificado = clienteModificado;
             return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiadoAsync(inValue);
         }
         

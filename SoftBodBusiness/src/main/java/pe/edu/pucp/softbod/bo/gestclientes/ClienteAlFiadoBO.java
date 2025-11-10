@@ -21,11 +21,8 @@ public class ClienteAlFiadoBO {
         return this.clienteAlFiadoDAO.insertar(clienteAlFiado);
     }
     
-    public Integer modificar (String alias, String nombre, String telefono, 
-                             String fechaDePago, Boolean activo){
-        ClienteAlFiadoDTO clienteAlFiado = new ClienteAlFiadoDTO( alias, nombre,  
-                        telefono, fechaDePago,  activo,  0.00); //no hay columna de monto en persistencia;
-        return this.clienteAlFiadoDAO.modificar(clienteAlFiado);
+    public Integer modificar (ClienteAlFiadoDTO clienteModificado){
+        return this.clienteAlFiadoDAO.modificar(clienteModificado);
     }
     
     public ClienteAlFiadoDTO obtenerPorId (Integer clienteId){

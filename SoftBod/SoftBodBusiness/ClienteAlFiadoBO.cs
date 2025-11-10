@@ -21,10 +21,9 @@ namespace SoftBodBusiness
             return clienteAlFiadoSOAP.insertarClienteAlFiado(alias, nombre, telefono, fechaDePago);
         }
 
-        public int modificarClienteAlFiado(string alias, string nombre, string telefono, string fechaDePago,
-                                           bool activo)
+        public int modificarClienteAlFiado(clienteAlFiadoDTO cliModificado)
         {
-            return clienteAlFiadoSOAP.modificarClienteAlFiado(alias, nombre, telefono, fechaDePago, activo);
+            return clienteAlFiadoSOAP.modificarClienteAlFiado(cliModificado);
         }
 
         public clienteAlFiadoDTO obtenerClienteAlFiadoPorId(int clienteId)
