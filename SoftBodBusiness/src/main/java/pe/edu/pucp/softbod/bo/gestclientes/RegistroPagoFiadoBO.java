@@ -2,6 +2,9 @@ package pe.edu.pucp.softbod.bo.gestclientes;
 
 import pe.edu.pucp.softbod.bo.gestclientes.ClienteAlFiadoBO;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
@@ -28,13 +31,14 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
     
     // ==================== MÉTODOS DAO EXISTENTES ====================
     
-    public Integer insertar(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente, 
-                                  String fecha, String metodoPago, Double monto){
+    public Integer insertar(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente
+                            , String metodoPago, Double monto){
         Tipo_de_pago metPago;
         if (metodoPago.equals(Tipo_de_pago.EFECTIVO.name()))
             metPago = Tipo_de_pago.EFECTIVO;
         else metPago = Tipo_de_pago.TRANSFERENCIA;
-        
+        Timestamp fecha_actual = new Timestamp(System.currentTimeMillis());
+        String fecha = fecha_actual.toString();
         RegistroPagoFiadoDTO registroPagoFiado = new RegistroPagoFiadoDTO(pagoId, usuario, cliente, 
                                    fecha, metPago, monto);
         return this.registroPagoFiadoDAO.insertar(registroPagoFiado);
