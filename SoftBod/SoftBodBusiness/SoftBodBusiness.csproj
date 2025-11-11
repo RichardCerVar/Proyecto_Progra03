@@ -163,6 +163,9 @@
     <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.insertarClienteAlFiadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -290,6 +293,9 @@
     <None Include="Connected Services\SoftWSProducto\Producto.wsdl" />
     <None Include="Connected Services\SoftWSProducto\Producto.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.eliminarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.insertarProductoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>

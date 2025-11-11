@@ -4,6 +4,8 @@
   <xs:element name="bloquearClienteAlFiadoPorMorosidadResponse" type="tns:bloquearClienteAlFiadoPorMorosidadResponse" />
   <xs:element name="desbloquearClienteAlFiado" type="tns:desbloquearClienteAlFiado" />
   <xs:element name="desbloquearClienteAlFiadoResponse" type="tns:desbloquearClienteAlFiadoResponse" />
+  <xs:element name="eliminarClienteAlFiado" type="tns:eliminarClienteAlFiado" />
+  <xs:element name="eliminarClienteAlFiadoResponse" type="tns:eliminarClienteAlFiadoResponse" />
   <xs:element name="insertarClienteAlFiado" type="tns:insertarClienteAlFiado" />
   <xs:element name="insertarClienteAlFiadoResponse" type="tns:insertarClienteAlFiadoResponse" />
   <xs:element name="listarTodosClientesAlFiado" type="tns:listarTodosClientesAlFiado" />
@@ -66,20 +68,22 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="eliminarClienteAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteAeliminar" type="tns:clienteAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarClienteAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="bloquearClienteAlFiadoPorMorosidad">
     <xs:sequence>
       <xs:element minOccurs="0" name="clienteId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="bloquearClienteAlFiadoPorMorosidadResponse">
-    <xs:sequence />
-  </xs:complexType>
-  <xs:complexType name="desbloquearClienteAlFiado">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="desbloquearClienteAlFiadoResponse">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="obtenerClienteAlFiadoPorId">
@@ -91,5 +95,13 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:clienteAlFiadoDTO" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="desbloquearClienteAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="desbloquearClienteAlFiadoResponse">
+    <xs:sequence />
   </xs:complexType>
 </xs:schema>

@@ -10,4 +10,5 @@ public interface ProductoDAO {
     public ArrayList<ProductoDTO> listarProductosConFiltro(Boolean activo,
             String categoria, String nombreProducto);
     public ArrayList<ProductoDTO> listarTodos();
+    public Integer eliminar(ProductoDTO producto);
 }

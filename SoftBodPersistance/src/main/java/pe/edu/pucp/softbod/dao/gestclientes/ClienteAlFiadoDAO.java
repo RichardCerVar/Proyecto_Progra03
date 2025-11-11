@@ -15,6 +15,8 @@ public interface ClienteAlFiadoDAO {
     
     public ClienteAlFiadoDTO obtenerPorId(Integer clienteId);
     
+    public Integer eliminar(ClienteAlFiadoDTO cliente);
+    
     //public listarActivos();
 
     //obtenerPorALias(String alias);

@@ -25,6 +25,10 @@ public class ClienteAlFiadoBO {
         return this.clienteAlFiadoDAO.modificar(clienteModificado);
     }
     
+    public Integer eliminar (ClienteAlFiadoDTO cliente){
+        return this.clienteAlFiadoDAO.eliminar(cliente);
+    }
+    
     public ClienteAlFiadoDTO obtenerPorId (Integer clienteId){
         return this.clienteAlFiadoDAO.obtenerPorId(clienteId);
     }

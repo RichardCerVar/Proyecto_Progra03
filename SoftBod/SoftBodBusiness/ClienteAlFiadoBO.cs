@@ -26,6 +26,11 @@ namespace SoftBodBusiness
             return clienteAlFiadoSOAP.modificarClienteAlFiado(cliModificado);
         }
 
+        public int eliminarClienteAlFiado(clienteAlFiadoDTO cliEliminar)
+        {
+            return clienteAlFiadoSOAP.eliminarClienteAlFiado(cliEliminar);
+        }
+
         public clienteAlFiadoDTO obtenerClienteAlFiadoPorId(int clienteId)
         {
             return clienteAlFiadoSOAP.obtenerClienteAlFiadoPorId(clienteId);

@@ -98,7 +98,7 @@ namespace SoftBodPruebas
             // 1. Insertar cliente
             Console.WriteLine("1. Insertando nuevo cliente al fiado...");
             int nuevoClienteId = clienteBO.insertarClienteAlFiado(
-                "Juanes",
+                "JuanesitoNuevo",
                 "Juan Pérez García",
                 "987654321",
                 "2024-12-15"
@@ -233,47 +233,49 @@ namespace SoftBodPruebas
         [TestMethod]
         public void PruebasDetalleVenta()
         {
-            Console.WriteLine("=== PRUEBAS DETALLE VENTA BO ===\n");
+            //Console.WriteLine("=== PRUEBAS DETALLE VENTA BO ===\n");
 
-            int ventaIdPrueba = 1;
-            int productoIdPrueba = 1;
+            //int ventaIdPrueba = 1;
+            //int productoIdPrueba = 1;
 
-            // 1. Listar todos los detalles
-            //MUY GRANDE
-            //Console.WriteLine("1. Listando todos los detalles de venta...");
-            //List<DetalleVentaDTO> detalles = detalleBO.listarTodosDetallesVenta().GetRange(0,20);
-            //Console.WriteLine($"   Total: {detalles.Count}");
-            //foreach (var d in detalles)
+            //// 1. Listar todos los detalles
+            ////MUY GRANDE
+            ////Console.WriteLine("1. Listando todos los detalles de venta...");
+            ////List<DetalleVentaDTO> detalles = detalleBO.listarTodosDetallesVenta().GetRange(0,20);
+            ////Console.WriteLine($"   Total: {detalles.Count}");
+            ////foreach (var d in detalles)
+            ////{
+            ////    Console.WriteLine($"   - Venta: {d.venta?.ventaId}, Producto: {d.producto?.nombre}, Cantidad: {d.cantidad}");
+            ////}
+            ////Console.WriteLine();
+
+            //// 2. Listar por venta
+            //Console.WriteLine($"2. Listando detalles de venta ID {ventaIdPrueba}...");
+            //List<DetalleVentaDTO> detallesPorVenta = detalleBO.listarDetallesVentaPorVenta(ventaIdPrueba);
+            //Console.WriteLine($"   Total: {detallesPorVenta.Count}");
+            //foreach (var d in detallesPorVenta)
             //{
-            //    Console.WriteLine($"   - Venta: {d.venta?.ventaId}, Producto: {d.producto?.nombre}, Cantidad: {d.cantidad}");
+            //    Console.WriteLine($"   - Producto: {d.producto?.nombre}");
+            //    Console.WriteLine($"     Cantidad: {d.cantidad}, Subtotal: {d.subtotal}");
             //}
             //Console.WriteLine();
 
-            // 2. Listar por venta
-            Console.WriteLine($"2. Listando detalles de venta ID {ventaIdPrueba}...");
-            List<DetalleVentaDTO> detallesPorVenta = detalleBO.listarDetallesVentaPorVenta(ventaIdPrueba);
-            Console.WriteLine($"   Total: {detallesPorVenta.Count}");
-            foreach (var d in detallesPorVenta)
-            {
-                Console.WriteLine($"   - Producto: {d.producto?.nombre}");
-                Console.WriteLine($"     Cantidad: {d.cantidad}, Subtotal: {d.subtotal}");
-            }
-            Console.WriteLine();
+            //// 3. Listar por producto
+            //Console.WriteLine($"3. Listando ventas del producto ID {productoIdPrueba}...");
+            //List<DetalleVentaDTO> detallesPorProd = detalleBO.listarDetallesVentaPorProducto(productoIdPrueba);
+            //Console.WriteLine($"   Total: {detallesPorProd.Count}\n");
 
-            // 3. Listar por producto
-            Console.WriteLine($"3. Listando ventas del producto ID {productoIdPrueba}...");
-            List<DetalleVentaDTO> detallesPorProd = detalleBO.listarDetallesVentaPorProducto(productoIdPrueba);
-            Console.WriteLine($"   Total: {detallesPorProd.Count}\n");
+            //// 4. Obtener detalle específico
+            //Console.WriteLine($"4. Obteniendo detalle Producto {productoIdPrueba} - Venta {ventaIdPrueba}...");
+            //DetalleVentaDTO detalle = detalleBO.obtenerDetalleVentaPorId(productoIdPrueba, ventaIdPrueba);
+            //if (detalle != null)
+            //{
+            //    Console.WriteLine($"   Producto: {detalle.producto?.nombre}");
+            //    Console.WriteLine($"   Cantidad: {detalle.cantidad}");
+            //    Console.WriteLine($"   Subtotal: {detalle.subtotal}\n");
+            //}
 
-            // 4. Obtener detalle específico
-            Console.WriteLine($"4. Obteniendo detalle Producto {productoIdPrueba} - Venta {ventaIdPrueba}...");
-            DetalleVentaDTO detalle = detalleBO.obtenerDetalleVentaPorId(productoIdPrueba, ventaIdPrueba);
-            if (detalle != null)
-            {
-                Console.WriteLine($"   Producto: {detalle.producto?.nombre}");
-                Console.WriteLine($"   Cantidad: {detalle.cantidad}");
-                Console.WriteLine($"   Subtotal: {detalle.subtotal}\n");
-            }
+
         }
     }
 
@@ -371,32 +373,9 @@ namespace SoftBodPruebas
 
     //    }
 
-        public class SoapInspectorBehavior : IEndpointBehavior
-        {
-            public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters) { }
-            public void ApplyClientBehavior(ServiceEndpoint endpoint, ClientRuntime clientRuntime)
-            {
-                clientRuntime.MessageInspectors.Add(new SoapInspector());
-            }
-            public void ApplyDispatchBehavior(ServiceEndpoint endpoint, EndpointDispatcher endpointDispatcher) { }
-            public void Validate(ServiceEndpoint endpoint) { }
-        }
+     
 
-        public class SoapInspector : IClientMessageInspector
-        {
-            public void AfterReceiveReply(ref Message reply, object correlationState)
-            {
-                Console.WriteLine("SOAP Response:");
-                Console.WriteLine(reply.ToString());
-            }
 
-            public object BeforeSendRequest(ref Message request, IClientChannel channel)
-            {
-                Console.WriteLine("SOAP Request:");
-                Console.WriteLine(request.ToString());
-                return null;
-            }
-        }
     }
 
     //[TestClass]
@@ -485,7 +464,7 @@ namespace SoftBodPruebas
                 null,
                 "BOD_VENTAS", // nombreTabla
                 null, // tipoOperacion (vacío = sin filtro)
-                null, // fechaOperacion
+                DateTime.Today.ToString(), // fechaOperacion
                 null, // usuarioId (0 = sin filtro)
                 null, // usuario
                 null, // tipoUsuario

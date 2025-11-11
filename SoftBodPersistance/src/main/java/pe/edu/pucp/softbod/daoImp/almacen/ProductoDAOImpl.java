@@ -68,6 +68,11 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     }
     
     @Override
+    protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
+        this.statement.setInt(1, this.producto.getProductoId());
+    }
+    
+    @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.producto = this.cargaTablas.cargarProductoSinCategoria(resultSet);
         this.producto.getCategoria().setDescripcion(this.resultSet.getString("DESCRIPCION"));
@@ -88,6 +93,12 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     public Integer insertar(ProductoDTO producto){
         this.producto = producto;
         return super.insertar();
+    }
+    
+    @Override
+    public Integer eliminar(ProductoDTO producto) {
+        this.producto = producto;
+        return super.eliminar();
     }
     
     @Override

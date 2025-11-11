@@ -33,6 +33,11 @@ namespace SoftBodBusiness
             return productoSOAP.obtenerProductoPorId(productoId);
         }
 
+        public int eliminarProducto(productoDTO producto)
+        {
+            return productoSOAP.eliminarProducto(producto);
+        }
+
         public List<productoDTO> listarTodosProductos()
         {
             return productoSOAP.listarTodosProductos().ToList();

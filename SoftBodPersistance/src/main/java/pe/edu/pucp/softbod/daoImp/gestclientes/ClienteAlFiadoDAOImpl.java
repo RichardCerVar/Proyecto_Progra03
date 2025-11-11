@@ -66,6 +66,11 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
     }
 
     @Override
+    protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
+        this.statement.setInt(1, this.clienteAlFiado.getClienteId());
+    }
+    
+    @Override
     protected void instanciarObjetoDelResultSet() throws SQLException {
         this.clienteAlFiado = this.cargarTablas.cargarClienteAlFiado(resultSet);
     }
@@ -91,6 +96,12 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
     public Integer modificar(ClienteAlFiadoDTO clienteAlFiado) {
         this.clienteAlFiado = clienteAlFiado;
         return super.modificar();
+    }
+    
+    @Override
+    public Integer eliminar(ClienteAlFiadoDTO cliente) {
+        this.clienteAlFiado = cliente;
+        return super.eliminar();
     }
     
     @Override

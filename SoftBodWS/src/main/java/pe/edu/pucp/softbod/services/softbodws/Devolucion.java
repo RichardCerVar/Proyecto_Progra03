@@ -3,6 +3,7 @@ package pe.edu.pucp.softbod.services.softbodws;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import jakarta.xml.bind.annotation.XmlElement;
 import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.devolucion.DevolucionBO;
@@ -20,9 +21,10 @@ public class Devolucion {
     }
     
     @WebMethod(operationName = "insertarDevolucion")
-    public Integer insertarDevolucion(@WebParam(name = "usuario")UsuarioDTO usuario,
-            @WebParam(name = "detallesDev")ArrayList<DetalleDevolucionDTO> detalles){
-        return this.devolucionBO.insertar(usuario,detalles);
+    public Integer insertarDevolucion(
+        @WebParam(name = "usuario") UsuarioDTO usuario,
+        @WebParam(name = "detallesDev") ArrayList<DetalleDevolucionDTO> detalles) {
+        return this.devolucionBO.insertar(usuario, detalles);
     }
     
     @WebMethod(operationName = "obtenerDevolucionPorId")

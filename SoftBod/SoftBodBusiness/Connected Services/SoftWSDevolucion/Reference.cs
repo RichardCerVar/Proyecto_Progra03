@@ -29,43 +29,17 @@ namespace SoftBodBusiness.SoftWSDevolucion {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.insertarDevolucionResponse> insertarDevolucionAsync(SoftBodBusiness.SoftWSDevolucion.insertarDevolucionRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioYFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioYFechaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
+            "equest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
+            "esponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse listarDevolucionesPorUsuarioYFecha(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request);
+        SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse listarTodasDevoluciones(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioYFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioYFechaResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> listarDevolucionesPorUsuarioYFechaAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse listarDevolucionesPorUsuario(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
-            "arioResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> listarDevolucionesPorUsuarioAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
-            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
-            "sponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse obtenerDevolucionPorId(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
-            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
-            "sponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> obtenerDevolucionPorIdAsync(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
+            "equest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
+            "esponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> listarTodasDevolucionesAsync(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorFec" +
@@ -81,17 +55,43 @@ namespace SoftBodBusiness.SoftWSDevolucion {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorFechaResponse> listarDevolucionesPorFechaAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorFechaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
-            "equest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
-            "esponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
+            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
+            "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse listarTodasDevoluciones(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request);
+        SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse obtenerDevolucionPorId(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
-            "equest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesR" +
-            "esponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> listarTodasDevolucionesAsync(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
+            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> obtenerDevolucionPorIdAsync(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse listarDevolucionesPorUsuario(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> listarDevolucionesPorUsuarioAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioYFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioYFechaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse listarDevolucionesPorUsuarioYFecha(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioYFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsu" +
+            "arioYFechaResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> listarDevolucionesPorUsuarioYFechaAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request);
     }
     
     /// <remarks/>
@@ -891,112 +891,27 @@ namespace SoftBodBusiness.SoftWSDevolucion {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioYFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarDevolucionesPorUsuarioYFechaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasDevoluciones", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodasDevolucionesRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int usuarioId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha;
-        
-        public listarDevolucionesPorUsuarioYFechaRequest() {
-        }
-        
-        public listarDevolucionesPorUsuarioYFechaRequest(int usuarioId, string fecha) {
-            this.usuarioId = usuarioId;
-            this.fecha = fecha;
+        public listarTodasDevolucionesRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioYFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarDevolucionesPorUsuarioYFechaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasDevolucionesResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodasDevolucionesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return;
         
-        public listarDevolucionesPorUsuarioYFechaResponse() {
+        public listarTodasDevolucionesResponse() {
         }
         
-        public listarDevolucionesPorUsuarioYFechaResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuario", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarDevolucionesPorUsuarioRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int usuarioId;
-        
-        public listarDevolucionesPorUsuarioRequest() {
-        }
-        
-        public listarDevolucionesPorUsuarioRequest(int usuarioId) {
-            this.usuarioId = usuarioId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarDevolucionesPorUsuarioResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return;
-        
-        public listarDevolucionesPorUsuarioResponse() {
-        }
-        
-        public listarDevolucionesPorUsuarioResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDevolucionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerDevolucionPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int devolucionId;
-        
-        public obtenerDevolucionPorIdRequest() {
-        }
-        
-        public obtenerDevolucionPorIdRequest(int devolucionId) {
-            this.devolucionId = devolucionId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDevolucionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerDevolucionPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO @return;
-        
-        public obtenerDevolucionPorIdResponse() {
-        }
-        
-        public obtenerDevolucionPorIdResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO @return) {
+        public listarTodasDevolucionesResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -1040,27 +955,112 @@ namespace SoftBodBusiness.SoftWSDevolucion {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasDevoluciones", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodasDevolucionesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDevolucionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerDevolucionPorIdRequest {
         
-        public listarTodasDevolucionesRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int devolucionId;
+        
+        public obtenerDevolucionPorIdRequest() {
+        }
+        
+        public obtenerDevolucionPorIdRequest(int devolucionId) {
+            this.devolucionId = devolucionId;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasDevolucionesResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodasDevolucionesResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerDevolucionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerDevolucionPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO @return;
+        
+        public obtenerDevolucionPorIdResponse() {
+        }
+        
+        public obtenerDevolucionPorIdResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuario", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarDevolucionesPorUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int usuarioId;
+        
+        public listarDevolucionesPorUsuarioRequest() {
+        }
+        
+        public listarDevolucionesPorUsuarioRequest(int usuarioId) {
+            this.usuarioId = usuarioId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarDevolucionesPorUsuarioResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return;
         
-        public listarTodasDevolucionesResponse() {
+        public listarDevolucionesPorUsuarioResponse() {
         }
         
-        public listarTodasDevolucionesResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
+        public listarDevolucionesPorUsuarioResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioYFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarDevolucionesPorUsuarioYFechaRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int usuarioId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fecha;
+        
+        public listarDevolucionesPorUsuarioYFechaRequest() {
+        }
+        
+        public listarDevolucionesPorUsuarioYFechaRequest(int usuarioId, string fecha) {
+            this.usuarioId = usuarioId;
+            this.fecha = fecha;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarDevolucionesPorUsuarioYFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarDevolucionesPorUsuarioYFechaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return;
+        
+        public listarDevolucionesPorUsuarioYFechaResponse() {
+        }
+        
+        public listarDevolucionesPorUsuarioYFechaResponse(SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -1118,74 +1118,24 @@ namespace SoftBodBusiness.SoftWSDevolucion {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioYFecha(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request) {
-            return base.Channel.listarDevolucionesPorUsuarioYFecha(request);
+        SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarTodasDevoluciones(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request) {
+            return base.Channel.listarTodasDevoluciones(request);
         }
         
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarDevolucionesPorUsuarioYFecha(int usuarioId, string fecha) {
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest();
-            inValue.usuarioId = usuarioId;
-            inValue.fecha = fecha;
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioYFecha(inValue);
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarTodasDevoluciones() {
+            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest();
+            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarTodasDevoluciones(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioYFechaAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request) {
-            return base.Channel.listarDevolucionesPorUsuarioYFechaAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarTodasDevolucionesAsync(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request) {
+            return base.Channel.listarTodasDevolucionesAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> listarDevolucionesPorUsuarioYFechaAsync(int usuarioId, string fecha) {
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest();
-            inValue.usuarioId = usuarioId;
-            inValue.fecha = fecha;
-            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioYFechaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuario(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request) {
-            return base.Channel.listarDevolucionesPorUsuario(request);
-        }
-        
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarDevolucionesPorUsuario(int usuarioId) {
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest();
-            inValue.usuarioId = usuarioId;
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuario(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request) {
-            return base.Channel.listarDevolucionesPorUsuarioAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> listarDevolucionesPorUsuarioAsync(int usuarioId) {
-            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest();
-            inValue.usuarioId = usuarioId;
-            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.obtenerDevolucionPorId(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request) {
-            return base.Channel.obtenerDevolucionPorId(request);
-        }
-        
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO obtenerDevolucionPorId(int devolucionId) {
-            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest();
-            inValue.devolucionId = devolucionId;
-            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).obtenerDevolucionPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.obtenerDevolucionPorIdAsync(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request) {
-            return base.Channel.obtenerDevolucionPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> obtenerDevolucionPorIdAsync(int devolucionId) {
-            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest();
-            inValue.devolucionId = devolucionId;
-            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).obtenerDevolucionPorIdAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> listarTodasDevolucionesAsync() {
+            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest();
+            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarTodasDevolucionesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1212,24 +1162,74 @@ namespace SoftBodBusiness.SoftWSDevolucion {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarTodasDevoluciones(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request) {
-            return base.Channel.listarTodasDevoluciones(request);
+        SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.obtenerDevolucionPorId(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request) {
+            return base.Channel.obtenerDevolucionPorId(request);
         }
         
-        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarTodasDevoluciones() {
-            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest();
-            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarTodasDevoluciones(inValue);
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO obtenerDevolucionPorId(int devolucionId) {
+            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest();
+            inValue.devolucionId = devolucionId;
+            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).obtenerDevolucionPorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarTodasDevolucionesAsync(SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest request) {
-            return base.Channel.listarTodasDevolucionesAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.obtenerDevolucionPorIdAsync(SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest request) {
+            return base.Channel.obtenerDevolucionPorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse> listarTodasDevolucionesAsync() {
-            SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesRequest();
-            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarTodasDevolucionesAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse> obtenerDevolucionPorIdAsync(int devolucionId) {
+            SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest inValue = new SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdRequest();
+            inValue.devolucionId = devolucionId;
+            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).obtenerDevolucionPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuario(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request) {
+            return base.Channel.listarDevolucionesPorUsuario(request);
+        }
+        
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarDevolucionesPorUsuario(int usuarioId) {
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest();
+            inValue.usuarioId = usuarioId;
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest request) {
+            return base.Channel.listarDevolucionesPorUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse> listarDevolucionesPorUsuarioAsync(int usuarioId) {
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioRequest();
+            inValue.usuarioId = usuarioId;
+            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioYFecha(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request) {
+            return base.Channel.listarDevolucionesPorUsuarioYFecha(request);
+        }
+        
+        public SoftBodBusiness.SoftWSDevolucion.devolucionDTO[] listarDevolucionesPorUsuarioYFecha(int usuarioId, string fecha) {
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest();
+            inValue.usuarioId = usuarioId;
+            inValue.fecha = fecha;
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse retVal = ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioYFecha(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> SoftBodBusiness.SoftWSDevolucion.Devolucion.listarDevolucionesPorUsuarioYFechaAsync(SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest request) {
+            return base.Channel.listarDevolucionesPorUsuarioYFechaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse> listarDevolucionesPorUsuarioYFechaAsync(int usuarioId, string fecha) {
+            SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest inValue = new SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaRequest();
+            inValue.usuarioId = usuarioId;
+            inValue.fecha = fecha;
+            return ((SoftBodBusiness.SoftWSDevolucion.Devolucion)(this)).listarDevolucionesPorUsuarioYFechaAsync(inValue);
         }
     }
 }
