@@ -139,7 +139,7 @@ public class ProductoDAOImpl extends DAOImplBase implements ProductoDAO {
     public ArrayList<ProductoDTO> listarProductosConFiltro(Boolean activo,
             String categoria, String nombreProducto) {
         String sql = "{ CALL SP_LISTAR_PRODUCTOS(?, ?, ?) }";
-
+        
         Object parametros = new ProductoParametrosBusquedaBuilder()
                             .conActivo(activo)
                             .conCategoria(categoria)

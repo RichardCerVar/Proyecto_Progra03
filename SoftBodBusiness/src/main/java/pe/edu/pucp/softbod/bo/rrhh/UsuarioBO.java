@@ -29,7 +29,7 @@ public class UsuarioBO extends OperacionBOBase{
         if (tipoUsuarios.equals(Tipo_Usuario.ADMINISTRADOR.name()))
             tipUser = Tipo_Usuario.ADMINISTRADOR;
         else tipUser = Tipo_Usuario.OPERARIO;
-        UsuarioDTO usuarioDTO = new UsuarioDTO(null, usuario, tipUser, correo, 
+        UsuarioDTO usuarioDTO = new UsuarioDTO(0, usuario, tipUser, correo, 
                        contrasenha,  nombre, telefono, activo);
         
         try {
@@ -40,24 +40,24 @@ public class UsuarioBO extends OperacionBOBase{
 //            } NUNCA ES NULA
             
             // 2. Validar que la contraseña cumpla con el formato requerido
-            if (usuarioDTO.getContrasenha() == null || 
-                !loginBO.validarFormatoContrasenha(usuarioDTO.getContrasenha())) {
-                System.err.println("Error: La contraseña no cumple con el formato requerido");
-                return null;
-            }
+//            if (usuarioDTO.getContrasenha() == null || 
+//                !loginBO.validarFormatoContrasenha(usuarioDTO.getContrasenha())) {
+//                System.err.println("Error: La contraseña no cumple con el formato requerido");
+//                return null;
+//            }
             
             // 3. Validar que el correo sea único
-            if (!validarCorreoUnico(usuarioDTO.getCorreo())) {
-                System.err.println("Error: El correo ya está registrado");
-                return null;
-            }
-            
-            // 4. Validar que el nombre de usuario sea único
-            if (!validarUsuarioUnico(usuarioDTO.getUsuario())) {
-                System.err.println("Error: El nombre de usuario ya está registrado");
-                return null;
-            }
-            
+//            if (!validarCorreoUnico(usuarioDTO.getCorreo())) {
+//                System.err.println("Error: El correo ya está registrado");
+//                return null;
+//            }
+//            
+//            // 4. Validar que el nombre de usuario sea único
+//            if (!validarUsuarioUnico(usuarioDTO.getUsuario())) {
+//                System.err.println("Error: El nombre de usuario ya está registrado");
+//                return null;
+//            }
+//            
             // 5. Insertar usuario
             Integer resultado = this.usuarioDAO.insertar(usuarioDTO);
             

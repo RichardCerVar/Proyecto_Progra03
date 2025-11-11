@@ -98,7 +98,7 @@ public class VentaAlFiadoDAOImpl extends DAOImplBase implements VentaAlFiadoDAO 
             }
             
             if(ventaFiadaParam.getFecha()!=null){
-                this.statement.setTimestamp(3,Timestamp.valueOf(ventaFiadaParam.getFecha()));
+                this.statement.setDate(3,Date.valueOf(ventaFiadaParam.getFecha()));
             }else{
                 this.statement.setNull(3, Types.DATE);
             }
