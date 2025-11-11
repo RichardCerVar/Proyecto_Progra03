@@ -348,13 +348,13 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteAeliminar;
+        public int clienteId;
         
         public eliminarClienteAlFiadoRequest() {
         }
         
-        public eliminarClienteAlFiadoRequest(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteAeliminar) {
-            this.clienteAeliminar = clienteAeliminar;
+        public eliminarClienteAlFiadoRequest(int clienteId) {
+            this.clienteId = clienteId;
         }
     }
     
@@ -631,9 +631,9 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             return base.Channel.eliminarClienteAlFiado(request);
         }
         
-        public int eliminarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteAeliminar) {
+        public int eliminarClienteAlFiado(int clienteId) {
             SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
-            inValue.clienteAeliminar = clienteAeliminar;
+            inValue.clienteId = clienteId;
             SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiado(inValue);
             return retVal.@return;
         }
@@ -643,9 +643,9 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             return base.Channel.eliminarClienteAlFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteAeliminar) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(int clienteId) {
             SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
-            inValue.clienteAeliminar = clienteAeliminar;
+            inValue.clienteId = clienteId;
             return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiadoAsync(inValue);
         }
         

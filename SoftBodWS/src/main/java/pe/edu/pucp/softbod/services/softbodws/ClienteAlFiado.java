@@ -31,8 +31,8 @@ public class ClienteAlFiado {
     }
     
     @WebMethod(operationName = "eliminarClienteAlFiado")
-    public Integer eliminarClienteAlFiado(@WebParam(name = "clienteAeliminar") ClienteAlFiadoDTO cliModificado){
-        return this.clienteAlFiadoBO.eliminar(cliModificado);
+    public Integer eliminarClienteAlFiado(@WebParam(name = "clienteId") Integer clienteId){
+        return this.clienteAlFiadoBO.eliminar(clienteId);
     }
     
     @WebMethod(operationName = "obtenerClienteAlFiadoPorId")

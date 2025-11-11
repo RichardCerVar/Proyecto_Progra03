@@ -82,6 +82,42 @@ namespace SoftBodBusiness.SoftWSProducto {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSProducto.listarTodosConFiltroProductosResponse> listarTodosConFiltroProductosAsync(SoftBodBusiness.SoftWSProducto.listarTodosConFiltroProductosRequest request);
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarProducto", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarProductoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int productoId;
+        
+        public eliminarProductoRequest() {
+        }
+        
+        public eliminarProductoRequest(int productoId) {
+            this.productoId = productoId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarProductoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarProductoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarProductoResponse() {
+        }
+        
+        public eliminarProductoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
@@ -375,42 +411,6 @@ namespace SoftBodBusiness.SoftWSProducto {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarProducto", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarProductoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSProducto.productoDTO producto;
-        
-        public eliminarProductoRequest() {
-        }
-        
-        public eliminarProductoRequest(SoftBodBusiness.SoftWSProducto.productoDTO producto) {
-            this.producto = producto;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarProductoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarProductoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarProductoResponse() {
-        }
-        
-        public eliminarProductoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="modificarProducto", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
     public partial class modificarProductoRequest {
         
@@ -652,9 +652,9 @@ namespace SoftBodBusiness.SoftWSProducto {
             return base.Channel.eliminarProducto(request);
         }
         
-        public int eliminarProducto(SoftBodBusiness.SoftWSProducto.productoDTO producto) {
+        public int eliminarProducto(int productoId) {
             SoftBodBusiness.SoftWSProducto.eliminarProductoRequest inValue = new SoftBodBusiness.SoftWSProducto.eliminarProductoRequest();
-            inValue.producto = producto;
+            inValue.productoId = productoId;
             SoftBodBusiness.SoftWSProducto.eliminarProductoResponse retVal = ((SoftBodBusiness.SoftWSProducto.Producto)(this)).eliminarProducto(inValue);
             return retVal.@return;
         }
@@ -664,9 +664,9 @@ namespace SoftBodBusiness.SoftWSProducto {
             return base.Channel.eliminarProductoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSProducto.eliminarProductoResponse> eliminarProductoAsync(SoftBodBusiness.SoftWSProducto.productoDTO producto) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSProducto.eliminarProductoResponse> eliminarProductoAsync(int productoId) {
             SoftBodBusiness.SoftWSProducto.eliminarProductoRequest inValue = new SoftBodBusiness.SoftWSProducto.eliminarProductoRequest();
-            inValue.producto = producto;
+            inValue.productoId = productoId;
             return ((SoftBodBusiness.SoftWSProducto.Producto)(this)).eliminarProductoAsync(inValue);
         }
         

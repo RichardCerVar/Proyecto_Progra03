@@ -80,7 +80,7 @@
   </xs:complexType>
   <xs:complexType name="eliminarProducto">
     <xs:sequence>
-      <xs:element minOccurs="0" name="producto" type="tns:productoDTO" />
+      <xs:element minOccurs="0" name="productoId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarProductoResponse">
