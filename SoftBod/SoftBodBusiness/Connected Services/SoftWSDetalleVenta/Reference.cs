@@ -783,6 +783,9 @@ namespace SoftBodBusiness.SoftWSDetalleVenta {
         
         /// <remarks/>
         TRANSFERENCIA,
+        
+        /// <remarks/>
+        FIADO,
     }
     
     /// <remarks/>

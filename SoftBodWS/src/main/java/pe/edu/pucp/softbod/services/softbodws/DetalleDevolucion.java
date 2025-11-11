@@ -20,10 +20,8 @@ public class DetalleDevolucion {
     }
     
     @WebMethod(operationName = "insertarDetalleDevolucion")
-    public Integer insertarDetalleDevolucion(@WebParam(name = "devolucion") DevolucionDTO devolucion,
-            @WebParam(name = "producto") ProductoDTO producto,@WebParam(name = "subtotal")  Double subtotal, 
-            @WebParam(name = "cantidad") Integer cantidad,@WebParam(name = "razonDevolucion")  RazonDevolucionDTO razonDevolucion){
-        return this.detalleDevolucionBO.insertar(devolucion, producto, subtotal, cantidad, razonDevolucion);
+    public Integer insertarDetalleDevolucion(@WebParam(name = "detalleDevolucion")  DetalleDevolucionDTO detalleDev){
+        return this.detalleDevolucionBO.insertar(detalleDev);
     }
     
     @WebMethod(operationName = "obtenerDetalleDevolucionPorId")

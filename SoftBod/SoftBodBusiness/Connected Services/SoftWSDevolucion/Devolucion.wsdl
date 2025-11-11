@@ -11,12 +11,6 @@
   <message name="insertarDevolucionResponse">
     <part name="parameters" element="tns:insertarDevolucionResponse" />
   </message>
-  <message name="registrarDevolucionCompleta">
-    <part name="parameters" element="tns:registrarDevolucionCompleta" />
-  </message>
-  <message name="registrarDevolucionCompletaResponse">
-    <part name="parameters" element="tns:registrarDevolucionCompletaResponse" />
-  </message>
   <message name="listarDevolucionesPorUsuarioYFecha">
     <part name="parameters" element="tns:listarDevolucionesPorUsuarioYFecha" />
   </message>
@@ -52,10 +46,6 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/insertarDevolucionRequest" message="tns:insertarDevolucion" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/insertarDevolucionResponse" message="tns:insertarDevolucionResponse" />
     </operation>
-    <operation name="registrarDevolucionCompleta">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/registrarDevolucionCompletaRequest" message="tns:registrarDevolucionCompleta" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/registrarDevolucionCompletaResponse" message="tns:registrarDevolucionCompletaResponse" />
-    </operation>
     <operation name="listarDevolucionesPorUsuarioYFecha">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaRequest" message="tns:listarDevolucionesPorUsuarioYFecha" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaResponse" message="tns:listarDevolucionesPorUsuarioYFechaResponse" />
@@ -80,15 +70,6 @@
   <binding name="DevolucionPortBinding" type="tns:Devolucion">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <operation name="insertarDevolucion">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="registrarDevolucionCompleta">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

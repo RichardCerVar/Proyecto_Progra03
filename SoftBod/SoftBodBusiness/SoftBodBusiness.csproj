@@ -250,9 +250,6 @@
     <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.registrarDevolucionCompletaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.wsdl" />
     <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.xsd">
       <SubType>Designer</SubType>
@@ -462,37 +459,25 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\configuration91.svcinfo" />
+    <None Include="Connected Services\SoftWSProducto\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\configuration.svcinfo" />
+    <None Include="Connected Services\SoftWSProducto\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\Reference.svcmap">
+    <None Include="Connected Services\SoftWSProducto\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration91.svcinfo" />
+    <None Include="Connected Services\SoftWSUsuario\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration.svcinfo" />
+    <None Include="Connected Services\SoftWSUsuario\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\Reference.svcmap">
+    <None Include="Connected Services\SoftWSUsuario\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -510,18 +495,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\SoftWSClienteAlFiado\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -529,18 +502,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\SoftWSClienteAlFiado\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -558,13 +519,49 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\configuration91.svcinfo" />
+    <None Include="Connected Services\SoftWSDetalleVenta\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\configuration.svcinfo" />
+    <None Include="Connected Services\SoftWSDetalleVenta\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\Reference.svcmap">
+    <None Include="Connected Services\SoftWSDetalleVenta\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSDevolucion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSDevolucion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSDevolucion\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSHistorialOperaciones\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSRazonDevolucion\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSRazonDevolucion\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SoftWSRazonDevolucion\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -582,13 +579,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\configuration91.svcinfo" />
+    <None Include="Connected Services\SoftWSVentaAlFiado\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\configuration.svcinfo" />
+    <None Include="Connected Services\SoftWSVentaAlFiado\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\Reference.svcmap">
+    <None Include="Connected Services\SoftWSVentaAlFiado\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

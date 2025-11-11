@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="c934e60a-0f4d-4e68-8ba1-b4b3b97fa8a5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="964b944d-bb04-408e-b534-cd89a41fa041" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/SoftBodWS/HistorialOperaciones?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="HistorialOperaciones.xsd" MetadataType="Schema" ID="6a717de5-cd00-4ad0-b217-7d231ae91e15" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/HistorialOperaciones?xsd=1" />
-    <MetadataFile FileName="HistorialOperaciones.wsdl" MetadataType="Wsdl" ID="afed708a-5ffd-43b9-8cfc-ef966189e605" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/HistorialOperaciones?wsdl" />
+    <MetadataFile FileName="HistorialOperaciones.xsd" MetadataType="Schema" ID="54055660-e103-48cc-87fd-9ca1d5576eae" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/HistorialOperaciones?xsd=1" />
+    <MetadataFile FileName="HistorialOperaciones.wsdl" MetadataType="Wsdl" ID="01f4c304-92ca-4db0-af27-ca4d3b18facd" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/HistorialOperaciones?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

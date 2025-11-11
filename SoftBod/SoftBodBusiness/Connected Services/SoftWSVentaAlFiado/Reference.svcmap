@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="f15f422b-b5f6-4ebf-8849-c0d3fd1e2f46" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="0c3732a5-5d1a-4d5c-94c6-fea3445eba67" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/SoftBodWS/VentaAlFiado?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="VentaAlFiado.xsd" MetadataType="Schema" ID="ebbf440b-21be-4147-a42b-9b79a9c790de" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/VentaAlFiado?xsd=1" />
-    <MetadataFile FileName="VentaAlFiado.wsdl" MetadataType="Wsdl" ID="2a6d4bf3-5fbb-442f-86b1-ee7259afacce" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/VentaAlFiado?wsdl" />
+    <MetadataFile FileName="VentaAlFiado.xsd" MetadataType="Schema" ID="54df4ba7-fa4d-4ebc-9a2c-922c4c6c1aaa" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/VentaAlFiado?xsd=1" />
+    <MetadataFile FileName="VentaAlFiado.wsdl" MetadataType="Wsdl" ID="62f3e4b5-7b76-4d16-b798-b08e13ac711e" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/VentaAlFiado?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -722,41 +722,41 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
     public partial class listarHistorialOperacionesConFiltrosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int operacionId;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<int> operacionId;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string nombreTabla;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string tipoOperacion;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string fechaOperacion;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int usuarioId;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<int> usuarioId;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string usuario;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
         public string tipoUsuario;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=7)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool estado;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<bool> estado;
         
         public listarHistorialOperacionesConFiltrosRequest() {
         }
         
-        public listarHistorialOperacionesConFiltrosRequest(int operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, int usuarioId, string usuario, string tipoUsuario, bool estado) {
+        public listarHistorialOperacionesConFiltrosRequest(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
             this.operacionId = operacionId;
             this.nombreTabla = nombreTabla;
             this.tipoOperacion = tipoOperacion;
@@ -1056,7 +1056,7 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
             return base.Channel.listarHistorialOperacionesConFiltros(request);
         }
         
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesConFiltros(int operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, int usuarioId, string usuario, string tipoUsuario, bool estado) {
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesConFiltros(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
             SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
             inValue.operacionId = operacionId;
             inValue.nombreTabla = nombreTabla;
@@ -1075,7 +1075,7 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
             return base.Channel.listarHistorialOperacionesConFiltrosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(int operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, int usuarioId, string usuario, string tipoUsuario, bool estado) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
             SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
             inValue.operacionId = operacionId;
             inValue.nombreTabla = nombreTabla;

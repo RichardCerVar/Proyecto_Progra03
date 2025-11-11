@@ -106,11 +106,7 @@
   </xs:complexType>
   <xs:complexType name="insertarDetalleDevolucion">
     <xs:sequence>
-      <xs:element minOccurs="0" name="devolucion" type="tns:devolucionDTO" />
-      <xs:element minOccurs="0" name="producto" type="tns:productoDTO" />
-      <xs:element minOccurs="0" name="subtotal" type="xs:double" />
-      <xs:element minOccurs="0" name="cantidad" type="xs:int" />
-      <xs:element minOccurs="0" name="razonDevolucion" type="tns:razonDevolucionDTO" />
+      <xs:element minOccurs="0" name="detalleDevolucion" type="tns:detalleDevolucionDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarDetalleDevolucionResponse">

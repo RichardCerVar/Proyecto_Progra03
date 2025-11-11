@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="a538804e-9af8-4e47-a765-20a98565d67d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="e3f5b057-2b09-43df-b2c4-42b6a1c2c258" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/SoftBodWS/DetalleVenta?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DetalleVenta.wsdl" MetadataType="Wsdl" ID="9d6797f3-f976-4831-8c5f-c914cdc7013e" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleVenta?wsdl" />
-    <MetadataFile FileName="DetalleVenta.xsd" MetadataType="Schema" ID="0bf7a0fa-b068-4573-9433-9e13fc9c3905" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleVenta?xsd=1" />
+    <MetadataFile FileName="DetalleVenta.wsdl" MetadataType="Wsdl" ID="627e31ee-8be2-4b0b-abab-c898e42eb762" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleVenta?wsdl" />
+    <MetadataFile FileName="DetalleVenta.xsd" MetadataType="Schema" ID="d2a0904d-8520-43ce-a9a6-457ce15cbd8b" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleVenta?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

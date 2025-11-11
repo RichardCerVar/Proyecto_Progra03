@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="86ec7b4b-b9a6-4dcf-93b6-91e48c423a45" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="69a0d2c5-d5c9-48b7-b196-058f2287b13d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/SoftBodWS/DetalleDevolucion?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="DetalleDevolucion.wsdl" MetadataType="Wsdl" ID="6543edfc-5a92-4f52-a306-c93dc1561946" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleDevolucion?wsdl" />
-    <MetadataFile FileName="DetalleDevolucion.xsd" MetadataType="Schema" ID="6b4a4885-d25e-4a73-8b27-b761e4a13136" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleDevolucion?xsd=1" />
+    <MetadataFile FileName="DetalleDevolucion.wsdl" MetadataType="Wsdl" ID="5ffdce78-949a-4da5-8e95-75c6a4fa2b80" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleDevolucion?wsdl" />
+    <MetadataFile FileName="DetalleDevolucion.xsd" MetadataType="Schema" ID="58ad529e-30ee-45c2-b94e-3be7a180fe08" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/DetalleDevolucion?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -16,10 +16,9 @@ namespace SoftBodBusiness
             detalleDevolucionSOAP = new DetalleDevolucionClient();
         }
 
-        public int insertarDetalleDevolucion(devolucionDTO devolucion, productoDTO producto, double subtotal,
-                                            int cantidad, razonDevolucionDTO razonDevolucion)
+        public int insertarDetalleDevolucion(detalleDevolucionDTO detalle)
         {
-            return detalleDevolucionSOAP.insertarDetalleDevolucion(devolucion, producto, subtotal, cantidad, razonDevolucion);
+            return detalleDevolucionSOAP.insertarDetalleDevolucion(detalle);
         }
 
         public detalleDevolucionDTO obtenerDetalleDevolucionPorId(int productoId, int devolucionId)

@@ -47,13 +47,15 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClienteAlfiadoTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProductoBOTest.cs" />
     <Compile Include="RazonDevolucionBOTest.cs" />
     <Compile Include="RegistroPagoFiadoBOTest.cs" />
+    <Compile Include="Test6PrimerasClases.cs" />
+    <Compile Include="UnitTest1.cs" />
     <Compile Include="UsuarioBOTest.cs" />
     <Compile Include="VentaAlFiadoBOTest.cs" />
     <Compile Include="VentaBOTest.cs" />

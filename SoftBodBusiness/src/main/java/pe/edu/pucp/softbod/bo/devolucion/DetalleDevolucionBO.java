@@ -16,13 +16,8 @@ public class DetalleDevolucionBO {
         this.detalleDevolucionDAO = new DetalleDevolucionDAOImpl();
     }
     
-    public Integer insertar(DevolucionDTO devolucion, ProductoDTO producto, Double subtotal, 
-                                Integer cantidad, RazonDevolucionDTO razonDevolucion){
-        
-        
-        DetalleDevolucionDTO detalleDevolucion = new DetalleDevolucionDTO(devolucion, 
-                producto,  subtotal, cantidad,  razonDevolucion);
-        return this.detalleDevolucionDAO.insertar(detalleDevolucion);
+    public Integer insertar(DetalleDevolucionDTO detalle){
+        return this.detalleDevolucionDAO.insertar(detalle);
     }
     
     public DetalleDevolucionDTO obtenerPorId (Integer productoId,Integer devolucionId){

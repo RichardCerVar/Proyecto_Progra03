@@ -61,12 +61,7 @@ public class VentaBO extends OperacionBOBase{
             this.detalleVentaBO.insertar(d); //inserta el datalle x venta
         }
         //Para trazabilidad:
-        HistorialOperacionesDTO operacion = new HistorialOperacionesDTO();
-        operacion.setFechaHora(fechaActual);
-        operacion.setOperacion(Tipo_Operacion.INSERCION);
-        operacion.setTablaAfectada("BOD_VENTAS");
-        operacion.setUsuario(usuario);
-        Integer nuevaOperacion = this.historialBO.insertar(operacion);
+        this.registrarEnHistorial(usuario, "BOD_VENTAS", Tipo_Operacion.INSERCION);
         return idNuevaVenta;
     }
     

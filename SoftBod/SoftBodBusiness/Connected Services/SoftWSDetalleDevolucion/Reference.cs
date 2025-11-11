@@ -960,33 +960,13 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDetalleDevolucion.devolucionDTO devolucion;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDetalleDevolucion.productoDTO producto;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public double subtotal;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int cantidad;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSDetalleDevolucion.razonDevolucionDTO razonDevolucion;
+        public SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO detalleDevolucion;
         
         public insertarDetalleDevolucionRequest() {
         }
         
-        public insertarDetalleDevolucionRequest(SoftBodBusiness.SoftWSDetalleDevolucion.devolucionDTO devolucion, SoftBodBusiness.SoftWSDetalleDevolucion.productoDTO producto, double subtotal, int cantidad, SoftBodBusiness.SoftWSDetalleDevolucion.razonDevolucionDTO razonDevolucion) {
-            this.devolucion = devolucion;
-            this.producto = producto;
-            this.subtotal = subtotal;
-            this.cantidad = cantidad;
-            this.razonDevolucion = razonDevolucion;
+        public insertarDetalleDevolucionRequest(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO detalleDevolucion) {
+            this.detalleDevolucion = detalleDevolucion;
         }
     }
     
@@ -1181,13 +1161,9 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
             return base.Channel.insertarDetalleDevolucion(request);
         }
         
-        public int insertarDetalleDevolucion(SoftBodBusiness.SoftWSDetalleDevolucion.devolucionDTO devolucion, SoftBodBusiness.SoftWSDetalleDevolucion.productoDTO producto, double subtotal, int cantidad, SoftBodBusiness.SoftWSDetalleDevolucion.razonDevolucionDTO razonDevolucion) {
+        public int insertarDetalleDevolucion(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO detalleDevolucion) {
             SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionRequest();
-            inValue.devolucion = devolucion;
-            inValue.producto = producto;
-            inValue.subtotal = subtotal;
-            inValue.cantidad = cantidad;
-            inValue.razonDevolucion = razonDevolucion;
+            inValue.detalleDevolucion = detalleDevolucion;
             SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionResponse retVal = ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).insertarDetalleDevolucion(inValue);
             return retVal.@return;
         }
@@ -1197,13 +1173,9 @@ namespace SoftBodBusiness.SoftWSDetalleDevolucion {
             return base.Channel.insertarDetalleDevolucionAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionResponse> insertarDetalleDevolucionAsync(SoftBodBusiness.SoftWSDetalleDevolucion.devolucionDTO devolucion, SoftBodBusiness.SoftWSDetalleDevolucion.productoDTO producto, double subtotal, int cantidad, SoftBodBusiness.SoftWSDetalleDevolucion.razonDevolucionDTO razonDevolucion) {
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionResponse> insertarDetalleDevolucionAsync(SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO detalleDevolucion) {
             SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionRequest inValue = new SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionRequest();
-            inValue.devolucion = devolucion;
-            inValue.producto = producto;
-            inValue.subtotal = subtotal;
-            inValue.cantidad = cantidad;
-            inValue.razonDevolucion = razonDevolucion;
+            inValue.detalleDevolucion = detalleDevolucion;
             return ((SoftBodBusiness.SoftWSDetalleDevolucion.DetalleDevolucion)(this)).insertarDetalleDevolucionAsync(inValue);
         }
         

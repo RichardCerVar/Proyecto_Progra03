@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="ef1d6c5b-e268-4d54-82b3-bc322b786d3a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="bb067fe6-0918-4fe4-abb2-46f6e41c24b6" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,8 +22,8 @@
     <MetadataSource Address="http://localhost:8080/SoftBodWS/Categoria?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Categoria.xsd" MetadataType="Schema" ID="cb71e5de-4f56-4ec5-adbb-d7da9b9538a7" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/Categoria?xsd=1" />
-    <MetadataFile FileName="Categoria.wsdl" MetadataType="Wsdl" ID="c398d0bd-8d60-488c-9299-d62d6cdb5448" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/Categoria?wsdl" />
+    <MetadataFile FileName="Categoria.xsd" MetadataType="Schema" ID="d08dea72-43b4-4937-a210-5939ee3b4dbf" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/Categoria?xsd=1" />
+    <MetadataFile FileName="Categoria.wsdl" MetadataType="Wsdl" ID="96cdc0cf-3d63-4732-adb4-b4dae883783d" SourceId="1" SourceUrl="http://localhost:8080/SoftBodWS/Categoria?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

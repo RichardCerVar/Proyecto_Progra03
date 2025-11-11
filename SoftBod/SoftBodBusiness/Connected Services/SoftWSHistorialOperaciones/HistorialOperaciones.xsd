@@ -122,14 +122,14 @@
   </xs:complexType>
   <xs:complexType name="listarHistorialOperacionesConFiltros">
     <xs:sequence>
-      <xs:element minOccurs="0" name="operacionId" type="xs:int" />
-      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
-      <xs:element minOccurs="0" name="tipoOperacion" type="xs:string" />
-      <xs:element minOccurs="0" name="fechaOperacion" type="xs:string" />
-      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
-      <xs:element minOccurs="0" name="usuario" type="xs:string" />
-      <xs:element minOccurs="0" name="tipoUsuario" type="xs:string" />
-      <xs:element minOccurs="0" name="estado" type="xs:boolean" />
+      <xs:element minOccurs="0" name="operacionId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="nombreTabla" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoOperacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaOperacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuario" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="estado" nillable="true" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarHistorialOperacionesConFiltrosResponse">

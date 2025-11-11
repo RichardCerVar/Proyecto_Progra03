@@ -61,8 +61,8 @@ namespace SoftBodBusiness
             return historialSOAP.listarHistorialOperacionesPorFecha(fecha).ToList();
         }
 
-        public List<historialOperacionesDTO> listarHistorialOperacionesConFiltros(int operacionId, string nombreTabla, string tipoOperacion,
-                                                                                  string fechaOperacion, int usuarioId, string usuario,
+        public List<historialOperacionesDTO> listarHistorialOperacionesConFiltros(int? operacionId, string nombreTabla, string tipoOperacion,
+                                                                                  string fechaOperacion, int? usuarioId, string usuario,
                                                                                   string tipoUsuario, bool estado)
         {
             return historialSOAP.listarHistorialOperacionesConFiltros(operacionId, nombreTabla, tipoOperacion,

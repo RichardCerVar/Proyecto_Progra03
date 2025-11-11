@@ -12,8 +12,6 @@
   <xs:element name="listarTodasDevolucionesResponse" type="tns:listarTodasDevolucionesResponse" />
   <xs:element name="obtenerDevolucionPorId" type="tns:obtenerDevolucionPorId" />
   <xs:element name="obtenerDevolucionPorIdResponse" type="tns:obtenerDevolucionPorIdResponse" />
-  <xs:element name="registrarDevolucionCompleta" type="tns:registrarDevolucionCompleta" />
-  <xs:element name="registrarDevolucionCompletaResponse" type="tns:registrarDevolucionCompletaResponse" />
   <xs:complexType name="listarDevolucionesPorUsuarioYFecha">
     <xs:sequence>
       <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
@@ -53,10 +51,40 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="registrarDevolucionCompleta">
+  <xs:complexType name="listarDevolucionesPorFecha">
     <xs:sequence>
-      <xs:element minOccurs="0" name="devolucion" type="tns:devolucionDTO" />
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="detalles" type="tns:detalleDevolucionDTO" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDevolucionPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="devolucionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDevolucionPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarDevolucion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="detallesDev" type="tns:detalleDevolucionDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="detalleDevolucionDTO">
@@ -90,48 +118,6 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element minOccurs="0" name="razonDevolucionId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="registrarDevolucionCompletaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDevolucionesPorFecha">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="fecha" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDevolucionesPorFechaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDevolucionesPorUsuario">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarDevolucionesPorUsuarioResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerDevolucionPorId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="devolucionId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerDevolucionPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:devolucionDTO" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="insertarDevolucion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="total" type="xs:double" />
-      <xs:element minOccurs="0" name="fecha" type="xs:string" />
-      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarDevolucionResponse">

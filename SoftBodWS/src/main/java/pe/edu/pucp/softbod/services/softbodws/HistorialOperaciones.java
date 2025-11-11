@@ -3,6 +3,7 @@ package pe.edu.pucp.softbod.services.softbodws;
 import jakarta.jws.WebService;
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;
+import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
@@ -64,14 +65,15 @@ public class HistorialOperaciones {
     }
 
     @WebMethod(operationName = "listarHistorialOperacionesConFiltros")
-    public ArrayList<HistorialOperacionesDTO> listarHistorialOperacionesConFiltros(@WebParam(name = "operacionId") Integer operacionId,
-                                                                                     @WebParam(name = "nombreTabla") String nombreTabla,
-                                                                                     @WebParam(name = "tipoOperacion") String tipoOperacion,
-                                                                                     @WebParam(name = "fechaOperacion") String fechaOperacion,
-                                                                                     @WebParam(name = "usuarioId") Integer usuarioId,
-                                                                                     @WebParam(name = "usuario") String usuario,
-                                                                                     @WebParam(name = "tipoUsuario") String tipoUsuario,
-                                                                                     @WebParam(name = "estado") Boolean estado) {
+    public ArrayList<HistorialOperacionesDTO> listarHistorialOperacionesConFiltros(
+            @WebParam(name = "operacionId")@XmlElement(nillable = true) Integer operacionId,
+            @WebParam(name = "nombreTabla")@XmlElement(nillable = true) String nombreTabla,
+            @WebParam(name = "tipoOperacion")@XmlElement(nillable = true) String tipoOperacion,
+            @WebParam(name = "fechaOperacion")@XmlElement(nillable = true) String fechaOperacion,
+            @WebParam(name = "usuarioId")@XmlElement(nillable = true) Integer usuarioId,
+            @WebParam(name = "usuario")@XmlElement(nillable = true) String usuario,
+            @WebParam(name = "tipoUsuario")@XmlElement(nillable = true) String tipoUsuario,
+            @WebParam(name = "estado")@XmlElement(nillable = true) Boolean estado) {
         return this.historialBO.listarHistorialFiltros(operacionId, nombreTabla, tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);
     }
 }

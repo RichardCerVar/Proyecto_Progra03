@@ -20,9 +20,9 @@ public class Devolucion {
     }
     
     @WebMethod(operationName = "insertarDevolucion")
-    public Integer insertarDevolucion(@WebParam(name = "total") Double total,
-            @WebParam(name = "fecha") String fecha,@WebParam(name = "usuario") UsuarioDTO usuario){
-        return this.devolucionBO.insertar(total, fecha, usuario);
+    public Integer insertarDevolucion(@WebParam(name = "usuario")UsuarioDTO usuario,
+            @WebParam(name = "detallesDev")ArrayList<DetalleDevolucionDTO> detalles){
+        return this.devolucionBO.insertar(usuario,detalles);
     }
     
     @WebMethod(operationName = "obtenerDevolucionPorId")
@@ -49,10 +49,4 @@ public class Devolucion {
     public ArrayList<DevolucionDTO> listarDevolucionesPorUsuarioYFecha(@WebParam(name = "usuarioId")Integer usuarioId, @WebParam(name = "fecha")String fecha){
         return this.devolucionBO.listarPorUsuarioYFecha(usuarioId, fecha);
     }
-
-    @WebMethod(operationName = "registrarDevolucionCompleta")
-    public Integer registrarDevolucionCompleta(@WebParam(name = "devolucion")DevolucionDTO devolucion, @WebParam(name = "detalles")ArrayList<DetalleDevolucionDTO> detalles) {
-        return this.devolucionBO.registrarDevolucionCompleta(devolucion, detalles);
-    }
-
 }
