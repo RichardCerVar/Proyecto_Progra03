@@ -34,6 +34,17 @@ namespace SoftBodBusiness.SoftWSUsuario {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.modificarUsuarioResponse> modificarUsuarioAsync(SoftBodBusiness.SoftWSUsuario.modificarUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" +
+            "")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse listarTodosUsuarios(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" +
+            "")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> listarTodosUsuariosAsync(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosInactivosRequ" +
             "est", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosInactivosResp" +
             "onse")]
@@ -45,54 +56,6 @@ namespace SoftBodBusiness.SoftWSUsuario {
             "est", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosInactivosResp" +
             "onse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarUsuariosInactivosResponse> listarUsuariosInactivosAsync(SoftBodBusiness.SoftWSUsuario.listarUsuariosInactivosRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" +
-            "", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRespons" +
-            "e")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse obtenerCuentaUsuario(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" +
-            "", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRespons" +
-            "e")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> obtenerCuentaUsuarioAsync(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" +
-            "")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse obtenerUsuarioPorId(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" +
-            "")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioReques" +
-            "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioRespon" +
-            "se")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse eliminarLogicoUsuario(SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioReques" +
-            "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioRespon" +
-            "se")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse> eliminarLogicoUsuarioAsync(SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" +
-            "")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse listarTodosUsuarios(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" +
-            "")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> listarTodosUsuariosAsync(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorCorreoRequ" +
@@ -108,6 +71,19 @@ namespace SoftBodBusiness.SoftWSUsuario {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse> obtenerUsuarioPorCorreoAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioReques" +
+            "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioRespon" +
+            "se")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse eliminarLogicoUsuario(SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioReques" +
+            "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioRespon" +
+            "se")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse> eliminarLogicoUsuarioAsync(SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosReques" +
             "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosRespon" +
             "se")]
@@ -119,6 +95,30 @@ namespace SoftBodBusiness.SoftWSUsuario {
             "t", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosRespon" +
             "se")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosResponse> listarUsuariosActivosAsync(SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" +
+            "")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse obtenerUsuarioPorId(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" +
+            "")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" +
+            "", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRespons" +
+            "e")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse obtenerCuentaUsuario(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" +
+            "", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRespons" +
+            "e")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> obtenerCuentaUsuarioAsync(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosPorNombreParc" +
@@ -272,7 +272,7 @@ namespace SoftBodBusiness.SoftWSUsuario {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -444,7 +444,7 @@ namespace SoftBodBusiness.SoftWSUsuario {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoUsuario {
@@ -454,6 +454,34 @@ namespace SoftBodBusiness.SoftWSUsuario {
         
         /// <remarks/>
         ADMINISTRADOR,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosUsuarios", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosUsuariosRequest {
+        
+        public listarTodosUsuariosRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosUsuariosResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosUsuariosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO[] @return;
+        
+        public listarTodosUsuariosResponse() {
+        }
+        
+        public listarTodosUsuariosResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO[] @return) {
+            this.@return = @return;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -487,76 +515,35 @@ namespace SoftBodBusiness.SoftWSUsuario {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCuentaUsuario", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerCuentaUsuarioRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorCorreo", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerUsuarioPorCorreoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string correo;
+        public string emailUser;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string contrasenha;
-        
-        public obtenerCuentaUsuarioRequest() {
+        public obtenerUsuarioPorCorreoRequest() {
         }
         
-        public obtenerCuentaUsuarioRequest(string correo, string contrasenha) {
-            this.correo = correo;
-            this.contrasenha = contrasenha;
+        public obtenerUsuarioPorCorreoRequest(string emailUser) {
+            this.emailUser = emailUser;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCuentaUsuarioResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerCuentaUsuarioResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorCorreoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerUsuarioPorCorreoResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public SoftBodBusiness.SoftWSUsuario.usuarioDTO @return;
         
-        public obtenerCuentaUsuarioResponse() {
+        public obtenerUsuarioPorCorreoResponse() {
         }
         
-        public obtenerCuentaUsuarioResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerUsuarioPorIdRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int usuarioId;
-        
-        public obtenerUsuarioPorIdRequest() {
-        }
-        
-        public obtenerUsuarioPorIdRequest(int usuarioId) {
-            this.usuarioId = usuarioId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerUsuarioPorIdResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO @return;
-        
-        public obtenerUsuarioPorIdResponse() {
-        }
-        
-        public obtenerUsuarioPorIdResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
+        public obtenerUsuarioPorCorreoResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
             this.@return = @return;
         }
     }
@@ -635,70 +622,6 @@ namespace SoftBodBusiness.SoftWSUsuario {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosUsuarios", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosUsuariosRequest {
-        
-        public listarTodosUsuariosRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosUsuariosResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosUsuariosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO[] @return;
-        
-        public listarTodosUsuariosResponse() {
-        }
-        
-        public listarTodosUsuariosResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorCorreo", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerUsuarioPorCorreoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string emailUser;
-        
-        public obtenerUsuarioPorCorreoRequest() {
-        }
-        
-        public obtenerUsuarioPorCorreoRequest(string emailUser) {
-            this.emailUser = emailUser;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorCorreoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerUsuarioPorCorreoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO @return;
-        
-        public obtenerUsuarioPorCorreoResponse() {
-        }
-        
-        public obtenerUsuarioPorCorreoResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="listarUsuariosActivos", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
     public partial class listarUsuariosActivosRequest {
         
@@ -720,6 +643,83 @@ namespace SoftBodBusiness.SoftWSUsuario {
         }
         
         public listarUsuariosActivosResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerUsuarioPorIdRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int usuarioId;
+        
+        public obtenerUsuarioPorIdRequest() {
+        }
+        
+        public obtenerUsuarioPorIdRequest(int usuarioId) {
+            this.usuarioId = usuarioId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerUsuarioPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerUsuarioPorIdResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO @return;
+        
+        public obtenerUsuarioPorIdResponse() {
+        }
+        
+        public obtenerUsuarioPorIdResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCuentaUsuario", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerCuentaUsuarioRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string correo;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string contrasenha;
+        
+        public obtenerCuentaUsuarioRequest() {
+        }
+        
+        public obtenerCuentaUsuarioRequest(string correo, string contrasenha) {
+            this.correo = correo;
+            this.contrasenha = contrasenha;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCuentaUsuarioResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerCuentaUsuarioResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO @return;
+        
+        public obtenerCuentaUsuarioResponse() {
+        }
+        
+        public obtenerCuentaUsuarioResponse(SoftBodBusiness.SoftWSUsuario.usuarioDTO @return) {
             this.@return = @return;
         }
     }
@@ -860,6 +860,27 @@ namespace SoftBodBusiness.SoftWSUsuario {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse SoftBodBusiness.SoftWSUsuario.Usuario.listarTodosUsuarios(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request) {
+            return base.Channel.listarTodosUsuarios(request);
+        }
+        
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO[] listarTodosUsuarios() {
+            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest inValue = new SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest();
+            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).listarTodosUsuarios(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> SoftBodBusiness.SoftWSUsuario.Usuario.listarTodosUsuariosAsync(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request) {
+            return base.Channel.listarTodosUsuariosAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> listarTodosUsuariosAsync() {
+            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest inValue = new SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest();
+            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).listarTodosUsuariosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SoftBodBusiness.SoftWSUsuario.listarUsuariosInactivosResponse SoftBodBusiness.SoftWSUsuario.Usuario.listarUsuariosInactivos(SoftBodBusiness.SoftWSUsuario.listarUsuariosInactivosRequest request) {
             return base.Channel.listarUsuariosInactivos(request);
         }
@@ -881,51 +902,26 @@ namespace SoftBodBusiness.SoftWSUsuario {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerCuentaUsuario(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request) {
-            return base.Channel.obtenerCuentaUsuario(request);
+        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorCorreo(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest request) {
+            return base.Channel.obtenerUsuarioPorCorreo(request);
         }
         
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerCuentaUsuario(string correo, string contrasenha) {
-            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest();
-            inValue.correo = correo;
-            inValue.contrasenha = contrasenha;
-            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerCuentaUsuario(inValue);
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerUsuarioPorCorreo(string emailUser) {
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest();
+            inValue.emailUser = emailUser;
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorCorreo(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerCuentaUsuarioAsync(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request) {
-            return base.Channel.obtenerCuentaUsuarioAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorCorreoAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest request) {
+            return base.Channel.obtenerUsuarioPorCorreoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> obtenerCuentaUsuarioAsync(string correo, string contrasenha) {
-            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest();
-            inValue.correo = correo;
-            inValue.contrasenha = contrasenha;
-            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerCuentaUsuarioAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorId(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request) {
-            return base.Channel.obtenerUsuarioPorId(request);
-        }
-        
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerUsuarioPorId(int usuarioId) {
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest();
-            inValue.usuarioId = usuarioId;
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorId(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorIdAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request) {
-            return base.Channel.obtenerUsuarioPorIdAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(int usuarioId) {
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest();
-            inValue.usuarioId = usuarioId;
-            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorIdAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse> obtenerUsuarioPorCorreoAsync(string emailUser) {
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest();
+            inValue.emailUser = emailUser;
+            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorCorreoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -966,50 +962,6 @@ namespace SoftBodBusiness.SoftWSUsuario {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse SoftBodBusiness.SoftWSUsuario.Usuario.listarTodosUsuarios(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request) {
-            return base.Channel.listarTodosUsuarios(request);
-        }
-        
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO[] listarTodosUsuarios() {
-            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest inValue = new SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest();
-            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).listarTodosUsuarios(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> SoftBodBusiness.SoftWSUsuario.Usuario.listarTodosUsuariosAsync(SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest request) {
-            return base.Channel.listarTodosUsuariosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse> listarTodosUsuariosAsync() {
-            SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest inValue = new SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosRequest();
-            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).listarTodosUsuariosAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorCorreo(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest request) {
-            return base.Channel.obtenerUsuarioPorCorreo(request);
-        }
-        
-        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerUsuarioPorCorreo(string emailUser) {
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest();
-            inValue.emailUser = emailUser;
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorCorreo(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorCorreoAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest request) {
-            return base.Channel.obtenerUsuarioPorCorreoAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse> obtenerUsuarioPorCorreoAsync(string emailUser) {
-            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoRequest();
-            inValue.emailUser = emailUser;
-            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorCorreoAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosResponse SoftBodBusiness.SoftWSUsuario.Usuario.listarUsuariosActivos(SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosRequest request) {
             return base.Channel.listarUsuariosActivos(request);
         }
@@ -1028,6 +980,54 @@ namespace SoftBodBusiness.SoftWSUsuario {
         public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosResponse> listarUsuariosActivosAsync() {
             SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosRequest inValue = new SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosRequest();
             return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).listarUsuariosActivosAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorId(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request) {
+            return base.Channel.obtenerUsuarioPorId(request);
+        }
+        
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerUsuarioPorId(int usuarioId) {
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest();
+            inValue.usuarioId = usuarioId;
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorId(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerUsuarioPorIdAsync(SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest request) {
+            return base.Channel.obtenerUsuarioPorIdAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse> obtenerUsuarioPorIdAsync(int usuarioId) {
+            SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdRequest();
+            inValue.usuarioId = usuarioId;
+            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerUsuarioPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse SoftBodBusiness.SoftWSUsuario.Usuario.obtenerCuentaUsuario(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request) {
+            return base.Channel.obtenerCuentaUsuario(request);
+        }
+        
+        public SoftBodBusiness.SoftWSUsuario.usuarioDTO obtenerCuentaUsuario(string correo, string contrasenha) {
+            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest();
+            inValue.correo = correo;
+            inValue.contrasenha = contrasenha;
+            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse retVal = ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerCuentaUsuario(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> SoftBodBusiness.SoftWSUsuario.Usuario.obtenerCuentaUsuarioAsync(SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest request) {
+            return base.Channel.obtenerCuentaUsuarioAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse> obtenerCuentaUsuarioAsync(string correo, string contrasenha) {
+            SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest inValue = new SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioRequest();
+            inValue.correo = correo;
+            inValue.contrasenha = contrasenha;
+            return ((SoftBodBusiness.SoftWSUsuario.Usuario)(this)).obtenerCuentaUsuarioAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

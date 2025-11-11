@@ -11,12 +11,6 @@
   <message name="registrarPagoFiadoResponse">
     <part name="parameters" element="tns:registrarPagoFiadoResponse" />
   </message>
-  <message name="listarRegistrosPagoFiadoPorAliasCliente">
-    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasCliente" />
-  </message>
-  <message name="listarRegistrosPagoFiadoPorAliasClienteResponse">
-    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
-  </message>
   <message name="insertarRegistroPagoFiado">
     <part name="parameters" element="tns:insertarRegistroPagoFiado" />
   </message>
@@ -29,6 +23,12 @@
   <message name="listarTodosRegistrosPagoFiadoResponse">
     <part name="parameters" element="tns:listarTodosRegistrosPagoFiadoResponse" />
   </message>
+  <message name="listarRegistrosPagoFiadoPorAliasCliente">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasCliente" />
+  </message>
+  <message name="listarRegistrosPagoFiadoPorAliasClienteResponse">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
+  </message>
   <message name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
     <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
   </message>
@@ -40,10 +40,6 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoRequest" message="tns:registrarPagoFiado" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoResponse" message="tns:registrarPagoFiadoResponse" />
     </operation>
-    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteRequest" message="tns:listarRegistrosPagoFiadoPorAliasCliente" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
-    </operation>
     <operation name="insertarRegistroPagoFiado">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoRequest" message="tns:insertarRegistroPagoFiado" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoResponse" message="tns:insertarRegistroPagoFiadoResponse" />
@@ -51,6 +47,10 @@
     <operation name="listarTodosRegistrosPagoFiado">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoRequest" message="tns:listarTodosRegistrosPagoFiado" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoResponse" message="tns:listarTodosRegistrosPagoFiadoResponse" />
+    </operation>
+    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteRequest" message="tns:listarRegistrosPagoFiadoPorAliasCliente" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
     </operation>
     <operation name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest" message="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
@@ -68,15 +68,6 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarRegistroPagoFiado">
       <soap:operation soapAction="" />
       <input>
@@ -87,6 +78,15 @@
       </output>
     </operation>
     <operation name="listarTodosRegistrosPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

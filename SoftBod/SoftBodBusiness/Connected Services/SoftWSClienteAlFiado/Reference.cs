@@ -15,18 +15,17 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", ConfigurationName="SoftWSClienteAlFiado.ClienteAlFiado")]
     public interface ClienteAlFiado {
         
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
-            "adoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
-            "adoResponse")]
+        // CODEGEN: El parámetro 'clienteId' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
+            "FiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
+            "FiadoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request);
+        SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse desbloquearClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
-            "adoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
-            "adoResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
+            "FiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
+            "FiadoResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> desbloquearClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesA" +
@@ -42,17 +41,17 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoResponse> listarTodosClientesAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
-            "doRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
-            "doResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
+            "adoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
+            "adoResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse eliminarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request);
+        SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
-            "doRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
-            "doResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
+            "adoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFi" +
+            "adoResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/insertarClienteAlFia" +
@@ -80,17 +79,30 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             "oPorIdResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.obtenerClienteAlFiadoPorIdResponse> obtenerClienteAlFiadoPorIdAsync(SoftBodBusiness.SoftWSClienteAlFiado.obtenerClienteAlFiadoPorIdRequest request);
         
-        // CODEGEN: El parámetro 'clienteId' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
-            "FiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
-            "FiadoResponse")]
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
+            "doRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
+            "doResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse desbloquearClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request);
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse eliminarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
-            "FiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAl" +
-            "FiadoResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> desbloquearClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
+            "doRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFia" +
+            "doResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request);
+        
+        // CODEGEN: El parámetro 'clienteId' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
+            "doPorMorosidadRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
+            "doPorMorosidadResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse bloquearClienteAlFiadoPorMorosidad(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
+            "doPorMorosidadRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
+            "doPorMorosidadResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> bloquearClienteAlFiadoPorMorosidadAsync(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesA" +
@@ -104,22 +116,38 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             "lFiadoLikeRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesA" +
             "lFiadoLikeResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoLikeResponse> listarTodosClientesAlFiadoLikeAsync(SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoLikeRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="desbloquearClienteAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class desbloquearClienteAlFiadoRequest {
         
-        // CODEGEN: El parámetro 'clienteId' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
-            "doPorMorosidadRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
-            "doPorMorosidadResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse bloquearClienteAlFiadoPorMorosidad(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request);
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int clienteId;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
-            "doPorMorosidadRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFia" +
-            "doPorMorosidadResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> bloquearClienteAlFiadoPorMorosidadAsync(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request);
+        public desbloquearClienteAlFiadoRequest() {
+        }
+        
+        public desbloquearClienteAlFiadoRequest(int clienteId) {
+            this.clienteId = clienteId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="desbloquearClienteAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class desbloquearClienteAlFiadoResponse {
+        
+        public desbloquearClienteAlFiadoResponse() {
+        }
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -279,6 +307,34 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosClientesAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosClientesAlFiadoRequest {
+        
+        public listarTodosClientesAlFiadoRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosClientesAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosClientesAlFiadoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO[] @return;
+        
+        public listarTodosClientesAlFiadoResponse() {
+        }
+        
+        public listarTodosClientesAlFiadoResponse(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="modificarClienteAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
     public partial class modificarClienteAlFiadoRequest {
         
@@ -308,70 +364,6 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         }
         
         public modificarClienteAlFiadoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosClientesAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosClientesAlFiadoRequest {
-        
-        public listarTodosClientesAlFiadoRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosClientesAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosClientesAlFiadoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO[] @return;
-        
-        public listarTodosClientesAlFiadoResponse() {
-        }
-        
-        public listarTodosClientesAlFiadoResponse(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarClienteAlFiadoRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int clienteId;
-        
-        public eliminarClienteAlFiadoRequest() {
-        }
-        
-        public eliminarClienteAlFiadoRequest(int clienteId) {
-            this.clienteId = clienteId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarClienteAlFiadoResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarClienteAlFiadoResponse() {
-        }
-        
-        public eliminarClienteAlFiadoResponse(int @return) {
             this.@return = @return;
         }
     }
@@ -466,17 +458,17 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="desbloquearClienteAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class desbloquearClienteAlFiadoRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteAlFiado", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteAlFiadoRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public int clienteId;
         
-        public desbloquearClienteAlFiadoRequest() {
+        public eliminarClienteAlFiadoRequest() {
         }
         
-        public desbloquearClienteAlFiadoRequest(int clienteId) {
+        public eliminarClienteAlFiadoRequest(int clienteId) {
             this.clienteId = clienteId;
         }
     }
@@ -484,10 +476,46 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="desbloquearClienteAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class desbloquearClienteAlFiadoResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarClienteAlFiadoResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarClienteAlFiadoResponse {
         
-        public desbloquearClienteAlFiadoResponse() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarClienteAlFiadoResponse() {
+        }
+        
+        public eliminarClienteAlFiadoResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="bloquearClienteAlFiadoPorMorosidad", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class bloquearClienteAlFiadoPorMorosidadRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int clienteId;
+        
+        public bloquearClienteAlFiadoPorMorosidadRequest() {
+        }
+        
+        public bloquearClienteAlFiadoPorMorosidadRequest(int clienteId) {
+            this.clienteId = clienteId;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="bloquearClienteAlFiadoPorMorosidadResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class bloquearClienteAlFiadoPorMorosidadResponse {
+        
+        public bloquearClienteAlFiadoPorMorosidadResponse() {
         }
     }
     
@@ -527,34 +555,6 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="bloquearClienteAlFiadoPorMorosidad", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class bloquearClienteAlFiadoPorMorosidadRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int clienteId;
-        
-        public bloquearClienteAlFiadoPorMorosidadRequest() {
-        }
-        
-        public bloquearClienteAlFiadoPorMorosidadRequest(int clienteId) {
-            this.clienteId = clienteId;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="bloquearClienteAlFiadoPorMorosidadResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class bloquearClienteAlFiadoPorMorosidadResponse {
-        
-        public bloquearClienteAlFiadoPorMorosidadResponse() {
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ClienteAlFiadoChannel : SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado, System.ServiceModel.IClientChannel {
     }
@@ -583,26 +583,25 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request) {
-            return base.Channel.modificarClienteAlFiado(request);
+        SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.desbloquearClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request) {
+            return base.Channel.desbloquearClienteAlFiado(request);
         }
         
-        public int modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
-            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
-            inValue.clienteModificado = clienteModificado;
-            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiado(inValue);
-            return retVal.@return;
+        public void desbloquearClienteAlFiado(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest();
+            inValue.clienteId = clienteId;
+            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).desbloquearClienteAlFiado(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request) {
-            return base.Channel.modificarClienteAlFiadoAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.desbloquearClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request) {
+            return base.Channel.desbloquearClienteAlFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
-            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
-            inValue.clienteModificado = clienteModificado;
-            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiadoAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> desbloquearClienteAlFiadoAsync(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest();
+            inValue.clienteId = clienteId;
+            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).desbloquearClienteAlFiadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -627,26 +626,26 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.eliminarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request) {
-            return base.Channel.eliminarClienteAlFiado(request);
+        SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request) {
+            return base.Channel.modificarClienteAlFiado(request);
         }
         
-        public int eliminarClienteAlFiado(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
-            inValue.clienteId = clienteId;
-            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiado(inValue);
+        public int modificarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
+            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
+            inValue.clienteModificado = clienteModificado;
+            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiado(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.eliminarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request) {
-            return base.Channel.eliminarClienteAlFiadoAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest request) {
+            return base.Channel.modificarClienteAlFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
-            inValue.clienteId = clienteId;
-            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiadoAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse> modificarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO clienteModificado) {
+            SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoRequest();
+            inValue.clienteModificado = clienteModificado;
+            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).modificarClienteAlFiadoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -702,25 +701,48 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.desbloquearClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request) {
-            return base.Channel.desbloquearClienteAlFiado(request);
+        SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.eliminarClienteAlFiado(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request) {
+            return base.Channel.eliminarClienteAlFiado(request);
         }
         
-        public void desbloquearClienteAlFiado(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest();
+        public int eliminarClienteAlFiado(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
             inValue.clienteId = clienteId;
-            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).desbloquearClienteAlFiado(inValue);
+            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiado(inValue);
+            return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.desbloquearClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest request) {
-            return base.Channel.desbloquearClienteAlFiadoAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.eliminarClienteAlFiadoAsync(SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest request) {
+            return base.Channel.eliminarClienteAlFiadoAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse> desbloquearClienteAlFiadoAsync(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoRequest();
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse> eliminarClienteAlFiadoAsync(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoRequest();
             inValue.clienteId = clienteId;
-            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).desbloquearClienteAlFiadoAsync(inValue);
+            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).eliminarClienteAlFiadoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.bloquearClienteAlFiadoPorMorosidad(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request) {
+            return base.Channel.bloquearClienteAlFiadoPorMorosidad(request);
+        }
+        
+        public void bloquearClienteAlFiadoPorMorosidad(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest();
+            inValue.clienteId = clienteId;
+            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).bloquearClienteAlFiadoPorMorosidad(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.bloquearClienteAlFiadoPorMorosidadAsync(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request) {
+            return base.Channel.bloquearClienteAlFiadoPorMorosidadAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> bloquearClienteAlFiadoPorMorosidadAsync(int clienteId) {
+            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest();
+            inValue.clienteId = clienteId;
+            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).bloquearClienteAlFiadoPorMorosidadAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -744,28 +766,6 @@ namespace SoftBodBusiness.SoftWSClienteAlFiado {
             SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoLikeRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoLikeRequest();
             inValue.cadena = cadena;
             return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).listarTodosClientesAlFiadoLikeAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.bloquearClienteAlFiadoPorMorosidad(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request) {
-            return base.Channel.bloquearClienteAlFiadoPorMorosidad(request);
-        }
-        
-        public void bloquearClienteAlFiadoPorMorosidad(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest();
-            inValue.clienteId = clienteId;
-            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse retVal = ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).bloquearClienteAlFiadoPorMorosidad(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado.bloquearClienteAlFiadoPorMorosidadAsync(SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest request) {
-            return base.Channel.bloquearClienteAlFiadoPorMorosidadAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse> bloquearClienteAlFiadoPorMorosidadAsync(int clienteId) {
-            SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest inValue = new SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadRequest();
-            inValue.clienteId = clienteId;
-            return ((SoftBodBusiness.SoftWSClienteAlFiado.ClienteAlFiado)(this)).bloquearClienteAlFiadoPorMorosidadAsync(inValue);
         }
     }
 }

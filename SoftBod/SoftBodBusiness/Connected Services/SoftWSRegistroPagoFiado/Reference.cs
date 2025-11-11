@@ -29,19 +29,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse> registrarPagoFiadoAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
-            "goFiadoPorAliasClienteRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
-            "goFiadoPorAliasClienteResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse listarRegistrosPagoFiadoPorAliasCliente(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
-            "goFiadoPorAliasClienteRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
-            "goFiadoPorAliasClienteResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> listarRegistrosPagoFiadoPorAliasClienteAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroP" +
             "agoFiadoRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroP" +
             "agoFiadoResponse")]
@@ -69,6 +56,19 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
+            "goFiadoPorAliasClienteRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
+            "goFiadoPorAliasClienteResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse listarRegistrosPagoFiadoPorAliasCliente(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
+            "goFiadoPorAliasClienteRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
+            "goFiadoPorAliasClienteResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> listarRegistrosPagoFiadoPorAliasClienteAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteConFechaFinRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPa" +
             "goFiadoPorAliasClienteConFechaFinResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
@@ -82,7 +82,7 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -226,7 +226,7 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -384,7 +384,7 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -556,7 +556,7 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoUsuario {
@@ -569,7 +569,7 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoDePago {
@@ -616,42 +616,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         public registrarPagoFiadoResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRegistrosPagoFiadoPorAliasCliente", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarRegistrosPagoFiadoPorAliasClienteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string aliasCliente;
-        
-        public listarRegistrosPagoFiadoPorAliasClienteRequest() {
-        }
-        
-        public listarRegistrosPagoFiadoPorAliasClienteRequest(string aliasCliente) {
-            this.aliasCliente = aliasCliente;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRegistrosPagoFiadoPorAliasClienteResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarRegistrosPagoFiadoPorAliasClienteResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return;
-        
-        public listarRegistrosPagoFiadoPorAliasClienteResponse() {
-        }
-        
-        public listarRegistrosPagoFiadoPorAliasClienteResponse(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -736,6 +700,42 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         public listarTodosRegistrosPagoFiadoResponse(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRegistrosPagoFiadoPorAliasCliente", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarRegistrosPagoFiadoPorAliasClienteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string aliasCliente;
+        
+        public listarRegistrosPagoFiadoPorAliasClienteRequest() {
+        }
+        
+        public listarRegistrosPagoFiadoPorAliasClienteRequest(string aliasCliente) {
+            this.aliasCliente = aliasCliente;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRegistrosPagoFiadoPorAliasClienteResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarRegistrosPagoFiadoPorAliasClienteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return;
+        
+        public listarRegistrosPagoFiadoPorAliasClienteResponse() {
+        }
+        
+        public listarRegistrosPagoFiadoPorAliasClienteResponse(SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -832,29 +832,6 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasCliente(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request) {
-            return base.Channel.listarRegistrosPagoFiadoPorAliasCliente(request);
-        }
-        
-        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] listarRegistrosPagoFiadoPorAliasCliente(string aliasCliente) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest();
-            inValue.aliasCliente = aliasCliente;
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasCliente(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request) {
-            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> listarRegistrosPagoFiadoPorAliasClienteAsync(string aliasCliente) {
-            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest();
-            inValue.aliasCliente = aliasCliente;
-            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.insertarRegistroPagoFiado(SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoRequest request) {
             return base.Channel.insertarRegistroPagoFiado(request);
         }
@@ -904,6 +881,29 @@ namespace SoftBodBusiness.SoftWSRegistroPagoFiado {
         public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse> listarTodosRegistrosPagoFiadoAsync() {
             SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoRequest();
             return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarTodosRegistrosPagoFiadoAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasCliente(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request) {
+            return base.Channel.listarRegistrosPagoFiadoPorAliasCliente(request);
+        }
+        
+        public SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO[] listarRegistrosPagoFiadoPorAliasCliente(string aliasCliente) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest();
+            inValue.aliasCliente = aliasCliente;
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse retVal = ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasCliente(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteAsync(SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest request) {
+            return base.Channel.listarRegistrosPagoFiadoPorAliasClienteAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse> listarRegistrosPagoFiadoPorAliasClienteAsync(string aliasCliente) {
+            SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest inValue = new SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteRequest();
+            inValue.aliasCliente = aliasCliente;
+            return ((SoftBodBusiness.SoftWSRegistroPagoFiado.RegistroPagoFiado)(this)).listarRegistrosPagoFiadoPorAliasClienteAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

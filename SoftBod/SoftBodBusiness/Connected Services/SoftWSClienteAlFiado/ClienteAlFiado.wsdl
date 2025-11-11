@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/ClienteAlFiado?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="modificarClienteAlFiado">
-    <part name="parameters" element="tns:modificarClienteAlFiado" />
+  <message name="desbloquearClienteAlFiado">
+    <part name="parameters" element="tns:desbloquearClienteAlFiado" />
   </message>
-  <message name="modificarClienteAlFiadoResponse">
-    <part name="parameters" element="tns:modificarClienteAlFiadoResponse" />
+  <message name="desbloquearClienteAlFiadoResponse">
+    <part name="parameters" element="tns:desbloquearClienteAlFiadoResponse" />
   </message>
   <message name="listarTodosClientesAlFiado">
     <part name="parameters" element="tns:listarTodosClientesAlFiado" />
@@ -17,11 +17,11 @@
   <message name="listarTodosClientesAlFiadoResponse">
     <part name="parameters" element="tns:listarTodosClientesAlFiadoResponse" />
   </message>
-  <message name="eliminarClienteAlFiado">
-    <part name="parameters" element="tns:eliminarClienteAlFiado" />
+  <message name="modificarClienteAlFiado">
+    <part name="parameters" element="tns:modificarClienteAlFiado" />
   </message>
-  <message name="eliminarClienteAlFiadoResponse">
-    <part name="parameters" element="tns:eliminarClienteAlFiadoResponse" />
+  <message name="modificarClienteAlFiadoResponse">
+    <part name="parameters" element="tns:modificarClienteAlFiadoResponse" />
   </message>
   <message name="insertarClienteAlFiado">
     <part name="parameters" element="tns:insertarClienteAlFiado" />
@@ -35,17 +35,11 @@
   <message name="obtenerClienteAlFiadoPorIdResponse">
     <part name="parameters" element="tns:obtenerClienteAlFiadoPorIdResponse" />
   </message>
-  <message name="desbloquearClienteAlFiado">
-    <part name="parameters" element="tns:desbloquearClienteAlFiado" />
+  <message name="eliminarClienteAlFiado">
+    <part name="parameters" element="tns:eliminarClienteAlFiado" />
   </message>
-  <message name="desbloquearClienteAlFiadoResponse">
-    <part name="parameters" element="tns:desbloquearClienteAlFiadoResponse" />
-  </message>
-  <message name="listarTodosClientesAlFiadoLike">
-    <part name="parameters" element="tns:listarTodosClientesAlFiadoLike" />
-  </message>
-  <message name="listarTodosClientesAlFiadoLikeResponse">
-    <part name="parameters" element="tns:listarTodosClientesAlFiadoLikeResponse" />
+  <message name="eliminarClienteAlFiadoResponse">
+    <part name="parameters" element="tns:eliminarClienteAlFiadoResponse" />
   </message>
   <message name="bloquearClienteAlFiadoPorMorosidad">
     <part name="parameters" element="tns:bloquearClienteAlFiadoPorMorosidad" />
@@ -53,18 +47,24 @@
   <message name="bloquearClienteAlFiadoPorMorosidadResponse">
     <part name="parameters" element="tns:bloquearClienteAlFiadoPorMorosidadResponse" />
   </message>
+  <message name="listarTodosClientesAlFiadoLike">
+    <part name="parameters" element="tns:listarTodosClientesAlFiadoLike" />
+  </message>
+  <message name="listarTodosClientesAlFiadoLikeResponse">
+    <part name="parameters" element="tns:listarTodosClientesAlFiadoLikeResponse" />
+  </message>
   <portType name="ClienteAlFiado">
-    <operation name="modificarClienteAlFiado">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFiadoRequest" message="tns:modificarClienteAlFiado" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFiadoResponse" message="tns:modificarClienteAlFiadoResponse" />
+    <operation name="desbloquearClienteAlFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAlFiadoRequest" message="tns:desbloquearClienteAlFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAlFiadoResponse" message="tns:desbloquearClienteAlFiadoResponse" />
     </operation>
     <operation name="listarTodosClientesAlFiado">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoRequest" message="tns:listarTodosClientesAlFiado" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoResponse" message="tns:listarTodosClientesAlFiadoResponse" />
     </operation>
-    <operation name="eliminarClienteAlFiado">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFiadoRequest" message="tns:eliminarClienteAlFiado" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFiadoResponse" message="tns:eliminarClienteAlFiadoResponse" />
+    <operation name="modificarClienteAlFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFiadoRequest" message="tns:modificarClienteAlFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/modificarClienteAlFiadoResponse" message="tns:modificarClienteAlFiadoResponse" />
     </operation>
     <operation name="insertarClienteAlFiado">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/insertarClienteAlFiadoRequest" message="tns:insertarClienteAlFiado" />
@@ -74,22 +74,22 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/obtenerClienteAlFiadoPorIdRequest" message="tns:obtenerClienteAlFiadoPorId" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/obtenerClienteAlFiadoPorIdResponse" message="tns:obtenerClienteAlFiadoPorIdResponse" />
     </operation>
-    <operation name="desbloquearClienteAlFiado">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAlFiadoRequest" message="tns:desbloquearClienteAlFiado" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/desbloquearClienteAlFiadoResponse" message="tns:desbloquearClienteAlFiadoResponse" />
-    </operation>
-    <operation name="listarTodosClientesAlFiadoLike">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoLikeRequest" message="tns:listarTodosClientesAlFiadoLike" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoLikeResponse" message="tns:listarTodosClientesAlFiadoLikeResponse" />
+    <operation name="eliminarClienteAlFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFiadoRequest" message="tns:eliminarClienteAlFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/eliminarClienteAlFiadoResponse" message="tns:eliminarClienteAlFiadoResponse" />
     </operation>
     <operation name="bloquearClienteAlFiadoPorMorosidad">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFiadoPorMorosidadRequest" message="tns:bloquearClienteAlFiadoPorMorosidad" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/bloquearClienteAlFiadoPorMorosidadResponse" message="tns:bloquearClienteAlFiadoPorMorosidadResponse" />
     </operation>
+    <operation name="listarTodosClientesAlFiadoLike">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoLikeRequest" message="tns:listarTodosClientesAlFiadoLike" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/ClienteAlFiado/listarTodosClientesAlFiadoLikeResponse" message="tns:listarTodosClientesAlFiadoLikeResponse" />
+    </operation>
   </portType>
   <binding name="ClienteAlFiadoPortBinding" type="tns:ClienteAlFiado">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarClienteAlFiado">
+    <operation name="desbloquearClienteAlFiado">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -107,7 +107,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarClienteAlFiado">
+    <operation name="modificarClienteAlFiado">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -134,16 +134,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="desbloquearClienteAlFiado">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarTodosClientesAlFiadoLike">
+    <operation name="eliminarClienteAlFiado">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -153,6 +144,15 @@
       </output>
     </operation>
     <operation name="bloquearClienteAlFiadoPorMorosidad">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosClientesAlFiadoLike">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
