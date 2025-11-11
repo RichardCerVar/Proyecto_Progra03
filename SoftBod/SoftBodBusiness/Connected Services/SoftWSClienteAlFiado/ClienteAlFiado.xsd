@@ -70,7 +70,7 @@
   </xs:complexType>
   <xs:complexType name="eliminarClienteAlFiado">
     <xs:sequence>
-      <xs:element minOccurs="0" name="clienteAeliminar" type="tns:clienteAlFiadoDTO" />
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="eliminarClienteAlFiadoResponse">

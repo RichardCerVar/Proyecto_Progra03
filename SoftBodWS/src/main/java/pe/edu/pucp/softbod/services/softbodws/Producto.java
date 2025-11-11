@@ -33,8 +33,8 @@ public class Producto {
     }
     
     @WebMethod(operationName = "eliminarProducto")
-    public Integer eliminarProducto(@WebParam(name = "producto") ProductoDTO producto) {
-        return this.productoBO.eliminar(producto);
+    public Integer eliminarProducto(@WebParam(name = "productoId") Integer Idproducto) {
+        return this.productoBO.eliminar(Idproducto);
     }
 
     @WebMethod(operationName = "obtenerProductoPorId")

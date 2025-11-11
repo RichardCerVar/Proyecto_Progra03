@@ -37,8 +37,10 @@ public class ProductoBO {
         return this.productoDAO.obtenerPorId(productoId);
     }
     
-    public Integer eliminar(ProductoDTO producto){
-        return this.productoDAO.eliminar(producto);
+    public Integer eliminar(Integer productoId){
+        ProductoDTO prod = new ProductoDTO();
+        prod.setProductoId(productoId);
+        return this.productoDAO.eliminar(prod);
     }
     
     public ArrayList<ProductoDTO> listarTodos() {
