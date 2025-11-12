@@ -7,13 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace SoftBodWA
 {
-    public partial class Productos : System.Web.UI.Page
+    public partial class ReporteInventario : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
         }
-
     }
-
 }

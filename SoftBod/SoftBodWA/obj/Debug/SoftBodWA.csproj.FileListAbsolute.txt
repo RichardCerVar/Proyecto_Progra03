@@ -19,3 +19,7 @@ C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.pdb
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll.config
+D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.Up2Date

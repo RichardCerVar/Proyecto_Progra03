@@ -51,31 +51,49 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
-        /// Control chkArroz.
+        /// Control chk1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkArroz;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk1;
 
         /// <summary>
-        /// Control chkAceite.
+        /// Control chk2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkAceite;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk2;
 
         /// <summary>
-        /// Control chkLeche.
+        /// Control chk12.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chkLeche;
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk12;
+
+        /// <summary>
+        /// Control chk16.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk16;
+
+        /// <summary>
+        /// Control chk15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk15;
 
         /// <summary>
         /// Control txtNombreProducto.

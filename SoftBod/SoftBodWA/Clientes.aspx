@@ -5,10 +5,18 @@
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="container-fluid px-3 py-3">
-        <h4 class="fw-bold mb-4">Gestión de Clientes al Fiado</h4>
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-        <!-- BUSCADOR -->
+    <div class="container-fluid px-3 py-3">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="fw-bold mb-0">Gestión de Clientes al Fiado</h4>
+            
+            <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Cliente" 
+                        CssClass="btn btn-primary fw-bold shadow-sm" 
+                        OnClick="btnAgregar_Click" />
+        </div>
+
         <div class="input-group mb-4">
             <span class="input-group-text bg-white border-end-0">
                 <i class="bi bi-search text-muted"></i>
@@ -16,7 +24,6 @@
             <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control border-start-0" placeholder="Buscar cliente por alias..." />
         </div>
 
-        <!-- RESUMEN DEUDA TOTAL -->
         <div class="card border-0 mb-4" style="background: linear-gradient(to right, #fff6f1, #fff9f4);">
             <div class="card-body d-flex justify-content-between align-items-center">
                 <div>
@@ -31,8 +38,7 @@
             </div>
         </div>
 
-        <!-- LISTADO DE CLIENTES -->
-        <asp:Repeater ID="rptClientes" runat="server">
+        <asp:Repeater ID="rptClientes" runat="server" OnItemCommand="rptClientes_ItemCommand">
             <ItemTemplate>
                 <div class="card border-0 shadow-sm mb-3">
                     <div class="card-body">
@@ -59,16 +65,11 @@
                     </div>
                 </div>
             </ItemTemplate>
+            <FooterTemplate>
+                <%# (rptClientes.Items.Count == 0) ? "<div class='alert alert-info text-center'>No se encontraron clientes activos.</div>" : string.Empty %>
+            </FooterTemplate>
         </asp:Repeater>
     </div>
-
-    <!-- BOTÓN FIJO PARA AGREGAR CLIENTE -->
-    <div class="position-fixed" style="top: 90px; right: 25px; z-index: 1050;">
-        <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Cliente" CssClass="btn btn-primary fw-bold shadow" OnClick="btnAgregar_Click" />
-    </div>
-
-     <!-- Modal Agregar Cliente -->
-     <asp:ScriptManager runat="server"></asp:ScriptManager>
 
     <div class="modal fade" id="modalAgregarCliente" tabindex="-1" aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -78,34 +79,34 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <asp:UpdatePanel runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <!-- Nombre Completo -->
+                            
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre Completo"></asp:Label>
                                 <asp:TextBox ID="txtNombreCompleto" CssClass="form-control" placeholder="Ej: Juan Pérez" runat="server"></asp:TextBox>
                             </div>
 
-                            <!-- Alias -->
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Alias"></asp:Label>
                                 <asp:TextBox ID="txtAlias" CssClass="form-control" placeholder="Ej: juan123" runat="server"></asp:TextBox>
                             </div>
 
-                            <!-- Teléfono -->
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Teléfono"></asp:Label>
                                 <asp:TextBox ID="txtTelefono" CssClass="form-control" placeholder="123-456-7890" runat="server"></asp:TextBox>
                             </div>
 
-                            <!-- Fecha Límite -->
-                            <div class="mb-3">
+                            <div class="mb-4">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Fecha Límite"></asp:Label>
                                 <asp:TextBox ID="txtFechaLimite" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
                             </div>
 
-                            <!-- Botón Agregar -->
-                            <asp:LinkButton ID="btnGuardarCliente" runat="server" CssClass="btn btn-dark w-100 py-2 fw-semibold" Text="Agregar Cliente" OnClick="btnGuardarCliente_Click" />
+                            <asp:Button ID="btnGuardarCliente" runat="server" 
+                                        CssClass="btn btn-dark w-100 py-2 fw-semibold" 
+                                        Text="Agregar Cliente" 
+                                        OnClick="btnGuardarCliente_Click" />
+                                        
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>

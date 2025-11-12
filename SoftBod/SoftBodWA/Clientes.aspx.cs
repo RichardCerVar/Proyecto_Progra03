@@ -2,68 +2,12 @@
 using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Linq;
 
 namespace SoftBodWA
 {
     public partial class Clientes : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            if (!IsPostBack)
-            {
-                CargarClientes();
-            }
-        }
-
-        private void CargarClientes()
-        {
-            // Datos simulados (puedes reemplazar con datos de BD)
-            var clientes = new List<Cliente>()
-            {
-                new Cliente { Alias="juan123", Nombre="Juan Pérez", Telefono="123-456-7890", Deuda=150.00m, FechaLimite=new DateTime(2024,2,15)},
-                new Cliente { Alias="maria456", Nombre="María García", Telefono="098-765-4321", Deuda=80.00m, FechaLimite=new DateTime(2024,2,20)},
-                new Cliente { Alias="pedro789", Nombre="Pedro Torres", Telefono="987-654-3210", Deuda=0.00m, FechaLimite=new DateTime(2024,3,1)}
-            };
-
-            rptClientes.DataSource = clientes;
-            rptClientes.DataBind();
-
-            // Total deuda y clientes activos
-            decimal totalDeuda = 0;
-            int activos = 0;
-
-            foreach (var c in clientes)
-            {
-                if (c.Deuda > 0)
-                {
-                    totalDeuda += c.Deuda;
-                    activos++;
-                }
-            }
-
-            lblTotalDeuda.InnerText = $"S/{totalDeuda:F2}";
-            lblActivos.InnerText = activos.ToString();
-        }
-
-        protected void rptClientes_ItemCommand(object source, RepeaterCommandEventArgs e)
-        {
-            string alias = e.CommandArgument.ToString();
-
-            switch (e.CommandName)
-            {
-                case "Pagar":
-                    // Aquí podrías abrir un modal o procesar el pago
-                    Response.Write($"<script>alert('Pago procesado para {alias}');</script>");
-                    break;
-                case "Editar":
-                    Response.Write($"<script>alert('Editar cliente: {alias}');</script>");
-                    break;
-                case "Eliminar":
-                    Response.Write($"<script>alert('Cliente eliminado: {alias}');</script>");
-                    break;
-            }
-        }
-
         public class Cliente
         {
             public string Alias { get; set; }
@@ -73,65 +17,93 @@ namespace SoftBodWA
             public DateTime FechaLimite { get; set; }
         }
 
+        private List<Cliente> ClientesData
+        {
+            get
+            {
+                if (Session["ClientesList"] == null)
+                {
+                    Session["ClientesList"] = new List<Cliente>()
+                    {
+                        new Cliente { Alias="juan123", Nombre="Juan Pérez", Telefono="123-456-7890", Deuda=150.00m, FechaLimite=new DateTime(2024,12,15)},
+                        new Cliente { Alias="maria456", Nombre="María García", Telefono="098-765-4321", Deuda=80.00m, FechaLimite=new DateTime(2024,12,20)},
+                        new Cliente { Alias="carlos22", Nombre="Carlos Soto", Telefono="911-222-333", Deuda=25.50m, FechaLimite=new DateTime(2025,1,5)},
+                        new Cliente { Alias="luisa11", Nombre="Luisa Rojas", Telefono="955-444-111", Deuda=100.00m, FechaLimite=new DateTime(2024,11,30)}
+                    };
+                }
+                return (List<Cliente>)Session["ClientesList"];
+            }
+            set
+            {
+                Session["ClientesList"] = value;
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                CargarClientes();
+            }
+        }
+
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
-            string script = "window.onload = function() { showModalAgregarCliente() }; ";
-            ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
+            LimpiarCamposModal();
+
+            string script = "$('#modalAgregarCliente').modal('show');";
+            ScriptManager.RegisterStartupScript(this, GetType(), "ShowAddClientModal", script, true);
         }
+
         protected void btnGuardarCliente_Click(object sender, EventArgs e)
         {
             try
             {
-                // Obtener datos del formulario
                 string nombreCompleto = txtNombreCompleto.Text.Trim();
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
                 string fechaLimiteStr = txtFechaLimite.Text;
 
-                // Validaciones básicas
-                if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias))
+                if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
-                    // Mostrar mensaje de error
-                    ScriptManager.RegisterStartupScript(this, GetType(), "alert",
-                        "alert('Por favor complete los campos obligatorios.');", true);
+                    string errorScript = "alert('Por favor complete los campos Nombre, Alias y Fecha Límite.'); $('#modalAgregarCliente').modal('show');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertError", errorScript, true);
                     return;
                 }
 
-                DateTime fechaLimite = DateTime.MinValue;
-                if (!string.IsNullOrEmpty(fechaLimiteStr))
+                DateTime fechaLimite = DateTime.Parse(fechaLimiteStr);
+
+                var nuevoCliente = new Cliente
                 {
-                    fechaLimite = DateTime.Parse(fechaLimiteStr);
-                }
+                    Alias = alias,
+                    Nombre = nombreCompleto,
+                    Telefono = telefono,
+                    Deuda = 0.00m,
+                    FechaLimite = fechaLimite
+                };
 
-                // TODO: Aquí va la lógica para guardar el cliente
+                var clientes = ClientesData;
+                clientes.Add(nuevoCliente);
+                ClientesData = clientes;
 
-                // Limpiar campos
                 LimpiarCamposModal();
-
-                // Recargar datos
                 CargarClientes();
-                ActualizarResumen();
 
-                // Cerrar modal y mostrar mensaje de éxito
-                ScriptManager.RegisterStartupScript(this, GetType(), "success",
-                    "alert('Cliente agregado exitosamente.');"+
+                string successScript =
                     "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
-                    "if(modal) modal.hide();",true);
+                    "if(modal) modal.hide();" +
+                    "alert('Cliente agregado exitosamente.');";
 
-                
+                ScriptManager.RegisterStartupScript(this, GetType(), "success", successScript, true);
             }
             catch (Exception ex)
             {
-                // Manejo de errores
-                ScriptManager.RegisterStartupScript(this, GetType(), "error",
-                    $"alert('Error al agregar cliente: {ex.Message}');", true);
+                string errorScript =
+                    $"alert('Error al agregar cliente: Verifique el formato de la fecha. Detalles: {ex.Message}');" +
+                    "$('#modalAgregarCliente').modal('show');";
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "error", errorScript, true);
             }
-        }
-
-        private void ActualizarResumen()
-        {
-            // TODO: Calcular totales
-
         }
 
         private void LimpiarCamposModal()
@@ -141,6 +113,69 @@ namespace SoftBodWA
             txtTelefono.Text = "";
             txtFechaLimite.Text = "";
         }
-    
+
+        private void CargarClientes()
+        {
+            var clientes = ClientesData;
+
+            rptClientes.DataSource = clientes;
+            rptClientes.DataBind();
+
+            ActualizarResumen(clientes);
+        }
+
+        private void ActualizarResumen(List<Cliente> clientes)
+        {
+            var clientesConDeuda = clientes.Where(c => c.Deuda > 0).ToList();
+
+            decimal totalDeuda = clientesConDeuda.Sum(c => c.Deuda);
+            int activos = clientesConDeuda.Count;
+
+            lblTotalDeuda.InnerText = $"S/{totalDeuda:N2}";
+            lblActivos.InnerText = activos.ToString();
+        }
+
+        protected void rptClientes_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            string alias = e.CommandArgument.ToString();
+            string message = "";
+            bool reload = false;
+
+            var clientes = ClientesData;
+            var clienteAfectado = clientes.FirstOrDefault(c => c.Alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+
+            if (clienteAfectado == null)
+            {
+                message = $"No se encontró el cliente con alias '{alias}'.";
+            }
+            else
+            {
+                switch (e.CommandName)
+                {
+                    case "Pagar":
+                        clienteAfectado.Deuda = 0.00m;
+                        message = $"Pago total procesado para {alias}.";
+                        reload = true;
+                        break;
+                    case "Editar":
+                        message = $"Lógica de edición: Abrir formulario para modificar a {alias}.";
+                        break;
+                    case "Eliminar":
+                        clientes.Remove(clienteAfectado);
+                        ClientesData = clientes;
+                        message = $"Cliente '{alias}' eliminado exitosamente.";
+                        reload = true;
+                        break;
+                }
+            }
+
+            if (reload)
+            {
+                CargarClientes();
+            }
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
+                $"alert('{message}');", true);
+        }
     }
 }
