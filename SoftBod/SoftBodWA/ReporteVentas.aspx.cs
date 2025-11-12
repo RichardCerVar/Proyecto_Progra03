@@ -46,9 +46,9 @@ namespace SoftBodWA
                 return;
             }
 
-            string fechaFiltro = txtFecha.Text;
+            string fechaFiltro = DateTime.Parse(txtFecha.Text).ToString("yyyy-MM-dd");
             var movimientosReporteVacio = new List<MovimientoReporteDTO>();
-
+            
             try
             {
                 List<WSVenta.ventaDTO> listaVentas = ventaBO.listarVentasPorFecha(fechaFiltro);
@@ -88,55 +88,59 @@ namespace SoftBodWA
             var movimientos = new List<MovimientoReporteDTO>();
 
             // --- PROCESAR VENTAS ---
-            foreach (var venta in ventas)
+            if (ventas != null)
             {
-                List<WSDetalle.detalleVentaDTO> detalles = detalleVentaBO.listarDetallesVentaPorVenta(venta.ventaId);
-
-                string nombreCliente = "Cliente Genérico";
-                bool esFiado = venta.metodoPago.ToString().ToLower().Contains("fiado");
-
-                if (esFiado)
+                foreach (var venta in ventas)
                 {
-                    WSAlFiado.ventaAlFiadoDTO ventaFiado = ventaAlFiadoBO.obtenerVentaAlFiadoPorId(venta.ventaId);
-                    if (ventaFiado != null && ventaFiado.cliente != null)
+                    List<WSDetalle.detalleVentaDTO> detalles = detalleVentaBO.listarDetallesVentaPorVenta(venta.ventaId);
+
+                    string nombreCliente = "Cliente Genérico";
+                    bool esFiado = venta.metodoPago.ToString().ToLower().Contains("fiado");
+
+                    if (esFiado)
                     {
-                        nombreCliente = ventaFiado.cliente.alias;
+                        WSAlFiado.ventaAlFiadoDTO ventaFiado = ventaAlFiadoBO.obtenerVentaAlFiadoPorId(venta.ventaId);
+                        if (ventaFiado != null && ventaFiado.cliente != null)
+                        {
+                            nombreCliente = ventaFiado.cliente.alias;
+                        }
                     }
+
+                    movimientos.Add(new MovimientoReporteDTO
+                    {
+                        ID = venta.ventaId,
+                        Fecha = DateTime.Parse(venta.fecha),
+                        Hora = DateTime.Parse(venta.fecha).ToString("HH:mm:ss"),
+                        Tipo = "Venta",
+                        Cliente = nombreCliente,
+                        TipoPago = venta.metodoPago.ToString(),
+                        Total = venta.total,
+                        ProductosResumen = GenerarResumenProductos(detalles.Cast<object>().ToList(), "Venta"),
+                        EsFiado = esFiado
+                    });
                 }
-
-                movimientos.Add(new MovimientoReporteDTO
-                {
-                    ID = venta.ventaId,
-                    Fecha = DateTime.Parse(venta.fecha),
-                    Hora = DateTime.Parse(venta.fecha).ToString("HH:mm:ss"),
-                    Tipo = "Venta",
-                    Cliente = nombreCliente,
-                    TipoPago = venta.metodoPago.ToString(),
-                    Total = venta.total,
-                    ProductosResumen = GenerarResumenProductos(detalles.Cast<object>().ToList(), "Venta"),
-                    EsFiado = esFiado
-                });
             }
-
             // --- PROCESAR DEVOLUCIONES ---
-            foreach (var devolucion in devoluciones)
+            if (devoluciones != null)
             {
-                List<WSDetalleDev.detalleDevolucionDTO> detalles = detalleDevolucionBO.listarDetallesDevolucionPorDevolucion(devolucion.devolucionId);
-
-                movimientos.Add(new MovimientoReporteDTO
+                foreach (var devolucion in devoluciones)
                 {
-                    ID = devolucion.devolucionId,
-                    Fecha = DateTime.Parse(devolucion.fecha),
-                    Hora = DateTime.Parse(devolucion.fecha).ToString("HH:mm:ss"),
-                    Tipo = "Devolución",
-                    Cliente = devolucion.usuario != null ? devolucion.usuario.nombre : "N/A",
-                    TipoPago = "Contado",
-                    Total = devolucion.total,
-                    ProductosResumen = GenerarResumenProductos(detalles.Cast<object>().ToList(), "Devolucion"),
-                    EsFiado = false
-                });
-            }
+                    List<WSDetalleDev.detalleDevolucionDTO> detalles = detalleDevolucionBO.listarDetallesDevolucionPorDevolucion(devolucion.devolucionId);
 
+                    movimientos.Add(new MovimientoReporteDTO
+                    {
+                        ID = devolucion.devolucionId,
+                        Fecha = DateTime.Parse(devolucion.fecha),
+                        Hora = DateTime.Parse(devolucion.fecha).ToString("HH:mm:ss"),
+                        Tipo = "Devolución",
+                        Cliente = devolucion.usuario != null ? devolucion.usuario.nombre : "N/A",
+                        TipoPago = "Contado",
+                        Total = devolucion.total,
+                        ProductosResumen = GenerarResumenProductos(detalles.Cast<object>().ToList(), "Devolucion"),
+                        EsFiado = false
+                    });
+                }
+            }
             return movimientos;
         }
 

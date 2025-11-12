@@ -46,21 +46,21 @@
                             <div class="d-flex align-items-center">
                                 <i class="bi bi-person-circle fs-3 text-primary me-2"></i>
                                 <div>
-                                    <h6 class="mb-0 fw-bold"><%# Eval("Alias") %></h6>
-                                    <small class="text-muted d-block"><%# Eval("Nombre") %></small>
-                                    <small class="text-muted"><i class="bi bi-telephone"></i> <%# Eval("Telefono") %></small>
+                                    <h6 class="mb-0 fw-bold"><%# Eval("alias") %></h6>
+                                    <small class="text-muted d-block"><%# Eval("nombre") %></small>
+                                    <small class="text-muted"><i class="bi bi-telephone"></i> <%# Eval("telefono") %></small>
                                 </div>
                             </div>
                             <div class="text-end">
-                                <span class="text-danger fw-bold">Deuda: <%# Eval("Deuda", "S/{0:F2}") %></span><br />
-                                <small class="text-muted"><i class="bi bi-calendar"></i> Fecha Límite: <%# Eval("FechaLimite", "{0:dd/MM/yyyy}") %></small>
+                                <span class="text-danger fw-bold">Deuda: <%# Eval("montoDeuda", "S/{0:F2}") %></span><br />
+                                <small class="text-muted"><i class="bi bi-calendar"></i> Fecha Límite: <%# Eval("fechaDePago", "{0:dd/MM/yyyy}") %></small>
                             </div>
                         </div>
 
                         <div class="mt-3 d-flex gap-2 justify-content-end">
-                            <asp:Button ID="btnPagar" runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("Alias") %>' CommandName="Pagar" />
-                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("Alias") %>' CommandName="Editar" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("Alias") %>' CommandName="Eliminar" />
+                            <asp:Button ID="btnPagar" runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Pagar" />
+                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Editar" />
+                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Eliminar" />
                         </div>
                     </div>
                 </div>

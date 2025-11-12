@@ -11,17 +11,17 @@
   <message name="insertarDevolucionResponse">
     <part name="parameters" element="tns:insertarDevolucionResponse" />
   </message>
-  <message name="listarTodasDevoluciones">
-    <part name="parameters" element="tns:listarTodasDevoluciones" />
-  </message>
-  <message name="listarTodasDevolucionesResponse">
-    <part name="parameters" element="tns:listarTodasDevolucionesResponse" />
-  </message>
   <message name="listarDevolucionesPorFecha">
     <part name="parameters" element="tns:listarDevolucionesPorFecha" />
   </message>
   <message name="listarDevolucionesPorFechaResponse">
     <part name="parameters" element="tns:listarDevolucionesPorFechaResponse" />
+  </message>
+  <message name="listarTodasDevoluciones">
+    <part name="parameters" element="tns:listarTodasDevoluciones" />
+  </message>
+  <message name="listarTodasDevolucionesResponse">
+    <part name="parameters" element="tns:listarTodasDevolucionesResponse" />
   </message>
   <message name="obtenerDevolucionPorId">
     <part name="parameters" element="tns:obtenerDevolucionPorId" />
@@ -29,42 +29,42 @@
   <message name="obtenerDevolucionPorIdResponse">
     <part name="parameters" element="tns:obtenerDevolucionPorIdResponse" />
   </message>
-  <message name="listarDevolucionesPorUsuarioYFecha">
-    <part name="parameters" element="tns:listarDevolucionesPorUsuarioYFecha" />
-  </message>
-  <message name="listarDevolucionesPorUsuarioYFechaResponse">
-    <part name="parameters" element="tns:listarDevolucionesPorUsuarioYFechaResponse" />
-  </message>
   <message name="listarDevolucionesPorUsuario">
     <part name="parameters" element="tns:listarDevolucionesPorUsuario" />
   </message>
   <message name="listarDevolucionesPorUsuarioResponse">
     <part name="parameters" element="tns:listarDevolucionesPorUsuarioResponse" />
   </message>
+  <message name="listarDevolucionesPorUsuarioYFecha">
+    <part name="parameters" element="tns:listarDevolucionesPorUsuarioYFecha" />
+  </message>
+  <message name="listarDevolucionesPorUsuarioYFechaResponse">
+    <part name="parameters" element="tns:listarDevolucionesPorUsuarioYFechaResponse" />
+  </message>
   <portType name="Devolucion">
     <operation name="insertarDevolucion">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/insertarDevolucionRequest" message="tns:insertarDevolucion" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/insertarDevolucionResponse" message="tns:insertarDevolucionResponse" />
     </operation>
-    <operation name="listarTodasDevoluciones">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesRequest" message="tns:listarTodasDevoluciones" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesResponse" message="tns:listarTodasDevolucionesResponse" />
-    </operation>
     <operation name="listarDevolucionesPorFecha">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorFechaRequest" message="tns:listarDevolucionesPorFecha" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorFechaResponse" message="tns:listarDevolucionesPorFechaResponse" />
+    </operation>
+    <operation name="listarTodasDevoluciones">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesRequest" message="tns:listarTodasDevoluciones" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarTodasDevolucionesResponse" message="tns:listarTodasDevolucionesResponse" />
     </operation>
     <operation name="obtenerDevolucionPorId">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdRequest" message="tns:obtenerDevolucionPorId" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/obtenerDevolucionPorIdResponse" message="tns:obtenerDevolucionPorIdResponse" />
     </operation>
-    <operation name="listarDevolucionesPorUsuarioYFecha">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaRequest" message="tns:listarDevolucionesPorUsuarioYFecha" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaResponse" message="tns:listarDevolucionesPorUsuarioYFechaResponse" />
-    </operation>
     <operation name="listarDevolucionesPorUsuario">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioRequest" message="tns:listarDevolucionesPorUsuario" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioResponse" message="tns:listarDevolucionesPorUsuarioResponse" />
+    </operation>
+    <operation name="listarDevolucionesPorUsuarioYFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaRequest" message="tns:listarDevolucionesPorUsuarioYFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Devolucion/listarDevolucionesPorUsuarioYFechaResponse" message="tns:listarDevolucionesPorUsuarioYFechaResponse" />
     </operation>
   </portType>
   <binding name="DevolucionPortBinding" type="tns:Devolucion">
@@ -78,7 +78,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodasDevoluciones">
+    <operation name="listarDevolucionesPorFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -87,7 +87,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDevolucionesPorFecha">
+    <operation name="listarTodasDevoluciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -105,7 +105,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDevolucionesPorUsuarioYFecha">
+    <operation name="listarDevolucionesPorUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -114,7 +114,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDevolucionesPorUsuario">
+    <operation name="listarDevolucionesPorUsuarioYFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

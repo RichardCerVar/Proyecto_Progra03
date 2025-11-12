@@ -42,13 +42,13 @@
         <!-- LISTA DE OPERARIOS -->
         <asp:Repeater ID="rptUsuarios" runat="server">
             <ItemTemplate>
-                <div class="card border-0 shadow-sm mb-3 <%# (bool)Eval("Activo") ? "" : "opacity-50" %>">
+                <div class="card border-0 shadow-sm mb-3 <%# (bool)Eval("activo") ? "" : "opacity-50" %>">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
-                            <h6 class="fw-bold mb-0"><%# Eval("Nombre") %></h6>
-                            <small class="text-muted">@<%# Eval("Usuario") %></small><br />
-                            <small class="text-muted"><%# Eval("Correo") %></small><br />
-                            <small class="text-muted"><%# Eval("Telefono") %></small>
+                            <h6 class="fw-bold mb-0"><%# Eval("nombre") %></h6>
+                            <small class="text-muted">@<%# Eval("usuario") %></small><br />
+                            <small class="text-muted"><%# Eval("correo") %></small><br />
+                            <small class="text-muted"><%# Eval("telefono") %></small>
                         </div>
 
                         <div class="d-flex align-items-center gap-3">

@@ -1,15 +1,26 @@
-﻿using System;
+﻿using SoftBodBusiness;
+using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using WSUsuario = SoftBodBusiness.SoftWSUsuario;
 namespace SoftBodWA
 {
     public partial class Usuarios : System.Web.UI.Page
     {
+        private List<WSUsuario.usuarioDTO> listaUsuarios;
+        private UsuarioBO usuarioBO;
+
+        public Usuarios()
+        {
+            usuarioBO = new UsuarioBO();
+            listaUsuarios = usuarioBO.listarTodosUsuarios();
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
                 CargarOperarios();
         }
@@ -17,19 +28,14 @@ namespace SoftBodWA
         private void CargarOperarios()
         {
             // Datos de ejemplo
-            var operarios = new List<UsuarioDTO>()
-            {
-                new UsuarioDTO { Nombre="Ana Rodríguez", Usuario="ana.rodriguez", Correo="ana@bodega.com", Telefono="987-654-321", Activo=true },
-                new UsuarioDTO { Nombre="Carlos Mendoza", Usuario="carlos.mendoza", Correo="carlos@bodega.com", Telefono="912-345-678", Activo=true },
-                new UsuarioDTO { Nombre="Luis García", Usuario="luis.garcia", Correo="luis@bodega.com", Telefono="998-765-432", Activo=false }
-            };
+            var operarios = listaUsuarios;
 
             rptUsuarios.DataSource = operarios;
             rptUsuarios.DataBind();
 
             // Totales
             lblTotalOperarios.InnerText = operarios.Count.ToString();
-            lblActivos.InnerText = operarios.FindAll(o => o.Activo).Count.ToString();
+            lblActivos.InnerText = operarios.FindAll(o => o.activo).Count.ToString();
         }
 
         protected void rptUsuarios_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -72,12 +78,11 @@ namespace SoftBodWA
                 string correo = txtEmail.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
                 string contraseñaTemporal = txtContraseñaTemporal.Text.Trim();
-
+                usuarioBO.insertarUsuario(usuario, correo, "OPERARIO", contraseñaTemporal, nombre, telefono, true);
                 // lógica real para guardar el nuevo operario
 
                 LimpiarCamposModal();
 
-                
 
                 // ✅ Mostrar mensaje y cerrar el modal correctamente (UpdatePanel compatible)
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaOperario",
@@ -86,7 +91,7 @@ namespace SoftBodWA
                     "if(modal) modal.hide();", true);
 
                 CargarOperarios();
-
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception ex)
             {

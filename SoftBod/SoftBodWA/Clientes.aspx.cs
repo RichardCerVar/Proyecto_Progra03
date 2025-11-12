@@ -3,11 +3,20 @@ using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
+using SoftBodBusiness;
+using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodWA
 {
     public partial class Clientes : System.Web.UI.Page
     {
+        private ClienteAlFiadoBO clienteBO;
+        private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+        public Clientes()
+        {
+            clienteBO = new ClienteAlFiadoBO();
+            clientes = clienteBO.listarTodosClientesAlFiado();
+        }
         public class Cliente
         {
             public string Alias { get; set; }
@@ -17,21 +26,15 @@ namespace SoftBodWA
             public DateTime FechaLimite { get; set; }
         }
 
-        private List<Cliente> ClientesData
+        private List<WSClienteAlFiado.clienteAlFiadoDTO> ClientesData
         {
             get
             {
                 if (Session["ClientesList"] == null)
                 {
-                    Session["ClientesList"] = new List<Cliente>()
-                    {
-                        new Cliente { Alias="juan123", Nombre="Juan Pérez", Telefono="123-456-7890", Deuda=150.00m, FechaLimite=new DateTime(2024,12,15)},
-                        new Cliente { Alias="maria456", Nombre="María García", Telefono="098-765-4321", Deuda=80.00m, FechaLimite=new DateTime(2024,12,20)},
-                        new Cliente { Alias="carlos22", Nombre="Carlos Soto", Telefono="911-222-333", Deuda=25.50m, FechaLimite=new DateTime(2025,1,5)},
-                        new Cliente { Alias="luisa11", Nombre="Luisa Rojas", Telefono="955-444-111", Deuda=100.00m, FechaLimite=new DateTime(2024,11,30)}
-                    };
+                    Session["ClientesList"] = clientes;
                 }
-                return (List<Cliente>)Session["ClientesList"];
+                return (List<WSClienteAlFiado.clienteAlFiadoDTO>)Session["ClientesList"];
             }
             set
             {
@@ -51,9 +54,10 @@ namespace SoftBodWA
         {
             LimpiarCamposModal();
 
-            string script = "$('#modalAgregarCliente').modal('show');";
+            string script = "var myModal = new bootstrap.Modal(document.getElementById('modalAgregarCliente')); myModal.show();";
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowAddClientModal", script, true);
         }
+
 
         protected void btnGuardarCliente_Click(object sender, EventArgs e)
         {
@@ -62,7 +66,7 @@ namespace SoftBodWA
                 string nombreCompleto = txtNombreCompleto.Text.Trim();
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
-                string fechaLimiteStr = txtFechaLimite.Text;
+                string fechaLimiteStr = DateTime.Parse(txtFechaLimite.Text).ToString("yyyy-MM-dd");
 
                 if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
@@ -71,17 +75,8 @@ namespace SoftBodWA
                     return;
                 }
 
-                DateTime fechaLimite = DateTime.Parse(fechaLimiteStr);
-
-                var nuevoCliente = new Cliente
-                {
-                    Alias = alias,
-                    Nombre = nombreCompleto,
-                    Telefono = telefono,
-                    Deuda = 0.00m,
-                    FechaLimite = fechaLimite
-                };
-
+                int nuevoIDCli = clienteBO.insertarClienteAlFiado(alias, nombreCompleto, telefono, fechaLimiteStr);
+                var nuevoCliente = clienteBO.obtenerClienteAlFiadoPorId(nuevoIDCli);
                 var clientes = ClientesData;
                 clientes.Add(nuevoCliente);
                 ClientesData = clientes;
@@ -95,6 +90,7 @@ namespace SoftBodWA
                     "alert('Cliente agregado exitosamente.');";
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "success", successScript, true);
+                Response.Redirect("Clientes.aspx");
             }
             catch (Exception ex)
             {
@@ -124,11 +120,11 @@ namespace SoftBodWA
             ActualizarResumen(clientes);
         }
 
-        private void ActualizarResumen(List<Cliente> clientes)
+        private void ActualizarResumen(List<WSClienteAlFiado.clienteAlFiadoDTO> clientes)
         {
-            var clientesConDeuda = clientes.Where(c => c.Deuda > 0).ToList();
+            var clientesConDeuda = clientes.Where(c => c.montoDeuda > 0).ToList();
 
-            decimal totalDeuda = clientesConDeuda.Sum(c => c.Deuda);
+            double totalDeuda = clientesConDeuda.Sum(c => c.montoDeuda);
             int activos = clientesConDeuda.Count;
 
             lblTotalDeuda.InnerText = $"S/{totalDeuda:N2}";
@@ -142,7 +138,7 @@ namespace SoftBodWA
             bool reload = false;
 
             var clientes = ClientesData;
-            var clienteAfectado = clientes.FirstOrDefault(c => c.Alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+            var clienteAfectado = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
 
             if (clienteAfectado == null)
             {
@@ -153,7 +149,7 @@ namespace SoftBodWA
                 switch (e.CommandName)
                 {
                     case "Pagar":
-                        clienteAfectado.Deuda = 0.00m;
+                        clienteAfectado.montoDeuda = (double)0.00m;
                         message = $"Pago total procesado para {alias}.";
                         reload = true;
                         break;
@@ -162,6 +158,7 @@ namespace SoftBodWA
                         break;
                     case "Eliminar":
                         clientes.Remove(clienteAfectado);
+                        clienteBO.eliminarClienteAlFiado(clienteAfectado.clienteId);
                         ClientesData = clientes;
                         message = $"Cliente '{alias}' eliminado exitosamente.";
                         reload = true;

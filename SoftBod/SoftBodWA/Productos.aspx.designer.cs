@@ -15,24 +15,6 @@ namespace SoftBodWA
     {
 
         /// <summary>
-        /// Control txtBuscarProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBuscarProducto;
-
-        /// <summary>
-        /// Control btnBuscarNombreProducto.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnBuscarNombreProducto;
-
-        /// <summary>
         /// Control ddlCategoriaFiltro.
         /// </summary>
         /// <remarks>
@@ -42,58 +24,13 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaFiltro;
 
         /// <summary>
-        /// Control btnAgregar.
+        /// Control rptProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
-
-        /// <summary>
-        /// Control chk1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk1;
-
-        /// <summary>
-        /// Control chk2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk2;
-
-        /// <summary>
-        /// Control chk12.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk12;
-
-        /// <summary>
-        /// Control chk16.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk16;
-
-        /// <summary>
-        /// Control chk15.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox chk15;
+        protected global::System.Web.UI.WebControls.Repeater rptProducto;
 
         /// <summary>
         /// Control txtNombreProducto.
@@ -150,12 +87,12 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.TextBox txtStockMinimo;
 
         /// <summary>
-        /// Control btnGuardarProducto.
+        /// Control btnAgregarProducto.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnGuardarProducto;
+        protected global::System.Web.UI.WebControls.LinkButton btnAgregarProducto;
     }
 }
