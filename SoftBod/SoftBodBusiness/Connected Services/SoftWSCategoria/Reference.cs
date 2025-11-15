@@ -8,8 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-
 namespace SoftBodBusiness.SoftWSCategoria {
     
     
@@ -142,7 +140,7 @@ namespace SoftBodBusiness.SoftWSCategoria {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -198,11 +196,6 @@ namespace SoftBodBusiness.SoftWSCategoria {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
-        }
-
-        public static implicit operator categoriaDTO(SoftWSProducto.categoriaDTO v)
-        {
-            throw new NotImplementedException();
         }
     }
     

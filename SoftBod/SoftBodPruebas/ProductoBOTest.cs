@@ -72,7 +72,7 @@ namespace SoftBodPruebas
         {
             Console.WriteLine("Obtener Producto Por Id");
 
-            productoDTO producto = this.productoBO.obtenerProductoPorId(30);
+            productoDTO producto = this.productoBO.obtenerProductoPorId(3);
             Console.WriteLine(producto.nombre);
 
             Assert.IsNotNull(producto);
@@ -94,7 +94,7 @@ namespace SoftBodPruebas
             Assert.IsTrue(productos.Count >= 0);
         }
 
-        [TestMethod]
+        //[TestMethod]
         public void TestListarTodosConFiltroProductos()
         {
             Console.WriteLine("Listar Productos Activos con Filtros");

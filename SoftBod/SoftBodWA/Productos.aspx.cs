@@ -83,7 +83,7 @@ namespace SoftBodWA
                 WSProducto.categoriaDTO categDTO = new WSProducto.categoriaDTO();
                 categDTO.categoriaId = categoriaId;
                 categDTO.categoriaIdSpecified = true;
-
+                
                 productoBO.insertarProducto(categDTO, nombre, precio, "UNIDAD", stockInicial,stockMinimo,true);
 
                 LimpiarCamposModal();

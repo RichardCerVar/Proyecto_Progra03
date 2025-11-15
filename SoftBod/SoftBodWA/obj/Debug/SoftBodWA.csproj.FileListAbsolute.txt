@@ -12,13 +12,6 @@ C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debu
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll.config
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.pdb
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.AssemblyReference.cache
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
-C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.pdb
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll.config
@@ -34,3 +27,14 @@ C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.cs
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.Up2Date
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll.config
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.pdb
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.pdb
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll.config
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.AssemblyReference.cache
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.Up2Date
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
+C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
