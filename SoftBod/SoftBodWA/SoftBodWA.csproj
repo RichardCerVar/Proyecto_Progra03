@@ -127,6 +127,7 @@
     <Content Include="Scripts\SoftBodScripts\AgregarCliente.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarNuevoProducto.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarOperario.js" />
+    <Content Include="Scripts\SoftBodScripts\AjustarStock.js" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

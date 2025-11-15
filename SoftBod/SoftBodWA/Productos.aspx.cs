@@ -107,6 +107,54 @@ namespace SoftBodWA
             }
         }
 
+        protected void rptProducto_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            int productoId = Convert.ToInt32(e.CommandArgument);
+
+            switch (e.CommandName)
+            {
+                case "AjustarStock":
+                    break;
+
+                case "Editar":
+                    break;
+
+                case "CambiarEstado":
+                    break;
+            }
+        }
+
+        protected void btnAjustarStock_Click(object sender, EventArgs e)
+        {
+            // Aquí irá la lógica para AGREGAR o REDUCIR el stock.
+
+            // 1. Obtener el ID del producto y el Modo de Acción (Agregado en el modal)
+            string productoId = Request.Form["hdnProductoIdAjustar"];
+            string stockMode = Request.Form["hdnStockMode"];
+            string cantidadStr = Request.Form["txtCantidadAjustar"];
+
+            // Lógica de validación y conversión...
+            if (int.TryParse(cantidadStr, out int cantidad) && !string.IsNullOrEmpty(productoId))
+            {
+                // Verifica el modo para decidir si agregas o reduces
+                if (stockMode == "Agregar")
+                {
+                    // Llama a tu función de negocio para AGREGAR stock
+                }
+                else if (stockMode == "Reducir")
+                {
+                    // Llama a tu función de negocio para REDUCIR stock
+                }
+            }
+
+            // Una vez completada la lógica de stock, recargar los datos o cerrar el modal
+        }
+
+        protected void btnActualizarProducto_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void LimpiarCamposModal()
         {
             // Limpiar campos después de agregar

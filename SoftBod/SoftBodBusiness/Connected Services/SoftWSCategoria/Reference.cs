@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+
 namespace SoftBodBusiness.SoftWSCategoria {
     
     
@@ -196,6 +198,11 @@ namespace SoftBodBusiness.SoftWSCategoria {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
+        }
+
+        public static implicit operator categoriaDTO(SoftWSProducto.categoriaDTO v)
+        {
+            throw new NotImplementedException();
         }
     }
     

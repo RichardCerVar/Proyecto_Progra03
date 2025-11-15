@@ -153,7 +153,9 @@ namespace SoftBodBusiness.SoftWSProducto {
                 this.RaisePropertyChanged("categoria");
             }
         }
-        
+
+        public SoftWSCategoria.categoriaDTO Categoria { get; set; }
+
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
         public string nombre {

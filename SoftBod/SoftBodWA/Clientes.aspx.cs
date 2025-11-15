@@ -17,14 +17,6 @@ namespace SoftBodWA
             clienteBO = new ClienteAlFiadoBO();
             clientes = clienteBO.listarTodosClientesAlFiado();
         }
-        public class Cliente
-        {
-            public string Alias { get; set; }
-            public string Nombre { get; set; }
-            public string Telefono { get; set; }
-            public decimal Deuda { get; set; }
-            public DateTime FechaLimite { get; set; }
-        }
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> ClientesData
         {
