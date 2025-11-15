@@ -125,11 +125,13 @@ namespace SoftBodWA
 
         protected void rptClientes_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string alias = e.CommandArgument.ToString();
+            var clientes = ClientesData;
+            string[] args = e.CommandArgument.ToString().Split('|');
+            string alias = args[0];
+            string deuda = args.Length > 1 ? args[1] : "0.00";
             string message = "";
             bool reload = false;
 
-            var clientes = ClientesData;
             var clienteAfectado = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
 
             if (clienteAfectado == null)
@@ -141,10 +143,13 @@ namespace SoftBodWA
                 switch (e.CommandName)
                 {
                     case "Pagar":
-                        clienteAfectado.montoDeuda = (double)0.00m;
-                        message = $"Pago total procesado para {alias}.";
-                        reload = true;
-                        break;
+                        lblAlias.Text = alias;
+                        lblDeudaActual.Text = deuda;
+                        txtMontoPagar.Text = "";
+
+                        string script = "var myModal = new bootstrap.Modal(document.getElementById('modalPago')); myModal.show();";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowPagoModal", script, true);
+                        return; // No mostrar alert
                     case "Editar":
                         message = $"Lógica de edición: Abrir formulario para modificar a {alias}.";
                         break;
@@ -166,5 +171,51 @@ namespace SoftBodWA
             ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
                 $"alert('{message}');", true);
         }
+
+        protected void btnRegistrarPago_Click(object sender, EventArgs e)
+        {
+            // Obtener alias y monto a pagar desde los controles del modal
+            string alias = lblAlias.Text;
+            string montoStr = txtMontoPagar.Text.Trim();
+            double monto;
+
+            if (string.IsNullOrEmpty(alias) || !double.TryParse(montoStr, out monto) || monto <= 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                    "alert('Ingrese un monto válido para el pago.');", true);
+                return;
+            }
+
+            // Buscar el cliente por alias
+            var clientes = ClientesData;
+            var cliente = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+            if (cliente == null)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                    $"alert('No se encontró el cliente con alias {alias}.');", true);
+                return;
+            }
+
+            // Validar que el monto no sea mayor a la deuda
+            if (monto > cliente.montoDeuda)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                    "alert('El monto a pagar no puede ser mayor a la deuda actual.');", true);
+                return;
+            }
+
+            // Aquí va la logica de negocio para registrar el pago
+            
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
+                "alert('Pago registrado exitosamente.');", true);
+
+            //cerrar el modal con JS
+            string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
+            ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
+        }
+
+
+
     }
 }

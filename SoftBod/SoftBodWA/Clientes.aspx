@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphScripts" runat="server">
     <script src="Scripts/SoftBodScripts/AgregarCliente.js"></script>
+    <script src="Scripts/SoftBodScripts/PagoDeuda.js"></script>
+
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -58,7 +60,7 @@
                         </div>
 
                         <div class="mt-3 d-flex gap-2 justify-content-end">
-                            <asp:Button ID="btnPagar" runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Pagar" />
+                            <asp:Button ID="btnPagar"   runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("alias") + "|" + Eval("montoDeuda") %>'  CommandName="Pagar" />
                             <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Editar" />
                             <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Eliminar" />
                         </div>
@@ -69,6 +71,41 @@
                 <%# (rptClientes.Items.Count == 0) ? "<div class='alert alert-info text-center'>No se encontraron clientes activos.</div>" : string.Empty %>
             </FooterTemplate>
         </asp:Repeater>
+    </div>
+
+    <!-- Modal Registrar Pago -->
+    <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="modalPagoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title fw-bold" id="modalPagoLabel">
+                        Registrar Pago - <asp:Label ID="lblAlias" runat="server" />
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <p class="mb-1">
+                        Deuda Actual: <span class="fw-bold">S/.</span>
+                        <asp:Label ID="lblDeudaActual" runat="server" CssClass="fw-bold" />
+                    </p>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Monto a Pagar</label>
+                        <asp:TextBox ID="txtMontoPagar" runat="server" CssClass="form-control" />
+                    </div>
+
+                    <asp:Button ID="btnRegistrarPago" runat="server"
+                        Text="Registrar Pago"
+                        CssClass="btn btn-success w-100"
+                        OnClick="btnRegistrarPago_Click" />
+
+                </div>
+
+            </div>
+        </div>
     </div>
 
     <div class="modal fade" id="modalAgregarCliente" tabindex="-1" aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
