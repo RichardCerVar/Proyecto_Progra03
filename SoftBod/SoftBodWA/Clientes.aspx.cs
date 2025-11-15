@@ -94,6 +94,7 @@ namespace SoftBodWA
             }
         }
 
+        
         private void LimpiarCamposModal()
         {
             txtNombreCompleto.Text = "";
@@ -128,9 +129,9 @@ namespace SoftBodWA
             var clientes = ClientesData;
             string[] args = e.CommandArgument.ToString().Split('|');
             string alias = args[0];
-            string deuda = args.Length > 1 ? args[1] : "0.00";
             string message = "";
             bool reload = false;
+
 
             var clienteAfectado = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
 
@@ -143,22 +144,41 @@ namespace SoftBodWA
                 switch (e.CommandName)
                 {
                     case "Pagar":
+                        string deuda = args.Length > 1 ? args[1] : "0.00";
                         lblAlias.Text = alias;
                         lblDeudaActual.Text = deuda;
                         txtMontoPagar.Text = "";
 
-                        string script = "var myModal = new bootstrap.Modal(document.getElementById('modalPago')); myModal.show();";
-                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowPagoModal", script, true);
-                        return; // No mostrar alert
-                    case "Editar":
-                        message = $"Lógica de edición: Abrir formulario para modificar a {alias}.";
+                        string scriptPago = "var myModal = new bootstrap.Modal(document.getElementById('modalPago')); myModal.show();";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowPagoModal", scriptPago, true);
+                        //poner mensaje
+                        message = "se pudo ?";
                         break;
+
+                    case "Editar":
+                        string telefono = args[1];
+                        string fecha = args[2];
+                        
+                        
+                        lblIdClienteEditar.Text = clienteAfectado.clienteId.ToString();
+                        txtNombreEditar.Text = clienteAfectado.nombre;
+                        txtAliasEditar.Text = clienteAfectado.alias;
+                        txtTelefonoEditar.Text = clienteAfectado.telefono;
+                        txtFechaLimiteEditar.Text = clienteAfectado.fechaDePago;
+
+                        string scriptEditar = "var myModal = new bootstrap.Modal(document.getElementById('modalEditarCliente')); myModal.show();";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ShowEditClientModal", scriptEditar, true);
+                        //poner mensaje
+                        message = "se pudo ?";
+                        break;
+
                     case "Eliminar":
-                        clientes.Remove(clienteAfectado);
-                        clienteBO.eliminarClienteAlFiado(clienteAfectado.clienteId);
-                        ClientesData = clientes;
-                        message = $"Cliente '{alias}' eliminado exitosamente.";
-                        reload = true;
+                        lblAliasEliminar.Text = alias;
+                        string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarCliente')); myModal.show();";
+                        ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarCliente", scriptEliminar, true);
+                        //poner mensaje
+                        message = "se pudo ?";
+
                         break;
                 }
             }
@@ -168,8 +188,18 @@ namespace SoftBodWA
                 CargarClientes();
             }
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
-                $"alert('{message}');", true);
+            if (!string.IsNullOrEmpty(message) && clienteAfectado == null)
+            {
+                //si hay error mensaje
+                message = "ERROR";
+                ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
+                    $"alert('{message}');", true);
+            }
+        }
+
+        protected void btnActualizarCliente_Click(object sender, EventArgs e)
+        {
+
         }
 
         protected void btnRegistrarPago_Click(object sender, EventArgs e)
@@ -214,8 +244,11 @@ namespace SoftBodWA
             string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
             ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
         }
+        
+        protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
+        {
 
-
+        }
 
     }
 }

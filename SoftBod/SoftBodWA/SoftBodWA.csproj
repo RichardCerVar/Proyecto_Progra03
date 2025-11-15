@@ -128,6 +128,8 @@
     <Content Include="Scripts\SoftBodScripts\AgregarNuevoProducto.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarOperario.js" />
     <Content Include="Scripts\SoftBodScripts\AjustarStock.js" />
+    <Content Include="Scripts\SoftBodScripts\EditarCliente.js" />
+    <Content Include="Scripts\SoftBodScripts\EliminarCliente.js" />
     <Content Include="Scripts\SoftBodScripts\PagoDeuda.js" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
