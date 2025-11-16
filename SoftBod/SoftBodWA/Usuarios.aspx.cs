@@ -1,4 +1,5 @@
 ﻿using SoftBodBusiness;
+using SoftBodBusiness.SoftWSUsuario;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
@@ -16,17 +17,18 @@ namespace SoftBodWA
         public Usuarios()
         {
             usuarioBO = new UsuarioBO();
-            listaUsuarios = usuarioBO.listarTodosUsuarios();
+            
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            listaUsuarios = usuarioBO.listarTodosUsuarios();
             if (!IsPostBack)
                 CargarOperarios();
         }
 
         private void CargarOperarios()
         {
+            //listaUsuarios = usuarioBO.listarTodosUsuarios();
             // Datos de ejemplo
             var operarios = listaUsuarios;
 
@@ -40,15 +42,42 @@ namespace SoftBodWA
 
         protected void rptUsuarios_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
-            string usuario = e.CommandArgument.ToString();
+            
+            string[] args = e.CommandArgument.ToString().Split('|');
+            string nombre = args[0];
+            
+            string message = "";
+            bool reload = false;
 
-            switch (e.CommandName)
+
+            
+                switch (e.CommandName)
             {
                 case "Editar":
-                    Response.Write($"<script>alert('Editar operario: {usuario}');</script>");
+                    string usuario = args[1];
+                    string email = args[2];
+                    string telefono = args[3];
+                    
+
+                    txtEditNombreCompleto.Text = nombre;
+                    txtEditUsuario.Text = usuario;
+                    txtEditEmail.Text = email;
+                    txtEditTelefono.Text = telefono;
+
+                    hdnEditUsuarioID.Value = usuario;
+
+                    updEditarOperario.Update();
+
+                    string scriptPago = "var myModal = new bootstrap.Modal(document.getElementById('modalEditarOperario')); myModal.show();";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showEditarOperario", scriptPago, true);
+
+                    
                     break;
+
                 case "Eliminar":
-                    Response.Write($"<script>alert('Operario eliminado: {usuario}');</script>");
+                    ltNombreEliminar.Text = nombre;
+                    string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarOperario')); myModal.show();";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarOperario", scriptEliminar, true);
                     break;
             }
         }
@@ -67,6 +96,17 @@ namespace SoftBodWA
         {
             string script = "window.onload = function() { showModalAgregarOperario() }; ";
             ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
+        }
+
+       
+
+        protected void btnGuardarCambios_Click(object sender, EventArgs e)
+        {
+            
+        }
+        protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
+        {
+            
         }
 
         protected void btnCrearOperario_Click(object sender, EventArgs e)

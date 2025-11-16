@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphScripts" runat="server">
     <script src="Scripts/SoftBodScripts/AgregarOperario.js"></script>
+    <script src="Scripts/SoftBodScripts/EditarOperario.js"></script>
+    <script src="Scripts/SoftBodScripts/EliminarOperario.js"></script>
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -40,7 +42,7 @@
         </div>
 
         <!-- LISTA DE OPERARIOS -->
-        <asp:Repeater ID="rptUsuarios" runat="server">
+        <asp:Repeater ID="rptUsuarios" runat="server" OnItemCommand="rptUsuarios_ItemCommand">
             <ItemTemplate>
                 <div class="card border-0 shadow-sm mb-3 <%# (bool)Eval("activo") ? "" : "opacity-50" %>">
                     <div class="card-body d-flex justify-content-between align-items-center">
@@ -57,8 +59,8 @@
                                 <label class="form-check-label text-muted"><%# (bool)Eval("Activo") ? "Activo" : "Desactivado" %></label>
                             </div>
 
-                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-primary btn-sm" CommandArgument='<%# Eval("Usuario") %>' CommandName="Editar" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("Usuario") %>' CommandName="Eliminar" />
+                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-primary btn-sm" CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario")+ "|" + Eval("correo")+ "|" + Eval("telefono")%>' CommandName="Editar" />
+                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("nombre") %>' CommandName="Eliminar" />
                         </div>
                     </div>
                 </div>
@@ -122,6 +124,95 @@
                         </ContentTemplate>
                     </asp:UpdatePanel>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!--editar operario-->
+    <div class="modal fade" id="modalEditarOperario" tabindex="-1" aria-labelledby="modalEditarOperarioLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold fs-5" id="modalEditarOperarioLabel">Editar Operario</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body pt-2">
+                    <asp:UpdatePanel ID="updEditarOperario" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+                        
+                            <asp:HiddenField ID="hdnEditUsuarioID" runat="server" />
+
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre Completo" AssociatedControlID="txtEditNombreCompleto"></asp:Label>
+                                <asp:TextBox ID="txtEditNombreCompleto" CssClass="form-control" placeholder="Ej: Ana Rodríguez" runat="server"></asp:TextBox>
+                            </div>
+
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Usuario" AssociatedControlID="txtEditUsuario"></asp:Label>
+                                <asp:TextBox ID="txtEditUsuario" CssClass="form-control" placeholder="ana.rodriguez" runat="server"></asp:TextBox>
+                                </div>
+
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Email" AssociatedControlID="txtEditEmail"></asp:Label>
+                                <asp:TextBox ID="txtEditEmail" CssClass="form-control" placeholder="ana@bodega.com" runat="server" TextMode="Email"></asp:TextBox>
+                            </div>
+
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Teléfono" AssociatedControlID="txtEditTelefono"></asp:Label>
+                                <asp:TextBox ID="txtEditTelefono" CssClass="form-control" placeholder="987-654-321" runat="server" TextMode="Phone"></asp:TextBox>
+                            </div>
+                        
+                            <asp:LinkButton ID="btnGuardarCambios" runat="server"
+                                CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
+                                Text="Guardar Cambios"
+                                OnClick="btnGuardarCambios_Click" />
+
+                        </ContentTemplate>
+                        <Triggers>
+                             <asp:AsyncPostBackTrigger ControlID="btnGuardarCambios" EventName="Click" />
+                        </Triggers>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Eliminar operario-->
+    <div class="modal fade" id="modalEliminarOperario" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+
+                <asp:UpdatePanel ID="updEliminarOperario" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <div class="modal-body p-4 text-center">
+                            <i class="bi bi-trash-fill fs-1 text-danger mb-2"></i>
+                        
+                            <h5 class="fw-bold mb-3" id="modalEliminarLabel">¿Eliminar operario?</h5>
+                        
+                            <p class="text-muted">
+                                Esta acción no se puede deshacer. Se eliminará permanentemente la
+                                cuenta de <strong class="text-dark"><asp:Literal ID="ltNombreEliminar" runat="server" /></strong> del sistema.
+                            </p>
+                        
+                            <asp:HiddenField ID="hdnUsuarioIDEliminar" runat="server" />
+
+                            <div class="d-flex gap-2 mt-4">
+                                <button type="button" class="btn btn-light w-100" data-bs-dismiss="modal">Cancelar</button>
+                            
+                                <asp:Button ID="btnConfirmarEliminacion" runat="server" 
+                                    Text="Sí, Eliminar" 
+                                    CssClass="btn btn-danger w-100" 
+                                    OnClick="btnConfirmarEliminacion_Click" />
+                            </div>
+                        </div>
+                    </ContentTemplate>
+                    <Triggers>
+                        <asp:AsyncPostBackTrigger ControlID="btnConfirmarEliminacion" EventName="Click" />
+                    </Triggers>
+                </asp:UpdatePanel>
+
             </div>
         </div>
     </div>
