@@ -55,9 +55,31 @@
 
                         <div class="d-flex align-items-center gap-3">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" role="switch" <%# (bool)Eval("Activo") ? "checked" : "" %> disabled />
-                                <label class="form-check-label text-muted"><%# (bool)Eval("Activo") ? "Activo" : "Desactivado" %></label>
+        
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    role="switch"
+                                    id='<%# "switch_" + Eval("Usuario") + Eval("correo") %>'
+                                    <%# (bool)Eval("Activo") ? "checked" : "" %>
+            
+                                    onclick="document.getElementById('<%# Container.FindControl("btnToggleActivo").ClientID %>').click();"
+                                />
+        
+                                <label
+                                    class="form-check-label text-muted"
+                                    for='<%# "switch_" + Eval("Usuario") %>'>
+                                    <%# (bool)Eval("Activo") ? "Activo" : "Desactivado" %>
+                                </label>
                             </div>
+    
+                            <asp:Button
+                                ID="btnToggleActivo"
+                                runat="server"
+                                style="display:none;" 
+                                CommandName="ToggleActivo"
+                                CommandArgument='<%# Eval("Usuario") %>'
+                            />
 
                             <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-primary btn-sm" CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario")+ "|" + Eval("correo")+ "|" + Eval("telefono")%>' CommandName="Editar" />
                             <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("nombre") %>' CommandName="Eliminar" />

@@ -21,14 +21,14 @@ namespace SoftBodWA
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            listaUsuarios = usuarioBO.listarTodosUsuarios();
+            //listaUsuarios = usuarioBO.listarTodosUsuarios();
             if (!IsPostBack)
                 CargarOperarios();
         }
 
         private void CargarOperarios()
         {
-            //listaUsuarios = usuarioBO.listarTodosUsuarios();
+            listaUsuarios = usuarioBO.listarTodosUsuarios();
             // Datos de ejemplo
             var operarios = listaUsuarios;
 
@@ -78,6 +78,27 @@ namespace SoftBodWA
                     ltNombreEliminar.Text = nombre;
                     string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarOperario')); myModal.show();";
                     ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarOperario", scriptEliminar, true);
+                    break;
+
+                case "ToggleActivo":
+                    try
+                    {
+                        string usuarioID = args[1];
+                        string correo = args[2];
+
+                        WSUsuario.usuarioDTO aux = usuarioBO.obtenerUsuarioPorCorreo(correo);
+                        bool nuevoEstado = !aux.activo; 
+
+                        //logica BO
+                        usuarioBO.eliminarLogicoUsuario(aux.usuarioId,aux.usuario,aux.correo,aux.tipoUsuarios.ToString(),aux.contrasenha,aux.nombre,aux.telefono,aux.activo);
+
+                        CargarOperarios();
+                    }
+                    catch (Exception ex)
+                    {
+                        ScriptManager.RegisterStartupScript(Page, this.GetType(), "errorSwitch",
+                           $"alert('Error al actualizar el estado: {ex.Message}');", true);
+                    }
                     break;
             }
         }
@@ -148,6 +169,10 @@ namespace SoftBodWA
             txtTelefono.Text = "";
             txtContraseñaTemporal.Text = "";
         }
+
+        //para lo del activar y deasctivar el boton
+        
+
 
     }
 }

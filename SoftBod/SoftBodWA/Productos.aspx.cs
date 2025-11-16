@@ -154,6 +154,10 @@ namespace SoftBodWA
         {
 
         }
+        protected void btnConfirmarEliminarProducto_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void LimpiarCamposModal()
         {

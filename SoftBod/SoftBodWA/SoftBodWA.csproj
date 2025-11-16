@@ -132,6 +132,7 @@
     <Content Include="Scripts\SoftBodScripts\EditarOperario.js" />
     <Content Include="Scripts\SoftBodScripts\EliminarCliente.js" />
     <Content Include="Scripts\SoftBodScripts\EliminarOperario.js" />
+    <Content Include="Scripts\SoftBodScripts\EliminarProducto.js" />
     <Content Include="Scripts\SoftBodScripts\PagoDeuda.js" />
     <Content Include="Usuarios.aspx" />
     <Content Include="Web.config" />
