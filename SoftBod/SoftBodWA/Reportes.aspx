@@ -48,14 +48,6 @@
                     </div>
                 </div>
 
-                <!-- Reporte Kardex -->
-                <div class="col-md-6">
-                    <div class="card report-card text-center p-4" onclick="window.location.href='ReporteKardex.aspx'">
-                        <i class="fa-solid fa-chart-line report-icon text-info"></i>
-                        <h6 class="fw-semibold mb-0">Reporte Kardex</h6>
-                    </div>
-                </div>
-
                 <!-- Reporte de Clientes al Fiado -->
                 <div class="col-md-6">
                     <div class="card report-card text-center p-4" onclick="window.location.href='ReporteClientesFiado.aspx'">

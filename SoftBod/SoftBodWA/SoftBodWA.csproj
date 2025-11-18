@@ -183,14 +183,12 @@
     </Compile>
     <Compile Include="ReporteClientesFiado.aspx.cs">
       <DependentUpon>ReporteClientesFiado.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ReporteClientesFiado.aspx.designer.cs">
       <DependentUpon>ReporteClientesFiado.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReporteInventario.aspx.cs">
       <DependentUpon>ReporteInventario.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ReporteInventario.aspx.designer.cs">
       <DependentUpon>ReporteInventario.aspx</DependentUpon>
