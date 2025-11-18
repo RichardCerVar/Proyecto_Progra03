@@ -312,44 +312,4 @@
         </div>
     </div>
 </div>
-
-    <!--Eliminar producto
-    <div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-labelledby="modalEliminarProdLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0 shadow-lg rounded-4">
-
-                <asp:UpdatePanel ID="updEliminarProducto" runat="server" UpdateMode="Conditional">
-                    <ContentTemplate>
-                        <div class="modal-body p-4 text-center">
-                            <i class="bi bi-exclamation-triangle-fill fs-1 text-danger mb-2"></i>
-                        
-                            <h5 class="fw-bold mb-3" id="modalEliminarProdLabel">¿Confirmar eliminación?</h5>
-                        
-                            <p class="text-muted">
-                                Esta acción eliminará permanentemente el producto
-                                "<strong class="text-dark"><asp:Literal ID="ltNombreProductoEliminar" runat="server" /></strong>"
-                                del inventario. Esta acción no se puede deshacer.
-                            </p>
-                        
-                            <asp:HiddenField ID="hdnProductoIDEliminar" runat="server" />
-
-                            <div class="d-flex gap-2 mt-4">
-                                <button type="button" class="btn btn-light w-100" data-bs-dismiss="modal">Cancelar</button>
-                            
-                                <asp:Button ID="btnConfirmarEliminarProducto" runat="server" 
-                                    Text="Eliminar" 
-                                    CssClass="btn btn-danger w-100" 
-                                    OnClick="btnConfirmarEliminarProducto_ClickbtnConfirmarEliminarProducto_Click" />
-                            </div>
-                        </div>
-                    </ContentTemplate>
-                    <Triggers>
-                        <asp:AsyncPostBackTrigger ControlID="btnConfirmarEliminarProducto" EventName="Click" />
-                    </Triggers>
-                </asp:UpdatePanel>
-
-            </div>
-        </div>
-    </div>
-    -->
 </asp:Content>
