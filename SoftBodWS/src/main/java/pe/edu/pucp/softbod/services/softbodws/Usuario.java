@@ -79,4 +79,9 @@ public class Usuario {
         return this.usuarioBO.listarPorNombreParcial(nombreUser);
     }
     
+    @WebMethod(operationName = "eliminarUsuario")
+    public Integer eliminarUsuario(@WebParam(name = "usuarioId")Integer usuarioId){
+        return this.usuarioBO.eliminar(usuarioId);
+    }
+    
 }

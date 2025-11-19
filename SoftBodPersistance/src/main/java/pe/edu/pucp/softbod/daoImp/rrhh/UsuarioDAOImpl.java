@@ -224,4 +224,15 @@ public class UsuarioDAOImpl extends DAOImplBase implements UsuarioDAO  {
         this.statement.setString(2, this.usuario.getContrasenha());
         
     }
+
+    @Override
+    public Integer eliminar(UsuarioDTO usuarioDTO) {
+        this.usuario = usuarioDTO;
+        return super.eliminar();
+    }
+
+    @Override
+    protected void incluirValorDeParametrosParaEliminacion() throws SQLException {
+        this.statement.setInt(1, this.usuario.getUsuarioId());
+    }
 }

@@ -363,6 +363,9 @@
     <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.eliminarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.insertarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

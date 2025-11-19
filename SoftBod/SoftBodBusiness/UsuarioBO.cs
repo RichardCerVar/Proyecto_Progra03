@@ -24,6 +24,11 @@ namespace SoftBodBusiness
                                                     contrasenha, nombre, telefono, activo);
         }
 
+        public int eliminarUsuario(int usuarioId)
+        {
+            return this.usuarioSOAP.eliminarUsuario(usuarioId);
+        }
+
         public int modificarUsuario(int usuarioId, string usuario, string correo, string tipoUsuarios,
                                    string contrasenha, string nombre, string telefono, bool activo)
         {
