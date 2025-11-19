@@ -101,7 +101,7 @@ namespace SoftBodWA
             }
         }
 
-        
+
         private void LimpiarCamposModal()
         {
             txtNombreCompleto.Text = "";
@@ -183,7 +183,7 @@ namespace SoftBodWA
                         string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarCliente')); myModal.show();";
                         ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarCliente", scriptEliminar, true);
                         //poner mensaje
-                        
+
 
                         break;
                 }
@@ -235,7 +235,7 @@ namespace SoftBodWA
                     return;
                 }
 
-                
+
                 // Llamar a la lógica de negocio
                 clienteBO.modificarClienteAlFiado(clienteDTO);
 
@@ -268,49 +268,49 @@ namespace SoftBodWA
             {
                 // Obtener alias y monto a pagar desde los controles del modal
                 string alias = lblAlias.Text;
-            string montoStr = txtMontoPagar.Text.Trim();
-            double monto= Convert.ToDouble(montoStr);
+                string montoStr = txtMontoPagar.Text.Trim();
+                double monto = Convert.ToDouble(montoStr);
 
-            if (string.IsNullOrEmpty(alias) || !double.TryParse(montoStr, out monto) || monto <= 0)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
-                    "alert('Ingrese un monto válido para el pago.');", true);
-                return;
-            }
+                if (string.IsNullOrEmpty(alias) || !double.TryParse(montoStr, out monto) || monto <= 0)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                        "alert('Ingrese un monto válido para el pago.');", true);
+                    return;
+                }
 
-            // Buscar el cliente por alias
-            var clientes = ClientesData;
-            var cliente = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
-            if (cliente == null)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
-                    $"alert('No se encontró el cliente con alias {alias}.');", true);
-                return;
-            }
+                // Buscar el cliente por alias
+                var clientes = ClientesData;
+                var cliente = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+                if (cliente == null)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                        $"alert('No se encontró el cliente con alias {alias}.');", true);
+                    return;
+                }
 
-            // Validar que el monto no sea mayor a la deuda
-            if (monto > cliente.montoDeuda)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
-                    "alert('El monto a pagar no puede ser mayor a la deuda actual.');", true);
-                return;
-            }
+                // Validar que el monto no sea mayor a la deuda
+                if (monto > cliente.montoDeuda)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
+                        "alert('El monto a pagar no puede ser mayor a la deuda actual.');", true);
+                    return;
+                }
 
-            ClienteAlFiadoBO clienteMod = new ClienteAlFiadoBO();
-            cliente.montoDeuda = cliente.montoDeuda - monto;
+                ClienteAlFiadoBO clienteMod = new ClienteAlFiadoBO();
+                cliente.montoDeuda = cliente.montoDeuda - monto;
 
-            clienteBO.modificarClienteAlFiado(cliente);
+                clienteBO.modificarClienteAlFiado(cliente);
 
-            //regPagoBO.registrarPagoFiado(monto);
-            CargarClientes();
+                //regPagoBO.registrarPagoFiado(monto);
+                CargarClientes();
 
 
-            ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
-                "alert('Pago registrado exitosamente.');", true);
+                ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
+                    "alert('Pago registrado exitosamente.');", true);
 
-            //cerrar el modal con JS
-            string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
-            ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
+                //cerrar el modal con JS
+                string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
+                ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
             }
             catch (Exception ex)
             {
@@ -332,7 +332,7 @@ namespace SoftBodWA
 
         private void CargarClientes(string termoBusca = "")
         {
-            
+
 
 
             if (string.IsNullOrWhiteSpace(termoBusca))

@@ -27,20 +27,17 @@ namespace SoftBodWA
             this.productoBO = new ProductoBO();
         }
 
-        // Propiedad para mantener el carrito en Sesión usando el DTO del WS
         private List<WSDetalleVenta.detalleVentaDTO> Carrito
         {
             get
             {
                 if (Session["CarritoVenta"] == null)
-                    // Se usa el detalleVentaDTO del WS de DetalleVenta ya que es el que tiene la estructura base.
                     Session["CarritoVenta"] = new List<SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO>();
                 return (List<SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO>)Session["CarritoVenta"];
             }
             set => Session["CarritoVenta"] = value;
         }
 
-        // Propiedad para mantener la lista de productos disponibles en Sesión
         private List<WSProducto.productoDTO> ProductosDisponibles
         {
             get
@@ -62,8 +59,6 @@ namespace SoftBodWA
             ActualizarInterfaz();
         }
 
-        // --- LÓGICA DE CARGA DE DATOS REAL (Usando BOs) ---
-
         private void CargarProductosDisponibles()
         {
             List<WSProducto.productoDTO> productos;
@@ -76,27 +71,23 @@ namespace SoftBodWA
             else categoriaFiltro = ddlCategoriaFiltro.SelectedItem.Text;
 
             try
-                {
-                    // LLAMADA REAL A LA CAPA DE NEGOCIO CON FILTROS
-                    productos = this.productoBO.listarTodosConFiltroProductos(
-                        activoFiltro,
-                        categoriaFiltro,
-                        nombreFiltro
-                    );
-                }
-                catch (Exception ex)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "errorCarga", $"alert('Error al cargar productos: {ex.Message}');", true);
-                    productos = new List<WSProducto.productoDTO>();
-                }
+            {
+                productos = this.productoBO.listarTodosConFiltroProductos(
+                    activoFiltro,
+                    categoriaFiltro,
+                    nombreFiltro
+                );
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorCarga", $"alert('Error al cargar productos: {ex.Message}');", true);
+                productos = new List<WSProducto.productoDTO>();
+            }
 
             ProductosDisponibles = productos;
-
-            // Mostrar solo los productos con stock > 0
             rptProductosDisponibles.DataSource = productos.Where(p => (p.stock) > 0).ToList();
             rptProductosDisponibles.DataBind();
         }
-
 
         private void CargarClientesDropDownList()
         {
@@ -176,24 +167,34 @@ namespace SoftBodWA
             if (itemExistente != null)
             {
                 itemExistente.cantidad++;
+                itemExistente.cantidadSpecified = true;
             }
             else
             {
                 var productoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.productoDTO
                 {
                     productoId = productoInfo.productoId,
+                    productoIdSpecified = true,
                     nombre = productoInfo.nombre,
-                    precioUnitario = productoInfo.precioUnitario
+                    precioUnitario = productoInfo.precioUnitario,
+                    precioUnitarioSpecified = true
                 };
-                Carrito.Add(new SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO
+
+                var nuevoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO
                 {
                     producto = productoDetalle,
-                    cantidad = 1
-                });
+                    cantidad = 1,
+                    cantidadSpecified = true,
+                    subtotal = 0, // Se calculará abajo
+                    subtotalSpecified = true
+                };
+
+                Carrito.Add(nuevoDetalle);
             }
 
             var itemActualizado = Carrito.First(p => p.producto.productoId == productoId);
             itemActualizado.subtotal = itemActualizado.cantidad * itemActualizado.producto.precioUnitario;
+            itemActualizado.subtotalSpecified = true;
 
             ActualizarInterfaz();
         }
@@ -208,14 +209,16 @@ namespace SoftBodWA
             if (item != null)
             {
                 item.cantidad--;
+                item.cantidadSpecified = true;
+
                 if (item.cantidad <= 0)
                 {
                     Carrito.Remove(item);
                 }
                 else
                 {
-                    // Recalcular subtotal si solo se reduce la cantidad
                     item.subtotal = item.cantidad * item.producto.precioUnitario;
+                    item.subtotalSpecified = true;
                 }
             }
 
@@ -247,20 +250,19 @@ namespace SoftBodWA
                 return;
             }
 
-            // 1. Mapear DTO de Carrito (SoftWSDetalleVenta) al DTO de Venta (SoftWSVenta)
-            // Aunque son estructuras idénticas, pueden ser de namespaces distintos.
+            // 1. Mapear DTO de Carrito al DTO de Venta con Specified
             var detallesVentaWSVenta = Carrito.Select(item => new SoftBodBusiness.SoftWSVenta.detalleVentaDTO
             {
                 producto = new SoftBodBusiness.SoftWSVenta.productoDTO
                 {
-                    // Asegurarse de que el DTO del WS de Venta acepte la estructura correcta del Producto
                     productoId = item.producto.productoId,
-                    // Si el DTO de Venta requiere más campos del producto, deberían mapearse aquí.
+                    productoIdSpecified = true
                 },
                 cantidad = item.cantidad,
-                subtotal = item.subtotal
+                cantidadSpecified = true,
+                subtotal = item.subtotal,
+                subtotalSpecified = true
             }).ToArray();
-
 
             // 2. Obtener Parámetros Comunes
             Tipo_de_pago tipoPagoEnum;
@@ -269,24 +271,12 @@ namespace SoftBodWA
             SoftBodBusiness.SoftWSVenta.tipoDePago metodoPagoWSVenta;
             Enum.TryParse(ddlTipoPago.SelectedValue, out metodoPagoWSVenta);
 
-            // Se necesita el tipo de pago del WS de VentaAlFiado también si es necesario, 
-            // pero el Enum metodoPagoWSVenta es generalmente compatible si usa el mismo tipo.
             SoftBodBusiness.SoftWSVentaAlFiado.tipoDePago metodoPagoWSFiado;
             Enum.TryParse(ddlTipoPago.SelectedValue, out metodoPagoWSFiado);
 
-            // SIMULACIÓN: Obtener Usuario logueado
-            SoftBodBusiness.SoftWSVenta.usuarioDTO usuarioLogueadoVenta = new SoftBodBusiness.SoftWSVenta.usuarioDTO
-            {
-                usuarioId = 99,
-                nombre = "Operario Demo",
-            };
-
-            SoftBodBusiness.SoftWSVentaAlFiado.usuarioDTO usuarioLogueadoFiado = new SoftBodBusiness.SoftWSVentaAlFiado.usuarioDTO
-            {
-                usuarioId = 99,
-                nombre = "Operario Demo",
-            };
-
+            // Obtener Usuario logueado desde Session
+            
+            
 
             int idVentaRegistrada = 0;
             string mensaje = "";
@@ -295,6 +285,13 @@ namespace SoftBodWA
             {
                 if (tipoPagoEnum == Tipo_de_pago.FIADO)
                 {
+                    int idUser = int.Parse((Session["UsuarioId"].ToString()));
+                    var usuarioLogueadoFiado = new SoftBodBusiness.SoftWSVentaAlFiado.usuarioDTO
+                    {
+                        usuarioId = idUser
+                    };
+                    usuarioLogueadoFiado.usuarioIdSpecified = true;
+
                     string clienteIdStr = ddlCliente.SelectedValue;
                     if (clienteIdStr == "0")
                     {
@@ -302,24 +299,29 @@ namespace SoftBodWA
                         return;
                     }
 
-                    // 3. Registrar Venta al Fiado
                     int clienteId = int.Parse(clienteIdStr);
 
                     SoftBodBusiness.SoftWSVentaAlFiado.clienteAlFiadoDTO clienteSeleccionadoWS = new SoftBodBusiness.SoftWSVentaAlFiado.clienteAlFiadoDTO
                     {
                         clienteId = clienteId,
+                        clienteIdSpecified = true,
                         nombre = ddlCliente.SelectedItem.Text
                     };
 
-                    // Mapeo de detalleVentaDTO al esperado por VentaAlFiadoBO
+                    // Mapeo con Specified para VentaAlFiado
                     SoftBodBusiness.SoftWSVentaAlFiado.detalleVentaDTO[] detallesVentaWSFiado = detallesVentaWSVenta.Select(item => new SoftBodBusiness.SoftWSVentaAlFiado.detalleVentaDTO
                     {
-                        producto = new SoftBodBusiness.SoftWSVentaAlFiado.productoDTO { productoId = item.producto.productoId },
+                        producto = new SoftBodBusiness.SoftWSVentaAlFiado.productoDTO
+                        {
+                            productoId = item.producto.productoId,
+                            productoIdSpecified = true
+                        },
                         cantidad = item.cantidad,
-                        subtotal = item.subtotal
+                        cantidadSpecified = true,
+                        subtotal = item.subtotal,
+                        subtotalSpecified = true
                     }).ToArray();
 
-                    // LLAMADA REAL A VentaAlFiadoBO
                     idVentaRegistrada = this.ventaAlFiadoBO.insertarVentaAlFiado(
                         clienteSeleccionadoWS,
                         usuarioLogueadoFiado,
@@ -327,13 +329,18 @@ namespace SoftBodWA
                         detallesVentaWSFiado
                     );
 
+
                     mensaje = $"✅ Venta Fiada registrada con éxito (ID: {idVentaRegistrada}). Total: S/. {lblTotal.Text}. Cliente: {ddlCliente.SelectedItem.Text}.";
                 }
                 else
                 {
-                    // 3. Registrar Venta Normal (CONTADO/TRANSFERENCIA)
+                    int idUserVenta = int.Parse(Session["UsuarioId"].ToString());
+                    var usuarioLogueadoVenta = new SoftBodBusiness.SoftWSVenta.usuarioDTO
+                    {
+                        usuarioId = idUserVenta
+                    };
+                    usuarioLogueadoVenta.usuarioIdSpecified = true;
 
-                    // LLAMADA REAL A VentaBO
                     idVentaRegistrada = this.ventaBO.insertarVenta(
                         usuarioLogueadoVenta,
                         metodoPagoWSVenta,
@@ -358,7 +365,6 @@ namespace SoftBodWA
             }
         }
 
-        // --- Método Auxiliar de Simulación de Stock Local ---
         private void ActualizarStockLocal(SoftBodBusiness.SoftWSVenta.detalleVentaDTO[] detallesVenta)
         {
             foreach (var detalle in detallesVenta)

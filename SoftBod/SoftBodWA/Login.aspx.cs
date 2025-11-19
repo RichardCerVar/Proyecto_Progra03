@@ -32,7 +32,7 @@ namespace SoftBodWA
             WSUsuario.usuarioDTO usuario = usuarioBO.obtenerCuentaUsuario(email, password);
             if (usuario != null)
             {
-                Session["Usuario"] = usuario;
+                Session["UsuarioId"] = usuario.usuarioId;
                 Session["RolUsuario"] = usuario.tipoUsuarios.ToString();
                 Session["NombreUsuario"] = usuario.usuario; //nombre de usuario
                 Response.Redirect("Inicio.aspx");

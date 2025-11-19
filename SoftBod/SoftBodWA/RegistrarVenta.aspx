@@ -133,7 +133,7 @@
                     </asp:Repeater>
                 </div>
             </div>
-        </div>
+        </div>  
 
         <div class="col-md-5">
             <div class="card p-4 shadow-sm h-100">
@@ -144,12 +144,16 @@
                         <ItemTemplate>
                             <div class="cart-item">
                                 <div class="cart-item-info">
-                                    <%# Eval("Nombre") %>
-                                    <span class="text-muted small"> (S/. <%# Eval("Precio", "{0:N2}") %> x <%# Eval("Cantidad") %>)</span>
+                                    <%# Eval("producto.nombre") %>
+                                    <span class="text-muted small"> (S/. <%# Eval("producto.precioUnitario", "{0:N2}") %> x <%# Eval("cantidad") %>)</span>
                                 </div>
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bold me-3">S/. <%# Eval("Subtotal", "{0:N2}") %></div>
-                                    <asp:LinkButton ID="btnRemove" runat="server" CssClass="btn btn-sm btn-outline-secondary border-0" CommandName="Quitar" CommandArgument='<%# Eval("ProductoId") %>' OnClick="btnRemove_Click">
+                                    <div class="fw-bold me-3">S/. <%# Eval("subtotal", "{0:N2}") %></div>
+                                    <asp:LinkButton ID="btnRemove" runat="server" 
+                                        CssClass="btn btn-sm btn-outline-secondary border-0" 
+                                        CommandName="Quitar" 
+                                        CommandArgument='<%# Eval("producto.productoId") %>' 
+                                        OnClick="btnRemove_Click">
                                         <i class="bi bi-dash"></i>
                                     </asp:LinkButton>
                                 </div>
