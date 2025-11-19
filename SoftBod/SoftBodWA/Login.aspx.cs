@@ -1,35 +1,47 @@
 ﻿using System;
+using SoftBodBusiness;
+using WSUsuario = SoftBodBusiness.SoftWSUsuario;
+
 
 namespace SoftBodWA
 {
     public partial class Login : System.Web.UI.Page
     {
+        private UsuarioBO usuarioBO;
+        public Login()
+        {
+            usuarioBO = new UsuarioBO();
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session.Clear();
+            
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text.Trim();
+            string email = txtEmail.Text.Trim();
             string password = txtPassword.Text.Trim();
 
-            if (usuario == "admin@bodega.com" && password == "admin123")
+            if(email == "" || password == "")
             {
-                Session["RolUsuario"] = "Administrador";
-                Session["NombreUsuario"] = "Administrador";
-                Response.Redirect("Inicio.aspx");
+                lblMensaje.Text = "Por favor, complete todos los campos.";
+                return;
             }
-            else if (usuario == "operario@bodega.com" && password == "operario123")
+
+            WSUsuario.usuarioDTO usuario = usuarioBO.obtenerCuentaUsuario(email, password);
+            if (usuario != null)
             {
-                Session["RolUsuario"] = "Operario";
-                Session["NombreUsuario"] = "Operario";
+                Session["Usuario"] = usuario;
+                Session["RolUsuario"] = usuario.tipoUsuarios.ToString();
+                Session["NombreUsuario"] = usuario.usuario; //nombre de usuario
                 Response.Redirect("Inicio.aspx");
             }
             else
             {
                 lblMensaje.Text = "Correo o contraseña incorrectos.";
             }
+
         }
     }
 }

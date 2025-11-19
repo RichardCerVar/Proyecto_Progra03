@@ -60,29 +60,47 @@
                                     class="form-check-input"
                                     type="checkbox"
                                     role="switch"
-                                    id='<%# "switch_" + Eval("Usuario") + Eval("correo") %>'
-                                    <%# (bool)Eval("Activo") ? "checked" : "" %>
+                                    id='<%# "switch_" + Eval("usuario") %>'
+                                    <%# (bool)Eval("activo") ? "checked" : "" %>
             
                                     onclick="document.getElementById('<%# Container.FindControl("btnToggleActivo").ClientID %>').click();"
                                 />
         
                                 <label
                                     class="form-check-label text-muted"
-                                    for='<%# "switch_" + Eval("Usuario") %>'>
-                                    <%# (bool)Eval("Activo") ? "Activo" : "Desactivado" %>
+                                    for='<%# "switch_" + Eval("usuario") %>'>
+                                    <%# (bool)Eval("activo") ? "Activo" : "Desactivado" %>
                                 </label>
                             </div>
     
+                            <%-- ✅ MODIFICADO: Pasa usuarioId, usuario, correo, activo --%>
                             <asp:Button
                                 ID="btnToggleActivo"
                                 runat="server"
                                 style="display:none;" 
                                 CommandName="ToggleActivo"
-                                CommandArgument='<%# Eval("Usuario") %>'
+                                CommandArgument='<%# Eval("usuarioId") + "|" + Eval("usuario") + "|" + Eval("correo") + "|" + Eval("tipoUsuarios") + "|" + Eval("contrasenha") + "|" + Eval("nombre") + "|" + Eval("telefono") + "|" + Eval("activo") %>'
                             />
 
-                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-primary btn-sm" CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario")+ "|" + Eval("correo")+ "|" + Eval("telefono")%>' CommandName="Editar" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("nombre") %>' CommandName="Eliminar" />
+                            <%-- ✅ SIN CAMBIOS --%>
+                            <asp:Button 
+                                ID="btnEditar" 
+                                runat="server" 
+                                Text="✎" 
+                                CssClass="btn btn-outline-primary btn-sm" 
+                                CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario") + "|" + Eval("correo") + "|" + Eval("telefono") %>' 
+                                CommandName="Editar" 
+                            />
+                            
+                            <%-- ✅ MODIFICADO: Pasa nombre y usuario --%>
+                            <asp:Button 
+                                ID="btnEliminar" 
+                                runat="server" 
+                                Text="🗑" 
+                                CssClass="btn btn-outline-danger btn-sm" 
+                                CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario") %>' 
+                                CommandName="Eliminar" 
+                            />
                         </div>
                     </div>
                 </div>

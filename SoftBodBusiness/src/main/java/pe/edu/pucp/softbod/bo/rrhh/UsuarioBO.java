@@ -23,6 +23,12 @@ public class UsuarioBO extends OperacionBOBase{
         this.loginBO = new LoginBO();
     }
     
+    public Integer eliminar(Integer usuarioId){
+        UsuarioDTO user = new UsuarioDTO();
+        user.setUsuarioId(usuarioId);
+        return this.usuarioDAO.eliminar(user);
+    }
+    
     public Integer insertar(String usuario, String correo, String tipoUsuarios,
             String contrasenha, String nombre, String telefono, Boolean activo) {
         Tipo_Usuario tipUser;
@@ -62,7 +68,7 @@ public class UsuarioBO extends OperacionBOBase{
             Integer resultado = this.usuarioDAO.insertar(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
-                usuarioDTO.setUsuarioId(resultado);
+                usuarioDTO.setUsuarioId(1);
                 
                 // 6. Registrar en historial
                 registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.INSERCION);
@@ -102,6 +108,7 @@ public class UsuarioBO extends OperacionBOBase{
             Integer resultado = this.usuarioDAO.modificar(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
+                usuarioDTO.setUsuarioId(1);
                 registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.MODIFICACION);
                 System.out.println("✓ Usuario modificado exitosamente");
             }
@@ -132,6 +139,7 @@ public class UsuarioBO extends OperacionBOBase{
             Integer resultado = this.usuarioDAO.eliminarLogicoUsuario(usuarioDTO);
             
             if (resultado != null && resultado > 0) {
+                usuarioDTO.setUsuarioId(1);
                 registrarEnHistorial(usuarioDTO, "BOD_USUARIOS", Tipo_Operacion.ELIMINACION);
                 System.out.println("✓ Usuario eliminado lógicamente");
             }
@@ -217,7 +225,7 @@ public class UsuarioBO extends OperacionBOBase{
             return Boolean.FALSE;
         }
     }
-
+    
     public Boolean validarCorreoUnicoParaModificar(Integer usuarioId, String nuevoCorreo) {
         try {
             if (usuarioId == null || nuevoCorreo == null || nuevoCorreo.trim().isEmpty()) {

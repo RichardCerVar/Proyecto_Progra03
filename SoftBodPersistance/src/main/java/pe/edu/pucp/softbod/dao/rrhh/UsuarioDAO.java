@@ -14,4 +14,5 @@ public interface UsuarioDAO {
     public ArrayList<UsuarioDTO> listarInactivos();
     public Integer modificar(UsuarioDTO usuario);
     public Integer eliminarLogicoUsuario(UsuarioDTO usuario);
+    public Integer eliminar(UsuarioDTO usuarioDTO);
 }

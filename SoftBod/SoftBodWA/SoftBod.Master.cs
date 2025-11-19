@@ -25,7 +25,7 @@ namespace SoftBodWA
             lblUsuario.InnerText = $"Bienvenido, {nombre}";
 
             // Controlar vistas según el rol
-            if (rol == "Operario")
+            if (rol == "OPERARIO")
             {
                 navReportes.Visible = false;
                 navUsuarios.Visible = false;

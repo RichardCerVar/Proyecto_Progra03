@@ -41,7 +41,7 @@
 
                 <div class="mb-3">
                     <label class="form-label">Correo electrónico</label>
-                    <asp:TextBox ID="txtUsuario" runat="server" CssClass="form-control" placeholder="ejemplo@correo.com"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="ejemplo@correo.com"></asp:TextBox>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Contraseña</label>

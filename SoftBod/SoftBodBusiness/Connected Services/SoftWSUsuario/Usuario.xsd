@@ -2,6 +2,8 @@
 <xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:element name="eliminarLogicoUsuario" type="tns:eliminarLogicoUsuario" />
   <xs:element name="eliminarLogicoUsuarioResponse" type="tns:eliminarLogicoUsuarioResponse" />
+  <xs:element name="eliminarUsuario" type="tns:eliminarUsuario" />
+  <xs:element name="eliminarUsuarioResponse" type="tns:eliminarUsuarioResponse" />
   <xs:element name="insertarUsuario" type="tns:insertarUsuario" />
   <xs:element name="insertarUsuarioResponse" type="tns:insertarUsuarioResponse" />
   <xs:element name="listarTodosUsuarios" type="tns:listarTodosUsuarios" />
@@ -20,6 +22,16 @@
   <xs:element name="obtenerUsuarioPorCorreoResponse" type="tns:obtenerUsuarioPorCorreoResponse" />
   <xs:element name="obtenerUsuarioPorId" type="tns:obtenerUsuarioPorId" />
   <xs:element name="obtenerUsuarioPorIdResponse" type="tns:obtenerUsuarioPorIdResponse" />
+  <xs:complexType name="eliminarUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="listarUsuariosPorNombreParcial">
     <xs:sequence>
       <xs:element minOccurs="0" name="nombreUser" type="xs:string" />

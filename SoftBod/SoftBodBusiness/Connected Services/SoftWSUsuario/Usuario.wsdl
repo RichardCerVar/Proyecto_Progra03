@@ -5,11 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/Usuario?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="modificarUsuario">
-    <part name="parameters" element="tns:modificarUsuario" />
+  <message name="eliminarUsuario">
+    <part name="parameters" element="tns:eliminarUsuario" />
   </message>
-  <message name="modificarUsuarioResponse">
-    <part name="parameters" element="tns:modificarUsuarioResponse" />
+  <message name="eliminarUsuarioResponse">
+    <part name="parameters" element="tns:eliminarUsuarioResponse" />
   </message>
   <message name="insertarUsuario">
     <part name="parameters" element="tns:insertarUsuario" />
@@ -17,29 +17,11 @@
   <message name="insertarUsuarioResponse">
     <part name="parameters" element="tns:insertarUsuarioResponse" />
   </message>
-  <message name="obtenerUsuarioPorId">
-    <part name="parameters" element="tns:obtenerUsuarioPorId" />
+  <message name="modificarUsuario">
+    <part name="parameters" element="tns:modificarUsuario" />
   </message>
-  <message name="obtenerUsuarioPorIdResponse">
-    <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
-  </message>
-  <message name="obtenerUsuarioPorCorreo">
-    <part name="parameters" element="tns:obtenerUsuarioPorCorreo" />
-  </message>
-  <message name="obtenerUsuarioPorCorreoResponse">
-    <part name="parameters" element="tns:obtenerUsuarioPorCorreoResponse" />
-  </message>
-  <message name="listarUsuariosActivos">
-    <part name="parameters" element="tns:listarUsuariosActivos" />
-  </message>
-  <message name="listarUsuariosActivosResponse">
-    <part name="parameters" element="tns:listarUsuariosActivosResponse" />
-  </message>
-  <message name="listarTodosUsuarios">
-    <part name="parameters" element="tns:listarTodosUsuarios" />
-  </message>
-  <message name="listarTodosUsuariosResponse">
-    <part name="parameters" element="tns:listarTodosUsuariosResponse" />
+  <message name="modificarUsuarioResponse">
+    <part name="parameters" element="tns:modificarUsuarioResponse" />
   </message>
   <message name="eliminarLogicoUsuario">
     <part name="parameters" element="tns:eliminarLogicoUsuario" />
@@ -47,17 +29,41 @@
   <message name="eliminarLogicoUsuarioResponse">
     <part name="parameters" element="tns:eliminarLogicoUsuarioResponse" />
   </message>
+  <message name="obtenerCuentaUsuario">
+    <part name="parameters" element="tns:obtenerCuentaUsuario" />
+  </message>
+  <message name="obtenerCuentaUsuarioResponse">
+    <part name="parameters" element="tns:obtenerCuentaUsuarioResponse" />
+  </message>
+  <message name="obtenerUsuarioPorCorreo">
+    <part name="parameters" element="tns:obtenerUsuarioPorCorreo" />
+  </message>
+  <message name="obtenerUsuarioPorCorreoResponse">
+    <part name="parameters" element="tns:obtenerUsuarioPorCorreoResponse" />
+  </message>
   <message name="listarUsuariosInactivos">
     <part name="parameters" element="tns:listarUsuariosInactivos" />
   </message>
   <message name="listarUsuariosInactivosResponse">
     <part name="parameters" element="tns:listarUsuariosInactivosResponse" />
   </message>
-  <message name="obtenerCuentaUsuario">
-    <part name="parameters" element="tns:obtenerCuentaUsuario" />
+  <message name="obtenerUsuarioPorId">
+    <part name="parameters" element="tns:obtenerUsuarioPorId" />
   </message>
-  <message name="obtenerCuentaUsuarioResponse">
-    <part name="parameters" element="tns:obtenerCuentaUsuarioResponse" />
+  <message name="obtenerUsuarioPorIdResponse">
+    <part name="parameters" element="tns:obtenerUsuarioPorIdResponse" />
+  </message>
+  <message name="listarTodosUsuarios">
+    <part name="parameters" element="tns:listarTodosUsuarios" />
+  </message>
+  <message name="listarTodosUsuariosResponse">
+    <part name="parameters" element="tns:listarTodosUsuariosResponse" />
+  </message>
+  <message name="listarUsuariosActivos">
+    <part name="parameters" element="tns:listarUsuariosActivos" />
+  </message>
+  <message name="listarUsuariosActivosResponse">
+    <part name="parameters" element="tns:listarUsuariosActivosResponse" />
   </message>
   <message name="listarUsuariosPorNombreParcial">
     <part name="parameters" element="tns:listarUsuariosPorNombreParcial" />
@@ -66,41 +72,45 @@
     <part name="parameters" element="tns:listarUsuariosPorNombreParcialResponse" />
   </message>
   <portType name="Usuario">
-    <operation name="modificarUsuario">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/modificarUsuarioRequest" message="tns:modificarUsuario" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
+    <operation name="eliminarUsuario">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarUsuarioRequest" message="tns:eliminarUsuario" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarUsuarioResponse" message="tns:eliminarUsuarioResponse" />
     </operation>
     <operation name="insertarUsuario">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/insertarUsuarioRequest" message="tns:insertarUsuario" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/insertarUsuarioResponse" message="tns:insertarUsuarioResponse" />
     </operation>
-    <operation name="obtenerUsuarioPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
-    </operation>
-    <operation name="obtenerUsuarioPorCorreo">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorCorreoRequest" message="tns:obtenerUsuarioPorCorreo" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorCorreoResponse" message="tns:obtenerUsuarioPorCorreoResponse" />
-    </operation>
-    <operation name="listarUsuariosActivos">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosRequest" message="tns:listarUsuariosActivos" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosResponse" message="tns:listarUsuariosActivosResponse" />
-    </operation>
-    <operation name="listarTodosUsuarios">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest" message="tns:listarTodosUsuarios" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" message="tns:listarTodosUsuariosResponse" />
+    <operation name="modificarUsuario">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/modificarUsuarioRequest" message="tns:modificarUsuario" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/modificarUsuarioResponse" message="tns:modificarUsuarioResponse" />
     </operation>
     <operation name="eliminarLogicoUsuario">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioRequest" message="tns:eliminarLogicoUsuario" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/eliminarLogicoUsuarioResponse" message="tns:eliminarLogicoUsuarioResponse" />
     </operation>
+    <operation name="obtenerCuentaUsuario">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" message="tns:obtenerCuentaUsuario" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioResponse" message="tns:obtenerCuentaUsuarioResponse" />
+    </operation>
+    <operation name="obtenerUsuarioPorCorreo">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorCorreoRequest" message="tns:obtenerUsuarioPorCorreo" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorCorreoResponse" message="tns:obtenerUsuarioPorCorreoResponse" />
+    </operation>
     <operation name="listarUsuariosInactivos">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosInactivosRequest" message="tns:listarUsuariosInactivos" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosInactivosResponse" message="tns:listarUsuariosInactivosResponse" />
     </operation>
-    <operation name="obtenerCuentaUsuario">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioRequest" message="tns:obtenerCuentaUsuario" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerCuentaUsuarioResponse" message="tns:obtenerCuentaUsuarioResponse" />
+    <operation name="obtenerUsuarioPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdRequest" message="tns:obtenerUsuarioPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/obtenerUsuarioPorIdResponse" message="tns:obtenerUsuarioPorIdResponse" />
+    </operation>
+    <operation name="listarTodosUsuarios">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosRequest" message="tns:listarTodosUsuarios" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarTodosUsuariosResponse" message="tns:listarTodosUsuariosResponse" />
+    </operation>
+    <operation name="listarUsuariosActivos">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosRequest" message="tns:listarUsuariosActivos" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosActivosResponse" message="tns:listarUsuariosActivosResponse" />
     </operation>
     <operation name="listarUsuariosPorNombreParcial">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Usuario/listarUsuariosPorNombreParcialRequest" message="tns:listarUsuariosPorNombreParcial" />
@@ -109,7 +119,7 @@
   </portType>
   <binding name="UsuarioPortBinding" type="tns:Usuario">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="modificarUsuario">
+    <operation name="eliminarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -127,34 +137,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerUsuarioPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="obtenerUsuarioPorCorreo">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarUsuariosActivos">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarTodosUsuarios">
+    <operation name="modificarUsuario">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -172,6 +155,24 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="obtenerCuentaUsuario">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerUsuarioPorCorreo">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="listarUsuariosInactivos">
       <soap:operation soapAction="" />
       <input>
@@ -181,7 +182,25 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerCuentaUsuario">
+    <operation name="obtenerUsuarioPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosUsuarios">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarUsuariosActivos">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
