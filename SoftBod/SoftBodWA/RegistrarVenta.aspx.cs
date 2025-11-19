@@ -73,21 +73,22 @@ namespace SoftBodWA
             string nombreFiltro = txtBuscarProducto.Text.Trim();
 
             if (categoriaFiltro == "0") categoriaFiltro = "";
+            else categoriaFiltro = ddlCategoriaFiltro.SelectedItem.Text;
 
             try
-            {
-                // LLAMADA REAL A LA CAPA DE NEGOCIO CON FILTROS
-                productos = this.productoBO.listarTodosConFiltroProductos(
-                    activoFiltro,
-                    categoriaFiltro,
-                    nombreFiltro
-                );
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorCarga", $"alert('Error al cargar productos: {ex.Message}');", true);
-                productos = new List<WSProducto.productoDTO>();
-            }
+                {
+                    // LLAMADA REAL A LA CAPA DE NEGOCIO CON FILTROS
+                    productos = this.productoBO.listarTodosConFiltroProductos(
+                        activoFiltro,
+                        categoriaFiltro,
+                        nombreFiltro
+                    );
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorCarga", $"alert('Error al cargar productos: {ex.Message}');", true);
+                    productos = new List<WSProducto.productoDTO>();
+                }
 
             ProductosDisponibles = productos;
 

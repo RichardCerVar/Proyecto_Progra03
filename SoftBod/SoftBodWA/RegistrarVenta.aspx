@@ -98,8 +98,9 @@
                 <asp:ListItem Text="Todas las categorías" Value="0" Selected="True"></asp:ListItem>
                 <asp:ListItem Text="Granos" Value="1"></asp:ListItem>
                 <asp:ListItem Text="Lácteos" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Aceites" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Endulzantes" Value="4"></asp:ListItem>
+                <asp:ListItem Text="Bebidas" Value="3"></asp:ListItem>
+                <asp:ListItem Text="Limpieza" Value="4"></asp:ListItem>
+                <asp:ListItem Text="Snacks" Value="5"></asp:ListItem>
             </asp:DropDownList>
         </div>
     </div>
@@ -114,12 +115,12 @@
                         <ItemTemplate>
                             <div class="product-item">
                                 <div class="product-info">
-                                    <div class="product-name"><%# Eval("Nombre") %></div>
-                                    <div class="product-stock">Stock: <%# Eval("Stock") %></div>
+                                    <div class="product-name"><%# Eval("nombre") %></div>
+                                    <div class="product-stock">Stock: <%# Eval("stock") %></div>
                                 </div>
                                 <div class="price-add-group">
-                                    <div class="product-price">S/. <%# Eval("Precio", "{0:N2}") %></div>
-                                    <asp:LinkButton ID="btnAdd" runat="server" CssClass="btn-add" CommandName="Agregar" CommandArgument='<%# Eval("ProductoId") %>' OnClick="btnAdd_Click">
+                                    <div class="product-price">S/. <%# Eval("precioUnitario", "{0:N2}") %></div>
+                                    <asp:LinkButton ID="btnAdd" runat="server" CssClass="btn-add" CommandName="Agregar" CommandArgument='<%# Eval("productoId") %>' OnClick="btnAdd_Click">
                                         <i class="bi bi-plus"></i>
                                     </asp:LinkButton>
                                 </div>
