@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using System.Linq;
 using SoftBodBusiness;
 using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodWA
 {
@@ -76,19 +77,24 @@ namespace SoftBodWA
                 LimpiarCamposModal();
                 CargarClientes();
 
+
                 string successScript =
                     "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
                     "if(modal) modal.hide();" +
-                    "alert('Cliente agregado exitosamente.');";
+                    "setTimeout(function(){ alert('Cliente agregado exitosamente.'); window.location.href = window.location.href; }, 100);";
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "success", successScript, true);
-                Response.Redirect("Clientes.aspx");
+
             }
             catch (Exception ex)
             {
+                string enableButtonScript =
+                "var btn = document.getElementById('" + btnGuardarCliente.ClientID + "');" +
+                "if (btn) { btn.disabled = false; btn.value = 'Agregar Cliente'; }";
+
                 string errorScript =
                     $"alert('Error al agregar cliente: Verifique el formato de la fecha. Detalles: {ex.Message}');" +
-                    "$('#modalAgregarCliente').modal('show');";
+                    "$('#modalAgregarCliente').modal('show');" + enableButtonScript;
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "error", errorScript, true);
             }
@@ -105,12 +111,11 @@ namespace SoftBodWA
 
         private void CargarClientes()
         {
-            var clientes = ClientesData;
-
-            rptClientes.DataSource = clientes;
+            ClientesData = clienteBO.listarTodosClientesAlFiado();
+            rptClientes.DataSource = ClientesData;
             rptClientes.DataBind();
 
-            ActualizarResumen(clientes);
+            ActualizarResumen(ClientesData);
         }
 
         private void ActualizarResumen(List<WSClienteAlFiado.clienteAlFiadoDTO> clientes)
@@ -144,7 +149,8 @@ namespace SoftBodWA
                 switch (e.CommandName)
                 {
                     case "Pagar":
-                        string deuda = args.Length > 1 ? args[1] : "0.00";
+                        double deudaDou = (clienteAfectado.montoDeuda > 1 ? clienteAfectado.montoDeuda : 0.00);
+                        string deuda = deudaDou.ToString();
                         lblAlias.Text = alias;
                         lblDeudaActual.Text = deuda;
                         txtMontoPagar.Text = "";
@@ -156,10 +162,7 @@ namespace SoftBodWA
                         break;
 
                     case "Editar":
-                        string telefono = args[1];
-                        string fecha = args[2];
-                        
-                        
+
                         lblIdClienteEditar.Text = clienteAfectado.clienteId.ToString();
                         txtNombreEditar.Text = clienteAfectado.nombre;
                         txtAliasEditar.Text = clienteAfectado.alias;
@@ -173,11 +176,13 @@ namespace SoftBodWA
                         break;
 
                     case "Eliminar":
+                        string clienteID = args[1];
+                        hfClienteIDEliminar.Value = clienteID.ToString();
                         lblAliasEliminar.Text = alias;
                         string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarCliente')); myModal.show();";
                         ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarCliente", scriptEliminar, true);
                         //poner mensaje
-                        message = "se pudo ?";
+                        
 
                         break;
                 }
@@ -199,7 +204,61 @@ namespace SoftBodWA
 
         protected void btnActualizarCliente_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Obtener los datos del modal
 
+                int clienteID = int.Parse(lblIdClienteEditar.Text);
+                string nombre = txtNombreEditar.Text.Trim();
+                string alias = txtAliasEditar.Text.Trim();
+                string telefono = txtTelefonoEditar.Text.Trim();
+                string fechaLimite = DateTime.Parse(txtFechaLimiteEditar.Text).ToString("yyyy-MM-dd");
+
+                clienteAlFiadoDTO clienteDTO = new clienteAlFiadoDTO();
+                clienteDTO = clienteBO.obtenerClienteAlFiadoPorId(int.Parse(lblIdClienteEditar.Text));
+                clienteDTO.alias = alias;
+                clienteDTO.nombre = nombre;
+                clienteDTO.telefono = telefono;
+                clienteDTO.fechaDePago = fechaLimite;
+
+
+                // Validaciones simples
+                if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimite))
+                {
+                    ScriptManager.RegisterStartupScript(
+                        this, GetType(),
+                        "validacionUpdate",
+                        "alert('Complete todos los campos obligatorios.');",
+                        true
+                    );
+                    return;
+                }
+
+                
+                // Llamar a la lógica de negocio
+                clienteBO.modificarClienteAlFiado(clienteDTO);
+
+                // Recargar los datos en memoria y pantalla
+                CargarClientes();
+
+                // Generar script para cerrar modal y mostrar aviso
+                string script =
+                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalEditarCliente')); " +
+                    "if(modal) modal.hide();" +
+                    "alert('Cliente actualizado correctamente.');";
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "successUpdate", script, true);
+
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(
+                    this, GetType(),
+                    "errorUpdate",
+                    $"alert('Error al actualizar cliente: {ex.Message}');",
+                    true
+                );
+            }
         }
 
         protected void btnRegistrarPago_Click(object sender, EventArgs e)
@@ -234,8 +293,9 @@ namespace SoftBodWA
                 return;
             }
 
-            // Aquí va la logica de negocio para registrar el pago
-            
+            ClienteAlFiadoBO clienteMod = new ClienteAlFiadoBO();
+
+          
 
             ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
                 "alert('Pago registrado exitosamente.');", true);
@@ -247,6 +307,28 @@ namespace SoftBodWA
         
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
         {
+            try
+            {
+                int clienteID = int.Parse(hfClienteIDEliminar.Value);
+                clienteBO.eliminarClienteAlFiado(clienteID);
+                CargarClientes();
+
+                string script =
+                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalEliminarCliente')); " +
+                    "if(modal) modal.hide();" +
+                    "alert('Cliente eliminado correctamente.');";
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "successDelete", script, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(
+                    this, GetType(),
+                    "errorDelete",
+                    $"alert('Error al eliminar el cliente: {ex.Message}');",
+                    true
+                );
+            }
 
         }
 

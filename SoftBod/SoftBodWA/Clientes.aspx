@@ -8,7 +8,7 @@
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-
+    <asp:HiddenField ID="hfClienteIDEliminar" runat="server" />
     <div class="container-fluid px-3 py-3">
         
         <div class="d-flex justify-content-between align-items-center mb-4">
@@ -61,8 +61,8 @@
 
                         <div class="mt-3 d-flex gap-2 justify-content-end">
                             <asp:Button ID="btnPagar"   runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("alias") + "|" + Eval("montoDeuda") %>'  CommandName="Pagar" />
-                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("alias")+ "|" + "|" + Eval("telefono") + "|" + Eval("fechaDePago")%>' CommandName="Editar" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("alias") %>' CommandName="Eliminar" />
+                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("alias")+ "|" + Eval("telefono") + "|" + Eval("fechaDePago")+ "|" + Eval("clienteId")%>' CommandName="Editar" />
+                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("alias") + "|" + Eval("clienteId")%>' CommandName="Eliminar" />
                         </div>
                     </div>
                 </div>
@@ -105,10 +105,15 @@
                                  <asp:TextBox ID="txtFechaLimite" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
                              </div>
 
-                             <asp:Button ID="btnGuardarCliente" runat="server" 
-                                         CssClass="btn btn-dark w-100 py-2 fw-semibold" 
-                                         Text="Agregar Cliente" 
-                                         OnClick="btnGuardarCliente_Click" />
+
+                             <asp:Button ID="btnGuardarCliente" runat="server"
+                                CssClass="btn btn-dark w-100 py-2 fw-semibold"
+                                Text="Agregar Cliente"
+                                OnClick="btnGuardarCliente_Click"
+                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                UseSubmitBehavior="false"/>
+                             
+                                 
                                      
                          </ContentTemplate>
                      </asp:UpdatePanel>
@@ -207,7 +212,9 @@
                                 CssClass="btn w-100"
                                 Style="background-color: #0B1537; color: white; font-size: 17px;
                                        height: 48px; border-radius: 10px; font-weight: 600;"
-                                OnClick="btnActualizarCliente_Click" />
+                                OnClick="btnActualizarCliente_Click" 
+                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                UseSubmitBehavior="false"/>
                 </div>
             </div>
         </div>
@@ -247,7 +254,9 @@
                                 CssClass="btn"
                                 Style="background-color: #dc3545; color: white; 
                                        border-radius: 8px; padding: 8px 18px; font-weight: 600;"
-                                OnClick="btnEliminarConfirmado_Click" />
+                                OnClick="btnEliminarConfirmado_Click" 
+                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                UseSubmitBehavior="false"/>
                 </div>
 
             </div>
