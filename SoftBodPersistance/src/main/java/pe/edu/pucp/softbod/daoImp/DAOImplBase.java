@@ -179,6 +179,8 @@ public abstract class DAOImplBase {
         sql = sql.concat(sql_columnas);
         sql = sql.concat(" WHERE ");
         sql = sql.concat(sql_predicado);
+        System.out.println("Parámetros usados:");
+        for (var p : listaColumnas) System.out.println(p);
         return sql;
     }
 

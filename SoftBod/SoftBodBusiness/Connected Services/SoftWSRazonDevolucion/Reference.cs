@@ -16,45 +16,6 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
     public interface RazonDevolucion {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
-            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
-            "cionResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse insertarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
-            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
-            "cionResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> insertarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
-            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
-            "cionResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse eliminarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
-            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
-            "cionResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> eliminarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
-            "cionPorNombreParcialRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
-            "cionPorNombreParcialResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse listarRazonesDevolucionPorNombreParcial(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
-            "cionPorNombreParcialRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
-            "cionPorNombreParcialResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> listarRazonesDevolucionPorNombreParcialAsync(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/obtenerRazonDevoluc" +
             "ionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/obtenerRazonDevoluc" +
             "ionPorIdResponse")]
@@ -79,78 +40,45 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
             "evolucionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarTodasRazonesD" +
             "evolucionResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionResponse> listarTodasRazonesDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionRequest request);
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRazonDevolucion", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarRazonDevolucionRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string descripcion;
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
+            "cionPorNombreParcialRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
+            "cionPorNombreParcialResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse listarRazonesDevolucionPorNombreParcial(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request);
         
-        public insertarRazonDevolucionRequest() {
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
+            "cionPorNombreParcialRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolu" +
+            "cionPorNombreParcialResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> listarRazonesDevolucionPorNombreParcialAsync(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request);
         
-        public insertarRazonDevolucionRequest(string descripcion) {
-            this.descripcion = descripcion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRazonDevolucionResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class insertarRazonDevolucionResponse {
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
+            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
+            "cionResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse eliminarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request);
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
+            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolu" +
+            "cionResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> eliminarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request);
         
-        public insertarRazonDevolucionResponse() {
-        }
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
+            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
+            "cionResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse insertarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request);
         
-        public insertarRazonDevolucionResponse(int @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRazonDevolucion", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarRazonDevolucionRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int IdRazonDevolucion;
-        
-        public eliminarRazonDevolucionRequest() {
-        }
-        
-        public eliminarRazonDevolucionRequest(int IdRazonDevolucion) {
-            this.IdRazonDevolucion = IdRazonDevolucion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRazonDevolucionResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class eliminarRazonDevolucionResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int @return;
-        
-        public eliminarRazonDevolucionResponse() {
-        }
-        
-        public eliminarRazonDevolucionResponse(int @return) {
-            this.@return = @return;
-        }
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
+            "cionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolu" +
+            "cionResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> insertarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request);
     }
     
     /// <remarks/>
@@ -210,42 +138,6 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
             if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRazonesDevolucionPorNombreParcial", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarRazonesDevolucionPorNombreParcialRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string nombre;
-        
-        public listarRazonesDevolucionPorNombreParcialRequest() {
-        }
-        
-        public listarRazonesDevolucionPorNombreParcialRequest(string nombre) {
-            this.nombre = nombre;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRazonesDevolucionPorNombreParcialResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarRazonesDevolucionPorNombreParcialResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] @return;
-        
-        public listarRazonesDevolucionPorNombreParcialResponse() {
-        }
-        
-        public listarRazonesDevolucionPorNombreParcialResponse(SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] @return) {
-            this.@return = @return;
         }
     }
     
@@ -313,6 +205,114 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRazonesDevolucionPorNombreParcial", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarRazonesDevolucionPorNombreParcialRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string nombre;
+        
+        public listarRazonesDevolucionPorNombreParcialRequest() {
+        }
+        
+        public listarRazonesDevolucionPorNombreParcialRequest(string nombre) {
+            this.nombre = nombre;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarRazonesDevolucionPorNombreParcialResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarRazonesDevolucionPorNombreParcialResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] @return;
+        
+        public listarRazonesDevolucionPorNombreParcialResponse() {
+        }
+        
+        public listarRazonesDevolucionPorNombreParcialResponse(SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRazonDevolucion", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarRazonDevolucionRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int IdRazonDevolucion;
+        
+        public eliminarRazonDevolucionRequest() {
+        }
+        
+        public eliminarRazonDevolucionRequest(int IdRazonDevolucion) {
+            this.IdRazonDevolucion = IdRazonDevolucion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="eliminarRazonDevolucionResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class eliminarRazonDevolucionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public eliminarRazonDevolucionResponse() {
+        }
+        
+        public eliminarRazonDevolucionResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRazonDevolucion", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarRazonDevolucionRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string descripcion;
+        
+        public insertarRazonDevolucionRequest() {
+        }
+        
+        public insertarRazonDevolucionRequest(string descripcion) {
+            this.descripcion = descripcion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="insertarRazonDevolucionResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class insertarRazonDevolucionResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int @return;
+        
+        public insertarRazonDevolucionResponse() {
+        }
+        
+        public insertarRazonDevolucionResponse(int @return) {
+            this.@return = @return;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface RazonDevolucionChannel : SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion, System.ServiceModel.IClientChannel {
     }
@@ -338,75 +338,6 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
         
         public RazonDevolucionClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.insertarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request) {
-            return base.Channel.insertarRazonDevolucion(request);
-        }
-        
-        public int insertarRazonDevolucion(string descripcion) {
-            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest();
-            inValue.descripcion = descripcion;
-            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).insertarRazonDevolucion(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.insertarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request) {
-            return base.Channel.insertarRazonDevolucionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> insertarRazonDevolucionAsync(string descripcion) {
-            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest();
-            inValue.descripcion = descripcion;
-            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).insertarRazonDevolucionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.eliminarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request) {
-            return base.Channel.eliminarRazonDevolucion(request);
-        }
-        
-        public int eliminarRazonDevolucion(int IdRazonDevolucion) {
-            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest();
-            inValue.IdRazonDevolucion = IdRazonDevolucion;
-            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).eliminarRazonDevolucion(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.eliminarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request) {
-            return base.Channel.eliminarRazonDevolucionAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> eliminarRazonDevolucionAsync(int IdRazonDevolucion) {
-            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest();
-            inValue.IdRazonDevolucion = IdRazonDevolucion;
-            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).eliminarRazonDevolucionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.listarRazonesDevolucionPorNombreParcial(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request) {
-            return base.Channel.listarRazonesDevolucionPorNombreParcial(request);
-        }
-        
-        public SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] listarRazonesDevolucionPorNombreParcial(string nombre) {
-            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest();
-            inValue.nombre = nombre;
-            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).listarRazonesDevolucionPorNombreParcial(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.listarRazonesDevolucionPorNombreParcialAsync(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request) {
-            return base.Channel.listarRazonesDevolucionPorNombreParcialAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> listarRazonesDevolucionPorNombreParcialAsync(string nombre) {
-            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest();
-            inValue.nombre = nombre;
-            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).listarRazonesDevolucionPorNombreParcialAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -451,6 +382,75 @@ namespace SoftBodBusiness.SoftWSRazonDevolucion {
         public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionResponse> listarTodasRazonesDevolucionAsync() {
             SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionRequest();
             return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).listarTodasRazonesDevolucionAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.listarRazonesDevolucionPorNombreParcial(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request) {
+            return base.Channel.listarRazonesDevolucionPorNombreParcial(request);
+        }
+        
+        public SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO[] listarRazonesDevolucionPorNombreParcial(string nombre) {
+            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest();
+            inValue.nombre = nombre;
+            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).listarRazonesDevolucionPorNombreParcial(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.listarRazonesDevolucionPorNombreParcialAsync(SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest request) {
+            return base.Channel.listarRazonesDevolucionPorNombreParcialAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse> listarRazonesDevolucionPorNombreParcialAsync(string nombre) {
+            SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialRequest();
+            inValue.nombre = nombre;
+            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).listarRazonesDevolucionPorNombreParcialAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.eliminarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request) {
+            return base.Channel.eliminarRazonDevolucion(request);
+        }
+        
+        public int eliminarRazonDevolucion(int IdRazonDevolucion) {
+            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest();
+            inValue.IdRazonDevolucion = IdRazonDevolucion;
+            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).eliminarRazonDevolucion(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.eliminarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest request) {
+            return base.Channel.eliminarRazonDevolucionAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse> eliminarRazonDevolucionAsync(int IdRazonDevolucion) {
+            SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionRequest();
+            inValue.IdRazonDevolucion = IdRazonDevolucion;
+            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).eliminarRazonDevolucionAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.insertarRazonDevolucion(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request) {
+            return base.Channel.insertarRazonDevolucion(request);
+        }
+        
+        public int insertarRazonDevolucion(string descripcion) {
+            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest();
+            inValue.descripcion = descripcion;
+            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse retVal = ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).insertarRazonDevolucion(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion.insertarRazonDevolucionAsync(SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest request) {
+            return base.Channel.insertarRazonDevolucionAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse> insertarRazonDevolucionAsync(string descripcion) {
+            SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest inValue = new SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionRequest();
+            inValue.descripcion = descripcion;
+            return ((SoftBodBusiness.SoftWSRazonDevolucion.RazonDevolucion)(this)).insertarRazonDevolucionAsync(inValue);
         }
     }
 }

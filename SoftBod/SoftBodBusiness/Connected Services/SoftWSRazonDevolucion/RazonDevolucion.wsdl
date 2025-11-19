@@ -5,24 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/RazonDevolucion?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="insertarRazonDevolucion">
-    <part name="parameters" element="tns:insertarRazonDevolucion" />
-  </message>
-  <message name="insertarRazonDevolucionResponse">
-    <part name="parameters" element="tns:insertarRazonDevolucionResponse" />
-  </message>
-  <message name="eliminarRazonDevolucion">
-    <part name="parameters" element="tns:eliminarRazonDevolucion" />
-  </message>
-  <message name="eliminarRazonDevolucionResponse">
-    <part name="parameters" element="tns:eliminarRazonDevolucionResponse" />
-  </message>
-  <message name="listarRazonesDevolucionPorNombreParcial">
-    <part name="parameters" element="tns:listarRazonesDevolucionPorNombreParcial" />
-  </message>
-  <message name="listarRazonesDevolucionPorNombreParcialResponse">
-    <part name="parameters" element="tns:listarRazonesDevolucionPorNombreParcialResponse" />
-  </message>
   <message name="obtenerRazonDevolucionPorId">
     <part name="parameters" element="tns:obtenerRazonDevolucionPorId" />
   </message>
@@ -35,19 +17,25 @@
   <message name="listarTodasRazonesDevolucionResponse">
     <part name="parameters" element="tns:listarTodasRazonesDevolucionResponse" />
   </message>
+  <message name="listarRazonesDevolucionPorNombreParcial">
+    <part name="parameters" element="tns:listarRazonesDevolucionPorNombreParcial" />
+  </message>
+  <message name="listarRazonesDevolucionPorNombreParcialResponse">
+    <part name="parameters" element="tns:listarRazonesDevolucionPorNombreParcialResponse" />
+  </message>
+  <message name="eliminarRazonDevolucion">
+    <part name="parameters" element="tns:eliminarRazonDevolucion" />
+  </message>
+  <message name="eliminarRazonDevolucionResponse">
+    <part name="parameters" element="tns:eliminarRazonDevolucionResponse" />
+  </message>
+  <message name="insertarRazonDevolucion">
+    <part name="parameters" element="tns:insertarRazonDevolucion" />
+  </message>
+  <message name="insertarRazonDevolucionResponse">
+    <part name="parameters" element="tns:insertarRazonDevolucionResponse" />
+  </message>
   <portType name="RazonDevolucion">
-    <operation name="insertarRazonDevolucion">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolucionRequest" message="tns:insertarRazonDevolucion" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolucionResponse" message="tns:insertarRazonDevolucionResponse" />
-    </operation>
-    <operation name="eliminarRazonDevolucion">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolucionRequest" message="tns:eliminarRazonDevolucion" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolucionResponse" message="tns:eliminarRazonDevolucionResponse" />
-    </operation>
-    <operation name="listarRazonesDevolucionPorNombreParcial">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolucionPorNombreParcialRequest" message="tns:listarRazonesDevolucionPorNombreParcial" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolucionPorNombreParcialResponse" message="tns:listarRazonesDevolucionPorNombreParcialResponse" />
-    </operation>
     <operation name="obtenerRazonDevolucionPorId">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/obtenerRazonDevolucionPorIdRequest" message="tns:obtenerRazonDevolucionPorId" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/obtenerRazonDevolucionPorIdResponse" message="tns:obtenerRazonDevolucionPorIdResponse" />
@@ -56,10 +44,22 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarTodasRazonesDevolucionRequest" message="tns:listarTodasRazonesDevolucion" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarTodasRazonesDevolucionResponse" message="tns:listarTodasRazonesDevolucionResponse" />
     </operation>
+    <operation name="listarRazonesDevolucionPorNombreParcial">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolucionPorNombreParcialRequest" message="tns:listarRazonesDevolucionPorNombreParcial" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/listarRazonesDevolucionPorNombreParcialResponse" message="tns:listarRazonesDevolucionPorNombreParcialResponse" />
+    </operation>
+    <operation name="eliminarRazonDevolucion">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolucionRequest" message="tns:eliminarRazonDevolucion" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/eliminarRazonDevolucionResponse" message="tns:eliminarRazonDevolucionResponse" />
+    </operation>
+    <operation name="insertarRazonDevolucion">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolucionRequest" message="tns:insertarRazonDevolucion" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RazonDevolucion/insertarRazonDevolucionResponse" message="tns:insertarRazonDevolucionResponse" />
+    </operation>
   </portType>
   <binding name="RazonDevolucionPortBinding" type="tns:RazonDevolucion">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarRazonDevolucion">
+    <operation name="obtenerRazonDevolucionPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -68,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="eliminarRazonDevolucion">
+    <operation name="listarTodasRazonesDevolucion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -86,7 +86,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerRazonDevolucionPorId">
+    <operation name="eliminarRazonDevolucion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -95,7 +95,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodasRazonesDevolucion">
+    <operation name="insertarRazonDevolucion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

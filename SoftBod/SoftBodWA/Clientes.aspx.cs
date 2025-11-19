@@ -12,6 +12,7 @@ namespace SoftBodWA
     public partial class Clientes : System.Web.UI.Page
     {
         private ClienteAlFiadoBO clienteBO;
+        private RegistroPagoFiadoBO regPagoBO;
         private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
         public Clientes()
         {
@@ -60,6 +61,7 @@ namespace SoftBodWA
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
                 string fechaLimiteStr = DateTime.Parse(txtFechaLimite.Text).ToString("yyyy-MM-dd");
+                double monto = 0.0;
 
                 if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
@@ -263,10 +265,12 @@ namespace SoftBodWA
 
         protected void btnRegistrarPago_Click(object sender, EventArgs e)
         {
-            // Obtener alias y monto a pagar desde los controles del modal
-            string alias = lblAlias.Text;
+            try
+            {
+                // Obtener alias y monto a pagar desde los controles del modal
+                string alias = lblAlias.Text;
             string montoStr = txtMontoPagar.Text.Trim();
-            double monto;
+            double monto= Convert.ToDouble(montoStr);
 
             if (string.IsNullOrEmpty(alias) || !double.TryParse(montoStr, out monto) || monto <= 0)
             {
@@ -294,8 +298,13 @@ namespace SoftBodWA
             }
 
             ClienteAlFiadoBO clienteMod = new ClienteAlFiadoBO();
+            cliente.montoDeuda = cliente.montoDeuda - monto;
 
-          
+            clienteBO.modificarClienteAlFiado(cliente);
+
+            //regPagoBO.registrarPagoFiado(monto);
+            CargarClientes();
+
 
             ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
                 "alert('Pago registrado exitosamente.');", true);
@@ -303,6 +312,16 @@ namespace SoftBodWA
             //cerrar el modal con JS
             string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
             ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(
+                    this, GetType(),
+                    "errorUpdate",
+                    $"alert('Error al actualizar cliente: {ex.Message}');",
+                    true
+                );
+            }
         }
         
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)

@@ -51,19 +51,6 @@ namespace SoftBodBusiness.SoftWSCategoria {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.categoriaContieneProductosResponse> categoriaContieneProductosAsync(SoftBodBusiness.SoftWSCategoria.categoriaContieneProductosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
-            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
-            "sponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse nombreCategoriaYaExiste(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
-            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
-            "sponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> nombreCategoriaYaExisteAsync(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/obtenerCategoriaPorIdRequ" +
             "est", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/obtenerCategoriaPorIdResp" +
             "onse")]
@@ -75,6 +62,19 @@ namespace SoftBodBusiness.SoftWSCategoria {
             "est", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/obtenerCategoriaPorIdResp" +
             "onse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdResponse> obtenerCategoriaPorIdAsync(SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaReq" +
+            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaRes" +
+            "ponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse puedeEliminarCategoria(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaReq" +
+            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> puedeEliminarCategoriaAsync(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/listarTodasCategoriasRequ" +
@@ -90,17 +90,17 @@ namespace SoftBodBusiness.SoftWSCategoria {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.listarTodasCategoriasResponse> listarTodasCategoriasAsync(SoftBodBusiness.SoftWSCategoria.listarTodasCategoriasRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaReq" +
-            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaRes" +
-            "ponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
+            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
+            "sponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse puedeEliminarCategoria(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request);
+        SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse nombreCategoriaYaExiste(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaReq" +
-            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaRes" +
-            "ponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> puedeEliminarCategoriaAsync(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
+            "quest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRe" +
+            "sponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> nombreCategoriaYaExisteAsync(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -140,7 +140,7 @@ namespace SoftBodBusiness.SoftWSCategoria {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -274,42 +274,6 @@ namespace SoftBodBusiness.SoftWSCategoria {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="nombreCategoriaYaExiste", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class nombreCategoriaYaExisteRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string descripcion;
-        
-        public nombreCategoriaYaExisteRequest() {
-        }
-        
-        public nombreCategoriaYaExisteRequest(string descripcion) {
-            this.descripcion = descripcion;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="nombreCategoriaYaExisteResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class nombreCategoriaYaExisteResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public bool @return;
-        
-        public nombreCategoriaYaExisteResponse() {
-        }
-        
-        public nombreCategoriaYaExisteResponse(bool @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerCategoriaPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
     public partial class obtenerCategoriaPorIdRequest {
         
@@ -346,34 +310,6 @@ namespace SoftBodBusiness.SoftWSCategoria {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasCategorias", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodasCategoriasRequest {
-        
-        public listarTodasCategoriasRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasCategoriasResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodasCategoriasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSCategoria.categoriaDTO[] @return;
-        
-        public listarTodasCategoriasResponse() {
-        }
-        
-        public listarTodasCategoriasResponse(SoftBodBusiness.SoftWSCategoria.categoriaDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="puedeEliminarCategoria", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
     public partial class puedeEliminarCategoriaRequest {
         
@@ -403,6 +339,70 @@ namespace SoftBodBusiness.SoftWSCategoria {
         }
         
         public puedeEliminarCategoriaResponse(bool @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasCategorias", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodasCategoriasRequest {
+        
+        public listarTodasCategoriasRequest() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodasCategoriasResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodasCategoriasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSCategoria.categoriaDTO[] @return;
+        
+        public listarTodasCategoriasResponse() {
+        }
+        
+        public listarTodasCategoriasResponse(SoftBodBusiness.SoftWSCategoria.categoriaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="nombreCategoriaYaExiste", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class nombreCategoriaYaExisteRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string descripcion;
+        
+        public nombreCategoriaYaExisteRequest() {
+        }
+        
+        public nombreCategoriaYaExisteRequest(string descripcion) {
+            this.descripcion = descripcion;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="nombreCategoriaYaExisteResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class nombreCategoriaYaExisteResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public bool @return;
+        
+        public nombreCategoriaYaExisteResponse() {
+        }
+        
+        public nombreCategoriaYaExisteResponse(bool @return) {
             this.@return = @return;
         }
     }
@@ -504,29 +504,6 @@ namespace SoftBodBusiness.SoftWSCategoria {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse SoftBodBusiness.SoftWSCategoria.Categoria.nombreCategoriaYaExiste(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request) {
-            return base.Channel.nombreCategoriaYaExiste(request);
-        }
-        
-        public bool nombreCategoriaYaExiste(string descripcion) {
-            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest inValue = new SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest();
-            inValue.descripcion = descripcion;
-            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse retVal = ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).nombreCategoriaYaExiste(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> SoftBodBusiness.SoftWSCategoria.Categoria.nombreCategoriaYaExisteAsync(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request) {
-            return base.Channel.nombreCategoriaYaExisteAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> nombreCategoriaYaExisteAsync(string descripcion) {
-            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest inValue = new SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest();
-            inValue.descripcion = descripcion;
-            return ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).nombreCategoriaYaExisteAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdResponse SoftBodBusiness.SoftWSCategoria.Categoria.obtenerCategoriaPorId(SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdRequest request) {
             return base.Channel.obtenerCategoriaPorId(request);
         }
@@ -547,6 +524,29 @@ namespace SoftBodBusiness.SoftWSCategoria {
             SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdRequest inValue = new SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdRequest();
             inValue.categoriaId = categoriaId;
             return ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).obtenerCategoriaPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse SoftBodBusiness.SoftWSCategoria.Categoria.puedeEliminarCategoria(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request) {
+            return base.Channel.puedeEliminarCategoria(request);
+        }
+        
+        public bool puedeEliminarCategoria(int categoriaId) {
+            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest inValue = new SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest();
+            inValue.categoriaId = categoriaId;
+            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse retVal = ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).puedeEliminarCategoria(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> SoftBodBusiness.SoftWSCategoria.Categoria.puedeEliminarCategoriaAsync(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request) {
+            return base.Channel.puedeEliminarCategoriaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> puedeEliminarCategoriaAsync(int categoriaId) {
+            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest inValue = new SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest();
+            inValue.categoriaId = categoriaId;
+            return ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).puedeEliminarCategoriaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -571,26 +571,26 @@ namespace SoftBodBusiness.SoftWSCategoria {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse SoftBodBusiness.SoftWSCategoria.Categoria.puedeEliminarCategoria(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request) {
-            return base.Channel.puedeEliminarCategoria(request);
+        SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse SoftBodBusiness.SoftWSCategoria.Categoria.nombreCategoriaYaExiste(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request) {
+            return base.Channel.nombreCategoriaYaExiste(request);
         }
         
-        public bool puedeEliminarCategoria(int categoriaId) {
-            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest inValue = new SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest();
-            inValue.categoriaId = categoriaId;
-            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse retVal = ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).puedeEliminarCategoria(inValue);
+        public bool nombreCategoriaYaExiste(string descripcion) {
+            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest inValue = new SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest();
+            inValue.descripcion = descripcion;
+            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse retVal = ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).nombreCategoriaYaExiste(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> SoftBodBusiness.SoftWSCategoria.Categoria.puedeEliminarCategoriaAsync(SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest request) {
-            return base.Channel.puedeEliminarCategoriaAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> SoftBodBusiness.SoftWSCategoria.Categoria.nombreCategoriaYaExisteAsync(SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest request) {
+            return base.Channel.nombreCategoriaYaExisteAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse> puedeEliminarCategoriaAsync(int categoriaId) {
-            SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest inValue = new SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaRequest();
-            inValue.categoriaId = categoriaId;
-            return ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).puedeEliminarCategoriaAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse> nombreCategoriaYaExisteAsync(string descripcion) {
+            SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest inValue = new SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteRequest();
+            inValue.descripcion = descripcion;
+            return ((SoftBodBusiness.SoftWSCategoria.Categoria)(this)).nombreCategoriaYaExisteAsync(inValue);
         }
     }
 }

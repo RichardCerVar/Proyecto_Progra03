@@ -5,23 +5,11 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/DetalleDevolucion?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="insertarDetalleDevolucion">
-    <part name="parameters" element="tns:insertarDetalleDevolucion" />
+  <message name="listarDetallesDevolucionPorRazon">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorRazon" />
   </message>
-  <message name="insertarDetalleDevolucionResponse">
-    <part name="parameters" element="tns:insertarDetalleDevolucionResponse" />
-  </message>
-  <message name="listarDetallesDevolucionPorProducto">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorProducto" />
-  </message>
-  <message name="listarDetallesDevolucionPorProductoResponse">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorProductoResponse" />
-  </message>
-  <message name="listarDetallesDevolucionPorDevolucion">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorDevolucion" />
-  </message>
-  <message name="listarDetallesDevolucionPorDevolucionResponse">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorDevolucionResponse" />
+  <message name="listarDetallesDevolucionPorRazonResponse">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorRazonResponse" />
   </message>
   <message name="listarTodosDetallesDevolucion">
     <part name="parameters" element="tns:listarTodosDetallesDevolucion" />
@@ -35,24 +23,28 @@
   <message name="obtenerDetalleDevolucionPorIdResponse">
     <part name="parameters" element="tns:obtenerDetalleDevolucionPorIdResponse" />
   </message>
-  <message name="listarDetallesDevolucionPorRazon">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorRazon" />
+  <message name="listarDetallesDevolucionPorDevolucion">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorDevolucion" />
   </message>
-  <message name="listarDetallesDevolucionPorRazonResponse">
-    <part name="parameters" element="tns:listarDetallesDevolucionPorRazonResponse" />
+  <message name="listarDetallesDevolucionPorDevolucionResponse">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorDevolucionResponse" />
+  </message>
+  <message name="listarDetallesDevolucionPorProducto">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorProducto" />
+  </message>
+  <message name="listarDetallesDevolucionPorProductoResponse">
+    <part name="parameters" element="tns:listarDetallesDevolucionPorProductoResponse" />
+  </message>
+  <message name="insertarDetalleDevolucion">
+    <part name="parameters" element="tns:insertarDetalleDevolucion" />
+  </message>
+  <message name="insertarDetalleDevolucionResponse">
+    <part name="parameters" element="tns:insertarDetalleDevolucionResponse" />
   </message>
   <portType name="DetalleDevolucion">
-    <operation name="insertarDetalleDevolucion">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDevolucionRequest" message="tns:insertarDetalleDevolucion" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDevolucionResponse" message="tns:insertarDetalleDevolucionResponse" />
-    </operation>
-    <operation name="listarDetallesDevolucionPorProducto">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorProductoRequest" message="tns:listarDetallesDevolucionPorProducto" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorProductoResponse" message="tns:listarDetallesDevolucionPorProductoResponse" />
-    </operation>
-    <operation name="listarDetallesDevolucionPorDevolucion">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorDevolucionRequest" message="tns:listarDetallesDevolucionPorDevolucion" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorDevolucionResponse" message="tns:listarDetallesDevolucionPorDevolucionResponse" />
+    <operation name="listarDetallesDevolucionPorRazon">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonRequest" message="tns:listarDetallesDevolucionPorRazon" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonResponse" message="tns:listarDetallesDevolucionPorRazonResponse" />
     </operation>
     <operation name="listarTodosDetallesDevolucion">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarTodosDetallesDevolucionRequest" message="tns:listarTodosDetallesDevolucion" />
@@ -62,32 +54,22 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdRequest" message="tns:obtenerDetalleDevolucionPorId" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/obtenerDetalleDevolucionPorIdResponse" message="tns:obtenerDetalleDevolucionPorIdResponse" />
     </operation>
-    <operation name="listarDetallesDevolucionPorRazon">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonRequest" message="tns:listarDetallesDevolucionPorRazon" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorRazonResponse" message="tns:listarDetallesDevolucionPorRazonResponse" />
+    <operation name="listarDetallesDevolucionPorDevolucion">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorDevolucionRequest" message="tns:listarDetallesDevolucionPorDevolucion" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorDevolucionResponse" message="tns:listarDetallesDevolucionPorDevolucionResponse" />
+    </operation>
+    <operation name="listarDetallesDevolucionPorProducto">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorProductoRequest" message="tns:listarDetallesDevolucionPorProducto" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/listarDetallesDevolucionPorProductoResponse" message="tns:listarDetallesDevolucionPorProductoResponse" />
+    </operation>
+    <operation name="insertarDetalleDevolucion">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDevolucionRequest" message="tns:insertarDetalleDevolucion" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleDevolucion/insertarDetalleDevolucionResponse" message="tns:insertarDetalleDevolucionResponse" />
     </operation>
   </portType>
   <binding name="DetalleDevolucionPortBinding" type="tns:DetalleDevolucion">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="insertarDetalleDevolucion">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarDetallesDevolucionPorProducto">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarDetallesDevolucionPorDevolucion">
+    <operation name="listarDetallesDevolucionPorRazon">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -114,7 +96,25 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarDetallesDevolucionPorRazon">
+    <operation name="listarDetallesDevolucionPorDevolucion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDetallesDevolucionPorProducto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarDetalleDevolucion">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

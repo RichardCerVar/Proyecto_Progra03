@@ -5,24 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/DetalleVenta?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="listarTodosDetallesVenta">
-    <part name="parameters" element="tns:listarTodosDetallesVenta" />
-  </message>
-  <message name="listarTodosDetallesVentaResponse">
-    <part name="parameters" element="tns:listarTodosDetallesVentaResponse" />
-  </message>
-  <message name="obtenerDetalleVentaPorId">
-    <part name="parameters" element="tns:obtenerDetalleVentaPorId" />
-  </message>
-  <message name="obtenerDetalleVentaPorIdResponse">
-    <part name="parameters" element="tns:obtenerDetalleVentaPorIdResponse" />
-  </message>
-  <message name="insertarDetalleVenta">
-    <part name="parameters" element="tns:insertarDetalleVenta" />
-  </message>
-  <message name="insertarDetalleVentaResponse">
-    <part name="parameters" element="tns:insertarDetalleVentaResponse" />
-  </message>
   <message name="listarDetallesVentaPorProducto">
     <part name="parameters" element="tns:listarDetallesVentaPorProducto" />
   </message>
@@ -35,19 +17,25 @@
   <message name="listarDetallesVentaPorVentaResponse">
     <part name="parameters" element="tns:listarDetallesVentaPorVentaResponse" />
   </message>
+  <message name="obtenerDetalleVentaPorId">
+    <part name="parameters" element="tns:obtenerDetalleVentaPorId" />
+  </message>
+  <message name="obtenerDetalleVentaPorIdResponse">
+    <part name="parameters" element="tns:obtenerDetalleVentaPorIdResponse" />
+  </message>
+  <message name="listarTodosDetallesVenta">
+    <part name="parameters" element="tns:listarTodosDetallesVenta" />
+  </message>
+  <message name="listarTodosDetallesVentaResponse">
+    <part name="parameters" element="tns:listarTodosDetallesVentaResponse" />
+  </message>
+  <message name="insertarDetalleVenta">
+    <part name="parameters" element="tns:insertarDetalleVenta" />
+  </message>
+  <message name="insertarDetalleVentaResponse">
+    <part name="parameters" element="tns:insertarDetalleVentaResponse" />
+  </message>
   <portType name="DetalleVenta">
-    <operation name="listarTodosDetallesVenta">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarTodosDetallesVentaRequest" message="tns:listarTodosDetallesVenta" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarTodosDetallesVentaResponse" message="tns:listarTodosDetallesVentaResponse" />
-    </operation>
-    <operation name="obtenerDetalleVentaPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/obtenerDetalleVentaPorIdRequest" message="tns:obtenerDetalleVentaPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/obtenerDetalleVentaPorIdResponse" message="tns:obtenerDetalleVentaPorIdResponse" />
-    </operation>
-    <operation name="insertarDetalleVenta">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/insertarDetalleVentaRequest" message="tns:insertarDetalleVenta" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/insertarDetalleVentaResponse" message="tns:insertarDetalleVentaResponse" />
-    </operation>
     <operation name="listarDetallesVentaPorProducto">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarDetallesVentaPorProductoRequest" message="tns:listarDetallesVentaPorProducto" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarDetallesVentaPorProductoResponse" message="tns:listarDetallesVentaPorProductoResponse" />
@@ -56,10 +44,31 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarDetallesVentaPorVentaRequest" message="tns:listarDetallesVentaPorVenta" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarDetallesVentaPorVentaResponse" message="tns:listarDetallesVentaPorVentaResponse" />
     </operation>
+    <operation name="obtenerDetalleVentaPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/obtenerDetalleVentaPorIdRequest" message="tns:obtenerDetalleVentaPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/obtenerDetalleVentaPorIdResponse" message="tns:obtenerDetalleVentaPorIdResponse" />
+    </operation>
+    <operation name="listarTodosDetallesVenta">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarTodosDetallesVentaRequest" message="tns:listarTodosDetallesVenta" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/listarTodosDetallesVentaResponse" message="tns:listarTodosDetallesVentaResponse" />
+    </operation>
+    <operation name="insertarDetalleVenta">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/insertarDetalleVentaRequest" message="tns:insertarDetalleVenta" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/DetalleVenta/insertarDetalleVentaResponse" message="tns:insertarDetalleVentaResponse" />
+    </operation>
   </portType>
   <binding name="DetalleVentaPortBinding" type="tns:DetalleVenta">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="listarTodosDetallesVenta">
+    <operation name="listarDetallesVentaPorProducto">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarDetallesVentaPorVenta">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,25 +86,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
+    <operation name="listarTodosDetallesVenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
     <operation name="insertarDetalleVenta">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarDetallesVentaPorProducto">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarDetallesVentaPorVenta">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

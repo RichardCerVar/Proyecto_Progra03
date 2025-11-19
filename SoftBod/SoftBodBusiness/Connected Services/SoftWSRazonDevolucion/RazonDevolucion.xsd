@@ -20,16 +20,6 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="eliminarRazonDevolucion">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="IdRazonDevolucion" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="eliminarRazonDevolucionResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="obtenerRazonDevolucionPorId">
     <xs:sequence>
       <xs:element minOccurs="0" name="razonId" type="xs:int" />
@@ -44,6 +34,16 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="descripcion" type="xs:string" />
       <xs:element minOccurs="0" name="razonDevolucionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarRazonDevolucion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdRazonDevolucion" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="eliminarRazonDevolucionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarTodasRazonesDevolucion">

@@ -1,20 +1,20 @@
-//package pe.edu.pucp.softbod.dao;
-//
-//import pe.edu.pucp.softbod.dao.gestclientes.ClienteAlFiadoDAO;
-//import java.util.ArrayList;
-//import java.sql.Date;
-//import org.junit.jupiter.api.Test;
-//import static org.junit.jupiter.api.Assertions.*;
-//import pe.edu.pucp.softbod.daoImp.gestclientes.ClienteAlFiadoDAOImpl;
-//import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
-//
-//public class ClienteAlFiadoDAOTest { 
+package pe.edu.pucp.softbod.dao;
+
+import pe.edu.pucp.softbod.dao.gestclientes.ClienteAlFiadoDAO;
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import pe.edu.pucp.softbod.daoImp.gestclientes.ClienteAlFiadoDAOImpl;
+
+import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
+
+public class ClienteAlFiadoDAOTest { 
 //    
-//    private ClienteAlFiadoDAO clienteAlFiadoDAO;
+    private ClienteAlFiadoDAO clienteAlFiadoDAO;
 //    
-//    public ClienteAlFiadoDAOTest() {
-//        this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImpl();
-//    }
+    public ClienteAlFiadoDAOTest() {
+        this.clienteAlFiadoDAO = new ClienteAlFiadoDAOImpl();
+    }
 //    
 //    private void imprimeClienteAlFiado(ClienteAlFiadoDTO cliente) {
 //        System.out.println("id: " + cliente.getClienteId());
@@ -64,26 +64,26 @@
 //        imprimeClienteAlFiado(cliente);
 //    }
 //
-//    //@Test
-//    public void testModificar() {
-//        System.out.println("modificar-ClienteAlFiadoDAOTest");
-//        System.out.println("--------------------------------");
-//
-//        ClienteAlFiadoDTO cliente = this.clienteAlFiadoDAO.obtenerPorId(264);
-//        assertNotNull(cliente);
-//        System.out.println("CLIENTE AL FIADO Antes: ");
-//        imprimeClienteAlFiado(cliente);
-//
-//        cliente.setAlias("Alexito Pro (Actualizado)");
-//        cliente.setTelefono("912345678");
-//
-//        Integer resultado = this.clienteAlFiadoDAO.modificar(cliente);
-//        assert(resultado!=0);
-//        
-//        System.out.println("CLIENTE AL FIADO Despues: ");
-//        imprimeClienteAlFiado(cliente);
-//    }
+    @Test
+    public void testModificar() {
+        System.out.println("modificar-ClienteAlFiadoDAOTest");
+        System.out.println("--------------------------------");
+
+        ClienteAlFiadoDTO cliente = this.clienteAlFiadoDAO.obtenerPorId(1);
+        assertNotNull(cliente);
+        System.out.println("CLIENTE AL FIADO Antes: ");
+        
+
+        cliente.setAlias("Alexito Pro (Actualizado)");
+        cliente.setTelefono("912345678");
+
+        Integer resultado = this.clienteAlFiadoDAO.modificar(cliente);
+        assert(resultado!=0);
+        
+        System.out.println("CLIENTE AL FIADO Despues: ");
+        //imprimeClienteAlFiado(cliente);
+    }
 //
 //    
-//}
+}
 //
