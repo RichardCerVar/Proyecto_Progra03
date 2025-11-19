@@ -61,7 +61,6 @@ namespace SoftBodWA
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
                 string fechaLimiteStr = DateTime.Parse(txtFechaLimite.Text).ToString("yyyy-MM-dd");
-                double monto = 0.0;
 
                 if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
@@ -122,7 +121,7 @@ namespace SoftBodWA
 
         private void ActualizarResumen(List<WSClienteAlFiado.clienteAlFiadoDTO> clientes)
         {
-            var clientesConDeuda = clientes.Where(c => c.montoDeuda > 0).ToList();
+            var clientesConDeuda = clientes.Where(c => c.activo = true).ToList();
 
             double totalDeuda = clientesConDeuda.Sum(c => c.montoDeuda);
             int activos = clientesConDeuda.Count;
