@@ -128,6 +128,7 @@
     <Content Include="Scripts\SoftBodScripts\AgregarNuevoProducto.js" />
     <Content Include="Scripts\SoftBodScripts\AgregarOperario.js" />
     <Content Include="Scripts\SoftBodScripts\AjustarStock.js" />
+    <Content Include="Scripts\SoftBodScripts\Contrasena.js" />
     <Content Include="Scripts\SoftBodScripts\EditarCliente.js" />
     <Content Include="Scripts\SoftBodScripts\EditarOperario.js" />
     <Content Include="Scripts\SoftBodScripts\EliminarCliente.js" />

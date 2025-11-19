@@ -4,7 +4,12 @@
     <script src="Scripts/SoftBodScripts/AgregarOperario.js"></script>
     <script src="Scripts/SoftBodScripts/EditarOperario.js"></script>
     <script src="Scripts/SoftBodScripts/EliminarOperario.js"></script>
+    <script src="Scripts/SoftBodScripts/Contrasena.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </asp:Content>
+
+
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
     <div class="container-fluid px-3 py-3">
@@ -152,8 +157,17 @@
 
                             <!-- Contraseña Temporal -->
                             <div class="mb-3">
+
+                        
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Contraseña Temporal" AssociatedControlID="txtContraseñaTemporal"></asp:Label>
-                                <asp:TextBox ID="txtContraseñaTemporal" CssClass="form-control" TextMode="Password" placeholder="********" runat="server"></asp:TextBox>
+                                <div class="input-group password-container">
+                                <asp:TextBox ID="txtContraseñaTemporal" CssClass="form-control" TextMode="Password" placeholder="********" runat="server" ClientIDMode="Static"></asp:TextBox>
+                                <button 
+                                    class="btn btn-outline-secondary toggle-password" 
+                                    type="button" 
+                                    id="togglePassword"
+                                    onclick="togglePasswordVisibility('txtContraseñaTemporal'); return false;"> <i class="bi bi-eye"></i> </button>
+                                </div>
                             </div>
 
                             <!-- Botón Crear Operario -->

@@ -5,6 +5,7 @@
     <title>Iniciar Sesión - Sistema de Bodega</title>
     <meta charset="utf-8" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body {
             background-color: #f8f9fa;
@@ -45,7 +46,23 @@
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Contraseña</label>
-                    <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password" placeholder="********"></asp:TextBox>
+
+                    <div class="input-group password-container">
+        
+                    <asp:TextBox 
+                        ID="txtPassword" 
+                        runat="server" 
+                        CssClass="form-control" 
+                        TextMode="Password" 
+                        placeholder="********"
+                        ClientIDMode="Static"> </asp:TextBox>
+        
+                    <button 
+                        class="btn btn-outline-secondary toggle-password" 
+                        type="button" 
+                        id="togglePassword"
+                        onclick="togglePasswordVisibility('txtPassword'); return false;"> <i class="bi bi-eye"></i> </button>
+                    </div>
                 </div>
                 <div class="d-grid mb-2">
                     <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-dark fw-bold" OnClick="btnLogin_Click" />
@@ -60,5 +77,7 @@
             </div>
         </div>
     </form>
+    <script src="Scripts/SoftBodScripts/Contrasena.js"></script>
+
 </body>
 </html>
