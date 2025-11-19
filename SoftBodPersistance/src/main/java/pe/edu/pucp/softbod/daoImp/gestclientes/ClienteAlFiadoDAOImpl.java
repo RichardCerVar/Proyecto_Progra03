@@ -39,6 +39,7 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
         this.listaColumnas.add(new Columna("TELEFONO",false,false));
         this.listaColumnas.add(new Columna("FECHA_DE_PAGO",false,false));
         this.listaColumnas.add(new Columna("ACTIVO",false,false));
+        this.listaColumnas.add(new Columna("MONTO_DEUDA",false,false));
     }
 
     @Override
@@ -48,6 +49,7 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
         this.statement.setDate(4,Date.valueOf(this.clienteAlFiado.getFechaDePago()));
         this.statement.setBoolean(5,this.clienteAlFiado.getActivo());
+        this.statement.setDouble(6,this.clienteAlFiado.getMontoDeuda());
     }
 
     @Override
@@ -57,7 +59,8 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
         this.statement.setString(3, this.clienteAlFiado.getTelefono());
         this.statement.setDate(4, Date.valueOf(this.clienteAlFiado.getFechaDePago()));
         this.statement.setBoolean(5, this.clienteAlFiado.getActivo());
-        this.statement.setInt(6, this.clienteAlFiado.getClienteId());
+        this.statement.setDouble(6,this.clienteAlFiado.getMontoDeuda());
+        this.statement.setInt(7, this.clienteAlFiado.getClienteId());
     }
     
     @Override
