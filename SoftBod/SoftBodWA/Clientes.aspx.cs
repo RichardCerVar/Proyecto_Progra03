@@ -12,7 +12,7 @@ namespace SoftBodWA
     public partial class Clientes : System.Web.UI.Page
     {
         private ClienteAlFiadoBO clienteBO;
-        private RegistroPagoFiadoBO regPagoBO;
+
         private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
         public Clientes()
         {
@@ -322,7 +322,39 @@ namespace SoftBodWA
                 );
             }
         }
-        
+
+        protected void btnBuscar_Click(object sender, EventArgs e)
+        {
+            string busqueda = txtBuscar.Text.Trim();
+
+            CargarClientes(busqueda);
+        }
+
+        private void CargarClientes(string termoBusca = "")
+        {
+            
+
+
+            if (string.IsNullOrWhiteSpace(termoBusca))
+            {
+
+                clientes = clienteBO.listarTodosClientesAlFiado();
+
+                ClientesData = clientes;
+            }
+            else
+            {
+                clientes = clienteBO.listarTodosClientesAlFiadoLike(termoBusca);
+
+            }
+
+            rptClientes.DataSource = clientes;
+            rptClientes.DataBind();
+
+            ActualizarResumen(clientes);
+        }
+
+
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
         {
             try

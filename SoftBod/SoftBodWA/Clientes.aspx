@@ -19,12 +19,23 @@
                         OnClick="btnAgregar_Click" />
         </div>
 
-        <div class="input-group mb-4">
-            <span class="input-group-text bg-white border-end-0">
-                <i class="bi bi-search text-muted"></i>
-            </span>
-            <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control border-start-0" placeholder="Buscar cliente por alias..." />
-        </div>
+        <asp:Panel ID="pnlBusqueda" runat="server" DefaultButton="btnBuscar">
+            <div class="input-group mb-4">
+                <span class="input-group-text bg-white border-end-0">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <!-- El TextBox ya no necesita el border-start-0 ya que el botón lo continuará -->
+                <asp:TextBox ID="txtBuscar" runat="server"
+                    CssClass="form-control border-0"
+                    placeholder="Buscar cliente por alias..." />
+                
+                <!-- Botón de Búsqueda Dedicado -->
+                <asp:Button ID="btnBuscar" runat="server"
+                    Text="Buscar"
+                    CssClass="btn btn-primary fw-bold"
+                    OnClick="btnBuscar_Click" />
+            </div>
+        </asp:Panel>
 
         <div class="card border-0 mb-4" style="background: linear-gradient(to right, #fff6f1, #fff9f4);">
             <div class="card-body d-flex justify-content-between align-items-center">
