@@ -205,9 +205,9 @@ namespace SoftBodWA
                 if (usuario != null)
                 {
 
-                    int tieneReg = historialBO.listarHistorialOperacionesPorUsuario(usuario.usuarioId).Count;
+                    var tieneReg = historialBO.listarHistorialOperacionesPorUsuario(usuario.usuarioId).Count();
                     string mensaje = "";
-                    if( tieneReg > 0)
+                    if(tieneReg >0)
                     {
                         int resultadoLogico = usuarioBO.eliminarLogicoUsuario(
                             usuario.usuarioId,

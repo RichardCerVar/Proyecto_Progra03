@@ -33,7 +33,14 @@ namespace SoftBodBusiness
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorUsuario(int usuarioId)
         {
-            return historialSOAP.listarHistorialOperacionesPorUsuario(usuarioId).ToList();
+            var resultado = historialSOAP.listarHistorialOperacionesPorUsuario(usuarioId);
+
+            if (resultado == null)
+            {
+                return new List<historialOperacionesDTO>();
+            }
+
+            return resultado.ToList();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorTabla(string nombreTabla)
