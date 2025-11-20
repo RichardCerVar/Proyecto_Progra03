@@ -18,6 +18,7 @@ namespace SoftBodWA
         private readonly VentaAlFiadoBO ventaAlFiadoBO;
         private readonly ClienteAlFiadoBO clienteAlFiadoBO;
         private readonly ProductoBO productoBO;
+        private readonly CategoriaBO categoriaBO;
 
         public RegistrarVenta()
         {
@@ -25,6 +26,7 @@ namespace SoftBodWA
             this.ventaAlFiadoBO = new VentaAlFiadoBO();
             this.clienteAlFiadoBO = new ClienteAlFiadoBO();
             this.productoBO = new ProductoBO();
+            this.categoriaBO = new CategoriaBO();
         }
 
         private List<WSDetalleVenta.detalleVentaDTO> Carrito
@@ -53,10 +55,35 @@ namespace SoftBodWA
         {
             if (!IsPostBack)
             {
+                // Limpiar carrito al entrar por primera vez
+                Carrito.Clear();
+
+                CargarCategoriasDropDownList();
                 CargarClientesDropDownList();
+                CargarProductosDisponibles();
+                ActualizarInterfaz();
             }
-            CargarProductosDisponibles();
-            ActualizarInterfaz();
+        }
+
+        private void CargarCategoriasDropDownList()
+        {
+            ddlCategoriaFiltro.Items.Clear();
+            ddlCategoriaFiltro.Items.Add(new ListItem("Todas las categorías", "0"));
+
+            try
+            {
+                var categorias = categoriaBO.listarTodasCategorias();
+
+                var items = categorias
+                    .Select(c => new ListItem(c.descripcion, c.categoriaId.ToString()))
+                    .ToArray();
+
+                ddlCategoriaFiltro.Items.AddRange(items);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorCargaCategorias", $"alert('Error al cargar categorías: {ex.Message}');", true);
+            }
         }
 
         private void CargarProductosDisponibles()
@@ -64,11 +91,29 @@ namespace SoftBodWA
             List<WSProducto.productoDTO> productos;
 
             bool activoFiltro = true;
-            string categoriaFiltro = ddlCategoriaFiltro.SelectedValue;
+            string categoriaFiltro = "";
             string nombreFiltro = txtBuscarProducto.Text.Trim();
 
-            if (categoriaFiltro == "0") categoriaFiltro = "";
-            else categoriaFiltro = ddlCategoriaFiltro.SelectedItem.Text;
+            // Si se seleccionó una categoría específica (no "Todas")
+            if (ddlCategoriaFiltro.SelectedValue != "0")
+            {
+                int categoriaId = int.Parse(ddlCategoriaFiltro.SelectedValue);
+                // Buscar el nombre de la categoría por su ID
+                try
+                {
+                    var categoria = categoriaBO.listarTodasCategorias()
+                        .FirstOrDefault(c => c.categoriaId == categoriaId);
+
+                    if (categoria != null)
+                    {
+                        categoriaFiltro = categoria.descripcion;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorCategoria", $"alert('Error al obtener categoría: {ex.Message}');", true);
+                }
+            }
 
             try
             {
@@ -85,8 +130,21 @@ namespace SoftBodWA
             }
 
             ProductosDisponibles = productos;
-            rptProductosDisponibles.DataSource = productos.Where(p => (p.stock) > 0).ToList();
-            rptProductosDisponibles.DataBind();
+            var productosConStock = productos.Where(p => p.stock > 0).ToList();
+
+            // Controlar visibilidad según si hay productos con stock
+            if (productosConStock.Any())
+            {
+                rptProductosDisponibles.DataSource = productosConStock;
+                rptProductosDisponibles.DataBind();
+                rptProductosDisponibles.Visible = true;
+                pnlNoProductos.Visible = false;
+            }
+            else
+            {
+                rptProductosDisponibles.Visible = false;
+                pnlNoProductos.Visible = true;
+            }
         }
 
         private void CargarClientesDropDownList()
@@ -128,8 +186,6 @@ namespace SoftBodWA
 
             double total = Carrito.Sum(p => p.subtotal);
             lblTotal.Text = total.ToString("N2");
-
-            btnRegistrarVenta.Text = $"Registrar Venta - S/. {lblTotal.Text}";
 
             bool carritoVacio = !Carrito.Any();
 
@@ -233,13 +289,11 @@ namespace SoftBodWA
         protected void ddlCategoriaFiltro_SelectedIndexChanged(object sender, EventArgs e)
         {
             CargarProductosDisponibles();
-            ActualizarInterfaz();
         }
 
         protected void txtBuscarProducto_TextChanged(object sender, EventArgs e)
         {
             CargarProductosDisponibles();
-            ActualizarInterfaz();
         }
 
         protected void btnRegistrarVenta_Click(object sender, EventArgs e)
@@ -273,10 +327,6 @@ namespace SoftBodWA
 
             SoftBodBusiness.SoftWSVentaAlFiado.tipoDePago metodoPagoWSFiado;
             Enum.TryParse(ddlTipoPago.SelectedValue, out metodoPagoWSFiado);
-
-            // Obtener Usuario logueado desde Session
-            
-            
 
             int idVentaRegistrada = 0;
             string mensaje = "";
@@ -328,7 +378,6 @@ namespace SoftBodWA
                         metodoPagoWSFiado,
                         detallesVentaWSFiado
                     );
-
 
                     mensaje = $"✅ Venta Fiada registrada con éxito (ID: {idVentaRegistrada}). Total: S/. {lblTotal.Text}. Cliente: {ddlCliente.SelectedItem.Text}.";
                 }

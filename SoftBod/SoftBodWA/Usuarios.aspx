@@ -46,6 +46,17 @@
             </div>
         </div>
 
+        <!-- MENSAJE CUANDO NO HAY USUARIOS -->
+        <asp:Panel ID="pnlSinUsuarios" runat="server" Visible="false">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body text-center py-5">
+                    <i class="bi bi-people fs-1 text-muted mb-3"></i>
+                    <h5 class="text-muted mb-2">No hay operarios registrados</h5>
+                    <p class="text-muted small mb-0">Comienza agregando un nuevo operario usando el botón "+ Agregar Operario"</p>
+                </div>
+            </div>
+        </asp:Panel>
+
         <!-- LISTA DE OPERARIOS -->
         <asp:Repeater ID="rptUsuarios" runat="server" OnItemCommand="rptUsuarios_ItemCommand">
             <ItemTemplate>
@@ -78,7 +89,6 @@
                                 </label>
                             </div>
     
-                            <%-- ✅ MODIFICADO: Pasa usuarioId, usuario, correo, activo --%>
                             <asp:Button
                                 ID="btnToggleActivo"
                                 runat="server"
@@ -87,7 +97,6 @@
                                 CommandArgument='<%# Eval("usuarioId") + "|" + Eval("usuario") + "|" + Eval("correo") + "|" + Eval("tipoUsuarios") + "|" + Eval("contrasenha") + "|" + Eval("nombre") + "|" + Eval("telefono") + "|" + Eval("activo") %>'
                             />
 
-                            <%-- ✅ SIN CAMBIOS --%>
                             <asp:Button 
                                 ID="btnEditar" 
                                 runat="server" 
@@ -97,7 +106,6 @@
                                 CommandName="Editar" 
                             />
                             
-                            <%-- ✅ MODIFICADO: Pasa nombre y usuario --%>
                             <asp:Button 
                                 ID="btnEliminar" 
                                 runat="server" 

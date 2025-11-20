@@ -95,12 +95,6 @@
         </div>
         <div class="col-md-5 mb-2">
             <asp:DropDownList ID="ddlCategoriaFiltro" CssClass="form-select" runat="server" OnSelectedIndexChanged="ddlCategoriaFiltro_SelectedIndexChanged" AutoPostBack="True">
-                <asp:ListItem Text="Todas las categorías" Value="0" Selected="True"></asp:ListItem>
-                <asp:ListItem Text="Granos" Value="1"></asp:ListItem>
-                <asp:ListItem Text="Lácteos" Value="2"></asp:ListItem>
-                <asp:ListItem Text="Bebidas" Value="3"></asp:ListItem>
-                <asp:ListItem Text="Limpieza" Value="4"></asp:ListItem>
-                <asp:ListItem Text="Snacks" Value="5"></asp:ListItem>
             </asp:DropDownList>
         </div>
     </div>
@@ -111,6 +105,13 @@
                 <h5 class="fw-bold mb-3">Productos Disponibles</h5>
                 
                 <div style="max-height: 50vh; overflow-y: auto;">
+                    <!-- Panel para cuando NO hay productos -->
+                    <asp:Panel ID="pnlNoProductos" runat="server" Visible="false" CssClass="text-center text-muted mt-3">
+                        <i class="bi bi-inbox fs-1 mb-2"></i>
+                        <p>No se encontraron productos disponibles.</p>
+                    </asp:Panel>
+
+                    <!-- Repeater de productos -->
                     <asp:Repeater ID="rptProductosDisponibles" runat="server">
                         <ItemTemplate>
                             <div class="product-item">
@@ -126,10 +127,6 @@
                                 </div>
                             </div>
                         </ItemTemplate>
-                        <FooterTemplate>
-                             <%-- Si no hay productos --%>
-                            <asp:Literal ID="litNoProducts" runat="server" Text="<p class='text-center text-muted mt-3'>No se encontraron productos disponibles.</p>"></asp:Literal>
-                        </FooterTemplate>
                     </asp:Repeater>
                 </div>
             </div>
@@ -181,7 +178,7 @@
                 </asp:Panel>
 
                 <div class="cart-total-footer">
-                    <asp:Button ID="btnRegistrarVenta" runat="server" Text='<%# "Registrar Venta - S/." + lblTotal.Text %>' 
+                    <asp:Button ID="btnRegistrarVenta" runat="server" Text="Registrar Venta" 
                         OnClick="btnRegistrarVenta_Click" CssClass="btn-register-venta" />
                 </div>
             </div>

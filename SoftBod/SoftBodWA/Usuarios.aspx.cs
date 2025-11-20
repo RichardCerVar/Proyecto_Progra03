@@ -30,6 +30,17 @@ namespace SoftBodWA
             }
         }
 
+        // Nueva propiedad para obtener solo los operarios (sin el administrador)
+        private List<WSUsuario.usuarioDTO> ListaOperarios
+        {
+            get
+            {
+                var lista = ListaUsuarios;
+                // Retorna la lista sin el primer elemento (administrador)
+                return lista.Count > 1 ? lista.Skip(1).ToList() : new List<WSUsuario.usuarioDTO>();
+            }
+        }
+
         public Usuarios()
         {
             usuarioBO = new UsuarioBO();
@@ -48,16 +59,31 @@ namespace SoftBodWA
         {
             ListaUsuarios = usuarioBO.listarTodosUsuarios();
 
-            rptUsuarios.DataSource = ListaUsuarios;
-            rptUsuarios.DataBind();
+            // Mostrar solo operarios (sin administrador)
+            var operarios = ListaOperarios;
+
+            // Controlar visibilidad según si hay operarios
+            if (operarios.Count > 0)
+            {
+                rptUsuarios.DataSource = operarios;
+                rptUsuarios.DataBind();
+                rptUsuarios.Visible = true;
+                pnlSinUsuarios.Visible = false;
+            }
+            else
+            {
+                rptUsuarios.Visible = false;
+                pnlSinUsuarios.Visible = true;
+            }
 
             ActualizarTotales();
         }
 
         private void ActualizarTotales()
         {
-            lblTotalOperarios.InnerText = ListaUsuarios.Count.ToString();
-            lblActivos.InnerText = ListaUsuarios.Count(u => u.activo).ToString();
+            var operarios = ListaOperarios;
+            lblTotalOperarios.InnerText = operarios.Count.ToString();
+            lblActivos.InnerText = operarios.Count(u => u.activo).ToString();
         }
 
         protected void rptUsuarios_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -87,7 +113,7 @@ namespace SoftBodWA
                     break;
 
                 case "Eliminar":
-                    // ✅ CommandArgument: nombre|usuario
+                    // CommandArgument: nombre|usuario
                     string nombreEliminar = args[0];
                     string usuarioEliminar = args[1];
 
@@ -101,7 +127,7 @@ namespace SoftBodWA
                     break;
 
                 case "ToggleActivo":
-                    // ✅ CommandArgument: usuarioId|usuario|correo|tipoUsuarios|contrasenha|nombre|telefono|activo
+                    // CommandArgument: usuarioId|usuario|correo|tipoUsuarios|contrasenha|nombre|telefono|activo
                     try
                     {
                         int usuarioId = int.Parse(args[0]);
@@ -207,7 +233,7 @@ namespace SoftBodWA
 
                     var tieneReg = historialBO.listarHistorialOperacionesPorUsuario(usuario.usuarioId).Count();
                     string mensaje = "";
-                    if(tieneReg >0)
+                    if (tieneReg > 0)
                     {
                         int resultadoLogico = usuarioBO.eliminarLogicoUsuario(
                             usuario.usuarioId,
