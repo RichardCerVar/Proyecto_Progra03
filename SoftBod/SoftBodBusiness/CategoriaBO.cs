@@ -33,7 +33,8 @@ namespace SoftBodBusiness
 
         public List<categoriaDTO> listarTodasCategorias()
         {
-            return categoriaSOAP.listarTodasCategorias().ToList();
+            return categoriaSOAP.listarTodasCategorias()?.ToList()
+                   ?? new List<categoriaDTO>();
         }
 
         public bool categoriaContieneProductos(int categoriaId)

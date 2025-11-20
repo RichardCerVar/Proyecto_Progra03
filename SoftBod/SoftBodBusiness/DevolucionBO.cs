@@ -18,7 +18,7 @@ namespace SoftBodBusiness
 
         public int insertarDevolucion(usuarioDTO usuario, detalleDevolucionDTO[] detalles)
         {
-            return devolucionSOAP.insertarDevolucion(usuario,detalles);
+            return devolucionSOAP.insertarDevolucion(usuario, detalles);
         }
 
         public devolucionDTO obtenerDevolucionPorId(int devolucionId)
@@ -28,23 +28,26 @@ namespace SoftBodBusiness
 
         public List<devolucionDTO> listarTodasDevoluciones()
         {
-            return devolucionSOAP.listarTodasDevoluciones().ToList();
+            return devolucionSOAP.listarTodasDevoluciones()?.ToList()
+                   ?? new List<devolucionDTO>();
         }
 
         public List<devolucionDTO> listarDevolucionesPorFecha(string fecha)
         {
-            return devolucionSOAP.listarDevolucionesPorFecha(fecha).ToList();
+            return devolucionSOAP.listarDevolucionesPorFecha(fecha)?.ToList()
+                   ?? new List<devolucionDTO>();
         }
 
         public List<devolucionDTO> listarDevolucionesPorUsuario(int usuarioId)
         {
-            return devolucionSOAP.listarDevolucionesPorUsuario(usuarioId).ToList();
+            return devolucionSOAP.listarDevolucionesPorUsuario(usuarioId)?.ToList()
+                   ?? new List<devolucionDTO>();
         }
 
         public List<devolucionDTO> listarDevolucionesPorUsuarioYFecha(int usuarioId, string fecha)
         {
-            return devolucionSOAP.listarDevolucionesPorUsuarioYFecha(usuarioId, fecha).ToList();
+            return devolucionSOAP.listarDevolucionesPorUsuarioYFecha(usuarioId, fecha)?.ToList()
+                   ?? new List<devolucionDTO>();
         }
-
     }
 }

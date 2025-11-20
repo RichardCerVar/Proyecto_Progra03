@@ -40,12 +40,14 @@ namespace SoftBodBusiness
 
         public List<productoDTO> listarTodosProductos()
         {
-            return productoSOAP.listarTodosProductos().ToList();
+            return productoSOAP.listarTodosProductos()?.ToList()
+                   ?? new List<productoDTO>();
         }
 
         public List<productoDTO> listarTodosConFiltroProductos(bool activo, string categoria, string nombreProducto)
         {
-            return productoSOAP.listarTodosConFiltroProductos(activo, categoria, nombreProducto).ToList();
+            return productoSOAP.listarTodosConFiltroProductos(activo, categoria, nombreProducto)?.ToList()
+                   ?? new List<productoDTO>();
         }
     }
 }

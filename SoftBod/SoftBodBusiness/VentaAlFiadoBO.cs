@@ -22,7 +22,6 @@ namespace SoftBodBusiness
             tipoDePago metodoPago,
             detalleVentaDTO[] detallesVenta)
         {
-
             return this.ventaFiadoSOAP.insertarVentaAlFiado(
                 cliente, usuario, metodoPago, detallesVenta
             );
@@ -35,19 +34,21 @@ namespace SoftBodBusiness
 
         public List<ventaAlFiadoDTO> listarTodasVentasAlFiado()
         {
-            return this.ventaFiadoSOAP.listarTodasVentasAlFiado().ToList();
+            return this.ventaFiadoSOAP.listarTodasVentasAlFiado()?.ToList()
+                   ?? new List<ventaAlFiadoDTO>();
         }
 
         public List<ventaAlFiadoDTO> listarVentasAlFiadoPorAliasCliente(string aliasCliente)
         {
-            return this.ventaFiadoSOAP.listarVentasAlFiadoPorAliasCliente(aliasCliente).ToList();
+            return this.ventaFiadoSOAP.listarVentasAlFiadoPorAliasCliente(aliasCliente)?.ToList()
+                   ?? new List<ventaAlFiadoDTO>();
         }
 
         public List<ventaAlFiadoDTO> listarVentasAlFiadoPorAliasClienteYFecha(string aliasCliente, string fecha)
         {
             return this.ventaFiadoSOAP
-                .listarVentasAlFiadoPorAliasClienteYFecha(aliasCliente, fecha)
-                .ToList();
+                .listarVentasAlFiadoPorAliasClienteYFecha(aliasCliente, fecha)?.ToList()
+                ?? new List<ventaAlFiadoDTO>();
         }
     }
 }

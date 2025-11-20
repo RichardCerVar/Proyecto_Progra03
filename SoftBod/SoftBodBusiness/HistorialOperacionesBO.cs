@@ -28,44 +28,44 @@ namespace SoftBodBusiness
 
         public List<historialOperacionesDTO> listarTodosHistorialOperaciones()
         {
-            return historialSOAP.listarTodosHistorialOperaciones().ToList();
+            return historialSOAP.listarTodosHistorialOperaciones()?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorUsuario(int usuarioId)
         {
-            var resultado = historialSOAP.listarHistorialOperacionesPorUsuario(usuarioId);
-
-            if (resultado == null)
-            {
-                return new List<historialOperacionesDTO>();
-            }
-
-            return resultado.ToList();
+            return historialSOAP.listarHistorialOperacionesPorUsuario(usuarioId)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorTabla(string nombreTabla)
         {
-            return historialSOAP.listarHistorialOperacionesPorTabla(nombreTabla).ToList();
+            return historialSOAP.listarHistorialOperacionesPorTabla(nombreTabla)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorTipoOperacion(string tipoOperacion)
         {
-            return historialSOAP.listarHistorialOperacionesPorTipoOperacion(tipoOperacion).ToList();
+            return historialSOAP.listarHistorialOperacionesPorTipoOperacion(tipoOperacion)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorUsuarioYTabla(int usuarioId, string nombreTabla)
         {
-            return historialSOAP.listarHistorialOperacionesPorUsuarioYTabla(usuarioId, nombreTabla).ToList();
+            return historialSOAP.listarHistorialOperacionesPorUsuarioYTabla(usuarioId, nombreTabla)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorTablaYTipoOperacion(string nombreTabla, string tipoOperacion)
         {
-            return historialSOAP.listarHistorialOperacionesPorTablaYTipoOperacion(nombreTabla, tipoOperacion).ToList();
+            return historialSOAP.listarHistorialOperacionesPorTablaYTipoOperacion(nombreTabla, tipoOperacion)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesPorFecha(string fecha)
         {
-            return historialSOAP.listarHistorialOperacionesPorFecha(fecha).ToList();
+            return historialSOAP.listarHistorialOperacionesPorFecha(fecha)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
 
         public List<historialOperacionesDTO> listarHistorialOperacionesConFiltros(int? operacionId, string nombreTabla, string tipoOperacion,
@@ -73,7 +73,8 @@ namespace SoftBodBusiness
                                                                                   string tipoUsuario, bool estado)
         {
             return historialSOAP.listarHistorialOperacionesConFiltros(operacionId, nombreTabla, tipoOperacion,
-                                                                      fechaOperacion, usuarioId, usuario, tipoUsuario, estado).ToList();
+                                                                      fechaOperacion, usuarioId, usuario, tipoUsuario, estado)?.ToList()
+                   ?? new List<historialOperacionesDTO>();
         }
     }
 }

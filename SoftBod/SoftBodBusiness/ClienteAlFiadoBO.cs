@@ -38,12 +38,14 @@ namespace SoftBodBusiness
 
         public List<clienteAlFiadoDTO> listarTodosClientesAlFiado()
         {
-            return clienteAlFiadoSOAP.listarTodosClientesAlFiado().ToList();
+            return clienteAlFiadoSOAP.listarTodosClientesAlFiado()?.ToList()
+                   ?? new List<clienteAlFiadoDTO>();
         }
 
         public List<clienteAlFiadoDTO> listarTodosClientesAlFiadoLike(string cadena)
         {
-            return clienteAlFiadoSOAP.listarTodosClientesAlFiadoLike(cadena).ToList();
+            return clienteAlFiadoSOAP.listarTodosClientesAlFiadoLike(cadena)?.ToList()
+                   ?? new List<clienteAlFiadoDTO>();
         }
 
         public void bloquearClienteAlFiadoPorMorosidad(int clienteId)

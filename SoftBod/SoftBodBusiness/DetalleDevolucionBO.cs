@@ -28,22 +28,26 @@ namespace SoftBodBusiness
 
         public List<detalleDevolucionDTO> listarTodosDetallesDevolucion()
         {
-            return detalleDevolucionSOAP.listarTodosDetallesDevolucion().ToList();
+            return detalleDevolucionSOAP.listarTodosDetallesDevolucion()?.ToList()
+                   ?? new List<detalleDevolucionDTO>();
         }
 
         public List<detalleDevolucionDTO> listarDetallesDevolucionPorProducto(int productoId)
         {
-            return detalleDevolucionSOAP.listarDetallesDevolucionPorProducto(productoId).ToList();
+            return detalleDevolucionSOAP.listarDetallesDevolucionPorProducto(productoId)?.ToList()
+                   ?? new List<detalleDevolucionDTO>();
         }
 
         public List<detalleDevolucionDTO> listarDetallesDevolucionPorDevolucion(int devolucionId)
         {
-            return detalleDevolucionSOAP.listarDetallesDevolucionPorDevolucion(devolucionId).ToList();
+            return detalleDevolucionSOAP.listarDetallesDevolucionPorDevolucion(devolucionId)?.ToList()
+                   ?? new List<detalleDevolucionDTO>();
         }
 
         public List<detalleDevolucionDTO> listarDetallesDevolucionPorRazon(string razonDevolucion)
         {
-            return detalleDevolucionSOAP.listarDetallesDevolucionPorRazon(razonDevolucion).ToList();
+            return detalleDevolucionSOAP.listarDetallesDevolucionPorRazon(razonDevolucion)?.ToList()
+                   ?? new List<detalleDevolucionDTO>();
         }
     }
 }

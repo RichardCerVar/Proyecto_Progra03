@@ -21,7 +21,6 @@ namespace SoftBodBusiness
         public int insertarVenta(usuarioDTO usuario, tipoDePago metodoPago, detalleVentaDTO[] detallesVenta)
         {
             return this.ventaSOAP.insertarVenta(usuario, metodoPago, detallesVenta);
-            //el 0 es porque aparece un parametro fantasma arg0 que es el wrapper general de la llamada,
         }
 
         public ventaDTO obtenerVentaPorId(int idVenta)
@@ -31,13 +30,14 @@ namespace SoftBodBusiness
 
         public List<ventaDTO> listarTodasVentas()
         {
-            // El proxy normalmente devuelve un array, así que se convierte:
-            return this.ventaSOAP.listarTodosVentas().ToList();
+            return this.ventaSOAP.listarTodosVentas()?.ToList()
+                   ?? new List<ventaDTO>();
         }
 
         public List<ventaDTO> listarVentasPorFecha(string fecha)
         {
-            return this.ventaSOAP.listarVentasPorFecha(fecha).ToList();
+            return this.ventaSOAP.listarVentasPorFecha(fecha)?.ToList()
+                   ?? new List<ventaDTO>();
         }
     }
 }

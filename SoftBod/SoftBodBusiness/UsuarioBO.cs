@@ -19,7 +19,6 @@ namespace SoftBodBusiness
         public int insertarUsuario(string usuario, string correo, string tipoUsuarios,
                                    string contrasenha, string nombre, string telefono, bool activo)
         {
-            // Si aparece error por demasiados argumentos → borra el 0
             return this.usuarioSOAP.insertarUsuario(usuario, correo, tipoUsuarios,
                                                     contrasenha, nombre, telefono, activo);
         }
@@ -60,22 +59,26 @@ namespace SoftBodBusiness
 
         public List<usuarioDTO> listarTodosUsuarios()
         {
-            return this.usuarioSOAP.listarTodosUsuarios().ToList();
+            return this.usuarioSOAP.listarTodosUsuarios()?.ToList()
+                   ?? new List<usuarioDTO>();
         }
 
         public List<usuarioDTO> listarUsuariosActivos()
         {
-            return this.usuarioSOAP.listarUsuariosActivos().ToList();
+            return this.usuarioSOAP.listarUsuariosActivos()?.ToList()
+                   ?? new List<usuarioDTO>();
         }
 
         public List<usuarioDTO> listarUsuariosInactivos()
         {
-            return this.usuarioSOAP.listarUsuariosInactivos().ToList();
+            return this.usuarioSOAP.listarUsuariosInactivos()?.ToList()
+                   ?? new List<usuarioDTO>();
         }
 
         public List<usuarioDTO> listarUsuariosPorNombreParcial(string nombreUser)
         {
-            return this.usuarioSOAP.listarUsuariosPorNombreParcial(nombreUser).ToList();
+            return this.usuarioSOAP.listarUsuariosPorNombreParcial(nombreUser)?.ToList()
+                   ?? new List<usuarioDTO>();
         }
     }
 }

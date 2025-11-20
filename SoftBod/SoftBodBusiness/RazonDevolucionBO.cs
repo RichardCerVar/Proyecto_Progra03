@@ -18,7 +18,6 @@ namespace SoftBodBusiness
 
         public int insertarRazonDevolucion(string descripcion)
         {
-            // Si el proxy genera un arg0 fantasma, pon 0
             return this.razonSOAP.insertarRazonDevolucion(descripcion);
         }
 
@@ -34,12 +33,14 @@ namespace SoftBodBusiness
 
         public List<razonDevolucionDTO> listarTodasRazonesDevolucion()
         {
-            return this.razonSOAP.listarTodasRazonesDevolucion().ToList();
+            return this.razonSOAP.listarTodasRazonesDevolucion()?.ToList()
+                   ?? new List<razonDevolucionDTO>();
         }
 
         public List<razonDevolucionDTO> listarRazonesDevolucionPorNombreParcial(string nombre)
         {
-            return this.razonSOAP.listarRazonesDevolucionPorNombreParcial(nombre).ToList();
+            return this.razonSOAP.listarRazonesDevolucionPorNombreParcial(nombre)?.ToList()
+                   ?? new List<razonDevolucionDTO>();
         }
     }
 }
