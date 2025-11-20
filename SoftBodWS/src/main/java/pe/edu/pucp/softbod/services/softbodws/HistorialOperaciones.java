@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
+import pe.pucp.edu.softbod.reportes.ReporteUtil;
 
 @WebService(serviceName = "HistorialOperaciones")
 public class HistorialOperaciones {
@@ -76,4 +77,10 @@ public class HistorialOperaciones {
             @WebParam(name = "estado")@XmlElement(nillable = true) Boolean estado) {
         return this.historialBO.listarHistorialFiltros(operacionId, nombreTabla, tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);
     }
+    
+    @WebMethod(operationName = "reporteHistorialDeOperaciones")
+    public byte[] reporteHistorialDeOperaciones(String operacion, String tabla, String usuario){
+        return ReporteUtil.reporteHistorialDeOperaciones(operacion, tabla, usuario);
+    }
+    
 }

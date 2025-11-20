@@ -10,6 +10,7 @@ import pe.edu.pucp.softbod.model.ventas.VentaDTO;
 import pe.edu.pucp.softbod.model.ventas.DetalleVentaDTO;
 import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.util.Tipo_de_pago;
+import pe.pucp.edu.softbod.reportes.ReporteUtil;
 
 @WebService(serviceName = "Venta")
 public class Venta {
@@ -41,4 +42,10 @@ public class Venta {
     public ArrayList<VentaDTO> listarVentasPorFecha(@WebParam(name = "fecha") String fecha) {
         return this.ventaBO.listarTodosPorFecha(fecha);
     }
+    
+    @WebMethod(operationName = "reporteDevolucionesYVentas")
+    public byte[] reporteDevolucionesYVentas(@WebParam(name = "fechaInicio")Date fechaInicio, @WebParam(name = "fechaFin")Date fechaFin){
+        return ReporteUtil.reporteDevolucionesYVentas(fechaInicio, fechaFin);
+    }
+    
 }
