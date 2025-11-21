@@ -77,7 +77,6 @@ namespace SoftBodWA
                 var items = categorias
                     .Select(c => new ListItem(c.descripcion, c.categoriaId.ToString()))
                     .ToArray();
-
                 ddlCategoriaFiltro.Items.AddRange(items);
             }
             catch (Exception ex)
@@ -380,6 +379,9 @@ namespace SoftBodWA
                     );
 
                     mensaje = $"✅ Venta Fiada registrada con éxito (ID: {idVentaRegistrada}). Total: S/. {lblTotal.Text}. Cliente: {ddlCliente.SelectedItem.Text}.";
+                    var cliente = clienteAlFiadoBO.obtenerClienteAlFiadoPorId(clienteId);
+                    cliente.montoDeuda += double.Parse(lblTotal.Text);
+                    int resModify = clienteAlFiadoBO.modificarClienteAlFiado(cliente);
                 }
                 else
                 {

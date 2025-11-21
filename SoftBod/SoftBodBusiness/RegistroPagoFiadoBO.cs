@@ -16,11 +16,10 @@ namespace SoftBodBusiness
             this.registroSOAP = new RegistroPagoFiadoClient();
         }
 
-        public int insertarRegistroPagoFiado(int pagoId, usuarioDTO usuario,
+        public int insertarRegistroPagoFiado(usuarioDTO usuario,
             clienteAlFiadoDTO cliente, string metodoPago, double monto)
         {
-            return this.registroSOAP.insertarRegistroPagoFiado(
-                pagoId, usuario, cliente, metodoPago, monto
+            return this.registroSOAP.insertarRegistroPagoFiado(usuario, cliente, metodoPago, monto
             );
         }
 

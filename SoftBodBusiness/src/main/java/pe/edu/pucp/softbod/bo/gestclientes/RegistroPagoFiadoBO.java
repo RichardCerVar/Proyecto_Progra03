@@ -31,7 +31,7 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
     
     // ==================== MÉTODOS DAO EXISTENTES ====================
     
-    public Integer insertar(Integer pagoId, UsuarioDTO usuario, ClienteAlFiadoDTO cliente
+    public Integer insertar(UsuarioDTO usuario, ClienteAlFiadoDTO cliente
                             , String metodoPago, Double monto){
         Tipo_de_pago metPago;
         if (metodoPago.equals(Tipo_de_pago.EFECTIVO.name()))
@@ -39,7 +39,7 @@ public class RegistroPagoFiadoBO extends OperacionBOBase{
         else metPago = Tipo_de_pago.TRANSFERENCIA;
         Timestamp fecha_actual = new Timestamp(System.currentTimeMillis());
         String fecha = fecha_actual.toString();
-        RegistroPagoFiadoDTO registroPagoFiado = new RegistroPagoFiadoDTO(pagoId, usuario, cliente, 
+        RegistroPagoFiadoDTO registroPagoFiado = new RegistroPagoFiadoDTO(0, usuario, cliente, 
                                    fecha, metPago, monto);
         return this.registroPagoFiadoDAO.insertar(registroPagoFiado);
     }

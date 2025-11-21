@@ -19,11 +19,11 @@ public class RegistroPagoFiado {
     }
     
     @WebMethod(operationName = "insertarRegistroPagoFiado")
-    public Integer insertarRegistroPagoFiado(@WebParam(name = "pagoId") Integer pagoId,@WebParam(name = "usuario") UsuarioDTO usuario,
+    public Integer insertarRegistroPagoFiado(@WebParam(name = "usuario") UsuarioDTO usuario,
             @WebParam(name = "cliente") ClienteAlFiadoDTO cliente, 
             @WebParam(name = "metodoPago") String metodoPago,@WebParam(name = "monto") Double monto){
         
-        return this.registroPagoFiadoBO.insertar(pagoId, usuario, cliente, metodoPago, monto);
+        return this.registroPagoFiadoBO.insertar(usuario, cliente, metodoPago, monto);
     }
     
     @WebMethod(operationName = "listarTodosRegistrosPagoFiado")

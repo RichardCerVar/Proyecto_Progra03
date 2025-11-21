@@ -12,7 +12,6 @@
   <xs:element name="registrarPagoFiadoResponse" type="tns:registrarPagoFiadoResponse" />
   <xs:complexType name="insertarRegistroPagoFiado">
     <xs:sequence>
-      <xs:element minOccurs="0" name="pagoId" type="xs:int" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
       <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
       <xs:element minOccurs="0" name="metodoPago" type="xs:string" />

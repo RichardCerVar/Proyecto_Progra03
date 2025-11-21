@@ -5,6 +5,7 @@ using System.Web.UI.WebControls;
 using System.Linq;
 using SoftBodBusiness;
 using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
+using WSRegistroPagoFiado = SoftBodBusiness.SoftWSRegistroPagoFiado;
 using SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodWA
@@ -14,10 +15,12 @@ namespace SoftBodWA
         private ClienteAlFiadoBO clienteBO;
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+        private RegistroPagoFiadoBO registroPagoFiadoBO;
         public Clientes()
         {
             clienteBO = new ClienteAlFiadoBO();
             clientes = clienteBO.listarTodosClientesAlFiado();
+            registroPagoFiadoBO = new RegistroPagoFiadoBO();
         }
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> ClientesData
@@ -280,7 +283,8 @@ namespace SoftBodWA
 
                 // Buscar el cliente por alias
                 var clientes = ClientesData;
-                var cliente = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+                Session["Cliente"] = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+                var cliente = Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO;
                 if (cliente == null)
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
@@ -300,8 +304,17 @@ namespace SoftBodWA
                 cliente.montoDeuda = cliente.montoDeuda - monto;
 
                 clienteBO.modificarClienteAlFiado(cliente);
+                int idUser = (int)Session["UsuarioId"];
+                WSRegistroPagoFiado.usuarioDTO user = new SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO();
+                user.usuarioId = idUser;
+                user.usuarioIdSpecified = true;
 
-                //regPagoBO.registrarPagoFiado(monto);
+                int idClie = (Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO).clienteId;
+                WSRegistroPagoFiado.clienteAlFiadoDTO clieDTO = new WSRegistroPagoFiado.clienteAlFiadoDTO();
+                clieDTO.clienteId = idClie;
+                clieDTO.clienteIdSpecified = true;
+
+                registroPagoFiadoBO.insertarRegistroPagoFiado(user, clieDTO, "EFECTIVO",monto);
                 CargarClientes();
 
 
