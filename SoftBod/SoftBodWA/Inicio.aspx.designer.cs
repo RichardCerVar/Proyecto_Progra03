@@ -24,13 +24,13 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Literal litVentasHoy;
 
         /// <summary>
-        /// Control litProductos.
+        /// Control litDevoluciones.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litProductos;
+        protected global::System.Web.UI.WebControls.Literal litDevoluciones;
 
         /// <summary>
         /// Control litClientes.
@@ -105,13 +105,76 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Literal litModalTipo;
 
         /// <summary>
-        /// Control litModalEstado.
+        /// Control litEstadoCompletada.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litModalEstado;
+        protected global::System.Web.UI.WebControls.Literal litEstadoCompletada;
+
+        /// <summary>
+        /// Control litEstadoPendiente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litEstadoPendiente;
+
+        /// <summary>
+        /// Control litEstadoRegistrado.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litEstadoRegistrado;
+
+        /// <summary>
+        /// Control pnlInfoCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlInfoCliente;
+
+        /// <summary>
+        /// Control litClienteNombre.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litClienteNombre;
+
+        /// <summary>
+        /// Control litClienteAlias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litClienteAlias;
+
+        /// <summary>
+        /// Control litClienteTelefono.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litClienteTelefono;
+
+        /// <summary>
+        /// Control litClienteDeuda.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litClienteDeuda;
 
         /// <summary>
         /// Control pnlProductos.
@@ -150,12 +213,39 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Literal litMensajeSinProductos;
 
         /// <summary>
-        /// Control litModalTotal.
+        /// Control pnlTotalPositivo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litModalTotal;
+        protected global::System.Web.UI.WebControls.Panel pnlTotalPositivo;
+
+        /// <summary>
+        /// Control litTotalPositivoValor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTotalPositivoValor;
+
+        /// <summary>
+        /// Control pnlTotalNegativo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlTotalNegativo;
+
+        /// <summary>
+        /// Control litTotalNegativoValor.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTotalNegativoValor;
     }
 }

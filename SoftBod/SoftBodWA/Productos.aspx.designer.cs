@@ -69,6 +69,15 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.DropDownList ddlCategoriaFiltro;
 
         /// <summary>
+        /// Control pnlSinProductos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlSinProductos;
+
+        /// <summary>
         /// Control rptProducto.
         /// </summary>
         /// <remarks>

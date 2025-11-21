@@ -44,12 +44,12 @@
                 <div class="card p-3">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <small class="text-muted">Productos</small>
-                            <h5 class="fw-bold">
-                                <asp:Literal ID="litProductos" runat="server" Text="0"></asp:Literal>
+                            <small class="text-muted">Devoluciones Hoy</small>
+                            <h5 class="fw-bold" style="color: #e4572e;">
+                                <asp:Literal ID="litDevoluciones" runat="server" Text="S/.0.00"></asp:Literal>
                             </h5>
                         </div>
-                        <i class="bi bi-box text-primary fs-3"></i>
+                        <i class="bi bi-arrow-counterclockwise fs-3" style="color: #e4572e;"></i>
                     </div>
                 </div>
             </div>
@@ -151,14 +151,47 @@
                         <div class="col-6 text-end">
                             <small class="text-muted">Estado</small><br />
                             <strong>
-                                <asp:Literal ID="litModalEstado" runat="server"></asp:Literal>
+                                <asp:Literal ID="litEstadoCompletada" runat="server" Visible="false"><span class="text-success">Completada</span></asp:Literal>
+                                <asp:Literal ID="litEstadoPendiente" runat="server" Visible="false"><span class="text-danger">Pendiente</span></asp:Literal>
+                                <asp:Literal ID="litEstadoRegistrado" runat="server" Visible="false"><span class="text-success">Registrado</span></asp:Literal>
                             </strong>
                         </div>
                     </div>
 
+                    <!-- Información adicional del cliente (solo para pagos) -->
+                    <asp:Panel ID="pnlInfoCliente" runat="server" Visible="false">
+                        <div class="card bg-light mb-3">
+                            <div class="card-body">
+                                <h6 class="card-title mb-2">Información del Cliente</h6>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <small class="text-muted">Nombre Completo</small><br />
+                                        <strong><asp:Literal ID="litClienteNombre" runat="server"></asp:Literal></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted">Alias</small><br />
+                                        <strong><asp:Literal ID="litClienteAlias" runat="server"></asp:Literal></strong>
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-6">
+                                        <small class="text-muted">Teléfono</small><br />
+                                        <strong><asp:Literal ID="litClienteTelefono" runat="server"></asp:Literal></strong>
+                                    </div>
+                                    <div class="col-6">
+                                        <small class="text-muted">Deuda Actual</small><br />
+                                        <strong class="text-danger">
+                                            <asp:Literal ID="litClienteDeuda" runat="server"></asp:Literal>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
                     <!-- Lista de Productos -->
-                    <h6 class="mt-4 mb-2">Productos</h6>
                     <asp:Panel ID="pnlProductos" runat="server">
+                        <h6 class="mt-4 mb-2">Productos</h6>
                         <ul class="list-group list-group-flush">
                             <asp:Repeater ID="rptProductosModal" runat="server">
                                 <ItemTemplate>
@@ -182,7 +215,12 @@
                     <div class="d-flex justify-content-between mt-3 pt-2 border-top">
                         <h5 class="mb-0">Total:</h5>
                         <h5 class="mb-0">
-                            <asp:Literal ID="litModalTotal" runat="server"></asp:Literal>
+                            <asp:Panel ID="pnlTotalPositivo" runat="server" Visible="false" CssClass="d-inline">
+                                <span class="text-success"><asp:Literal ID="litTotalPositivoValor" runat="server"></asp:Literal></span>
+                            </asp:Panel>
+                            <asp:Panel ID="pnlTotalNegativo" runat="server" Visible="false" CssClass="d-inline">
+                                <span class="text-danger"><asp:Literal ID="litTotalNegativoValor" runat="server"></asp:Literal></span>
+                            </asp:Panel>
                         </h5>
                     </div>
                 </div>
@@ -191,7 +229,6 @@
     </div>
 
     <script type="text/javascript">
-        // Mostrar modal cuando se actualiza desde el servidor
         function mostrarModal() {
             var modal = new bootstrap.Modal(document.getElementById('DetalleModal'));
             modal.show();

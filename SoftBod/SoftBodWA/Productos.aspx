@@ -48,7 +48,6 @@
         </div>
 
     <div class="row mb-4 align-items-center">
-        <!-- 🔍 Buscador -->
         <div class="col-md-6 mb-2">
             <div class="input-group">
                 <asp:TextBox ID="txtBuscarProducto" runat="server" Cssclass="form-control" placeholder="Buscar productos por nombre..."/>
@@ -56,14 +55,12 @@
             </div>
         </div>
 
-        <!-- 🧾 Filtro de categoría -->
         <div class="col-md-3 mb-2">
             <asp:DropDownList ID="ddlCategoriaFiltro" runat="server" CssClass="form-select form-select-sm" AppendDataBoundItems="true">
-            <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
+            <asp:ListItem Text="Todas las categorias" Value=""></asp:ListItem>
             </asp:DropDownList>
         </div>
 
-        <!-- ➕ Botón agregar producto -->
         <div class="col-md-3 mb-2 text-end">
             <button type="button" class="btn btn-primary fw-bold shadow"
                     data-bs-toggle="modal"
@@ -73,18 +70,22 @@
         </div>
     </div>
 
+    <asp:Panel ID="pnlSinProductos" runat="server" Visible="false" CssClass="text-center py-5">
+        <i class="fa-solid fa-magnifying-glass fs-1 text-muted mb-3"></i>
+        <h5 class="text-muted">No se encontraron productos</h5>
+    </asp:Panel>
+
     <asp:Repeater ID="rptProducto" runat="server"  OnItemCommand="rptProducto_ItemCommand">
     <ItemTemplate>
         <div class="card mb-3 shadow-sm border-0 <%# (bool)Eval("activo") ? "" : "opacity-50" %>">
             <div class="card-body d-flex justify-content-between align-items-center">
 
-                <!-- Columna izquierda: icono + nombre + categoría -->
                 <div class="d-flex align-items-center">
                     <i class="fa-solid fa-cube fa-2x text-primary me-3"></i>
                     <div>
                         <strong><%# Eval("nombre") %></strong><br />
                         <small class="text-muted">
-                            <%# Eval("Categoria.descripcion") %> — Stock: <%# Eval("stockMinimo") %> UNIDAD
+                            <%# Eval("Categoria.descripcion") %> — Stock Minimo: <%# Eval("stockMinimo") %> - Medida: UNIDAD
                         </small>
                     </div>
                 </div>
@@ -96,13 +97,11 @@
                         <div class="text-end">
                             <%# 
                                 Convert.ToInt32(Eval("stock")) <= Convert.ToInt32(Eval("stockMinimo")) ?
-                                        // --- MODO ALERTA ---
                             "<p class='mb-0 fw-bold text-warning'>" +
                                 "<i class='fa-solid fa-triangle-exclamation me-1'></i>" +
                                 "Stock: " + Eval("stock") +
                             "</p>" 
                             :
-                                // --- MODO NORMAL ---
                              "<p class='mb-0 fw-bold'>Stock: " + Eval("stock") + "</p>"
                              %>
                             <p class="mb-0">S/. <%# String.Format("{0:N2}", Eval("precioUnitario")) %></p>
@@ -172,38 +171,32 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-4">
 
-            <!-- Encabezado -->
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title fw-bold fs-5" id="modalAgregarProductoLabel">Agregar Nuevo Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <!-- Cuerpo -->
             <div class="modal-body pt-2">
                 <asp:UpdatePanel runat="server">
                     <ContentTemplate>
 
-                        <!-- Nombre del Producto -->
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre del Producto" AssociatedControlID="txtNombreProducto"></asp:Label>
                             <asp:TextBox ID="txtNombreProducto" CssClass="form-control" placeholder="Ej: Arroz Diana 500g" runat="server"></asp:TextBox>
                         </div>
 
-                        <!-- Categoría -->
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Categoría" AssociatedControlID="ddlCategoria"></asp:Label>
-                            <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select form-select-sm">
-                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
+                            <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select form-select-sm" AppendDataBoundItems="true">
+                                 <asp:ListItem Text="-- Seleccionar categoría --" Value=""></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
-                        <!-- Crear nueva categoría -->
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="O crear nueva categoría" AssociatedControlID="txtNuevaCategoria"></asp:Label>
                             <asp:TextBox ID="txtNuevaCategoria" CssClass="form-control" placeholder="Nueva categoría" runat="server"></asp:TextBox>
                         </div>
 
-                        <!-- UNIDAD DE MEDIDA -->
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Unidad de Medida" AssociatedControlID="ddlMedida"></asp:Label>
                             <asp:DropDownList ID="ddlMedida" runat="server" CssClass="form-select form-select-sm">
@@ -213,7 +206,6 @@
                             </asp:DropDownList>
                         </div>
 
-                        <!-- Precio y Stock Inicial -->
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Precio" AssociatedControlID="txtPrecio"></asp:Label>
@@ -225,13 +217,11 @@
                             </div>
                         </div>
 
-                        <!-- Stock Mínimo -->
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Stock Mínimo" AssociatedControlID="txtStockMinimo"></asp:Label>
-                            <asp:TextBox ID="txtStockMinimo" CssClass="form-control" placeholder="5" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="txtStockMinimo" CssClass="form-control" placeholder="0" runat="server"></asp:TextBox>
                         </div>
 
-                        <!-- Botón Agregar Producto -->
                         <asp:LinkButton ID="btnAgregarProducto" runat="server"
                             CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                             Text="Agregar Producto"
@@ -297,7 +287,7 @@
             </div>
 
             <div class="modal-body pt-2">
-                <asp:UpdatePanel ID="updEditarProducto" runat="server">
+                <asp:UpdatePanel ID="updEditarProducto" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
                         
                         <asp:HiddenField ID="hdnProductoIdEditar" runat="server" Value="0" />
@@ -343,6 +333,7 @@
         </div>
     </div>
 </div>
+
 <div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-labelledby="modalEliminarProductoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg rounded-4">

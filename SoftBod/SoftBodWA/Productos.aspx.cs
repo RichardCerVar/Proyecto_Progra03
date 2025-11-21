@@ -1,12 +1,9 @@
 ﻿using SoftBodBusiness;
 using SoftBodBusiness.SoftWSCategoria;
 using SoftBodBusiness.SoftWSProducto;
-using SoftBodBusiness.SoftWSUsuario;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WSCategoria = SoftBodBusiness.SoftWSCategoria;
@@ -16,20 +13,50 @@ namespace SoftBodWA
 {
     public partial class Productos : System.Web.UI.Page
     {
-        private List<WSProducto.productoDTO> listaProductos;
         private ProductoBO productoBO;
         private CategoriaBO categoriaBO;
-        private List<WSCategoria.categoriaDTO> listaCategoria;
         private DetalleVentaBO detalleventaBO;
+
+        // Cache de productos - solo se carga cuando es null o se fuerza recarga
+        private List<WSProducto.productoDTO> ListaProductos
+        {
+            get
+            {
+                if (ViewState["ListaProductos"] == null)
+                {
+                    ViewState["ListaProductos"] = productoBO.listarTodosProductos();
+                }
+                return (List<WSProducto.productoDTO>)ViewState["ListaProductos"];
+            }
+            set
+            {
+                ViewState["ListaProductos"] = value;
+            }
+        }
+
+        private List<WSCategoria.categoriaDTO> ListaCategoria
+        {
+            get
+            {
+                if (ViewState["ListaCategoria"] == null)
+                {
+                    ViewState["ListaCategoria"] = categoriaBO.listarTodasCategorias();
+                }
+                return (List<WSCategoria.categoriaDTO>)ViewState["ListaCategoria"];
+            }
+            set
+            {
+                ViewState["ListaCategoria"] = value;
+            }
+        }
 
         public Productos()
         {
             detalleventaBO = new DetalleVentaBO();
             productoBO = new ProductoBO();
             categoriaBO = new CategoriaBO();
-            listaProductos = productoBO.listarTodosProductos();
-            listaCategoria = categoriaBO.listarTodasCategorias();
         }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -42,16 +69,36 @@ namespace SoftBodWA
 
         private void CargarProductos()
         {
-            var productos = productoBO.listarTodosProductos();
-            rptProducto.DataSource = productos;
-            rptProducto.DataBind();
+            var productos = ListaProductos;
 
-            ActualizarResumenProductos(listaProductos);
+            if (productos != null && productos.Any())
+            {
+                rptProducto.DataSource = productos;
+                rptProducto.DataBind();
+                rptProducto.Visible = true;
+                pnlSinProductos.Visible = false;
+                ActualizarResumenProductos(productos);
+            }
+            else
+            {
+                rptProducto.Visible = false;
+                pnlSinProductos.Visible = true;
+            }
+        }
+
+        // Método para forzar recarga de datos desde BD
+        private void RecargarDatosYActualizar()
+        {
+            ViewState["ListaProductos"] = null; // Invalida cache
+            ViewState["ListaCategoria"] = null; // Invalida cache de categorías
+            CargarProductos();
+            CargarCategoria();
+            CargarCategoriaModal();
         }
 
         private void CargarCategoria()
         {
-            var categorias = listaCategoria;
+            var categorias = ListaCategoria;
 
             ddlCategoriaFiltro.DataSource = categorias;
             ddlCategoriaFiltro.DataTextField = "descripcion";
@@ -61,7 +108,7 @@ namespace SoftBodWA
 
         private void CargarCategoriaModal()
         {
-            ddlCategoria.DataSource = listaCategoria;
+            ddlCategoria.DataSource = ListaCategoria;
             ddlCategoria.DataTextField = "descripcion";
             ddlCategoria.DataValueField = "categoriaId";
             ddlCategoria.DataBind();
@@ -69,7 +116,7 @@ namespace SoftBodWA
 
         private void CargarCategoriaEdit()
         {
-            ddlCategoriaEdit.DataSource = listaCategoria;
+            ddlCategoriaEdit.DataSource = ListaCategoria;
             ddlCategoriaEdit.DataTextField = "descripcion";
             ddlCategoriaEdit.DataValueField = "categoriaId";
             ddlCategoriaEdit.DataBind();
@@ -77,97 +124,93 @@ namespace SoftBodWA
 
         private void ActualizarResumenProductos(List<WSProducto.productoDTO> productos)
         {
-            // 1. Productos activos
             int activos = productos.Count(p => p.activo == true);
-
-            // 2. Stock bajo (stock <= stockMinimo)
             int stockBajo = productos.Count(p => p.stock <= p.stockMinimo);
-
-            // 3. Valor total del inventario
             double valorInventario = productos.Sum(p => p.stock * p.precioUnitario);
 
-            // Asignar a los labels
             lblProductosActivos.InnerText = activos.ToString();
             lblStockBajo.InnerText = stockBajo.ToString();
             lblValorInventario.InnerText = $"S/. {valorInventario:N2}";
-        }
-
-        protected void btnAgregarProducto_Click(object sender, EventArgs e)
-        {
-            string script = "window.onload = function() { showModalAgregarNuevoProducto(); };";
-            ClientScript.RegisterStartupScript(this.GetType(), "", script, true);
-
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             try
             {
-                // 🔹 Capturar datos del formulario
                 string nombre = txtNombreProducto.Text.Trim();
-                int categoriaId = int.Parse(ddlCategoria.SelectedValue);
+                string categoriaIdStr = ddlCategoria.SelectedValue;
                 string nuevaCategoria = txtNuevaCategoria.Text.Trim();
-                double precio = double.Parse(txtPrecio.Text.Trim());
-                int stockInicial = int.Parse(txtStockInicial.Text.Trim());
-                int stockMinimo = int.Parse(txtStockMinimo.Text.Trim());
+                string precioStr = txtPrecio.Text.Trim();
+                string stockInicialStr = txtStockInicial.Text.Trim();
+                string stockMinimoStr = txtStockMinimo.Text.Trim();
                 string unidadMedida = ddlMedida.SelectedValue;
 
-                // 1️⃣ Validar campos completos
-                if (!ValidarCamposProducto(nombre, txtPrecio.Text.Trim(), txtStockInicial.Text.Trim(),
-                    txtStockMinimo.Text.Trim(), categoriaId, out string msgError))
+                // ✅ VALIDACIÓN: Debe seleccionar una categoría O crear una nueva, no ambas ni ninguna
+                if (!ValidarCategoriaUnica(categoriaIdStr, nuevaCategoria, out string msgErrorCategoria))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "valCampos",
-                        $"alert('{msgError}');", true);
+                    MostrarMensajeError(msgErrorCategoria);
                     return;
                 }
 
-                // 2️⃣ Validar datos numéricos
-                if (!ValidarNumericosProducto(txtPrecio.Text.Trim(), txtStockInicial.Text.Trim(),
-                    txtStockMinimo.Text.Trim(), out msgError))
+                // Determinar el ID de categoría a usar
+                int categoriaId = 0;
+                if (!string.IsNullOrEmpty(categoriaIdStr) && categoriaIdStr != "0")
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "valNumeros",
-                        $"alert('{msgError}');", true);
+                    categoriaId = int.Parse(categoriaIdStr);
+                }
+
+                // Validaciones existentes
+                if (string.IsNullOrWhiteSpace(nombre) ||
+                    string.IsNullOrWhiteSpace(precioStr) ||
+                    string.IsNullOrWhiteSpace(stockInicialStr) ||
+                    string.IsNullOrWhiteSpace(stockMinimoStr))
+                {
+                    MostrarMensajeError("Por favor complete todos los campos obligatorios.");
                     return;
                 }
 
-                // 3️⃣ Validar nombre único
+                if (!ValidarNumericosProducto(precioStr, stockInicialStr, stockMinimoStr, out string msgError))
+                {
+                    MostrarMensajeError(msgError);
+                    return;
+                }
+
                 if (!ValidarProductoUnico(nombre, out msgError))
                 {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "valUnico",
-                        $"alert('{msgError}');", true);
+                    MostrarMensajeError(msgError);
                     return;
                 }
+
+                double precio = double.Parse(precioStr);
+                int stockInicial = int.Parse(stockInicialStr);
+                int stockMinimo = int.Parse(stockMinimoStr);
+
                 WSProducto.categoriaDTO categDTO = new WSProducto.categoriaDTO();
+
                 if (!string.IsNullOrEmpty(nuevaCategoria))
                 {
+                    // Crear nueva categoría
                     categDTO.categoriaId = categoriaBO.insertarCategoria(nuevaCategoria);
                 }
                 else
                 {
+                    // Usar categoría existente
                     categDTO.categoriaId = categoriaId;
                 }
                 categDTO.categoriaIdSpecified = true;
 
-
                 productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
 
+                // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                ViewState["ListaProductos"] = null;
+                ViewState["ListaCategoria"] = null;
+
                 LimpiarCamposModal();
-
-                // ✅ Mostrar mensaje y cerrar el modal correctamente (compatible con UpdatePanel)
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaProducto",
-                    "alert('Producto agregado exitosamente'); " +
-                    "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarProducto')); " +
-                    "if(modal) modal.hide();", true);
-
-                Response.Redirect(Request.RawUrl);
-
-                // Opcional: cerrar modal con JavaScript
-                ScriptManager.RegisterStartupScript(this, GetType(), "cerrarModal", "$('#modalAgregarProducto').modal('hide');", true);
+                MostrarMensajeExitoYRecargar("Producto agregado exitosamente", "modalAgregarProducto");
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorProducto",
-                     $"alert('Error al crear nuevo producto: {ex.Message}');", true);
+                MostrarMensajeError($"Error al crear nuevo producto: {ex.Message}");
             }
         }
 
@@ -178,54 +221,36 @@ namespace SoftBodWA
             {
                 case "CambiarEstado":
                     productoId = Convert.ToInt32(e.CommandArgument);
-                    // Cambiar estado activo/inactivo del producto
                     CambiarEstadoProducto(productoId);
                     break;
                 case "AjustarStock":
                     productoId = Convert.ToInt32(e.CommandArgument);
-                    hdnProductoIdAjustar.Value = productoId.ToString();
-                    Session["productoIdStock"] = productoId;
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalAjustar",
-                        "setTimeout(function() { " +
-                        "var modal = new bootstrap.Modal(document.getElementById('modalAjustarStock')); " +
-                        "modal.show(); " +
-                        "}, 200);", true);
+                    MostrarModalAjustarStock(productoId);
                     break;
                 case "Editar":
                     productoId = Convert.ToInt32(e.CommandArgument);
-                    CargarDatosProductoParaEditar(productoId);
-                    // Abrir modal con JavaScript después de cargar los datos
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "abrirModalEditar",
-                        "setTimeout(function() { " +
-                        "var modal = new bootstrap.Modal(document.getElementById('modalEditarProducto')); " +
-                        "modal.show(); " +
-                        "}, 200);", true);
+                    MostrarModalEditar(productoId);
                     break;
                 case "EliminarProducto":
                     string[] args = e.CommandArgument.ToString().Split('|');
-                    // ✅ CommandArgument: id|producto
-                    string idEliminar = args[0];
-                    string productoEliminar = args[1];
-
-                    hdnProductoIdEliminar.Value = idEliminar;
-                    ltNombreProductoEliminar.Text = productoEliminar;
-
-                    updEliminarProducto.Update();
-
-                    ScriptManager.RegisterStartupScript(this, GetType(), "abrirEliminarProducto",
-                        "setTimeout(function() { " +
-                        "var modal = new bootstrap.Modal(document.getElementById('modalEliminarProducto')); " +
-                        "modal.show(); " +
-                        "}, 200);", true);
+                    MostrarModalEliminar(args);
                     break;
             }
         }
+        private void MostrarModalAjustarStock(int productoId)
+        {
+            hdnProductoIdAjustar.Value = productoId.ToString();
+            Session["productoIdStock"] = productoId;
 
-        private void CargarDatosProductoParaEditar(int productoId)
+            ScriptManager.RegisterStartupScript(this, GetType(), "abrirModalAjustar",
+                "var modal = new bootstrap.Modal(document.getElementById('modalAjustarStock')); modal.show();", true);
+        }
+
+        private void MostrarModalEditar(int productoId)
         {
             try
             {
-                var producto = listaProductos.FirstOrDefault(p => p.productoId == productoId);
+                var producto = ListaProductos.FirstOrDefault(p => p.productoId == productoId);
                 if (producto != null)
                 {
                     hdnProductoIdEditar.Value = producto.productoId.ToString();
@@ -233,59 +258,63 @@ namespace SoftBodWA
                     txtPrecioEdit.Text = producto.precioUnitario.ToString("F2");
                     txtStockEdit.Text = producto.stock.ToString();
                     txtStockMinimoEdit.Text = producto.stockMinimo.ToString();
+
                     CargarCategoriaEdit();
+
                     if (producto.categoria != null)
                     {
                         ddlCategoriaEdit.SelectedValue = producto.categoria.categoriaId.ToString();
                     }
 
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "debugProducto",
-                        $"alert('Producto no encontrado. ID: {productoId}\\nTotal productos: {listaProductos?.Count ?? 0}');", true);
-                }
+                    updEditarProducto.Update();
 
-
+                    ScriptManager.RegisterStartupScript(this, GetType(), "showEditarProducto",
+                        "var myModal = new bootstrap.Modal(document.getElementById('modalEditarProducto')); myModal.show();", true);
+                }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorCargar",
-                    $"alert('Error al cargar datos del producto: {ex.Message}\\n\\nStack: {ex.StackTrace}');", true);
+                MostrarMensajeError($"Error al cargar datos del producto: {ex.Message}");
             }
+        }
 
+        private void MostrarModalEliminar(string[] args)
+        {
+            // args[0] = productoId, args[1] = nombre
+            hdnProductoIdEliminar.Value = args[0];
+            ltNombreProductoEliminar.Text = args[1];
+
+            updEliminarProducto.Update();
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "abrirEliminarProducto",
+                "var modal = new bootstrap.Modal(document.getElementById('modalEliminarProducto')); modal.show();", true);
         }
 
         private void CambiarEstadoProducto(int productoId)
         {
             try
             {
-                // Obtener el producto actual
                 var producto = productoBO.obtenerProductoPorId(productoId);
 
                 if (producto != null)
                 {
-                    // Cambiar el estado
                     bool nuevoEstado = !producto.activo;
                     producto.activo = nuevoEstado;
                     producto.activoSpecified = true;
 
-                    // Llamar al método de negocio para actualizar el estado
                     int resultado = productoBO.modificarProducto(producto);
 
                     if (resultado > 0)
                     {
-                        string mensaje = nuevoEstado ? "Producto activado" : "Producto desactivado";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "estadoCambiado",
-                            $"alert('{mensaje} exitosamente');", true);
-                        Response.Redirect(Request.RawUrl);
+                        // ✅ CRÍTICO: Invalidar cache ANTES de recargar
+                        ViewState["ListaProductos"] = null;
+                        RecargarDatosYActualizar();
                     }
                 }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorEstado",
-                    $"alert('Error al cambiar estado: {ex.Message}');", true);
+                MostrarMensajeError($"Error al cambiar estado: {ex.Message}");
             }
         }
 
@@ -299,10 +328,10 @@ namespace SoftBodWA
 
                 if (cantidad <= 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorCantidad",
-                        "alert('La cantidad debe ser mayor a 0');", true);
+                    MostrarMensajeError("La cantidad debe ser mayor a 0");
                     return;
                 }
+
                 var producto = productoBO.obtenerProductoPorId(productoId);
 
                 if (producto != null)
@@ -319,11 +348,11 @@ namespace SoftBodWA
 
                         if (nuevoStock < 0)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "errorStock",
-                                "alert('No hay suficiente stock para reducir esa cantidad');", true);
+                            MostrarMensajeError("No hay suficiente stock para reducir esa cantidad");
                             return;
                         }
                     }
+
                     producto.stock = nuevoStock;
                     producto.stockSpecified = true;
 
@@ -331,26 +360,22 @@ namespace SoftBodWA
 
                     if (resultado > 0)
                     {
+                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                        ViewState["ListaProductos"] = null;
+
                         txtCantidadAjustar.Text = "";
                         string accion = stockMode == "Agregar" ? "agregado" : "reducido";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "stockAjustado",
-                            $"alert('Stock {accion} exitosamente'); " +
-                            "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAjustarStock')); " +
-                            "if(modal) modal.hide(); " +
-                            "document.querySelector('.modal-backdrop')?.remove();", true);
-                        Response.Redirect(Request.RawUrl);
+                        MostrarMensajeExitoYRecargar($"Stock {accion} exitosamente", "modalAjustarStock");
                     }
                 }
             }
             catch (FormatException)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorFormato",
-                    "alert('Por favor ingrese valores numéricos válidos');", true);
+                MostrarMensajeError("Por favor ingrese valores numéricos válidos");
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorAjuste",
-                    $"alert('Error al ajustar stock: {ex.Message}');", true);
+                MostrarMensajeError($"Error al ajustar stock: {ex.Message}");
             }
         }
 
@@ -360,29 +385,19 @@ namespace SoftBodWA
             {
                 if (string.IsNullOrWhiteSpace(txtNombreProductoEdit.Text))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorNombre",
-                        "alert('Por favor ingrese el nombre del producto');", true);
+                    MostrarMensajeError("Por favor ingrese el nombre del producto");
                     return;
                 }
 
                 if (int.Parse(txtStockMinimoEdit.Text.Trim()) < 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorNombre",
-                        "alert('El stock mínimo no puede ser negativo');", true);
+                    MostrarMensajeError("El stock mínimo no puede ser negativo");
                     return;
                 }
 
-                if (double.Parse(txtPrecioEdit.Text.Trim()) < 0.00)
+                if (double.Parse(txtPrecioEdit.Text.Trim()) <= 0.00)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorNombre",
-                        "alert('El precio no puede ser negativo');", true);
-                    return;
-                }
-
-                if (double.Parse(txtPrecioEdit.Text.Trim()) == 0.00)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorNombre",
-                        "alert('El precio no puede ser cero');", true);
+                    MostrarMensajeError("El precio debe ser mayor a cero");
                     return;
                 }
 
@@ -408,79 +423,66 @@ namespace SoftBodWA
                 productoDTO.stockMinimoSpecified = true;
                 productoDTO.activo = true;
                 productoDTO.activoSpecified = true;
-
                 productoDTO.categoria = categDTO;
 
                 int resultado = productoBO.modificarProducto(productoDTO);
 
                 if (resultado > 0)
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "productoActualizado",
-                        "alert('Producto actualizado exitosamente'); " +
-                        "var modal = bootstrap.Modal.getInstance(document.getElementById('modalEditarProducto')); " +
-                        "if(modal) modal.hide(); " +
-                        "document.querySelector('.modal-backdrop')?.remove();", true);
-                    Response.Redirect(Request.RawUrl);
+                    // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                    ViewState["ListaProductos"] = null;
+
+                    MostrarMensajeExitoYRecargar("Producto actualizado exitosamente", "modalEditarProducto");
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "errorActualizar",
-                        "alert('Error al actualizar el producto');", true);
+                    MostrarMensajeError("Error al actualizar el producto");
                 }
             }
             catch (FormatException)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorFormato",
-                    "alert('Por favor verifique que los valores numéricos sean correctos');", true);
+                MostrarMensajeError("Por favor verifique que los valores numéricos sean correctos");
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorActualizar",
-                    $"alert('Error al actualizar producto: {ex.Message}');", true);
+                MostrarMensajeError($"Error al actualizar producto: {ex.Message}");
             }
         }
+
         protected void btnConfirmarEliminacion_Click(object sender, EventArgs e)
         {
             try
             {
                 int idProducto = int.Parse(hdnProductoIdEliminar.Value);
-
                 WSProducto.productoDTO producto = productoBO.obtenerProductoPorId(idProducto);
 
                 if (producto != null)
                 {
                     var tieneVentas = detalleventaBO.listarDetallesVentaPorProducto(producto.productoId).Count();
-                    string mensaje = "";
+
                     if (tieneVentas > 0)
                     {
-                        mensaje = "El producto tiene ventas asociadas, no se puede eliminar.";
+                        MostrarMensajeError("El producto tiene ventas asociadas, no se puede eliminar");
                     }
                     else
                     {
                         int resultado = productoBO.eliminarProducto(idProducto);
-                        mensaje = "Operario eliminado exitosamente.";
+
+                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                        ViewState["ListaProductos"] = null;
+
+                        MostrarMensajeExitoYRecargar("Producto eliminado exitosamente", "modalEliminarProducto");
                     }
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaEliminacion",
-                       $@"var modal = bootstrap.Modal.getInstance(document.getElementById('modalEliminarProducto')); 
-                       if(modal) modal.hide();
-                       document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-                       document.body.classList.remove('modal-open');
-                       document.body.style.overflow = '';
-                       alert('{mensaje}');
-                       window.location.href = window.location.pathname;", true);
-                    Response.Redirect(Request.RawUrl);
                 }
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "errorEliminar",
-                    $"alert('Error: {ex.Message}');", true);
+                MostrarMensajeError($"Error: {ex.Message}");
             }
         }
 
         private void LimpiarCamposModal()
         {
-            // Limpiar campos después de agregar
             txtNombreProducto.Text = "";
             txtPrecio.Text = "";
             txtStockInicial.Text = "";
@@ -489,11 +491,22 @@ namespace SoftBodWA
             ddlCategoria.SelectedIndex = 0;
         }
 
-        private void cargarProductosFiltro(bool activo, string categoria, string nombre)
+        private void CargarProductosFiltro(bool activo, string categoria, string nombre)
         {
             var lista = productoBO.listarTodosConFiltroProductos(activo, categoria, nombre);
-            rptProducto.DataSource = lista;
-            rptProducto.DataBind();
+
+            if (lista != null && lista.Any())
+            {
+                rptProducto.DataSource = lista;
+                rptProducto.DataBind();
+                rptProducto.Visible = true;
+                pnlSinProductos.Visible = false;
+            }
+            else
+            {
+                rptProducto.Visible = false;
+                pnlSinProductos.Visible = true;
+            }
         }
 
         protected void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -501,32 +514,32 @@ namespace SoftBodWA
             string texto = txtBuscarProducto.Text.Trim();
             string categoriaNombre = ddlCategoriaFiltro.SelectedItem.Text;
 
-            // Si quieres que cuando el usuario no elija nada,
-            // el texto de categoría sea vacío:
-            if (ddlCategoriaFiltro.SelectedIndex == 0) // opción "Seleccione..."
+            if (ddlCategoriaFiltro.SelectedIndex == 0)
                 categoriaNombre = "";
 
-            cargarProductosFiltro(true, categoriaNombre, texto);
+            CargarProductosFiltro(true, categoriaNombre, texto);
         }
 
-        // VALIDACIONES
+        // ===== MÉTODOS DE VALIDACIÓN =====
 
-        private bool ValidarCamposProducto(string nombre, string precio, string stockInicial, string stockMinimo, int categoriaId, out string mensaje)
+        private bool ValidarCategoriaUnica(string categoriaIdStr, string nuevaCategoria, out string mensaje)
         {
             mensaje = "";
 
-            if (string.IsNullOrWhiteSpace(nombre) ||
-                string.IsNullOrWhiteSpace(precio) ||
-                string.IsNullOrWhiteSpace(stockInicial) ||
-                string.IsNullOrWhiteSpace(stockMinimo))
+            bool categoriaSeleccionada = !string.IsNullOrEmpty(categoriaIdStr) && categoriaIdStr != "0" && categoriaIdStr != "";
+            bool nuevaCategoriaIngresada = !string.IsNullOrEmpty(nuevaCategoria);
+
+            // Caso 1: No seleccionó ninguna
+            if (!categoriaSeleccionada && !nuevaCategoriaIngresada)
             {
-                mensaje = "Por favor complete todos los campos.";
+                mensaje = "Debe seleccionar una categoría existente o ingresar una nueva categoría.";
                 return false;
             }
 
-            if (categoriaId <= 0)
+            // Caso 2: Seleccionó ambas
+            if (categoriaSeleccionada && nuevaCategoriaIngresada)
             {
-                mensaje = "Debe seleccionar una categoría válida.";
+                mensaje = "Debe seleccionar solo una opción: categoría existente O nueva categoría, no ambas.";
                 return false;
             }
 
@@ -568,14 +581,33 @@ namespace SoftBodWA
         {
             mensaje = "";
 
-            if (listaProductos.Any(p =>
-                p.nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)))
+            if (ListaProductos.Any(p => p.nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase)))
             {
                 mensaje = "Ya existe un producto con este nombre.";
                 return false;
             }
 
             return true;
+        }
+
+        // ===== MÉTODOS DE UI =====
+
+        private void MostrarMensajeError(string mensaje)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "error",
+                $"alert('{mensaje}');", true);
+        }
+
+        private void MostrarMensajeExitoYRecargar(string mensaje, string modalId)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoYRecarga",
+                $@"var modal = bootstrap.Modal.getInstance(document.getElementById('{modalId}')); 
+                   if(modal) modal.hide();
+                   document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+                   document.body.classList.remove('modal-open');
+                   document.body.style.overflow = '';
+                   alert('{mensaje}');
+                   window.location.href = window.location.pathname;", true);
         }
     }
 }

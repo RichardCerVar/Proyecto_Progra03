@@ -24,7 +24,6 @@ namespace SoftBodWA
         private DetalleVentaBO detalleVentaBO;
         private DetalleDevolucionBO detalleDevolucionBO;
         private ClienteAlFiadoBO clienteAlFiadoBO;
-        private ProductoBO productoBO;
 
         private string FechaActual
         {
@@ -71,7 +70,6 @@ namespace SoftBodWA
             detalleVentaBO = new DetalleVentaBO();
             detalleDevolucionBO = new DetalleDevolucionBO();
             clienteAlFiadoBO = new ClienteAlFiadoBO();
-            productoBO = new ProductoBO();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -90,13 +88,12 @@ namespace SoftBodWA
             ListaVentasHoy = ventaBO.listarVentasPorFecha(FechaActual);
             ListaVentasFiadas = ventaFiadoBO.listarVentasAlFiadoPorAliasClienteYFecha("", FechaActual);
             ListaDevoluciones = devolucionBO.listarDevolucionesPorFecha(FechaActual);
-            ListaPagos = registroPagoBO.listarRegistrosPagoFiadoPorAliasClienteConFechaFin("", FechaActual);
+            ListaPagos = registroPagoBO.listarTodosRegistrosPagoFiado().Where(p => DateTime.Parse(p.fecha).ToString("yyyy-MM-dd") == FechaActual).ToList();
             ListaClientes = clienteAlFiadoBO.listarTodosClientesAlFiado();
         }
 
         private void CargarEstadisticas()
         {
-            litProductos.Text = productoBO.listarTodosConFiltroProductos(true, "", "").Count.ToString();
             litClientes.Text = ListaClientes.Count(c => c.activo).ToString();
 
             var idsVentasFiadas = ListaVentasFiadas.Select(vf => vf.venta.ventaId).ToList();
@@ -105,6 +102,7 @@ namespace SoftBodWA
 
             litVentasHoy.Text = $"S/.{ventasContado.Sum(v => v.total):F2}";
             litFiados.Text = $"S/.{ventasFiadas.Sum(v => v.total):F2}";
+            litDevoluciones.Text = $"S/.{ListaDevoluciones.Sum(d => d.total):F2}";
         }
 
         private void CargarMovimientosRecientes()
@@ -219,6 +217,19 @@ namespace SoftBodWA
             }
         }
 
+        private void OcultarTodosEstados()
+        {
+            litEstadoCompletada.Visible = false;
+            litEstadoPendiente.Visible = false;
+            litEstadoRegistrado.Visible = false;
+        }
+
+        private void OcultarTodosTotales()
+        {
+            pnlTotalPositivo.Visible = false;
+            pnlTotalNegativo.Visible = false;
+        }
+
         private void CargarDetalleVenta(int ventaId)
         {
             var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
@@ -230,8 +241,17 @@ namespace SoftBodWA
             litModalCliente.Text = "N/A";
             litModalFechaHora.Text = DateTime.Parse(venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
             litModalTipo.Text = venta.metodoPago.ToString();
-            litModalEstado.Text = "<span class='text-success'>Completada</span>";
-            litModalTotal.Text = $"<span class='text-success'>+S/.{venta.total:F2}</span>";
+
+            OcultarTodosEstados();
+            litEstadoCompletada.Visible = true;
+
+            OcultarTodosTotales();
+            litTotalPositivoValor.Text = $"+S/.{venta.total:F2}";
+            pnlTotalPositivo.Visible = true;
+
+            pnlInfoCliente.Visible = false;
+            pnlProductos.Visible = true;
+            pnlSinProductos.Visible = false;
 
             if (detalles != null && detalles.Any())
             {
@@ -243,8 +263,6 @@ namespace SoftBodWA
 
                 rptProductosModal.DataSource = productosModal;
                 rptProductosModal.DataBind();
-                pnlProductos.Visible = true;
-                pnlSinProductos.Visible = false;
             }
             else
             {
@@ -266,9 +284,20 @@ namespace SoftBodWA
             litModalFechaHora.Text = DateTime.Parse(ventaFiada.venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
             litModalTipo.Text = "Fiado";
 
+            OcultarTodosEstados();
             bool pendiente = ventaFiada.cliente?.montoDeuda > 0;
-            litModalEstado.Text = pendiente ? "<span class='text-danger'>Pendiente</span>" : "<span class='text-success'>Completada</span>";
-            litModalTotal.Text = $"<span class='text-success'>+S/.{ventaFiada.venta.total:F2}</span>";
+            if (pendiente)
+                litEstadoPendiente.Visible = true;
+            else
+                litEstadoCompletada.Visible = true;
+
+            OcultarTodosTotales();
+            litTotalPositivoValor.Text = $"+S/.{ventaFiada.venta.total:F2}";
+            pnlTotalPositivo.Visible = true;
+
+            pnlInfoCliente.Visible = false;
+            pnlProductos.Visible = true;
+            pnlSinProductos.Visible = false;
 
             if (detalles != null && detalles.Any())
             {
@@ -280,8 +309,6 @@ namespace SoftBodWA
 
                 rptProductosModal.DataSource = productosModal;
                 rptProductosModal.DataBind();
-                pnlProductos.Visible = true;
-                pnlSinProductos.Visible = false;
             }
             else
             {
@@ -302,8 +329,17 @@ namespace SoftBodWA
             litModalCliente.Text = "N/A";
             litModalFechaHora.Text = DateTime.Parse(devolucion.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
             litModalTipo.Text = "Devolución";
-            litModalEstado.Text = "<span class='text-success'>Completada</span>";
-            litModalTotal.Text = $"<span class='text-danger'>-S/.{devolucion.total:F2}</span>";
+
+            OcultarTodosEstados();
+            litEstadoCompletada.Visible = true;
+
+            OcultarTodosTotales();
+            litTotalNegativoValor.Text = $"-S/.{devolucion.total:F2}";
+            pnlTotalNegativo.Visible = true;
+
+            pnlInfoCliente.Visible = false;
+            pnlProductos.Visible = true;
+            pnlSinProductos.Visible = false;
 
             if (detalles != null && detalles.Any())
             {
@@ -315,8 +351,6 @@ namespace SoftBodWA
 
                 rptProductosModal.DataSource = productosModal;
                 rptProductosModal.DataBind();
-                pnlProductos.Visible = true;
-                pnlSinProductos.Visible = false;
             }
             else
             {
@@ -335,12 +369,22 @@ namespace SoftBodWA
             litModalCliente.Text = pago.cliente?.alias ?? "N/A";
             litModalFechaHora.Text = DateTime.Parse(pago.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
             litModalTipo.Text = pago.metodoPago.ToString();
-            litModalEstado.Text = "<span class='text-success'>Registrado</span>";
-            litModalTotal.Text = $"<span class='text-success'>S/.{pago.monto:F2}</span>";
 
+            OcultarTodosEstados();
+            litEstadoRegistrado.Visible = true;
+
+            OcultarTodosTotales();
+            litTotalPositivoValor.Text = $"S/.{pago.monto:F2}";
+            pnlTotalPositivo.Visible = true;
+
+            litClienteNombre.Text = pago.cliente?.nombre ?? "N/A";
+            litClienteAlias.Text = pago.cliente?.alias ?? "N/A";
+            litClienteTelefono.Text = pago.cliente?.telefono ?? "N/A";
+            litClienteDeuda.Text = $"S/.{pago.cliente?.montoDeuda:F2}";
+
+            pnlInfoCliente.Visible = true;
             pnlProductos.Visible = false;
-            pnlSinProductos.Visible = true;
-            litMensajeSinProductos.Text = "* No aplica detalle de productos para pagos *";
+            pnlSinProductos.Visible = false;
         }
     }
 
