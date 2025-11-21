@@ -14,6 +14,8 @@ namespace SoftBodWA
     {
         private UsuarioBO usuarioBO;
         private HistorialOperacionesBO historialBO;
+
+        // Cache de usuarios - solo se carga cuando es null o se fuerza recarga
         private List<WSUsuario.usuarioDTO> ListaUsuarios
         {
             get
@@ -36,7 +38,6 @@ namespace SoftBodWA
             get
             {
                 var lista = ListaUsuarios;
-                // Retorna la lista sin el primer elemento (administrador)
                 return lista.Count > 1 ? lista.Skip(1).ToList() : new List<WSUsuario.usuarioDTO>();
             }
         }
@@ -57,12 +58,8 @@ namespace SoftBodWA
 
         private void CargarOperarios()
         {
-            ListaUsuarios = usuarioBO.listarTodosUsuarios();
-
-            // Mostrar solo operarios (sin administrador)
             var operarios = ListaOperarios;
 
-            // Controlar visibilidad según si hay operarios
             if (operarios.Count > 0)
             {
                 rptUsuarios.DataSource = operarios;
@@ -86,6 +83,13 @@ namespace SoftBodWA
             lblActivos.InnerText = operarios.Count(u => u.activo).ToString();
         }
 
+        // Método para forzar recarga de datos desde BD
+        private void RecargarDatosYActualizar()
+        {
+            ViewState["ListaUsuarios"] = null; // Invalida cache
+            CargarOperarios();
+        }
+
         protected void rptUsuarios_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             string[] args = e.CommandArgument.ToString().Split('|');
@@ -93,77 +97,81 @@ namespace SoftBodWA
             switch (e.CommandName)
             {
                 case "Editar":
-                    // CommandArgument: nombre|usuario|correo|telefono
-                    string nombre = args[0];
-                    string usuario = args[1];
-                    string email = args[2];
-                    string telefono = args[3];
-
-                    txtEditNombreCompleto.Text = nombre;
-                    txtEditUsuario.Text = usuario;
-                    txtEditEmail.Text = email;
-                    txtEditTelefono.Text = telefono;
-
-                    hdnEditUsuarioID.Value = usuario;
-
-                    updEditarOperario.Update();
-
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showEditarOperario",
-                        "var myModal = new bootstrap.Modal(document.getElementById('modalEditarOperario')); myModal.show();", true);
+                    MostrarModalEditar(args);
                     break;
 
                 case "Eliminar":
-                    // CommandArgument: nombre|usuario
-                    string nombreEliminar = args[0];
-                    string usuarioEliminar = args[1];
-
-                    ltNombreEliminar.Text = nombreEliminar;
-                    hdnUsuarioIDEliminar.Value = usuarioEliminar;
-
-                    updEliminarOperario.Update();
-
-                    ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarOperario",
-                        "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarOperario')); myModal.show();", true);
+                    MostrarModalEliminar(args);
                     break;
 
                 case "ToggleActivo":
-                    // CommandArgument: usuarioId|usuario|correo|tipoUsuarios|contrasenha|nombre|telefono|activo
-                    try
-                    {
-                        int usuarioId = int.Parse(args[0]);
-                        string usuarioNombre = args[1];
-                        string correo = args[2];
-                        string tipoUsuario = args[3];
-                        string contrasenha = args[4];
-                        string nombreCompleto = args[5];
-                        string tel = args[6];
-                        bool estadoActual = bool.Parse(args[7]);
-
-                        bool nuevoEstado = !estadoActual;
-
-                        usuarioBO.modificarUsuario(
-                            usuarioId,
-                            usuarioNombre,
-                            correo,
-                            tipoUsuario,
-                            contrasenha,
-                            nombreCompleto,
-                            tel,
-                            nuevoEstado
-                        );
-
-                        CargarOperarios();
-                    }
-                    catch (Exception ex)
-                    {
-                        MostrarMensajeError($"Error al actualizar el estado: {ex.Message}");
-                    }
+                    CambiarEstadoUsuario(args);
                     break;
+            }
+        }
+
+        private void MostrarModalEditar(string[] args)
+        {
+            // CommandArgument: nombre|usuario|correo|telefono
+            txtEditNombreCompleto.Text = args[0];
+            txtEditUsuario.Text = args[1];
+            txtEditEmail.Text = args[2];
+            txtEditTelefono.Text = args[3];
+            hdnEditUsuarioID.Value = args[1];
+
+            updEditarOperario.Update();
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEditarOperario",
+                "var myModal = new bootstrap.Modal(document.getElementById('modalEditarOperario')); myModal.show();", true);
+        }
+
+        private void MostrarModalEliminar(string[] args)
+        {
+            // CommandArgument: nombre|usuario
+            ltNombreEliminar.Text = args[0];
+            hdnUsuarioIDEliminar.Value = args[1];
+
+            updEliminarOperario.Update();
+            ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarOperario",
+                "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarOperario')); myModal.show();", true);
+        }
+
+        private void CambiarEstadoUsuario(string[] args)
+        {
+            // CommandArgument: usuarioId|usuario|correo|tipoUsuarios|contrasenha|nombre|telefono|activo
+            try
+            {
+                int usuarioId = int.Parse(args[0]);
+                string usuarioNombre = args[1];
+                string correo = args[2];
+                string tipoUsuario = args[3];
+                string contrasenha = args[4];
+                string nombreCompleto = args[5];
+                string tel = args[6];
+                bool estadoActual = bool.Parse(args[7]);
+                bool nuevoEstado = !estadoActual;
+
+                usuarioBO.modificarUsuario(
+                    usuarioId,
+                    usuarioNombre,
+                    correo,
+                    tipoUsuario,
+                    contrasenha,
+                    nombreCompleto,
+                    tel,
+                    nuevoEstado
+                );
+
+                RecargarDatosYActualizar();
+            }
+            catch (Exception ex)
+            {
+                MostrarMensajeError($"Error al actualizar el estado: {ex.Message}");
             }
         }
 
         protected void btnAgregarOperario_Click(object sender, EventArgs e)
         {
+            LimpiarCamposModal(); // Limpiar antes de mostrar
             ScriptManager.RegisterStartupScript(this, GetType(), "showModalAgregar",
                 "var myModal = new bootstrap.Modal(document.getElementById('modalAgregarOperario')); myModal.show();", true);
         }
@@ -178,6 +186,7 @@ namespace SoftBodWA
                 string nuevoCorreo = txtEditEmail.Text.Trim();
                 string nuevoTelefono = txtEditTelefono.Text.Trim();
 
+                // Validaciones
                 if (!ValidarCamposCompletos(nuevoNombre, nuevoUsuario, nuevoCorreo, nuevoTelefono, "TempPass1!", out string mensajeError))
                 {
                     MostrarMensajeError(mensajeError);
@@ -205,14 +214,10 @@ namespace SoftBodWA
                         usuarioActual.activo
                     );
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaEdicion",
-                        @"var modal = bootstrap.Modal.getInstance(document.getElementById('modalEditarOperario')); 
-                          if(modal) modal.hide();
-                          document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-                          document.body.classList.remove('modal-open');
-                          document.body.style.overflow = '';
-                          alert('Operario actualizado exitosamente');
-                          window.location.href = window.location.pathname;", true);
+                    // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                    ViewState["ListaUsuarios"] = null;
+
+                    MostrarMensajeExitoYRecargar("Operario actualizado exitosamente", "modalEditarOperario");
                 }
             }
             catch (Exception ex)
@@ -226,16 +231,16 @@ namespace SoftBodWA
             try
             {
                 string usuarioEliminar = hdnUsuarioIDEliminar.Value;
-
                 WSUsuario.usuarioDTO usuario = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioEliminar);
+
                 if (usuario != null)
                 {
-
                     var tieneReg = historialBO.listarHistorialOperacionesPorUsuario(usuario.usuarioId).Count();
                     string mensaje = "";
+
                     if (tieneReg > 0)
                     {
-                        int resultadoLogico = usuarioBO.eliminarLogicoUsuario(
+                        usuarioBO.eliminarLogicoUsuario(
                             usuario.usuarioId,
                             usuario.usuario,
                             usuario.correo,
@@ -249,18 +254,14 @@ namespace SoftBodWA
                     }
                     else
                     {
-                        int resultado = usuarioBO.eliminarUsuario(usuario.usuarioId);
+                        usuarioBO.eliminarUsuario(usuario.usuarioId);
                         mensaje = "Operario eliminado exitosamente.";
                     }
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaEliminacion",
-                    $@"var modal = bootstrap.Modal.getInstance(document.getElementById('modalEliminarOperario')); 
-                       if(modal) modal.hide();
-                       document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-                       document.body.classList.remove('modal-open');
-                       document.body.style.overflow = '';
-                       alert('{mensaje}');
-                       window.location.href = window.location.pathname;", true);
+                    // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                    ViewState["ListaUsuarios"] = null;
+
+                    MostrarMensajeExitoYRecargar(mensaje, "modalEliminarOperario");
                 }
             }
             catch (Exception ex)
@@ -279,6 +280,7 @@ namespace SoftBodWA
                 string telefono = txtTelefono.Text.Trim();
                 string contraseña = txtContraseñaTemporal.Text.Trim();
 
+                // Validaciones
                 if (!ValidarCamposCompletos(nombre, usuario, correo, telefono, contraseña, out string mensajeError))
                 {
                     MostrarMensajeError(mensajeError);
@@ -299,16 +301,11 @@ namespace SoftBodWA
 
                 usuarioBO.insertarUsuario(usuario, correo, "OPERARIO", contraseña, nombre, telefono, true);
 
-                LimpiarCamposModal();
+                // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje y limpiar
+                ViewState["ListaUsuarios"] = null;
 
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertaOperario",
-                    @"var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarOperario')); 
-                      if(modal) modal.hide();
-                      document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
-                      document.body.classList.remove('modal-open');
-                      document.body.style.overflow = '';
-                      alert('Operario creado exitosamente');
-                      window.location.href = window.location.pathname;", true);
+                LimpiarCamposModal();
+                MostrarMensajeExitoYRecargar("Operario creado exitosamente", "modalAgregarOperario");
             }
             catch (Exception ex)
             {
@@ -408,10 +405,24 @@ namespace SoftBodWA
             return true;
         }
 
+        // ===== MÉTODOS DE UI =====
+
         private void MostrarMensajeError(string mensaje)
         {
             ScriptManager.RegisterStartupScript(this, this.GetType(), "error",
                 $"alert('{mensaje}');", true);
+        }
+
+        private void MostrarMensajeExitoYRecargar(string mensaje, string modalId)
+        {
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoYRecarga",
+                $@"var modal = bootstrap.Modal.getInstance(document.getElementById('{modalId}')); 
+                   if(modal) modal.hide();
+                   document.querySelectorAll('.modal-backdrop').forEach(el => el.remove());
+                   document.body.classList.remove('modal-open');
+                   document.body.style.overflow = '';
+                   alert('{mensaje}');
+                   window.location.href = window.location.pathname;", true);
         }
     }
 }
