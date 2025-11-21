@@ -16,7 +16,7 @@
                         <i class="fa-solid fa-cube fa-2x text-primary me-3"></i>
                         <div>
                             <p class="mb-0 text-muted">Productos Activos</p>
-                            <h4 class="fw-bold">34</h4>
+                            <h4 class="fw-bold" id="lblProductosActivos" runat="server">0</h4>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                         <i class="fa-solid fa-triangle-exclamation fa-2x text-warning me-3"></i>
                         <div>
                             <p class="mb-0 text-muted">Stock Bajo</p>
-                            <h4 class="fw-bold text-warning">6</h4>
+                            <h4 class="fw-bold text-warning" id="lblStockBajo" runat="server">0</h4>
                         </div>
                     </div>
                 </div>
@@ -40,7 +40,7 @@
                         <i class="fa-solid fa-sack-dollar fa-2x text-success me-3"></i>
                         <div>
                             <p class="mb-0 text-muted">Valor Inventario</p>
-                            <h4 class="fw-bold text-success">S/. 2,347.00</h4>
+                            <h4 class="fw-bold text-success" id="lblValorInventario" runat="server">S/. 00.00</h4>
                         </div>
                     </div>
                 </div>
@@ -51,14 +51,15 @@
         <!-- 🔍 Buscador -->
         <div class="col-md-6 mb-2">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Buscar productos por nombre..." id="txtBuscarProductoHTML" />
-                <button type="button" class="btn btn-primary">Buscar</button>
+                <asp:TextBox ID="txtBuscarProducto" runat="server" Cssclass="form-control" placeholder="Buscar productos por nombre..."/>
+                <asp:Button ID="btnBuscarProducto" runat="server" Cssclass="btn btn-primary" Text="Buscar" OnClick="btnBuscarProducto_Click"/>
             </div>
         </div>
 
         <!-- 🧾 Filtro de categoría -->
         <div class="col-md-3 mb-2">
-            <asp:DropDownList ID="ddlCategoriaFiltro" runat="server" CssClass="form-select form-select-sm">
+            <asp:DropDownList ID="ddlCategoriaFiltro" runat="server" CssClass="form-select form-select-sm" AppendDataBoundItems="true">
+            <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
             </asp:DropDownList>
         </div>
 
@@ -72,7 +73,7 @@
         </div>
     </div>
 
-    <asp:Repeater ID="rptProducto" runat="server">
+    <asp:Repeater ID="rptProducto" runat="server"  OnItemCommand="rptProducto_ItemCommand">
     <ItemTemplate>
         <div class="card mb-3 shadow-sm border-0 <%# (bool)Eval("activo") ? "" : "opacity-50" %>">
             <div class="card-body d-flex justify-content-between align-items-center">
@@ -83,7 +84,7 @@
                     <div>
                         <strong><%# Eval("nombre") %></strong><br />
                         <small class="text-muted">
-                            <%# Eval("Categoria.descripcion") %> — Min: <%# Eval("stockMinimo") %> UNIDAD
+                            <%# Eval("Categoria.descripcion") %> — Stock: <%# Eval("stockMinimo") %> UNIDAD
                         </small>
                     </div>
                 </div>
@@ -93,17 +94,35 @@
                     <div class="d-flex align-items-center gap-4">
 
                         <div class="text-end">
-                            <p class="mb-0 fw-bold text-warning">
-                                <i class="fa-solid fa-triangle-exclamation me-1"></i>
-                                Stock: <%# Eval("stock") %>
-                            </p>
+                            <%# 
+                                Convert.ToInt32(Eval("stock")) <= Convert.ToInt32(Eval("stockMinimo")) ?
+                                        // --- MODO ALERTA ---
+                            "<p class='mb-0 fw-bold text-warning'>" +
+                                "<i class='fa-solid fa-triangle-exclamation me-1'></i>" +
+                                "Stock: " + Eval("stock") +
+                            "</p>" 
+                            :
+                                // --- MODO NORMAL ---
+                             "<p class='mb-0 fw-bold'>Stock: " + Eval("stock") + "</p>"
+                             %>
                             <p class="mb-0">S/. <%# String.Format("{0:N2}", Eval("precioUnitario")) %></p>
+                            
                             <div class="form-check form-switch mt-1">
-                                <input class="form-check-input" type="checkbox"
-                                       <%# (bool)Eval("activo") ? "checked" : "" %>
-                                       id='chk<%# Eval("productoId") %>' />
-                                <label class="form-check-label small text-muted">
-                                    <%# (bool)Eval("activo") ? "activo" : "inactivo" %>
+                            <asp:LinkButton ID="btnCambiarEstado" runat="server"
+                                CommandName="CambiarEstado"
+                                CommandArgument='<%# Eval("productoId") %>'
+                                Style="display:none;">
+                            </asp:LinkButton>
+                                <input 
+                                    class="form-check-input" 
+                                    type="checkbox"
+                                    aria-label="Cambiar estado del producto"
+                                    id='<%# "switch_" + Eval("productoId") %>'
+                                    <%# (bool)Eval("activo") ? "checked" : "" %>
+                                     onclick="document.getElementById('<%# Container.FindControl("btnCambiarEstado").ClientID %>').click();" />
+                                <label class="form-check-label small text-muted"
+                                    for='<%# "switch_" + Eval("productoId") %>'>
+                                    <%# (bool)Eval("activo") ? "Activo" : "Inactivo" %>
                                 </label>
                             </div>
                         </div>
@@ -115,8 +134,8 @@
                                 Style="width: 45px; height: 45px; border-width: 2px;" 
                                 CommandName="AjustarStock"
                                 CommandArgument='<%# Eval("productoId") %>'
-                                ToolTip="Ajustar Stock (Agregar/Reducir)"
-                                data-bs-toggle="modal" data-bs-target="#modalAjustarStock">
+                                data-productoid='<%# Eval("productoId") %>'
+                                ToolTip="Ajustar Stock (Agregar/Reducir)">
                                 <i class="fa-solid fa-plus"></i>
                             </asp:LinkButton>
 
@@ -126,16 +145,17 @@
                                 CommandName="Editar"
                                 CommandArgument='<%# Eval("productoId") %>'
                                 ToolTip="Editar Producto"
-                                data-bs-toggle="modal" data-bs-target="#modalEditarProducto">
+                                data-productoid='<%# Eval("productoId") %>'>
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </asp:LinkButton>
 
-                            <asp:LinkButton ID="btnCambiarEstado" runat="server"
+                            <asp:LinkButton ID="btnEliminarProducto" runat="server"
                                 CssClass="btn btn-outline-danger rounded-3 d-flex align-items-center justify-content-center"
                                 Style="width: 45px; height: 45px; border-color: #dc3545; color: #dc3545;"
-                                CommandName="CambiarEstado"
-                                CommandArgument='<%# Eval("productoId") %>'
-                                ToolTip='<%# (bool)Eval("activo") ? "Desactivar Producto" : "Activar Producto" %>'>
+                                CommandName="EliminarProducto"
+                                CommandArgument='<%# Eval("productoId") + "|" + Eval("nombre") %>'
+                                ToolTip="Eliminar Producto"
+                                data-productoid='<%# Eval("productoId") %>'>
                                 <i class="fa-solid fa-trash-can"></i>
                             </asp:LinkButton>
                         </div>
@@ -146,7 +166,7 @@
     </ItemTemplate>
     </asp:Repeater>
 
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:ScriptManager runat="server" EnablePartialRendering="true"></asp:ScriptManager>
 
 <div class="modal fade" id="modalAgregarProducto" tabindex="-1" aria-labelledby="modalAgregarProductoLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -173,6 +193,7 @@
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Categoría" AssociatedControlID="ddlCategoria"></asp:Label>
                             <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-select form-select-sm">
+                                 <asp:ListItem Text="Seleccione..." Value=""></asp:ListItem>
                             </asp:DropDownList>
                         </div>
 
@@ -180,6 +201,16 @@
                         <div class="mb-3">
                             <asp:Label CssClass="form-label fw-semibold" runat="server" Text="O crear nueva categoría" AssociatedControlID="txtNuevaCategoria"></asp:Label>
                             <asp:TextBox ID="txtNuevaCategoria" CssClass="form-control" placeholder="Nueva categoría" runat="server"></asp:TextBox>
+                        </div>
+
+                        <!-- UNIDAD DE MEDIDA -->
+                        <div class="mb-3">
+                            <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Unidad de Medida" AssociatedControlID="ddlMedida"></asp:Label>
+                            <asp:DropDownList ID="ddlMedida" runat="server" CssClass="form-select form-select-sm">
+                                <asp:ListItem Text="UNIDAD" Value="UNIDAD"></asp:ListItem>
+                                <asp:ListItem Text="KILOGRAMOS" Value="KILOGRAMOS"></asp:ListItem>
+                                <asp:ListItem Text="LITROS" Value="LITROS"></asp:ListItem>
+                            </asp:DropDownList>
                         </div>
 
                         <!-- Precio y Stock Inicial -->
@@ -309,6 +340,40 @@
                     </Triggers>
                 </asp:UpdatePanel>
             </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modalEliminarProducto" tabindex="-1" aria-labelledby="modalEliminarProductoLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <asp:UpdatePanel ID="updEliminarProducto" runat="server" UpdateMode="Conditional">
+                <ContentTemplate>
+                    <div class="modal-body p-4 text-center">
+                        <i class="fa-solid fa-trash-fill fs-1 text-danger mb-2"></i>
+                        
+                        <h5 class="fw-bold mb-3" id="modalEliminarProductoLabel">¿Eliminar producto?</h5>
+                        
+                        <p class="text-muted">
+                            Esta acción no se puede deshacer. Se eliminará permanentemente el producto
+                            <strong class="text-dark"><asp:Literal ID="ltNombreProductoEliminar" runat="server" /></strong> del sistema.
+                        </p>
+                        
+                        <asp:HiddenField ID="hdnProductoIdEliminar" runat="server" />
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="button" class="btn btn-light w-100" data-bs-dismiss="modal">Cancelar</button>
+                            
+                            <asp:Button ID="btnConfirmarEliminacion" runat="server" 
+                                Text="Sí, Eliminar" 
+                                CssClass="btn btn-danger w-100" 
+                                OnClick="btnConfirmarEliminacion_Click" />
+                        </div>
+                    </div>
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="rptProducto" EventName="ItemCommand" />
+                </Triggers>
+            </asp:UpdatePanel>
         </div>
     </div>
 </div>

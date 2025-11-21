@@ -3,20 +3,92 @@
   "WorkspaceRootPath": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\usuariobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\usuariobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\inicio.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\inicio.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\usuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\usuarios.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\registrarventa.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\eliminaroperario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\scripts\\softbodscripts\\eliminaroperario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\eliminarproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\scripts\\softbodscripts\\eliminarproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\packages.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\reporteventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reporteventas.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodbusiness\\movimientosinicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\movimientosinicio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\detalledevolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\detalledevolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\categoriabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\categoriabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\detalleventabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\detalleventabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\registrarventa.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\registrarventa.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\reporteinventario.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reporteinventario.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\reportekardex.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportekardex.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|c:\\users\\giovani\\documents\\github\\proyecto_progra03\\softbod\\softbodbusiness\\usuariobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\usuariobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\registrarventa.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
@@ -43,40 +115,16 @@
       "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\productobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\devolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\devolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\detalleventabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\detalleventabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\detalledevolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\detalledevolucionbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\clientealfiadobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\clientealfiadobo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodbusiness\\categoriabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\categoriabo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\pagodeuda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\scripts\\softbodscripts\\pagodeuda.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\eliminarproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\scripts\\softbodscripts\\eliminarproducto.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\eliminaroperario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\scripts\\softbodscripts\\eliminaroperario.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\scripts\\softbodscripts\\eliminarcliente.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -121,10 +169,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\softbodwa\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\login.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -134,8 +178,73 @@
       "DocumentGroups": [
         {
           "DockedHeight": 114,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Productos.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
+              "RelativeToolTip": "SoftBodWA\\Productos.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T05:09:37.861Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Productos.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx.cs",
+              "RelativeToolTip": "SoftBodWA\\Productos.aspx.cs",
+              "ViewState": "AgIAAMIBAAAAAAAAAAAuwIkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T00:45:47.993Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Usuarios.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\Usuarios.aspx.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx.cs",
+              "RelativeToolTip": "SoftBodWA\\Usuarios.aspx.cs",
+              "ViewState": "AgIAAGwBAAAAAAAAAAAQwKUBAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T01:33:52.709Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EliminarOperario.js",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
+              "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
+              "RelativeToolTip": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-20T01:26:07.058Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "EliminarProducto.js",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
+              "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
+              "RelativeToolTip": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-20T01:26:12.909Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -151,19 +260,176 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ProductoBO.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\ProductoBO.cs",
-              "RelativeDocumentMoniker": "SoftBodBusiness\\ProductoBO.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\ProductoBO.cs",
-              "RelativeToolTip": "SoftBodBusiness\\ProductoBO.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAwDQAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Inicio.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\Inicio.aspx.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx.cs*",
+              "RelativeToolTip": "SoftBodWA\\Inicio.aspx.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFkBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T14:44:53.488Z"
+              "WhenOpened": "2025-11-21T00:14:20.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Inicio.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Inicio.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Inicio.aspx",
+              "RelativeToolTip": "SoftBodWA\\Inicio.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:14:25.558Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "packages.config",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\packages.config",
+              "RelativeDocumentMoniker": "SoftBodWA\\packages.config",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\packages.config",
+              "RelativeToolTip": "SoftBodWA\\packages.config",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2025-11-21T05:12:16.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "HistorialOperacionesBO.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T02:29:09.314Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ReporteVentas.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteVentas.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\ReporteVentas.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteVentas.aspx",
+              "RelativeToolTip": "SoftBodWA\\ReporteVentas.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:45:38.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "CategoriaBO.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\CategoriaBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\CategoriaBO.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\CategoriaBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\CategoriaBO.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowCEAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T14:32:37.095Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MovimientosInicio.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\MovimientosInicio.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\MovimientosInicio.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\MovimientosInicio.cs",
+              "RelativeToolTip": "SoftBodBusiness\\MovimientosInicio.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAA+wBgAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-21T02:45:03.328Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "DetalleDevolucionBO.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleDevolucionBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\DetalleDevolucionBO.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleDevolucionBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\DetalleDevolucionBO.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T14:43:46.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Reportes.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Reportes.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
+              "RelativeToolTip": "SoftBodWA\\Reportes.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:45:39.679Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReporteKardex.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteKardex.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\ReporteKardex.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteKardex.aspx",
+              "RelativeToolTip": "SoftBodWA\\ReporteKardex.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:45:40.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ReporteInventario.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteInventario.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\ReporteInventario.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\ReporteInventario.aspx",
+              "RelativeToolTip": "SoftBodWA\\ReporteInventario.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:45:41.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "DetalleVentaBO.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleVentaBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\DetalleVentaBO.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleVentaBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\DetalleVentaBO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T14:44:14.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "RegistrarVenta.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\RegistrarVenta.aspx.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx.cs",
+              "RelativeToolTip": "SoftBodWA\\RegistrarVenta.aspx.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAA+wJQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-19T07:41:11.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
               "Title": "DevolucionBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DevolucionBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\DevolucionBO.cs",
@@ -175,58 +441,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DetalleVentaBO.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleVentaBO.cs",
-              "RelativeDocumentMoniker": "SoftBodBusiness\\DetalleVentaBO.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleVentaBO.cs",
-              "RelativeToolTip": "SoftBodBusiness\\DetalleVentaBO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T14:44:14.592Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Usuarios.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx.cs",
-              "RelativeDocumentMoniker": "SoftBodWA\\Usuarios.aspx.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx.cs",
-              "RelativeToolTip": "SoftBodWA\\Usuarios.aspx.cs",
-              "ViewState": "AgIAAIQBAAAAAAAAAAAAwKsBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T01:33:52.709Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegistrarVenta.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx.cs",
-              "RelativeDocumentMoniker": "SoftBodWA\\RegistrarVenta.aspx.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx.cs",
-              "RelativeToolTip": "SoftBodWA\\RegistrarVenta.aspx.cs",
-              "ViewState": "AgIAAJUAAAAAAAAAAAAuwJQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T07:41:11.828Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 21,
               "Title": "UsuarioBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\UsuarioBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\UsuarioBO.cs",
               "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\UsuarioBO.cs",
               "RelativeToolTip": "SoftBodBusiness\\UsuarioBO.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAUwDMAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-20T02:00:53.795Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 19,
+              "Title": "Login.aspx",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Login.aspx",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx",
+              "RelativeToolTip": "SoftBodWA\\Login.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-19T08:34:23.492Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "SoftBod.Master",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master",
+              "RelativeDocumentMoniker": "SoftBodWA\\SoftBod.Master",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\SoftBod.Master",
+              "RelativeToolTip": "SoftBodWA\\SoftBod.Master",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-21T00:14:42.316Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "ProductoBO.cs",
+              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\ProductoBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\ProductoBO.cs",
+              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\ProductoBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\ProductoBO.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAAwDQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T14:44:53.488Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "RegistrarVenta.aspx",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx",
               "RelativeDocumentMoniker": "SoftBodWA\\RegistrarVenta.aspx",
@@ -238,7 +504,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 26,
               "Title": "RazonDevolucionBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\RazonDevolucionBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\RazonDevolucionBO.cs",
@@ -250,7 +516,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 25,
               "Title": "RegistroPagoFiadoBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\RegistroPagoFiadoBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\RegistroPagoFiadoBO.cs",
@@ -262,7 +528,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 23,
               "Title": "VentaBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\VentaBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\VentaBO.cs",
@@ -274,7 +540,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 24,
               "Title": "VentaAlFiadoBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\VentaAlFiadoBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\VentaAlFiadoBO.cs",
@@ -286,19 +552,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DetalleDevolucionBO.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleDevolucionBO.cs",
-              "RelativeDocumentMoniker": "SoftBodBusiness\\DetalleDevolucionBO.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\DetalleDevolucionBO.cs",
-              "RelativeToolTip": "SoftBodBusiness\\DetalleDevolucionBO.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAA1wDQAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T14:43:46.569Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 29,
               "Title": "ClienteAlFiadoBO.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\ClienteAlFiadoBO.cs",
               "RelativeDocumentMoniker": "SoftBodBusiness\\ClienteAlFiadoBO.cs",
@@ -310,31 +564,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CategoriaBO.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\CategoriaBO.cs",
-              "RelativeDocumentMoniker": "SoftBodBusiness\\CategoriaBO.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\CategoriaBO.cs",
-              "RelativeToolTip": "SoftBodBusiness\\CategoriaBO.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAowCEAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T14:32:37.095Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "HistorialOperacionesBO.cs",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
-              "RelativeDocumentMoniker": "SoftBodBusiness\\HistorialOperacionesBO.cs",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
-              "RelativeToolTip": "SoftBodBusiness\\HistorialOperacionesBO.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-20T02:29:09.314Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 30,
               "Title": "PagoDeuda.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\PagoDeuda.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\PagoDeuda.js",
@@ -346,31 +576,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "EliminarProducto.js",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
-              "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
-              "RelativeToolTip": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarProducto.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-20T01:26:12.909Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "EliminarOperario.js",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
-              "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
-              "RelativeToolTip": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarOperario.js",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-20T01:26:07.058Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 31,
               "Title": "EliminarCliente.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EliminarCliente.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EliminarCliente.js",
@@ -382,7 +588,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 32,
               "Title": "EditarOperario.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EditarOperario.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EditarOperario.js",
@@ -394,7 +600,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 33,
               "Title": "EditarCliente.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\EditarCliente.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\EditarCliente.js",
@@ -406,7 +612,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 34,
               "Title": "Contrasena.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\Contrasena.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\Contrasena.js",
@@ -418,7 +624,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 35,
               "Title": "AjustarStock.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\AjustarStock.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\AjustarStock.js",
@@ -430,7 +636,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 36,
               "Title": "AgregarOperario.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\AgregarOperario.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\AgregarOperario.js",
@@ -442,7 +648,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 37,
               "Title": "AgregarNuevoProducto.js",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Scripts\\SoftBodScripts\\AgregarNuevoProducto.js",
               "RelativeDocumentMoniker": "SoftBodWA\\Scripts\\SoftBodScripts\\AgregarNuevoProducto.js",
@@ -454,7 +660,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 38,
               "Title": "RegistrarDevolucion.aspx",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarDevolucion.aspx",
               "RelativeDocumentMoniker": "SoftBodWA\\RegistrarDevolucion.aspx",
@@ -466,7 +672,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 39,
               "Title": "Clientes.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx.cs",
               "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx.cs",
@@ -478,7 +684,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 40,
               "Title": "Clientes.aspx",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx",
               "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx",
@@ -490,7 +696,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 41,
               "Title": "Login.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx.cs",
               "RelativeDocumentMoniker": "SoftBodWA\\Login.aspx.cs",
@@ -499,18 +705,6 @@
               "ViewState": "AgIAAAoAAAAAAAAAAAAzwCIAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-19T08:34:26.409Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "Login.aspx",
-              "DocumentMoniker": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\Login.aspx",
-              "ToolTip": "C:\\Users\\Giovani\\Documents\\GitHub\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx",
-              "RelativeToolTip": "SoftBodWA\\Login.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-19T08:34:23.492Z"
             }
           ]
         }
