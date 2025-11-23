@@ -32,18 +32,12 @@
             <h5 class="mb-3"><i class="fa-solid fa-file-lines me-2 text-primary"></i>Seleccionar Tipo de Reporte</h5>
 
             <div class="row g-3">
-                <!-- Reporte de Ventas
-                <div class="col-md-6">
-                    <div class="card report-card text-center p-4" onclick="window.location.href='ReporteVentas.aspx'">
-                        <i class="fa-solid fa-cart-shopping report-icon text-primary"></i>
-                        <h6 class="fw-semibold mb-0">Reporte de Ventas</h6>
-                    </div>
-                </div> -->
+
 
                 <div class="col-12">
                     <div class="card p-4 mb-3 report-block">
                         <h5 class="fw-semibold mb-3">
-                            <i class="fa-solid fa-cart-shopping me-2 text-primary"></i>
+                            <i class="fa-solid fa-cart-shopping report-icon me-3 text-primary"></i>
                             Reporte de Ventas
                         </h5>
 
@@ -52,20 +46,28 @@
                 </div>
 
                 <!-- Reporte de Inventario -->
-                <div class="col-md-6">
-                    <div class="card report-card text-center p-4" onclick="window.location.href='ReporteInventario.aspx'">
-                        <i class="fa-solid fa-box report-icon text-success"></i>
-                        <h6 class="fw-semibold mb-0">Reporte de Inventario</h6>
+               <div class="col-12">
+                    <div class="card p-4 mb-3 report-block">
+                        <h5 class="fw-semibold mb-3">
+                            <i class="fa-solid fa-box report-icon text-success me-3"></i>
+                                Reporte de Inventario
+
+                        </h5>
                     </div>
                 </div>
 
                 <!-- Reporte de Clientes al Fiado -->
-                <div class="col-md-6">
-                    <div class="card report-card text-center p-4" onclick="window.location.href='ReporteClientesFiado.aspx'">
-                        <i class="fa-solid fa-credit-card report-icon text-warning"></i>
-                        <h6 class="fw-semibold mb-0">Reporte de Clientes al Fiado</h6>
+                <div class="col-12">
+                    <div class="card p-4 mb-3 report-block">
+                        <h5 class="fw-semibold mb-3">
+                            <i class="fa-solid fa-credit-card report-icon text-warning me-3"></i>
+                            Reporte de Clientes al Fiado
+                        </h5>
+
+                        <!-- Aquí luego pones filtros -->
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
