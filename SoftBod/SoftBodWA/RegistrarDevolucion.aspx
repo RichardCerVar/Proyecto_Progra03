@@ -1,5 +1,9 @@
-﻿<%@ Page Title="Gestión de Devoluciones" Language="C#" MasterPageFile="~/SoftBod.Master" AutoEventWireup="true" CodeBehind="RegistrarDevolucion.aspx.cs" Inherits="SoftBodWA.RegistrarDevolucion" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+﻿<%@ Page Title="Gestión de Devoluciones"
+    Language="C#"
+    MasterPageFile="~/SoftBod.Master"
+    AutoEventWireup="true"
+    CodeBehind="RegistrarDevolucion.aspx.cs"
+    Inherits="SoftBodWA.RegistrarDevolucion" %><asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="container-fluid">
         <div class="d-flex align-items-center mb-4">
@@ -58,32 +62,41 @@
                 <ItemTemplate>
                     <div class="list-group-item d-flex justify-content-between align-items-start mb-2 p-3 border rounded">
                         <div>
-                            <h6 class="mb-1 fw-bold">Venta #<%# Eval("VentaId") %> - <%# Eval("ClienteNombre") %></h6>
+                            <h6 class="mb-1 fw-bold">
+                                Venta #<%# Eval("ventaId") %> - <%# Eval("clienteNombre") %>
+                            </h6>
                             <small class="text-muted"><%# Eval("FechaFormat") %></small>
-                    
+
                             <div class="mt-2 ps-2 border-start">
-                                <asp:Repeater ID="rptProductosVenta" runat="server" DataSource='<%# Eval("Productos") %>'>
+                                <asp:Repeater ID="rptProductosVenta" runat="server"
+                                    DataSource='<%# Eval("productos") %>'>
                                     <ItemTemplate>
                                         <div class="d-flex justify-content-between">
-                                            <small class="text-secondary"><%# Eval("nombre") %> x<%# Eval("cantidad") %></small>
-                                            <small class="text-secondary"> - S/.<%# (double)Eval("precio") * (int)Eval("cantidad") %></small>
+                                            <small class="text-secondary">
+                                                <%# Eval("nombre") %> x<%# Eval("cantidad") %>
+                                            </small>
+                                            <small class="text-secondary">
+                                                - S/.<%# (double)Eval("precio") * (int)Eval("cantidad") %>
+                                            </small>
                                         </div>
                                     </ItemTemplate>
                                 </asp:Repeater>
                             </div>
-                            </div>
+                        </div>
+
                         <div class="text-end d-flex align-items-center flex-column">
                             <span class="fw-bold text-success me-3">S/.<%# Eval("TotalFormat") %></span>
+
                             <div class="mt-2 d-flex">
-                                <asp:Button ID="btnVerVenta" runat="server" Text="Ver" CssClass="btn btn-sm btn-outline-primary me-2" OnClick="btnVerDetalleVenta_Click" CommandArgument='<%# Eval("VentaId") %>' />
- 
-                                <%-- 🟢 BOTÓN SELECCIONAR (Usando las propiedades del Wrapper) --%>
-                                <button type="button" class="btn btn-sm btn-warning text-white btn-seleccionar-venta" 
-                                        data-venta-id="<%# Eval("VentaId") %>" 
-                                        data-cliente="<%# Eval("ClienteNombre") %>" 
-                                        data-total="<%# Eval("Total") %>" 
-                                        data-fecha="<%# Eval("FechaFormat") %>"
-                                        data-productos='<%# Eval("ProductosJson") %>' >
+
+                                <!-- Botón Seleccionar -->
+                                <button type="button"
+                                    class="btn btn-sm btn-warning text-white btn-seleccionar-venta"
+                                    data-venta-id="<%# Eval("ventaId") %>"
+                                    data-cliente="<%# Eval("clienteNombre") %>"
+                                    data-total="<%# Eval("total") %>"
+                                    data-fecha="<%# Eval("FechaFormat") %>"
+                                    data-productos='<%# Eval("ProductosJson") %>'>
                                     Seleccionar
                                 </button>
                             </div>
@@ -120,7 +133,7 @@
                 return;
             }
 
-            devolucionState.productosOriginales.forEach(function(producto) {
+            devolucionState.productosOriginales.forEach(function (producto) {
                 var cantDevolver = devolucionState.productosADevolver[producto.id] || 0;
                 var subtotal = cantDevolver * producto.precio;
                 totalDevolucion += subtotal;
@@ -144,13 +157,13 @@
 
             // Actualizar el botón Procesar Devolución
             $('#' + txtProcesarDevolucionId).text(' Procesar Devolución - ' + formatCurrency(totalDevolucion));
-            
+
             if (totalDevolucion > 0) {
-                 $('#' + txtProcesarDevolucionId).removeClass('btn-warning').addClass('btn-danger');
-                 $('#' + txtProcesarDevolucionId).prop('disabled', false);
+                $('#' + txtProcesarDevolucionId).removeClass('btn-warning').addClass('btn-danger');
+                $('#' + txtProcesarDevolucionId).prop('disabled', false);
             } else {
-                 $('#' + txtProcesarDevolucionId).removeClass('btn-danger').addClass('btn-warning');
-                 $('#' + txtProcesarDevolucionId).prop('disabled', true);
+                $('#' + txtProcesarDevolucionId).removeClass('btn-danger').addClass('btn-warning');
+                $('#' + txtProcesarDevolucionId).prop('disabled', true);
             }
         }
 
@@ -163,10 +176,10 @@
             var $btn = $(e.currentTarget);
             var productoId = $btn.data('id');
             var isAdd = $btn.hasClass('btn-devolver-add');
-            
+
             var currentCount = devolucionState.productosADevolver[productoId] || 0;
             var producto = devolucionState.productosOriginales.find(p => p.id === productoId);
-            
+
             if (!producto) return;
 
             if (isAdd && currentCount < producto.cantidad) {
@@ -180,9 +193,9 @@
 
             // Si se decrementa a 0, se elimina del objeto
             if (devolucionState.productosADevolver[productoId] === 0) {
-                 delete devolucionState.productosADevolver[productoId];
+                delete devolucionState.productosADevolver[productoId];
             }
-            
+
             renderProductosDevolucion();
         }
 
@@ -193,20 +206,33 @@
             var cliente = $btn.data('cliente');
             var total = $btn.data('total');
             var fecha = $btn.data('fecha');
-            var productos = $btn.data('productos');
-            
-            // 1. Actualizar el ID de Venta en el TextBox
-            $('#<%= txtIdVenta.ClientID %>').val(idVenta);
-            
+
+            // 🟢 CORRECCIÓN CLAVE: Parsear la cadena JSON a un objeto/array de JS
+            var productosJsonString = $btn.data('productos');
+            var productos;
+
+            try {
+                // Asegurarse de limpiar las entidades HTML que ASP.NET pueda haber puesto
+                productos = JSON.parse(productosJsonString.replace(/&quot;/g, '"'));
+            } catch (e) {
+                console.error("Error al parsear JSON de productos:", e);
+                productos = [];
+            }
+
+            // 1. APLICAR CORRECCIÓN AQUÍ: Usar el ID de Cliente ya definido en la función ready.
+
+            var txtIdVentaId = '<%= txtIdVenta.ClientID %>'; // Esta evaluación debería funcionar si el bloque JS está al final.
+            $('#' + txtIdVentaId).val(idVenta); // Usar el ID que ASP.NET genera.
+
             // 2. Actualizar el estado global
             devolucionState.idVenta = idVenta;
             devolucionState.productosOriginales = productos;
             devolucionState.productosADevolver = {}; // Resetear el carrito
-            
+
             // 3. Actualizar el panel de detalles
             $('#lblInfoVenta').html(`Venta #${idVenta} - ${cliente}<br><small>${fecha} | Total: ${formatCurrency(total)}</small>`);
             $('#pnlDetalleVentaCargada').removeClass('d-none');
-            
+
             // 4. Renderizar los productos a devolver
             renderProductosDevolucion();
         }
@@ -221,7 +247,7 @@
             // 2. Asignar manejadores a los botones de añadir/quitar (delegados)
             $(document).on('click', '.btn-devolver-add, .btn-devolver-remove', handleDevolucionChange);
 
-            // 3. Lógica original del txtIdVenta (modificada para solo actualizar visualmente si está vacío)
+            // 3. Lógica para manejar la entrada manual o borrado del ID de Venta
             var txtIdVentaId = '<%= txtIdVenta.ClientID %>';
             var btnProcesarDevolucionId = '<%= btnProcesarDevolucion.ClientID %>';
 
@@ -234,18 +260,23 @@
                     devolucionState.productosOriginales = [];
                     devolucionState.productosADevolver = {};
                     $('#pnlDetalleVentaCargada').addClass('d-none');
-                    renderProductosDevolucion();
+                    renderProductosDevolucion(); // Limpia el HiddenField y el botón
+
+                    // Restablecer el botón
                     $('#' + btnProcesarDevolucionId).text(' Procesar Devolución - S/.0.00');
                     $('#' + btnProcesarDevolucionId).removeClass('btn-danger').addClass('btn-warning');
                     $('#' + btnProcesarDevolucionId).prop('disabled', true);
-
-                    // Si el ID de venta ingresado coincide con una venta reciente (simulación)
-                    // En una implementación real, esto haría un postback para cargar la venta
                 } else {
-                    // Simulación de carga (buscar el ID en los data-attributes)
+                    // Simulación de carga: Buscar el ID ingresado en los botones de venta reciente
                     var $ventaBtn = $(`.btn-seleccionar-venta[data-venta-id="${idVenta}"]`);
                     if ($ventaBtn.length) {
-                        $ventaBtn.trigger('click'); // Simular el click para cargar los datos
+                        // Si encontramos la venta, simulamos el click para cargar los datos
+                        $ventaBtn.trigger('click');
+                    } else {
+                        // Si el ID de venta no está en las ventas recientes (simulación de postback/AJAX real fallido)
+                        // Podrías poner aquí un mensaje de 'Venta no encontrada'.
+                        // Por ahora, dejamos el ID en el campo y no cargamos nada más.
+                        // Nota: En un entorno real, aquí harías una llamada a C# para buscar la venta.
                     }
                 }
             });

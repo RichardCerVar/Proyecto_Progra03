@@ -33,13 +33,22 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.HiddenField hfClienteIDEliminar;
 
         /// <summary>
-        /// Control btnAgregar.
+        /// Control lblTotalDeuda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAgregar;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTotalDeuda;
+
+        /// <summary>
+        /// Control lblActivos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivos;
 
         /// <summary>
         /// Control pnlBusqueda.
@@ -69,22 +78,22 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Button btnBuscar;
 
         /// <summary>
-        /// Control lblTotalDeuda.
+        /// Control ddlFiltroDeuda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblTotalDeuda;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFiltroDeuda;
 
         /// <summary>
-        /// Control lblActivos.
+        /// Control btnAgregar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblActivos;
+        protected global::System.Web.UI.WebControls.Button btnAgregar;
 
         /// <summary>
         /// Control rptClientes.

@@ -11,133 +11,173 @@
     <asp:HiddenField ID="hfClienteIDEliminar" runat="server" />
     <div class="container-fluid px-3 py-3">
         
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h4 class="fw-bold mb-0">Gestión de Clientes al Fiado</h4>
+        <h3 class="fw-bold mb-4">Gestión de Clientes al Fiado</h3>
+
+        <div class="row mb-4">
             
-            <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Cliente" 
-                        CssClass="btn btn-primary fw-bold shadow-sm" 
-                        OnClick="btnAgregar_Click" OnClientClick="this.disabled = true; "
-                    UseSubmitBehavior="false"/>
-        </div>
-
-        <asp:Panel ID="pnlBusqueda" runat="server" DefaultButton="btnBuscar">
-            <div class="input-group mb-4">
-                <span class="input-group-text bg-white border-end-0">
-                    <i class="bi bi-search text-muted"></i>
-                </span>
-                <!-- El TextBox ya no necesita el border-start-0 ya que el botón lo continuará -->
-                <asp:TextBox ID="txtBuscar" runat="server"
-                    CssClass="form-control border-0"
-                    placeholder="Buscar cliente por alias..." />
-                
-                <!-- Botón de Búsqueda Dedicado -->
-                <asp:Button ID="btnBuscar" runat="server"
-                    Text="Buscar"
-                    CssClass="btn btn-primary fw-bold"
-                    OnClick="btnBuscar_Click"
-                    OnClientClick="this.disabled = true; "
-                    UseSubmitBehavior="false"/>
-            </div>
-        </asp:Panel>
-
-        <div class="card border-0 mb-4" style="background: linear-gradient(to right, #fff6f1, #fff9f4);">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <div>
-                    <i class="bi bi-credit-card fs-3 text-warning"></i>
-                    <span class="d-block text-muted small">Total Cuentas Fiadas</span>
-                    <h5 class="fw-bold mb-0 text-danger" id="lblTotalDeuda" runat="server">S/0.00</h5>
+            <div class="col-md-6"> <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex align-items-center">
+                        <i class="bi bi-credit-card fa-2x text-danger me-3"></i>
+                        <div>
+                            <p class="mb-0 text-muted">Total Cuentas Fiadas</p>
+                            <h4 class="fw-bold text-danger" id="lblTotalDeuda" runat="server">S/0.00</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-end">
-                    <span class="small text-muted">Clientes Activos</span>
-                    <h4 class="fw-bold mb-0" id="lblActivos" runat="server">0</h4>
+            </div>
+            
+            <div class="col-md-6"> <div class="card shadow-sm border-0">
+                    <div class="card-body d-flex align-items-center">
+                        <i class="bi bi-people-fill fa-2x text-primary me-3"></i>
+                        <div>
+                            <p class="mb-0 text-muted">Clientes Activos</p>
+                            <h4 class="fw-bold text-primary" id="lblActivos" runat="server">0</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-6 mb-2">
+                <asp:Panel ID="pnlBusqueda" runat="server" DefaultButton="btnBuscar">
+                    <div class="input-group">
+                        <asp:TextBox ID="txtBuscar" runat="server"
+                            CssClass="form-control"
+                            placeholder="Buscar cliente por alias..." />
+                        <asp:Button ID="btnBuscar" runat="server"
+                            Text="Buscar"
+                            CssClass="btn btn-primary fw-bold"
+                            OnClick="btnBuscar_Click"
+                            OnClientClick="this.disabled = true; "
+                            UseSubmitBehavior="false"/>
+                    </div>
+                </asp:Panel>
+            </div>
+
+            <div class="col-md-3 mb-2">
+                <asp:DropDownList ID="ddlFiltroDeuda" runat="server" CssClass="form-select form-select-sm" AppendDataBoundItems="true">
+                    <asp:ListItem Text="Todos los clientes" Value=""></asp:ListItem>
+                    <asp:ListItem Text="Con Deuda" Value="ConDeuda"></asp:ListItem>
+                    <asp:ListItem Text="Al Día" Value="AlDia"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+
+            <div class="col-md-3 mb-2 text-end">
+                <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Cliente" 
+                    CssClass="btn btn-primary fw-bold shadow" 
+                    OnClick="btnAgregar_Click" OnClientClick="this.disabled = true;"
+                    UseSubmitBehavior="false"/>
+            </div>
+        </div>
+        
         <asp:Repeater ID="rptClientes" runat="server" OnItemCommand="rptClientes_ItemCommand">
             <ItemTemplate>
-                <div class="card border-0 shadow-sm mb-3">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <i class="bi bi-person-circle fs-3 text-primary me-2"></i>
-                                <div>
-                                    <h6 class="mb-0 fw-bold"><%# Eval("alias") %></h6>
-                                    <small class="text-muted d-block"><%# Eval("nombre") %></small>
-                                    <small class="text-muted"><i class="bi bi-telephone"></i> <%# Eval("telefono") %></small>
-                                </div>
-                            </div>
-                            <div class="text-end">
-                                <span class="text-danger fw-bold">Deuda: <%# Eval("montoDeuda", "S/{0:F2}") %></span><br />
-                                <small class="text-muted"><i class="bi bi-calendar"></i> Fecha Límite: <%# Eval("fechaDePago", "{0:dd/MM/yyyy}") %></small>
+                <div class="card mb-3 shadow-sm border-0">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-person-circle fa-2x text-primary me-3"></i>
+                            <div>
+                                <h6 class="mb-0 fw-bold"><%# Eval("alias") %></h6>
+                                <small class="text-muted d-block"><%# Eval("nombre") %></small>
+                                <small class="text-muted"><i class="bi bi-telephone"></i> <%# Eval("telefono") %></small>
                             </div>
                         </div>
 
-                        <div class="mt-3 d-flex gap-2 justify-content-end">
-                            <asp:Button ID="btnPagar"   runat="server" Text="$ Pagar" CssClass="btn btn-success btn-sm" CommandArgument='<%# Eval("alias") + "|" + Eval("montoDeuda") %>'  CommandName="Pagar" />
-                            <asp:Button ID="btnEditar" runat="server" Text="✎" CssClass="btn btn-outline-secondary btn-sm" CommandArgument='<%# Eval("alias")+ "|" + Eval("telefono") + "|" + Eval("fechaDePago")+ "|" + Eval("clienteId")%>' CommandName="Editar" />
-                            <asp:Button ID="btnEliminar" runat="server" Text="🗑" CssClass="btn btn-outline-danger btn-sm" CommandArgument='<%# Eval("alias") + "|" + Eval("clienteId")%>' CommandName="Eliminar" />
+                        <div class="col-auto" style="min-width: 250px;">
+                            <div class="d-flex align-items-center justify-content-end gap-2">
+        
+                                <div class="text-end me-3">
+                                    <%# Convert.ToDecimal(Eval("montoDeuda")) > 0 ? 
+                                    "<p class='mb-0 fw-bold text-danger'>Deuda: " + Eval("montoDeuda", "S/{0:F2}") + "</p>" :
+                                    "<p class='mb-0 fw-bold text-success'>Al Día</p>" %>
+            
+                                    <small class="text-muted">
+                                        <i class="bi bi-calendar"></i> F. Límite: <%# Eval("fechaDePago", "{0:dd/MM/yyyy}") %>
+                                    </small>
+                                </div>
+
+                                <asp:LinkButton ID="btnPagar" runat="server" 
+                                    CssClass="btn btn-outline-success rounded-3 d-flex align-items-center justify-content-center"
+                                    Style="width: 45px; height: 45px; border-width: 2px;"
+                                    CommandArgument='<%# Eval("alias") + "|" + Eval("montoDeuda") %>' 
+                                    CommandName="Pagar"
+                                    ToolTip="Registrar Pago">
+                                    <i class="fa-solid fa-sack-dollar"></i> </asp:LinkButton>
+        
+                                <asp:LinkButton ID="btnEditar" runat="server" 
+                                    CssClass="btn btn-outline-secondary rounded-3 d-flex align-items-center justify-content-center"
+                                    Style="width: 45px; height: 45px; --bs-btn-border-color: #dee2e6; color: #495057;"
+                                    CommandArgument='<%# Eval("alias")+ "|" + Eval("telefono") + "|" + Eval("fechaDePago")+ "|" + Eval("clienteId")%>' 
+                                    CommandName="Editar"
+                                    ToolTip="Editar Cliente">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </asp:LinkButton>
+        
+                                <asp:LinkButton ID="btnEliminar" runat="server" 
+                                    CssClass="btn btn-outline-danger rounded-3 d-flex align-items-center justify-content-center"
+                                    Style="width: 45px; height: 45px; border-color: #dc3545; color: #dc3545;"
+                                    CommandArgument='<%# Eval("alias") + "|" + Eval("clienteId")%>' 
+                                    CommandName="Eliminar"
+                                    ToolTip="Eliminar Cliente">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </asp:LinkButton>
+                            </div>
                         </div>
                     </div>
                 </div>
             </ItemTemplate>
             <FooterTemplate>
-                <%# (rptClientes.Items.Count == 0) ? "<div class='alert alert-info text-center'>No se encontraron clientes activos.</div>" : string.Empty %>
+                <%# (rptClientes.Items.Count == 0) ? "<div class='alert alert-info text-center mt-3 border-0 shadow-sm'>No se encontraron clientes activos.</div>" : string.Empty %>
             </FooterTemplate>
         </asp:Repeater>
     </div>
 
-    <!--Agregar cliente-->
-     <div class="modal fade" id="modalAgregarCliente" tabindex="-1" aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered">
-             <div class="modal-content">
-                 <div class="modal-header border-0">
-                     <h5 class="modal-title fw-bold" id="modalAgregarClienteLabel">Agregar Nuevo Cliente</h5>
-                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                 </div>
-                 <div class="modal-body">
-                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                         <ContentTemplate>
-                         
-                             <div class="mb-3">
-                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre Completo"></asp:Label>
-                                 <asp:TextBox ID="txtNombreCompleto" CssClass="form-control" placeholder="Ej: Juan Pérez" runat="server"></asp:TextBox>
-                             </div>
+    <div class="modal fade" id="modalAgregarCliente" tabindex="-1" aria-labelledby="modalAgregarClienteLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <h5 class="modal-title fw-bold" id="modalAgregarClienteLabel">Agregar Nuevo Cliente</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre Completo"></asp:Label>
+                                <asp:TextBox ID="txtNombreCompleto" CssClass="form-control" placeholder="Ej: Juan Pérez" runat="server"></asp:TextBox>
+                            </div>
 
-                             <div class="mb-3">
-                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Alias"></asp:Label>
-                                 <asp:TextBox ID="txtAlias" CssClass="form-control" placeholder="Ej: juan123" runat="server"></asp:TextBox>
-                             </div>
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Alias"></asp:Label>
+                                <asp:TextBox ID="txtAlias" CssClass="form-control" placeholder="Ej: juan123" runat="server"></asp:TextBox>
+                            </div>
 
-                             <div class="mb-3">
-                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Teléfono"></asp:Label>
-                                 <asp:TextBox ID="txtTelefono" CssClass="form-control" placeholder="123-456-7890" runat="server"></asp:TextBox>
-                             </div>
+                            <div class="mb-3">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Teléfono"></asp:Label>
+                                <asp:TextBox ID="txtTelefono" CssClass="form-control" placeholder="123-456-7890" runat="server"></asp:TextBox>
+                            </div>
 
-                             <div class="mb-4">
-                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Fecha Límite"></asp:Label>
-                                 <asp:TextBox ID="txtFechaLimite" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
-                             </div>
+                            <div class="mb-4">
+                                <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Fecha Límite"></asp:Label>
+                                <asp:TextBox ID="txtFechaLimite" CssClass="form-control" TextMode="Date" runat="server"></asp:TextBox>
+                            </div>
 
-
-                             <asp:Button ID="btnGuardarCliente" runat="server"
+                            <asp:Button ID="btnGuardarCliente" runat="server"
                                 CssClass="btn btn-dark w-100 py-2 fw-semibold"
                                 Text="Agregar Cliente"
                                 OnClick="btnGuardarCliente_Click"
                                 OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
-                             
-                                 
-                                     
-                         </ContentTemplate>
-                     </asp:UpdatePanel>
-                 </div>
-             </div>
-         </div>
-     </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-    <!-- Modal Registrar Pago -->
     <div class="modal fade" id="modalPago" tabindex="-1" role="dialog" aria-labelledby="modalPagoLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -151,10 +191,10 @@
 
                 <div class="modal-body">
 
-                        <p class="mb-1">
-                            Deuda Actual: <span class="fw-bold">S/.</span>
-                            <asp:Label ID="lblDeudaActual" runat="server" CssClass="fw-bold" />
-                        </p>
+                    <p class="mb-1">
+                        Deuda Actual: <span class="fw-bold">S/.</span>
+                        <asp:Label ID="lblDeudaActual" runat="server" CssClass="fw-bold" />
+                    </p>
 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Monto a Pagar</label>
@@ -173,112 +213,87 @@
         </div>
     </div>
 
-    <!-- Modal Editar Cliente -->
     <div class="modal fade" id="modalEditarCliente" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" style="border-radius: 14px; padding: 20px 25px;">
+            <div class="modal-content rounded-4 p-4">
 
-                <!-- Header -->
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="m-0" style="font-weight: 600; font-size: 22px;">Editar Cliente</h4>
+                    <h4 class="m-0 fw-bold fs-5">Editar Cliente</h4>
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <!-- BODY -->
                 <div class="modal-body p-0">
 
                     <asp:Label ID="lblIdClienteEditar" runat="server" Visible="false"></asp:Label>
 
-                    <label class="form-label" style="font-weight: 600;">Nombre Completo</label>
+                    <label class="form-label fw-semibold">Nombre Completo</label>
                     <asp:TextBox ID="txtNombreEditar"
-                                 runat="server"
-                                 CssClass="form-control mb-3"
-                                 placeholder="Juan Pérez"
-                                 style="height: 45px; border-radius: 10px;" />
+                        runat="server"
+                        CssClass="form-control mb-3"
+                        placeholder="Juan Pérez"/>
 
-                    <label class="form-label" style="font-weight: 600;">Alias</label>
+                    <label class="form-label fw-semibold">Alias</label>
                     <asp:TextBox ID="txtAliasEditar"
-                                 runat="server"
-                                 CssClass="form-control mb-3"
-                                 placeholder="juan123"
-                                 style="height: 45px; border-radius: 10px;" />
+                        runat="server"
+                        CssClass="form-control mb-3"
+                        placeholder="juan123"/>
 
-                    <label class="form-label" style="font-weight: 600;">Teléfono</label>
+                    <label class="form-label fw-semibold">Teléfono</label>
                     <asp:TextBox ID="txtTelefonoEditar"
-                                 runat="server"
-                                 CssClass="form-control mb-3"
-                                 placeholder="123-456-7890"
-                                 style="height: 45px; border-radius: 10px;" />
+                        runat="server"
+                        CssClass="form-control mb-3"
+                        placeholder="123-456-7890"/>
 
-                    <label class="form-label" style="font-weight: 600;">Fecha Límite</label>
+                    <label class="form-label fw-semibold">Fecha Límite</label>
                     <asp:TextBox ID="txtFechaLimiteEditar"
-                                 runat="server"
-                                 TextMode="Date"
-                                 CssClass="form-control mb-3"
-                                 style="height: 45px; border-radius: 10px;" />
+                        runat="server"
+                        TextMode="Date"
+                        CssClass="form-control mb-3"/>
                 </div>
 
-                <!-- FOOTER -->
                 <div class="mt-4">
                     <asp:Button ID="btnActualizarCliente"
-                                runat="server"
-                                Text="Actualizar Cliente"
-                                CssClass="btn w-100"
-                                Style="background-color: #0B1537; color: white; font-size: 17px;
-                                       height: 48px; border-radius: 10px; font-weight: 600;"
-                                OnClick="btnActualizarCliente_Click" 
-                                OnClientClick="this.disabled = true; this.value='Procesando...';"
-                                UseSubmitBehavior="false"/>
+                        runat="server"
+                        Text="Actualizar Cliente"
+                        CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
+                        OnClick="btnActualizarCliente_Click" 
+                        OnClientClick="this.disabled = true; this.value='Procesando...';"
+                        UseSubmitBehavior="false"/>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal Confirmar Eliminación -->
     <div class="modal fade" id="modalEliminarCliente" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content" 
-                 style="border-radius: 14px; padding: 25px; max-width: 550px; margin: auto;">
+            <div class="modal-content rounded-4 p-4">
 
-                <!-- Header -->
-                <h4 class="mb-2" style="font-weight: 700; font-size: 22px;">
+                <h4 class="mb-2 fw-bold fs-5">
                     ¿Confirmar eliminación?
                 </h4>
 
-                <!-- BODY -->
-                <p style="color: #6c757d; font-size: 15px; line-height: 1.4;">
+                <p class="text-muted small">
                     Esta acción eliminará permanentemente al cliente 
                     "<asp:Label ID="lblAliasEliminar" runat="server"></asp:Label>" 
                     del sistema. Esta acción no se puede deshacer.
                 </p>
 
-                
-
-                <!-- BOTONES -->
                 <div class="d-flex justify-content-end gap-2 mt-4">
 
                     <button type="button" class="btn btn-light"
-                            data-bs-dismiss="modal"
-                            style="border-radius: 8px; padding: 8px 18px;">
+                            data-bs-dismiss="modal">
                         Cancelar
                     </button>
 
                     <asp:Button ID="btnEliminarConfirmado" runat="server"
-                                Text="Eliminar"
-                                CssClass="btn"
-                                Style="background-color: #dc3545; color: white; 
-                                       border-radius: 8px; padding: 8px 18px; font-weight: 600;"
-                                OnClick="btnEliminarConfirmado_Click" 
-                                OnClientClick="this.disabled = true; this.value='Procesando...';"
-                                UseSubmitBehavior="false"/>
+                        Text="Eliminar"
+                        CssClass="btn btn-danger fw-semibold"
+                        OnClick="btnEliminarConfirmado_Click" 
+                        OnClientClick="this.disabled = true; this.value='Procesando...';"
+                        UseSubmitBehavior="false"/>
                 </div>
-
             </div>
         </div>
     </div>
-
-
-   
-
 </asp:Content>
