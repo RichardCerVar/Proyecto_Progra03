@@ -40,8 +40,42 @@
                             <i class="fa-solid fa-cart-shopping report-icon me-3 text-primary"></i>
                             Reporte de Ventas
                         </h5>
+                        
+    
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-2">
+                                <label class="form-label">Tipo de Fecha</label>
+                                <asp:DropDownList ID="ddlTipoFecha" runat="server" CssClass="form-select"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlTipoFecha_SelectedIndexChanged">
+                                    <asp:ListItem Text="Diario" Value="Diario" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Text="Rango" Value="Rango" Selected="False"></asp:ListItem>
+                                    <%-- Si se implementa, se añadirían Semanal, Mensual, etc. --%>
+                                </asp:DropDownList>
+                            </div>
+        
+                            <div class="col-md-3" id="divFechaUnica" runat="server">
+                                <label class="form-label">Fecha</label>
+                                <asp:TextBox ID="txtFecha" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
 
-                        <!-- Aquí luego pones filtros -->
+                            <div class="col-md-3" id="divFechaInicio" runat="server" visible="false">
+                                <label class="form-label">Fecha Inicio</label>
+                                <asp:TextBox ID="txtFechaInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-3" id="divFechaFin" runat="server" visible="false">
+                                <label class="form-label">Fecha Fin</label>
+                                <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <div class="col-12 text-end">
+                                <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
+                                <asp:Button ID="btnExportarReporte" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteVentas_Click" CssClass="btn btn-warning" />
+                            </div>
+                        </div>
+                            
+                        
                     </div>
                 </div>
 
@@ -51,22 +85,134 @@
                         <h5 class="fw-semibold mb-3">
                             <i class="fa-solid fa-box report-icon text-success me-3"></i>
                                 Reporte de Inventario
-
                         </h5>
+
+                        
+                        <div class="card-body">
+                            <h5 class="fw-bold mb-3">Reporte de Inventario</h5>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">Fecha del Inventario</label>
+                                    <div class="input-group">
+                                        <asp:TextBox ID="txtFechaInventario" runat="server" CssClass="form-control" TextMode="Date" placeholder="mm/dd/yyyy"></asp:TextBox>
+                                           
+                                    </div>
+                                </div>
+                                <div class="col-md-8 d-flex align-items-end">
+                                    <%-- <asp:Button ID="btnGenerarReporte" runat="server" CssClass="btn btn-primary" Text="Generar Reporte" /> --%>
+                                </div>
+                            </div>
+                            <div class="col-12 text-end">
+                                <asp:Button ID="Button1" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteInventario_Click" CssClass="btn btn-warning" />
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
 
                 <!-- Reporte de Clientes al Fiado -->
-                <div class="col-12">
+               <div class="col-12">
                     <div class="card p-4 mb-3 report-block">
                         <h5 class="fw-semibold mb-3">
                             <i class="fa-solid fa-credit-card report-icon text-warning me-3"></i>
                             Reporte de Clientes al Fiado
                         </h5>
 
-                        <!-- Aquí luego pones filtros -->
+                        <div class="row g-3 align-items-end">
+
+                            <!-- Seleccionar Cliente -->
+                            <div class="col-md-3">
+                                <label class="form-label">Seleccionar Cliente</label>
+                                <asp:DropDownList ID="ddlCliente" runat="server" DataTextField="Alias" DataValueField="ClienteId"
+                                    CssClass="form-select"></asp:DropDownList>
+                            </div>
+
+                            <!-- Tipo de Fecha -->
+                            <div class="col-md-2">
+                                <label class="form-label">Tipo de Fecha</label>
+                                <asp:DropDownList ID="ddlTipoFechaCliente" runat="server" CssClass="form-select"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlTipoFechaCliente_SelectedIndexChanged">
+                                    <asp:ListItem Text="Diario" Value="Diario" Selected="True" />
+                                    <asp:ListItem Text="Rango" Value="Rango" />
+                                </asp:DropDownList>
+                            </div>
+
+                            <!-- Fecha Única -->
+                            <div class="col-md-3" id="divFechaClienteUnica" runat="server">
+                                <label class="form-label">Fecha</label>
+                                <asp:TextBox ID="txtFechaCliente" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Fecha Inicio -->
+                            <div class="col-md-3" id="divFechaClienteInicio" runat="server" Visible="false">
+                                <label class="form-label">Fecha Inicio</label>
+                                <asp:TextBox ID="txtFechaClienteInicio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Fecha Fin -->
+                            <div class="col-md-3" id="divFechaClienteFin" runat="server" Visible="false">
+                                <label class="form-label">Fecha Fin</label>
+                                <asp:TextBox ID="txtFechaClienteFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <!-- Botones -->
+                            <div class="col-12 text-end mt-2">
+                                <asp:Button ID="btnFiltrarCliente" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
+                                <asp:Button ID="btnExportarReporteCliente" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteClientes_Click" CssClass="btn btn-warning" />
+                            </div>
+
+                        </div>
                     </div>
                 </div>
+
+
+
+                <div class="col-12">
+                    <div class="card p-4 mb-3 report-block">
+                        <h5 class="fw-semibold mb-3">
+                            <i class="fa-solid fa-receipt report-icon text-primary me-3"></i>
+                            Reporte de Operaciones
+                        </h5>
+        
+    
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-2">
+                                <label class="form-label">Tipo de Fecha</label>
+                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select"
+                                    AutoPostBack="true"
+                                    OnSelectedIndexChanged="ddlTipoFecha_SelectedIndexChanged">
+                                    <asp:ListItem Text="Diario" Value="Diario" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Text="Rango" Value="Rango" Selected="False"></asp:ListItem>
+                                    <%-- Si se implementa, se añadirían Semanal, Mensual, etc. --%>
+                                </asp:DropDownList>
+                            </div>
+        
+                            <div class="col-md-3" id="div1" runat="server">
+                                <label class="form-label">Fecha</label>
+                                <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-3" id="div2" runat="server" visible="false">
+                                <label class="form-label">Fecha Inicio</label>
+                                <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <div class="col-md-3" id="div3" runat="server" visible="false">
+                                <label class="form-label">Fecha Fin</label>
+                                <asp:TextBox ID="TextBox3" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                            </div>
+
+                            <div class="col-12 text-end">
+                                <asp:Button ID="Button2" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
+                                <asp:Button ID="Button3" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteOperaciones_Click" CssClass="btn btn-warning" />
+                            </div>
+                        </div>
+            
+        
+                    </div>
+                </div>
+
 
             </div>
         </div>
