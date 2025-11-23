@@ -128,7 +128,7 @@ namespace SoftBodWA
                 divFechaOperarioInicio.Visible = false;
                 divFechaOperarioFin.Visible = false;
             }
-            else if (ddlTipoFechaCliente.SelectedValue == "Rango")
+            else if (ddlTipoFechaOperario.SelectedValue == "Rango")
             {
                 divFechaOperarioUnica.Visible = false;
                 divFechaOperarioInicio.Visible = true;

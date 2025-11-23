@@ -191,7 +191,7 @@
                             </div>
 
                             <div class="col-12 text-end">
-                                <asp:Button ID="Button3" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteOperaciones_Click" CssClass="btn btn-warning" />
+                                <asp:Button ID="btnExportarReporteOperario" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteOperaciones_Click" CssClass="btn btn-warning" />
                             </div>
                         </div>
             
