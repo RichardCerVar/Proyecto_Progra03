@@ -24,41 +24,36 @@ namespace SoftBodWA
         private DetalleVentaBO detalleVentaBO;
         private DetalleDevolucionBO detalleDevolucionBO;
         private ClienteAlFiadoBO clienteAlFiadoBO;
-
-        private string FechaActual
-        {
-            get { return ViewState["FechaActual"]?.ToString(); }
-            set { ViewState["FechaActual"] = value; }
-        }
+        private string FechaActual = DateTime.Now.ToString("yyyy-MM-dd");
 
         private List<WSVenta.ventaDTO> ListaVentasHoy
         {
-            get { return ViewState["ListaVentasHoy"] as List<WSVenta.ventaDTO> ?? new List<WSVenta.ventaDTO>(); }
-            set { ViewState["ListaVentasHoy"] = value; }
+            get { return Session["VentasHoy"] as List<WSVenta.ventaDTO> ?? new List<WSVenta.ventaDTO>(); }
+            set { Session["VentasHoy"] = value; }
         }
 
         private List<WSVentaAlFiado.ventaAlFiadoDTO> ListaVentasFiadas
         {
-            get { return ViewState["ListaVentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
-            set { ViewState["ListaVentasFiadas"] = value; }
+            get { return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
+            set { Session["VentasFiadas"] = value; }
         }
 
         private List<WSDevolucion.devolucionDTO> ListaDevoluciones
         {
-            get { return ViewState["ListaDevoluciones"] as List<WSDevolucion.devolucionDTO> ?? new List<WSDevolucion.devolucionDTO>(); }
-            set { ViewState["ListaDevoluciones"] = value; }
+            get { return Session["Devoluciones"] as List<WSDevolucion.devolucionDTO> ?? new List<WSDevolucion.devolucionDTO>(); }
+            set { Session["Devoluciones"] = value; }
         }
 
         private List<WSRegistroPagoFiado.registroPagoFiadoDTO> ListaPagos
         {
-            get { return ViewState["ListaPagos"] as List<WSRegistroPagoFiado.registroPagoFiadoDTO> ?? new List<WSRegistroPagoFiado.registroPagoFiadoDTO>(); }
-            set { ViewState["ListaPagos"] = value; }
+            get { return Session["Pagos"] as List<WSRegistroPagoFiado.registroPagoFiadoDTO> ?? new List<WSRegistroPagoFiado.registroPagoFiadoDTO>(); }
+            set { Session["Pagos"] = value; }
         }
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> ListaClientes
         {
-            get { return ViewState["ListaClientes"] as List<WSClienteAlFiado.clienteAlFiadoDTO> ?? new List<WSClienteAlFiado.clienteAlFiadoDTO>(); }
-            set { ViewState["ListaClientes"] = value; }
+            get { return Session["Clientes"] as List<WSClienteAlFiado.clienteAlFiadoDTO> ?? new List<WSClienteAlFiado.clienteAlFiadoDTO>(); }
+            set { Session["Clientes"] = value; }
         }
 
         public Inicio()
@@ -84,11 +79,11 @@ namespace SoftBodWA
 
         private void InicializarDatos()
         {
-            FechaActual = DateTime.Now.ToString("yyyy-MM-dd");
+            
             ListaVentasHoy = ventaBO.listarVentasPorFecha(FechaActual);
             ListaVentasFiadas = ventaFiadoBO.listarVentasAlFiadoPorAliasClienteYFecha("", FechaActual);
             ListaDevoluciones = devolucionBO.listarDevolucionesPorFecha(FechaActual);
-            ListaPagos = registroPagoBO.listarTodosRegistrosPagoFiado().Where(p => DateTime.Parse(p.fecha).ToString("yyyy-MM-dd") == FechaActual).ToList();
+            ListaPagos = registroPagoBO.listarRegistrosPagoFiadoPorAliasClienteConFechaFin("",FechaActual).ToList();
             ListaClientes = clienteAlFiadoBO.listarTodosClientesAlFiado();
         }
 
