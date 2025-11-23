@@ -336,6 +336,12 @@ namespace SoftBodWA
                 return false;
             }
 
+            if (!telefono.All(char.IsDigit))
+            {
+                mensaje = "El campo de teléfono solo adminte números.";
+                return false;
+            }
+
             return true;
         }
 

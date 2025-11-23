@@ -71,6 +71,12 @@ namespace SoftBodWA
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertError", errorScript, true);
                     return;
                 }
+                if (!telefono.All(char.IsDigit))
+                {
+                    string errorScript = "alert('El campo de teléfono solo adminte números.'); $('#modalAgregarCliente').modal('show');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertError", errorScript, true);
+                    return;
+                }
 
                 int nuevoIDCli = clienteBO.insertarClienteAlFiado(alias, nombreCompleto, telefono, fechaLimiteStr);
                 var nuevoCliente = clienteBO.obtenerClienteAlFiadoPorId(nuevoIDCli);
@@ -85,7 +91,7 @@ namespace SoftBodWA
                 string successScript =
                     "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
                     "if(modal) modal.hide();" +
-                    "setTimeout(function(){ alert('Cliente agregado exitosamente.'); window.location.href = window.location.href; }, 100);";
+                    "setTimeout(function(){ alert('Cliente agregado exitosamente.'); window.location.href = window.location.href; }, 50);";
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "success", successScript, true);
 

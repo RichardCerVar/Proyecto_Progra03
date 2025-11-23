@@ -111,7 +111,7 @@ namespace SoftBodWA
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnCrearOperario;
+        protected global::System.Web.UI.WebControls.Button btnCrearOperario;
 
         /// <summary>
         /// Control updEditarOperario.
@@ -174,7 +174,7 @@ namespace SoftBodWA
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnGuardarCambios;
+        protected global::System.Web.UI.WebControls.Button btnGuardarCambios;
 
         /// <summary>
         /// Control updEliminarOperario.
