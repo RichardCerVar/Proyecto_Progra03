@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodBusiness
@@ -59,10 +60,21 @@ namespace SoftBodBusiness
             clienteAlFiadoSOAP.desbloquearClienteAlFiado(clienteId);
         }
 
-        public byte[] ReporteClienteAlFiado(string fechaInicio,string fechaFin,int clienteId)
+        public byte[] ReporteClienteAlFiado(string fechaInicio, string fechaFin, int clienteId)
         {
             return clienteAlFiadoSOAP.reporteClienteAlFiado(fechaInicio, fechaFin, clienteId);
         }
 
+        public void abrirReporte(HttpResponse response, string nombReporte, byte[] reporte)
+        {
+            response.Clear();
+            response.ContentType = "application/pdf";
+            response.AddHeader("Content-Disposition", "inline; filename=" + nombReporte + ".pdf");
+            response.BinaryWrite(reporte);
+            response.End();
+        }
     }
 }
+
+
+

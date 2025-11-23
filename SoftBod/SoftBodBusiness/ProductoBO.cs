@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using SoftBodBusiness.SoftWSProducto;
 
 namespace SoftBodBusiness
@@ -55,5 +56,13 @@ namespace SoftBodBusiness
             return productoSOAP.reporteDeInventario();
         }
 
+        public void abrirReporte(HttpResponse response, string nombReporte, byte[] reporte)
+        {
+            response.Clear();
+            response.ContentType = "application/pdf";
+            response.AddHeader("Content-Disposition", "inline; filename=" + nombReporte + ".pdf");
+            response.BinaryWrite(reporte);
+            response.End();
+        }
     }
 }

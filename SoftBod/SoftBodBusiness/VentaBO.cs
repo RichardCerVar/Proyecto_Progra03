@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using SoftBodBusiness.SoftWSVenta;
 
 namespace SoftBodBusiness
@@ -45,5 +46,13 @@ namespace SoftBodBusiness
             return this.ventaSOAP.reporteDevolucionesYVentas(fechaInicio, fechaFin);
         }
 
+        public void abrirReporte(HttpResponse response, string nombReporte, byte[] reporte)
+        {
+            response.Clear();
+            response.ContentType = "application/pdf";
+            response.AddHeader("Content-Disposition", "inline; filename=" + nombReporte + ".pdf");
+            response.BinaryWrite(reporte);
+            response.End();
+        }
     }
 }

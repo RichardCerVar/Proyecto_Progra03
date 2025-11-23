@@ -16,7 +16,8 @@ namespace SoftBodWA
         private DetalleVentaBO detalleVentaBO = new DetalleVentaBO();
         private DetalleDevolucionBO detalleDevolucionBO = new DetalleDevolucionBO();
         private ProductoBO productoBO = new ProductoBO();
-        private ClienteAlFiadoBO clienteBO;
+        private ClienteAlFiadoBO clienteBO = new ClienteAlFiadoBO();
+        private HistorialOperacionesBO historialOperacionesBO = new HistorialOperacionesBO();
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
 
@@ -25,7 +26,7 @@ namespace SoftBodWA
             if (!IsPostBack)
             {
                 CargarClientesDropDownList();
-                
+
             }
         }
 
@@ -56,38 +57,38 @@ namespace SoftBodWA
             string fechaFiltro = DateTime.Parse(txtFecha.Text).ToString("yyyy-MM-dd");
             var movimientosReporteVacio = new List<MovimientoReporteDTO>();
 
-            
+
         }
 
         protected void btnExportarReporteVentas_Click(object sender, EventArgs e)
         {
-            string tipoFecha = ddlTipoFechaCliente.SelectedValue;
+            string tipoFecha = ddlTipoFecha.SelectedValue;
 
             DateTime fecha = DateTime.MinValue;
             DateTime fechaInicio = DateTime.MinValue;
             DateTime fechaFin = DateTime.MinValue;
 
+            byte[] reporte = null;
+
             if (tipoFecha == "Diario")
             {
-                DateTime.TryParse(txtFechaCliente.Text, out fecha);
+                DateTime.TryParse(txtFecha.Text, out fecha);
                 string fechaStr = fecha.ToString("yyyy-MM-dd");
-
-
+                reporte = ventaBO.ReporteDevolucionesYVentas(fechaStr, fechaStr);
             }
             else if (tipoFecha == "Rango")
             {
-                DateTime.TryParse(txtFechaClienteInicio.Text, out fechaInicio);
-                DateTime.TryParse(txtFechaClienteFin.Text, out fechaFin);
+                DateTime.TryParse(txtFechaInicio.Text, out fechaInicio);
+                DateTime.TryParse(txtFechaFin.Text, out fechaFin);
 
                 string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
                 string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
+                reporte = ventaBO.ReporteDevolucionesYVentas(fechaInicioStr, fechaFinStr);
 
             }
 
-            // Llamar a tu función que genera el reporte
+            ventaBO.abrirReporte(Response, "ReporteDevolucionesYVentas.pdf", reporte);
 
-
-            ClientScript.RegisterStartupScript(GetType(), "export", "alert('Funcionalidad de exportar reporte a PDF pendiente de implementación en el Back-End.');", true);
         }
 
         protected void ddlTipoFecha_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,59 +140,29 @@ namespace SoftBodWA
 
         protected void btnExportarReporteInventario_Click(object sender, EventArgs e)
         {
-
-            
-            
+            byte[] reporte = productoBO.ReporteDeInventario();
+            productoBO.abrirReporte(Response, "ReporteInventario.pdf", reporte);
         }
         protected void btnExportarReporteClientes_Click(object sender, EventArgs e)
         {
-            
+
             int clienteId = 0;
             if (!string.IsNullOrEmpty(ddlCliente.SelectedValue))
             {
                 clienteId = int.Parse(ddlCliente.SelectedValue);
             }
 
-            string tipoFecha = ddlTipoFechaCliente.SelectedValue; 
-
-            DateTime fecha = DateTime.MinValue;
-            DateTime fechaInicio = DateTime.MinValue;
-            DateTime fechaFin = DateTime.MinValue;
-
-            if (tipoFecha == "Diario")
-            {
-                DateTime.TryParse(txtFechaCliente.Text, out fecha);
-                string fechaStr = fecha.ToString("yyyy-MM-dd");
-                
-                
-            }
-            else if (tipoFecha == "Rango")
-            {
-                DateTime.TryParse(txtFechaClienteInicio.Text, out fechaInicio);
-                DateTime.TryParse(txtFechaClienteFin.Text, out fechaFin);
-
-                string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
-                string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
-
-            }
-
-            // Llamar a tu función que genera el reporte
- 
-        }
-        protected void btnExportarReporteOperaciones_Click(object sender, EventArgs e)
-        {
             string tipoFecha = ddlTipoFechaCliente.SelectedValue;
 
             DateTime fecha = DateTime.MinValue;
             DateTime fechaInicio = DateTime.MinValue;
             DateTime fechaFin = DateTime.MinValue;
-
+            byte[] reporte = null;
             if (tipoFecha == "Diario")
             {
                 DateTime.TryParse(txtFechaCliente.Text, out fecha);
                 string fechaStr = fecha.ToString("yyyy-MM-dd");
-
-
+                reporte = clienteBO.ReporteClienteAlFiado(fechaStr, fechaStr, clienteId);
             }
             else if (tipoFecha == "Rango")
             {
@@ -200,10 +171,39 @@ namespace SoftBodWA
 
                 string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
                 string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
-
+                reporte = clienteBO.ReporteClienteAlFiado(fechaInicioStr, fechaFinStr, clienteId);
             }
 
-            // Llamar a tu función que genera el reporte
+            clienteBO.abrirReporte(Response, "ReporteClienteAlFiado.pdf", reporte);
+
+
+        }
+        protected void btnExportarReporteOperaciones_Click(object sender, EventArgs e)
+        {
+            string tipoFecha = ddlTipoFechaOperario.SelectedValue;
+
+            DateTime fecha = DateTime.MinValue;
+            DateTime fechaInicio = DateTime.MinValue;
+            DateTime fechaFin = DateTime.MinValue;
+
+            byte[] reporte = null;
+
+            if (tipoFecha == "Diario")
+            {
+                DateTime.TryParse(txtFechaOperario.Text, out fecha);
+                string fechaStr = fecha.ToString("yyyy-MM-dd");
+                reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaStr, fechaStr);
+            }
+            else if (tipoFecha == "Rango")
+            {
+                DateTime.TryParse(txtFechaOperarioIncio.Text, out fechaInicio);
+                DateTime.TryParse(txtFechaOperarioFin.Text, out fechaFin);
+
+                string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
+                string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
+                reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaInicioStr, fechaFinStr);
+            }
+            historialOperacionesBO.abrirReporte(Response, "ReporteDevolucionesYVentas.pdf", reporte);
         }
 
     }
