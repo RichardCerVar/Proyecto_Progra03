@@ -199,33 +199,90 @@ namespace SoftBodWA
                 btnRegistrarVenta.CssClass = "btn btn-lg btn-secondary";
             }
 
+            // Mostrar panel de cliente solo para FIADO
             pnlCliente.Visible = ddlTipoPago.SelectedValue == Tipo_de_pago.FIADO.ToString();
+
+            // Mostrar panel de método de pago solo para CONTADO
+            pnlMetodoPago.Visible = ddlTipoPago.SelectedValue == "CONTADO";
+        }
+
+        protected void rptProductosDisponibles_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // Obtener el producto actual
+                var producto = (WSProducto.productoDTO)e.Item.DataItem;
+
+                // Encontrar los controles
+                TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
+
+                // Configurar atributos del TextBox
+                if (txtCantidad != null)
+                {
+                    txtCantidad.Attributes["min"] = "0";
+                    txtCantidad.Attributes["max"] = producto.stock.ToString();
+                }
+            }
         }
 
         protected void btnAdd_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;
-            int productoId = int.Parse(btn.CommandArgument);
+            RepeaterItem item = (RepeaterItem)btn.NamingContainer;
+
+            // Obtener los controles del repeater item
+            HiddenField hfProductoId = (HiddenField)item.FindControl("hfProductoId");
+            HiddenField hfStockDisponible = (HiddenField)item.FindControl("hfStockDisponible");
+            TextBox txtCantidad = (TextBox)item.FindControl("txtCantidad");
+
+            if (hfProductoId == null || txtCantidad == null || hfStockDisponible == null)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorControl", "alert('Error al obtener los controles del producto.');", true);
+                return;
+            }
+
+            int productoId = int.Parse(hfProductoId.Value);
+            int stockDisponible = int.Parse(hfStockDisponible.Value);
+            int cantidadSolicitada;
+
+            // Validar que la cantidad sea un número válido y mayor a 0
+            if (!int.TryParse(txtCantidad.Text, out cantidadSolicitada) || cantidadSolicitada <= 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "cantidadInvalida", "alert('Por favor, ingrese una cantidad válida mayor a 0.');", true);
+                txtCantidad.Text = "0"; // Resetear a 0
+                return;
+            }
 
             WSProducto.productoDTO productoInfo = ObtenerProductoInfo(productoId);
-            if (productoInfo == null) return;
+            if (productoInfo == null)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "productoNoEncontrado", "alert('Producto no encontrado.');", true);
+                return;
+            }
 
             var itemExistente = Carrito.FirstOrDefault(p => p.producto.productoId == productoId);
-
             int cantidadEnCarrito = itemExistente?.cantidad ?? 0;
-            if (cantidadEnCarrito >= productoInfo.stock)
+
+            // Validar stock disponible
+            if (cantidadEnCarrito + cantidadSolicitada > productoInfo.stock)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "stockAlert", $"alert('No hay suficiente stock disponible para {productoInfo.nombre}.');", true);
+                int disponible = productoInfo.stock - cantidadEnCarrito;
+                ScriptManager.RegisterStartupScript(this, GetType(), "stockInsuficiente",
+                    $"alert('Stock insuficiente para {productoInfo.nombre}.\\nEn carrito: {cantidadEnCarrito}\\nDisponible para agregar: {disponible}\\nStock total: {productoInfo.stock}');", true);
                 return;
             }
 
             if (itemExistente != null)
             {
-                itemExistente.cantidad++;
+                // Actualizar cantidad del producto existente
+                itemExistente.cantidad += cantidadSolicitada;
                 itemExistente.cantidadSpecified = true;
+                itemExistente.subtotal = itemExistente.cantidad * itemExistente.producto.precioUnitario;
+                itemExistente.subtotalSpecified = true;
             }
             else
             {
+                // Agregar nuevo producto al carrito
                 var productoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.productoDTO
                 {
                     productoId = productoInfo.productoId,
@@ -238,18 +295,17 @@ namespace SoftBodWA
                 var nuevoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO
                 {
                     producto = productoDetalle,
-                    cantidad = 1,
+                    cantidad = cantidadSolicitada,
                     cantidadSpecified = true,
-                    subtotal = 0, // Se calculará abajo
+                    subtotal = cantidadSolicitada * productoInfo.precioUnitario,
                     subtotalSpecified = true
                 };
 
                 Carrito.Add(nuevoDetalle);
             }
 
-            var itemActualizado = Carrito.First(p => p.producto.productoId == productoId);
-            itemActualizado.subtotal = itemActualizado.cantidad * itemActualizado.producto.precioUnitario;
-            itemActualizado.subtotalSpecified = true;
+            // Resetear el campo de cantidad a 0
+            txtCantidad.Text = "0";
 
             ActualizarInterfaz();
         }
@@ -263,18 +319,8 @@ namespace SoftBodWA
 
             if (item != null)
             {
-                item.cantidad--;
-                item.cantidadSpecified = true;
-
-                if (item.cantidad <= 0)
-                {
-                    Carrito.Remove(item);
-                }
-                else
-                {
-                    item.subtotal = item.cantidad * item.producto.precioUnitario;
-                    item.subtotalSpecified = true;
-                }
+                // Eliminar el producto completamente del carrito
+                Carrito.Remove(item);
             }
 
             ActualizarInterfaz();
@@ -374,7 +420,7 @@ namespace SoftBodWA
                     idVentaRegistrada = this.ventaAlFiadoBO.insertarVentaAlFiado(
                         clienteSeleccionadoWS,
                         usuarioLogueadoFiado,
-                        metodoPagoWSFiado,
+                        metodoPagoWSFiado.ToString(),
                         detallesVentaWSFiado
                     );
 
@@ -385,6 +431,14 @@ namespace SoftBodWA
                 }
                 else
                 {
+                    // Validar método de pago para venta al contado
+                    string metodoPagoContado = ddlMetodoPago.SelectedValue;
+                    if (string.IsNullOrEmpty(metodoPagoContado))
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('Debe seleccionar un método de pago.');", true);
+                        return;
+                    }
+
                     int idUserVenta = int.Parse(Session["UsuarioId"].ToString());
                     var usuarioLogueadoVenta = new SoftBodBusiness.SoftWSVenta.usuarioDTO
                     {
@@ -394,11 +448,11 @@ namespace SoftBodWA
 
                     idVentaRegistrada = this.ventaBO.insertarVenta(
                         usuarioLogueadoVenta,
-                        metodoPagoWSVenta,
+                        metodoPagoContado,
                         detallesVentaWSVenta
                     );
 
-                    mensaje = $"✅ Venta registrada con éxito (ID: {idVentaRegistrada}). Tipo: {tipoPagoEnum}. Total: S/. {lblTotal.Text}.";
+                    mensaje = $"✅ Venta registrada con éxito (ID: {idVentaRegistrada}). Tipo: {tipoPagoEnum}. Método: {metodoPagoContado}. Total: S/. {lblTotal.Text}.";
                 }
 
                 // 4. Finalizar y Limpiar

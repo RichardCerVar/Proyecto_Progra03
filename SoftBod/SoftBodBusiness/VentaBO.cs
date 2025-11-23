@@ -18,7 +18,7 @@ namespace SoftBodBusiness
             ventaSOAP = new VentaClient();
         }
 
-        public int insertarVenta(usuarioDTO usuario, tipoDePago metodoPago, detalleVentaDTO[] detallesVenta)
+        public int insertarVenta(usuarioDTO usuario, string metodoPago, detalleVentaDTO[] detallesVenta)
         {
             return this.ventaSOAP.insertarVenta(usuario, metodoPago, detallesVenta);
         }

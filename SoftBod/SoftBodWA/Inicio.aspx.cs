@@ -123,6 +123,8 @@ namespace SoftBodWA
                     tipoMovimiento = "VentaFiada";
                 }
 
+                bool esTransferencia = !esFiado && venta.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA;
+
                 movimientos.Add(new MovimientosInicio
                 {
                     Id = idMovimiento,
@@ -131,8 +133,8 @@ namespace SoftBodWA
                     FechaHora = DateTime.Parse(venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)"),
                     Monto = $"+S/.{venta.total:F2}",
                     ColorMonto = esFiado ? "#ffc107" : "#28a745",
-                    TipoBadge = esFiado ? "Fiado" : "Al Contado",
-                    ColorBadge = esFiado ? "#ffc107" : (venta.metodoPago == WSVenta.tipoDePago.EFECTIVO ? "#28a745" : "#007bff"),
+                    TipoBadge = esFiado ? "Fiado" : (esTransferencia ? "Transferencia" : "Al Contado"),
+                    ColorBadge = esFiado ? "#ffc107" : (esTransferencia ? "#007bff" : "#28a745"),
                     Icono = "bi-cart-check",
                     ColorIcono = esFiado ? "#ffc107" : "#28a745",
                     FechaOrden = DateTime.Parse(venta.fecha)

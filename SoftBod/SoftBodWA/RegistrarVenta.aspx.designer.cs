@@ -15,15 +15,6 @@ namespace SoftBodWA
     {
 
         /// <summary>
-        /// Control lblTotal.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTotal;
-
-        /// <summary>
         /// Control txtBuscarProducto.
         /// </summary>
         /// <remarks>
@@ -87,6 +78,24 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.DropDownList ddlTipoPago;
 
         /// <summary>
+        /// Control pnlMetodoPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlMetodoPago;
+
+        /// <summary>
+        /// Control ddlMetodoPago.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlMetodoPago;
+
+        /// <summary>
         /// Control pnlCliente.
         /// </summary>
         /// <remarks>
@@ -103,6 +112,15 @@ namespace SoftBodWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlCliente;
+
+        /// <summary>
+        /// Control lblTotal.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTotal;
 
         /// <summary>
         /// Control btnRegistrarVenta.

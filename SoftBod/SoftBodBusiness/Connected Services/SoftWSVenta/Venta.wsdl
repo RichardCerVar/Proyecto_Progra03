@@ -11,17 +11,17 @@
   <message name="insertarVentaResponse">
     <part name="parameters" element="tns:insertarVentaResponse" />
   </message>
-  <message name="listarTodosVentas">
-    <part name="parameters" element="tns:listarTodosVentas" />
-  </message>
-  <message name="listarTodosVentasResponse">
-    <part name="parameters" element="tns:listarTodosVentasResponse" />
-  </message>
   <message name="obtenerVentaPorId">
     <part name="parameters" element="tns:obtenerVentaPorId" />
   </message>
   <message name="obtenerVentaPorIdResponse">
     <part name="parameters" element="tns:obtenerVentaPorIdResponse" />
+  </message>
+  <message name="listarTodosVentas">
+    <part name="parameters" element="tns:listarTodosVentas" />
+  </message>
+  <message name="listarTodosVentasResponse">
+    <part name="parameters" element="tns:listarTodosVentasResponse" />
   </message>
   <message name="reporteDevolucionesYVentas">
     <part name="parameters" element="tns:reporteDevolucionesYVentas" />
@@ -40,13 +40,13 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaRequest" message="tns:insertarVenta" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaResponse" message="tns:insertarVentaResponse" />
     </operation>
-    <operation name="listarTodosVentas">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest" message="tns:listarTodosVentas" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse" message="tns:listarTodosVentasResponse" />
-    </operation>
     <operation name="obtenerVentaPorId">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest" message="tns:obtenerVentaPorId" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse" message="tns:obtenerVentaPorIdResponse" />
+    </operation>
+    <operation name="listarTodosVentas">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest" message="tns:listarTodosVentas" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse" message="tns:listarTodosVentasResponse" />
     </operation>
     <operation name="reporteDevolucionesYVentas">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasRequest" message="tns:reporteDevolucionesYVentas" />
@@ -68,7 +68,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarTodosVentas">
+    <operation name="obtenerVentaPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -77,7 +77,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerVentaPorId">
+    <operation name="listarTodosVentas">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

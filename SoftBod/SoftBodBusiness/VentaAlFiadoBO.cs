@@ -19,7 +19,7 @@ namespace SoftBodBusiness
         public int insertarVentaAlFiado(
             clienteAlFiadoDTO cliente,
             usuarioDTO usuario,
-            tipoDePago metodoPago,
+            string metodoPago,
             detalleVentaDTO[] detallesVenta)
         {
             return this.ventaFiadoSOAP.insertarVentaAlFiado(

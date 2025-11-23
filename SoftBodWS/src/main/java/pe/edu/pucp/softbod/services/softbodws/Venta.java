@@ -23,7 +23,7 @@ public class Venta {
 
     @WebMethod(operationName = "insertarVenta")
     public Integer insertarVenta(@WebParam(name = "usuario") UsuarioDTO usuario,
-                                  @WebParam(name = "metodoPago") Tipo_de_pago metodoPago,
+                                  @WebParam(name = "metodoPago") String metodoPago,
                                   @WebParam(name = "detallesVenta") ArrayList<DetalleVentaDTO> detallesVenta) {
         return this.ventaBO.insertar(usuario, metodoPago, detallesVenta);
     }

@@ -43,7 +43,7 @@ public class VentaBO extends OperacionBOBase{
     
     public Integer insertar(
             UsuarioDTO usuario,//el front ya tiene al usuario
-            Tipo_de_pago metodoPago,  //el front ya tiene el tipo de pago
+            String metodoPago,  //el front ya tiene el tipo de pago
             ArrayList<DetalleVentaDTO> detallesVenta) {
         
         //insercion de la venta completa:
@@ -51,7 +51,7 @@ public class VentaBO extends OperacionBOBase{
         String fechaActual = new Timestamp(System.currentTimeMillis()).toString();
         
         nuevaVenta.setFecha(fechaActual);
-        nuevaVenta.setMetodoPago(metodoPago);
+        nuevaVenta.setMetodoPago(Tipo_de_pago.valueOf(metodoPago));
         nuevaVenta.setUsuario(usuario);
         nuevaVenta.setTotal(calcularMontoTotalVenta(detallesVenta));
         Integer idNuevaVenta = this.ventaDAO.insertar(nuevaVenta);

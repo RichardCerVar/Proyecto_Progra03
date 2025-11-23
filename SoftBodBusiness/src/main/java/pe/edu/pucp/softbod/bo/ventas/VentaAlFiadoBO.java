@@ -40,7 +40,7 @@ public class VentaAlFiadoBO {
     public Integer insertar(
             ClienteAlFiadoDTO cliente,
             UsuarioDTO usuario,//el front ya tiene al usuario
-            Tipo_de_pago metodoPago,  //el front ya tiene el tipo de pago
+            String metodoPago,  //el front ya tiene el tipo de pago
             ArrayList<DetalleVentaDTO> detallesVenta) {
         
         VentaAlFiadoDTO nuevaVentaFiada = new VentaAlFiadoDTO();
