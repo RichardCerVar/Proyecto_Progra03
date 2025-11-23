@@ -1,12 +1,14 @@
-﻿using System;
+﻿using SoftBodBusiness;
+using SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftWSHistorialOperaciones;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Linq;
-using SoftBodBusiness;
 using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
 using WSRegistroPagoFiado = SoftBodBusiness.SoftWSRegistroPagoFiado;
-using SoftBodBusiness.SoftWSClienteAlFiado;
+using WSHistorialOperaciones = SoftBodBusiness.SoftWSHistorialOperaciones;
 
 namespace SoftBodWA
 {
@@ -14,6 +16,7 @@ namespace SoftBodWA
     {
         private ClienteAlFiadoBO clienteBO;
         private RegistroPagoFiadoBO registroPagoFiadoBO;
+        private HistorialOperacionesBO historialOperacionesBO;
 
         public Clientes()
         {
@@ -86,6 +89,14 @@ namespace SoftBodWA
 
                 int nuevoIDCli = clienteBO.insertarClienteAlFiado(alias, nombreCompleto, telefono, fechaLimiteStr);
                 var nuevoCliente = clienteBO.obtenerClienteAlFiadoPorId(nuevoIDCli);
+
+                // Regitrar en el historial
+                historialOperacionesBO = new HistorialOperacionesBO();
+                int usuarioID = (int)Session["UsuarioId"];
+                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                usuario.usuarioId = usuarioID;
+                usuario.usuarioIdSpecified = true;
+                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "INSERCION");
 
                 ClientesData.Add(nuevoCliente);
 
@@ -254,6 +265,15 @@ namespace SoftBodWA
                 // Llamar a la lógica de negocio
                 clienteBO.modificarClienteAlFiado(clienteDTO);
 
+                // Regitrar en el historial
+                historialOperacionesBO = new HistorialOperacionesBO();
+
+                int usuarioID = (int)Session["UsuarioId"];
+                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                usuario.usuarioId = usuarioID;
+                usuario.usuarioIdSpecified = true;
+                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "MODIFICACION");
+
                 // Recargar los datos en memoria y pantalla
                 CargarClientes();
 
@@ -375,6 +395,15 @@ namespace SoftBodWA
             {
                 int clienteID = int.Parse(hfClienteIDEliminar.Value);
                 clienteBO.eliminarClienteAlFiado(clienteID);
+
+
+                // Regitrar en el historial
+                historialOperacionesBO = new HistorialOperacionesBO();
+                int usuarioID = (int)Session["UsuarioId"];
+                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                usuario.usuarioId = usuarioID;
+                usuario.usuarioIdSpecified = true;
+                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "ELIMINACION");
 
                 // Actualizar la lista en sesión eliminando el cliente
                 var cliente = ClientesData.FirstOrDefault(c => c.clienteId == clienteID);

@@ -13,7 +13,7 @@ import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 import pe.edu.pucp.softbod.reporte.util.ReporteUtil;
 
 @WebService(serviceName = "HistorialOperaciones")
-public class HistorialOperaciones extends OperacionBOBase{
+public class HistorialOperaciones {
 
     private HistorialDeOperacionBO historialBO;
 
@@ -81,12 +81,12 @@ public class HistorialOperaciones extends OperacionBOBase{
         return this.historialBO.listarHistorialFiltros(operacionId, nombreTabla, tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);
     }
     
-    @WebMethod(operationName = "registrarHistorialDeOperaciones")
-    public void registrarHistorialOperaciones(
+    @WebMethod(operationName = "registrarHistorialDeOperacion")
+    public void registrarHistorialOperacion(
             @WebParam(name = "usuario") UsuarioDTO usuario, 
             @WebParam(name = "tablaAfectada") String tablaAfectada, 
-            @WebParam(name = "operacion") Tipo_Operacion operacion) {
-        registrarEnHistorial(usuario, tablaAfectada, operacion);
+            @WebParam(name = "operacion") String operacion) {
+        historialBO.registrarHistorialOperaciones(usuario, tablaAfectada, operacion);
     }
     
     @WebMethod(operationName = "reporteHistorialDeOperaciones")

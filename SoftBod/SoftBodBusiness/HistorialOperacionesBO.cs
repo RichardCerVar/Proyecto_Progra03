@@ -78,9 +78,9 @@ namespace SoftBodBusiness
                    ?? new List<historialOperacionesDTO>();
         }
 
-        public void registroHistorialDeOperaciones (usuarioDTO usuario, string nombreTabla, tipoOperacion operacion)
+        public void registroHistorialDeOperaciones (usuarioDTO usuario, string nombreTabla, string operacion)
         {
-            historialSOAP.registrarHistorialDeOperaciones(usuario, nombreTabla, operacion);
+            historialSOAP.registrarHistorialDeOperacion(usuario, nombreTabla, operacion);
         }
 
         public byte[] ReporteHistorialDeOperaciones(string fechaInicio, string fechaFin)

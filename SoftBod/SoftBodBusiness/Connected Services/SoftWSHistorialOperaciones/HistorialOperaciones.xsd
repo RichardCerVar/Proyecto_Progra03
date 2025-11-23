@@ -20,32 +20,10 @@
   <xs:element name="listarTodosHistorialOperacionesResponse" type="tns:listarTodosHistorialOperacionesResponse" />
   <xs:element name="obtenerHistorialOperacionPorId" type="tns:obtenerHistorialOperacionPorId" />
   <xs:element name="obtenerHistorialOperacionPorIdResponse" type="tns:obtenerHistorialOperacionPorIdResponse" />
-  <xs:element name="registrarHistorialDeOperaciones" type="tns:registrarHistorialDeOperaciones" />
-  <xs:element name="registrarHistorialDeOperacionesResponse" type="tns:registrarHistorialDeOperacionesResponse" />
+  <xs:element name="registrarHistorialDeOperacion" type="tns:registrarHistorialDeOperacion" />
+  <xs:element name="registrarHistorialDeOperacionResponse" type="tns:registrarHistorialDeOperacionResponse" />
   <xs:element name="reporteHistorialDeOperaciones" type="tns:reporteHistorialDeOperaciones" />
   <xs:element name="reporteHistorialDeOperacionesResponse" type="tns:reporteHistorialDeOperacionesResponse" />
-  <xs:complexType name="registrarHistorialDeOperaciones">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
-      <xs:element minOccurs="0" name="tablaAfectada" type="xs:string" />
-      <xs:element minOccurs="0" name="operacion" type="tns:tipoOperacion" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="usuarioDTO">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
-      <xs:element minOccurs="0" name="correo" type="xs:string" />
-      <xs:element minOccurs="0" name="nombre" type="xs:string" />
-      <xs:element minOccurs="0" name="telefono" type="xs:string" />
-      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
-      <xs:element minOccurs="0" name="usuario" type="xs:string" />
-      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="registrarHistorialDeOperacionesResponse">
-    <xs:sequence />
-  </xs:complexType>
   <xs:complexType name="insertarHistorialOperacion">
     <xs:sequence>
       <xs:element minOccurs="0" name="historial" type="tns:historialOperacionesDTO" />
@@ -58,6 +36,18 @@
       <xs:element minOccurs="0" name="operacionId" type="xs:int" />
       <xs:element minOccurs="0" name="tablaAfectada" type="xs:string" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarHistorialOperacionResponse">
@@ -84,16 +74,6 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="listarHistorialOperacionesPorTabla">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="listarHistorialOperacionesPorTablaResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="reporteHistorialDeOperaciones">
     <xs:sequence>
       <xs:element minOccurs="0" name="arg0" type="xs:string" />
@@ -103,6 +83,16 @@
   <xs:complexType name="reporteHistorialDeOperacionesResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTabla">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nombreTabla" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarHistorialOperacionesPorTablaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="listarHistorialOperacionesPorFecha">
@@ -124,6 +114,16 @@
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
     </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registrarHistorialDeOperacion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" name="tablaAfectada" type="xs:string" />
+      <xs:element minOccurs="0" name="operacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="registrarHistorialDeOperacionResponse">
+    <xs:sequence />
   </xs:complexType>
   <xs:complexType name="obtenerHistorialOperacionPorId">
     <xs:sequence>
@@ -173,18 +173,18 @@
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:historialOperacionesDTO" />
     </xs:sequence>
   </xs:complexType>
-  <xs:simpleType name="tipoUsuario">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="OPERARIO" />
-      <xs:enumeration value="ADMINISTRADOR" />
-    </xs:restriction>
-  </xs:simpleType>
   <xs:simpleType name="tipoOperacion">
     <xs:restriction base="xs:string">
       <xs:enumeration value="INSERCION" />
       <xs:enumeration value="MODIFICACION" />
       <xs:enumeration value="ELIMINACION" />
       <xs:enumeration value="CONSULTAR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPERARIO" />
+      <xs:enumeration value="ADMINISTRADOR" />
     </xs:restriction>
   </xs:simpleType>
 </xs:schema>

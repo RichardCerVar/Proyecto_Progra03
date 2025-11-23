@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\clientes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\softbodwa\\clientes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\clientes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{994A7C8B-A8B2-4E73-8538-435FE4A5B63E}|SoftBodBusiness\\SoftBodBusiness.csproj|solutionrelative:softbodbusiness\\historialoperacionesbo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\softbodwa\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\clientes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\softbodwa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,11 +34,36 @@
       "DocumentGroups": [
         {
           "DockedHeight": 114,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "HistorialOperacionesBO.cs",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "RelativeDocumentMoniker": "SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "RelativeToolTip": "SoftBodBusiness\\HistorialOperacionesBO.cs",
+              "ViewState": "AgIAAEQAAAAAAAAAAAAUwFIAAABZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T22:10:18.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Clientes.aspx",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Clientes.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Clientes.aspx",
+              "RelativeToolTip": "SoftBodWA\\Clientes.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-23T21:46:41.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "Reportes.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Reportes.aspx.cs",
               "RelativeDocumentMoniker": "SoftBodWA\\Reportes.aspx.cs",
@@ -38,8 +71,7 @@
               "RelativeToolTip": "SoftBodWA\\Reportes.aspx.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAAAEoAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T21:14:52.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-23T21:14:52.457Z"
             },
             {
               "$type": "Document",
@@ -47,22 +79,22 @@
               "Title": "Clientes.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Clientes.aspx.cs",
               "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx.cs",
-              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Clientes.aspx.cs*",
-              "RelativeToolTip": "SoftBodWA\\Clientes.aspx.cs*",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAuwPYAAABMAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Clientes.aspx.cs",
+              "RelativeToolTip": "SoftBodWA\\Clientes.aspx.cs",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAuwBABAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-23T21:21:54.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Productos.aspx.cs",
               "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx.cs",
               "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx.cs",
               "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx.cs",
               "RelativeToolTip": "SoftBodWA\\Productos.aspx.cs",
-              "ViewState": "AgIAAL4AAAAAAAAAAAAAANEAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAANoBAAAAAAAAAAAAAO8BAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-23T21:07:55.114Z",
               "EditorCaption": ""
@@ -75,7 +107,7 @@
               "RelativeDocumentMoniker": "SoftBodWA\\Login.aspx.cs",
               "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Login.aspx.cs",
               "RelativeToolTip": "SoftBodWA\\Login.aspx.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCIAAAA5AAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwCIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-23T21:07:37.396Z",
               "EditorCaption": ""

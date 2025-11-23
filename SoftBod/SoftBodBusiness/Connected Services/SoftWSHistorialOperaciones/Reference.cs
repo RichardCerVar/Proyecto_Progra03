@@ -15,30 +15,31 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", ConfigurationName="SoftWSHistorialOperaciones.HistorialOperaciones")]
     public interface HistorialOperaciones {
         
-        // CODEGEN: El parámetro 'usuario' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
-            "rialDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
-            "rialDeOperacionesResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse registrarHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
-            "rialDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
-            "rialDeOperacionesResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse> registrarHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest request);
-        
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesPorFechaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
+            "alOperacionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
+            "alOperacionPorIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse listarHistorialOperacionesPorFecha(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse obtenerHistorialOperacionPorId(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesPorFechaResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> listarHistorialOperacionesPorFechaAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
+            "alOperacionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
+            "alOperacionPorIdResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> obtenerHistorialOperacionPorIdAsync(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
+            "alDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
+            "alDeOperacionesResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse reporteHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
+            "alDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
+            "alDeOperacionesResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> reporteHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarTodosHis" +
@@ -67,30 +68,42 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaResponse> listarHistorialOperacionesPorTablaAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
-            "alDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
-            "alDeOperacionesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesPorFechaResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse reporteHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse listarHistorialOperacionesPorFecha(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
-            "alDeOperacionesRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistori" +
-            "alDeOperacionesResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> reporteHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesPorFechaResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> listarHistorialOperacionesPorFechaAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request);
+        
+        // CODEGEN: El parámetro 'usuario' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
+            "rialDeOperacionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
+            "rialDeOperacionResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse registrarHistorialDeOperacion(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
+            "rialDeOperacionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHisto" +
+            "rialDeOperacionResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse> registrarHistorialDeOperacionAsync(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
-            "alOperacionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
-            "alOperacionPorIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesConFiltrosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesConFiltrosResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse obtenerHistorialOperacionPorId(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse listarHistorialOperacionesConFiltros(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
-            "alOperacionPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistori" +
-            "alOperacionPorIdResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> obtenerHistorialOperacionPorIdAsync(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesConFiltrosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
+            "lOperacionesConFiltrosResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
@@ -117,19 +130,6 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
             "lOperacionesPorTipoOperacionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
             "lOperacionesPorTipoOperacionResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTipoOperacionResponse> listarHistorialOperacionesPorTipoOperacionAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTipoOperacionRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesConFiltrosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesConFiltrosResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse listarHistorialOperacionesConFiltros(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesConFiltrosRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
-            "lOperacionesConFiltrosResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
@@ -169,6 +169,141 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
             "lOperacionesPorTablaYTipoOperacionRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistoria" +
             "lOperacionesPorTablaYTipoOperacionResponse")]
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaYTipoOperacionResponse> listarHistorialOperacionesPorTablaYTipoOperacionAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaYTipoOperacionRequest request);
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
+    public partial class historialOperacionesDTO : object, System.ComponentModel.INotifyPropertyChanged {
+        
+        private string fechaHoraField;
+        
+        private tipoOperacion operacionField;
+        
+        private bool operacionFieldSpecified;
+        
+        private int operacionIdField;
+        
+        private bool operacionIdFieldSpecified;
+        
+        private string tablaAfectadaField;
+        
+        private usuarioDTO usuarioField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string fechaHora {
+            get {
+                return this.fechaHoraField;
+            }
+            set {
+                this.fechaHoraField = value;
+                this.RaisePropertyChanged("fechaHora");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public tipoOperacion operacion {
+            get {
+                return this.operacionField;
+            }
+            set {
+                this.operacionField = value;
+                this.RaisePropertyChanged("operacion");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool operacionSpecified {
+            get {
+                return this.operacionFieldSpecified;
+            }
+            set {
+                this.operacionFieldSpecified = value;
+                this.RaisePropertyChanged("operacionSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public int operacionId {
+            get {
+                return this.operacionIdField;
+            }
+            set {
+                this.operacionIdField = value;
+                this.RaisePropertyChanged("operacionId");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool operacionIdSpecified {
+            get {
+                return this.operacionIdFieldSpecified;
+            }
+            set {
+                this.operacionIdFieldSpecified = value;
+                this.RaisePropertyChanged("operacionIdSpecified");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public string tablaAfectada {
+            get {
+                return this.tablaAfectadaField;
+            }
+            set {
+                this.tablaAfectadaField = value;
+                this.RaisePropertyChanged("tablaAfectada");
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
+        public usuarioDTO usuario {
+            get {
+                return this.usuarioField;
+            }
+            set {
+                this.usuarioField = value;
+                this.RaisePropertyChanged("usuario");
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.SerializableAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
+    public enum tipoOperacion {
+        
+        /// <remarks/>
+        INSERCION,
+        
+        /// <remarks/>
+        MODIFICACION,
+        
+        /// <remarks/>
+        ELIMINACION,
+        
+        /// <remarks/>
+        CONSULTAR,
     }
     
     /// <remarks/>
@@ -356,211 +491,79 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
         ADMINISTRADOR,
     }
     
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
-    [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public partial class historialOperacionesDTO : object, System.ComponentModel.INotifyPropertyChanged {
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerHistorialOperacionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerHistorialOperacionPorIdRequest {
         
-        private string fechaHoraField;
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int historialId;
         
-        private tipoOperacion operacionField;
-        
-        private bool operacionFieldSpecified;
-        
-        private int operacionIdField;
-        
-        private bool operacionIdFieldSpecified;
-        
-        private string tablaAfectadaField;
-        
-        private usuarioDTO usuarioField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string fechaHora {
-            get {
-                return this.fechaHoraField;
-            }
-            set {
-                this.fechaHoraField = value;
-                this.RaisePropertyChanged("fechaHora");
-            }
+        public obtenerHistorialOperacionPorIdRequest() {
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public tipoOperacion operacion {
-            get {
-                return this.operacionField;
-            }
-            set {
-                this.operacionField = value;
-                this.RaisePropertyChanged("operacion");
-            }
+        public obtenerHistorialOperacionPorIdRequest(int historialId) {
+            this.historialId = historialId;
         }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool operacionSpecified {
-            get {
-                return this.operacionFieldSpecified;
-            }
-            set {
-                this.operacionFieldSpecified = value;
-                this.RaisePropertyChanged("operacionSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public int operacionId {
-            get {
-                return this.operacionIdField;
-            }
-            set {
-                this.operacionIdField = value;
-                this.RaisePropertyChanged("operacionId");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool operacionIdSpecified {
-            get {
-                return this.operacionIdFieldSpecified;
-            }
-            set {
-                this.operacionIdFieldSpecified = value;
-                this.RaisePropertyChanged("operacionIdSpecified");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
-        public string tablaAfectada {
-            get {
-                return this.tablaAfectadaField;
-            }
-            set {
-                this.tablaAfectadaField = value;
-                this.RaisePropertyChanged("tablaAfectada");
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=4)]
-        public usuarioDTO usuario {
-            get {
-                return this.usuarioField;
-            }
-            set {
-                this.usuarioField = value;
-                this.RaisePropertyChanged("usuario");
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
-    [System.SerializableAttribute()]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
-    public enum tipoOperacion {
-        
-        /// <remarks/>
-        INSERCION,
-        
-        /// <remarks/>
-        MODIFICACION,
-        
-        /// <remarks/>
-        ELIMINACION,
-        
-        /// <remarks/>
-        CONSULTAR,
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarHistorialDeOperaciones", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class registrarHistorialDeOperacionesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerHistorialOperacionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerHistorialOperacionPorIdResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario;
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO @return;
+        
+        public obtenerHistorialOperacionPorIdResponse() {
+        }
+        
+        public obtenerHistorialOperacionPorIdResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteHistorialDeOperaciones", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class reporteHistorialDeOperacionesRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string arg0;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string tablaAfectada;
+        public string arg1;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSHistorialOperaciones.tipoOperacion operacion;
-        
-        public registrarHistorialDeOperacionesRequest() {
+        public reporteHistorialDeOperacionesRequest() {
         }
         
-        public registrarHistorialDeOperacionesRequest(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, SoftBodBusiness.SoftWSHistorialOperaciones.tipoOperacion operacion) {
-            this.usuario = usuario;
-            this.tablaAfectada = tablaAfectada;
-            this.operacion = operacion;
+        public reporteHistorialDeOperacionesRequest(string arg0, string arg1) {
+            this.arg0 = arg0;
+            this.arg1 = arg1;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarHistorialDeOperacionesResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class registrarHistorialDeOperacionesResponse {
-        
-        public registrarHistorialDeOperacionesResponse() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesPorFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarHistorialOperacionesPorFechaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteHistorialDeOperacionesResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class reporteHistorialDeOperacionesResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)]
+        public byte[] @return;
         
-        public listarHistorialOperacionesPorFechaRequest() {
+        public reporteHistorialDeOperacionesResponse() {
         }
         
-        public listarHistorialOperacionesPorFechaRequest(string fecha) {
-            this.fecha = fecha;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesPorFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarHistorialOperacionesPorFechaResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return;
-        
-        public listarHistorialOperacionesPorFechaResponse() {
-        }
-        
-        public listarHistorialOperacionesPorFechaResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return) {
+        public reporteHistorialDeOperacionesResponse(byte[] @return) {
             this.@return = @return;
         }
     }
@@ -632,40 +635,35 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteHistorialDeOperaciones", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class reporteHistorialDeOperacionesRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesPorFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarHistorialOperacionesPorFechaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg0;
+        public string fecha;
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string arg1;
-        
-        public reporteHistorialDeOperacionesRequest() {
+        public listarHistorialOperacionesPorFechaRequest() {
         }
         
-        public reporteHistorialDeOperacionesRequest(string arg0, string arg1) {
-            this.arg0 = arg0;
-            this.arg1 = arg1;
+        public listarHistorialOperacionesPorFechaRequest(string fecha) {
+            this.fecha = fecha;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteHistorialDeOperacionesResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class reporteHistorialDeOperacionesResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesPorFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarHistorialOperacionesPorFechaResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)]
-        public byte[] @return;
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return;
         
-        public reporteHistorialDeOperacionesResponse() {
+        public listarHistorialOperacionesPorFechaResponse() {
         }
         
-        public reporteHistorialDeOperacionesResponse(byte[] @return) {
+        public listarHistorialOperacionesPorFechaResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -673,35 +671,108 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerHistorialOperacionPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerHistorialOperacionPorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarHistorialDeOperacion", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class registrarHistorialDeOperacionRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int historialId;
+        public SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario;
         
-        public obtenerHistorialOperacionPorIdRequest() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string tablaAfectada;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string operacion;
+        
+        public registrarHistorialDeOperacionRequest() {
         }
         
-        public obtenerHistorialOperacionPorIdRequest(int historialId) {
-            this.historialId = historialId;
+        public registrarHistorialDeOperacionRequest(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, string operacion) {
+            this.usuario = usuario;
+            this.tablaAfectada = tablaAfectada;
+            this.operacion = operacion;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerHistorialOperacionPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerHistorialOperacionPorIdResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="registrarHistorialDeOperacionResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class registrarHistorialDeOperacionResponse {
+        
+        public registrarHistorialDeOperacionResponse() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesConFiltros", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarHistorialOperacionesConFiltrosRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<int> operacionId;
         
-        public obtenerHistorialOperacionPorIdResponse() {
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string nombreTabla;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string tipoOperacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string fechaOperacion;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<int> usuarioId;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string usuario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=6)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public string tipoUsuario;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=7)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
+        public System.Nullable<bool> estado;
+        
+        public listarHistorialOperacionesConFiltrosRequest() {
         }
         
-        public obtenerHistorialOperacionPorIdResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO @return) {
+        public listarHistorialOperacionesConFiltrosRequest(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
+            this.operacionId = operacionId;
+            this.nombreTabla = nombreTabla;
+            this.tipoOperacion = tipoOperacion;
+            this.fechaOperacion = fechaOperacion;
+            this.usuarioId = usuarioId;
+            this.usuario = usuario;
+            this.tipoUsuario = tipoUsuario;
+            this.estado = estado;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesConFiltrosResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarHistorialOperacionesConFiltrosResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return;
+        
+        public listarHistorialOperacionesConFiltrosResponse() {
+        }
+        
+        public listarHistorialOperacionesConFiltrosResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -779,77 +850,6 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
         }
         
         public listarHistorialOperacionesPorTipoOperacionResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesConFiltros", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarHistorialOperacionesConFiltrosRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public System.Nullable<int> operacionId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string nombreTabla;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string tipoOperacion;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string fechaOperacion;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=4)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public System.Nullable<int> usuarioId;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=5)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string usuario;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=6)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public string tipoUsuario;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=7)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true)]
-        public System.Nullable<bool> estado;
-        
-        public listarHistorialOperacionesConFiltrosRequest() {
-        }
-        
-        public listarHistorialOperacionesConFiltrosRequest(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
-            this.operacionId = operacionId;
-            this.nombreTabla = nombreTabla;
-            this.tipoOperacion = tipoOperacion;
-            this.fechaOperacion = fechaOperacion;
-            this.usuarioId = usuarioId;
-            this.usuario = usuario;
-            this.tipoUsuario = tipoUsuario;
-            this.estado = estado;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarHistorialOperacionesConFiltrosResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarHistorialOperacionesConFiltrosResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return;
-        
-        public listarHistorialOperacionesConFiltrosResponse() {
-        }
-        
-        public listarHistorialOperacionesConFiltrosResponse(SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] @return) {
             this.@return = @return;
         }
     }
@@ -995,52 +995,51 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.registrarHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest request) {
-            return base.Channel.registrarHistorialDeOperaciones(request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.obtenerHistorialOperacionPorId(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request) {
+            return base.Channel.obtenerHistorialOperacionPorId(request);
         }
         
-        public void registrarHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, SoftBodBusiness.SoftWSHistorialOperaciones.tipoOperacion operacion) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest();
-            inValue.usuario = usuario;
-            inValue.tablaAfectada = tablaAfectada;
-            inValue.operacion = operacion;
-            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).registrarHistorialDeOperaciones(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.registrarHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest request) {
-            return base.Channel.registrarHistorialDeOperacionesAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse> registrarHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, SoftBodBusiness.SoftWSHistorialOperaciones.tipoOperacion operacion) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesRequest();
-            inValue.usuario = usuario;
-            inValue.tablaAfectada = tablaAfectada;
-            inValue.operacion = operacion;
-            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).registrarHistorialDeOperacionesAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesPorFecha(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request) {
-            return base.Channel.listarHistorialOperacionesPorFecha(request);
-        }
-        
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesPorFecha(string fecha) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest();
-            inValue.fecha = fecha;
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesPorFecha(inValue);
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO obtenerHistorialOperacionPorId(int historialId) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest();
+            inValue.historialId = historialId;
+            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).obtenerHistorialOperacionPorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesPorFechaAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request) {
-            return base.Channel.listarHistorialOperacionesPorFechaAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.obtenerHistorialOperacionPorIdAsync(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request) {
+            return base.Channel.obtenerHistorialOperacionPorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> listarHistorialOperacionesPorFechaAsync(string fecha) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest();
-            inValue.fecha = fecha;
-            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesPorFechaAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> obtenerHistorialOperacionPorIdAsync(int historialId) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest();
+            inValue.historialId = historialId;
+            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).obtenerHistorialOperacionPorIdAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.reporteHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request) {
+            return base.Channel.reporteHistorialDeOperaciones(request);
+        }
+        
+        public byte[] reporteHistorialDeOperaciones(string arg0, string arg1) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest();
+            inValue.arg0 = arg0;
+            inValue.arg1 = arg1;
+            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).reporteHistorialDeOperaciones(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.reporteHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request) {
+            return base.Channel.reporteHistorialDeOperacionesAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> reporteHistorialDeOperacionesAsync(string arg0, string arg1) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest();
+            inValue.arg0 = arg0;
+            inValue.arg1 = arg1;
+            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).reporteHistorialDeOperacionesAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1088,51 +1087,89 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.reporteHistorialDeOperaciones(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request) {
-            return base.Channel.reporteHistorialDeOperaciones(request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesPorFecha(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request) {
+            return base.Channel.listarHistorialOperacionesPorFecha(request);
         }
         
-        public byte[] reporteHistorialDeOperaciones(string arg0, string arg1) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).reporteHistorialDeOperaciones(inValue);
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesPorFecha(string fecha) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest();
+            inValue.fecha = fecha;
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesPorFecha(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.reporteHistorialDeOperacionesAsync(SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest request) {
-            return base.Channel.reporteHistorialDeOperacionesAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesPorFechaAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest request) {
+            return base.Channel.listarHistorialOperacionesPorFechaAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse> reporteHistorialDeOperacionesAsync(string arg0, string arg1) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesRequest();
-            inValue.arg0 = arg0;
-            inValue.arg1 = arg1;
-            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).reporteHistorialDeOperacionesAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse> listarHistorialOperacionesPorFechaAsync(string fecha) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaRequest();
+            inValue.fecha = fecha;
+            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesPorFechaAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.obtenerHistorialOperacionPorId(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request) {
-            return base.Channel.obtenerHistorialOperacionPorId(request);
+        SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.registrarHistorialDeOperacion(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest request) {
+            return base.Channel.registrarHistorialDeOperacion(request);
         }
         
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO obtenerHistorialOperacionPorId(int historialId) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest();
-            inValue.historialId = historialId;
-            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).obtenerHistorialOperacionPorId(inValue);
+        public void registrarHistorialDeOperacion(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, string operacion) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest();
+            inValue.usuario = usuario;
+            inValue.tablaAfectada = tablaAfectada;
+            inValue.operacion = operacion;
+            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).registrarHistorialDeOperacion(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.registrarHistorialDeOperacionAsync(SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest request) {
+            return base.Channel.registrarHistorialDeOperacionAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse> registrarHistorialDeOperacionAsync(SoftBodBusiness.SoftWSHistorialOperaciones.usuarioDTO usuario, string tablaAfectada, string operacion) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionRequest();
+            inValue.usuario = usuario;
+            inValue.tablaAfectada = tablaAfectada;
+            inValue.operacion = operacion;
+            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).registrarHistorialDeOperacionAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesConFiltros(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request) {
+            return base.Channel.listarHistorialOperacionesConFiltros(request);
+        }
+        
+        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesConFiltros(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
+            inValue.operacionId = operacionId;
+            inValue.nombreTabla = nombreTabla;
+            inValue.tipoOperacion = tipoOperacion;
+            inValue.fechaOperacion = fechaOperacion;
+            inValue.usuarioId = usuarioId;
+            inValue.usuario = usuario;
+            inValue.tipoUsuario = tipoUsuario;
+            inValue.estado = estado;
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesConFiltros(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.obtenerHistorialOperacionPorIdAsync(SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest request) {
-            return base.Channel.obtenerHistorialOperacionPorIdAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesConFiltrosAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request) {
+            return base.Channel.listarHistorialOperacionesConFiltrosAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse> obtenerHistorialOperacionPorIdAsync(int historialId) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdRequest();
-            inValue.historialId = historialId;
-            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).obtenerHistorialOperacionPorIdAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
+            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
+            inValue.operacionId = operacionId;
+            inValue.nombreTabla = nombreTabla;
+            inValue.tipoOperacion = tipoOperacion;
+            inValue.fechaOperacion = fechaOperacion;
+            inValue.usuarioId = usuarioId;
+            inValue.usuario = usuario;
+            inValue.tipoUsuario = tipoUsuario;
+            inValue.estado = estado;
+            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesConFiltrosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1181,43 +1218,6 @@ namespace SoftBodBusiness.SoftWSHistorialOperaciones {
             SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTipoOperacionRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTipoOperacionRequest();
             inValue.tipoOperacion = tipoOperacion;
             return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesPorTipoOperacionAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesConFiltros(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request) {
-            return base.Channel.listarHistorialOperacionesConFiltros(request);
-        }
-        
-        public SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO[] listarHistorialOperacionesConFiltros(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
-            inValue.operacionId = operacionId;
-            inValue.nombreTabla = nombreTabla;
-            inValue.tipoOperacion = tipoOperacion;
-            inValue.fechaOperacion = fechaOperacion;
-            inValue.usuarioId = usuarioId;
-            inValue.usuario = usuario;
-            inValue.tipoUsuario = tipoUsuario;
-            inValue.estado = estado;
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse retVal = ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesConFiltros(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones.listarHistorialOperacionesConFiltrosAsync(SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest request) {
-            return base.Channel.listarHistorialOperacionesConFiltrosAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse> listarHistorialOperacionesConFiltrosAsync(System.Nullable<int> operacionId, string nombreTabla, string tipoOperacion, string fechaOperacion, System.Nullable<int> usuarioId, string usuario, string tipoUsuario, System.Nullable<bool> estado) {
-            SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest inValue = new SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosRequest();
-            inValue.operacionId = operacionId;
-            inValue.nombreTabla = nombreTabla;
-            inValue.tipoOperacion = tipoOperacion;
-            inValue.fechaOperacion = fechaOperacion;
-            inValue.usuarioId = usuarioId;
-            inValue.usuario = usuario;
-            inValue.tipoUsuario = tipoUsuario;
-            inValue.estado = estado;
-            return ((SoftBodBusiness.SoftWSHistorialOperaciones.HistorialOperaciones)(this)).listarHistorialOperacionesConFiltrosAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

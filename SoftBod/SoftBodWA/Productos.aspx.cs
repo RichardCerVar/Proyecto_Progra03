@@ -8,6 +8,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WSCategoria = SoftBodBusiness.SoftWSCategoria;
 using WSProducto = SoftBodBusiness.SoftWSProducto;
+using WSHistorialOperaciones = SoftBodBusiness.SoftWSHistorialOperaciones;
+using SoftBodBusiness.SoftWSHistorialOperaciones;
 
 namespace SoftBodWA
 {
@@ -16,6 +18,7 @@ namespace SoftBodWA
         private ProductoBO productoBO;
         private CategoriaBO categoriaBO;
         private DetalleVentaBO detalleventaBO;
+        private HistorialOperacionesBO historialOperacionesBO;
 
         // Cache de productos en Session para persistir entre postbacks
         private List<WSProducto.productoDTO> ListaProductos
@@ -209,6 +212,14 @@ namespace SoftBodWA
                 categDTO.categoriaIdSpecified = true;
 
                 int nuevoProductoId = productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
+
+                // Regitrar en el historial
+                historialOperacionesBO = new HistorialOperacionesBO();
+                int usuarioID = (int)Session["UsuarioId"];
+                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                usuario.usuarioId = usuarioID;
+                usuario.usuarioIdSpecified = true;
+                historialOperacionesBO.registroHistorialDeOperaciones(usuario,"BOD_PRODUCTO","INSERCION");
 
                 // Agregar el nuevo producto al cache en lugar de invalidarlo completamente
                 var nuevoProducto = productoBO.obtenerProductoPorId(nuevoProductoId);
@@ -434,6 +445,14 @@ namespace SoftBodWA
 
                 int resultado = productoBO.modificarProducto(productoDTO);
 
+                // Regitrar en el historial
+                historialOperacionesBO = new HistorialOperacionesBO();
+                int usuarioID = (int)Session["UsuarioId"];
+                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                usuario.usuarioId = usuarioID;
+                usuario.usuarioIdSpecified = true;
+                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_PRODUCTO", "MODIFICACION");
+
                 if (resultado > 0)
                 {
                     // El producto ya está actualizado en memoria
@@ -472,6 +491,14 @@ namespace SoftBodWA
                     else
                     {
                         int resultado = productoBO.eliminarProducto(idProducto);
+
+                        // Regitrar en el historial
+                        historialOperacionesBO = new HistorialOperacionesBO();
+                        int usuarioID = (int)Session["UsuarioId"];
+                        WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
+                        usuario.usuarioId = usuarioID;
+                        usuario.usuarioIdSpecified = true;
+                        historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_PRODUCTO", "ELIMINACION");
 
                         if (resultado > 0)
                         {

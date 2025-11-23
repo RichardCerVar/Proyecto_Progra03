@@ -5,17 +5,17 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/HistorialOperaciones?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="registrarHistorialDeOperaciones">
-    <part name="parameters" element="tns:registrarHistorialDeOperaciones" />
+  <message name="obtenerHistorialOperacionPorId">
+    <part name="parameters" element="tns:obtenerHistorialOperacionPorId" />
   </message>
-  <message name="registrarHistorialDeOperacionesResponse">
-    <part name="parameters" element="tns:registrarHistorialDeOperacionesResponse" />
+  <message name="obtenerHistorialOperacionPorIdResponse">
+    <part name="parameters" element="tns:obtenerHistorialOperacionPorIdResponse" />
   </message>
-  <message name="listarHistorialOperacionesPorFecha">
-    <part name="parameters" element="tns:listarHistorialOperacionesPorFecha" />
+  <message name="reporteHistorialDeOperaciones">
+    <part name="parameters" element="tns:reporteHistorialDeOperaciones" />
   </message>
-  <message name="listarHistorialOperacionesPorFechaResponse">
-    <part name="parameters" element="tns:listarHistorialOperacionesPorFechaResponse" />
+  <message name="reporteHistorialDeOperacionesResponse">
+    <part name="parameters" element="tns:reporteHistorialDeOperacionesResponse" />
   </message>
   <message name="listarTodosHistorialOperaciones">
     <part name="parameters" element="tns:listarTodosHistorialOperaciones" />
@@ -29,17 +29,23 @@
   <message name="listarHistorialOperacionesPorTablaResponse">
     <part name="parameters" element="tns:listarHistorialOperacionesPorTablaResponse" />
   </message>
-  <message name="reporteHistorialDeOperaciones">
-    <part name="parameters" element="tns:reporteHistorialDeOperaciones" />
+  <message name="listarHistorialOperacionesPorFecha">
+    <part name="parameters" element="tns:listarHistorialOperacionesPorFecha" />
   </message>
-  <message name="reporteHistorialDeOperacionesResponse">
-    <part name="parameters" element="tns:reporteHistorialDeOperacionesResponse" />
+  <message name="listarHistorialOperacionesPorFechaResponse">
+    <part name="parameters" element="tns:listarHistorialOperacionesPorFechaResponse" />
   </message>
-  <message name="obtenerHistorialOperacionPorId">
-    <part name="parameters" element="tns:obtenerHistorialOperacionPorId" />
+  <message name="registrarHistorialDeOperacion">
+    <part name="parameters" element="tns:registrarHistorialDeOperacion" />
   </message>
-  <message name="obtenerHistorialOperacionPorIdResponse">
-    <part name="parameters" element="tns:obtenerHistorialOperacionPorIdResponse" />
+  <message name="registrarHistorialDeOperacionResponse">
+    <part name="parameters" element="tns:registrarHistorialDeOperacionResponse" />
+  </message>
+  <message name="listarHistorialOperacionesConFiltros">
+    <part name="parameters" element="tns:listarHistorialOperacionesConFiltros" />
+  </message>
+  <message name="listarHistorialOperacionesConFiltrosResponse">
+    <part name="parameters" element="tns:listarHistorialOperacionesConFiltrosResponse" />
   </message>
   <message name="listarHistorialOperacionesPorUsuarioYTabla">
     <part name="parameters" element="tns:listarHistorialOperacionesPorUsuarioYTabla" />
@@ -52,12 +58,6 @@
   </message>
   <message name="listarHistorialOperacionesPorTipoOperacionResponse">
     <part name="parameters" element="tns:listarHistorialOperacionesPorTipoOperacionResponse" />
-  </message>
-  <message name="listarHistorialOperacionesConFiltros">
-    <part name="parameters" element="tns:listarHistorialOperacionesConFiltros" />
-  </message>
-  <message name="listarHistorialOperacionesConFiltrosResponse">
-    <part name="parameters" element="tns:listarHistorialOperacionesConFiltrosResponse" />
   </message>
   <message name="listarHistorialOperacionesPorUsuario">
     <part name="parameters" element="tns:listarHistorialOperacionesPorUsuario" />
@@ -78,13 +78,13 @@
     <part name="parameters" element="tns:listarHistorialOperacionesPorTablaYTipoOperacionResponse" />
   </message>
   <portType name="HistorialOperaciones">
-    <operation name="registrarHistorialDeOperaciones">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHistorialDeOperacionesRequest" message="tns:registrarHistorialDeOperaciones" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHistorialDeOperacionesResponse" message="tns:registrarHistorialDeOperacionesResponse" />
+    <operation name="obtenerHistorialOperacionPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistorialOperacionPorIdRequest" message="tns:obtenerHistorialOperacionPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistorialOperacionPorIdResponse" message="tns:obtenerHistorialOperacionPorIdResponse" />
     </operation>
-    <operation name="listarHistorialOperacionesPorFecha">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorFechaRequest" message="tns:listarHistorialOperacionesPorFecha" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorFechaResponse" message="tns:listarHistorialOperacionesPorFechaResponse" />
+    <operation name="reporteHistorialDeOperaciones">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistorialDeOperacionesRequest" message="tns:reporteHistorialDeOperaciones" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistorialDeOperacionesResponse" message="tns:reporteHistorialDeOperacionesResponse" />
     </operation>
     <operation name="listarTodosHistorialOperaciones">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarTodosHistorialOperacionesRequest" message="tns:listarTodosHistorialOperaciones" />
@@ -94,13 +94,17 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorTablaRequest" message="tns:listarHistorialOperacionesPorTabla" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorTablaResponse" message="tns:listarHistorialOperacionesPorTablaResponse" />
     </operation>
-    <operation name="reporteHistorialDeOperaciones">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistorialDeOperacionesRequest" message="tns:reporteHistorialDeOperaciones" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/reporteHistorialDeOperacionesResponse" message="tns:reporteHistorialDeOperacionesResponse" />
+    <operation name="listarHistorialOperacionesPorFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorFechaRequest" message="tns:listarHistorialOperacionesPorFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorFechaResponse" message="tns:listarHistorialOperacionesPorFechaResponse" />
     </operation>
-    <operation name="obtenerHistorialOperacionPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistorialOperacionPorIdRequest" message="tns:obtenerHistorialOperacionPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/obtenerHistorialOperacionPorIdResponse" message="tns:obtenerHistorialOperacionPorIdResponse" />
+    <operation name="registrarHistorialDeOperacion">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHistorialDeOperacionRequest" message="tns:registrarHistorialDeOperacion" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/registrarHistorialDeOperacionResponse" message="tns:registrarHistorialDeOperacionResponse" />
+    </operation>
+    <operation name="listarHistorialOperacionesConFiltros">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesConFiltrosRequest" message="tns:listarHistorialOperacionesConFiltros" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesConFiltrosResponse" message="tns:listarHistorialOperacionesConFiltrosResponse" />
     </operation>
     <operation name="listarHistorialOperacionesPorUsuarioYTabla">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorUsuarioYTablaRequest" message="tns:listarHistorialOperacionesPorUsuarioYTabla" />
@@ -109,10 +113,6 @@
     <operation name="listarHistorialOperacionesPorTipoOperacion">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorTipoOperacionRequest" message="tns:listarHistorialOperacionesPorTipoOperacion" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorTipoOperacionResponse" message="tns:listarHistorialOperacionesPorTipoOperacionResponse" />
-    </operation>
-    <operation name="listarHistorialOperacionesConFiltros">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesConFiltrosRequest" message="tns:listarHistorialOperacionesConFiltros" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesConFiltrosResponse" message="tns:listarHistorialOperacionesConFiltrosResponse" />
     </operation>
     <operation name="listarHistorialOperacionesPorUsuario">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/HistorialOperaciones/listarHistorialOperacionesPorUsuarioRequest" message="tns:listarHistorialOperacionesPorUsuario" />
@@ -129,7 +129,7 @@
   </portType>
   <binding name="HistorialOperacionesPortBinding" type="tns:HistorialOperaciones">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="registrarHistorialDeOperaciones">
+    <operation name="obtenerHistorialOperacionPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -138,7 +138,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarHistorialOperacionesPorFecha">
+    <operation name="reporteHistorialDeOperaciones">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -165,7 +165,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="reporteHistorialDeOperaciones">
+    <operation name="listarHistorialOperacionesPorFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -174,7 +174,16 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="obtenerHistorialOperacionPorId">
+    <operation name="registrarHistorialDeOperacion">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarHistorialOperacionesConFiltros">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -193,15 +202,6 @@
       </output>
     </operation>
     <operation name="listarHistorialOperacionesPorTipoOperacion">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
-    <operation name="listarHistorialOperacionesConFiltros">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -64,8 +64,13 @@ public class HistorialDeOperacionBO extends OperacionBOBase{
     
     public void registrarHistorialOperaciones(UsuarioDTO usuario, 
                                       String tablaAfectada, 
-                                      Tipo_Operacion operacion) {
-        registrarEnHistorial(usuario, tablaAfectada, operacion);
+                                      String operacion) {
+        Tipo_Operacion tipoOperacion;
+        tipoOperacion = Tipo_Operacion.CONSULTAR;
+        if (operacion.equals("MODIFICACION")) tipoOperacion = Tipo_Operacion.MODIFICACION;
+        if (operacion.equals("ELIMINACION")) tipoOperacion = Tipo_Operacion.ELIMINACION;
+        if (operacion.equals("INSERCION")) tipoOperacion = Tipo_Operacion.INSERCION;
+        registrarEnHistorial(usuario, tablaAfectada, tipoOperacion);
     }
     
 }

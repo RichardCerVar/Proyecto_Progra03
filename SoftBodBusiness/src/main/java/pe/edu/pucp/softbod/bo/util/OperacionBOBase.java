@@ -12,6 +12,7 @@ public abstract class OperacionBOBase {
     protected void registrarEnHistorial(UsuarioDTO usuario, 
                                       String tablaAfectada, 
                                       Tipo_Operacion operacion) {
+        
         HistorialOperacionesDTO historial = new HistorialOperacionesDTO();
         historial.setUsuario(usuario);
         historial.setTablaAfectada(tablaAfectada);
