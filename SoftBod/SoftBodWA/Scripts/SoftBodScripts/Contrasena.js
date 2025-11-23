@@ -32,3 +32,29 @@
         }
     }
 }
+
+function togglePasswordVisibilityEdit(fieldID, buttonID) {
+    const passwordField = document.getElementById(fieldID);
+    const toggleButton = document.getElementById(buttonID);
+
+    if (!passwordField || !toggleButton) {
+        console.error("No se encontró el campo o el botón de toggle.");
+        return;
+    }
+
+    const icon = toggleButton.querySelector("i");
+
+    if (passwordField.type === "password") {
+        passwordField.type = "text";
+        if (icon) {
+            icon.classList.remove("bi-eye");
+            icon.classList.add("bi-eye-slash");
+        }
+    } else {
+        passwordField.type = "password";
+        if (icon) {
+            icon.classList.remove("bi-eye-slash");
+            icon.classList.add("bi-eye");
+        }
+    }
+}
