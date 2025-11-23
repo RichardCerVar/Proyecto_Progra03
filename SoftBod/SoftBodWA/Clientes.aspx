@@ -16,7 +16,8 @@
             
             <asp:Button ID="btnAgregar" runat="server" Text="+ Agregar Cliente" 
                         CssClass="btn btn-primary fw-bold shadow-sm" 
-                        OnClick="btnAgregar_Click" />
+                        OnClick="btnAgregar_Click" OnClientClick="this.disabled = true; "
+                    UseSubmitBehavior="false"/>
         </div>
 
         <asp:Panel ID="pnlBusqueda" runat="server" DefaultButton="btnBuscar">
@@ -33,7 +34,9 @@
                 <asp:Button ID="btnBuscar" runat="server"
                     Text="Buscar"
                     CssClass="btn btn-primary fw-bold"
-                    OnClick="btnBuscar_Click" />
+                    OnClick="btnBuscar_Click"
+                    OnClientClick="this.disabled = true; "
+                    UseSubmitBehavior="false"/>
             </div>
         </asp:Panel>
 
@@ -121,7 +124,7 @@
                                 CssClass="btn btn-dark w-100 py-2 fw-semibold"
                                 Text="Agregar Cliente"
                                 OnClick="btnGuardarCliente_Click"
-                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
                              
                                  
@@ -161,7 +164,8 @@
                     <asp:Button ID="btnRegistrarPago" runat="server"
                         Text="Registrar Pago"
                         CssClass="btn btn-success w-100"
-                        OnClick="btnRegistrarPago_Click" />
+                        OnClick="btnRegistrarPago_Click" OnClientClick="this.disabled = true; this.value='Procesando...';"
+                        UseSubmitBehavior="false"/>
 
                 </div>
 
@@ -224,7 +228,7 @@
                                 Style="background-color: #0B1537; color: white; font-size: 17px;
                                        height: 48px; border-radius: 10px; font-weight: 600;"
                                 OnClick="btnActualizarCliente_Click" 
-                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
                 </div>
             </div>
@@ -266,7 +270,7 @@
                                 Style="background-color: #dc3545; color: white; 
                                        border-radius: 8px; padding: 8px 18px; font-weight: 600;"
                                 OnClick="btnEliminarConfirmado_Click" 
-                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
                 </div>
 

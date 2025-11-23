@@ -134,7 +134,7 @@ namespace SoftBodWA
             // Controlar visibilidad según si hay productos con stock
             if (productosConStock.Any())
             {
-                rptProductosDisponibles.DataSource = productosConStock;
+                rptProductosDisponibles.DataSource = productos;
                 rptProductosDisponibles.DataBind();
                 rptProductosDisponibles.Visible = true;
                 pnlNoProductos.Visible = false;

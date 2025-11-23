@@ -65,7 +65,9 @@
                     </div>
                 </div>
                 <div class="d-grid mb-2">
-                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-dark fw-bold" OnClick="btnLogin_Click" />
+                    <asp:Button ID="btnLogin" runat="server" Text="Iniciar Sesión" CssClass="btn btn-dark fw-bold" OnClick="btnLogin_Click" 
+                        
+                         OnClientClick="setTimeout(()=>{ this.disabled=true; this.value='Procesando...'; }, 10); return true;" />
                 </div>
 
                 <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>

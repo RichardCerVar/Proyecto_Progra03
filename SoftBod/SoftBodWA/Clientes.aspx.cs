@@ -63,12 +63,27 @@ namespace SoftBodWA
                 string nombreCompleto = txtNombreCompleto.Text.Trim();
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
+                DateTime fechaLimite = DateTime.Parse(txtFechaLimite.Text);
                 string fechaLimiteStr = DateTime.Parse(txtFechaLimite.Text).ToString("yyyy-MM-dd");
 
                 if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
                     string errorScript = "alert('Por favor complete los campos Nombre, Alias y Fecha Límite.'); $('#modalAgregarCliente').modal('show');";
                     ScriptManager.RegisterStartupScript(this, GetType(), "alertError", errorScript, true);
+                    return;
+                }
+                if (!telefono.All(char.IsDigit))
+                {
+                    string errorScript = "alert('El campo de teléfono solo adminte números.'); $('#modalAgregarCliente').modal('show');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertError", errorScript, true);
+                    return;
+                }
+
+                if (fechaLimite <= DateTime.Today)
+                {
+                    string errorScript =
+                        "alert('La fecha límite debe ser mayor al día de hoy.'); $('#modalAgregarCliente').modal('show');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "fechaInvalida", errorScript, true);
                     return;
                 }
 
@@ -85,7 +100,7 @@ namespace SoftBodWA
                 string successScript =
                     "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
                     "if(modal) modal.hide();" +
-                    "setTimeout(function(){ alert('Cliente agregado exitosamente.'); window.location.href = window.location.href; }, 100);";
+                    "setTimeout(function(){ alert('Cliente agregado exitosamente.'); window.location.href = window.location.href; }, 50);";
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "success", successScript, true);
 
@@ -217,6 +232,7 @@ namespace SoftBodWA
                 string alias = txtAliasEditar.Text.Trim();
                 string telefono = txtTelefonoEditar.Text.Trim();
                 string fechaLimite = DateTime.Parse(txtFechaLimiteEditar.Text).ToString("yyyy-MM-dd");
+                DateTime fechaLimiteN = DateTime.Parse(txtFechaLimite.Text);
 
                 clienteAlFiadoDTO clienteDTO = new clienteAlFiadoDTO();
                 clienteDTO = clienteBO.obtenerClienteAlFiadoPorId(int.Parse(lblIdClienteEditar.Text));
@@ -235,6 +251,14 @@ namespace SoftBodWA
                         "alert('Complete todos los campos obligatorios.');",
                         true
                     );
+                    return;
+                }
+
+                if (fechaLimiteN <= DateTime.Today)
+                {
+                    string errorScript =
+                        "alert('La fecha límite debe ser mayor al día de hoy.'); $('#modalAgregarCliente').modal('show');";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "fechaInvalida", errorScript, true);
                     return;
                 }
 

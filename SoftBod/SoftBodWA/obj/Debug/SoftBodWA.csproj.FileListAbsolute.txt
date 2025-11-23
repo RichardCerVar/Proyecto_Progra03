@@ -31,14 +31,14 @@ C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.Up2Date
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
 C:\Users\Giovani\Documents\GitHub\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
-C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.AssemblyReference.cache
-C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll.config
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.dll
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodWA.pdb
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.pdb
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\bin\SoftBodBusiness.dll.config
+C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.AssemblyReference.cache
+C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.csproj.Up2Date
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.dll
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodWA\obj\Debug\SoftBodWA.pdb
