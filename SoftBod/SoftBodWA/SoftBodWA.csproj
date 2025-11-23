@@ -106,7 +106,6 @@
     <Content Include="RegistrarVenta.aspx" />
     <Content Include="ReporteClientesFiado.aspx" />
     <Content Include="ReporteInventario.aspx" />
-    <Content Include="ReporteKardex.aspx" />
     <Content Include="Reportes.aspx" />
     <Content Include="ReporteVentas.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -193,13 +192,6 @@
     </Compile>
     <Compile Include="ReporteInventario.aspx.designer.cs">
       <DependentUpon>ReporteInventario.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteKardex.aspx.cs">
-      <DependentUpon>ReporteKardex.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ReporteKardex.aspx.designer.cs">
-      <DependentUpon>ReporteKardex.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
