@@ -112,11 +112,12 @@ namespace SoftBodWA
 
         private void MostrarModalEditar(string[] args)
         {
-            // CommandArgument: nombre|usuario|correo|telefono
+            // CommandArgument: nombre|usuario|correo|telefono|contrasena
             txtEditNombreCompleto.Text = args[0];
             txtEditUsuario.Text = args[1];
             txtEditEmail.Text = args[2];
             txtEditTelefono.Text = args[3];
+            txtEditContrasena.Text = args[4];
             hdnEditUsuarioID.Value = args[1];
 
             updEditarOperario.Update();

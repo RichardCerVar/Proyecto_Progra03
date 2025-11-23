@@ -112,7 +112,7 @@
                                 CssClass="btn btn-outline-secondary rounded-3 d-flex align-items-center justify-content-center"
                                 Style="width: 45px; height: 45px; --bs-btn-border-color: #dee2e6; color: #495057;"
                                 CommandName="Editar"
-                                CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario") + "|" + Eval("correo") + "|" + Eval("telefono") %>'
+                                CommandArgument='<%# Eval("nombre") + "|" + Eval("usuario") + "|" + Eval("correo") + "|" + Eval("telefono") + "|" + Eval("contrasenha")%>'
                                 ToolTip="Editar Datos del Operario">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </asp:LinkButton>
@@ -202,26 +202,56 @@
                     <h5 class="modal-title fw-bold fs-5" id="modalEditarOperarioLabel">Editar Operario</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+
                 <div class="modal-body pt-2">
                     <asp:UpdatePanel ID="updEditarOperario" runat="server" UpdateMode="Conditional">
                         <ContentTemplate>
+
                             <asp:HiddenField ID="hdnEditUsuarioID" runat="server" />
+
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Nombre Completo" AssociatedControlID="txtEditNombreCompleto"></asp:Label>
                                 <asp:TextBox ID="txtEditNombreCompleto" CssClass="form-control" placeholder="Ej: Ana Rodríguez" runat="server"></asp:TextBox>
                             </div>
+
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Usuario" AssociatedControlID="txtEditUsuario"></asp:Label>
                                 <asp:TextBox ID="txtEditUsuario" CssClass="form-control" placeholder="ana.rodriguez" runat="server"></asp:TextBox>
                             </div>
+
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Email" AssociatedControlID="txtEditEmail"></asp:Label>
                                 <asp:TextBox ID="txtEditEmail" CssClass="form-control" placeholder="ana@bodega.com" runat="server" TextMode="Email"></asp:TextBox>
                             </div>
+
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Teléfono" AssociatedControlID="txtEditTelefono"></asp:Label>
-                                <asp:TextBox ID="txtEditTelefono" CssClass="form-control" placeholder="987-654-321" runat="server" TextMode="Phone"></asp:TextBox>
+                                <asp:TextBox ID="txtEditTelefono" CssClass="form-control" placeholder="987654321" runat="server"></asp:TextBox>
                             </div>
+                                <div class="mb-3">
+                                    <asp:Label CssClass="form-label fw-semibold" 
+                                               runat="server" 
+                                               Text="Contraseña Temporal" 
+                                               AssociatedControlID="txtEditContrasena">
+                                    </asp:Label>
+                                    <div class="input-group password-container">
+                                        <asp:TextBox 
+                                            ID="txtEditContrasena"
+                                            runat="server"
+                                            CssClass="form-control"
+                                            TextMode="Password"
+                                            placeholder="********"
+                                            ClientIDMode="Static">
+                                        </asp:TextBox>
+                                        <button 
+                                            id="togglePasswordEdit"
+                                            class="btn btn-outline-secondary"
+                                            type="button"
+                                            onclick="togglePasswordVisibilityEdit('txtEditContrasena','togglePasswordEdit'); return false;">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                    </div>
+                                </div>
                             <asp:Button ID="btnGuardarCambios" runat="server"
                                 CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                                 Text="Guardar Cambios"
@@ -229,9 +259,11 @@
                                 OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
                         </ContentTemplate>
+
                         <Triggers>
                             <asp:AsyncPostBackTrigger ControlID="btnGuardarCambios" EventName="Click" />
                         </Triggers>
+
                     </asp:UpdatePanel>
                 </div>
             </div>
