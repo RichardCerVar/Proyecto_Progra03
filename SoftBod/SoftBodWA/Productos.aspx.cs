@@ -17,20 +17,20 @@ namespace SoftBodWA
         private CategoriaBO categoriaBO;
         private DetalleVentaBO detalleventaBO;
 
-        // Cache de productos - solo se carga cuando es null o se fuerza recarga
+        // Cache de productos en Session para persistir entre postbacks
         private List<WSProducto.productoDTO> ListaProductos
         {
             get
             {
-                if (ViewState["ListaProductos"] == null)
+                if (Session["ListaProductos"] == null)
                 {
-                    ViewState["ListaProductos"] = productoBO.listarTodosProductos();
+                    Session["ListaProductos"] = productoBO.listarTodosProductos();
                 }
-                return (List<WSProducto.productoDTO>)ViewState["ListaProductos"];
+                return (List<WSProducto.productoDTO>)Session["ListaProductos"];
             }
             set
             {
-                ViewState["ListaProductos"] = value;
+                Session["ListaProductos"] = value;
             }
         }
 
@@ -38,15 +38,15 @@ namespace SoftBodWA
         {
             get
             {
-                if (ViewState["ListaCategoria"] == null)
+                if (Session["ListaCategoria"] == null)
                 {
-                    ViewState["ListaCategoria"] = categoriaBO.listarTodasCategorias();
+                    Session["ListaCategoria"] = categoriaBO.listarTodasCategorias();
                 }
-                return (List<WSCategoria.categoriaDTO>)ViewState["ListaCategoria"];
+                return (List<WSCategoria.categoriaDTO>)Session["ListaCategoria"];
             }
             set
             {
-                ViewState["ListaCategoria"] = value;
+                Session["ListaCategoria"] = value;
             }
         }
 
@@ -89,8 +89,8 @@ namespace SoftBodWA
         // Método para forzar recarga de datos desde BD
         private void RecargarDatosYActualizar()
         {
-            ViewState["ListaProductos"] = null; // Invalida cache
-            ViewState["ListaCategoria"] = null; // Invalida cache de categorías
+            Session["ListaProductos"] = null; // Invalida cache
+            Session["ListaCategoria"] = null; // Invalida cache de categorías
             CargarProductos();
             CargarCategoria();
             CargarCategoriaModal();
@@ -190,7 +190,16 @@ namespace SoftBodWA
                 if (!string.IsNullOrEmpty(nuevaCategoria))
                 {
                     // Crear nueva categoría
-                    categDTO.categoriaId = categoriaBO.insertarCategoria(nuevaCategoria);
+                    int nuevaCategoriaId = categoriaBO.insertarCategoria(nuevaCategoria);
+                    categDTO.categoriaId = nuevaCategoriaId;
+
+                    // Actualizar cache de categorías agregando la nueva
+                    var categoriaNueva = new WSCategoria.categoriaDTO
+                    {
+                        categoriaId = nuevaCategoriaId,
+                        descripcion = nuevaCategoria
+                    };
+                    ListaCategoria.Add(categoriaNueva);
                 }
                 else
                 {
@@ -199,11 +208,11 @@ namespace SoftBodWA
                 }
                 categDTO.categoriaIdSpecified = true;
 
-                productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
+                int nuevoProductoId = productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
 
-                // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
-                ViewState["ListaProductos"] = null;
-                ViewState["ListaCategoria"] = null;
+                // Agregar el nuevo producto al cache en lugar de invalidarlo completamente
+                var nuevoProducto = productoBO.obtenerProductoPorId(nuevoProductoId);
+                ListaProductos.Add(nuevoProducto);
 
                 LimpiarCamposModal();
                 MostrarMensajeExitoYRecargar("Producto agregado exitosamente", "modalAgregarProducto");
@@ -237,6 +246,7 @@ namespace SoftBodWA
                     break;
             }
         }
+
         private void MostrarModalAjustarStock(int productoId)
         {
             hdnProductoIdAjustar.Value = productoId.ToString();
@@ -306,9 +316,8 @@ namespace SoftBodWA
 
                     if (resultado > 0)
                     {
-                        // ✅ CRÍTICO: Invalidar cache ANTES de recargar
-                        ViewState["ListaProductos"] = null;
-                        RecargarDatosYActualizar();
+                        // El producto ya está actualizado en memoria, solo recargar la vista
+                        CargarProductos();
                     }
                 }
             }
@@ -360,9 +369,7 @@ namespace SoftBodWA
 
                     if (resultado > 0)
                     {
-                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
-                        ViewState["ListaProductos"] = null;
-
+                        // El producto ya está actualizado en memoria
                         txtCantidadAjustar.Text = "";
                         string accion = stockMode == "Agregar" ? "agregado" : "reducido";
                         MostrarMensajeExitoYRecargar($"Stock {accion} exitosamente", "modalAjustarStock");
@@ -429,9 +436,7 @@ namespace SoftBodWA
 
                 if (resultado > 0)
                 {
-                    // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
-                    ViewState["ListaProductos"] = null;
-
+                    // El producto ya está actualizado en memoria
                     MostrarMensajeExitoYRecargar("Producto actualizado exitosamente", "modalEditarProducto");
                 }
                 else
@@ -454,7 +459,7 @@ namespace SoftBodWA
             try
             {
                 int idProducto = int.Parse(hdnProductoIdEliminar.Value);
-                WSProducto.productoDTO producto = productoBO.obtenerProductoPorId(idProducto);
+                var producto = ListaProductos.FirstOrDefault(p => p.productoId == idProducto);
 
                 if (producto != null)
                 {
@@ -468,10 +473,12 @@ namespace SoftBodWA
                     {
                         int resultado = productoBO.eliminarProducto(idProducto);
 
-                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
-                        ViewState["ListaProductos"] = null;
-
-                        MostrarMensajeExitoYRecargar("Producto eliminado exitosamente", "modalEliminarProducto");
+                        if (resultado > 0)
+                        {
+                            // Eliminar del cache en lugar de invalidarlo completamente
+                            ListaProductos.Remove(producto);
+                            MostrarMensajeExitoYRecargar("Producto eliminado exitosamente", "modalEliminarProducto");
+                        }
                     }
                 }
             }

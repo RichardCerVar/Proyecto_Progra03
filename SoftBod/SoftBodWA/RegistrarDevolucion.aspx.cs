@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SoftBodBusiness;
 using WSVenta = SoftBodBusiness.SoftWSVenta;
+using WSVentaAlFiado = SoftBodBusiness.SoftWSVentaAlFiado;
 using WSDetalleVenta = SoftBodBusiness.SoftWSDetalleVenta;
 using WSDevolucion = SoftBodBusiness.SoftWSDevolucion;
 using WSRazonDevolucion = SoftBodBusiness.SoftWSRazonDevolucion;
-using WSUsuario = SoftBodBusiness.SoftWSUsuario;
 
 namespace SoftBodWA
 {
     public partial class RegistrarDevolucion : System.Web.UI.Page
     {
         private VentaBO ventaBO;
+        private VentaAlFiadoBO ventaFiadoBO;
         private DetalleVentaBO detalleVentaBO;
         private DevolucionBO devolucionBO;
         private RazonDevolucionBO razonDevolucionBO;
@@ -26,10 +26,22 @@ namespace SoftBodWA
             set { Session["VentasHoy"] = value; }
         }
 
+        private List<WSVentaAlFiado.ventaAlFiadoDTO> ListaVentasFiadas
+        {
+            get { return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
+            set { Session["VentasFiadas"] = value; }
+        }
+
         private int VentaSeleccionadaId
         {
             get { return ViewState["VentaSeleccionadaId"] != null ? (int)ViewState["VentaSeleccionadaId"] : 0; }
             set { ViewState["VentaSeleccionadaId"] = value; }
+        }
+
+        private string TipoVentaSeleccionada
+        {
+            get { return ViewState["TipoVentaSeleccionada"] as string ?? ""; }
+            set { ViewState["TipoVentaSeleccionada"] = value; }
         }
 
         private List<WSDetalleVenta.detalleVentaDTO> DetallesVentaSeleccionada
@@ -41,6 +53,7 @@ namespace SoftBodWA
         public RegistrarDevolucion()
         {
             ventaBO = new VentaBO();
+            ventaFiadoBO = new VentaAlFiadoBO();
             detalleVentaBO = new DetalleVentaBO();
             devolucionBO = new DevolucionBO();
             razonDevolucionBO = new RazonDevolucionBO();
@@ -50,8 +63,24 @@ namespace SoftBodWA
         {
             if (!IsPostBack)
             {
+                InicializarDatos();
                 CargarVentasHoy();
                 CargarRazonesDevolucion();
+            }
+        }
+
+        private void InicializarDatos()
+        {
+            string fechaActual = DateTime.Now.ToString("yyyy-MM-dd");
+
+            if (ListaVentasHoy == null || !ListaVentasHoy.Any())
+            {
+                ListaVentasHoy = ventaBO.listarVentasPorFecha(fechaActual);
+            }
+
+            if (ListaVentasFiadas == null || !ListaVentasFiadas.Any())
+            {
+                ListaVentasFiadas = ventaFiadoBO.listarVentasAlFiadoPorAliasClienteYFecha("", fechaActual);
             }
         }
 
@@ -59,27 +88,43 @@ namespace SoftBodWA
         {
             try
             {
-                string fechaActual = DateTime.Now.ToString("yyyy-MM-dd");
-
-                // Verificar si ya existen en sesión
-                if (ListaVentasHoy == null || !ListaVentasHoy.Any())
-                {
-                    ListaVentasHoy = ventaBO.listarVentasPorFecha(fechaActual);
-                }
-
                 if (ListaVentasHoy != null && ListaVentasHoy.Any())
                 {
-                    var ventasFormateadas = ListaVentasHoy.Select(v => new
-                    {
-                        v.ventaId,
-                        v.total,
-                        v.metodoPago,
-                        FechaHora = DateTime.Parse(v.fecha).ToString("hh:mm tt"),
-                        TipoBadge = v.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA ? "Transferencia" : "Al Contado",
-                        ColorBadge = v.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA ? "#007bff" : "#28a745"
-                    }).ToList();
+                    var idsVentasFiadas = ListaVentasFiadas.Select(vf => vf.venta.ventaId).ToList();
+                    var ventasFormateadas = new List<MovimientosInicio>();
 
-                    rptVentas.DataSource = ventasFormateadas;
+                    foreach (var venta in ListaVentasHoy)
+                    {
+                        bool esFiado = idsVentasFiadas.Contains(venta.ventaId);
+                        int idMovimiento = venta.ventaId;
+                        string tipoVenta = "Venta";
+
+                        if (esFiado)
+                        {
+                            var ventaFiada = ListaVentasFiadas.FirstOrDefault(vf => vf.venta.ventaId == venta.ventaId);
+                            idMovimiento = ventaFiada?.ventaFiadaId ?? venta.ventaId;
+                            tipoVenta = "VentaFiada";
+                        }
+
+                        bool esTransferencia = !esFiado && venta.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA;
+
+                        ventasFormateadas.Add(new MovimientosInicio
+                        {
+                            Id = venta.ventaId,
+                            Tipo = tipoVenta,
+                            Titulo = esFiado ? $"Venta Fiada - ID {idMovimiento}" : $"Venta - ID {venta.ventaId}",
+                            FechaHora = DateTime.Parse(venta.fecha).ToString("hh:mm tt"),
+                            Monto = $"S/.{venta.total:F2}",
+                            ColorMonto = esFiado ? "#ffc107" : "#28a745",
+                            TipoBadge = esFiado ? "Fiado" : (esTransferencia ? "Transferencia" : "Efectivo"),
+                            ColorBadge = esFiado ? "#ffc107" : (esTransferencia ? "#007bff" : "#28a745"),
+                            Icono = "bi-cart-check",
+                            ColorIcono = esFiado ? "#ffc107" : "#28a745"
+                        });
+                    }
+
+                    
+                    rptVentas.DataSource = ventasFormateadas.OrderBy(v => v.FechaHora).ToList(); ;
                     rptVentas.DataBind();
                     pnlSinVentas.Visible = false;
                 }
@@ -90,7 +135,7 @@ namespace SoftBodWA
             }
             catch (Exception ex)
             {
-                MostrarMensaje("Error al cargar ventas: " + ex.Message, "danger");
+                MostrarMensajeError("Error al cargar ventas: " + ex.Message);
             }
         }
 
@@ -113,7 +158,7 @@ namespace SoftBodWA
             }
             catch (Exception ex)
             {
-                MostrarMensaje("Error al cargar razones de devolución: " + ex.Message, "warning");
+                MostrarMensajeError("Error al cargar razones de devolución: " + ex.Message);
             }
         }
 
@@ -123,13 +168,16 @@ namespace SoftBodWA
             {
                 try
                 {
-                    int ventaId = int.Parse(e.CommandArgument.ToString());
+                    string[] parametros = e.CommandArgument.ToString().Split('|');
+                    int ventaId = int.Parse(parametros[0]);
+                    string tipoVenta = parametros[1];
+
                     VentaSeleccionadaId = ventaId;
+                    TipoVentaSeleccionada = tipoVenta;
 
                     var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
                     if (venta != null)
                     {
-                        // Cargar detalles de la venta
                         DetallesVentaSeleccionada = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
 
                         if (DetallesVentaSeleccionada != null && DetallesVentaSeleccionada.Any())
@@ -138,13 +186,13 @@ namespace SoftBodWA
                         }
                         else
                         {
-                            MostrarMensaje("No se encontraron detalles para esta venta", "warning");
+                            MostrarMensajeError("No se encontraron detalles para esta venta");
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    MostrarMensaje("Error al seleccionar venta: " + ex.Message, "danger");
+                    MostrarMensajeError("Error al seleccionar venta: " + ex.Message);
                 }
             }
         }
@@ -179,37 +227,87 @@ namespace SoftBodWA
             {
                 try
                 {
-                    int ventaId = int.Parse(e.CommandArgument.ToString());
-                    var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
+                    string[] parametros = e.CommandArgument.ToString().Split('|');
+                    int ventaId = int.Parse(parametros[0]);
+                    string tipoVenta = parametros[1];
 
-                    if (venta != null)
+                    if (tipoVenta == "VentaFiada")
                     {
-                        var detalles = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
-
-                        litModalTituloVenta.Text = $"Detalles de Venta #{ventaId}";
-                        litModalFechaVenta.Text = DateTime.Parse(venta.fecha).ToString("dd/MM/yyyy hh:mm tt");
-                        litModalMetodoPago.Text = venta.metodoPago.ToString();
-                        litModalTotalVenta.Text = $"S/.{venta.total:F2}";
-
-                        if (detalles != null && detalles.Any())
-                        {
-                            var productosModal = detalles.Select(d => new
-                            {
-                                Descripcion = $"{d.producto.nombre} x{d.cantidad}",
-                                Precio = $"S/.{d.subtotal:F2}"
-                            }).ToList();
-
-                            rptProductosModal.DataSource = productosModal;
-                            rptProductosModal.DataBind();
-                        }
-
-                        ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModalVenta", "mostrarModalVenta();", true);
+                        CargarDetalleVentaFiada(ventaId);
                     }
+                    else
+                    {
+                        CargarDetalleVenta(ventaId);
+                    }
+
+                    ScriptManager.RegisterStartupScript(this, GetType(), "MostrarModalVenta", "mostrarModalVenta();", true);
                 }
                 catch (Exception ex)
                 {
-                    MostrarMensaje("Error al mostrar detalle: " + ex.Message, "danger");
+                    MostrarMensajeError("Error al mostrar detalle: " + ex.Message);
                 }
+            }
+        }
+
+        private void CargarDetalleVenta(int ventaId)
+        {
+            var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
+            if (venta == null) return;
+
+            var detalles = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
+
+            litModalTituloVenta.Text = $"Detalles de Venta #{ventaId}";
+            litModalFechaVenta.Text = DateTime.Parse(venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
+            litModalTipoLabel.Text = "Método de Pago";
+            litModalMetodoPago.Text = venta.metodoPago.ToString();
+            litModalTotalVenta.Text = $"S/.{venta.total:F2}";
+
+            pnlModalInfoCliente.Visible = false;
+
+            if (detalles != null && detalles.Any())
+            {
+                var productosModal = detalles.Select(d => new
+                {
+                    Descripcion = $"{d.producto.nombre} x{d.cantidad}",
+                    Precio = $"S/.{d.subtotal:F2}"
+                }).ToList();
+
+                rptProductosModal.DataSource = productosModal;
+                rptProductosModal.DataBind();
+            }
+        }
+
+        private void CargarDetalleVentaFiada(int ventaId)
+        {
+            var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
+            if (venta == null) return;
+
+            var ventaFiada = ListaVentasFiadas.FirstOrDefault(vf => vf.venta.ventaId == ventaId);
+            var detalles = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
+
+            litModalTituloVenta.Text = $"Detalles de Venta Fiada #{ventaFiada?.ventaFiadaId ?? ventaId}";
+            litModalFechaVenta.Text = DateTime.Parse(venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)");
+            litModalTipoLabel.Text = "Tipo";
+            litModalMetodoPago.Text = "Fiado";
+            litModalCliente.Text = ventaFiada?.cliente?.alias ?? "N/A";
+            litModalTotalVenta.Text = $"S/.{venta.total:F2}";
+
+            pnlModalInfoCliente.Visible = true;
+            
+            bool pendiente = ventaFiada?.cliente?.montoDeuda > 0;
+            litModalEstadoPendiente.Visible = pendiente;
+            litModalEstadoCompletada.Visible = !pendiente;
+
+            if (detalles != null && detalles.Any())
+            {
+                var productosModal = detalles.Select(d => new
+                {
+                    Descripcion = $"{d.producto.nombre} x{d.cantidad}",
+                    Precio = $"S/.{d.subtotal:F2}"
+                }).ToList();
+
+                rptProductosModal.DataSource = productosModal;
+                rptProductosModal.DataBind();
             }
         }
 
@@ -218,6 +316,7 @@ namespace SoftBodWA
             pnlDetalleDevolucion.Visible = false;
             pnlSeleccionVenta.Visible = true;
             VentaSeleccionadaId = 0;
+            TipoVentaSeleccionada = "";
             DetallesVentaSeleccionada = null;
         }
 
@@ -228,23 +327,19 @@ namespace SoftBodWA
 
             try
             {
-                // Validar que se haya seleccionado una razón
                 if (ddlRazonDevolucion.SelectedValue == "0")
                 {
-                    MostrarMensaje("Debe seleccionar una razón de devolución", "warning");
+                    MostrarMensajeError("Debe seleccionar una razón de devolución");
                     return;
                 }
 
-                // Obtener el usuario de sesión 
                 var usuario = new WSDevolucion.usuarioDTO();
-                usuario.usuarioId= (int)Session["UsuarioId"];
+                usuario.usuarioId = (int)Session["UsuarioId"];
                 usuario.usuarioIdSpecified = true;
 
-                // Obtener la razón de devolución seleccionada
                 int razonId = int.Parse(ddlRazonDevolucion.SelectedValue);
                 var razon = razonDevolucionBO.obtenerRazonDevolucionPorId(razonId);
 
-                // Crear lista de detalles de devolución
                 List<WSDevolucion.detalleDevolucionDTO> detalles = new List<WSDevolucion.detalleDevolucionDTO>();
                 bool tieneProductosADevolver = false;
 
@@ -268,10 +363,9 @@ namespace SoftBodWA
 
                             if (detalleVenta != null)
                             {
-                                // Validar cantidad
                                 if (cantidadDevolver > detalleVenta.cantidad)
                                 {
-                                    MostrarMensaje($"La cantidad a devolver de {detalleVenta.producto.nombre} no puede exceder la cantidad vendida", "warning");
+                                    MostrarMensajeError($"La cantidad a devolver de {detalleVenta.producto.nombre} no puede exceder la cantidad vendida");
                                     return;
                                 }
 
@@ -281,9 +375,6 @@ namespace SoftBodWA
                                     {
                                         productoId = detalleVenta.producto.productoId,
                                         productoIdSpecified = true,
-                                        nombre = detalleVenta.producto.nombre,
-                                        precioUnitario = detalleVenta.producto.precioUnitario,
-                                        precioUnitarioSpecified = true
                                     },
                                     cantidad = cantidadDevolver,
                                     cantidadSpecified = true,
@@ -293,7 +384,6 @@ namespace SoftBodWA
                                     {
                                         razonDevolucionId = razon.razonDevolucionId,
                                         razonDevolucionIdSpecified = true,
-                                        descripcion = razon.descripcion
                                     }
                                 };
 
@@ -305,32 +395,27 @@ namespace SoftBodWA
 
                 if (!tieneProductosADevolver)
                 {
-                    MostrarMensaje("Debe seleccionar al menos un producto para devolver", "warning");
+                    MostrarMensajeError("Debe seleccionar al menos un producto para devolver");
                     return;
                 }
 
-                // Registrar la devolución
                 int resultado = devolucionBO.insertarDevolucion(usuario, detalles.ToArray());
 
                 if (resultado > 0)
                 {
-                    // Limpiar la sesión de ventas para forzar recarga
                     ListaVentasHoy = null;
+                    ListaVentasFiadas = null;
 
-                    MostrarMensaje("Devolución registrada exitosamente", "success");
-
-                    // Volver a la lista de ventas
-                    btnVolverListaVentas_Click(null, null);
-                    CargarVentasHoy();
+                    MostrarMensajeExitoYRecargar("Devolución registrada exitosamente");
                 }
                 else
                 {
-                    MostrarMensaje("Error al registrar la devolución", "danger");
+                    MostrarMensajeError("Error al registrar la devolución");
                 }
             }
             catch (Exception ex)
             {
-                MostrarMensaje("Error al registrar devolución: " + ex.Message, "danger");
+                MostrarMensajeError("Error al registrar devolución: " + ex.Message);
             }
         }
 
@@ -339,19 +424,31 @@ namespace SoftBodWA
             Response.Redirect("GestionarRazonesDevolucion.aspx");
         }
 
-        private void MostrarMensaje(string mensaje, string tipo)
+        private void MostrarMensajeError(string mensaje)
         {
+            string mensajeEscapado = EscapeJavaScript(mensaje);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "error",
+                $"alert('{mensajeEscapado}');", true);
+        }
+
+        private void MostrarMensajeExitoYRecargar(string mensaje)
+        {
+            string mensajeEscapado = EscapeJavaScript(mensaje);
             string script = $@"
-                var alertDiv = document.createElement('div');
-                alertDiv.className = 'alert alert-{tipo} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
-                alertDiv.style.zIndex = '9999';
-                alertDiv.innerHTML = '{mensaje}<button type=""button"" class=""btn-close"" data-bs-dismiss=""alert""></button>';
-                document.body.appendChild(alertDiv);
-                setTimeout(function() {{ 
-                    alertDiv.remove(); 
-                }}, 5000);
+                alert('{mensajeEscapado}');
+                window.location.href = window.location.pathname;
             ";
-            ScriptManager.RegisterStartupScript(this, GetType(), "MostrarMensaje", script, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoYRecarga", script, true);
+        }
+
+        private string EscapeJavaScript(string text)
+        {
+            return text.Replace("'", "\\'").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
+        }
+
+        protected void btnVolverInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Inicio.aspx");
         }
     }
 }

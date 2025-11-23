@@ -24,6 +24,15 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Panel pnlSeleccionVenta;
 
         /// <summary>
+        /// Control btnVolverInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnVolverInicio;
+
+        /// <summary>
         /// Control btnGestionarRazones.
         /// </summary>
         /// <remarks>
@@ -159,6 +168,15 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Literal litModalFechaVenta;
 
         /// <summary>
+        /// Control litModalTipoLabel.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litModalTipoLabel;
+
+        /// <summary>
         /// Control litModalMetodoPago.
         /// </summary>
         /// <remarks>
@@ -166,6 +184,42 @@ namespace SoftBodWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litModalMetodoPago;
+
+        /// <summary>
+        /// Control pnlModalInfoCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlModalInfoCliente;
+
+        /// <summary>
+        /// Control litModalCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litModalCliente;
+
+        /// <summary>
+        /// Control litModalEstadoPendiente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litModalEstadoPendiente;
+
+        /// <summary>
+        /// Control litModalEstadoCompletada.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litModalEstadoCompletada;
 
         /// <summary>
         /// Control rptProductosModal.

@@ -28,32 +28,95 @@ namespace SoftBodWA
 
         private List<WSVenta.ventaDTO> ListaVentasHoy
         {
-            get { return Session["VentasHoy"] as List<WSVenta.ventaDTO> ?? new List<WSVenta.ventaDTO>(); }
+            get
+            {
+                if (Session["VentasHoy"] == null)
+                {
+                    Session["VentasHoy"] = ventaBO.listarVentasPorFecha(FechaActual);
+                }
+                return Session["VentasHoy"] as List<WSVenta.ventaDTO>;
+            }
             set { Session["VentasHoy"] = value; }
         }
 
         private List<WSVentaAlFiado.ventaAlFiadoDTO> ListaVentasFiadas
         {
-            get { return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
+            get
+            {
+                if (Session["VentasFiadas"] == null)
+                {
+                    Session["VentasFiadas"] = ventaFiadoBO.listarVentasAlFiadoPorAliasClienteYFecha("", FechaActual);
+                }
+                return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO>;
+            }
             set { Session["VentasFiadas"] = value; }
         }
 
         private List<WSDevolucion.devolucionDTO> ListaDevoluciones
         {
-            get { return Session["Devoluciones"] as List<WSDevolucion.devolucionDTO> ?? new List<WSDevolucion.devolucionDTO>(); }
+            get
+            {
+                if (Session["Devoluciones"] == null)
+                {
+                    Session["Devoluciones"] = devolucionBO.listarDevolucionesPorFecha(FechaActual);
+                }
+                return Session["Devoluciones"] as List<WSDevolucion.devolucionDTO>;
+            }
             set { Session["Devoluciones"] = value; }
         }
 
         private List<WSRegistroPagoFiado.registroPagoFiadoDTO> ListaPagos
         {
-            get { return Session["Pagos"] as List<WSRegistroPagoFiado.registroPagoFiadoDTO> ?? new List<WSRegistroPagoFiado.registroPagoFiadoDTO>(); }
+            get
+            {
+                if (Session["Pagos"] == null)
+                {
+                    Session["Pagos"] = registroPagoBO.listarRegistrosPagoFiadoPorAliasClienteConFechaFin("", FechaActual).ToList();
+                }
+                return Session["Pagos"] as List<WSRegistroPagoFiado.registroPagoFiadoDTO>;
+            }
             set { Session["Pagos"] = value; }
         }
 
         private List<WSClienteAlFiado.clienteAlFiadoDTO> ListaClientes
         {
-            get { return Session["Clientes"] as List<WSClienteAlFiado.clienteAlFiadoDTO> ?? new List<WSClienteAlFiado.clienteAlFiadoDTO>(); }
-            set { Session["Clientes"] = value; }
+            get
+            {
+                if (Session["ClientesList"] == null)
+                {
+                    Session["ClientesList"] = clienteAlFiadoBO.listarTodosClientesAlFiado();
+                }
+                return Session["ClientesList"] as List<WSClienteAlFiado.clienteAlFiadoDTO>;
+            }
+            set { Session["ClientesList"] = value; }
+        }
+
+        // Cache para detalles de venta
+        private Dictionary<int, List<WSDetalleVenta.detalleVentaDTO>> CacheDetallesVenta
+        {
+            get
+            {
+                if (Session["CacheDetallesVenta"] == null)
+                {
+                    Session["CacheDetallesVenta"] = new Dictionary<int, List<WSDetalleVenta.detalleVentaDTO>>();
+                }
+                return Session["CacheDetallesVenta"] as Dictionary<int, List<WSDetalleVenta.detalleVentaDTO>>;
+            }
+            set { Session["CacheDetallesVenta"] = value; }
+        }
+
+        // Cache para detalles de devolución
+        private Dictionary<int, List<WSDetalleDevolucion.detalleDevolucionDTO>> CacheDetallesDevolucion
+        {
+            get
+            {
+                if (Session["CacheDetallesDevolucion"] == null)
+                {
+                    Session["CacheDetallesDevolucion"] = new Dictionary<int, List<WSDetalleDevolucion.detalleDevolucionDTO>>();
+                }
+                return Session["CacheDetallesDevolucion"] as Dictionary<int, List<WSDetalleDevolucion.detalleDevolucionDTO>>;
+            }
+            set { Session["CacheDetallesDevolucion"] = value; }
         }
 
         public Inicio()
@@ -71,20 +134,9 @@ namespace SoftBodWA
         {
             if (!IsPostBack)
             {
-                InicializarDatos();
                 CargarEstadisticas();
                 CargarMovimientosRecientes();
             }
-        }
-
-        private void InicializarDatos()
-        {
-            
-            ListaVentasHoy = ventaBO.listarVentasPorFecha(FechaActual);
-            ListaVentasFiadas = ventaFiadoBO.listarVentasAlFiadoPorAliasClienteYFecha("", FechaActual);
-            ListaDevoluciones = devolucionBO.listarDevolucionesPorFecha(FechaActual);
-            ListaPagos = registroPagoBO.listarRegistrosPagoFiadoPorAliasClienteConFechaFin("",FechaActual).ToList();
-            ListaClientes = clienteAlFiadoBO.listarTodosClientesAlFiado();
         }
 
         private void CargarEstadisticas()
@@ -128,7 +180,7 @@ namespace SoftBodWA
                     FechaHora = DateTime.Parse(venta.fecha).ToString("hh:mm tt (yyyy-MM-dd)"),
                     Monto = $"+S/.{venta.total:F2}",
                     ColorMonto = esFiado ? "#ffc107" : "#28a745",
-                    TipoBadge = esFiado ? "Fiado" : (esTransferencia ? "Transferencia" : "Al Contado"),
+                    TipoBadge = esFiado ? "Fiado" : (esTransferencia ? "Transferencia" : "Efectivo"),
                     ColorBadge = esFiado ? "#ffc107" : (esTransferencia ? "#007bff" : "#28a745"),
                     Icono = "bi-cart-check",
                     ColorIcono = esFiado ? "#ffc107" : "#28a745",
@@ -227,12 +279,38 @@ namespace SoftBodWA
             pnlTotalNegativo.Visible = false;
         }
 
+        private List<WSDetalleVenta.detalleVentaDTO> ObtenerDetallesVenta(int ventaId)
+        {
+            var cache = CacheDetallesVenta;
+
+            if (!cache.ContainsKey(ventaId))
+            {
+                cache[ventaId] = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
+                CacheDetallesVenta = cache;
+            }
+
+            return cache[ventaId];
+        }
+
+        private List<WSDetalleDevolucion.detalleDevolucionDTO> ObtenerDetallesDevolucion(int devolucionId)
+        {
+            var cache = CacheDetallesDevolucion;
+
+            if (!cache.ContainsKey(devolucionId))
+            {
+                cache[devolucionId] = detalleDevolucionBO.listarDetallesDevolucionPorDevolucion(devolucionId);
+                CacheDetallesDevolucion = cache;
+            }
+
+            return cache[devolucionId];
+        }
+
         private void CargarDetalleVenta(int ventaId)
         {
             var venta = ListaVentasHoy.FirstOrDefault(v => v.ventaId == ventaId);
             if (venta == null) return;
 
-            var detalles = detalleVentaBO.listarDetallesVentaPorVenta(ventaId);
+            var detalles = ObtenerDetallesVenta(ventaId);
 
             litModalTitulo.Text = $"Detalles de Venta #{ventaId}";
             litModalCliente.Text = "N/A";
@@ -274,7 +352,7 @@ namespace SoftBodWA
             var ventaFiada = ListaVentasFiadas.FirstOrDefault(vf => vf.ventaFiadaId == ventaFiadaId);
             if (ventaFiada == null || ventaFiada.venta == null) return;
 
-            var detalles = detalleVentaBO.listarDetallesVentaPorVenta(ventaFiada.venta.ventaId);
+            var detalles = ObtenerDetallesVenta(ventaFiada.venta.ventaId);
 
             litModalTitulo.Text = $"Detalles de Venta Fiada #{ventaFiadaId}";
             litModalCliente.Text = ventaFiada.cliente?.alias ?? "N/A";
@@ -320,7 +398,7 @@ namespace SoftBodWA
             var devolucion = ListaDevoluciones.FirstOrDefault(d => d.devolucionId == devolucionId);
             if (devolucion == null) return;
 
-            var detalles = detalleDevolucionBO.listarDetallesDevolucionPorDevolucion(devolucionId);
+            var detalles = ObtenerDetallesDevolucion(devolucionId);
 
             litModalTitulo.Text = $"Detalles de Devolución #{devolucionId}";
             litModalCliente.Text = "N/A";
@@ -384,5 +462,4 @@ namespace SoftBodWA
             pnlSinProductos.Visible = false;
         }
     }
-
 }

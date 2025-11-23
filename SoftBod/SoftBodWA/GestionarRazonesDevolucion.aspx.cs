@@ -46,7 +46,7 @@ namespace SoftBodWA
             }
             catch (Exception ex)
             {
-                MostrarMensaje("Error al cargar razones: " + ex.Message, "danger");
+                MostrarMensajeError("Error al cargar razones: " + ex.Message);
                 pnlSinRazones.Visible = true;
             }
         }
@@ -59,43 +59,40 @@ namespace SoftBodWA
 
                 if (string.IsNullOrWhiteSpace(descripcion))
                 {
-                    MostrarMensaje("La descripción no puede estar vacía", "warning");
+                    MostrarMensajeError("La descripción no puede estar vacía");
                     return;
                 }
 
-                // Validar longitud
                 if (descripcion.Length > 200)
                 {
-                    MostrarMensaje("La descripción no puede exceder los 200 caracteres", "warning");
+                    MostrarMensajeError("La descripción no puede exceder los 200 caracteres");
                     return;
                 }
 
-                // Verificar si ya existe una razón similar
                 var razonesExistentes = razonDevolucionBO.listarTodasRazonesDevolucion();
                 if (razonesExistentes != null && razonesExistentes.Any(r =>
                     r.descripcion.Equals(descripcion, StringComparison.OrdinalIgnoreCase)))
                 {
-                    MostrarMensaje("Ya existe una razón con esta descripción", "warning");
+                    MostrarMensajeError("Ya existe una razón con esta descripción");
                     return;
                 }
 
-                // Insertar la nueva razón
                 int resultado = razonDevolucionBO.insertarRazonDevolucion(descripcion);
 
                 if (resultado > 0)
                 {
-                    MostrarMensaje("Razón de devolución agregada exitosamente", "success");
                     txtDescripcionRazon.Text = string.Empty;
                     CargarRazones();
+                    MostrarMensajeExitoYRecargar("Razón de devolución agregada exitosamente");
                 }
                 else
                 {
-                    MostrarMensaje("Error al agregar la razón de devolución", "danger");
+                    MostrarMensajeError("Error al agregar la razón de devolución");
                 }
             }
             catch (Exception ex)
             {
-                MostrarMensaje("Error al agregar razón: " + ex.Message, "danger");
+                MostrarMensajeError("Error al agregar razón: " + ex.Message);
             }
         }
 
@@ -107,30 +104,28 @@ namespace SoftBodWA
                 {
                     int razonId = int.Parse(e.CommandArgument.ToString());
 
-                    // Validar que la razón existe
                     var razon = razonDevolucionBO.obtenerRazonDevolucionPorId(razonId);
                     if (razon == null)
                     {
-                        MostrarMensaje("La razón de devolución no existe", "warning");
+                        MostrarMensajeError("La razón de devolución no existe");
                         return;
                     }
 
-                    // Eliminar la razón
                     int resultado = razonDevolucionBO.eliminarRazonDevolucion(razonId);
 
                     if (resultado > 0)
                     {
-                        MostrarMensaje("Razón de devolución eliminada exitosamente", "success");
                         CargarRazones();
+                        MostrarMensajeExitoYRecargar("Razón de devolución eliminada exitosamente");
                     }
                     else
                     {
-                        MostrarMensaje("No se pudo eliminar la razón de devolución. Puede estar en uso.", "warning");
+                        MostrarMensajeError("No se pudo eliminar. La razón puede estar en uso");
                     }
                 }
                 catch (Exception ex)
                 {
-                    MostrarMensaje("Error al eliminar razón: " + ex.Message, "danger");
+                    MostrarMensajeError("Error al eliminar razón: " + ex.Message);
                 }
             }
         }
@@ -140,19 +135,26 @@ namespace SoftBodWA
             Response.Redirect("RegistrarDevolucion.aspx");
         }
 
-        private void MostrarMensaje(string mensaje, string tipo)
+        private void MostrarMensajeError(string mensaje)
         {
+            string mensajeEscapado = EscapeJavaScript(mensaje);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "error",
+                $"alert('{mensajeEscapado}');", true);
+        }
+
+        private void MostrarMensajeExitoYRecargar(string mensaje)
+        {
+            string mensajeEscapado = EscapeJavaScript(mensaje);
             string script = $@"
-                var alertDiv = document.createElement('div');
-                alertDiv.className = 'alert alert-{tipo} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
-                alertDiv.style.zIndex = '9999';
-                alertDiv.innerHTML = '{mensaje}<button type=""button"" class=""btn-close"" data-bs-dismiss=""alert""></button>';
-                document.body.appendChild(alertDiv);
-                setTimeout(function() {{ 
-                    alertDiv.remove(); 
-                }}, 5000);
+                alert('{mensajeEscapado}');
+                window.location.href = window.location.pathname;
             ";
-            ScriptManager.RegisterStartupScript(this, GetType(), "MostrarMensaje", script, true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "exitoYRecarga", script, true);
+        }
+
+        private string EscapeJavaScript(string text)
+        {
+            return text.Replace("'", "\\'").Replace("\"", "\\\"").Replace("\n", "\\n").Replace("\r", "");
         }
     }
 }

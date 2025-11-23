@@ -107,7 +107,7 @@
                                 <span class="badge rounded-pill px-2 py-1" style="background-color: <%# Eval("ColorBadge") %>; font-size: 0.75rem;"><%# Eval("TipoBadge") %></span>
                             </div>
                 
-                            <!-- Botón Ver Detalle (MEJORADO) -->
+                            <!-- Botón Ver Detalle -->
                             <asp:LinkButton ID="btnVerDetalle" runat="server" 
                                 CssClass="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center shadow-sm"
                                 Style="width: 40px; height: 40px; "
