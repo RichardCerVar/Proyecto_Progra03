@@ -72,7 +72,7 @@
 
                 <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>
 
-                <hr />
+                
             </div>
         </div>
     </form>

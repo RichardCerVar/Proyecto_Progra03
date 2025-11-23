@@ -118,7 +118,7 @@ namespace SoftBodWA
             txtEditUsuario.Text = args[1];
             txtEditEmail.Text = args[2];
             txtEditTelefono.Text = args[3];
-            txtEditContrasena.Text = args[4];
+            txtEditContrasena.Attributes["value"] = args[4];
             hdnEditUsuarioID.Value = args[1];
 
             updEditarOperario.Update();
@@ -187,6 +187,7 @@ namespace SoftBodWA
                 string nuevoUsuario = txtEditUsuario.Text.Trim();
                 string nuevoCorreo = txtEditEmail.Text.Trim();
                 string nuevoTelefono = txtEditTelefono.Text.Trim();
+                string nuevaContrasena = txtEditContrasena.Text.Trim();
 
                 // Validaciones
                 if (!ValidarCamposCompletos(nuevoNombre, nuevoUsuario, nuevoCorreo, nuevoTelefono, "TempPass1!", out string mensajeError))
@@ -202,6 +203,15 @@ namespace SoftBodWA
                 }
 
                 WSUsuario.usuarioDTO usuarioActual = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioOriginal);
+                if (string.IsNullOrEmpty(nuevaContrasena))
+                    nuevaContrasena = usuarioActual.contrasenha;
+
+                string mensaje = "";
+                if (!ValidarFormatoContraseña(nuevaContrasena,out mensaje))
+                {
+                    MostrarMensajeError(mensaje);
+                    return;
+                }
 
                 if (usuarioActual != null)
                 {
@@ -210,7 +220,7 @@ namespace SoftBodWA
                         nuevoUsuario,
                         nuevoCorreo,
                         usuarioActual.tipoUsuarios.ToString(),
-                        usuarioActual.contrasenha,
+                        nuevaContrasena,
                         nuevoNombre,
                         nuevoTelefono,
                         usuarioActual.activo
