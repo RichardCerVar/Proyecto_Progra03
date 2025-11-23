@@ -82,6 +82,14 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="bloquearClienteAlFiadoPorMorosidad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="bloquearClienteAlFiadoPorMorosidadResponse">
+    <xs:sequence />
+  </xs:complexType>
   <xs:complexType name="eliminarClienteAlFiado">
     <xs:sequence>
       <xs:element minOccurs="0" name="clienteId" type="xs:int" />
@@ -92,12 +100,12 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="bloquearClienteAlFiadoPorMorosidad">
+  <xs:complexType name="desbloquearClienteAlFiado">
     <xs:sequence>
       <xs:element minOccurs="0" name="clienteId" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="bloquearClienteAlFiadoPorMorosidadResponse">
+  <xs:complexType name="desbloquearClienteAlFiadoResponse">
     <xs:sequence />
   </xs:complexType>
   <xs:complexType name="obtenerClienteAlFiadoPorId">
@@ -109,13 +117,5 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:clienteAlFiadoDTO" />
     </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="desbloquearClienteAlFiado">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="desbloquearClienteAlFiadoResponse">
-    <xs:sequence />
   </xs:complexType>
 </xs:schema>
