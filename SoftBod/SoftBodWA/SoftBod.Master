@@ -95,7 +95,13 @@
                 <button type="button" class="nav-user dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-person"></i> Mi Cuenta
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+                <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="min-width:320px;">
+                    <li>
+                     <a href="#" class="dropdown-item" data-bs-toggle="offcanvas" data-bs-target="#panelAlertas">
+                    <i class="fa-solid fa-bell me-2"></i> Alertas de clientes
+                    </a>
+                    </li>
+                <li><hr class="dropdown-divider" /></li>
                     <li>
                         <asp:LinkButton ID="btnCerrarSesion" runat="server" CssClass="dropdown-item text-danger" OnClick="btnCerrarSesion_Click">
                             <i class="bi bi-box-arrow-left"></i> Cerrar sesión
@@ -103,6 +109,7 @@
                     </li>
                 </ul>
             </div>
+            
         </header>
 
         <!-- CONTENIDO PRINCIPAL -->
@@ -134,5 +141,48 @@
             </a>
         </nav>
     </form>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="panelAlertas" style="width: 360px;">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title"><i class="fa-solid fa-bell me-2"></i> Alertas de fiados</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+
+    <div class="offcanvas-body small">
+
+        <asp:Repeater ID="rptAlertas" runat="server">
+            <ItemTemplate>
+
+                <div class="border-bottom pb-2 mb-2">
+                    <strong><%# Eval("Nombre") %></strong>
+                    <span class="text-muted">(<%# Eval("Alias") %>)</span><br/>
+
+                    <span>Deuda: 
+                        <strong>S/. <%# Eval("Deuda", "{0:N2}") %></strong>
+                    </span><br/>
+
+                    <span>Fecha límite: <%# Eval("FechaLimite", "{0:dd/MM/yyyy}") %></span>
+
+                    <%# (bool)Eval("Vencido")
+                        ? "<i class='fa-solid fa-circle-exclamation text-danger ms-2'></i>"
+                        : "" %>
+
+                    <br />
+
+                    <span class="badge bg-warning text-dark">
+                        <%# Eval("DiasRestantes") %> días restantes
+                    </span>
+                </div>
+
+            </ItemTemplate>
+        </asp:Repeater>
+
+        <asp:Panel ID="pnlSinAlertas" runat="server" Visible="false">
+            <p class="text-muted text-center mt-4">
+                No hay alertas por mostrar.
+            </p>
+        </asp:Panel>
+
+    </div>
+</div>
 </body>
 </html>
