@@ -78,15 +78,6 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
 
         /// <summary>
-        /// Control btnFiltrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrar;
-
-        /// <summary>
         /// Control btnExportarReporte.
         /// </summary>
         /// <remarks>
@@ -94,15 +85,6 @@ namespace SoftBodWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnExportarReporte;
-
-        /// <summary>
-        /// Control txtFechaInventario.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFechaInventario;
 
         /// <summary>
         /// Control Button1.
@@ -186,15 +168,6 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.TextBox txtFechaClienteFin;
 
         /// <summary>
-        /// Control btnFiltrarCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnFiltrarCliente;
-
-        /// <summary>
         /// Control btnExportarReporteCliente.
         /// </summary>
         /// <remarks>
@@ -204,76 +177,67 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Button btnExportarReporteCliente;
 
         /// <summary>
-        /// Control DropDownList1.
+        /// Control ddlTipoFechaOperario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoFechaOperario;
 
         /// <summary>
-        /// Control div1.
+        /// Control divFechaOperarioUnica.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaOperarioUnica;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtFechaOperario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaOperario;
 
         /// <summary>
-        /// Control div2.
+        /// Control divFechaOperarioInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaOperarioInicio;
 
         /// <summary>
-        /// Control TextBox2.
+        /// Control txtFechaOperarioIncio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaOperarioIncio;
 
         /// <summary>
-        /// Control div3.
+        /// Control divFechaOperarioFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div3;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divFechaOperarioFin;
 
         /// <summary>
-        /// Control TextBox3.
+        /// Control txtFechaOperarioFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
-
-        /// <summary>
-        /// Control Button2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.TextBox txtFechaOperarioFin;
 
         /// <summary>
         /// Control Button3.

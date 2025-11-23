@@ -1,16 +1,9 @@
 ﻿using SoftBodBusiness;
 using SoftBodBusiness.ReporteDTO;
-
 using System;
 using System.Collections.Generic;
+using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
 
-
-using WSVenta = SoftBodBusiness.SoftWSVenta;
-using WSDevolucion = SoftBodBusiness.SoftWSDevolucion;
-using WSAlFiado = SoftBodBusiness.SoftWSVentaAlFiado;
-using WSDetalle = SoftBodBusiness.SoftWSDetalleVenta;
-using WSDetalleDev = SoftBodBusiness.SoftWSDetalleDevolucion;
-using WSProd = SoftBodBusiness.SoftWSProducto;
 
 namespace SoftBodWA
 {
@@ -23,6 +16,9 @@ namespace SoftBodWA
         private DetalleVentaBO detalleVentaBO = new DetalleVentaBO();
         private DetalleDevolucionBO detalleDevolucionBO = new DetalleDevolucionBO();
         private ProductoBO productoBO = new ProductoBO();
+        private ClienteAlFiadoBO clienteBO;
+
+        private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,11 +31,8 @@ namespace SoftBodWA
 
         private void CargarClientesDropDownList()
         {
-            var clientes = new List<ClienteAlFiadoDTO>
-            {
-                new ClienteAlFiadoDTO { ClienteId = 1, Alias = "juan123", Nombre = "Juan Pérez", MontoDeuda = 85.30 },
-                new ClienteAlFiadoDTO { ClienteId = 2, Alias = "maria88", Nombre = "María López", MontoDeuda = 12.50 }
-            };
+            clienteBO = new ClienteAlFiadoBO();
+            var clientes = clienteBO.listarTodosClientesAlFiado();
 
             ddlCliente.DataSource = clientes;
             ddlCliente.DataTextField = "Alias";
@@ -127,13 +120,27 @@ namespace SoftBodWA
                 divFechaClienteFin.Visible = true;
             }
         }
+        protected void ddlTipoFechaOperario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlTipoFechaOperario.SelectedValue == "Diario")
+            {
+                divFechaOperarioUnica.Visible = true;
+                divFechaOperarioInicio.Visible = false;
+                divFechaOperarioFin.Visible = false;
+            }
+            else if (ddlTipoFechaCliente.SelectedValue == "Rango")
+            {
+                divFechaOperarioUnica.Visible = false;
+                divFechaOperarioInicio.Visible = true;
+                divFechaOperarioFin.Visible = true;
+            }
+        }
 
 
         protected void btnExportarReporteInventario_Click(object sender, EventArgs e)
         {
-            DateTime fechaInventario;
-            DateTime.TryParse(txtFechaInventario.Text, out fechaInventario);
-            string fechaInventarioStr = fechaInventario.ToString("yyyy-MM-dd");
+
+            
             
         }
         protected void btnExportarReporteClientes_Click(object sender, EventArgs e)

@@ -70,7 +70,6 @@
                             </div>
 
                             <div class="col-12 text-end">
-                                <asp:Button ID="btnFiltrar" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
                                 <asp:Button ID="btnExportarReporte" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteVentas_Click" CssClass="btn btn-warning" />
                             </div>
                         </div>
@@ -88,20 +87,9 @@
                         </h5>
 
                         
-                        <div class="card-body">
-                            <h5 class="fw-bold mb-3">Reporte de Inventario</h5>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label class="form-label fw-semibold">Fecha del Inventario</label>
-                                    <div class="input-group">
-                                        <asp:TextBox ID="txtFechaInventario" runat="server" CssClass="form-control" TextMode="Date" placeholder="mm/dd/yyyy"></asp:TextBox>
-                                           
-                                    </div>
-                                </div>
-                                <div class="col-md-8 d-flex align-items-end">
-                                    <%-- <asp:Button ID="btnGenerarReporte" runat="server" CssClass="btn btn-primary" Text="Generar Reporte" /> --%>
-                                </div>
-                            </div>
+                        <div class="row g-3 align-items-end">
+                            
+                            
                             <div class="col-12 text-end">
                                 <asp:Button ID="Button1" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteInventario_Click" CssClass="btn btn-warning" />
                             </div>
@@ -158,7 +146,6 @@
 
                             <!-- Botones -->
                             <div class="col-12 text-end mt-2">
-                                <asp:Button ID="btnFiltrarCliente" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
                                 <asp:Button ID="btnExportarReporteCliente" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteClientes_Click" CssClass="btn btn-warning" />
                             </div>
 
@@ -179,32 +166,31 @@
                         <div class="row g-3 align-items-end">
                             <div class="col-md-2">
                                 <label class="form-label">Tipo de Fecha</label>
-                                <asp:DropDownList ID="DropDownList1" runat="server" CssClass="form-select"
+                                <asp:DropDownList ID="ddlTipoFechaOperario" runat="server" CssClass="form-select"
                                     AutoPostBack="true"
-                                    OnSelectedIndexChanged="ddlTipoFecha_SelectedIndexChanged">
+                                    OnSelectedIndexChanged="ddlTipoFechaOperario_SelectedIndexChanged">
                                     <asp:ListItem Text="Diario" Value="Diario" Selected="True"></asp:ListItem>
                                     <asp:ListItem Text="Rango" Value="Rango" Selected="False"></asp:ListItem>
                                     <%-- Si se implementa, se añadirían Semanal, Mensual, etc. --%>
                                 </asp:DropDownList>
                             </div>
         
-                            <div class="col-md-3" id="div1" runat="server">
+                            <div class="col-md-3" id="divFechaOperarioUnica" runat="server">
                                 <label class="form-label">Fecha</label>
-                                <asp:TextBox ID="TextBox1" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaOperario" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
-                            <div class="col-md-3" id="div2" runat="server" visible="false">
+                            <div class="col-md-3" id="divFechaOperarioInicio" runat="server" visible="false">
                                 <label class="form-label">Fecha Inicio</label>
-                                <asp:TextBox ID="TextBox2" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaOperarioIncio" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
-                            <div class="col-md-3" id="div3" runat="server" visible="false">
+                            <div class="col-md-3" id="divFechaOperarioFin" runat="server" visible="false">
                                 <label class="form-label">Fecha Fin</label>
-                                <asp:TextBox ID="TextBox3" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtFechaOperarioFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
                             <div class="col-12 text-end">
-                                <asp:Button ID="Button2" runat="server" Text="Filtrar Reporte" OnClick="btnFiltrar_Click" CssClass="btn btn-primary me-2" />
                                 <asp:Button ID="Button3" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteOperaciones_Click" CssClass="btn btn-warning" />
                             </div>
                         </div>
