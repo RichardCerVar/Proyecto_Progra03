@@ -7,7 +7,7 @@ import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
-import pe.pucp.edu.softbod.reportes.ReporteUtil;
+import pe.edu.pucp.softbod.reporte.util.ReporteUtil;
 
 @WebService(serviceName = "HistorialOperaciones")
 public class HistorialOperaciones {

@@ -7,7 +7,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.gestclientes.ClienteAlFiadoBO;
 import pe.edu.pucp.softbod.model.gestclientes.ClienteAlFiadoDTO;
-import pe.pucp.edu.softbod.reportes.ReporteUtil;
+import pe.edu.pucp.softbod.reporte.util.ReporteUtil;
 
 @WebService(serviceName = "ClienteAlFiado")
 public class ClienteAlFiado {
@@ -62,7 +62,7 @@ public class ClienteAlFiado {
     }
     
     @WebMethod(operationName = "reporteClienteAlFiado")
-    public byte[] reporteClienteAlFiado(@WebParam(name = "fechaInicio")Date fechaInicio,@WebParam(name = "fechaFin") Date fechaFin,@WebParam(name = "clienteId") Integer clienteId){
+    public byte[] reporteClienteAlFiado(@WebParam(name = "fechaInicio")String fechaInicio,@WebParam(name = "fechaFin") String fechaFin,@WebParam(name = "clienteId") Integer clienteId){
         return ReporteUtil.reporteClienteAlFiado(fechaInicio, fechaFin, clienteId);
     }
     

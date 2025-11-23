@@ -1,4 +1,4 @@
-package pe.pucp.edu.softbod.reportes;
+package pe.edu.pucp.softbod.reporte.util;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -12,6 +12,7 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import pe.edu.pucp.softbod.db.DBManager;
+import pe.edu.pucp.softbod.fecha.FechaUtil;
 
 public class ReporteUtil {
     
@@ -29,10 +30,10 @@ public class ReporteUtil {
         return reporte;
     }
     
-    public static byte[] reporteDevolucionesYVentas(Date fechaInicio, Date fechaFin){
+    public static byte[] reporteDevolucionesYVentas(String fechaInicio, String fechaFin){
         HashMap parametros = new HashMap();
-        parametros.put("FECHA", fechaInicio);
-        parametros.put("FECHA_FIN", fechaFin);
+        parametros.put("FECHA", FechaUtil.toSqlDate(fechaInicio));
+        parametros.put("FECHA_FIN", FechaUtil.toSqlDate(fechaFin));
         return invocarReporte("ReporteDeVentasYDevoluciones",parametros);
     }
     
@@ -44,10 +45,10 @@ public class ReporteUtil {
         return invocarReporte("HistorialDeOperaciones",parametros);
     }
     
-    public static byte[] reporteClienteAlFiado(Date fechaInicio, Date fechaFin, Integer clienteId){
+    public static byte[] reporteClienteAlFiado(String fechaInicio, String fechaFin, Integer clienteId){
         HashMap parametros = new HashMap();
-        parametros.put("FECHA_INICIO", fechaInicio);
-        parametros.put("FECHA_FIN", fechaFin);
+        parametros.put("FECHA_INICIO", FechaUtil.toSqlDate(fechaInicio));
+        parametros.put("FECHA_FIN", FechaUtil.toSqlDate(fechaFin));
         parametros.put("CLIENTE_ID", clienteId);
         return invocarReporte("ReporteDeClientesAlFiado",parametros);
     }
