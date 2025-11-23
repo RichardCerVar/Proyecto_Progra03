@@ -77,9 +77,9 @@ namespace SoftBodBusiness
                    ?? new List<historialOperacionesDTO>();
         }
 
-        public byte[] ReporteHistorialDeOperaciones(string operacion, string tabla,string usuario)
+        public byte[] ReporteHistorialDeOperaciones(string fechaInicio, string fechaFin)
         {
-            return historialSOAP.reporteHistorialDeOperaciones(operacion, tabla, usuario);
+            return historialSOAP.reporteHistorialDeOperaciones(fechaInicio, fechaFin);
         }
 
     }

@@ -42,11 +42,10 @@ public class ReporteUtil {
         return invocarReporte("ReporteDeVentasYDevoluciones",parametros);
     }
     
-    public static byte[] reporteHistorialDeOperaciones(String operacion, String tabla, String usuario){
+    public static byte[] reporteHistorialDeOperaciones(String fechaInicio, String fechaFin){
         HashMap parametros = new HashMap();
-        parametros.put("P_OPERACION", operacion);
-        parametros.put("P_TABLA", tabla);
-        parametros.put("P_USUARIO", usuario);
+        parametros.put("P_FECHA_INICIO", FechaUtil.toSqlDate(fechaInicio));
+        parametros.put("P_FECHA_FIN", FechaUtil.toSqlDate(fechaFin));
         return invocarReporte("HistorialDeOperaciones",parametros);
     }
     

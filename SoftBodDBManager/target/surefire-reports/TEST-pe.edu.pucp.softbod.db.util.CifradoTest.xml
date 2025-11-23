@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.007" tests="2" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.037" tests="2" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PE"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-21.0.8.9-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\sergi\AppData\Local\Temp\surefire14974789999298579691\surefirebooter-20251122231608047_3.jar C:\Users\sergi\AppData\Local\Temp\surefire14974789999298579691 2025-11-22T23-16-07_677-jvmRun1 surefire-20251122231608047_1tmp surefire_0-20251122231608047_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\sergi\AppData\Local\Temp\surefire9763231836121159378\surefirebooter-20251123012120028_3.jar C:\Users\sergi\AppData\Local\Temp\surefire9763231836121159378 2025-11-23T01-21-19_835-jvmRun1 surefire-20251123012120028_1tmp surefire_0-20251123012120028_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBodDBManager\target\test-classes;C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBodDBManager\target\classes;C:\Users\sergi\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.3\junit-jupiter-api-5.10.3.jar;C:\Users\sergi\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\sergi\.m2\repository\org\junit\platform\junit-platform-commons\1.10.3\junit-platform-commons-1.10.3.jar;C:\Users\sergi\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\sergi\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.3\junit-jupiter-params-5.10.3.jar;C:\Users\sergi\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.3\junit-jupiter-engine-5.10.3.jar;C:\Users\sergi\.m2\repository\org\junit\platform\junit-platform-engine\1.10.3\junit-platform-engine-1.10.3.jar;C:\Users\sergi\.m2\repository\com\mysql\mysql-connector-j\9.2.0\mysql-connector-j-9.2.0.jar;C:\Users\sergi\.m2\repository\com\google\protobuf\protobuf-java\4.29.0\protobuf-java-4.29.0.jar;C:\Users\sergi\.m2\repository\commons-codec\commons-codec\1.18.0\commons-codec-1.18.0.jar;C:\Users\sergi\.m2\repository\com\microsoft\sqlserver\mssql-jdbc\12.10.0.jre8\mssql-jdbc-12.10.0.jre8.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\sergi\AppData\Local\Temp\surefire14974789999298579691\surefirebooter-20251122231608047_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\sergi\AppData\Local\Temp\surefire9763231836121159378\surefirebooter-20251123012120028_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.8+9-LTS"/>
@@ -60,11 +60,11 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testDescifrarMD5" classname="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.004">
+  <testcase name="testDescifrarMD5" classname="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.015">
     <system-out><![CDATA[descifrarMD5
 ]]></system-out>
   </testcase>
-  <testcase name="testCifrarMD5" classname="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.001">
+  <testcase name="testCifrarMD5" classname="pe.edu.pucp.softbod.db.util.CifradoTest" time="0.01">
     <system-out><![CDATA[cifrarMD5
 GFvzT/oALwhziJrVcTssng==
 ]]></system-out>

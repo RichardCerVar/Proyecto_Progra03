@@ -79,8 +79,8 @@ public class HistorialOperaciones {
     }
     
     @WebMethod(operationName = "reporteHistorialDeOperaciones")
-    public byte[] reporteHistorialDeOperaciones(String operacion, String tabla, String usuario){
-        return ReporteUtil.reporteHistorialDeOperaciones(operacion, tabla, usuario);
+    public byte[] reporteHistorialDeOperaciones(String fechaInicio, String fechaFin){
+        return ReporteUtil.reporteHistorialDeOperaciones(fechaInicio, fechaFin);
     }
     
 }
