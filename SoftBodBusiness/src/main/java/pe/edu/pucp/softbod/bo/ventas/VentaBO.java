@@ -9,6 +9,7 @@ import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
 import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
 import pe.edu.pucp.softbod.dao.ventas.VentaDAO;
 import pe.edu.pucp.softbod.daoImp.ventas.VentaDAOImpl;
+import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
 import pe.edu.pucp.softbod.model.ventas.DetalleVentaDTO;
 import pe.edu.pucp.softbod.model.ventas.VentaDTO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
@@ -20,12 +21,12 @@ public class VentaBO extends OperacionBOBase{
     
     private final VentaDAO ventaDAO;
     private final DetalleVentaBO detalleVentaBO;
-    private final HistorialDeOperacionBO historialBO;
+    private final ProductoBO productoBO;
     
     public VentaBO(){
         this.ventaDAO = new VentaDAOImpl();
         this.detalleVentaBO = new DetalleVentaBO();
-        this.historialBO = new HistorialDeOperacionBO();
+        this.productoBO = new ProductoBO();
     }
 
     public VentaDTO obtenerPorId(Integer venta_Id){
@@ -58,6 +59,9 @@ public class VentaBO extends OperacionBOBase{
         //insercion de los detalles de los detalles:
         for (DetalleVentaDTO d : detallesVenta) {
             d.setVenta(nuevaVenta);//detalle ya vino producto(basta solo con id), subtotal,cantidad
+            ProductoDTO prod = this.productoBO.obtenerPorId(d.getProducto().getProductoId());
+            prod.setStock(prod.getStock()-d.getCantidad());
+            this.productoBO.modificar(prod);
             this.detalleVentaBO.insertar(d); //inserta el datalle x venta
         }
         //Para trazabilidad:
