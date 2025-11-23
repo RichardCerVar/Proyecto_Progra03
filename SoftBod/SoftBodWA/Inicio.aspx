@@ -88,25 +88,36 @@
             <asp:Repeater ID="rptMovimientos" runat="server">
                 <ItemTemplate>
                     <div class="list-group-item list-group-item-action d-flex align-items-center justify-content-between border-bottom py-2">
+            
+                        <!-- Icono y Título del Movimiento -->
                         <div class="d-flex align-items-center">
-                            <i class="bi <%# Eval("Icono") %> fs-4 me-2" style="color: <%# Eval("ColorIcono") %>;"></i>
+                            <i class="bi <%# Eval("Icono") %> fs-4 me-3" style="color: <%# Eval("ColorIcono") %>; width: 30px; text-align: center;"></i>
                             <div>
                                 <div class="fw-bold"><%# Eval("Titulo") %></div>
-                                <small class="text-muted"><%# Eval("FechaHora") %></small>
+                                <small class="text-muted"><i class="bi bi-clock me-1"></i><%# Eval("FechaHora") %></small>
                             </div>
                         </div>
-                        <div class="text-end d-flex align-items-center">
-                            <div>
-                                <span class="fw-bold me-2" style="color: <%# Eval("ColorMonto") %>;"><%# Eval("Monto") %></span><br />
-                                <span class="badge" style="background-color: <%# Eval("ColorBadge") %>;"><%# Eval("TipoBadge") %></span>
+            
+                        <!-- Monto, Badge y Botón de Detalle -->
+                        <div class="text-end d-flex align-items-center gap-3">
+                
+                            <!-- Información de Monto y Tipo -->
+                            <div class="d-none d-sm-block">
+                                <span class="fw-bold fs-6 me-2" style="color: <%# Eval("ColorMonto") %>;"><%# Eval("Monto") %></span><br />
+                                <span class="badge rounded-pill px-2 py-1" style="background-color: <%# Eval("ColorBadge") %>; font-size: 0.75rem;"><%# Eval("TipoBadge") %></span>
                             </div>
+                
+                            <!-- Botón Ver Detalle (MEJORADO) -->
                             <asp:LinkButton ID="btnVerDetalle" runat="server" 
-                                CssClass="btn btn-sm btn-outline-secondary ms-2 p-1"
+                                CssClass="btn btn-outline-info rounded-circle d-flex align-items-center justify-content-center shadow-sm"
+                                Style="width: 40px; height: 40px; "
                                 CommandName="VerDetalle"
                                 CommandArgument='<%# Eval("Id") + "|" + Eval("Tipo") %>'
-                                OnCommand="btnVerDetalle_Command">
-                                <i class="bi bi-eye"></i>
+                                OnCommand="btnVerDetalle_Command"
+                                ToolTip="Ver Detalle del Movimiento">
+                                <i class="bi bi-eye fs-6"></i>
                             </asp:LinkButton>
+                
                         </div>
                     </div>
                 </ItemTemplate>
