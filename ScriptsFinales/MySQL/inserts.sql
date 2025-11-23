@@ -11,7 +11,7 @@ INSERT INTO BOD_CATEGORIA (DESCRIPCION) VALUES
 
 
 INSERT INTO BOD_USUARIO (USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, NOMBRE_COMPLETO, TELEFONO_USUARIO, ACTIVO_USUARIO) VALUES
-('admin01', 'ADMINISTRADOR', 'admin@tienda.com', 'admin123', 'Administrador General', '987654321', 1),
+('admin01', 'ADMINISTRADOR', 'admin@bodega.com', 'admin123', 'Administrador General', '987654321', 1),
 ('operario01', 'OPERARIO', 'op1@tienda.com', 'op123', 'Carlos Pérez', '912345678', 1),
 ('operario02', 'OPERARIO', 'op2@tienda.com', 'op123', 'María Vargas', '923456789', 1),
 ('operario03', 'OPERARIO', 'op3@tienda.com', 'op123', 'Luis Gutiérrez', '934567891', 1),
