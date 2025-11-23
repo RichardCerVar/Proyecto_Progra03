@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.almacen.ProductoBO;
 import pe.edu.pucp.softbod.model.almacen.CategoriaDTO;
 import pe.edu.pucp.softbod.model.almacen.ProductoDTO;
+import pe.edu.pucp.softbod.reporte.util.ReporteUtil;
 
 
 @WebService(serviceName = "Producto")
@@ -55,4 +56,8 @@ public class Producto {
         return this.productoBO.listarProductosConFiltro(activo,categoria,nombreProducto);
     }
     
+    @WebMethod(operationName = "reporteDeInventario")
+    public byte[] reporteDeInventario(){
+        return ReporteUtil.reporteDeInventario();
+    }
 }

@@ -16,6 +16,11 @@ import pe.edu.pucp.softbod.fecha.FechaUtil;
 
 public class ReporteUtil {
     
+    private static byte[] invocarReporte(String nombreReporte){
+        HashMap parametros = null;
+        return invocarReporte(nombreReporte, parametros);
+    }
+    
     private static byte[] invocarReporte(String nombreReporte, HashMap parametros){
         byte[] reporte = null;
         Connection conexion = DBManager.getInstance().getConnection();
@@ -37,11 +42,10 @@ public class ReporteUtil {
         return invocarReporte("ReporteDeVentasYDevoluciones",parametros);
     }
     
-    public static byte[] reporteHistorialDeOperaciones(String operacion, String tabla, String usuario){
+    public static byte[] reporteHistorialDeOperaciones(String fechaInicio, String fechaFin){
         HashMap parametros = new HashMap();
-        parametros.put("P_OPERACION", operacion);
-        parametros.put("P_TABLA", tabla);
-        parametros.put("P_USUARIO", usuario);
+        parametros.put("P_FECHA_INICIO", FechaUtil.toSqlDate(fechaInicio));
+        parametros.put("P_FECHA_FIN", FechaUtil.toSqlDate(fechaFin));
         return invocarReporte("HistorialDeOperaciones",parametros);
     }
     
@@ -52,4 +56,9 @@ public class ReporteUtil {
         parametros.put("CLIENTE_ID", clienteId);
         return invocarReporte("ReporteDeClientesAlFiado",parametros);
     }
+    
+    public static byte[] reporteDeInventario(){
+        return invocarReporte("ReporteDeInventario");
+    }
+    
 }

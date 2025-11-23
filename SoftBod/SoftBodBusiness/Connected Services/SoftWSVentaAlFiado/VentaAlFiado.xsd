@@ -63,7 +63,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
       <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
-      <xs:element minOccurs="0" name="metodoPago" type="tns:tipoDePago" />
+      <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
       <xs:element minOccurs="0" maxOccurs="unbounded" name="detallesVenta" type="tns:detalleVentaDTO" />
     </xs:sequence>
   </xs:complexType>

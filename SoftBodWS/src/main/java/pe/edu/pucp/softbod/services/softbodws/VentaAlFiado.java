@@ -24,7 +24,7 @@ public class VentaAlFiado {
     @WebMethod(operationName = "insertarVentaAlFiado")
     public Integer insertarVentaAlFiado(@WebParam(name = "cliente") ClienteAlFiadoDTO cliente,
                                          @WebParam(name = "usuario") UsuarioDTO usuario,
-                                         @WebParam(name = "metodoPago") Tipo_de_pago metodoPago,
+                                         @WebParam(name = "metodoPago") String metodoPago,
                                          @WebParam(name = "detallesVenta") ArrayList<DetalleVentaDTO> detallesVenta) {
         return this.ventaAlFiadoBO.insertar(cliente, usuario, metodoPago, detallesVenta);
     }
