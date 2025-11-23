@@ -26,7 +26,16 @@ public class UsuarioBO extends OperacionBOBase{
     public Integer eliminar(Integer usuarioId){
         UsuarioDTO user = new UsuarioDTO();
         user.setUsuarioId(usuarioId);
-        return this.usuarioDAO.eliminar(user);
+        
+        Integer resultado = this.usuarioDAO.eliminar(user);
+        if (resultado != null && resultado > 0) {
+            user.setUsuarioId(1);
+            // 6. Registrar en historial
+            registrarEnHistorial(user, "BOD_USUARIOS", Tipo_Operacion.INSERCION);
+                
+            System.out.println("✓ Usuario elimnado exitosamente. ID: " + resultado);
+        }
+        return resultado;
     }
     
     public Integer insertar(String usuario, String correo, String tipoUsuarios,
