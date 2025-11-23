@@ -54,75 +54,43 @@
         <div class="mt-4">
             <h5 class="fw-bold mb-3"><i class="bi bi-search me-2"></i> Ventas Recientes (Últimas 24 horas)</h5>
 
-            <!-- ==================================================================== -->
-            <!-- Venta #1: Se añaden data-attributes con la info de la venta y productos -->
-            <!-- ==================================================================== -->
-            <div class="list-group-item d-flex justify-content-between align-items-center mb-2 p-3 border rounded">
-                <div>
-                    <h6 class="mb-1 fw-bold">Venta #1 - Juan Pérez</h6>
-                    <small class="text-muted">2025-11-12 10:30</small>
-                </div>
-                <div class="text-end d-flex align-items-center">
-                    <span class="fw-bold text-success me-3">S/.8.80</span>
-                    <asp:Button ID="btnVerVenta1" runat="server" Text="Ver" CssClass="btn btn-sm btn-outline-primary me-2" OnClick="btnVerDetalleVenta_Click" CommandArgument="1" />
-                    <!-- 🟢 BOTÓN SELECCIONAR (Simulado por JS) -->
-                    <button type="button" class="btn btn-sm btn-warning text-white btn-seleccionar-venta" 
-                            data-venta-id="1" 
-                            data-cliente="Juan Pérez" 
-                            data-total="8.80" 
-                            data-fecha="2025-11-12 10:30"
-                            data-productos='[{"id":101,"nombre":"Arroz Diana 500g","precio":2.50,"cantidad":2}, {"id":102,"nombre":"Aceite Girasol 1L","precio":3.80,"cantidad":1}]'>
-                        Seleccionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- ==================================================================== -->
-            <!-- Venta #62: Se añaden data-attributes con la info de la venta y productos -->
-            <!-- ==================================================================== -->
-            <div class="list-group-item d-flex justify-content-between align-items-center mb-2 p-3 border rounded">
-                <div>
-                    <h6 class="mb-1 fw-bold">Venta #62 - El Vecino 1</h6>
-                    <small class="text-muted">2025-10-07 10:20</small>
-                </div>
-                <div class="text-end d-flex align-items-center">
-                    <span class="fw-bold text-success me-3">S/.68.00</span>
-                    <asp:Button ID="btnVerVenta2" runat="server" Text="Ver" CssClass="btn btn-sm btn-outline-primary me-2" OnClick="btnVerDetalleVenta_Click" CommandArgument="62" />
-                    <!-- 🟢 BOTÓN SELECCIONAR (Simulado por JS) -->
-                    <button type="button" class="btn btn-sm btn-warning text-white btn-seleccionar-venta" 
-                            data-venta-id="62" 
-                            data-cliente="El Vecino 1" 
-                            data-total="68.00" 
-                            data-fecha="2025-10-07 10:20"
-                            data-productos='[{"id":201,"nombre":"Leche Entera 1L","precio":5.55,"cantidad":10}, {"id":202,"nombre":"Azúcar Blanca 1Kg","precio":1.20,"cantidad":10}]'>
-                        Seleccionar
-                    </button>
-                </div>
-            </div>
-
-            <!-- ==================================================================== -->
-            <!-- Venta #20: Se añaden data-attributes con la info de la venta y productos -->
-            <!-- ==================================================================== -->
-            <div class="list-group-item d-flex justify-content-between align-items-center mb-2 p-3 border rounded">
-                <div>
-                    <h6 class="mb-1 fw-bold">Venta #20 - Cliente Genérico</h6>
-                    <small class="text-muted">2025-10-03 14:05</small>
-                </div>
-                <div class="text-end d-flex align-items-center">
-                    <span class="fw-bold text-success me-3">S/.8.00</span>
-                    <asp:Button ID="btnVerVenta3" runat="server" Text="Ver" CssClass="btn btn-sm btn-outline-primary me-2" OnClick="btnVerDetalleVenta_Click" CommandArgument="20" />
-                    <!-- 🟢 BOTÓN SELECCIONAR (Simulado por JS) -->
-                    <button type="button" class="btn btn-sm btn-warning text-white btn-seleccionar-venta" 
-                            data-venta-id="20" 
-                            data-cliente="Cliente Genérico" 
-                            data-total="8.00" 
-                            data-fecha="2025-10-03 14:05"
-                            data-productos='[{"id":301,"nombre":"Pan de Molde","precio":4.00,"cantidad":2}]'>
-                        Seleccionar
-                    </button>
-                </div>
-            </div>
-
+            <asp:Repeater ID="rptVentasRecientes" runat="server">
+                <ItemTemplate>
+                    <div class="list-group-item d-flex justify-content-between align-items-start mb-2 p-3 border rounded">
+                        <div>
+                            <h6 class="mb-1 fw-bold">Venta #<%# Eval("VentaId") %> - <%# Eval("ClienteNombre") %></h6>
+                            <small class="text-muted"><%# Eval("FechaFormat") %></small>
+                    
+                            <div class="mt-2 ps-2 border-start">
+                                <asp:Repeater ID="rptProductosVenta" runat="server" DataSource='<%# Eval("Productos") %>'>
+                                    <ItemTemplate>
+                                        <div class="d-flex justify-content-between">
+                                            <small class="text-secondary"><%# Eval("nombre") %> x<%# Eval("cantidad") %></small>
+                                            <small class="text-secondary"> - S/.<%# (double)Eval("precio") * (int)Eval("cantidad") %></small>
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </div>
+                            </div>
+                        <div class="text-end d-flex align-items-center flex-column">
+                            <span class="fw-bold text-success me-3">S/.<%# Eval("TotalFormat") %></span>
+                            <div class="mt-2 d-flex">
+                                <asp:Button ID="btnVerVenta" runat="server" Text="Ver" CssClass="btn btn-sm btn-outline-primary me-2" OnClick="btnVerDetalleVenta_Click" CommandArgument='<%# Eval("VentaId") %>' />
+ 
+                                <%-- 🟢 BOTÓN SELECCIONAR (Usando las propiedades del Wrapper) --%>
+                                <button type="button" class="btn btn-sm btn-warning text-white btn-seleccionar-venta" 
+                                        data-venta-id="<%# Eval("VentaId") %>" 
+                                        data-cliente="<%# Eval("ClienteNombre") %>" 
+                                        data-total="<%# Eval("Total") %>" 
+                                        data-fecha="<%# Eval("FechaFormat") %>"
+                                        data-productos='<%# Eval("ProductosJson") %>' >
+                                    Seleccionar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </ItemTemplate>
+            </asp:Repeater>
         </div>
     </div>
     

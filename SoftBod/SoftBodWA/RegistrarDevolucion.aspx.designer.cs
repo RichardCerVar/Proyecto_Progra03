@@ -42,30 +42,12 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.Button btnProcesarDevolucion;
 
         /// <summary>
-        /// Control btnVerVenta1.
+        /// Control rptVentasRecientes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerVenta1;
-
-        /// <summary>
-        /// Control btnVerVenta2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerVenta2;
-
-        /// <summary>
-        /// Control btnVerVenta3.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnVerVenta3;
+        protected global::System.Web.UI.WebControls.Repeater rptVentasRecientes;
     }
 }
