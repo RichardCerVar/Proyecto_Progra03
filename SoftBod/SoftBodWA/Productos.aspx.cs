@@ -143,7 +143,7 @@ namespace SoftBodWA
                 string precioStr = txtPrecio.Text.Trim();
                 string stockInicialStr = txtStockInicial.Text.Trim();
                 string stockMinimoStr = txtStockMinimo.Text.Trim();
-                string unidadMedida = ddlMedida.SelectedValue;
+                string unidadMedida = ddlMedida.SelectedValue.Trim();
 
                 // ✅ VALIDACIÓN: Debe seleccionar una categoría O crear una nueva, no ambas ni ninguna
                 if (!ValidarCategoriaUnica(categoriaIdStr, nuevaCategoria, out string msgErrorCategoria))
@@ -294,7 +294,7 @@ namespace SoftBodWA
         {
             try
             {
-                var producto = productoBO.obtenerProductoPorId(productoId);
+                var producto = ListaProductos.FirstOrDefault(p => p.productoId == productoId);
 
                 if (producto != null)
                 {
@@ -332,7 +332,7 @@ namespace SoftBodWA
                     return;
                 }
 
-                var producto = productoBO.obtenerProductoPorId(productoId);
+                var producto = ListaProductos.FirstOrDefault(p => p.productoId == productoId);
 
                 if (producto != null)
                 {
@@ -412,7 +412,7 @@ namespace SoftBodWA
                 categDTO.categoriaId = categoriaId;
                 categDTO.categoriaIdSpecified = true;
 
-                WSProducto.productoDTO productoDTO = productoBO.obtenerProductoPorId(productoId);
+                var productoDTO = ListaProductos.FirstOrDefault(p => p.productoId == productoId);
 
                 productoDTO.nombre = nombre;
                 productoDTO.precioUnitario = precio;

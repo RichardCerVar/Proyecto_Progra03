@@ -1,16 +1,23 @@
-﻿using System;
+﻿using SoftBodBusiness;
+using System;
 using System.IO;
+using System.Linq;
 using System.Web.UI;
+using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodWA
 {
     public partial class SoftBod : System.Web.UI.MasterPage
     {
+        private ClienteAlFiadoBO clienteBO;
         protected void Page_Load(object sender, EventArgs e)
         {
+            clienteBO = new ClienteAlFiadoBO();
+
             if (!IsPostBack)
             {
                 SetActiveNav();
+                CargarAlertas();
             }
 
             if (Session["RolUsuario"] == null)
@@ -31,6 +38,51 @@ namespace SoftBodWA
                 navUsuarios.Visible = false;
             }
         }
+        private void CargarAlertas()
+        {
+            var clientes = clienteBO.listarTodosClientesAlFiado();
+
+            var hoy = DateTime.Now.Date;
+
+            var alertas = clientes
+                .Where(
+                    c =>
+                    {
+                        DateTime fecha = DateTime.Parse(c.fechaDePago);
+                        return c.activo
+                             && c.montoDeuda > 0
+                             && (fecha.Date - hoy).TotalDays <= 4;
+                    })
+                .Select(c =>
+                {
+                    var fecha = DateTime.Parse(c.fechaDePago);
+
+                    return new
+                    {
+                        Nombre = c.nombre,
+                        Alias = c.alias,
+                        Deuda = c.montoDeuda,
+                        FechaLimite = fecha,
+                        DiasRestantes = (int)(fecha.Date - hoy).TotalDays,
+                        Vencido = fecha.Date < hoy
+                    };
+                })
+                .ToList();
+
+            if (alertas.Any())
+            {
+                rptAlertas.DataSource = alertas;
+                rptAlertas.DataBind();
+                rptAlertas.Visible = true;
+                pnlSinAlertas.Visible = false;
+            }
+            else
+            {
+                rptAlertas.Visible = false;
+                pnlSinAlertas.Visible = true;
+            }
+        }
+
 
         protected void btnCerrarSesion_Click(object sender, EventArgs e)
         {

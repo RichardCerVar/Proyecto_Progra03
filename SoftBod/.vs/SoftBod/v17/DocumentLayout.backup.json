@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\",
+  "WorkspaceRootPath": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\clientes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\clientes.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\login.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\registrardevolucion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\registrardevolucion.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\reportes.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\usuarios.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\productos.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\softbodwa\\registrarventa.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\registrarventa.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\softbod.master||{B30AFBFF-D992-43B7-B62D-2642580A2883}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|c:\\users\\richard\\desktop\\github-softbod\\softbod\\softbodwa\\softbod.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{461A2732-E442-4735-BC06-3E1300BA9C99}|SoftBodWA\\SoftBodWA.csproj|solutionrelative:softbodwa\\softbod.master.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,95 +26,58 @@
       "DocumentGroups": [
         {
           "DockedHeight": 114,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Productos.aspx",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Productos.aspx",
-              "RelativeToolTip": "SoftBodWA\\Productos.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T02:58:56.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx.cs",
-              "RelativeDocumentMoniker": "SoftBodWA\\Login.aspx.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Login.aspx.cs",
-              "RelativeToolTip": "SoftBodWA\\Login.aspx.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T02:44:55.485Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Reportes.aspx",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\Reportes.aspx",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Reportes.aspx",
-              "RelativeToolTip": "SoftBodWA\\Reportes.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T02:36:24.801Z",
+              "Title": "SoftBod.Master.cs",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\SoftBod.Master.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\SoftBod.Master.cs",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\SoftBod.Master.cs*",
+              "RelativeToolTip": "SoftBodWA\\SoftBod.Master.cs*",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAUwJEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T04:00:11.283Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "RegistrarDevolucion.aspx",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarDevolucion.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\RegistrarDevolucion.aspx",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarDevolucion.aspx",
-              "RelativeToolTip": "SoftBodWA\\RegistrarDevolucion.aspx",
+              "Title": "SoftBod.Master",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\SoftBod.Master",
+              "RelativeDocumentMoniker": "SoftBodWA\\SoftBod.Master",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\SoftBod.Master*",
+              "RelativeToolTip": "SoftBodWA\\SoftBod.Master*",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T02:35:24.886Z",
+              "WhenOpened": "2025-11-23T04:00:09.81Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RegistrarVenta.aspx",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\RegistrarVenta.aspx",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\RegistrarVenta.aspx",
-              "RelativeToolTip": "SoftBodWA\\RegistrarVenta.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T02:32:07.89Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Usuarios.aspx",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx",
-              "RelativeDocumentMoniker": "SoftBodWA\\Usuarios.aspx",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Usuarios.aspx",
-              "RelativeToolTip": "SoftBodWA\\Usuarios.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2025-11-23T01:41:10.939Z"
+              "DocumentIndex": 1,
+              "Title": "Productos.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx.cs",
+              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx.cs",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx.cs*",
+              "RelativeToolTip": "SoftBodWA\\Productos.aspx.cs*",
+              "ViewState": "AgIAAEACAAAAAAAAAAAUwE4CAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T04:00:04.518Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Clientes.aspx.cs",
-              "DocumentMoniker": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx.cs",
-              "RelativeDocumentMoniker": "SoftBodWA\\Clientes.aspx.cs",
-              "ToolTip": "C:\\Users\\LENOVO\\Downloads\\Prog 3\\TA\\Proyecto_Progra03\\SoftBod\\SoftBodWA\\Clientes.aspx.cs*",
-              "RelativeToolTip": "SoftBodWA\\Clientes.aspx.cs*",
-              "ViewState": "AgIAALkAAAAAAAAAAAAUwAABAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-23T01:43:22.056Z",
+              "Title": "Productos.aspx",
+              "DocumentMoniker": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx",
+              "RelativeDocumentMoniker": "SoftBodWA\\Productos.aspx",
+              "ToolTip": "C:\\Users\\Richard\\Desktop\\Github-SoftBod\\SoftBod\\SoftBodWA\\Productos.aspx*",
+              "RelativeToolTip": "SoftBodWA\\Productos.aspx*",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2025-11-23T04:00:03.128Z",
               "EditorCaption": ""
             }
           ]
