@@ -51,7 +51,9 @@
         <div class="col-md-6 mb-2">
             <div class="input-group">
                 <asp:TextBox ID="txtBuscarProducto" runat="server" Cssclass="form-control" placeholder="Buscar productos por nombre..."/>
-                <asp:Button ID="btnBuscarProducto" runat="server" Cssclass="btn btn-primary" Text="Buscar" OnClick="btnBuscarProducto_Click"/>
+                <asp:Button ID="btnBuscarProducto" runat="server" Cssclass="btn btn-primary" Text="Buscar" OnClick="btnBuscarProducto_Click"
+                    OnClientClick="this.disabled = true; "
+                    UseSubmitBehavior="false"/>
             </div>
         </div>
 
@@ -222,10 +224,12 @@
                             <asp:TextBox ID="txtStockMinimo" CssClass="form-control" placeholder="0" runat="server"></asp:TextBox>
                         </div>
 
-                        <asp:LinkButton ID="btnAgregarProducto" runat="server"
+                        <asp:Button ID="btnAgregarProducto" runat="server"
                             CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                             Text="Agregar Producto"
-                            OnClick="btnAgregar_Click" />
+                            OnClick="btnAgregar_Click" 
+                            OnClientClick="this.disabled = true; this.value='Procesando...';"
+                            UseSubmitBehavior="false"/>
 
                     </ContentTemplate>
                 </asp:UpdatePanel>
@@ -264,10 +268,12 @@
                         placeholder="Ingrese la cantidad (número positivo)" />
                 </div>
                 
-                <asp:LinkButton ID="btnEjecutarAjusteStock" runat="server"
+                <asp:Button ID="btnEjecutarAjusteStock" runat="server"
                     CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                     Text="Agregar Stock"
-                    OnClick="btnAjustarStock_Click" />
+                    OnClick="btnAjustarStock_Click" 
+                    OnClientClick="this.disabled = true; this.value='Procesando...';"
+                    UseSubmitBehavior="false"/>
                 
                 <asp:HiddenField ID="hdnProductoIdAjustar" runat="server" Value="0" />
                 <asp:HiddenField ID="hdnStockMode" runat="server" Value="Agregar" />
@@ -322,7 +328,10 @@
                         <asp:LinkButton ID="btnActualizarProducto" runat="server"
                             CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                             Text="Actualizar Producto"
-                            OnClick="btnActualizarProducto_Click" />
+                            OnClick="btnActualizarProducto_Click"
+                            OnClientClick="this.disabled = true; this.value='Procesando...';"
+                            UseSubmitBehavior="false"
+                            />
 
                     </ContentTemplate>
                     <Triggers>
@@ -357,7 +366,9 @@
                             <asp:Button ID="btnConfirmarEliminacion" runat="server" 
                                 Text="Sí, Eliminar" 
                                 CssClass="btn btn-danger w-100" 
-                                OnClick="btnConfirmarEliminacion_Click" />
+                                OnClick="btnConfirmarEliminacion_Click" 
+                                OnClientClick="this.disabled = true; this.value='Procesando...';"
+                                UseSubmitBehavior="false"/>
                         </div>
                     </div>
                 </ContentTemplate>

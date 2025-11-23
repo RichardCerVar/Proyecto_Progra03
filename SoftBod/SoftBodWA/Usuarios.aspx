@@ -154,7 +154,7 @@
                             <!-- Email -->
                             <div class="mb-3">
                                 <asp:Label CssClass="form-label fw-semibold" runat="server" Text="Email" AssociatedControlID="txtEmail"></asp:Label>
-                                <asp:TextBox ID="txtEmail" CssClass="form-control" placeholder="ana@bodega.com" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" CssClass="form-control" placeholder="ana@bodega.com" runat="server" TextMode="Email"></asp:TextBox>
                             </div>
 
                             <!-- Teléfono -->
@@ -184,7 +184,7 @@
                                 CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                                 Text="Crear Operario"
                                 OnClick="btnCrearOperario_Click" 
-                                 OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                 OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"
                                 />
                         </ContentTemplate>
@@ -234,7 +234,7 @@
                                 CssClass="btn btn-dark w-100 py-2 fw-semibold rounded-3"
                                 Text="Guardar Cambios"
                                 OnClick="btnGuardarCambios_Click" 
-                                OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                OnClientClick="this.disabled = true; this.value='Procesando...';"
                                 UseSubmitBehavior="false"/>
 
                         </ContentTemplate>
@@ -273,7 +273,7 @@
                                     Text="Sí, Eliminar" 
                                     CssClass="btn btn-danger w-100" 
                                     OnClick="btnConfirmarEliminacion_Click" 
-                                    OnClientClick="this.disabled = true; this.innerText='Procesando...';"
+                                    OnClientClick="this.disabled = true; this.value='Procesando...';"
                                     UseSubmitBehavior="false"/>
     
                             </div>
