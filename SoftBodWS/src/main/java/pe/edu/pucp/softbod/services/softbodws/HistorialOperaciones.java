@@ -6,11 +6,14 @@ import jakarta.jws.WebParam;
 import jakarta.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.bo.trazabilidad.HistorialDeOperacionBO;
+import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
 import pe.edu.pucp.softbod.reporte.util.ReporteUtil;
 
 @WebService(serviceName = "HistorialOperaciones")
-public class HistorialOperaciones {
+public class HistorialOperaciones extends OperacionBOBase{
 
     private HistorialDeOperacionBO historialBO;
 
@@ -76,6 +79,14 @@ public class HistorialOperaciones {
             @WebParam(name = "tipoUsuario")@XmlElement(nillable = true) String tipoUsuario,
             @WebParam(name = "estado")@XmlElement(nillable = true) Boolean estado) {
         return this.historialBO.listarHistorialFiltros(operacionId, nombreTabla, tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);
+    }
+    
+    @WebMethod(operationName = "registrarHistorialDeOperaciones")
+    public void registrarHistorialOperaciones(
+            @WebParam(name = "usuario") UsuarioDTO usuario, 
+            @WebParam(name = "tablaAfectada") String tablaAfectada, 
+            @WebParam(name = "operacion") Tipo_Operacion operacion) {
+        registrarEnHistorial(usuario, tablaAfectada, operacion);
     }
     
     @WebMethod(operationName = "reporteHistorialDeOperaciones")

@@ -296,6 +296,9 @@
     <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

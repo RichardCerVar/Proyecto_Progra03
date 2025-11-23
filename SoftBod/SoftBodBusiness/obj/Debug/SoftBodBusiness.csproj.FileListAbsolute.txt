@@ -5,13 +5,6 @@ C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusin
 C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
 C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
 C:\Users\sergi\OneDrive\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll.config
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.pdb
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.AssemblyReference.cache
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
-C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll.config
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll
 D:\Documentos\GitHub\Proyecto_Progra03\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.pdb
@@ -33,3 +26,10 @@ C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodBusiness\ob
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
 C:\Users\LENOVO\Downloads\Prog 3\TA\Proyecto_Progra03\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll.config
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.pdb
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.AssemblyReference.cache
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
+C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb

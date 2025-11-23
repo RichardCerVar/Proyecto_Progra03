@@ -3,10 +3,12 @@ package pe.edu.pucp.softbod.bo.trazabilidad;
 import java.util.ArrayList;
 import pe.edu.pucp.softbod.dao.trazabilidad.HistorialOperacionesDAO;
 import pe.edu.pucp.softbod.daoImp.trazabilidad.HistorialOperacionesDAOImpl;
+import pe.edu.pucp.softbod.model.rrhh.UsuarioDTO;
 import pe.edu.pucp.softbod.model.trazabilidad.HistorialOperacionesDTO;
+import pe.edu.pucp.softbod.model.util.Tipo_Operacion;
+import pe.edu.pucp.softbod.bo.util.OperacionBOBase;
 
-public class HistorialDeOperacionBO {
-    
+public class HistorialDeOperacionBO extends OperacionBOBase{
     
     private final HistorialOperacionesDAO historialDAO;
     
@@ -58,6 +60,12 @@ public class HistorialDeOperacionBO {
          String tipoUsuario, Boolean estado){
         return this.historialDAO.listarHistorialFiltros(operacionId, nombreTabla,
                 tipoOperacion, fechaOperacion, usuarioId, usuario, tipoUsuario, estado);
+    }
+    
+    public void registrarHistorialOperaciones(UsuarioDTO usuario, 
+                                      String tablaAfectada, 
+                                      Tipo_Operacion operacion) {
+        registrarEnHistorial(usuario, tablaAfectada, operacion);
     }
     
 }
