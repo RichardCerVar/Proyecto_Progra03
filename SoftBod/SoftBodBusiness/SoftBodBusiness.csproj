@@ -323,6 +323,9 @@
     <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.productoDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.reporteDeInventarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SoftWSRazonDevolucion\RazonDevolucion.wsdl" />
     <None Include="Connected Services\SoftWSRazonDevolucion\RazonDevolucion.xsd">
       <SubType>Designer</SubType>

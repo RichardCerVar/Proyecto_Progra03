@@ -5,12 +5,6 @@
       <xsd:import schemaLocation="http://localhost:8080/SoftBodWS/Venta?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
     </xsd:schema>
   </types>
-  <message name="obtenerVentaPorId">
-    <part name="parameters" element="tns:obtenerVentaPorId" />
-  </message>
-  <message name="obtenerVentaPorIdResponse">
-    <part name="parameters" element="tns:obtenerVentaPorIdResponse" />
-  </message>
   <message name="insertarVenta">
     <part name="parameters" element="tns:insertarVenta" />
   </message>
@@ -23,11 +17,11 @@
   <message name="listarTodosVentasResponse">
     <part name="parameters" element="tns:listarTodosVentasResponse" />
   </message>
-  <message name="listarVentasPorFecha">
-    <part name="parameters" element="tns:listarVentasPorFecha" />
+  <message name="obtenerVentaPorId">
+    <part name="parameters" element="tns:obtenerVentaPorId" />
   </message>
-  <message name="listarVentasPorFechaResponse">
-    <part name="parameters" element="tns:listarVentasPorFechaResponse" />
+  <message name="obtenerVentaPorIdResponse">
+    <part name="parameters" element="tns:obtenerVentaPorIdResponse" />
   </message>
   <message name="reporteDevolucionesYVentas">
     <part name="parameters" element="tns:reporteDevolucionesYVentas" />
@@ -35,11 +29,13 @@
   <message name="reporteDevolucionesYVentasResponse">
     <part name="parameters" element="tns:reporteDevolucionesYVentasResponse" />
   </message>
+  <message name="listarVentasPorFecha">
+    <part name="parameters" element="tns:listarVentasPorFecha" />
+  </message>
+  <message name="listarVentasPorFechaResponse">
+    <part name="parameters" element="tns:listarVentasPorFechaResponse" />
+  </message>
   <portType name="Venta">
-    <operation name="obtenerVentaPorId">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest" message="tns:obtenerVentaPorId" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse" message="tns:obtenerVentaPorIdResponse" />
-    </operation>
     <operation name="insertarVenta">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaRequest" message="tns:insertarVenta" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaResponse" message="tns:insertarVentaResponse" />
@@ -48,26 +44,21 @@
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest" message="tns:listarTodosVentas" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse" message="tns:listarTodosVentasResponse" />
     </operation>
-    <operation name="listarVentasPorFecha">
-      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest" message="tns:listarVentasPorFecha" />
-      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse" message="tns:listarVentasPorFechaResponse" />
+    <operation name="obtenerVentaPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest" message="tns:obtenerVentaPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse" message="tns:obtenerVentaPorIdResponse" />
     </operation>
     <operation name="reporteDevolucionesYVentas">
       <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasRequest" message="tns:reporteDevolucionesYVentas" />
       <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasResponse" message="tns:reporteDevolucionesYVentasResponse" />
     </operation>
+    <operation name="listarVentasPorFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest" message="tns:listarVentasPorFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse" message="tns:listarVentasPorFechaResponse" />
+    </operation>
   </portType>
   <binding name="VentaPortBinding" type="tns:Venta">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <operation name="obtenerVentaPorId">
-      <soap:operation soapAction="" />
-      <input>
-        <soap:body use="literal" />
-      </input>
-      <output>
-        <soap:body use="literal" />
-      </output>
-    </operation>
     <operation name="insertarVenta">
       <soap:operation soapAction="" />
       <input>
@@ -86,7 +77,7 @@
         <soap:body use="literal" />
       </output>
     </operation>
-    <operation name="listarVentasPorFecha">
+    <operation name="obtenerVentaPorId">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />
@@ -96,6 +87,15 @@
       </output>
     </operation>
     <operation name="reporteDevolucionesYVentas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarVentasPorFecha">
       <soap:operation soapAction="" />
       <input>
         <soap:body use="literal" />

@@ -49,5 +49,11 @@ namespace SoftBodBusiness
             return productoSOAP.listarTodosConFiltroProductos(activo, categoria, nombreProducto)?.ToList()
                    ?? new List<productoDTO>();
         }
+
+        public byte[] ReporteDeInventario()
+        {
+            return productoSOAP.reporteDeInventario();
+        }
+
     }
 }

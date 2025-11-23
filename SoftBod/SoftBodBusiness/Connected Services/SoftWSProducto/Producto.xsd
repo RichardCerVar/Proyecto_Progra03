@@ -12,6 +12,16 @@
   <xs:element name="modificarProductoResponse" type="tns:modificarProductoResponse" />
   <xs:element name="obtenerProductoPorId" type="tns:obtenerProductoPorId" />
   <xs:element name="obtenerProductoPorIdResponse" type="tns:obtenerProductoPorIdResponse" />
+  <xs:element name="reporteDeInventario" type="tns:reporteDeInventario" />
+  <xs:element name="reporteDeInventarioResponse" type="tns:reporteDeInventarioResponse" />
+  <xs:complexType name="reporteDeInventario">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="reporteDeInventarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="modificarProducto">
     <xs:sequence>
       <xs:element minOccurs="0" name="producto" type="tns:productoDTO" />
@@ -40,16 +50,6 @@
       <xs:element minOccurs="0" name="return" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="obtenerProductoPorId">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="productoId" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="obtenerProductoPorIdResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:productoDTO" />
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="listarTodosConFiltroProductos">
     <xs:sequence>
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
@@ -60,6 +60,16 @@
   <xs:complexType name="listarTodosConFiltroProductosResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:productoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerProductoPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="productoId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerProductoPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:productoDTO" />
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="insertarProducto">
