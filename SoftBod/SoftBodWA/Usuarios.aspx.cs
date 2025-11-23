@@ -3,6 +3,7 @@ using SoftBodBusiness.SoftWSUsuario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -294,11 +295,24 @@ namespace SoftBodWA
                     return;
                 }
 
+                if (!ValidarFormatoCorreo(correo, out mensajeError))
+                {
+                    MostrarMensajeError(mensajeError);
+                    return;
+                }
+                if (!ValidarFormatoTelefono(telefono, out mensajeError))
+                {
+                    MostrarMensajeError(mensajeError);
+                    return;
+                }
+
                 if (!ValidarFormatoContraseña(contraseña, out mensajeError))
                 {
                     MostrarMensajeError(mensajeError);
                     return;
                 }
+
+                
 
                 usuarioBO.insertarUsuario(usuario, correo, "OPERARIO", contraseña, nombre, telefono, true);
 
@@ -409,6 +423,33 @@ namespace SoftBodWA
                 return false;
             }
 
+            return true;
+        }
+        private bool ValidarFormatoCorreo(string correo, out string mensaje)
+        {
+            mensaje = "";
+
+            try
+            {
+                var mail = new MailAddress(correo);
+                return true;
+            }
+            catch
+            {
+                mensaje = "El formato del correo ingresado no es válido.";
+                return false;
+            }
+        }
+
+        private bool ValidarFormatoTelefono(string telefono, out string mensaje)
+        {
+            mensaje = "";
+
+            if (telefono.Length != 9 || !telefono.All(char.IsDigit))
+            {
+                mensaje="El teléfono debe tener máximo 9 dígitos.";
+                return false;
+            }
             return true;
         }
 
