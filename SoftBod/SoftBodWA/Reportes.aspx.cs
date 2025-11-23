@@ -1,5 +1,4 @@
 ﻿using SoftBodBusiness;
-using SoftBodBusiness.ReporteDTO;
 using System;
 using System.Collections.Generic;
 using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
@@ -55,8 +54,6 @@ namespace SoftBodWA
             }
 
             string fechaFiltro = DateTime.Parse(txtFecha.Text).ToString("yyyy-MM-dd");
-            var movimientosReporteVacio = new List<MovimientoReporteDTO>();
-
 
         }
 

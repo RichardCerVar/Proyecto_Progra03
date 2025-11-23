@@ -73,9 +73,6 @@
                 <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>
 
                 <hr />
-                <p class="text-center hint mb-1"><strong>Credenciales de prueba:</strong></p>
-                <p class="text-center hint mb-0">Dueño: admin@bodega.com / admin123</p>
-                <p class="text-center hint">Operario: operario@bodega.com / operario123</p>
             </div>
         </div>
     </form>
