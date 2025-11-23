@@ -156,7 +156,7 @@ namespace SoftBodWA
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAgregarProducto;
+        protected global::System.Web.UI.WebControls.Button btnAgregarProducto;
 
         /// <summary>
         /// Control txtCantidadAjustar.
@@ -174,7 +174,7 @@ namespace SoftBodWA
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnEjecutarAjusteStock;
+        protected global::System.Web.UI.WebControls.Button btnEjecutarAjusteStock;
 
         /// <summary>
         /// Control hdnProductoIdAjustar.
@@ -264,7 +264,7 @@ namespace SoftBodWA
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnActualizarProducto;
+        protected global::System.Web.UI.WebControls.Button btnActualizarProducto;
 
         /// <summary>
         /// Control updEliminarProducto.
