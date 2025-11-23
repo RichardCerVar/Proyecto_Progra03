@@ -76,5 +76,11 @@ namespace SoftBodBusiness
                                                                       fechaOperacion, usuarioId, usuario, tipoUsuario, estado)?.ToList()
                    ?? new List<historialOperacionesDTO>();
         }
+
+        public byte[] ReporteHistorialDeOperaciones(string operacion, string tabla,string usuario)
+        {
+            return historialSOAP.reporteHistorialDeOperaciones(operacion, tabla, usuario);
+        }
+
     }
 }

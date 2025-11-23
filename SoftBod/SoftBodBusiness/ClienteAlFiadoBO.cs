@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using SoftBodBusiness.SoftWSClienteAlFiado;
@@ -57,5 +58,11 @@ namespace SoftBodBusiness
         {
             clienteAlFiadoSOAP.desbloquearClienteAlFiado(clienteId);
         }
+
+        public byte[] ReporteClienteAlFiado(string fechaInicio,string fechaFin,int clienteId)
+        {
+            return clienteAlFiadoSOAP.reporteClienteAlFiado(fechaInicio, fechaFin, clienteId);
+        }
+
     }
 }

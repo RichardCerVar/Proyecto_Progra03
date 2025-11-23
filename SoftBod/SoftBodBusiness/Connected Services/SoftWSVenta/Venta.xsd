@@ -8,6 +8,8 @@
   <xs:element name="listarVentasPorFechaResponse" type="tns:listarVentasPorFechaResponse" />
   <xs:element name="obtenerVentaPorId" type="tns:obtenerVentaPorId" />
   <xs:element name="obtenerVentaPorIdResponse" type="tns:obtenerVentaPorIdResponse" />
+  <xs:element name="reporteDevolucionesYVentas" type="tns:reporteDevolucionesYVentas" />
+  <xs:element name="reporteDevolucionesYVentasResponse" type="tns:reporteDevolucionesYVentasResponse" />
   <xs:complexType name="obtenerVentaPorId">
     <xs:sequence>
       <xs:element minOccurs="0" name="ventaId" type="xs:int" />
@@ -93,6 +95,17 @@
   <xs:complexType name="listarVentasPorFechaResponse">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ventaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reporteDevolucionesYVentas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fechaInicio" type="xs:string" />
+      <xs:element minOccurs="0" name="fechaFin" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reporteDevolucionesYVentasResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" nillable="true" type="xs:base64Binary" />
     </xs:sequence>
   </xs:complexType>
   <xs:simpleType name="tipoDePago">

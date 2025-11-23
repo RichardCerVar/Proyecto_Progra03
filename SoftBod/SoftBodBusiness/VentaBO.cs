@@ -39,5 +39,11 @@ namespace SoftBodBusiness
             return this.ventaSOAP.listarVentasPorFecha(fecha)?.ToList()
                    ?? new List<ventaDTO>();
         }
+
+        public byte[] ReporteDevolucionesYVentas(string fechaInicio, string fechaFin)
+        {
+            return this.ventaSOAP.reporteDevolucionesYVentas(fechaInicio, fechaFin);
+        }
+
     }
 }

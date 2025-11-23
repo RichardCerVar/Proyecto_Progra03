@@ -16,22 +16,13 @@ namespace SoftBodBusiness.SoftWSVenta {
     public interface Venta {
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse listarVentasPorFecha(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request);
+        SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse obtenerVentaPorId(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> listarVentasPorFechaAsync(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request);
-        
-        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse listarTodosVentas(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> listarTodosVentasAsync(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> obtenerVentaPorIdAsync(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
         [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaResponse")]
@@ -43,17 +34,39 @@ namespace SoftBodBusiness.SoftWSVenta {
         System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.insertarVentaResponse> insertarVentaAsync(SoftBodBusiness.SoftWSVenta.insertarVentaRequest request);
         
         // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
-        SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse obtenerVentaPorId(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request);
+        SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse listarTodosVentas(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse")]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> obtenerVentaPorIdAsync(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request);
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> listarTodosVentasAsync(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse listarVentasPorFecha(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> listarVentasPorFechaAsync(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request);
+        
+        // CODEGEN: El parámetro 'return' requiere información adicional de esquema que no se puede capturar con el modo de parámetros. El atributo específico es 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasReq" +
+            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasRes" +
+            "ponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="return")]
+        SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse reporteDevolucionesYVentas(SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasReq" +
+            "uest", ReplyAction="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasRes" +
+            "ponse")]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse> reporteDevolucionesYVentasAsync(SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -183,7 +196,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoDePago {
@@ -199,7 +212,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -371,7 +384,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum tipoUsuario {
@@ -384,7 +397,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -444,7 +457,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -658,7 +671,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/")]
     public enum unidadMedida {
@@ -674,7 +687,7 @@ namespace SoftBodBusiness.SoftWSVenta {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9221.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -778,63 +791,35 @@ namespace SoftBodBusiness.SoftWSVenta {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVentasPorFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarVentasPorFechaRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerVentaPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerVentaPorIdRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string fecha;
+        public int ventaId;
         
-        public listarVentasPorFechaRequest() {
+        public obtenerVentaPorIdRequest() {
         }
         
-        public listarVentasPorFechaRequest(string fecha) {
-            this.fecha = fecha;
+        public obtenerVentaPorIdRequest(int ventaId) {
+            this.ventaId = ventaId;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVentasPorFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarVentasPorFechaResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerVentaPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class obtenerVentaPorIdResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSVenta.ventaDTO[] @return;
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSVenta.ventaDTO @return;
         
-        public listarVentasPorFechaResponse() {
+        public obtenerVentaPorIdResponse() {
         }
         
-        public listarVentasPorFechaResponse(SoftBodBusiness.SoftWSVenta.ventaDTO[] @return) {
-            this.@return = @return;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosVentas", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosVentasRequest {
-        
-        public listarTodosVentasRequest() {
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosVentasResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class listarTodosVentasResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSVenta.ventaDTO[] @return;
-        
-        public listarTodosVentasResponse() {
-        }
-        
-        public listarTodosVentasResponse(SoftBodBusiness.SoftWSVenta.ventaDTO[] @return) {
+        public obtenerVentaPorIdResponse(SoftBodBusiness.SoftWSVenta.ventaDTO @return) {
             this.@return = @return;
         }
     }
@@ -888,35 +873,104 @@ namespace SoftBodBusiness.SoftWSVenta {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerVentaPorId", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerVentaPorIdRequest {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosVentas", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosVentasRequest {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int ventaId;
-        
-        public obtenerVentaPorIdRequest() {
-        }
-        
-        public obtenerVentaPorIdRequest(int ventaId) {
-            this.ventaId = ventaId;
+        public listarTodosVentasRequest() {
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="obtenerVentaPorIdResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
-    public partial class obtenerVentaPorIdResponse {
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarTodosVentasResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarTodosVentasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSVenta.ventaDTO[] @return;
+        
+        public listarTodosVentasResponse() {
+        }
+        
+        public listarTodosVentasResponse(SoftBodBusiness.SoftWSVenta.ventaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVentasPorFecha", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarVentasPorFechaRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public SoftBodBusiness.SoftWSVenta.ventaDTO @return;
+        public string fecha;
         
-        public obtenerVentaPorIdResponse() {
+        public listarVentasPorFechaRequest() {
         }
         
-        public obtenerVentaPorIdResponse(SoftBodBusiness.SoftWSVenta.ventaDTO @return) {
+        public listarVentasPorFechaRequest(string fecha) {
+            this.fecha = fecha;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="listarVentasPorFechaResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class listarVentasPorFechaResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute("return", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public SoftBodBusiness.SoftWSVenta.ventaDTO[] @return;
+        
+        public listarVentasPorFechaResponse() {
+        }
+        
+        public listarVentasPorFechaResponse(SoftBodBusiness.SoftWSVenta.ventaDTO[] @return) {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteDevolucionesYVentas", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class reporteDevolucionesYVentasRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaInicio;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string fechaFin;
+        
+        public reporteDevolucionesYVentasRequest() {
+        }
+        
+        public reporteDevolucionesYVentasRequest(string fechaInicio, string fechaFin) {
+            this.fechaInicio = fechaInicio;
+            this.fechaFin = fechaFin;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="reporteDevolucionesYVentasResponse", WrapperNamespace="http://softbodws.services.softbod.pucp.edu.pe/", IsWrapped=true)]
+    public partial class reporteDevolucionesYVentasResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://softbodws.services.softbod.pucp.edu.pe/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, DataType="base64Binary", IsNullable=true)]
+        public byte[] @return;
+        
+        public reporteDevolucionesYVentasResponse() {
+        }
+        
+        public reporteDevolucionesYVentasResponse(byte[] @return) {
             this.@return = @return;
         }
     }
@@ -949,47 +1003,26 @@ namespace SoftBodBusiness.SoftWSVenta {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse SoftBodBusiness.SoftWSVenta.Venta.listarVentasPorFecha(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request) {
-            return base.Channel.listarVentasPorFecha(request);
+        SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse SoftBodBusiness.SoftWSVenta.Venta.obtenerVentaPorId(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request) {
+            return base.Channel.obtenerVentaPorId(request);
         }
         
-        public SoftBodBusiness.SoftWSVenta.ventaDTO[] listarVentasPorFecha(string fecha) {
-            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest inValue = new SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest();
-            inValue.fecha = fecha;
-            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarVentasPorFecha(inValue);
+        public SoftBodBusiness.SoftWSVenta.ventaDTO obtenerVentaPorId(int ventaId) {
+            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest inValue = new SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest();
+            inValue.ventaId = ventaId;
+            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).obtenerVentaPorId(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> SoftBodBusiness.SoftWSVenta.Venta.listarVentasPorFechaAsync(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request) {
-            return base.Channel.listarVentasPorFechaAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> SoftBodBusiness.SoftWSVenta.Venta.obtenerVentaPorIdAsync(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request) {
+            return base.Channel.obtenerVentaPorIdAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> listarVentasPorFechaAsync(string fecha) {
-            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest inValue = new SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest();
-            inValue.fecha = fecha;
-            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarVentasPorFechaAsync(inValue);
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse SoftBodBusiness.SoftWSVenta.Venta.listarTodosVentas(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request) {
-            return base.Channel.listarTodosVentas(request);
-        }
-        
-        public SoftBodBusiness.SoftWSVenta.ventaDTO[] listarTodosVentas() {
-            SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest();
-            SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarTodosVentas(inValue);
-            return retVal.@return;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> SoftBodBusiness.SoftWSVenta.Venta.listarTodosVentasAsync(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request) {
-            return base.Channel.listarTodosVentasAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> listarTodosVentasAsync() {
-            SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest();
-            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarTodosVentasAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> obtenerVentaPorIdAsync(int ventaId) {
+            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest inValue = new SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest();
+            inValue.ventaId = ventaId;
+            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).obtenerVentaPorIdAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -1020,26 +1053,72 @@ namespace SoftBodBusiness.SoftWSVenta {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse SoftBodBusiness.SoftWSVenta.Venta.obtenerVentaPorId(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request) {
-            return base.Channel.obtenerVentaPorId(request);
+        SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse SoftBodBusiness.SoftWSVenta.Venta.listarTodosVentas(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request) {
+            return base.Channel.listarTodosVentas(request);
         }
         
-        public SoftBodBusiness.SoftWSVenta.ventaDTO obtenerVentaPorId(int ventaId) {
-            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest inValue = new SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest();
-            inValue.ventaId = ventaId;
-            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).obtenerVentaPorId(inValue);
+        public SoftBodBusiness.SoftWSVenta.ventaDTO[] listarTodosVentas() {
+            SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest();
+            SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarTodosVentas(inValue);
             return retVal.@return;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> SoftBodBusiness.SoftWSVenta.Venta.obtenerVentaPorIdAsync(SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest request) {
-            return base.Channel.obtenerVentaPorIdAsync(request);
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> SoftBodBusiness.SoftWSVenta.Venta.listarTodosVentasAsync(SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest request) {
+            return base.Channel.listarTodosVentasAsync(request);
         }
         
-        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse> obtenerVentaPorIdAsync(int ventaId) {
-            SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest inValue = new SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdRequest();
-            inValue.ventaId = ventaId;
-            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).obtenerVentaPorIdAsync(inValue);
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse> listarTodosVentasAsync() {
+            SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.listarTodosVentasRequest();
+            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarTodosVentasAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse SoftBodBusiness.SoftWSVenta.Venta.listarVentasPorFecha(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request) {
+            return base.Channel.listarVentasPorFecha(request);
+        }
+        
+        public SoftBodBusiness.SoftWSVenta.ventaDTO[] listarVentasPorFecha(string fecha) {
+            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest inValue = new SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest();
+            inValue.fecha = fecha;
+            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarVentasPorFecha(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> SoftBodBusiness.SoftWSVenta.Venta.listarVentasPorFechaAsync(SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest request) {
+            return base.Channel.listarVentasPorFechaAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse> listarVentasPorFechaAsync(string fecha) {
+            SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest inValue = new SoftBodBusiness.SoftWSVenta.listarVentasPorFechaRequest();
+            inValue.fecha = fecha;
+            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).listarVentasPorFechaAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse SoftBodBusiness.SoftWSVenta.Venta.reporteDevolucionesYVentas(SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest request) {
+            return base.Channel.reporteDevolucionesYVentas(request);
+        }
+        
+        public byte[] reporteDevolucionesYVentas(string fechaInicio, string fechaFin) {
+            SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest();
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse retVal = ((SoftBodBusiness.SoftWSVenta.Venta)(this)).reporteDevolucionesYVentas(inValue);
+            return retVal.@return;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse> SoftBodBusiness.SoftWSVenta.Venta.reporteDevolucionesYVentasAsync(SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest request) {
+            return base.Channel.reporteDevolucionesYVentasAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse> reporteDevolucionesYVentasAsync(string fechaInicio, string fechaFin) {
+            SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest inValue = new SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasRequest();
+            inValue.fechaInicio = fechaInicio;
+            inValue.fechaFin = fechaFin;
+            return ((SoftBodBusiness.SoftWSVenta.Venta)(this)).reporteDevolucionesYVentasAsync(inValue);
         }
     }
 }

@@ -183,6 +183,9 @@
     <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.obtenerClienteAlFiadoPorIdResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.reporteClienteAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\SoftWSDetalleDevolucion\DetalleDevolucion.wsdl" />
     <None Include="Connected Services\SoftWSDetalleDevolucion\DetalleDevolucion.xsd">
       <SubType>Designer</SubType>
@@ -290,6 +293,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SoftWSProducto\Producto.wsdl" />
@@ -433,6 +439,9 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.ventaDTO.datasource">
