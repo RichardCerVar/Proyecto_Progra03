@@ -5,7 +5,7 @@ using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodBusiness
 {

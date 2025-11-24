@@ -1,5 +1,4 @@
 ﻿using SoftBodBusiness;
-using SoftBodBusiness.SoftWSUsuario;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,7 @@ using System.Net.Mail;
 using System.Text.RegularExpressions;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WSUsuario = SoftBodBusiness.SoftWSUsuario;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {
@@ -17,7 +16,7 @@ namespace SoftBodWA
         private HistorialOperacionesBO historialBO;
 
         // Cache de usuarios - solo se carga cuando es null o se fuerza recarga
-        private List<WSUsuario.usuarioDTO> ListaUsuarios
+        private List<usuarioDTO> ListaUsuarios
         {
             get
             {
@@ -25,7 +24,7 @@ namespace SoftBodWA
                 {
                     ViewState["ListaUsuarios"] = usuarioBO.listarTodosUsuarios();
                 }
-                return (List<WSUsuario.usuarioDTO>)ViewState["ListaUsuarios"];
+                return (List<usuarioDTO>)ViewState["ListaUsuarios"];
             }
             set
             {
@@ -34,12 +33,12 @@ namespace SoftBodWA
         }
 
         // Nueva propiedad para obtener solo los operarios (sin el administrador)
-        private List<WSUsuario.usuarioDTO> ListaOperarios
+        private List<usuarioDTO> ListaOperarios
         {
             get
             {
                 var lista = ListaUsuarios;
-                return lista.Count > 1 ? lista.Skip(1).ToList() : new List<WSUsuario.usuarioDTO>();
+                return lista.Count > 1 ? lista.Skip(1).ToList() : new List<usuarioDTO>();
             }
         }
 
@@ -202,7 +201,7 @@ namespace SoftBodWA
                     return;
                 }
 
-                WSUsuario.usuarioDTO usuarioActual = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioOriginal);
+                usuarioDTO usuarioActual = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioOriginal);
                 if (string.IsNullOrEmpty(nuevaContrasena))
                     nuevaContrasena = usuarioActual.contrasenha;
 
@@ -243,7 +242,7 @@ namespace SoftBodWA
             try
             {
                 string usuarioEliminar = hdnUsuarioIDEliminar.Value;
-                WSUsuario.usuarioDTO usuario = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioEliminar);
+                usuarioDTO usuario = ListaUsuarios.FirstOrDefault(u => u.usuario == usuarioEliminar);
 
                 if (usuario != null)
                 {

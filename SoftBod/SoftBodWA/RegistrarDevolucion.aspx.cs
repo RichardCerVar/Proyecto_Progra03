@@ -4,11 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SoftBodBusiness;
-using WSVenta = SoftBodBusiness.SoftWSVenta;
-using WSVentaAlFiado = SoftBodBusiness.SoftWSVentaAlFiado;
-using WSDetalleVenta = SoftBodBusiness.SoftWSDetalleVenta;
-using WSDevolucion = SoftBodBusiness.SoftWSDevolucion;
-using WSRazonDevolucion = SoftBodBusiness.SoftWSRazonDevolucion;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {
@@ -20,15 +16,15 @@ namespace SoftBodWA
         private DevolucionBO devolucionBO;
         private RazonDevolucionBO razonDevolucionBO;
 
-        private List<WSVenta.ventaDTO> ListaVentasHoy
+        private List<ventaDTO> ListaVentasHoy
         {
-            get { return Session["VentasHoy"] as List<WSVenta.ventaDTO> ?? new List<WSVenta.ventaDTO>(); }
+            get { return Session["VentasHoy"] as List<ventaDTO> ?? new List<ventaDTO>(); }
             set { Session["VentasHoy"] = value; }
         }
 
-        private List<WSVentaAlFiado.ventaAlFiadoDTO> ListaVentasFiadas
+        private List<ventaAlFiadoDTO> ListaVentasFiadas
         {
-            get { return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
+            get { return Session["VentasFiadas"] as List<ventaAlFiadoDTO> ?? new List<ventaAlFiadoDTO>(); }
             set { Session["VentasFiadas"] = value; }
         }
 
@@ -44,9 +40,9 @@ namespace SoftBodWA
             set { ViewState["TipoVentaSeleccionada"] = value; }
         }
 
-        private List<WSDetalleVenta.detalleVentaDTO> DetallesVentaSeleccionada
+        private List<detalleVentaDTO> DetallesVentaSeleccionada
         {
-            get { return ViewState["DetallesVentaSeleccionada"] as List<WSDetalleVenta.detalleVentaDTO> ?? new List<WSDetalleVenta.detalleVentaDTO>(); }
+            get { return ViewState["DetallesVentaSeleccionada"] as List<detalleVentaDTO> ?? new List<detalleVentaDTO>(); }
             set { ViewState["DetallesVentaSeleccionada"] = value; }
         }
 
@@ -106,7 +102,7 @@ namespace SoftBodWA
                             tipoVenta = "VentaFiada";
                         }
 
-                        bool esTransferencia = !esFiado && venta.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA;
+                        bool esTransferencia = !esFiado && venta.metodoPago == tipoDePago.TRANSFERENCIA;
 
                         ventasFormateadas.Add(new MovimientosInicio
                         {
@@ -197,7 +193,7 @@ namespace SoftBodWA
             }
         }
 
-        private void MostrarPanelDevolucion(WSVenta.ventaDTO venta)
+        private void MostrarPanelDevolucion(ventaDTO venta)
         {
             pnlSeleccionVenta.Visible = false;
             pnlDetalleDevolucion.Visible = true;
@@ -333,14 +329,14 @@ namespace SoftBodWA
                     return;
                 }
 
-                var usuario = new WSDevolucion.usuarioDTO();
+                var usuario = new usuarioDTO();
                 usuario.usuarioId = (int)Session["UsuarioId"];
                 usuario.usuarioIdSpecified = true;
 
                 int razonId = int.Parse(ddlRazonDevolucion.SelectedValue);
                 var razon = razonDevolucionBO.obtenerRazonDevolucionPorId(razonId);
 
-                List<WSDevolucion.detalleDevolucionDTO> detalles = new List<WSDevolucion.detalleDevolucionDTO>();
+                List<detalleDevolucionDTO> detalles = new List<detalleDevolucionDTO>();
                 bool tieneProductosADevolver = false;
 
                 foreach (RepeaterItem item in rptDetalleVenta.Items)
@@ -369,9 +365,9 @@ namespace SoftBodWA
                                     return;
                                 }
 
-                                WSDevolucion.detalleDevolucionDTO detalle = new WSDevolucion.detalleDevolucionDTO
+                                detalleDevolucionDTO detalle = new detalleDevolucionDTO
                                 {
-                                    producto = new WSDevolucion.productoDTO
+                                    producto = new productoDTO
                                     {
                                         productoId = detalleVenta.producto.productoId,
                                         productoIdSpecified = true,
@@ -380,7 +376,7 @@ namespace SoftBodWA
                                     cantidadSpecified = true,
                                     subtotal = cantidadDevolver * precio,
                                     subtotalSpecified = true,
-                                    razonDevolucion = new WSDevolucion.razonDevolucionDTO
+                                    razonDevolucion = new razonDevolucionDTO
                                     {
                                         razonDevolucionId = razon.razonDevolucionId,
                                         razonDevolucionIdSpecified = true,

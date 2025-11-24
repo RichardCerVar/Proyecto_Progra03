@@ -46,62 +46,7 @@
   <ItemGroup>
     <Compile Include="CategoriaBO.cs" />
     <Compile Include="ClienteAlFiadoBO.cs" />
-    <Compile Include="Connected Services\SoftWSCategoria\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSClienteAlFiado\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSDetalleDevolucion\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSDetalleVenta\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSDevolucion\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSHistorialOperaciones\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSProducto\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSRazonDevolucion\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSRegistroPagoFiado\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSUsuario\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSVentaAlFiado\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\SoftWSVenta\Reference.cs">
+    <Compile Include="Connected Services\SoftBodWSServices\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -124,494 +69,354 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Connected Services\SoftWSCategoria\Categoria.wsdl" />
-    <None Include="Connected Services\SoftWSCategoria\Categoria.xsd">
+    <None Include="Connected Services\SoftBodWSServices\Categoria.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\Categoria.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.categoriaContieneProductosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.categoriaDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.eliminarCategoriaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.insertarCategoriaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.listarTodasCategoriasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.nombreCategoriaYaExisteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.obtenerCategoriaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSCategoria\SoftBodBusiness.SoftWSCategoria.puedeEliminarCategoriaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\ClienteAlFiado.wsdl" />
-    <None Include="Connected Services\SoftWSClienteAlFiado\ClienteAlFiado.xsd">
+    <None Include="Connected Services\SoftBodWSServices\ClienteAlFiado.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\ClienteAlFiado.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.bloquearClienteAlFiadoPorMorosidadResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.clienteAlFiadoDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.desbloquearClienteAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.eliminarClienteAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.insertarClienteAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoLikeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.listarTodosClientesAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.modificarClienteAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.obtenerClienteAlFiadoPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSClienteAlFiado\SoftBodBusiness.SoftWSClienteAlFiado.reporteClienteAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\DetalleDevolucion.wsdl" />
-    <None Include="Connected Services\SoftWSDetalleDevolucion\DetalleDevolucion.xsd">
+    <None Include="Connected Services\SoftBodWSServices\DetalleDevolucion.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\DetalleDevolucion.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.detalleDevolucionDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.insertarDetalleDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.listarDetallesDevolucionPorDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.listarDetallesDevolucionPorProductoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.listarDetallesDevolucionPorRazonResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.listarTodosDetallesDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\SoftBodBusiness.SoftWSDetalleDevolucion.obtenerDetalleDevolucionPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\DetalleVenta.wsdl" />
-    <None Include="Connected Services\SoftWSDetalleVenta\DetalleVenta.xsd">
+    <None Include="Connected Services\SoftBodWSServices\DetalleVenta.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\DetalleVenta.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.insertarDetalleVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.listarDetallesVentaPorProductoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.listarDetallesVentaPorVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.listarTodosDetallesVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDetalleVenta\SoftBodBusiness.SoftWSDetalleVenta.obtenerDetalleVentaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\Devolucion.wsdl" />
-    <None Include="Connected Services\SoftWSDevolucion\Devolucion.xsd">
+    <None Include="Connected Services\SoftBodWSServices\Devolucion.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\Devolucion.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.devolucionDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.insertarDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.listarDevolucionesPorUsuarioYFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.listarTodasDevolucionesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSDevolucion\SoftBodBusiness.SoftWSDevolucion.obtenerDevolucionPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.wsdl" />
-    <None Include="Connected Services\SoftWSHistorialOperaciones\HistorialOperaciones.xsd">
+    <None Include="Connected Services\SoftBodWSServices\HistorialOperaciones.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\HistorialOperaciones.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.historialOperacionesDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.insertarHistorialOperacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesConFiltrosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTablaYTipoOperacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorTipoOperacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorUsuarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarHistorialOperacionesPorUsuarioYTablaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.listarTodosHistorialOperacionesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.obtenerHistorialOperacionPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.registrarHistorialDeOperacionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\SoftBodBusiness.SoftWSHistorialOperaciones.reporteHistorialDeOperacionesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\Producto.wsdl" />
-    <None Include="Connected Services\SoftWSProducto\Producto.xsd">
+    <None Include="Connected Services\SoftBodWSServices\Producto.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\Producto.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.eliminarProductoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.insertarProductoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.listarTodosConFiltroProductosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.listarTodosProductosResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.modificarProductoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.obtenerProductoPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.productoDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSProducto\SoftBodBusiness.SoftWSProducto.reporteDeInventarioResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\RazonDevolucion.wsdl" />
-    <None Include="Connected Services\SoftWSRazonDevolucion\RazonDevolucion.xsd">
+    <None Include="Connected Services\SoftBodWSServices\RazonDevolucion.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\RazonDevolucion.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.eliminarRazonDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.insertarRazonDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.listarRazonesDevolucionPorNombreParcialResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.listarTodasRazonesDevolucionResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.obtenerRazonDevolucionPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRazonDevolucion\SoftBodBusiness.SoftWSRazonDevolucion.razonDevolucionDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\RegistroPagoFiado.wsdl" />
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\RegistroPagoFiado.xsd">
+    <None Include="Connected Services\SoftBodWSServices\RegistroPagoFiado.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\RegistroPagoFiado.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.insertarRegistroPagoFiadoResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.bloquearClienteAlFiadoPorMorosidadResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.categoriaContieneProductosResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.listarRegistrosPagoFiadoPorAliasClienteResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.categoriaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.listarTodosRegistrosPagoFiadoResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.clienteAlFiadoDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.registrarPagoFiadoResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.desbloquearClienteAlFiadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\SoftBodBusiness.SoftWSRegistroPagoFiado.registroPagoFiadoDTO.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.detalleDevolucionDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.eliminarLogicoUsuarioResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.detalleVentaDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.eliminarUsuarioResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.devolucionDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.insertarUsuarioResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarCategoriaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.listarTodosUsuariosResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarClienteAlFiadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.listarUsuariosActivosResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarLogicoUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.listarUsuariosInactivosResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarProductoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.listarUsuariosPorNombreParcialResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarRazonDevolucionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.modificarUsuarioResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.eliminarUsuarioResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.obtenerCuentaUsuarioResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.historialOperacionesDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorCorreoResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarCategoriaResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.obtenerUsuarioPorIdResponse.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarClienteAlFiadoResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\SoftBodBusiness.SoftWSUsuario.usuarioDTO.datasource">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarDetalleDevolucionResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\SoftWSUsuario\Usuario.wsdl" />
-    <None Include="Connected Services\SoftWSUsuario\Usuario.xsd">
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarDetalleVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarDevolucionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarHistorialOperacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarRazonDevolucionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarRegistroPagoFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarVentaAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.insertarVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDetallesDevolucionPorDevolucionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDetallesDevolucionPorProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDetallesDevolucionPorRazonResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDetallesVentaPorProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDetallesVentaPorVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDevolucionesPorFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDevolucionesPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarDevolucionesPorUsuarioYFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesConFiltrosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorTablaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorTablaYTipoOperacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorTipoOperacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarHistorialOperacionesPorUsuarioYTablaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarRazonesDevolucionPorNombreParcialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarRegistrosPagoFiadoPorAliasClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodasCategoriasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodasDevolucionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodasRazonesDevolucionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodasVentasAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosClientesAlFiadoLikeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosClientesAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosConFiltroProductosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosDetallesDevolucionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosDetallesVentaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosHistorialOperacionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosProductosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosRegistrosPagoFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosUsuariosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarTodosVentasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarUsuariosActivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarUsuariosInactivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarUsuariosPorNombreParcialResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarVentasAlFiadoPorAliasClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarVentasAlFiadoPorAliasClienteYFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.listarVentasPorFechaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.modificarClienteAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.modificarProductoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.modificarUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.nombreCategoriaYaExisteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerCategoriaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerClienteAlFiadoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerCuentaUsuarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerDetalleDevolucionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerDetalleVentaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerDevolucionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerHistorialOperacionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerProductoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerRazonDevolucionPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerUsuarioPorCorreoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerUsuarioPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerVentaAlFiadoPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.obtenerVentaPorIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.productoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.puedeEliminarCategoriaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.razonDevolucionDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.registrarHistorialDeOperacionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.registrarPagoFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.registroPagoFiadoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.reporteClienteAlFiadoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.reporteDeInventarioResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.reporteDevolucionesYVentasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.reporteHistorialDeOperacionesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.usuarioDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.ventaAlFiadoDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\SoftBodBusiness.SoftBodWSServices.ventaDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SoftBodWSServices\Usuario.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\Usuario.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.insertarVentaAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.listarTodasVentasAlFiadoResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.listarVentasAlFiadoPorAliasClienteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.listarVentasAlFiadoPorAliasClienteYFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.obtenerVentaAlFiadoPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\SoftBodBusiness.SoftWSVentaAlFiado.ventaAlFiadoDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVentaAlFiado\VentaAlFiado.wsdl" />
-    <None Include="Connected Services\SoftWSVentaAlFiado\VentaAlFiado.xsd">
+    <None Include="Connected Services\SoftBodWSServices\Venta.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\Venta.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.insertarVentaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.listarTodosVentasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.listarVentasPorFechaResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.obtenerVentaPorIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.reporteDevolucionesYVentasResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\SoftBodBusiness.SoftWSVenta.ventaDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\SoftWSVenta\Venta.wsdl" />
-    <None Include="Connected Services\SoftWSVenta\Venta.xsd">
+    <None Include="Connected Services\SoftBodWSServices\VentaAlFiado.wsdl" />
+    <None Include="Connected Services\SoftBodWSServices\VentaAlFiado.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\SoftWSCategoria\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSClienteAlFiado\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSDetalleDevolucion\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSDetalleVenta\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSDevolucion\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSHistorialOperaciones\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSProducto\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSRazonDevolucion\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSRegistroPagoFiado\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSUsuario\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSVentaAlFiado\" />
-    <WCFMetadataStorage Include="Connected Services\SoftWSVenta\" />
+    <WCFMetadataStorage Include="Connected Services\SoftBodWSServices\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSVenta\configuration91.svcinfo" />
+    <None Include="Connected Services\SoftBodWSServices\servicios.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSVenta\configuration.svcinfo" />
+    <None Include="Connected Services\SoftBodWSServices\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSVenta\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <None Include="Connected Services\SoftBodWSServices\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSProducto\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSUsuario\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSCategoria\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSCategoria\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSCategoria\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSClienteAlFiado\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSClienteAlFiado\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSClienteAlFiado\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleDevolucion\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDetalleVenta\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSDevolucion\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSHistorialOperaciones\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRazonDevolucion\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSRegistroPagoFiado\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Connected Services\SoftWSVentaAlFiado\Reference.svcmap">
+    <None Include="Connected Services\SoftBodWSServices\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

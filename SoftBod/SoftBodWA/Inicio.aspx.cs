@@ -4,14 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SoftBodBusiness;
-using WSVenta = SoftBodBusiness.SoftWSVenta;
-using WSVentaAlFiado = SoftBodBusiness.SoftWSVentaAlFiado;
-using WSDevolucion = SoftBodBusiness.SoftWSDevolucion;
-using WSRegistroPagoFiado = SoftBodBusiness.SoftWSRegistroPagoFiado;
-using WSDetalleVenta = SoftBodBusiness.SoftWSDetalleVenta;
-using WSDetalleDevolucion = SoftBodBusiness.SoftWSDetalleDevolucion;
-using WSProducto = SoftBodBusiness.SoftWSProducto;
-using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {
@@ -26,33 +19,33 @@ namespace SoftBodWA
         private ClienteAlFiadoBO clienteAlFiadoBO;
         private string FechaActual = DateTime.Now.ToString("yyyy-MM-dd");
 
-        private List<WSVenta.ventaDTO> ListaVentasHoy
+        private List<ventaDTO> ListaVentasHoy
         {
-            get { return Session["VentasHoy"] as List<WSVenta.ventaDTO> ?? new List<WSVenta.ventaDTO>(); }
+            get { return Session["VentasHoy"] as List<ventaDTO> ?? new List<ventaDTO>(); }
             set { Session["VentasHoy"] = value; }
         }
 
-        private List<WSVentaAlFiado.ventaAlFiadoDTO> ListaVentasFiadas
+        private List<ventaAlFiadoDTO> ListaVentasFiadas
         {
-            get { return Session["VentasFiadas"] as List<WSVentaAlFiado.ventaAlFiadoDTO> ?? new List<WSVentaAlFiado.ventaAlFiadoDTO>(); }
+            get { return Session["VentasFiadas"] as List<ventaAlFiadoDTO> ?? new List<ventaAlFiadoDTO>(); }
             set { Session["VentasFiadas"] = value; }
         }
 
-        private List<WSDevolucion.devolucionDTO> ListaDevoluciones
+        private List<devolucionDTO> ListaDevoluciones
         {
-            get { return Session["Devoluciones"] as List<WSDevolucion.devolucionDTO> ?? new List<WSDevolucion.devolucionDTO>(); }
+            get { return Session["Devoluciones"] as List<devolucionDTO> ?? new List<devolucionDTO>(); }
             set { Session["Devoluciones"] = value; }
         }
 
-        private List<WSRegistroPagoFiado.registroPagoFiadoDTO> ListaPagos
+        private List<registroPagoFiadoDTO> ListaPagos
         {
-            get { return Session["Pagos"] as List<WSRegistroPagoFiado.registroPagoFiadoDTO> ?? new List<WSRegistroPagoFiado.registroPagoFiadoDTO>(); }
+            get { return Session["Pagos"] as List<registroPagoFiadoDTO> ?? new List<registroPagoFiadoDTO>(); }
             set { Session["Pagos"] = value; }
         }
 
-        private List<WSClienteAlFiado.clienteAlFiadoDTO> ListaClientes
+        private List<clienteAlFiadoDTO> ListaClientes
         {
-            get { return Session["ClientesList"] as List<WSClienteAlFiado.clienteAlFiadoDTO> ?? new List<WSClienteAlFiado.clienteAlFiadoDTO>(); }
+            get { return Session["ClientesList"] as List<clienteAlFiadoDTO> ?? new List<clienteAlFiadoDTO>(); }
             set { Session["ClientesList"] = value; }
         }
 
@@ -118,7 +111,7 @@ namespace SoftBodWA
                     tipoMovimiento = "VentaFiada";
                 }
 
-                bool esTransferencia = !esFiado && venta.metodoPago == WSVenta.tipoDePago.TRANSFERENCIA;
+                bool esTransferencia = !esFiado && venta.metodoPago == tipoDePago.TRANSFERENCIA;
 
                 movimientos.Add(new MovimientosInicio
                 {

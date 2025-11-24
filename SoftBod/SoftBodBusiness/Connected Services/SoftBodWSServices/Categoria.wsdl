@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Categoria" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://44.206.187.222:8080/SoftBodWS/Categoria?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
+    </xsd:schema>
+  </types>
+  <message name="categoriaContieneProductos">
+    <part name="parameters" element="tns:categoriaContieneProductos" />
+  </message>
+  <message name="categoriaContieneProductosResponse">
+    <part name="parameters" element="tns:categoriaContieneProductosResponse" />
+  </message>
+  <message name="puedeEliminarCategoria">
+    <part name="parameters" element="tns:puedeEliminarCategoria" />
+  </message>
+  <message name="puedeEliminarCategoriaResponse">
+    <part name="parameters" element="tns:puedeEliminarCategoriaResponse" />
+  </message>
+  <message name="nombreCategoriaYaExiste">
+    <part name="parameters" element="tns:nombreCategoriaYaExiste" />
+  </message>
+  <message name="nombreCategoriaYaExisteResponse">
+    <part name="parameters" element="tns:nombreCategoriaYaExisteResponse" />
+  </message>
+  <message name="obtenerCategoriaPorId">
+    <part name="parameters" element="tns:obtenerCategoriaPorId" />
+  </message>
+  <message name="obtenerCategoriaPorIdResponse">
+    <part name="parameters" element="tns:obtenerCategoriaPorIdResponse" />
+  </message>
+  <message name="listarTodasCategorias">
+    <part name="parameters" element="tns:listarTodasCategorias" />
+  </message>
+  <message name="listarTodasCategoriasResponse">
+    <part name="parameters" element="tns:listarTodasCategoriasResponse" />
+  </message>
+  <message name="insertarCategoria">
+    <part name="parameters" element="tns:insertarCategoria" />
+  </message>
+  <message name="insertarCategoriaResponse">
+    <part name="parameters" element="tns:insertarCategoriaResponse" />
+  </message>
+  <message name="eliminarCategoria">
+    <part name="parameters" element="tns:eliminarCategoria" />
+  </message>
+  <message name="eliminarCategoriaResponse">
+    <part name="parameters" element="tns:eliminarCategoriaResponse" />
+  </message>
+  <portType name="Categoria">
+    <operation name="categoriaContieneProductos">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/categoriaContieneProductosRequest" message="tns:categoriaContieneProductos" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/categoriaContieneProductosResponse" message="tns:categoriaContieneProductosResponse" />
+    </operation>
+    <operation name="puedeEliminarCategoria">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaRequest" message="tns:puedeEliminarCategoria" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/puedeEliminarCategoriaResponse" message="tns:puedeEliminarCategoriaResponse" />
+    </operation>
+    <operation name="nombreCategoriaYaExiste">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteRequest" message="tns:nombreCategoriaYaExiste" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/nombreCategoriaYaExisteResponse" message="tns:nombreCategoriaYaExisteResponse" />
+    </operation>
+    <operation name="obtenerCategoriaPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/obtenerCategoriaPorIdRequest" message="tns:obtenerCategoriaPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/obtenerCategoriaPorIdResponse" message="tns:obtenerCategoriaPorIdResponse" />
+    </operation>
+    <operation name="listarTodasCategorias">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/listarTodasCategoriasRequest" message="tns:listarTodasCategorias" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/listarTodasCategoriasResponse" message="tns:listarTodasCategoriasResponse" />
+    </operation>
+    <operation name="insertarCategoria">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/insertarCategoriaRequest" message="tns:insertarCategoria" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/insertarCategoriaResponse" message="tns:insertarCategoriaResponse" />
+    </operation>
+    <operation name="eliminarCategoria">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/eliminarCategoriaRequest" message="tns:eliminarCategoria" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Categoria/eliminarCategoriaResponse" message="tns:eliminarCategoriaResponse" />
+    </operation>
+  </portType>
+  <binding name="CategoriaPortBinding" type="tns:Categoria">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="categoriaContieneProductos">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="puedeEliminarCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="nombreCategoriaYaExiste">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerCategoriaPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodasCategorias">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="eliminarCategoria">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Categoria">
+    <port name="CategoriaPort" binding="tns:CategoriaPortBinding">
+      <soap:address location="http://44.206.187.222:8080/SoftBodWS/Categoria" />
+    </port>
+  </service>
+</definitions>

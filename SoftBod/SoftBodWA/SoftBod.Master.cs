@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Web.UI;
-using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="insertarDevolucion" type="tns:insertarDevolucion" />
+  <xs:element name="insertarDevolucionResponse" type="tns:insertarDevolucionResponse" />
+  <xs:element name="listarDevolucionesPorFecha" type="tns:listarDevolucionesPorFecha" />
+  <xs:element name="listarDevolucionesPorFechaResponse" type="tns:listarDevolucionesPorFechaResponse" />
+  <xs:element name="listarDevolucionesPorUsuario" type="tns:listarDevolucionesPorUsuario" />
+  <xs:element name="listarDevolucionesPorUsuarioResponse" type="tns:listarDevolucionesPorUsuarioResponse" />
+  <xs:element name="listarDevolucionesPorUsuarioYFecha" type="tns:listarDevolucionesPorUsuarioYFecha" />
+  <xs:element name="listarDevolucionesPorUsuarioYFechaResponse" type="tns:listarDevolucionesPorUsuarioYFechaResponse" />
+  <xs:element name="listarTodasDevoluciones" type="tns:listarTodasDevoluciones" />
+  <xs:element name="listarTodasDevolucionesResponse" type="tns:listarTodasDevolucionesResponse" />
+  <xs:element name="obtenerDevolucionPorId" type="tns:obtenerDevolucionPorId" />
+  <xs:element name="obtenerDevolucionPorIdResponse" type="tns:obtenerDevolucionPorIdResponse" />
+  <xs:complexType name="listarDevolucionesPorUsuarioYFecha">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorUsuarioYFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="devolucionDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="devolucionId" type="xs:int" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+      <xs:element minOccurs="0" name="total" type="xs:double" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodasDevoluciones">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodasDevolucionesResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorFecha">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorUsuario">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarDevolucionesPorUsuarioResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDevolucionPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="devolucionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDevolucionPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:devolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarDevolucion">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="detallesDev" type="tns:detalleDevolucionDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="detalleDevolucionDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="devolucion" type="tns:devolucionDTO" />
+      <xs:element minOccurs="0" name="producto" type="tns:productoDTO" />
+      <xs:element minOccurs="0" name="razonDevolucion" type="tns:razonDevolucionDTO" />
+      <xs:element minOccurs="0" name="subtotal" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="productoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="categoria" type="tns:categoriaDTO" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="precioUnitario" type="xs:double" />
+      <xs:element minOccurs="0" name="productoId" type="xs:int" />
+      <xs:element minOccurs="0" name="stock" type="xs:int" />
+      <xs:element minOccurs="0" name="stockMinimo" type="xs:int" />
+      <xs:element minOccurs="0" name="unidadMedida" type="tns:unidadMedida" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="categoriaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoriaId" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="razonDevolucionDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+      <xs:element minOccurs="0" name="razonDevolucionId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarDevolucionResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPERARIO" />
+      <xs:enumeration value="ADMINISTRADOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="unidadMedida">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="KILOGRAMO" />
+      <xs:enumeration value="LITRO" />
+      <xs:enumeration value="UNIDAD" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

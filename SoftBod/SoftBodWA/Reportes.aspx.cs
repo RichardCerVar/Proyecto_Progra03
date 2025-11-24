@@ -1,7 +1,7 @@
 ﻿using SoftBodBusiness;
 using System;
 using System.Collections.Generic;
-using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
+using SoftBodBusiness.SoftBodWSServices;
 
 
 namespace SoftBodWA
@@ -10,15 +10,11 @@ namespace SoftBodWA
     {
 
         private VentaBO ventaBO = new VentaBO();
-        private DevolucionBO devolucionBO = new DevolucionBO();
-        private VentaAlFiadoBO ventaAlFiadoBO = new VentaAlFiadoBO();
-        private DetalleVentaBO detalleVentaBO = new DetalleVentaBO();
-        private DetalleDevolucionBO detalleDevolucionBO = new DetalleDevolucionBO();
         private ProductoBO productoBO = new ProductoBO();
         private ClienteAlFiadoBO clienteBO = new ClienteAlFiadoBO();
         private HistorialOperacionesBO historialOperacionesBO = new HistorialOperacionesBO();
 
-        private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+        private List<clienteAlFiadoDTO> clientes;
 
         protected void Page_Load(object sender, EventArgs e)
         {

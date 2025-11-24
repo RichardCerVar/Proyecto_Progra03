@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="insertarVentaAlFiado" type="tns:insertarVentaAlFiado" />
+  <xs:element name="insertarVentaAlFiadoResponse" type="tns:insertarVentaAlFiadoResponse" />
+  <xs:element name="listarTodasVentasAlFiado" type="tns:listarTodasVentasAlFiado" />
+  <xs:element name="listarTodasVentasAlFiadoResponse" type="tns:listarTodasVentasAlFiadoResponse" />
+  <xs:element name="listarVentasAlFiadoPorAliasCliente" type="tns:listarVentasAlFiadoPorAliasCliente" />
+  <xs:element name="listarVentasAlFiadoPorAliasClienteResponse" type="tns:listarVentasAlFiadoPorAliasClienteResponse" />
+  <xs:element name="listarVentasAlFiadoPorAliasClienteYFecha" type="tns:listarVentasAlFiadoPorAliasClienteYFecha" />
+  <xs:element name="listarVentasAlFiadoPorAliasClienteYFechaResponse" type="tns:listarVentasAlFiadoPorAliasClienteYFechaResponse" />
+  <xs:element name="obtenerVentaAlFiadoPorId" type="tns:obtenerVentaAlFiadoPorId" />
+  <xs:element name="obtenerVentaAlFiadoPorIdResponse" type="tns:obtenerVentaAlFiadoPorIdResponse" />
+  <xs:complexType name="obtenerVentaAlFiadoPorId">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ventaFiadaId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerVentaAlFiadoPorIdResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:ventaAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ventaAlFiadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
+      <xs:element minOccurs="0" name="venta" type="tns:ventaDTO" />
+      <xs:element minOccurs="0" name="ventaFiadaId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="clienteAlFiadoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="alias" type="xs:string" />
+      <xs:element minOccurs="0" name="clienteId" type="xs:int" />
+      <xs:element minOccurs="0" name="fechaDePago" type="xs:string" />
+      <xs:element minOccurs="0" name="montoDeuda" type="xs:double" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ventaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+      <xs:element minOccurs="0" name="metodoPago" type="tns:tipoDePago" />
+      <xs:element minOccurs="0" name="total" type="xs:double" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" name="ventaId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="usuarioDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="contrasenha" type="xs:string" />
+      <xs:element minOccurs="0" name="correo" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="telefono" type="xs:string" />
+      <xs:element minOccurs="0" name="tipoUsuarios" type="tns:tipoUsuario" />
+      <xs:element minOccurs="0" name="usuario" type="xs:string" />
+      <xs:element minOccurs="0" name="usuarioId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarVentaAlFiado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cliente" type="tns:clienteAlFiadoDTO" />
+      <xs:element minOccurs="0" name="usuario" type="tns:usuarioDTO" />
+      <xs:element minOccurs="0" name="metodoPago" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="detallesVenta" type="tns:detalleVentaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="detalleVentaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+      <xs:element minOccurs="0" name="producto" type="tns:productoDTO" />
+      <xs:element minOccurs="0" name="subtotal" type="xs:double" />
+      <xs:element minOccurs="0" name="venta" type="tns:ventaDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="productoDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="categoria" type="tns:categoriaDTO" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+      <xs:element minOccurs="0" name="precioUnitario" type="xs:double" />
+      <xs:element minOccurs="0" name="productoId" type="xs:int" />
+      <xs:element minOccurs="0" name="stock" type="xs:int" />
+      <xs:element minOccurs="0" name="stockMinimo" type="xs:int" />
+      <xs:element minOccurs="0" name="unidadMedida" type="tns:unidadMedida" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="categoriaDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="categoriaId" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="insertarVentaAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentasAlFiadoPorAliasCliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="aliasCliente" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentasAlFiadoPorAliasClienteResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ventaAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentasAlFiadoPorAliasClienteYFecha">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="aliasCliente" type="xs:string" />
+      <xs:element minOccurs="0" name="fecha" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarVentasAlFiadoPorAliasClienteYFechaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ventaAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="listarTodasVentasAlFiado">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="listarTodasVentasAlFiadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="return" type="tns:ventaAlFiadoDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:simpleType name="tipoDePago">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EFECTIVO" />
+      <xs:enumeration value="TRANSFERENCIA" />
+      <xs:enumeration value="FIADO" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="tipoUsuario">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="OPERARIO" />
+      <xs:enumeration value="ADMINISTRADOR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="unidadMedida">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="KILOGRAMO" />
+      <xs:enumeration value="LITRO" />
+      <xs:enumeration value="UNIDAD" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

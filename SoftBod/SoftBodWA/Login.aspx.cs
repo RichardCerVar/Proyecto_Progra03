@@ -1,6 +1,6 @@
 ﻿using System;
 using SoftBodBusiness;
-using WSUsuario = SoftBodBusiness.SoftWSUsuario;
+using SoftBodBusiness.SoftBodWSServices;
 
 
 namespace SoftBodWA
@@ -29,7 +29,7 @@ namespace SoftBodWA
                 return;
             }
 
-            WSUsuario.usuarioDTO usuario = usuarioBO.obtenerCuentaUsuario(email, password);
+            usuarioDTO usuario = usuarioBO.obtenerCuentaUsuario(email, password);
             if (usuario != null)
             {
                 Session["UsuarioId"] = usuario.usuarioId;

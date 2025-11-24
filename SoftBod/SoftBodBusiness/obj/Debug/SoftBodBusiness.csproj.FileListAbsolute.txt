@@ -33,3 +33,10 @@ C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBo
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
 C:\Users\Richard\Desktop\Github-SoftBod\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb
+C:\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll.config
+C:\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.dll
+C:\SoftBod\SoftBodBusiness\bin\Debug\SoftBodBusiness.pdb
+C:\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.AssemblyReference.cache
+C:\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.csproj.CoreCompileInputs.cache
+C:\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.dll
+C:\SoftBod\SoftBodBusiness\obj\Debug\SoftBodBusiness.pdb

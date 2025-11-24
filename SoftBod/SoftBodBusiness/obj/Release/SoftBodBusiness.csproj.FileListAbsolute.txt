@@ -1,0 +1,7 @@
+C:\SoftBod\SoftBodBusiness\bin\Release\SoftBodBusiness.dll.config
+C:\SoftBod\SoftBodBusiness\bin\Release\SoftBodBusiness.dll
+C:\SoftBod\SoftBodBusiness\bin\Release\SoftBodBusiness.pdb
+C:\SoftBod\SoftBodBusiness\obj\Release\SoftBodBusiness.csproj.AssemblyReference.cache
+C:\SoftBod\SoftBodBusiness\obj\Release\SoftBodBusiness.csproj.CoreCompileInputs.cache
+C:\SoftBod\SoftBodBusiness\obj\Release\SoftBodBusiness.dll
+C:\SoftBod\SoftBodBusiness\obj\Release\SoftBodBusiness.pdb

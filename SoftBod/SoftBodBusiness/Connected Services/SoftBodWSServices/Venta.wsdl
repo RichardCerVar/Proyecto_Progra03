@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="Venta" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://44.206.187.222:8080/SoftBodWS/Venta?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
+    </xsd:schema>
+  </types>
+  <message name="reporteDevolucionesYVentas">
+    <part name="parameters" element="tns:reporteDevolucionesYVentas" />
+  </message>
+  <message name="reporteDevolucionesYVentasResponse">
+    <part name="parameters" element="tns:reporteDevolucionesYVentasResponse" />
+  </message>
+  <message name="listarVentasPorFecha">
+    <part name="parameters" element="tns:listarVentasPorFecha" />
+  </message>
+  <message name="listarVentasPorFechaResponse">
+    <part name="parameters" element="tns:listarVentasPorFechaResponse" />
+  </message>
+  <message name="listarTodosVentas">
+    <part name="parameters" element="tns:listarTodosVentas" />
+  </message>
+  <message name="listarTodosVentasResponse">
+    <part name="parameters" element="tns:listarTodosVentasResponse" />
+  </message>
+  <message name="insertarVenta">
+    <part name="parameters" element="tns:insertarVenta" />
+  </message>
+  <message name="insertarVentaResponse">
+    <part name="parameters" element="tns:insertarVentaResponse" />
+  </message>
+  <message name="obtenerVentaPorId">
+    <part name="parameters" element="tns:obtenerVentaPorId" />
+  </message>
+  <message name="obtenerVentaPorIdResponse">
+    <part name="parameters" element="tns:obtenerVentaPorIdResponse" />
+  </message>
+  <portType name="Venta">
+    <operation name="reporteDevolucionesYVentas">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasRequest" message="tns:reporteDevolucionesYVentas" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/reporteDevolucionesYVentasResponse" message="tns:reporteDevolucionesYVentasResponse" />
+    </operation>
+    <operation name="listarVentasPorFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaRequest" message="tns:listarVentasPorFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarVentasPorFechaResponse" message="tns:listarVentasPorFechaResponse" />
+    </operation>
+    <operation name="listarTodosVentas">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasRequest" message="tns:listarTodosVentas" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/listarTodosVentasResponse" message="tns:listarTodosVentasResponse" />
+    </operation>
+    <operation name="insertarVenta">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaRequest" message="tns:insertarVenta" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/insertarVentaResponse" message="tns:insertarVentaResponse" />
+    </operation>
+    <operation name="obtenerVentaPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdRequest" message="tns:obtenerVentaPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/Venta/obtenerVentaPorIdResponse" message="tns:obtenerVentaPorIdResponse" />
+    </operation>
+  </portType>
+  <binding name="VentaPortBinding" type="tns:Venta">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="reporteDevolucionesYVentas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarVentasPorFecha">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosVentas">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarVenta">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerVentaPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="Venta">
+    <port name="VentaPort" binding="tns:VentaPortBinding">
+      <soap:address location="http://44.206.187.222:8080/SoftBodWS/Venta" />
+    </port>
+  </service>
+</definitions>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="251f8f2a-f4a7-43d0-8de9-1142d001b35e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://44.206.187.222:8080/SoftBodWS/servicios.disco" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="HistorialOperaciones.wsdl" MetadataType="Wsdl" ID="079a9e29-1a8e-47a0-b337-bf0d32fa7720" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/HistorialOperaciones?WSDL" />
+    <MetadataFile FileName="Venta.wsdl" MetadataType="Wsdl" ID="8955d011-f3f2-43f4-accd-80b55290a804" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Venta?WSDL" />
+    <MetadataFile FileName="VentaAlFiado.xsd" MetadataType="Schema" ID="3891b3dd-290e-42bf-be1b-a8ff624bb6ca" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/VentaAlFiado?xsd=1" />
+    <MetadataFile FileName="Categoria.wsdl" MetadataType="Wsdl" ID="72d897f1-f023-44f6-94bd-a2fd59afa4c4" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Categoria?WSDL" />
+    <MetadataFile FileName="RegistroPagoFiado.xsd" MetadataType="Schema" ID="b5a86cea-9cb5-4f5f-8534-caf6ec8d840e" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/RegistroPagoFiado?xsd=1" />
+    <MetadataFile FileName="Devolucion.wsdl" MetadataType="Wsdl" ID="79359898-d22b-442c-a552-ed6d3b6cc7ba" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Devolucion?WSDL" />
+    <MetadataFile FileName="RazonDevolucion.xsd" MetadataType="Schema" ID="3cb83670-1600-4335-8d5f-dc16af0e9dbe" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/RazonDevolucion?xsd=1" />
+    <MetadataFile FileName="Usuario.wsdl" MetadataType="Wsdl" ID="2529fb93-b243-4c24-bfe5-abbbdf629682" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Usuario?WSDL" />
+    <MetadataFile FileName="DetalleDevolucion.wsdl" MetadataType="Wsdl" ID="7beff470-b6c5-468a-a656-f89434d3c2e5" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/DetalleDevolucion?WSDL" />
+    <MetadataFile FileName="Usuario.xsd" MetadataType="Schema" ID="c281c080-9aaa-4af0-8453-363e44e7c00c" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Usuario?xsd=1" />
+    <MetadataFile FileName="Categoria.xsd" MetadataType="Schema" ID="ba47b693-ea37-4a1f-9a1c-a574709d7853" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Categoria?xsd=1" />
+    <MetadataFile FileName="HistorialOperaciones.xsd" MetadataType="Schema" ID="c70b7bda-3c94-4707-888e-e699e451023c" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/HistorialOperaciones?xsd=1" />
+    <MetadataFile FileName="RegistroPagoFiado.wsdl" MetadataType="Wsdl" ID="1f7a0552-d79e-4022-a627-9ed2d219d562" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/RegistroPagoFiado?WSDL" />
+    <MetadataFile FileName="VentaAlFiado.wsdl" MetadataType="Wsdl" ID="f4cc35f4-bd48-4c9c-9e87-74b8d500d410" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/VentaAlFiado?WSDL" />
+    <MetadataFile FileName="ClienteAlFiado.xsd" MetadataType="Schema" ID="86f19833-b3fa-4a5b-bee7-5d6c779039e1" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/ClienteAlFiado?xsd=1" />
+    <MetadataFile FileName="DetalleVenta.xsd" MetadataType="Schema" ID="0e8e140c-f48b-419a-b66a-e425fdafc6d3" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/DetalleVenta?xsd=1" />
+    <MetadataFile FileName="Producto.xsd" MetadataType="Schema" ID="693856bc-d053-4f0c-b9e8-4c172b53f7b8" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Producto?xsd=1" />
+    <MetadataFile FileName="Devolucion.xsd" MetadataType="Schema" ID="e2cf07cb-eb14-49de-b018-16b3ad064b7b" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Devolucion?xsd=1" />
+    <MetadataFile FileName="ClienteAlFiado.wsdl" MetadataType="Wsdl" ID="25213420-fdd7-49b1-90d4-88c3b9586cb9" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/ClienteAlFiado?WSDL" />
+    <MetadataFile FileName="DetalleVenta.wsdl" MetadataType="Wsdl" ID="e6e23eab-e28a-4818-8324-2c88f32a4380" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/DetalleVenta?WSDL" />
+    <MetadataFile FileName="Venta.xsd" MetadataType="Schema" ID="e7132512-9e62-4735-adaa-b8ea7d4c9e93" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Venta?xsd=1" />
+    <MetadataFile FileName="Producto.wsdl" MetadataType="Wsdl" ID="f8591ed0-78f2-42b9-81de-822d5bba7717" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/Producto?WSDL" />
+    <MetadataFile FileName="servicios.disco" MetadataType="Disco" ID="4d324702-5154-4718-b518-b0d9bb8da9d1" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/servicios.disco" />
+    <MetadataFile FileName="RazonDevolucion.wsdl" MetadataType="Wsdl" ID="3355b049-ac6a-4e09-b94a-6a176ef3f6e6" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/RazonDevolucion?WSDL" />
+    <MetadataFile FileName="DetalleDevolucion.xsd" MetadataType="Schema" ID="9c13a455-d98f-43c8-9c5a-036f8e7ec73a" SourceId="1" SourceUrl="http://44.206.187.222:8080/SoftBodWS/DetalleDevolucion?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

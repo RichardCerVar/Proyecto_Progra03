@@ -1,13 +1,10 @@
 ﻿using SoftBodBusiness;
-using SoftBodBusiness.SoftWSCategoria;
-using SoftBodBusiness.SoftWSProducto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using WSCategoria = SoftBodBusiness.SoftWSCategoria;
-using WSProducto = SoftBodBusiness.SoftWSProducto;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {
@@ -18,7 +15,7 @@ namespace SoftBodWA
         private DetalleVentaBO detalleventaBO;
 
         // Cache de productos - solo se carga cuando es null o se fuerza recarga
-        private List<WSProducto.productoDTO> ListaProductos
+        private List<productoDTO> ListaProductos
         {
             get
             {
@@ -26,7 +23,7 @@ namespace SoftBodWA
                 {
                     ViewState["ListaProductos"] = productoBO.listarTodosProductos();
                 }
-                return (List<WSProducto.productoDTO>)ViewState["ListaProductos"];
+                return (List<productoDTO>)ViewState["ListaProductos"];
             }
             set
             {
@@ -34,7 +31,7 @@ namespace SoftBodWA
             }
         }
 
-        private List<WSCategoria.categoriaDTO> ListaCategoria
+        private List<categoriaDTO> ListaCategoria
         {
             get
             {
@@ -42,7 +39,7 @@ namespace SoftBodWA
                 {
                     ViewState["ListaCategoria"] = categoriaBO.listarTodasCategorias();
                 }
-                return (List<WSCategoria.categoriaDTO>)ViewState["ListaCategoria"];
+                return (List<categoriaDTO>)ViewState["ListaCategoria"];
             }
             set
             {
@@ -122,7 +119,7 @@ namespace SoftBodWA
             ddlCategoriaEdit.DataBind();
         }
 
-        private void ActualizarResumenProductos(List<WSProducto.productoDTO> productos)
+        private void ActualizarResumenProductos(List<productoDTO> productos)
         {
             int activos = productos.Count(p => p.activo == true);
             int stockBajo = productos.Count(p => p.stock <= p.stockMinimo);
@@ -185,7 +182,7 @@ namespace SoftBodWA
                 int stockInicial = int.Parse(stockInicialStr);
                 int stockMinimo = int.Parse(stockMinimoStr);
 
-                WSProducto.categoriaDTO categDTO = new WSProducto.categoriaDTO();
+                categoriaDTO categDTO = new categoriaDTO();
 
                 if (!string.IsNullOrEmpty(nuevaCategoria))
                 {
@@ -408,7 +405,7 @@ namespace SoftBodWA
                 int stock = int.Parse(txtStockEdit.Text.Trim());
                 int stockMinimo = int.Parse(txtStockMinimoEdit.Text.Trim());
 
-                WSProducto.categoriaDTO categDTO = new WSProducto.categoriaDTO();
+                categoriaDTO categDTO = new categoriaDTO();
                 categDTO.categoriaId = categoriaId;
                 categDTO.categoriaIdSpecified = true;
 
@@ -454,7 +451,7 @@ namespace SoftBodWA
             try
             {
                 int idProducto = int.Parse(hdnProductoIdEliminar.Value);
-                WSProducto.productoDTO producto = productoBO.obtenerProductoPorId(idProducto);
+                productoDTO producto = productoBO.obtenerProductoPorId(idProducto);
 
                 if (producto != null)
                 {

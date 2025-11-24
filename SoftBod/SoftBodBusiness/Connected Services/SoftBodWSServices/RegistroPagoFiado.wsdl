@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="RegistroPagoFiado" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://44.206.187.222:8080/SoftBodWS/RegistroPagoFiado?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
+    </xsd:schema>
+  </types>
+  <message name="listarRegistrosPagoFiadoPorAliasCliente">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasCliente" />
+  </message>
+  <message name="listarRegistrosPagoFiadoPorAliasClienteResponse">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
+  </message>
+  <message name="insertarRegistroPagoFiado">
+    <part name="parameters" element="tns:insertarRegistroPagoFiado" />
+  </message>
+  <message name="insertarRegistroPagoFiadoResponse">
+    <part name="parameters" element="tns:insertarRegistroPagoFiadoResponse" />
+  </message>
+  <message name="registrarPagoFiado">
+    <part name="parameters" element="tns:registrarPagoFiado" />
+  </message>
+  <message name="registrarPagoFiadoResponse">
+    <part name="parameters" element="tns:registrarPagoFiadoResponse" />
+  </message>
+  <message name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
+  </message>
+  <message name="listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse">
+    <part name="parameters" element="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" />
+  </message>
+  <message name="listarTodosRegistrosPagoFiado">
+    <part name="parameters" element="tns:listarTodosRegistrosPagoFiado" />
+  </message>
+  <message name="listarTodosRegistrosPagoFiadoResponse">
+    <part name="parameters" element="tns:listarTodosRegistrosPagoFiadoResponse" />
+  </message>
+  <portType name="RegistroPagoFiado">
+    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteRequest" message="tns:listarRegistrosPagoFiadoPorAliasCliente" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteResponse" />
+    </operation>
+    <operation name="insertarRegistroPagoFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoRequest" message="tns:insertarRegistroPagoFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/insertarRegistroPagoFiadoResponse" message="tns:insertarRegistroPagoFiadoResponse" />
+    </operation>
+    <operation name="registrarPagoFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoRequest" message="tns:registrarPagoFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/registrarPagoFiadoResponse" message="tns:registrarPagoFiadoResponse" />
+    </operation>
+    <operation name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteConFechaFinRequest" message="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFin" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" message="tns:listarRegistrosPagoFiadoPorAliasClienteConFechaFinResponse" />
+    </operation>
+    <operation name="listarTodosRegistrosPagoFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoRequest" message="tns:listarTodosRegistrosPagoFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/RegistroPagoFiado/listarTodosRegistrosPagoFiadoResponse" message="tns:listarTodosRegistrosPagoFiadoResponse" />
+    </operation>
+  </portType>
+  <binding name="RegistroPagoFiadoPortBinding" type="tns:RegistroPagoFiado">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarRegistrosPagoFiadoPorAliasCliente">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarRegistroPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="registrarPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarRegistrosPagoFiadoPorAliasClienteConFechaFin">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodosRegistrosPagoFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="RegistroPagoFiado">
+    <port name="RegistroPagoFiadoPort" binding="tns:RegistroPagoFiadoPortBinding">
+      <soap:address location="http://44.206.187.222:8080/SoftBodWS/RegistroPagoFiado" />
+    </port>
+  </service>
+</definitions>

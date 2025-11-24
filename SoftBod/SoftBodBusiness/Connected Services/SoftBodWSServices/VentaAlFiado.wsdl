@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://softbodws.services.softbod.pucp.edu.pe/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="VentaAlFiado" targetNamespace="http://softbodws.services.softbod.pucp.edu.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://44.206.187.222:8080/SoftBodWS/VentaAlFiado?xsd=1" namespace="http://softbodws.services.softbod.pucp.edu.pe/" />
+    </xsd:schema>
+  </types>
+  <message name="listarVentasAlFiadoPorAliasClienteYFecha">
+    <part name="parameters" element="tns:listarVentasAlFiadoPorAliasClienteYFecha" />
+  </message>
+  <message name="listarVentasAlFiadoPorAliasClienteYFechaResponse">
+    <part name="parameters" element="tns:listarVentasAlFiadoPorAliasClienteYFechaResponse" />
+  </message>
+  <message name="listarTodasVentasAlFiado">
+    <part name="parameters" element="tns:listarTodasVentasAlFiado" />
+  </message>
+  <message name="listarTodasVentasAlFiadoResponse">
+    <part name="parameters" element="tns:listarTodasVentasAlFiadoResponse" />
+  </message>
+  <message name="obtenerVentaAlFiadoPorId">
+    <part name="parameters" element="tns:obtenerVentaAlFiadoPorId" />
+  </message>
+  <message name="obtenerVentaAlFiadoPorIdResponse">
+    <part name="parameters" element="tns:obtenerVentaAlFiadoPorIdResponse" />
+  </message>
+  <message name="insertarVentaAlFiado">
+    <part name="parameters" element="tns:insertarVentaAlFiado" />
+  </message>
+  <message name="insertarVentaAlFiadoResponse">
+    <part name="parameters" element="tns:insertarVentaAlFiadoResponse" />
+  </message>
+  <message name="listarVentasAlFiadoPorAliasCliente">
+    <part name="parameters" element="tns:listarVentasAlFiadoPorAliasCliente" />
+  </message>
+  <message name="listarVentasAlFiadoPorAliasClienteResponse">
+    <part name="parameters" element="tns:listarVentasAlFiadoPorAliasClienteResponse" />
+  </message>
+  <portType name="VentaAlFiado">
+    <operation name="listarVentasAlFiadoPorAliasClienteYFecha">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarVentasAlFiadoPorAliasClienteYFechaRequest" message="tns:listarVentasAlFiadoPorAliasClienteYFecha" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarVentasAlFiadoPorAliasClienteYFechaResponse" message="tns:listarVentasAlFiadoPorAliasClienteYFechaResponse" />
+    </operation>
+    <operation name="listarTodasVentasAlFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarTodasVentasAlFiadoRequest" message="tns:listarTodasVentasAlFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarTodasVentasAlFiadoResponse" message="tns:listarTodasVentasAlFiadoResponse" />
+    </operation>
+    <operation name="obtenerVentaAlFiadoPorId">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/obtenerVentaAlFiadoPorIdRequest" message="tns:obtenerVentaAlFiadoPorId" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/obtenerVentaAlFiadoPorIdResponse" message="tns:obtenerVentaAlFiadoPorIdResponse" />
+    </operation>
+    <operation name="insertarVentaAlFiado">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/insertarVentaAlFiadoRequest" message="tns:insertarVentaAlFiado" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/insertarVentaAlFiadoResponse" message="tns:insertarVentaAlFiadoResponse" />
+    </operation>
+    <operation name="listarVentasAlFiadoPorAliasCliente">
+      <input wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarVentasAlFiadoPorAliasClienteRequest" message="tns:listarVentasAlFiadoPorAliasCliente" />
+      <output wsam:Action="http://softbodws.services.softbod.pucp.edu.pe/VentaAlFiado/listarVentasAlFiadoPorAliasClienteResponse" message="tns:listarVentasAlFiadoPorAliasClienteResponse" />
+    </operation>
+  </portType>
+  <binding name="VentaAlFiadoPortBinding" type="tns:VentaAlFiado">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="listarVentasAlFiadoPorAliasClienteYFecha">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarTodasVentasAlFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="obtenerVentaAlFiadoPorId">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="insertarVentaAlFiado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="listarVentasAlFiadoPorAliasCliente">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="VentaAlFiado">
+    <port name="VentaAlFiadoPort" binding="tns:VentaAlFiadoPortBinding">
+      <soap:address location="http://44.206.187.222:8080/SoftBodWS/VentaAlFiado" />
+    </port>
+  </service>
+</definitions>

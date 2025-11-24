@@ -4,17 +4,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Linq;
 using SoftBodBusiness;
-using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
-using WSRegistroPagoFiado = SoftBodBusiness.SoftWSRegistroPagoFiado;
-using SoftBodBusiness.SoftWSClienteAlFiado;
-
+using SoftBodBusiness.SoftBodWSServices;
 namespace SoftBodWA
 {
     public partial class Clientes : System.Web.UI.Page
     {
         private ClienteAlFiadoBO clienteBO;
 
-        private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+        private List<clienteAlFiadoDTO> clientes;
         private RegistroPagoFiadoBO registroPagoFiadoBO;
         public Clientes()
         {
@@ -23,7 +20,7 @@ namespace SoftBodWA
             registroPagoFiadoBO = new RegistroPagoFiadoBO();
         }
 
-        private List<WSClienteAlFiado.clienteAlFiadoDTO> ClientesData
+        private List<clienteAlFiadoDTO> ClientesData
         {
             get
             {
@@ -31,7 +28,7 @@ namespace SoftBodWA
                 {
                     Session["ClientesList"] = clientes;
                 }
-                return (List<WSClienteAlFiado.clienteAlFiadoDTO>)Session["ClientesList"];
+                return (List<clienteAlFiadoDTO>)Session["ClientesList"];
             }
             set
             {
@@ -144,7 +141,7 @@ namespace SoftBodWA
             ActualizarResumen(ClientesData);
         }
 
-        private void ActualizarResumen(List<WSClienteAlFiado.clienteAlFiadoDTO> clientes)
+        private void ActualizarResumen(List<clienteAlFiadoDTO> clientes)
         {
             var clientesConDeuda = clientes.Where(c => c.activo = true).ToList();
 
@@ -339,7 +336,7 @@ namespace SoftBodWA
                 // Buscar el cliente por alias
                 var clientes = ClientesData;
                 Session["Cliente"] = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
-                var cliente = Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO;
+                var cliente = Session["Cliente"] as clienteAlFiadoDTO;
                 if (cliente == null)
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
@@ -360,12 +357,12 @@ namespace SoftBodWA
 
                 clienteBO.modificarClienteAlFiado(cliente);
                 int idUser = (int)Session["UsuarioId"];
-                WSRegistroPagoFiado.usuarioDTO user = new SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO();
+                usuarioDTO user = new usuarioDTO();
                 user.usuarioId = idUser;
                 user.usuarioIdSpecified = true;
 
-                int idClie = (Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO).clienteId;
-                WSRegistroPagoFiado.clienteAlFiadoDTO clieDTO = new WSRegistroPagoFiado.clienteAlFiadoDTO();
+                int idClie = (Session["Cliente"] as clienteAlFiadoDTO).clienteId;
+                clienteAlFiadoDTO clieDTO = new clienteAlFiadoDTO();
                 clieDTO.clienteId = idClie;
                 clieDTO.clienteIdSpecified = true;
 

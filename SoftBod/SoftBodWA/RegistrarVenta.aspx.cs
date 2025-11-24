@@ -4,12 +4,7 @@ using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SoftBodBusiness;
-using WSVenta = SoftBodBusiness.SoftWSVenta;
-using WSVentaAlFiado = SoftBodBusiness.SoftWSVentaAlFiado;
-using WSDetalleVenta = SoftBodBusiness.SoftWSDetalleVenta;
-using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
-using WSProducto = SoftBodBusiness.SoftWSProducto;
-using SoftBodBusiness.SoftWSDetalleVenta;
+using SoftBodBusiness.SoftBodWSServices;
 
 namespace SoftBodWA
 {
@@ -30,24 +25,24 @@ namespace SoftBodWA
             this.categoriaBO = new CategoriaBO();
         }
 
-        private List<WSDetalleVenta.detalleVentaDTO> Carrito
+        private List<detalleVentaDTO> Carrito
         {
             get
             {
                 if (Session["CarritoVenta"] == null)
-                    Session["CarritoVenta"] = new List<SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO>();
-                return (List<SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO>)Session["CarritoVenta"];
+                    Session["CarritoVenta"] = new List<detalleVentaDTO>();
+                return (List<detalleVentaDTO>)Session["CarritoVenta"];
             }
             set => Session["CarritoVenta"] = value;
         }
 
-        private List<WSProducto.productoDTO> ProductosDisponibles
+        private List<productoDTO> ProductosDisponibles
         {
             get
             {
                 if (Session["ProductosDisponibles"] == null)
-                    Session["ProductosDisponibles"] = new List<WSProducto.productoDTO>();
-                return (List<WSProducto.productoDTO>)Session["ProductosDisponibles"];
+                    Session["ProductosDisponibles"] = new List<productoDTO>();
+                return (List<productoDTO>)Session["ProductosDisponibles"];
             }
             set => Session["ProductosDisponibles"] = value;
         }
@@ -88,7 +83,7 @@ namespace SoftBodWA
 
         private void CargarProductosDisponibles()
         {
-            List<WSProducto.productoDTO> productos;
+            List<productoDTO> productos;
 
             bool activoFiltro = true;
             string categoriaFiltro = "";
@@ -126,7 +121,7 @@ namespace SoftBodWA
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "errorCarga", $"alert('Error al cargar productos: {ex.Message}');", true);
-                productos = new List<WSProducto.productoDTO>();
+                productos = new List<productoDTO>();
             }
 
             ProductosDisponibles = productos;
@@ -149,7 +144,7 @@ namespace SoftBodWA
 
         private void CargarClientesDropDownList()
         {
-            List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+            List<clienteAlFiadoDTO> clientes;
             try
             {
                 clientes = this.clienteAlFiadoBO.listarTodosClientesAlFiado();
@@ -157,7 +152,7 @@ namespace SoftBodWA
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "errorCargaClientes", $"alert('Error al cargar clientes al fiado: {ex.Message}');", true);
-                clientes = new List<WSClienteAlFiado.clienteAlFiadoDTO>();
+                clientes = new List<clienteAlFiadoDTO>();
             }
 
             ddlCliente.Items.Clear();
@@ -172,7 +167,7 @@ namespace SoftBodWA
             }
         }
 
-        private WSProducto.productoDTO ObtenerProductoInfo(int productoId)
+        private productoDTO ObtenerProductoInfo(int productoId)
         {
             return ProductosDisponibles.FirstOrDefault(p => p.productoId == productoId);
         }
@@ -212,7 +207,7 @@ namespace SoftBodWA
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
                 // Obtener el producto actual
-                var producto = (WSProducto.productoDTO)e.Item.DataItem;
+                var producto = (productoDTO)e.Item.DataItem;
 
                 // Encontrar los controles
                 TextBox txtCantidad = (TextBox)e.Item.FindControl("txtCantidad");
@@ -254,7 +249,7 @@ namespace SoftBodWA
                 return;
             }
 
-            WSProducto.productoDTO productoInfo = ObtenerProductoInfo(productoId);
+            productoDTO productoInfo = ObtenerProductoInfo(productoId);
             if (productoInfo == null)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "productoNoEncontrado", "alert('Producto no encontrado.');", true);
@@ -284,7 +279,7 @@ namespace SoftBodWA
             else
             {
                 // Agregar nuevo producto al carrito
-                var productoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.productoDTO
+                var productoDetalle = new productoDTO
                 {
                     productoId = productoInfo.productoId,
                     productoIdSpecified = true,
@@ -293,7 +288,7 @@ namespace SoftBodWA
                     precioUnitarioSpecified = true
                 };
 
-                var nuevoDetalle = new SoftBodBusiness.SoftWSDetalleVenta.detalleVentaDTO
+                var nuevoDetalle = new detalleVentaDTO
                 {
                     producto = productoDetalle,
                     cantidad = cantidadSolicitada,
@@ -351,9 +346,9 @@ namespace SoftBodWA
             }
 
             // 1. Mapear DTO de Carrito al DTO de Venta con Specified
-            var detallesVentaWSVenta = Carrito.Select(item => new SoftBodBusiness.SoftWSVenta.detalleVentaDTO
+            var detallesVentaWSVenta = Carrito.Select(item => new detalleVentaDTO
             {
-                producto = new SoftBodBusiness.SoftWSVenta.productoDTO
+                producto = new productoDTO
                 {
                     productoId = item.producto.productoId,
                     productoIdSpecified = true
@@ -368,10 +363,10 @@ namespace SoftBodWA
             tipoDePago tipoPagoEnum;
             Enum.TryParse(ddlTipoPago.SelectedValue, out tipoPagoEnum);
 
-            SoftBodBusiness.SoftWSVenta.tipoDePago metodoPagoWSVenta;
+            tipoDePago metodoPagoWSVenta;
             Enum.TryParse(ddlTipoPago.SelectedValue, out metodoPagoWSVenta);
 
-            SoftBodBusiness.SoftWSVentaAlFiado.tipoDePago metodoPagoWSFiado;
+            tipoDePago metodoPagoWSFiado;
             Enum.TryParse(ddlTipoPago.SelectedValue, out metodoPagoWSFiado);
 
             int idVentaRegistrada = 0;
@@ -382,7 +377,7 @@ namespace SoftBodWA
                 if (tipoPagoEnum == tipoDePago.FIADO)
                 {
                     int idUser = int.Parse((Session["UsuarioId"].ToString()));
-                    var usuarioLogueadoFiado = new SoftBodBusiness.SoftWSVentaAlFiado.usuarioDTO
+                    var usuarioLogueadoFiado = new usuarioDTO
                     {
                         usuarioId = idUser
                     };
@@ -397,7 +392,7 @@ namespace SoftBodWA
 
                     int clienteId = int.Parse(clienteIdStr);
 
-                    SoftBodBusiness.SoftWSVentaAlFiado.clienteAlFiadoDTO clienteSeleccionadoWS = new SoftBodBusiness.SoftWSVentaAlFiado.clienteAlFiadoDTO
+                    clienteAlFiadoDTO clienteSeleccionadoWS = new clienteAlFiadoDTO
                     {
                         clienteId = clienteId,
                         clienteIdSpecified = true,
@@ -405,9 +400,9 @@ namespace SoftBodWA
                     };
 
                     // Mapeo con Specified para VentaAlFiado
-                    SoftBodBusiness.SoftWSVentaAlFiado.detalleVentaDTO[] detallesVentaWSFiado = detallesVentaWSVenta.Select(item => new SoftBodBusiness.SoftWSVentaAlFiado.detalleVentaDTO
+                    detalleVentaDTO[] detallesVentaWSFiado = detallesVentaWSVenta.Select(item => new detalleVentaDTO
                     {
-                        producto = new SoftBodBusiness.SoftWSVentaAlFiado.productoDTO
+                        producto = new productoDTO
                         {
                             productoId = item.producto.productoId,
                             productoIdSpecified = true
@@ -442,7 +437,7 @@ namespace SoftBodWA
                     }
 
                     int idUserVenta = int.Parse(Session["UsuarioId"].ToString());
-                    var usuarioLogueadoVenta = new SoftBodBusiness.SoftWSVenta.usuarioDTO
+                    var usuarioLogueadoVenta = new usuarioDTO
                     {
                         usuarioId = idUserVenta
                     };
@@ -472,7 +467,7 @@ namespace SoftBodWA
             }
         }
 
-        private void ActualizarStockLocal(SoftBodBusiness.SoftWSVenta.detalleVentaDTO[] detallesVenta)
+        private void ActualizarStockLocal(detalleVentaDTO[] detallesVenta)
         {
             foreach (var detalle in detallesVenta)
             {
