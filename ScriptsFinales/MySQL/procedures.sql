@@ -223,7 +223,7 @@ BEGIN
     INNER JOIN BOD_USUARIO u ON r.USUARIO_ID = u.USUARIO_ID
     WHERE 
         (p_alias_cliente IS NULL OR c.ALIAS LIKE CONCAT('%', p_alias_cliente, '%'))
-        AND (p_fecha IS NULL OR r.FECHA = p_fecha)
+        AND (p_fecha IS NULL OR DATE(r.FECHA) = p_fecha)
     ORDER BY r.FECHA DESC, r.PAGO_ID;
 END$$
 
