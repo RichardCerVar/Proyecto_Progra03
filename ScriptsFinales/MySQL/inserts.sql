@@ -11,12 +11,12 @@ INSERT INTO BOD_CATEGORIA (DESCRIPCION) VALUES
 
 
 INSERT INTO BOD_USUARIO (USUARIO, TIPO_USUARIOS, CORREO, CONTRASENHA, NOMBRE_COMPLETO, TELEFONO_USUARIO, ACTIVO_USUARIO) VALUES
-('admin01', 'ADMINISTRADOR', 'admin@bodega.com', 'admin123', 'Administrador General', '987654321', 1),
-('operario01', 'OPERARIO', 'op1@tienda.com', 'op123', 'Carlos Pérez', '912345678', 1),
-('operario02', 'OPERARIO', 'op2@tienda.com', 'op123', 'María Vargas', '923456789', 1),
-('operario03', 'OPERARIO', 'op3@tienda.com', 'op123', 'Luis Gutiérrez', '934567891', 1),
-('operario04', 'OPERARIO', 'op4@tienda.com', 'op123', 'Jorge Campos', '945678912', 1),
-('operario05', 'OPERARIO', 'op5@tienda.com', 'op123', 'Ana Torres', '956789123', 1);
+('admin', 'ADMINISTRADOR', 'admin@bodega.com', 'adminSA!', 'Administrador General', '987654321', 1),
+('Carlos', 'OPERARIO', 'carlos@bodega.com', 'operariO1!', 'Carlos Pérez', '912345678', 1),
+('Maria', 'OPERARIO', 'maria@bodega.com', 'operariO2!', 'María Vargas', '923456789', 1),
+('Luis', 'OPERARIO', 'luis@bodega.com', 'operariO3!', 'Luis Gutiérrez', '934567891', 1),
+('Jorge', 'OPERARIO', 'jorge@bodega.com', 'operariO4!', 'Jorge Campos', '945678912', 1),
+('Ana', 'OPERARIO', 'ana@bodega.com', 'operariO5!', 'Ana Torres', '956789123', 1);
 
 
 INSERT INTO BOD_PRODUCTO (CATEGORIA_ID, NOMBRE, PRECIO_UNITARIO, UNIDAD_MEDIDA, STOCK, STOCK_MINIMO, ACTIVO) VALUES

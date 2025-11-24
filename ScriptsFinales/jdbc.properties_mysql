@@ -1,7 +1,7 @@
 driver=com.mysql.cj.jdbc.Driver
 tipo_de_driver=jdbc:mysql
 base_de_datos=TA_PROG3
-nombre_de_host=ta-prog3.c5y00c0qqehd.us-east-1.rds.amazonaws.com
+nombre_de_host=ta-mysql.cjg02m8mmy0s.us-east-1.rds.amazonaws.com
 puerto=3306
 usuario=admin
 contrasenha=GFvzT/oALwhziJrVcTssng==
