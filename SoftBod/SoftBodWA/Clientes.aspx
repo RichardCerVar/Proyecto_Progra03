@@ -71,7 +71,7 @@
             </div>
         </div>
         
-        <asp:Repeater ID="rptClientes" runat="server" OnItemCommand="rptClientes_ItemCommand">
+        <asp:Repeater ID="rptClientes" runat="server" OnItemCommand="rptClientes_ItemCommand" OnItemDataBound="rptClientes_ItemDataBound">
             <ItemTemplate>
                 <div class="card mb-3 shadow-sm border-0">
                     <div class="card-body d-flex justify-content-between align-items-center">
