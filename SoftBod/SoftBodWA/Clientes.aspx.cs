@@ -45,6 +45,13 @@ namespace SoftBodWA
             {
                 CargarClientes();
             }
+
+            string rol = Session["RolUsuario"].ToString();
+
+            if (rol == "OPERARIO")
+            {
+                btnAgregar.Visible = false;
+            }
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
@@ -150,6 +157,7 @@ namespace SoftBodWA
 
         protected void rptClientes_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
+
             var clientes = ClientesData;
             string[] args = e.CommandArgument.ToString().Split('|');
             string alias = args[0];
@@ -218,6 +226,29 @@ namespace SoftBodWA
                 message = "ERROR";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
                     $"alert('{message}');", true);
+            }
+        }
+
+        protected void rptClientes_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            // Solo aplica la lógica a los ítems de datos (las filas reales de clientes)
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                // 1. Obtener el rol de la sesión
+                // Usamos el operador ternario para manejar si la sesión es null, aunque ya lo chequeas en Page_Load
+                string rol = Session["RolUsuario"]?.ToString() ?? "";
+
+                if (rol == "OPERARIO")
+                {
+                    // 2. Buscar y ocultar los LinkButtons dentro del Item actual
+                    // Importante: Usamos FindControl porque están dentro de la plantilla del Repeater
+                    LinkButton btnEliminar = (LinkButton)e.Item.FindControl("btnEliminar");
+
+                    if (btnEliminar != null)
+                    {
+                        btnEliminar.Visible = false;
+                    }
+                }
             }
         }
 
