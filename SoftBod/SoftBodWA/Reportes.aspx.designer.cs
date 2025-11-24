@@ -78,6 +78,15 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.TextBox txtFechaFin;
 
         /// <summary>
+        /// Control lblMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje;
+
+        /// <summary>
         /// Control btnExportarReporte.
         /// </summary>
         /// <remarks>
@@ -168,6 +177,15 @@ namespace SoftBodWA
         protected global::System.Web.UI.WebControls.TextBox txtFechaClienteFin;
 
         /// <summary>
+        /// Control lblMensaje2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje2;
+
+        /// <summary>
         /// Control btnExportarReporteCliente.
         /// </summary>
         /// <remarks>
@@ -238,6 +256,15 @@ namespace SoftBodWA
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFechaOperarioFin;
+
+        /// <summary>
+        /// Control lblMensaje3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensaje3;
 
         /// <summary>
         /// Control btnExportarReporteOperario.

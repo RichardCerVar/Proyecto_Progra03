@@ -69,11 +69,12 @@
                                 <asp:TextBox ID="txtFechaFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
+                            <asp:Label ID="lblMensaje" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>
+
                             <div class="col-12 text-end">
                                 <asp:Button ID="btnExportarReporte" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteVentas_Click" CssClass="btn btn-warning" />
                             </div>
                         </div>
-                            
                         
                     </div>
                 </div>
@@ -144,6 +145,7 @@
                                 <asp:TextBox ID="txtFechaClienteFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
+                            <asp:Label ID="lblMensaje2" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>
                             <!-- Botones -->
                             <div class="col-12 text-end mt-2">
                                 <asp:Button ID="btnExportarReporteCliente" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteClientes_Click" CssClass="btn btn-warning" />
@@ -190,6 +192,8 @@
                                 <asp:TextBox ID="txtFechaOperarioFin" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                             </div>
 
+                            <asp:Label ID="lblMensaje3" runat="server" CssClass="text-danger d-block text-center mt-2"></asp:Label>
+
                             <div class="col-12 text-end">
                                 <asp:Button ID="btnExportarReporteOperario" runat="server" Text="Exportar Reporte" OnClick="btnExportarReporteOperaciones_Click" CssClass="btn btn-warning" />
                             </div>
@@ -199,8 +203,8 @@
                     </div>
                 </div>
 
-
             </div>
         </div>
+                
     </div>
 </asp:Content>

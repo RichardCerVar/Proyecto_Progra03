@@ -40,26 +40,12 @@ namespace SoftBodWA
             ddlCliente.DataBind();
         }
 
-        protected void btnFiltrar_Click(object sender, EventArgs e)
-        {
-            CargarDatosReporte();
-        }
+       
 
-        private void CargarDatosReporte()
-        {
-            if (string.IsNullOrEmpty(txtFecha.Text))
-            {
-                ClientScript.RegisterStartupScript(GetType(), "alert", "alert('Debe seleccionar una fecha.');", true);
-                return;
-            }
-
-            string fechaFiltro = DateTime.Parse(txtFecha.Text).ToString("yyyy-MM-dd");
-
-        }
 
         protected void btnExportarReporteVentas_Click(object sender, EventArgs e)
         {
-            string tipoFecha = ddlTipoFecha.SelectedValue;
+            string tipoFecha = ddlTipoFecha.SelectedValue;  
 
             DateTime fecha = DateTime.MinValue;
             DateTime fechaInicio = DateTime.MinValue;
@@ -71,7 +57,13 @@ namespace SoftBodWA
             {
                 DateTime.TryParse(txtFecha.Text, out fecha);
                 string fechaStr = fecha.ToString("yyyy-MM-dd");
-                reporte = ventaBO.ReporteDevolucionesYVentas(fechaStr, fechaStr);
+                if (fecha != DateTime.MinValue)
+                    reporte = ventaBO.ReporteDevolucionesYVentas(fechaStr, fechaStr);
+                else
+                {
+                    lblMensaje.Text = "Por favor, seleccione una fecha válida";
+                    return;
+                }
             }
             else if (tipoFecha == "Rango")
             {
@@ -80,7 +72,22 @@ namespace SoftBodWA
 
                 string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
                 string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
-                reporte = ventaBO.ReporteDevolucionesYVentas(fechaInicioStr, fechaFinStr);
+
+                if (fechaInicio != DateTime.MinValue && fechaFin != DateTime.MinValue)
+                    if(fechaInicio <= fechaFin)
+                        reporte = ventaBO.ReporteDevolucionesYVentas(fechaInicioStr, fechaFinStr);
+                    else
+                    {
+                        lblMensaje.Text = "La fecha de inicio no puede ser mayor que la fecha fin.";
+                        return;
+                    }
+                else
+                    {
+                        lblMensaje.Text = "Por favor, seleccione una fecha válida";
+                        return;
+                    }
+
+                
 
             }
 
@@ -159,7 +166,16 @@ namespace SoftBodWA
             {
                 DateTime.TryParse(txtFechaCliente.Text, out fecha);
                 string fechaStr = fecha.ToString("yyyy-MM-dd");
-                reporte = clienteBO.ReporteClienteAlFiado(fechaStr, fechaStr, clienteId);
+
+                if (fecha != DateTime.MinValue)
+
+                    reporte = clienteBO.ReporteClienteAlFiado(fechaStr, fechaStr, clienteId);
+                else
+                {
+                    lblMensaje2.Text = "Por favor, seleccione una fecha válida";
+                    return;
+                }
+                
             }
             else if (tipoFecha == "Rango")
             {
@@ -168,7 +184,22 @@ namespace SoftBodWA
 
                 string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
                 string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
-                reporte = clienteBO.ReporteClienteAlFiado(fechaInicioStr, fechaFinStr, clienteId);
+
+                if (fechaInicio != DateTime.MinValue && fechaFin != DateTime.MinValue)
+                    if (fechaInicio <= fechaFin)
+                        reporte = clienteBO.ReporteClienteAlFiado(fechaInicioStr, fechaFinStr, clienteId);
+                    else
+                    {
+                        lblMensaje2.Text = "La fecha de inicio no puede ser mayor que la fecha fin.";
+                        return;
+                    }
+                
+                else
+                {
+                    lblMensaje2.Text = "Por favor, seleccione una fecha válida";
+                    return;
+                }
+                
             }
 
             clienteBO.abrirReporte(Response, "ReporteClienteAlFiado.pdf", reporte);
@@ -189,7 +220,15 @@ namespace SoftBodWA
             {
                 DateTime.TryParse(txtFechaOperario.Text, out fecha);
                 string fechaStr = fecha.ToString("yyyy-MM-dd");
-                reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaStr, fechaStr);
+
+                if (fecha != DateTime.MinValue)
+                    reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaStr, fechaStr);
+                else
+                {
+                    lblMensaje3.Text = "Por favor, seleccione una fecha válida";
+                    return;
+                }
+                
             }
             else if (tipoFecha == "Rango")
             {
@@ -198,10 +237,28 @@ namespace SoftBodWA
 
                 string fechaInicioStr = fechaInicio.ToString("yyyy-MM-dd");
                 string fechaFinStr = fechaFin.ToString("yyyy-MM-dd");
-                reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaInicioStr, fechaFinStr);
+
+                if (fechaInicio != DateTime.MinValue && fechaFin != DateTime.MinValue)
+                    if (fechaInicio <= fechaFin)
+                        reporte = historialOperacionesBO.ReporteHistorialDeOperaciones(fechaInicioStr, fechaFinStr);
+                    else
+                    {
+                        lblMensaje3.Text = "La fecha de inicio no puede ser mayor que la fecha fin.";
+                        return;
+                    }
+                
+                else
+                {
+                    lblMensaje3.Text = "Por favor, seleccione una fecha válida";
+                    return;
+                }
+
+                
             }
             historialOperacionesBO.abrirReporte(Response, "ReporteDevolucionesYVentas.pdf", reporte);
         }
+
+        
 
     }
 }
