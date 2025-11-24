@@ -1,26 +1,25 @@
-﻿using SoftBodBusiness;
-using SoftBodBusiness.SoftWSClienteAlFiado;
-using SoftBodBusiness.SoftWSHistorialOperaciones;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Linq;
+using SoftBodBusiness;
 using WSClienteAlFiado = SoftBodBusiness.SoftWSClienteAlFiado;
 using WSRegistroPagoFiado = SoftBodBusiness.SoftWSRegistroPagoFiado;
-using WSHistorialOperaciones = SoftBodBusiness.SoftWSHistorialOperaciones;
+using SoftBodBusiness.SoftWSClienteAlFiado;
 
 namespace SoftBodWA
 {
     public partial class Clientes : System.Web.UI.Page
     {
         private ClienteAlFiadoBO clienteBO;
-        private RegistroPagoFiadoBO registroPagoFiadoBO;
-        private HistorialOperacionesBO historialOperacionesBO;
 
+        private List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+        private RegistroPagoFiadoBO registroPagoFiadoBO;
         public Clientes()
         {
             clienteBO = new ClienteAlFiadoBO();
+            clientes = clienteBO.listarTodosClientesAlFiado();
             registroPagoFiadoBO = new RegistroPagoFiadoBO();
         }
 
@@ -30,7 +29,7 @@ namespace SoftBodWA
             {
                 if (Session["ClientesList"] == null)
                 {
-                    Session["ClientesList"] = clienteBO.listarTodosClientesAlFiado();
+                    Session["ClientesList"] = clientes;
                 }
                 return (List<WSClienteAlFiado.clienteAlFiadoDTO>)Session["ClientesList"];
             }
@@ -56,6 +55,7 @@ namespace SoftBodWA
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowAddClientModal", script, true);
         }
 
+
         protected void btnGuardarCliente_Click(object sender, EventArgs e)
         {
             try
@@ -64,7 +64,7 @@ namespace SoftBodWA
                 string alias = txtAlias.Text.Trim();
                 string telefono = txtTelefono.Text.Trim();
                 DateTime fechaLimite = DateTime.Parse(txtFechaLimite.Text);
-                string fechaLimiteStr = fechaLimite.ToString("yyyy-MM-dd");
+                string fechaLimiteStr = DateTime.Parse(txtFechaLimite.Text).ToString("yyyy-MM-dd");
 
                 if (string.IsNullOrEmpty(nombreCompleto) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimiteStr))
                 {
@@ -89,19 +89,13 @@ namespace SoftBodWA
 
                 int nuevoIDCli = clienteBO.insertarClienteAlFiado(alias, nombreCompleto, telefono, fechaLimiteStr);
                 var nuevoCliente = clienteBO.obtenerClienteAlFiadoPorId(nuevoIDCli);
-
-                // Regitrar en el historial
-                historialOperacionesBO = new HistorialOperacionesBO();
-                int usuarioID = (int)Session["UsuarioId"];
-                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                usuario.usuarioId = usuarioID;
-                usuario.usuarioIdSpecified = true;
-                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "INSERCION");
-
-                ClientesData.Add(nuevoCliente);
+                var clientes = ClientesData;
+                clientes.Add(nuevoCliente);
+                ClientesData = clientes;
 
                 LimpiarCamposModal();
                 CargarClientes();
+
 
                 string successScript =
                     "var modal = bootstrap.Modal.getInstance(document.getElementById('modalAgregarCliente')); " +
@@ -125,6 +119,7 @@ namespace SoftBodWA
             }
         }
 
+
         private void LimpiarCamposModal()
         {
             txtNombreCompleto.Text = "";
@@ -135,16 +130,16 @@ namespace SoftBodWA
 
         private void CargarClientes()
         {
-            var clientes = ClientesData;
-            rptClientes.DataSource = clientes;
+            ClientesData = clienteBO.listarTodosClientesAlFiado();
+            rptClientes.DataSource = ClientesData;
             rptClientes.DataBind();
 
-            ActualizarResumen(clientes);
+            ActualizarResumen(ClientesData);
         }
 
         private void ActualizarResumen(List<WSClienteAlFiado.clienteAlFiadoDTO> clientes)
         {
-            var clientesConDeuda = clientes.Where(c => c.activo == true).ToList();
+            var clientesConDeuda = clientes.Where(c => c.activo = true).ToList();
 
             double totalDeuda = clientesConDeuda.Sum(c => c.montoDeuda);
             int activos = clientesConDeuda.Count;
@@ -160,6 +155,7 @@ namespace SoftBodWA
             string alias = args[0];
             string message = "";
             bool reload = false;
+
 
             var clienteAfectado = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
 
@@ -180,10 +176,12 @@ namespace SoftBodWA
 
                         string scriptPago = "var myModal = new bootstrap.Modal(document.getElementById('modalPago')); myModal.show();";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ShowPagoModal", scriptPago, true);
+                        //poner mensaje
                         message = "se pudo ?";
                         break;
 
                     case "Editar":
+
                         lblIdClienteEditar.Text = clienteAfectado.clienteId.ToString();
                         txtNombreEditar.Text = clienteAfectado.nombre;
                         txtAliasEditar.Text = clienteAfectado.alias;
@@ -192,6 +190,7 @@ namespace SoftBodWA
 
                         string scriptEditar = "var myModal = new bootstrap.Modal(document.getElementById('modalEditarCliente')); myModal.show();";
                         ScriptManager.RegisterStartupScript(this, GetType(), "ShowEditClientModal", scriptEditar, true);
+                        //poner mensaje
                         message = "se pudo ?";
                         break;
 
@@ -201,6 +200,9 @@ namespace SoftBodWA
                         lblAliasEliminar.Text = alias;
                         string scriptEliminar = "var myModal = new bootstrap.Modal(document.getElementById('modalEliminarCliente')); myModal.show();";
                         ScriptManager.RegisterStartupScript(this, GetType(), "showEliminarCliente", scriptEliminar, true);
+                        //poner mensaje
+
+
                         break;
                 }
             }
@@ -212,6 +214,7 @@ namespace SoftBodWA
 
             if (!string.IsNullOrEmpty(message) && clienteAfectado == null)
             {
+                //si hay error mensaje
                 message = "ERROR";
                 ScriptManager.RegisterStartupScript(this, GetType(), "alertAction",
                     $"alert('{message}');", true);
@@ -222,12 +225,22 @@ namespace SoftBodWA
         {
             try
             {
+                // Obtener los datos del modal
+
                 int clienteID = int.Parse(lblIdClienteEditar.Text);
                 string nombre = txtNombreEditar.Text.Trim();
                 string alias = txtAliasEditar.Text.Trim();
                 string telefono = txtTelefonoEditar.Text.Trim();
                 string fechaLimite = DateTime.Parse(txtFechaLimiteEditar.Text).ToString("yyyy-MM-dd");
-                DateTime fechaLimiteN = DateTime.Parse(txtFechaLimiteEditar.Text);
+                DateTime fechaLimiteN = DateTime.Parse(txtFechaLimite.Text);
+
+                clienteAlFiadoDTO clienteDTO = new clienteAlFiadoDTO();
+                clienteDTO = clienteBO.obtenerClienteAlFiadoPorId(int.Parse(lblIdClienteEditar.Text));
+                clienteDTO.alias = alias;
+                clienteDTO.nombre = nombre;
+                clienteDTO.telefono = telefono;
+                clienteDTO.fechaDePago = fechaLimite;
+
 
                 // Validaciones simples
                 if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(alias) || string.IsNullOrEmpty(fechaLimite))
@@ -249,30 +262,9 @@ namespace SoftBodWA
                     return;
                 }
 
-                // Obtener el cliente de la lista en memoria en lugar de hacer otra consulta
-                var clienteDTO = ClientesData.FirstOrDefault(c => c.clienteId == clienteID);
-                if (clienteDTO == null)
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "errorUpdate", "alert('Cliente no encontrado.');", true);
-                    return;
-                }
-
-                clienteDTO.alias = alias;
-                clienteDTO.nombre = nombre;
-                clienteDTO.telefono = telefono;
-                clienteDTO.fechaDePago = fechaLimite;
 
                 // Llamar a la lógica de negocio
                 clienteBO.modificarClienteAlFiado(clienteDTO);
-
-                // Regitrar en el historial
-                historialOperacionesBO = new HistorialOperacionesBO();
-
-                int usuarioID = (int)Session["UsuarioId"];
-                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                usuario.usuarioId = usuarioID;
-                usuario.usuarioIdSpecified = true;
-                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "MODIFICACION");
 
                 // Recargar los datos en memoria y pantalla
                 CargarClientes();
@@ -301,9 +293,10 @@ namespace SoftBodWA
         {
             try
             {
+                // Obtener alias y monto a pagar desde los controles del modal
                 string alias = lblAlias.Text;
                 string montoStr = txtMontoPagar.Text.Trim();
-                double monto;
+                double monto = Convert.ToDouble(montoStr);
 
                 if (string.IsNullOrEmpty(alias) || !double.TryParse(montoStr, out monto) || monto <= 0)
                 {
@@ -312,9 +305,10 @@ namespace SoftBodWA
                     return;
                 }
 
-                // Buscar el cliente por alias en la lista en memoria
-                var cliente = ClientesData.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
-
+                // Buscar el cliente por alias
+                var clientes = ClientesData;
+                Session["Cliente"] = clientes.FirstOrDefault(c => c.alias.Equals(alias, StringComparison.OrdinalIgnoreCase));
+                var cliente = Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO;
                 if (cliente == null)
                 {
                     ScriptManager.RegisterStartupScript(this, GetType(), "errorPago",
@@ -330,26 +324,28 @@ namespace SoftBodWA
                     return;
                 }
 
+                ClienteAlFiadoBO clienteMod = new ClienteAlFiadoBO();
                 cliente.montoDeuda = cliente.montoDeuda - monto;
 
                 clienteBO.modificarClienteAlFiado(cliente);
-
                 int idUser = (int)Session["UsuarioId"];
                 WSRegistroPagoFiado.usuarioDTO user = new SoftBodBusiness.SoftWSRegistroPagoFiado.usuarioDTO();
                 user.usuarioId = idUser;
                 user.usuarioIdSpecified = true;
 
+                int idClie = (Session["Cliente"] as WSClienteAlFiado.clienteAlFiadoDTO).clienteId;
                 WSRegistroPagoFiado.clienteAlFiadoDTO clieDTO = new WSRegistroPagoFiado.clienteAlFiadoDTO();
-                clieDTO.clienteId = cliente.clienteId;
+                clieDTO.clienteId = idClie;
                 clieDTO.clienteIdSpecified = true;
 
                 registroPagoFiadoBO.insertarRegistroPagoFiado(user, clieDTO, "EFECTIVO", monto);
-
                 CargarClientes();
+
 
                 ScriptManager.RegisterStartupScript(this, GetType(), "successPago",
                     "alert('Pago registrado exitosamente.');", true);
 
+                //cerrar el modal con JS
                 string script = "var modal = bootstrap.Modal.getInstance(document.getElementById('modalPago')); if(modal) modal.hide();";
                 ScriptManager.RegisterStartupScript(this, GetType(), "HidePagoModal", script, true);
             }
@@ -367,20 +363,26 @@ namespace SoftBodWA
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string busqueda = txtBuscar.Text.Trim();
+
             CargarClientes(busqueda);
         }
 
         private void CargarClientes(string termoBusca = "")
         {
-            List<WSClienteAlFiado.clienteAlFiadoDTO> clientes;
+
+
 
             if (string.IsNullOrWhiteSpace(termoBusca))
             {
-                clientes = ClientesData;
+
+                clientes = clienteBO.listarTodosClientesAlFiado();
+
+                ClientesData = clientes;
             }
             else
             {
                 clientes = clienteBO.listarTodosClientesAlFiadoLike(termoBusca);
+
             }
 
             rptClientes.DataSource = clientes;
@@ -389,29 +391,13 @@ namespace SoftBodWA
             ActualizarResumen(clientes);
         }
 
+
         protected void btnEliminarConfirmado_Click(object sender, EventArgs e)
         {
             try
             {
                 int clienteID = int.Parse(hfClienteIDEliminar.Value);
                 clienteBO.eliminarClienteAlFiado(clienteID);
-
-
-                // Regitrar en el historial
-                historialOperacionesBO = new HistorialOperacionesBO();
-                int usuarioID = (int)Session["UsuarioId"];
-                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                usuario.usuarioId = usuarioID;
-                usuario.usuarioIdSpecified = true;
-                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_CLIENTE_AL_FIADO", "ELIMINACION");
-
-                // Actualizar la lista en sesión eliminando el cliente
-                var cliente = ClientesData.FirstOrDefault(c => c.clienteId == clienteID);
-                if (cliente != null)
-                {
-                    ClientesData.Remove(cliente);
-                }
-
                 CargarClientes();
 
                 string script =
@@ -430,6 +416,8 @@ namespace SoftBodWA
                     true
                 );
             }
+
         }
+
     }
 }

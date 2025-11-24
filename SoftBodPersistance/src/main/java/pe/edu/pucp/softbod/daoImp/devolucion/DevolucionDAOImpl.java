@@ -114,7 +114,7 @@ public class DevolucionDAOImpl extends DAOImplBase implements DevolucionDAO {
     private ArrayList<DevolucionDTO> listarDevolucionFiltros
         (Integer devolucionId, Integer usuarioId,
         String fecha){
-        String sql = "{CALL TA_PROG3.SP_LISTAR_DEVOLUCION(?,?,?)}";
+        String sql = "{CALL SP_LISTAR_DEVOLUCION(?,?,?)}";
         Object parametros = new DevolucionParametrosBuilder()
                             .conDevolucionId(devolucionId)
                             .conUsuarioId(usuarioId)

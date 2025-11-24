@@ -38,7 +38,7 @@
                     <div class="card p-4 mb-3 report-block">
                         <h5 class="fw-semibold mb-3">
                             <i class="fa-solid fa-cart-shopping report-icon me-3 text-primary"></i>
-                            Reporte de Ventas
+                            Reporte de Ventas y Devoluciones
                         </h5>
                         
     

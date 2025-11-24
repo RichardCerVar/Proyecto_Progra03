@@ -184,7 +184,7 @@ public class HistorialOperacionesDAOImpl extends DAOImplBase implements Historia
         (Integer operacionId, String nombreTabla, String tipoOperacion, 
          String fechaOperacion, Integer usuarioId, String usuario, 
          String tipoUsuario, Boolean estado){
-        String sql = "{CALL TA_PROG3.SP_LISTAR_HISTORIAL_OPERACIONES(?,?,?,?,?,?,?,?)}";
+        String sql = "{CALL SP_LISTAR_HISTORIAL_OPERACIONES(?,?,?,?,?,?,?,?)}";
         Object parametros = new HistorialDeOperacionesParametrosBuilder()
                             .conOperacionId(operacionId)
                             .conNombreTabla(nombreTabla)

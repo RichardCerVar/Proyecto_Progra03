@@ -139,7 +139,7 @@ public class ClienteAlFiadoDAOImpl extends DAOImplBase implements ClienteAlFiado
     }
     
     private ArrayList<ClienteAlFiadoDTO> listarClienteAlFiadoFiltros (String cadena){
-        String sql = "{CALL TA_PROG3.SP_LISTAR_CLIENTE_AL_FIADO(?)}";
+        String sql = "{CALL SP_LISTAR_CLIENTE_AL_FIADO(?)}";
         Object parametros = new ClienteAlFiadoParametrosBuilder()
                             .conCedena(cadena)
                             .BuildClienteAlFiadoParametros();

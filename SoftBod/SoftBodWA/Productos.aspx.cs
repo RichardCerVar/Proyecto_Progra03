@@ -8,8 +8,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using WSCategoria = SoftBodBusiness.SoftWSCategoria;
 using WSProducto = SoftBodBusiness.SoftWSProducto;
-using WSHistorialOperaciones = SoftBodBusiness.SoftWSHistorialOperaciones;
-using SoftBodBusiness.SoftWSHistorialOperaciones;
 
 namespace SoftBodWA
 {
@@ -18,22 +16,21 @@ namespace SoftBodWA
         private ProductoBO productoBO;
         private CategoriaBO categoriaBO;
         private DetalleVentaBO detalleventaBO;
-        private HistorialOperacionesBO historialOperacionesBO;
 
-        // Cache de productos en Session para persistir entre postbacks
+        // Cache de productos - solo se carga cuando es null o se fuerza recarga
         private List<WSProducto.productoDTO> ListaProductos
         {
             get
             {
-                if (Session["ListaProductos"] == null)
+                if (ViewState["ListaProductos"] == null)
                 {
-                    Session["ListaProductos"] = productoBO.listarTodosProductos();
+                    ViewState["ListaProductos"] = productoBO.listarTodosProductos();
                 }
-                return (List<WSProducto.productoDTO>)Session["ListaProductos"];
+                return (List<WSProducto.productoDTO>)ViewState["ListaProductos"];
             }
             set
             {
-                Session["ListaProductos"] = value;
+                ViewState["ListaProductos"] = value;
             }
         }
 
@@ -41,15 +38,15 @@ namespace SoftBodWA
         {
             get
             {
-                if (Session["ListaCategoria"] == null)
+                if (ViewState["ListaCategoria"] == null)
                 {
-                    Session["ListaCategoria"] = categoriaBO.listarTodasCategorias();
+                    ViewState["ListaCategoria"] = categoriaBO.listarTodasCategorias();
                 }
-                return (List<WSCategoria.categoriaDTO>)Session["ListaCategoria"];
+                return (List<WSCategoria.categoriaDTO>)ViewState["ListaCategoria"];
             }
             set
             {
-                Session["ListaCategoria"] = value;
+                ViewState["ListaCategoria"] = value;
             }
         }
 
@@ -92,8 +89,8 @@ namespace SoftBodWA
         // Método para forzar recarga de datos desde BD
         private void RecargarDatosYActualizar()
         {
-            Session["ListaProductos"] = null; // Invalida cache
-            Session["ListaCategoria"] = null; // Invalida cache de categorías
+            ViewState["ListaProductos"] = null; // Invalida cache
+            ViewState["ListaCategoria"] = null; // Invalida cache de categorías
             CargarProductos();
             CargarCategoria();
             CargarCategoriaModal();
@@ -193,16 +190,7 @@ namespace SoftBodWA
                 if (!string.IsNullOrEmpty(nuevaCategoria))
                 {
                     // Crear nueva categoría
-                    int nuevaCategoriaId = categoriaBO.insertarCategoria(nuevaCategoria);
-                    categDTO.categoriaId = nuevaCategoriaId;
-
-                    // Actualizar cache de categorías agregando la nueva
-                    var categoriaNueva = new WSCategoria.categoriaDTO
-                    {
-                        categoriaId = nuevaCategoriaId,
-                        descripcion = nuevaCategoria
-                    };
-                    ListaCategoria.Add(categoriaNueva);
+                    categDTO.categoriaId = categoriaBO.insertarCategoria(nuevaCategoria);
                 }
                 else
                 {
@@ -211,19 +199,11 @@ namespace SoftBodWA
                 }
                 categDTO.categoriaIdSpecified = true;
 
-                int nuevoProductoId = productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
+                productoBO.insertarProducto(categDTO, nombre, precio, unidadMedida, stockInicial, stockMinimo, true);
 
-                // Regitrar en el historial
-                historialOperacionesBO = new HistorialOperacionesBO();
-                int usuarioID = (int)Session["UsuarioId"];
-                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                usuario.usuarioId = usuarioID;
-                usuario.usuarioIdSpecified = true;
-                historialOperacionesBO.registroHistorialDeOperaciones(usuario,"BOD_PRODUCTO","INSERCION");
-
-                // Agregar el nuevo producto al cache en lugar de invalidarlo completamente
-                var nuevoProducto = productoBO.obtenerProductoPorId(nuevoProductoId);
-                ListaProductos.Add(nuevoProducto);
+                // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                ViewState["ListaProductos"] = null;
+                ViewState["ListaCategoria"] = null;
 
                 LimpiarCamposModal();
                 MostrarMensajeExitoYRecargar("Producto agregado exitosamente", "modalAgregarProducto");
@@ -257,7 +237,6 @@ namespace SoftBodWA
                     break;
             }
         }
-
         private void MostrarModalAjustarStock(int productoId)
         {
             hdnProductoIdAjustar.Value = productoId.ToString();
@@ -327,8 +306,9 @@ namespace SoftBodWA
 
                     if (resultado > 0)
                     {
-                        // El producto ya está actualizado en memoria, solo recargar la vista
-                        CargarProductos();
+                        // ✅ CRÍTICO: Invalidar cache ANTES de recargar
+                        ViewState["ListaProductos"] = null;
+                        RecargarDatosYActualizar();
                     }
                 }
             }
@@ -380,7 +360,9 @@ namespace SoftBodWA
 
                     if (resultado > 0)
                     {
-                        // El producto ya está actualizado en memoria
+                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                        ViewState["ListaProductos"] = null;
+
                         txtCantidadAjustar.Text = "";
                         string accion = stockMode == "Agregar" ? "agregado" : "reducido";
                         MostrarMensajeExitoYRecargar($"Stock {accion} exitosamente", "modalAjustarStock");
@@ -445,17 +427,11 @@ namespace SoftBodWA
 
                 int resultado = productoBO.modificarProducto(productoDTO);
 
-                // Regitrar en el historial
-                historialOperacionesBO = new HistorialOperacionesBO();
-                int usuarioID = (int)Session["UsuarioId"];
-                WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                usuario.usuarioId = usuarioID;
-                usuario.usuarioIdSpecified = true;
-                historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_PRODUCTO", "MODIFICACION");
-
                 if (resultado > 0)
                 {
-                    // El producto ya está actualizado en memoria
+                    // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                    ViewState["ListaProductos"] = null;
+
                     MostrarMensajeExitoYRecargar("Producto actualizado exitosamente", "modalEditarProducto");
                 }
                 else
@@ -478,7 +454,7 @@ namespace SoftBodWA
             try
             {
                 int idProducto = int.Parse(hdnProductoIdEliminar.Value);
-                var producto = ListaProductos.FirstOrDefault(p => p.productoId == idProducto);
+                WSProducto.productoDTO producto = productoBO.obtenerProductoPorId(idProducto);
 
                 if (producto != null)
                 {
@@ -492,20 +468,10 @@ namespace SoftBodWA
                     {
                         int resultado = productoBO.eliminarProducto(idProducto);
 
-                        // Regitrar en el historial
-                        historialOperacionesBO = new HistorialOperacionesBO();
-                        int usuarioID = (int)Session["UsuarioId"];
-                        WSHistorialOperaciones.usuarioDTO usuario = new WSHistorialOperaciones.usuarioDTO();
-                        usuario.usuarioId = usuarioID;
-                        usuario.usuarioIdSpecified = true;
-                        historialOperacionesBO.registroHistorialDeOperaciones(usuario, "BOD_PRODUCTO", "ELIMINACION");
+                        // ✅ CRÍTICO: Invalidar cache ANTES de mostrar mensaje
+                        ViewState["ListaProductos"] = null;
 
-                        if (resultado > 0)
-                        {
-                            // Eliminar del cache en lugar de invalidarlo completamente
-                            ListaProductos.Remove(producto);
-                            MostrarMensajeExitoYRecargar("Producto eliminado exitosamente", "modalEliminarProducto");
-                        }
+                        MostrarMensajeExitoYRecargar("Producto eliminado exitosamente", "modalEliminarProducto");
                     }
                 }
             }

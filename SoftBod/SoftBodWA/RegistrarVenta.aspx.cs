@@ -429,6 +429,7 @@ namespace SoftBodWA
                     var cliente = clienteAlFiadoBO.obtenerClienteAlFiadoPorId(clienteId);
                     cliente.montoDeuda += double.Parse(lblTotal.Text);
                     int resModify = clienteAlFiadoBO.modificarClienteAlFiado(cliente);
+
                 }
                 else
                 {

@@ -106,7 +106,7 @@ public class DetalleVentaDAOImpl extends DAOImplBase implements DetalleVentaDAO{
     
     private ArrayList<DetalleVentaDTO> listarDetalleVentaFiltros 
         (Integer ventaId, Integer productoId,Date fecha){
-        String sql = "{CALL TA_PROG3.SP_LISTAR_DETALLE_VENTA(?,?,?)}";
+        String sql = "{CALL SP_LISTAR_DETALLE_VENTA(?,?,?)}";
         Object parametros = new DetalleVentaParametrosBuilder()
                             .conVentaId(ventaId)
                             .conProductoId(productoId)
