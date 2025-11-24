@@ -1,0 +1,26 @@
+<discovery xmlns="http://schemas.xmlsoap.org/disco/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/Usuario?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/Categoria?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/ClienteAlFiado?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/DetalleDevolucion?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/DetalleVenta?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/Devolucion?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/HistorialOperaciones?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/Producto?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/RazonDevolucion?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/RegistroPagoFiado?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/Venta?WSDL"/>
+  <contractRef xmlns="http://schemas.xmlsoap.org/disco/scl/"
+    ref="http://44.206.187.222:8080/SoftBodWS/VentaAlFiado?WSDL"/>
+</discovery>
